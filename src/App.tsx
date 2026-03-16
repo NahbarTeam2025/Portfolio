@@ -724,7 +724,7 @@ export default function App() {
         </main>
 
         {/* Footer */}
-        <footer className={`w-full border-t border-white/5 bg-black/40 backdrop-blur-xl py-4 px-6 md:px-[120px] mt-auto relative z-10 shrink-0 ${isMobileMenuOpen ? 'hidden lg:block' : ''}`}>
+        <footer className={`w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-4 px-6 md:px-[120px] mt-auto relative z-10 shrink-0 ${isMobileMenuOpen ? 'hidden lg:block' : ''}`}>
           <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
               <img 
