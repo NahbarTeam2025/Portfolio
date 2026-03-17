@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.bunny.net/css?family=outfit:300,400,500,600,700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -106,6 +106,43 @@
   @keyframes border-flow {
     0% { background-position: 0% 50%; }
     100% { background-position: 200% 50%; }
+  }
+
+  @keyframes skill-fill {
+    from { width: 0; }
+  }
+  .animate-skill-fill {
+    animation: skill-fill 3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @keyframes pulse-subtle {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.03); opacity: 0.9; }
+  }
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce-x {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+  }
+  .animate-bounce-x {
+    animation: bounce-x 1s ease-in-out infinite;
+  }
+
+  @keyframes project-entrance {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-project-entrance {
+    animation: project-entrance 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 
   .text-glow {

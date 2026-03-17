@@ -3,19 +3,74 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail, MapPin, Linkedin } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+const Typewriter = ({ text, delay = 20, onComplete }: { text: string, delay?: number, onComplete?: () => void }) => {
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setCurrentText(prevText => prevText + text[currentIndex]);
+        setCurrentIndex(prevIndex => prevIndex + 1);
+      }, delay);
+  
+      return () => clearTimeout(timeout);
+    } else if (onComplete) {
+      onComplete();
+    }
+  }, [currentIndex, delay, text, onComplete]);
+
+  return (
+    <span>
+      {currentText}
+      {currentIndex < text.length && (
+        <span className="inline-block w-[2px] h-[1em] bg-brand-teal ml-1 animate-pulse align-middle" />
+      )}
+    </span>
+  );
+};
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('Start');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    setStep(0);
+  }, [currentPage]);
   const [expandedQual, setExpandedQual] = useState<number | null>(null);
   const [expandedCert, setExpandedCert] = useState<number | null>(null);
+  const [isInitialEntrance, setIsInitialEntrance] = useState(true);
+
+  useEffect(() => {
+    setIsInitialEntrance(true);
+  }, [currentPage]);
+
   const [isContactFormExpanded, setIsContactFormExpanded] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [isImpressumOpen, setIsImpressumOpen] = useState(false);
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
+  const [hasAcceptedConsent, setHasAcceptedConsent] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const consent = localStorage.getItem('portfolio-consent');
+    if (consent === 'true') {
+      setHasAcceptedConsent(true);
+    } else {
+      setHasAcceptedConsent(false);
+    }
+  }, []);
+
+  const handleAcceptConsent = () => {
+    localStorage.setItem('portfolio-consent', 'true');
+    setHasAcceptedConsent(true);
+  };
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState(false);
@@ -29,7 +84,7 @@ export default function App() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     
-    fetch("/", {
+    fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData as any).toString(),
@@ -93,7 +148,7 @@ export default function App() {
             className="w-full h-full object-cover"
           >
             <source
-              src="https://i.imgur.com/I45w3xZ.mp4"
+              src="https://raw.githubusercontent.com/NahbarTeam2025/Portfolio/096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4"
               type="video/mp4"
             />
           </video>
@@ -105,7 +160,7 @@ export default function App() {
       {/* Content Overlay */}
       <div className="relative z-10 flex flex-col h-[100dvh] overflow-y-auto overflow-x-hidden">
         {/* Navbar */}
-        <nav className="relative flex items-center justify-between px-6 md:px-[120px] py-3 w-full z-50">
+        <nav className={`sticky top-0 flex items-center justify-between px-6 md:px-[120px] py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
             {/* Logo */}
             <div className="flex items-center h-[28px] cursor-pointer" onClick={() => setCurrentPage('Start')}>
@@ -128,7 +183,7 @@ export default function App() {
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
-                  className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-300 cursor-pointer relative overflow-hidden group ${
+                  className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-500 cursor-pointer relative overflow-hidden group hover:scale-110 ${
                     currentPage === page
                       ? 'text-white'
                       : 'text-white/60 hover:text-white'
@@ -138,6 +193,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-gradient-to-r from-brand-violet/20 via-brand-teal/20 to-brand-violet/20 rounded-full" />
                   )}
                   <span className="relative z-10">{page}</span>
+                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
                 </button>
               ))}
             </div>
@@ -160,33 +216,47 @@ export default function App() {
           </div>
 
           {/* Mobile Menu Overlay */}
-          {isMobileMenuOpen && (
-            <div className="fixed inset-0 top-[74px] md:top-[94px] w-full bg-[#050505]/40 backdrop-blur-xl border-t border-white/5 p-6 flex flex-col gap-4 lg:hidden animate-in slide-in-from-top-2 z-40 overflow-y-auto pb-24 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
-              {pages.map((page) => (
-                <button
-                  key={page}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                className="absolute top-full left-0 w-full h-[calc(100dvh-100%)] bg-[#050505]/95 backdrop-blur-2xl border-t border-white/5 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto pb-24 shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+              >
+                {pages.map((page, index) => (
+                  <motion.button
+                    key={page}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + index * 0.05, duration: 0.4 }}
+                    onClick={() => {
+                      setCurrentPage(page);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`text-left text-lg font-medium py-3 border-b border-white/5 transition-colors ${
+                      currentPage === page ? 'text-brand-teal' : 'text-white/60 hover:text-white'
+                    }`}
+                  >
+                    {page}
+                  </motion.button>
+                ))}
+                <motion.button 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + pages.length * 0.05, duration: 0.4 }}
                   onClick={() => {
-                    setCurrentPage(page);
+                    setCurrentPage('Kontakt');
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`text-left text-lg font-medium py-3 border-b border-white/5 transition-colors ${
-                    currentPage === page ? 'text-brand-teal' : 'text-white/60 hover:text-white'
-                  }`}
+                  className="mt-4 flex items-center justify-center w-full sm:hidden rounded-full px-[28px] py-[10px] bg-black/30 backdrop-blur-md border border-white/10 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:bg-gradient-to-r hover:from-black hover:to-blue-900/50 transition-all duration-500 hover:scale-105 cursor-pointer"
                 >
-                  {page}
-                </button>
-              ))}
-              <button 
-                onClick={() => {
-                  setCurrentPage('Kontakt');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="mt-4 flex items-center justify-center w-full sm:hidden rounded-full px-[28px] py-[10px] bg-black/30 backdrop-blur-md border border-white/10 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:bg-gradient-to-r hover:from-black hover:to-blue-900/50 transition-all duration-500 hover:scale-105 cursor-pointer"
-              >
-                <span className="relative z-10">Kontakt</span>
-              </button>
-            </div>
-          )}
+                  <span className="relative z-10">Kontakt</span>
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
 
         {/* Main Content */}
@@ -224,9 +294,12 @@ export default function App() {
               <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 mt-2 lg:mt-4">
                 <button 
                   onClick={() => setCurrentPage('Kontakt')}
-                  className="flex items-center justify-center rounded-full px-[32px] py-[10px] bg-black/30 backdrop-blur-md border border-white/10 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:bg-gradient-to-r hover:from-black hover:to-blue-900/50 transition-all duration-500 hover:scale-105 cursor-pointer"
+                  className="flex items-center justify-center gap-2 rounded-full px-[40px] py-[12px] bg-gradient-to-r from-brand-violet/20 to-brand-teal/20 border border-white/10 text-white text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:from-brand-violet/40 hover:to-brand-teal/40 transition-all duration-500 hover:scale-105 cursor-pointer group/cta animate-pulse-subtle"
                 >
                   <span className="relative z-10">Kontakt</span>
+                  <svg className="w-5 h-5 transform transition-transform duration-300 group-hover/cta:translate-x-2 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </button>
               </div>
             </div>
@@ -238,15 +311,30 @@ export default function App() {
               <div className="w-full h-[1px] bg-white/10 shrink-0" />
               <div className="flex flex-col gap-4 md:gap-6 text-white/80 text-[14px] md:text-[16px] lg:text-[20px] font-normal max-w-[1000px] leading-relaxed pt-4 md:pt-8">
                 <p>
-                  Marketing ist für mich ein Werkzeugkasten – und ich nutze ihn mit wachsender Präzision. Ich verbinde SEO, Content und KI-Workflows zu Lösungen, die nicht nur gut aussehen, sondern funktionieren.
+                  <Typewriter 
+                    text="Marketing ist für mich ein Werkzeugkasten – und ich nutze ihn mit wachsender Präzision. Ich verbinde SEO, Content und KI-Workflows zu Lösungen, die nicht nur gut aussehen, sondern funktionieren." 
+                    onComplete={() => setStep(1)}
+                  />
                 </p>
-                <p>
-                  Mein praktisches Projekt ist eine Landingpage für ein SEO-KI-System – von der Konzeption bis zum funktionierenden Kontaktformular.
-                </p>
-                <p className="text-white font-medium mt-2 md:mt-4 text-[16px] md:text-[18px] lg:text-[24px]">
-                  Mein Antrieb: aus Ideen echte Ergebnisse machen.
-                </p>
-                <div className="mt-4 md:mt-8">
+                {step >= 1 && (
+                  <p>
+                    <Typewriter 
+                      text="Mein praktisches Projekt ist eine Landingpage für ein SEO-KI-System – von der Konzeption bis zum funktionierenden Kontaktformular." 
+                      delay={15}
+                      onComplete={() => setStep(2)}
+                    />
+                  </p>
+                )}
+                {step >= 2 && (
+                  <p className="text-white font-medium mt-2 md:mt-4 text-[16px] md:text-[18px] lg:text-[24px]">
+                    <Typewriter 
+                      text="Mein Antrieb: aus Ideen echte Ergebnisse machen." 
+                      delay={25}
+                      onComplete={() => setStep(3)}
+                    />
+                  </p>
+                )}
+                <div className={`mt-4 md:mt-8 transition-opacity duration-1000 ${step >= 3 ? 'opacity-100' : 'opacity-0'}`}>
                   <img 
                     src="https://lh3.googleusercontent.com/d/1QObFwkk3K9eYOvQaFoIlhzV5qZbvB2kC" 
                     alt="Unterschrift Robert Erbach" 
@@ -264,7 +352,7 @@ export default function App() {
                 Skills & Kompetenzen
               </h1>
               <div className="w-full h-[1px] bg-white/10 shrink-0" />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-24 gap-y-4 md:gap-y-10 w-full max-w-[1200px] py-2 md:py-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-4 md:gap-y-10 w-full max-w-[1400px] py-2 md:py-4">
                 {[
                   {
                     category: 'Marketing & SEO',
@@ -283,26 +371,60 @@ export default function App() {
                       { name: 'Prompt Engineering', value: 90 },
                       { name: 'KI-Workflows', value: 85 }
                     ]
+                  },
+                  {
+                    category: 'Soft Skills',
+                    skills: [
+                      { name: 'Teamfähigkeit', value: 95 },
+                      { name: 'Kommunikation', value: 90 },
+                      { name: 'Problemlösung', value: 85 },
+                      { name: 'Zeitmanagement', value: 90 }
+                    ]
+                  },
+                  {
+                    category: 'Sprachen',
+                    skills: [
+                      { name: 'Deutsch', value: 100 },
+                      { name: 'Englisch', value: 70 }
+                    ]
                   }
-                ].map((group) => (
+                ].map((group, groupIndex) => (
                   <div key={group.category} className="wow-card flex flex-col gap-3 md:gap-8 p-4 md:p-10">
                     <div className="wow-card-border" />
                     <h2 className="text-brand-teal text-[10px] md:text-base uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold opacity-90 relative z-10">{group.category}</h2>
                     <div className="flex flex-col gap-3 md:gap-7 relative z-10">
-                      {group.skills.map((skill) => (
-                        <div key={skill.name} className="flex flex-col gap-1.5 md:gap-3 w-full">
-                          <div className="flex justify-between items-end w-full">
-                            <span className="text-white font-medium text-[13px] md:text-[17px] leading-none">{skill.name}</span>
-                            <span className="text-brand-teal font-mono text-[10px] md:text-[14px] leading-none">{skill.value}%</span>
+                      {group.skills.map((skill, skillIndex) => {
+                        const globalIndex = groupIndex * 4 + skillIndex;
+                        return (
+                          <div key={skill.name} className="flex flex-col gap-1.5 md:gap-3 w-full group/skill relative">
+                            {/* Custom Tooltip */}
+                            <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/80 border border-white/10 rounded-xl text-white text-[12px] md:text-[14px] whitespace-nowrap opacity-0 group-hover/skill:opacity-100 transition-all duration-300 pointer-events-none z-50 backdrop-blur-xl shadow-2xl translate-y-2 group-hover/skill:translate-y-0">
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 rounded-full bg-brand-teal animate-pulse" />
+                                <span className="font-medium">{skill.name}</span>
+                                <span className="text-brand-teal font-bold ml-1">{skill.value}%</span>
+                              </div>
+                              {/* Tooltip Arrow */}
+                              <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-black/80 border-r border-b border-white/10 rotate-45"></div>
+                            </div>
+
+                            <div className="flex justify-between items-end w-full">
+                              <span className="text-white font-medium text-[13px] md:text-[17px] leading-none">{skill.name}</span>
+                              <span className="text-brand-teal font-mono text-[10px] md:text-[14px] leading-none">{skill.value}%</span>
+                            </div>
+                            <div className="w-full h-1.5 md:h-2 bg-white/10 rounded-full overflow-hidden cursor-help">
+                              <div 
+                                className="h-full bg-gradient-to-r from-brand-violet to-brand-teal rounded-full shadow-[0_0_15px_rgba(5,184,194,0.4)] animate-gradient-shift animate-skill-fill" 
+                                style={{ 
+                                  width: `${skill.value}%`,
+                                  animationDelay: `${globalIndex * 200}ms`,
+                                  animationFillMode: 'both'
+                                }} 
+                              />
+                            </div>
                           </div>
-                          <div className="w-full h-1.5 md:h-2 bg-white/10 rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-gradient-to-r from-brand-violet to-brand-teal rounded-full shadow-[0_0_15px_rgba(5,184,194,0.4)] animate-gradient-shift" 
-                              style={{ width: `${skill.value}%` }}
-                            />
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 ))}
@@ -335,10 +457,17 @@ export default function App() {
                   const actualIndex = expandedProject === null ? i : expandedProject;
                   const isExpanded = expandedProject !== null;
                   return (
-                    <div key={actualIndex} className={`wow-card group flex flex-col ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-brand-violet/30' : 'overflow-hidden'}`}>
+                    <div 
+                      key={actualIndex} 
+                      className={`wow-card group flex flex-col transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] hover:border-brand-violet/50 ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-brand-violet/30 shadow-[0_0_30px_rgba(139,92,246,0.2)]' : 'overflow-hidden'} ${!isExpanded && isInitialEntrance ? 'animate-project-entrance' : ''}`}
+                      style={{ animationDelay: isExpanded ? '0ms' : `${i * 400}ms` }}
+                    >
                       <div className="wow-card-border" />
                       <button 
-                        onClick={() => setExpandedProject(isExpanded ? null : actualIndex)}
+                        onClick={() => {
+                          setExpandedProject(isExpanded ? null : actualIndex);
+                          setIsInitialEntrance(false);
+                        }}
                         className={`w-full text-left p-6 md:p-8 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[100px]'}`}
                       >
                         <div className="flex flex-col gap-1">
@@ -371,9 +500,9 @@ export default function App() {
                             </div>
                           </div>
                           <div className="flex mt-auto pt-4 shrink-0">
-                            <button className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/20 to-brand-teal/20 border border-white/10 text-white font-medium text-[13px] hover:from-brand-violet/40 hover:to-brand-teal/40 transition-all">
+                            <button className={`flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/20 to-brand-teal/20 border border-white/10 text-white font-medium text-[13px] hover:from-brand-violet/40 hover:to-brand-teal/40 transition-all group/btn2 ${isExpanded ? 'animate-pulse-subtle shadow-[0_0_15px_rgba(124,58,237,0.3)]' : ''}`}>
                               Details ansehen
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <svg className={`w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-2 ${isExpanded ? 'animate-bounce-x' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                               </svg>
                             </button>
@@ -420,10 +549,17 @@ export default function App() {
                   const actualIndex = expandedQual === null ? i : expandedQual;
                   const isExpanded = expandedQual !== null;
                   return (
-                    <div key={actualIndex} className={`wow-card group flex flex-col ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-brand-teal/30' : 'overflow-hidden'}`}>
+                    <div 
+                      key={actualIndex} 
+                      className={`wow-card group flex flex-col ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-brand-teal/30' : 'overflow-hidden'} ${!isExpanded && isInitialEntrance ? 'animate-project-entrance' : ''}`}
+                      style={{ animationDelay: isExpanded ? '0ms' : `${i * 400}ms` }}
+                    >
                       <div className="wow-card-border" />
                       <button 
-                        onClick={() => setExpandedQual(isExpanded ? null : actualIndex)}
+                        onClick={() => {
+                          setExpandedQual(isExpanded ? null : actualIndex);
+                          setIsInitialEntrance(false);
+                        }}
                         className={`w-full text-left p-5 md:p-6 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[90px]'}`}
                       >
                         <div className="flex flex-col gap-1">
@@ -489,15 +625,22 @@ export default function App() {
                   const actualIndex = expandedCert === null ? i : expandedCert;
                   const isExpanded = expandedCert !== null;
                   return (
-                    <div key={cert.id} className={`wow-card group flex flex-col ${isExpanded ? 'ring-1 ring-brand-teal/30' : ''}`}>
+                    <div 
+                      key={cert.id} 
+                      className={`wow-card group flex flex-col ${isExpanded ? 'ring-1 ring-brand-teal/30' : ''} ${!isExpanded && isInitialEntrance ? 'animate-project-entrance' : ''}`}
+                      style={{ animationDelay: isExpanded ? '0ms' : `${i * 400}ms` }}
+                    >
                       <div className="wow-card-border" />
                       <button 
-                        onClick={() => setExpandedCert(isExpanded ? null : actualIndex)}
+                        onClick={() => {
+                          setExpandedCert(isExpanded ? null : actualIndex);
+                          setIsInitialEntrance(false);
+                        }}
                         className={`w-full text-left px-5 py-6 md:px-8 md:py-8 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[110px] md:min-h-[130px]'}`}
                       >
                         <div className="flex items-center gap-4 md:gap-6">
-                          <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-brand-teal/20 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(5,184,194,0.2)] group-hover/btn:scale-110 transition-transform duration-500">
-                            <svg className="w-5 h-5 md:w-7 md:h-7 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-brand-teal/20 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(5,184,194,0.2)] group-hover/btn:scale-110 transition-transform duration-500 animate-pulse-subtle">
+                            <svg className="w-5 h-5 md:w-7 md:h-7 text-brand-teal transition-transform duration-500 group-hover/btn:rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
                           </div>
@@ -626,13 +769,14 @@ export default function App() {
                             </div>
                           ) : (
                             <form 
-                              name="contact"
-                              data-netlify="true"
-                              netlify-honeypot="bot-field"
+                              action="https://api.web3forms.com/submit"
+                              method="POST"
                               className="flex flex-col gap-3 md:gap-3 w-full bg-white/5 p-4 md:p-5 rounded-2xl border border-white/10" 
                               onSubmit={handleSubmit}
                             >
-                              <input type="hidden" name="form-name" value="contact" />
+                              <input type="hidden" name="access_key" value="1ebce7a4-5cb3-49d8-b826-2be2c6447608" />
+                              <input type="hidden" name="from_name" value="Portfolio Kontakt" />
+                              <input type="hidden" name="subject" value="Neue Nachricht vom Portfolio" />
                               <p className="hidden">
                                 <label>
                                   Don’t fill this out if you're human: <input name="bot-field" />
@@ -724,27 +868,60 @@ export default function App() {
         </main>
 
         {/* Footer */}
-        <footer className={`w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-4 px-6 md:px-[120px] mt-auto relative z-10 shrink-0 ${isMobileMenuOpen ? 'hidden lg:block' : ''}`}>
+        <footer className={`w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-3 px-6 md:px-[120px] mt-auto relative z-10 shrink-0 ${isMobileMenuOpen ? 'hidden lg:block' : ''}`}>
           <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setCurrentPage('Start')}>
               <img 
                 src="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq" 
                 alt="Logo" 
-                className="h-[28px] w-auto object-contain"
+                className="h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)]"
                 referrerPolicy="no-referrer"
                 crossOrigin="anonymous"
                 loading="lazy"
               />
-              <span className="text-white text-[11px] hidden sm:block">Robert Erbach</span>
+              <span className="text-white text-[11px] hidden sm:block group-hover:text-brand-teal transition-colors">Robert Erbach</span>
             </div>
             
             <div className="flex flex-row justify-end gap-4 md:gap-6 text-[11px]">
-              <button onClick={() => setCurrentPage('Kontakt')} className="text-white hover:text-brand-teal transition-colors">Kontakt</button>
               <button onClick={() => setIsImpressumOpen(true)} className="text-white hover:text-brand-teal transition-colors">Impressum</button>
               <button onClick={() => setIsDatenschutzOpen(true)} className="text-white hover:text-brand-teal transition-colors">Datenschutz</button>
             </div>
           </div>
         </footer>
+
+        {/* Consent Banner */}
+        {hasAcceptedConsent === false && (
+          <div className="fixed bottom-0 left-0 w-full z-[100] p-4 md:p-6 animate-in slide-in-from-bottom-full duration-700">
+            <div className="max-w-4xl mx-auto bg-black/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-6 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-1">
+                <h4 className="text-white font-bold text-lg mb-2 flex items-center gap-2">
+                  <span className="w-2 h-2 bg-brand-teal rounded-full animate-pulse" />
+                  Datenschutz & Cookies
+                </h4>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  Um dir das bestmögliche Erlebnis zu bieten, verwende ich externe Ressourcen (Bilder, Videos, Fonts). 
+                  Dabei wird deine IP-Adresse technisch bedingt an Drittanbieter übertragen. 
+                  Mit Klick auf "Akzeptieren" stimmst du dieser Nutzung und meiner 
+                  <button onClick={() => setIsDatenschutzOpen(true)} className="text-brand-teal hover:underline ml-1">Datenschutzerklärung</button> zu.
+                </p>
+              </div>
+              <div className="flex items-center gap-3 shrink-0">
+                <button 
+                  onClick={() => setIsDatenschutzOpen(true)}
+                  className="px-6 py-2.5 rounded-xl text-white/60 hover:text-white text-sm font-medium transition-colors"
+                >
+                  Details
+                </button>
+                <button 
+                  onClick={handleAcceptConsent}
+                  className="px-8 py-2.5 rounded-xl bg-brand-teal text-black text-sm font-bold hover:scale-105 transition-all shadow-[0_0_20px_rgba(5,184,194,0.3)]"
+                >
+                  Akzeptieren
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Impressum Modal */}
         {isImpressumOpen && (
@@ -814,9 +991,9 @@ export default function App() {
                   <h4 className="text-base font-medium text-white/90 mb-2">Datenerfassung auf dieser Website</h4>
                   <p className="mb-2"><strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong></p>
                   <p className="mb-4">Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
-                  <p className="mb-2"><strong>Wie erfassen wir Ihre Daten?</strong></p>
-                  <p className="mb-4">Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
-                  <p className="mb-2"><strong>Wofür nutzen wir Ihre Daten?</strong></p>
+                  <p className="mb-2"><strong>Wie erfasse ich Ihre Daten?</strong></p>
+                  <p className="mb-4">Ihre Daten werden zum einen dadurch erhoben, dass Sie mir diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch meine IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
+                  <p className="mb-2"><strong>Wofür nutze ich Ihre Daten?</strong></p>
                   <p className="mb-4">Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
                   <p className="mb-2"><strong>Welche Rechte haben Sie bezüglich Ihrer Daten?</strong></p>
                   <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</p>
@@ -824,17 +1001,17 @@ export default function App() {
 
                 <section>
                   <h3 className="text-lg font-medium text-white mb-3">2. Hosting</h3>
-                  <p className="mb-2">Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
+                  <p className="mb-2">Ich hoste die Inhalte meiner Website bei folgendem Anbieter:</p>
                   <h4 className="text-base font-medium text-white/90 mb-2">Netlify</h4>
                   <p className="mb-4">Anbieter ist die Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, California 94104, USA (nachfolgend „Netlify“).</p>
-                  <p className="mb-4">Wenn Sie unsere Website besuchen, erfasst Netlify verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Netlify: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" className="text-brand-teal hover:underline">https://www.netlify.com/privacy/</a>.</p>
-                  <p>Die Verwendung von Netlify erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website.</p>
+                  <p className="mb-4">Wenn Sie meine Website besuchen, erfasst Netlify verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Netlify: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" className="text-brand-teal hover:underline">https://www.netlify.com/privacy/</a>.</p>
+                  <p>Die Verwendung von Netlify erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung meiner Website.</p>
                 </section>
 
                 <section>
                   <h3 className="text-lg font-medium text-white mb-3">3. Allgemeine Hinweise und Pflichtinformationen</h3>
                   <h4 className="text-base font-medium text-white/90 mb-2">Datenschutz</h4>
-                  <p className="mb-4">Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+                  <p className="mb-4">Ich nehme den Schutz Ihrer persönlichen Daten sehr ernst. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
                   <h4 className="text-base font-medium text-white/90 mb-2">Hinweis zur verantwortlichen Stelle</h4>
                   <p className="mb-4">Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
                   <p className="mb-4">
@@ -848,17 +1025,21 @@ export default function App() {
 
                 <section>
                   <h3 className="text-lg font-medium text-white mb-3">4. Datenerfassung auf dieser Website</h3>
-                  <h4 className="text-base font-medium text-white/90 mb-2">Kontaktformular (Netlify Forms)</h4>
-                  <p className="mb-4">Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-                  <p className="mb-4">Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt zur Abwicklung Ihrer Anfrage. Wir nutzen für die Bereitstellung des Formulars den Dienst "Netlify Forms" des Anbieters Netlify, Inc. (USA). Die von Ihnen eingegebenen Daten werden auf den Servern von Netlify gespeichert.</p>
-                  <p className="mb-4">Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.</p>
-                  <p className="mb-6">Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
+                  <h4 className="text-base font-medium text-white/90 mb-2">Kontaktformular (Web3Forms)</h4>
+                  <p className="mb-4">Wenn Sie mir per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.</p>
+                  <p className="mb-4">Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt zur Abwicklung Ihrer Anfrage. Ich nutze für die Bereitstellung des Formulars den Dienst "Web3Forms" des Anbieters Web3Forms. Die von Ihnen eingegebenen Daten werden auf den Servern von Web3Forms verarbeitet.</p>
+                  <p className="mb-4">Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf meinem berechtigten Interesse an der effektiven Bearbeitung der an mich gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.</p>
+                  <p className="mb-6">Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei mir, bis Sie mich zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
 
                   <h4 className="text-base font-medium text-white/90 mb-2">Bereitstellung von Downloads (Zertifikate)</h4>
-                  <p className="mb-6">Wir bieten auf unserer Website Zertifikate zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch unseren Hoster Netlify erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken.</p>
+                  <p className="mb-6">Ich biete auf meiner Website Zertifikate zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Netlify erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken.</p>
+                </section>
 
-                  <h4 className="text-base font-medium text-white/90 mb-2">Verlinkungen zu externen Projekt-Webseiten</h4>
-                  <p>Auf unserer "Projekte"-Seite verlinken wir auf externe Webseiten, auf denen die jeweiligen Projekte gehostet werden. Diese Projekt-Webseiten werden ebenfalls über Netlify bereitgestellt. Bitte beachten Sie, dass beim Aufruf dieser externen Links die Datenverarbeitung (z. B. Erfassung der IP-Adresse durch Netlify) auf der jeweiligen Zielseite erneut stattfindet. Wir haben keinen Einfluss auf die Datenverarbeitung auf diesen verlinkten Seiten, auch wenn sie von uns betrieben werden. Es gilt die Datenschutzerklärung der jeweiligen Zielseite.</p>
+                <section>
+                  <h3 className="text-lg font-medium text-white mb-3">5. Externe Ressourcen und CDN</h3>
+                  <h4 className="text-base font-medium text-white/90 mb-2">Bunny Fonts, Imgur & Google Photos</h4>
+                  <p className="mb-4">Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten und Medien externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Dateien direkt von den Servern der jeweiligen Anbieter (Bunny.net, Imgur) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diese Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.</p>
+                  <p className="mb-4">Die Nutzung dieser Dienste erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über den Consent-Banner beim ersten Aufruf der Seite erteilen können.</p>
                 </section>
 
               </div>
