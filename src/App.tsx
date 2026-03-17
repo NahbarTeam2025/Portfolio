@@ -112,6 +112,8 @@ export default function App() {
             muted
             playsInline
             preload="metadata"
+            title="Abstraktes Hintergrundvideo"
+            aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
             src="https://i.imgur.com/Q0b4wA3.mp4"
           />
@@ -129,8 +131,10 @@ export default function App() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             poster="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq=s800"
+            title="Hintergrundvideo Robert Erbach Portfolio"
+            aria-hidden="true"
             className="w-full h-full object-cover"
           >
             <source
@@ -153,6 +157,9 @@ export default function App() {
               <img 
                 src="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq=s120" 
                 alt="Logo" 
+                width="37"
+                height="28"
+                decoding="async"
                 className="h-full w-auto object-contain"
                 referrerPolicy="no-referrer"
                 crossOrigin="anonymous"
@@ -196,6 +203,7 @@ export default function App() {
             <button 
               className="lg:hidden text-white p-2 -mr-2 cursor-pointer"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -454,6 +462,8 @@ export default function App() {
                           setExpandedProject(isExpanded ? null : actualIndex);
                           setIsInitialEntrance(false);
                         }}
+                        aria-expanded={isExpanded}
+                        aria-label={isExpanded ? "Projekt-Details einklappen" : "Projekt-Details ausklappen"}
                         className={`w-full text-left p-6 md:p-8 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[100px]'}`}
                       >
                         <div className="flex flex-col gap-1">
@@ -546,6 +556,8 @@ export default function App() {
                           setExpandedQual(isExpanded ? null : actualIndex);
                           setIsInitialEntrance(false);
                         }}
+                        aria-expanded={isExpanded}
+                        aria-label={isExpanded ? "Qualifikation-Details einklappen" : "Qualifikation-Details ausklappen"}
                         className={`w-full text-left p-5 md:p-6 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[90px]'}`}
                       >
                         <div className="flex flex-col gap-1">
@@ -622,6 +634,8 @@ export default function App() {
                           setExpandedCert(isExpanded ? null : actualIndex);
                           setIsInitialEntrance(false);
                         }}
+                        aria-expanded={isExpanded}
+                        aria-label={isExpanded ? "Zertifikat-Details einklappen" : "Zertifikat-Details ausklappen"}
                         className={`w-full text-left px-5 py-6 md:px-8 md:py-8 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[110px] md:min-h-[130px]'}`}
                       >
                         <div className="flex items-center gap-4 md:gap-6">
@@ -723,6 +737,8 @@ export default function App() {
                       <div className="wow-card-border" />
                       <button 
                         onClick={() => setIsContactFormExpanded(!isContactFormExpanded)}
+                        aria-expanded={isContactFormExpanded}
+                        aria-label={isContactFormExpanded ? "Kontaktformular einklappen" : "Kontaktformular ausklappen"}
                         className="w-full text-left p-4 md:p-6 flex justify-between items-center group/btn relative z-10"
                       >
                         <h3 className="text-base md:text-xl font-semibold text-white leading-tight group-hover/btn:text-brand-teal transition-colors">Nachricht senden</h3>
