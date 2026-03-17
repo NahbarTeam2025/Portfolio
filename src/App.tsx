@@ -130,6 +130,7 @@ export default function App() {
             muted
             playsInline
             preload="auto"
+            poster="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq"
             className="w-full h-full object-cover"
           >
             <source
