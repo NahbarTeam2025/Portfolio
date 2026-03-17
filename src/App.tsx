@@ -665,7 +665,7 @@ export default function App() {
                 Zertifikate
               </h1>
               <div className="w-full h-[1px] bg-white/10 shrink-0" />
-              <div className="flex flex-col gap-4 w-full max-w-[1200px] pb-32">
+              <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2' : ''} gap-4 md:gap-6 w-full max-w-[1200px] pb-32`}>
                 {[
                   { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH', date: '2026' },
                   { id: 2, title: 'SEO Spezialist', issuer: 'Google / Coursera', date: '2025' },
