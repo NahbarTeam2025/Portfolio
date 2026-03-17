@@ -55,21 +55,6 @@ export default function App() {
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [isImpressumOpen, setIsImpressumOpen] = useState(false);
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
-  const [hasAcceptedConsent, setHasAcceptedConsent] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    const consent = localStorage.getItem('portfolio-consent');
-    if (consent === 'true') {
-      setHasAcceptedConsent(true);
-    } else {
-      setHasAcceptedConsent(false);
-    }
-  }, []);
-
-  const handleAcceptConsent = () => {
-    localStorage.setItem('portfolio-consent', 'true');
-    setHasAcceptedConsent(true);
-  };
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -889,40 +874,6 @@ export default function App() {
           </div>
         </footer>
 
-        {/* Consent Banner */}
-        {hasAcceptedConsent === false && (
-          <div className="fixed bottom-0 left-0 w-full z-[100] p-4 md:p-6 animate-in slide-in-from-bottom-full duration-700">
-            <div className="max-w-4xl mx-auto bg-black/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-6 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center gap-6">
-              <div className="flex-1">
-                <h4 className="text-white font-bold text-lg mb-2 flex items-center gap-2">
-                  <span className="w-2 h-2 bg-brand-teal rounded-full animate-pulse" />
-                  Datenschutz & Cookies
-                </h4>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Um dir das bestmögliche Erlebnis zu bieten, verwende ich externe Ressourcen (Bilder, Videos, Fonts). 
-                  Dabei wird deine IP-Adresse technisch bedingt an Drittanbieter übertragen. 
-                  Mit Klick auf "Akzeptieren" stimmst du dieser Nutzung und meiner 
-                  <button onClick={() => setIsDatenschutzOpen(true)} className="text-brand-teal hover:underline ml-1">Datenschutzerklärung</button> zu.
-                </p>
-              </div>
-              <div className="flex items-center gap-3 shrink-0">
-                <button 
-                  onClick={() => setIsDatenschutzOpen(true)}
-                  className="px-6 py-2.5 rounded-xl text-white/60 hover:text-white text-sm font-medium transition-colors"
-                >
-                  Details
-                </button>
-                <button 
-                  onClick={handleAcceptConsent}
-                  className="px-8 py-2.5 rounded-xl bg-brand-teal text-black text-sm font-bold hover:scale-105 transition-all shadow-[0_0_20px_rgba(5,184,194,0.3)]"
-                >
-                  Akzeptieren
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Impressum Modal */}
         {isImpressumOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
@@ -1002,10 +953,10 @@ export default function App() {
                 <section>
                   <h3 className="text-lg font-medium text-white mb-3">2. Hosting</h3>
                   <p className="mb-2">Ich hoste die Inhalte meiner Website bei folgendem Anbieter:</p>
-                  <h4 className="text-base font-medium text-white/90 mb-2">Netlify</h4>
-                  <p className="mb-4">Anbieter ist die Netlify, Inc., 44 Montgomery Street, Suite 300, San Francisco, California 94104, USA (nachfolgend „Netlify“).</p>
-                  <p className="mb-4">Wenn Sie meine Website besuchen, erfasst Netlify verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Netlify: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" className="text-brand-teal hover:underline">https://www.netlify.com/privacy/</a>.</p>
-                  <p>Die Verwendung von Netlify erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung meiner Website.</p>
+                  <h4 className="text-base font-medium text-white/90 mb-2">Cloudflare</h4>
+                  <p className="mb-4">Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (nachfolgend „Cloudflare“).</p>
+                  <p className="mb-4">Wenn Sie meine Website besuchen, erfasst Cloudflare verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-brand-teal hover:underline">https://www.cloudflare.com/privacypolicy/</a>.</p>
+                  <p>Die Verwendung von Cloudflare erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung meiner Website.</p>
                 </section>
 
                 <section>
@@ -1032,14 +983,13 @@ export default function App() {
                   <p className="mb-6">Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei mir, bis Sie mich zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
 
                   <h4 className="text-base font-medium text-white/90 mb-2">Bereitstellung von Downloads (Zertifikate)</h4>
-                  <p className="mb-6">Ich biete auf meiner Website Zertifikate zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Netlify erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken.</p>
+                  <p className="mb-6">Ich biete auf meiner Website Zertifikate zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Cloudflare erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken.</p>
                 </section>
 
                 <section>
                   <h3 className="text-lg font-medium text-white mb-3">5. Externe Ressourcen und CDN</h3>
                   <h4 className="text-base font-medium text-white/90 mb-2">Bunny Fonts, Imgur & Google Photos</h4>
                   <p className="mb-4">Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten und Medien externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Dateien direkt von den Servern der jeweiligen Anbieter (Bunny.net, Imgur) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diese Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.</p>
-                  <p className="mb-4">Die Nutzung dieser Dienste erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die Sie über den Consent-Banner beim ersten Aufruf der Seite erteilen können.</p>
                 </section>
 
               </div>
