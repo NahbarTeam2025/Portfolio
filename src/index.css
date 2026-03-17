@@ -11,8 +11,8 @@
   .heading-gradient {
     background: linear-gradient(144.5deg, #ffffff 28%, rgba(255, 255, 255, 0) 100%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: transparent;
   }
 
   .animate-border-rotate {
@@ -93,8 +93,8 @@
     );
     background-size: 200% 100%;
     animation: border-flow 6s linear infinite;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff, #fff) content-box, linear-gradient(#fff, #fff);
+    -webkit-mask: linear-gradient(#fff, #fff) content-box, linear-gradient(#fff, #fff);
     mask-composite: exclude;
     -webkit-mask-composite: destination-out;
     pointer-events: none;

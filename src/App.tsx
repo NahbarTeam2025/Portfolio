@@ -130,7 +130,7 @@ export default function App() {
             muted
             playsInline
             preload="auto"
-            poster="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq"
+            poster="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq=s800"
             className="w-full h-full object-cover"
           >
             <source
@@ -151,7 +151,7 @@ export default function App() {
             {/* Logo */}
             <div className="flex items-center h-[28px] cursor-pointer" onClick={() => setCurrentPage('Start')}>
               <img 
-                src="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq" 
+                src="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq=s120" 
                 alt="Logo" 
                 className="h-full w-auto object-contain"
                 referrerPolicy="no-referrer"
@@ -322,7 +322,7 @@ export default function App() {
                 )}
                 <div className={`mt-4 md:mt-8 transition-opacity duration-1000 ${step >= 3 ? 'opacity-100' : 'opacity-0'}`}>
                   <img 
-                    src="https://lh3.googleusercontent.com/d/1QObFwkk3K9eYOvQaFoIlhzV5qZbvB2kC" 
+                    src="https://lh3.googleusercontent.com/d/1QObFwkk3K9eYOvQaFoIlhzV5qZbvB2kC=s300" 
                     alt="Unterschrift Robert Erbach" 
                     className="h-12 md:h-20 w-auto object-contain invert mix-blend-screen opacity-90"
                     referrerPolicy="no-referrer"
