@@ -55,6 +55,14 @@ export default function App() {
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [isImpressumOpen, setIsImpressumOpen] = useState(false);
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -103,6 +111,38 @@ export default function App() {
       className="relative h-[100dvh] w-full bg-black font-sans overflow-hidden"
       onMouseMove={handleMouseMove}
     >
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center"
+          >
+            <div className="relative w-48 h-[2px] bg-white/10 overflow-hidden rounded-full">
+              <motion.div
+                initial={{ x: "-100%" }}
+                animate={{ x: "100%" }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 1.5, 
+                  ease: "easeInOut" 
+                }}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-teal to-transparent"
+              />
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="mt-4 text-white/40 text-[10px] tracking-[0.3em] uppercase font-medium"
+            >
+              Loading Experience
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Dynamic Subpages Background */}
       {(currentPage !== 'Start' || isMobileMenuOpen) && (
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -132,7 +172,6 @@ export default function App() {
             muted
             playsInline
             preload="metadata"
-            poster="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq=s800"
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
