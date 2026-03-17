@@ -28,9 +28,15 @@
           "@type": "Person",
           "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#person",
           "name": "Robert Erbach",
-          "jobTitle": "Digital Marketing Manager",
+          "jobTitle": "Digital Marketing Manager & KI-Experte",
           "url": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app",
-          "image": "https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq",
+          "image": {
+            "@type": "ImageObject",
+            "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#logo",
+            "url": "https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq",
+            "contentUrl": "https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq",
+            "caption": "Robert Erbach Logo"
+          },
           "sameAs": [
             "https://www.linkedin.com/in/roberterbach"
           ],
@@ -43,7 +49,7 @@
           },
           "email": "roberterbach@web.de",
           "telephone": "+49 152 04041124",
-          "description": "Marketing ist für mich ein Werkzeugkasten – und ich nutze ihn mit wachsender Präzision. Ich verbinde SEO, Content und KI-Workflows zu Lösungen, die nicht nur gut aussehen, sondern funktionieren.",
+          "description": "Marketing-Experte für SEO, Content und KI-Workflows. Robert Erbach verbindet technisches Know-how mit kreativen Strategien für messbaren Erfolg.",
           "knowsAbout": [
             "Digital Marketing",
             "SEO",
@@ -52,14 +58,16 @@
             "Content Creation",
             "Web Analytics",
             "Prompt Engineering",
-            "KI-Workflows"
+            "KI-Workflows",
+            "Automation"
           ]
         },
         {
           "@type": "WebSite",
           "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#website",
           "url": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app",
-          "name": "Robert Erbach - Portfolio",
+          "name": "Robert Erbach | Portfolio & Digital Marketing",
+          "description": "Portfolio von Robert Erbach - Digital Marketing Manager mit Fokus auf SEO und KI-gestützte Workflows.",
           "publisher": {
             "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#person"
           },
@@ -67,11 +75,14 @@
         },
         {
           "@type": "ProfessionalService",
-          "name": "Robert Erbach - Digital Marketing",
-          "image": "https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq",
           "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#service",
+          "name": "Robert Erbach - Digital Marketing & KI-Consulting",
+          "logo": { "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#logo" },
+          "image": "https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq",
           "url": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app",
           "telephone": "+49 152 04041124",
+          "email": "roberterbach@web.de",
+          "priceRange": "€€",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Am Stadtpark 43",
@@ -79,7 +90,11 @@
             "postalCode": "04895",
             "addressCountry": "DE"
           },
-          "priceRange": "$$",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 51.5833,
+            "longitude": 13.2333
+          },
           "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": [
@@ -91,6 +106,36 @@
             ],
             "opens": "09:00",
             "closes": "18:00"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Marketing Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "SEO Optimierung",
+                  "description": "Strategische Suchmaschinenoptimierung für nachhaltige Sichtbarkeit."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "KI-Workflow Consulting",
+                  "description": "Automatisierung von Marketing-Prozessen durch moderne KI-Lösungen."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Content Marketing",
+                  "description": "Zielgruppenspezifische Content-Erstellung und Strategie."
+                }
+              }
+            ]
           }
         }
       ]
