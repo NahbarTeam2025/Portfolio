@@ -332,12 +332,12 @@ export default function App() {
               </div>
             </div>
              ) : currentPage === 'Skills' ? (
-            <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500">
-              <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight shrink-0">
+            <div className="flex flex-col items-start gap-3 md:gap-4 w-full animate-in fade-in duration-500">
+              <h1 className="heading-gradient text-[28px] md:text-[36px] lg:text-[48px] font-medium leading-[1.2] tracking-tight shrink-0">
                 Skills & Kompetenzen
               </h1>
               <div className="w-full h-[1px] bg-white/10 shrink-0" />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-4 md:gap-y-10 w-full max-w-[1400px] py-2 md:py-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-4 w-full max-w-[1400px] py-2 md:py-2">
                 {[
                   {
                     category: 'Marketing & SEO',
@@ -374,10 +374,10 @@ export default function App() {
                     ]
                   }
                 ].map((group, groupIndex) => (
-                  <div key={group.category} className="wow-card flex flex-col gap-3 md:gap-8 p-4 md:p-10">
+                  <div key={group.category} className="wow-card flex flex-col gap-2 md:gap-4 p-4 md:p-6 lg:p-7">
                     <div className="wow-card-border" />
-                    <h2 className="text-brand-teal text-[10px] md:text-base uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold opacity-90 relative z-10">{group.category}</h2>
-                    <div className="flex flex-col gap-3 md:gap-7 relative z-10">
+                    <h2 className="text-brand-teal text-[10px] md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold opacity-90 relative z-10">{group.category}</h2>
+                    <div className="flex flex-col gap-2 md:gap-4 lg:gap-5 relative z-10">
                       {group.skills.map((skill, skillIndex) => {
                         const globalIndex = groupIndex * 4 + skillIndex;
                         return (
@@ -394,10 +394,10 @@ export default function App() {
                             </div>
 
                             <div className="flex justify-between items-end w-full">
-                              <span className="text-white font-medium text-[13px] md:text-[17px] leading-none">{skill.name}</span>
-                              <span className="text-brand-teal font-mono text-[10px] md:text-[14px] leading-none">{skill.value}%</span>
+                              <span className="text-white font-medium text-[13px] md:text-[15px] lg:text-[16px] leading-none">{skill.name}</span>
+                              <span className="text-brand-teal font-mono text-[10px] md:text-[13px] leading-none">{skill.value}%</span>
                             </div>
-                            <div className="w-full h-1.5 md:h-2 bg-white/10 rounded-full overflow-hidden cursor-help">
+                            <div className="w-full h-1 md:h-1.5 bg-white/10 rounded-full overflow-hidden cursor-help">
                               <div 
                                 className="h-full bg-gradient-to-r from-brand-violet to-brand-teal rounded-full shadow-[0_0_15px_rgba(5,184,194,0.4)] animate-gradient-shift animate-skill-fill" 
                                 style={{ 
