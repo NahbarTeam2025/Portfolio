@@ -5,16 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Robert Erbach</title>
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq" />
-    <link href="https://fonts.bunny.net/css?family=outfit:300,400,500,600,700&display=swap" rel="stylesheet">
     
-    <!-- Performance Optimizations -->
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.bunny.net">
+    <link rel="dns-prefetch" href="https://i.imgur.com">
+    <link rel="dns-prefetch" href="https://lh3.googleusercontent.com">
+    <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
+    
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
     <link rel="preconnect" href="https://i.imgur.com" crossorigin>
     <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
-    <link rel="preload" as="video" href="https://i.imgur.com/I45w3xZ.mp4" type="video/mp4">
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+    <link rel="preconnect" href="https://api.web3forms.com" crossorigin>
+    
+    <link href="https://fonts.bunny.net/css?family=outfit:300,400,500,600,700&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#person",
+          "name": "Robert Erbach",
+          "jobTitle": "Digital Marketing Manager",
+          "url": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app",
+          "image": "https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq",
+          "sameAs": [
+            "https://www.linkedin.com/in/roberterbach"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Am Stadtpark 43",
+            "addressLocality": "Falkenberg/Elster",
+            "postalCode": "04895",
+            "addressCountry": "DE"
+          },
+          "email": "roberterbach@web.de",
+          "telephone": "+49 152 04041124",
+          "description": "Marketing ist für mich ein Werkzeugkasten – und ich nutze ihn mit wachsender Präzision. Ich verbinde SEO, Content und KI-Workflows zu Lösungen, die nicht nur gut aussehen, sondern funktionieren.",
+          "knowsAbout": [
+            "Digital Marketing",
+            "SEO",
+            "Google Ads",
+            "Social Media Marketing",
+            "Content Creation",
+            "Web Analytics",
+            "Prompt Engineering",
+            "KI-Workflows"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#website",
+          "url": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app",
+          "name": "Robert Erbach - Portfolio",
+          "publisher": {
+            "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#person"
+          },
+          "inLanguage": "de-DE"
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "Robert Erbach - Digital Marketing",
+          "image": "https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq",
+          "@id": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app/#service",
+          "url": "https://ais-pre-kpdefgr4xxc3wtovleguze-309208044234.europe-west2.run.app",
+          "telephone": "+49 152 04041124",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Am Stadtpark 43",
+            "addressLocality": "Falkenberg/Elster",
+            "postalCode": "04895",
+            "addressCountry": "DE"
+          },
+          "priceRange": "$$",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Performance Optimizations -->
+    <link rel="preload" as="video" href="https://raw.githubusercontent.com/NahbarTeam2025/Portfolio/096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4" type="video/mp4">
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
+    <script type="module" src="./src/main.tsx" fetchpriority="high"></script>
   </body>
 </html>
 
