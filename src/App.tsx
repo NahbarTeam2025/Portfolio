@@ -192,10 +192,17 @@ export default function App() {
         <nav className={`sticky top-0 flex items-center justify-between px-6 md:px-[120px] py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
             {/* Logo */}
-            <div className="flex items-center h-[28px] cursor-pointer" onClick={() => setCurrentPage('Start')}>
+            <a 
+              href="/" 
+              className="flex items-center h-[28px] cursor-pointer" 
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage('Start');
+              }}
+            >
               <img 
                 src="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq=s120" 
-                alt="Logo" 
+                alt="Logo Robert Erbach" 
                 width="37"
                 height="28"
                 decoding="async"
@@ -204,7 +211,7 @@ export default function App() {
                 crossOrigin="anonymous"
                 fetchPriority="high"
               />
-            </div>
+            </a>
           </div>
 
           {/* Right side: New Nav Bar + Join Waitlist Button */}
@@ -212,9 +219,13 @@ export default function App() {
             {/* New Page Switcher Navigation Bar */}
             <div className="hidden lg:flex items-center gap-1">
               {pages.map((page) => (
-                <button
+                <a
                   key={page}
-                  onClick={() => setCurrentPage(page)}
+                  href={`#${page.toLowerCase().replace(/\s+/g, '-')}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage(page);
+                  }}
                   className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-500 cursor-pointer relative overflow-hidden group hover:scale-110 ${
                     currentPage === page
                       ? 'text-white'
@@ -226,17 +237,21 @@ export default function App() {
                   )}
                   <span className="relative z-10">{page}</span>
                   <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
-                </button>
+                </a>
               ))}
             </div>
 
             {/* CTA Button */}
-            <button 
-              onClick={() => setCurrentPage('Kontakt')}
+            <a 
+              href="#kontakt"
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage('Kontakt');
+              }}
               className="hidden sm:flex items-center justify-center rounded-full px-[32px] py-[10px] bg-black/30 backdrop-blur-md border border-white/10 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:bg-gradient-to-r hover:from-black hover:to-blue-900/50 transition-all duration-500 hover:scale-105 cursor-pointer"
             >
               <span className="relative z-10">Kontakt</span>
-            </button>
+            </a>
 
             {/* Mobile Menu Toggle */}
             <button 
@@ -911,17 +926,24 @@ export default function App() {
         {/* Footer */}
         <footer className={`w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-3 px-6 md:px-[120px] mt-auto relative z-10 shrink-0 ${isMobileMenuOpen ? 'hidden lg:block' : ''}`}>
           <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setCurrentPage('Start')}>
+            <a 
+              href="/"
+              className="flex items-center gap-2 cursor-pointer group" 
+              onClick={(e) => {
+                e.preventDefault();
+                setCurrentPage('Start');
+              }}
+            >
               <img 
                 src="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq" 
-                alt="Logo" 
+                alt="Logo Robert Erbach Footer" 
                 className="h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)]"
                 referrerPolicy="no-referrer"
                 crossOrigin="anonymous"
                 loading="lazy"
               />
               <span className="text-white text-[11px] hidden sm:block group-hover:text-brand-teal transition-colors">Robert Erbach</span>
-            </div>
+            </a>
             
             <div className="flex flex-row justify-end gap-4 md:gap-6 text-[11px]">
               <button onClick={() => setIsImpressumOpen(true)} className="text-white hover:text-brand-teal transition-colors">Impressum</button>
