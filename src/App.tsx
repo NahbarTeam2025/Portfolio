@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useCallback, useRef, startTransition } from 'react';
+import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -34,8 +35,32 @@ const Typewriter = ({ text, delay = 20, onComplete }: { text: string, delay?: nu
   );
 };
 
+const pageRoutes: Record<string, string> = {
+  'Start': '/',
+  'Über mich': '/ueber-mich',
+  'Skills': '/skills',
+  'Projekte': '/projekte',
+  'Qualifikation': '/qualifikation',
+  'Zertifikate': '/zertifikate',
+  'Kontakt': '/kontakt'
+};
+
+const routeToPage: Record<string, string> = Object.fromEntries(
+  Object.entries(pageRoutes).map(([key, value]) => [value, key])
+);
+
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('Start');
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!routeToPage[location.pathname]) {
+      navigate('/', { replace: true });
+    }
+  }, [location.pathname, navigate]);
+
+  const currentPage = routeToPage[location.pathname] || 'Start';
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
   const [step, setStep] = useState(0);
@@ -70,11 +95,16 @@ export default function App() {
   const pages = ['Start', 'Über mich', 'Skills', 'Projekte', 'Qualifikation', 'Zertifikate'];
 
   const handleNavigate = useCallback((page: string) => {
-    startTransition(() => {
-      setCurrentPage(page);
-      setIsMobileMenuOpen(false);
-    });
-  }, []);
+    const targetPath = pageRoutes[page] || '/';
+    if (location.pathname === targetPath) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      startTransition(() => {
+        navigate(targetPath);
+      });
+    }
+    setIsMobileMenuOpen(false);
+  }, [navigate, location.pathname]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -125,6 +155,36 @@ export default function App() {
     });
   }, []);
 
+  const handleStartVideoRef = useCallback((el: HTMLVideoElement | null) => {
+    if (el) {
+      el.defaultMuted = true;
+      el.muted = true;
+      const playPromise = el.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          if (error.name !== 'AbortError' && error.name !== 'NotSupportedError') {
+            console.error("Start video play error:", error.message);
+          }
+        });
+      }
+    }
+  }, []);
+
+  const handleSubVideoRef = useCallback((el: HTMLVideoElement | null) => {
+    if (el) {
+      el.defaultMuted = true;
+      el.muted = true;
+      const playPromise = el.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          if (error.name !== 'AbortError' && error.name !== 'NotSupportedError') {
+            console.error("Sub video play error:", error.message);
+          }
+        });
+      }
+    }
+  }, []);
+
   return (
     <div 
       className="relative h-[100dvh] w-full bg-black font-sans overflow-hidden"
@@ -164,18 +224,24 @@ export default function App() {
 
       {/* Dynamic Subpages Background */}
       {(currentPage !== 'Start' || isMobileMenuOpen) && (
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#0a0a0a]">
           <video
+            ref={handleSubVideoRef}
             autoPlay
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
+            poster="https://i.imgur.com/Q0b4wA3.png"
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
-            src="https://i.imgur.com/Q0b4wA3.mp4"
-          />
+            onError={(e) => console.error("Sub video error:", e.currentTarget.error)}
+            onCanPlay={() => console.log("Sub video can play")}
+          >
+            <source src="https://cdn.jsdelivr.net/gh/NahbarTeam2025/Portfolio@096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4" type="video/mp4" />
+            <source src="https://raw.githubusercontent.com/NahbarTeam2025/Portfolio/096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4" type="video/mp4" />
+          </video>
           {/* Noise overlay */}
           <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
           <div className="absolute inset-0 bg-black/40" />
@@ -184,21 +250,23 @@ export default function App() {
 
       {/* Background Video */}
       {currentPage === 'Start' && !isMobileMenuOpen && (
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
           <video
+            ref={handleStartVideoRef}
             autoPlay
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
+            poster="https://i.imgur.com/Q0b4wA3.png"
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
+            onError={(e) => console.error("Start video error:", e.currentTarget.error)}
+            onCanPlay={() => console.log("Start video can play")}
           >
-            <source
-              src="https://raw.githubusercontent.com/NahbarTeam2025/Portfolio/096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4"
-              type="video/mp4"
-            />
+            <source src="https://cdn.jsdelivr.net/gh/NahbarTeam2025/Portfolio@096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4" type="video/mp4" />
+            <source src="https://raw.githubusercontent.com/NahbarTeam2025/Portfolio/096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4" type="video/mp4" />
           </video>
           {/* 50% Dark Overlay */}
           <div className="absolute inset-0 bg-black/60" />
@@ -212,7 +280,7 @@ export default function App() {
           <div className="flex items-center">
             {/* Logo */}
             <a 
-              href="/" 
+              href={pageRoutes['Start']} 
               className="flex items-center h-[28px] cursor-pointer" 
               onClick={(e) => {
                 e.preventDefault();
@@ -240,7 +308,7 @@ export default function App() {
               {pages.map((page) => (
                 <a
                   key={page}
-                  href={`#${page.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={pageRoutes[page]}
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavigate(page);
@@ -262,7 +330,7 @@ export default function App() {
 
             {/* CTA Button */}
             <a 
-              href="#kontakt"
+              href={pageRoutes['Kontakt']}
               onClick={(e) => {
                 e.preventDefault();
                 handleNavigate('Kontakt');
@@ -293,12 +361,14 @@ export default function App() {
                 className="absolute top-full left-0 w-full h-[calc(100dvh-100%)] bg-[#050505]/95 backdrop-blur-2xl border-t border-white/5 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto pb-24 shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
               >
                 {pages.map((page, index) => (
-                  <motion.button
+                  <motion.a
                     key={page}
+                    href={pageRoutes[page]}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + index * 0.05, duration: 0.4 }}
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
                       handleNavigate(page);
                     }}
                     className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors ${
@@ -306,19 +376,21 @@ export default function App() {
                     }`}
                   >
                     {page}
-                  </motion.button>
+                  </motion.a>
                 ))}
-                <motion.button 
+                <motion.a 
+                  href={pageRoutes['Kontakt']}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + pages.length * 0.05, duration: 0.4 }}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     handleNavigate('Kontakt');
                   }}
                   className="mt-4 flex items-center justify-center w-full sm:hidden rounded-full px-[28px] py-[10px] bg-black/30 backdrop-blur-md border border-white/10 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:bg-gradient-to-r hover:from-black hover:to-blue-900/50 transition-all duration-500 hover:scale-105 cursor-pointer"
                 >
                   <span className="relative z-10">Kontakt</span>
-                </motion.button>
+                </motion.a>
               </motion.div>
             )}
           </AnimatePresence>
@@ -357,15 +429,19 @@ export default function App() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 mt-2 lg:mt-4">
-                <button 
-                  onClick={() => handleNavigate('Kontakt')}
+                <a 
+                  href={pageRoutes['Kontakt']}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigate('Kontakt');
+                  }}
                   className="flex items-center justify-center gap-2 rounded-full px-[40px] py-[12px] bg-gradient-to-r from-brand-violet/20 to-brand-teal/20 border border-white/10 text-white text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:from-brand-violet/40 hover:to-brand-teal/40 transition-all duration-500 hover:scale-105 cursor-pointer group/cta animate-pulse-subtle"
                 >
                   <span className="relative z-10">Kontakt</span>
                   <svg className="w-5 h-5 transform transition-transform duration-300 group-hover/cta:translate-x-2 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
-                </button>
+                </a>
               </div>
             </div>
           ) : currentPage === 'Über mich' ? (
@@ -950,7 +1026,7 @@ export default function App() {
         <footer className={`w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-3 px-6 md:px-[120px] mt-auto relative z-10 shrink-0 ${isMobileMenuOpen ? 'hidden lg:block' : ''}`}>
           <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-4">
             <a 
-              href="/"
+              href={pageRoutes['Start']}
               className="flex items-center gap-2 cursor-pointer group" 
               onClick={(e) => {
                 e.preventDefault();
