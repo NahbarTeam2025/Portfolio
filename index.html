@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Security Meta Tags -->
-    <!-- CSP removed for debugging to ensure app loads correctly on custom domain -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; img-src 'self' data: https://lh3.googleusercontent.com https://i.imgur.com; font-src 'self' https://fonts.bunny.net; connect-src 'self' https://api.web3forms.com; media-src 'self' https://cdn.jsdelivr.net https://raw.githubusercontent.com; frame-src 'self' https://www.linkedin.com; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
 
@@ -95,6 +95,60 @@
           "inLanguage": "de-DE"
         },
         {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/ueber-mich/#webpage",
+          "url": "https://roberterbach.de/ueber-mich",
+          "name": "Über mich | Robert Erbach",
+          "description": "Erfahren Sie mehr über Robert Erbach, Digital Marketing Manager mit Fokus auf SEO, Content und KI-Workflows.",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" },
+          "author": { "@id": "https://roberterbach.de/#person" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/skills/#webpage",
+          "url": "https://roberterbach.de/skills",
+          "name": "Skills & Kompetenzen | Robert Erbach",
+          "description": "Fachkenntnisse in Digital Marketing, SEO, Social Media, Web Analytics und Prompt Engineering.",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" },
+          "author": { "@id": "https://roberterbach.de/#person" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/projekte/#webpage",
+          "url": "https://roberterbach.de/projekte",
+          "name": "Projekte & Referenzen | Robert Erbach",
+          "description": "Erfolgreiche Projekte in den Bereichen Social Media Kampagnen, KI-Workflows und SEO-Landingpages.",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" },
+          "author": { "@id": "https://roberterbach.de/#person" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/qualifikation/#webpage",
+          "url": "https://roberterbach.de/qualifikation",
+          "name": "Berufliche Qualifikation | Robert Erbach",
+          "description": "Beruflicher Werdegang und Qualifikationen von Robert Erbach im Bereich Digital Marketing.",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" },
+          "author": { "@id": "https://roberterbach.de/#person" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/zertifikate/#webpage",
+          "url": "https://roberterbach.de/zertifikate",
+          "name": "Zertifikate | Robert Erbach",
+          "description": "Zertifikate und Weiterbildungen in SEO, Web Analytics, Social Media und KI im Marketing.",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" },
+          "author": { "@id": "https://roberterbach.de/#person" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/kontakt/#webpage",
+          "url": "https://roberterbach.de/kontakt",
+          "name": "Kontakt | Robert Erbach",
+          "description": "Nehmen Sie Kontakt mit Robert Erbach auf für Anfragen zu Digital Marketing und KI-Consulting.",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" },
+          "author": { "@id": "https://roberterbach.de/#person" }
+        },
+        {
           "@type": "ProfessionalService",
           "@id": "https://roberterbach.de/#service",
           "name": "Robert Erbach - Digital Marketing & KI-Consulting",
@@ -137,7 +191,8 @@
                 "itemOffered": {
                   "@type": "Service",
                   "name": "SEO Optimierung",
-                  "description": "Strategische Suchmaschinenoptimierung für nachhaltige Sichtbarkeit."
+                  "description": "Strategische Suchmaschinenoptimierung für nachhaltige Sichtbarkeit.",
+                  "url": "https://roberterbach.de/skills"
                 }
               },
               {
@@ -145,7 +200,8 @@
                 "itemOffered": {
                   "@type": "Service",
                   "name": "KI-Workflow Consulting",
-                  "description": "Automatisierung von Marketing-Prozessen durch moderne KI-Lösungen."
+                  "description": "Automatisierung von Marketing-Prozessen durch moderne KI-Lösungen.",
+                  "url": "https://roberterbach.de/projekte"
                 }
               },
               {
@@ -153,7 +209,8 @@
                 "itemOffered": {
                   "@type": "Service",
                   "name": "Content Marketing",
-                  "description": "Zielgruppenspezifische Content-Erstellung und Strategie."
+                  "description": "Zielgruppenspezifische Content-Erstellung und Strategie.",
+                  "url": "https://roberterbach.de/projekte"
                 }
               }
             ]
@@ -176,6 +233,10 @@
       console.log('index.html: script tag reached');
       window.addEventListener('error', function(e) {
         if (e.target.tagName === 'SCRIPT') {
+          // Ignore errors from Cloudflare Insights or other third-party scripts that might be blocked by adblockers
+          if (e.target.src.includes('cloudflareinsights.com') || e.target.src.includes('html2canvas-pro')) {
+            return;
+          }
           console.error('Script load error:', e.target.src);
           const root = document.getElementById('root');
           if (root) {

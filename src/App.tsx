@@ -1044,7 +1044,16 @@ export default function App() {
               <span className="text-white text-[11px] hidden sm:block group-hover:text-brand-teal transition-colors">Robert Erbach</span>
             </a>
             
-            <div className="flex flex-row justify-end gap-4 md:gap-6 text-[11px]">
+            <div className="flex flex-row justify-end items-center gap-4 md:gap-6 text-[11px]">
+              <a 
+                href="https://www.linkedin.com/in/roberterbach" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white hover:text-brand-teal transition-all duration-300 hover:scale-110"
+                aria-label="LinkedIn Profil von Robert Erbach"
+              >
+                <Linkedin size={18} strokeWidth={1.5} />
+              </a>
               <button onClick={() => startTransition(() => setIsImpressumOpen(true))} className="text-white hover:text-brand-teal transition-colors">Impressum</button>
               <button onClick={() => startTransition(() => setIsDatenschutzOpen(true))} className="text-white hover:text-brand-teal transition-colors">Datenschutz</button>
             </div>
