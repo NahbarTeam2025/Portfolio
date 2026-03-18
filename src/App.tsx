@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef, startTransition } from 'react';
 import { Menu, X, Phone, Mail, MapPin, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -69,6 +69,13 @@ export default function App() {
   const [submitError, setSubmitError] = useState(false);
   const pages = ['Start', 'Über mich', 'Skills', 'Projekte', 'Qualifikation', 'Zertifikate'];
 
+  const handleNavigate = useCallback((page: string) => {
+    startTransition(() => {
+      setCurrentPage(page);
+      setIsMobileMenuOpen(false);
+    });
+  }, []);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -95,16 +102,28 @@ export default function App() {
       });
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const cards = document.getElementsByClassName('wow-card');
-    for (const card of cards as any) {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
+  const requestRef = useRef<number>();
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+
+    if (requestRef.current) {
+      cancelAnimationFrame(requestRef.current);
     }
-  };
+
+    requestRef.current = requestAnimationFrame(() => {
+      const cards = document.getElementsByClassName('wow-card');
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i] as HTMLElement;
+        const rect = card.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      }
+    });
+  }, []);
 
   return (
     <div 
@@ -197,7 +216,7 @@ export default function App() {
               className="flex items-center h-[28px] cursor-pointer" 
               onClick={(e) => {
                 e.preventDefault();
-                setCurrentPage('Start');
+                handleNavigate('Start');
               }}
             >
               <img 
@@ -224,7 +243,7 @@ export default function App() {
                   href={`#${page.toLowerCase().replace(/\s+/g, '-')}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    setCurrentPage(page);
+                    handleNavigate(page);
                   }}
                   className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-500 cursor-pointer relative overflow-hidden group hover:scale-110 ${
                     currentPage === page
@@ -246,7 +265,7 @@ export default function App() {
               href="#kontakt"
               onClick={(e) => {
                 e.preventDefault();
-                setCurrentPage('Kontakt');
+                handleNavigate('Kontakt');
               }}
               className="hidden sm:flex items-center justify-center rounded-full px-[32px] py-[10px] bg-black/30 backdrop-blur-md border border-white/10 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:bg-gradient-to-r hover:from-black hover:to-blue-900/50 transition-all duration-500 hover:scale-105 cursor-pointer"
             >
@@ -280,10 +299,9 @@ export default function App() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + index * 0.05, duration: 0.4 }}
                     onClick={() => {
-                      setCurrentPage(page);
-                      setIsMobileMenuOpen(false);
+                      handleNavigate(page);
                     }}
-                    className={`text-left text-lg font-medium py-3 border-b border-white/5 transition-colors ${
+                    className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors ${
                       currentPage === page ? 'text-brand-teal' : 'text-white/60 hover:text-white'
                     }`}
                   >
@@ -295,8 +313,7 @@ export default function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + pages.length * 0.05, duration: 0.4 }}
                   onClick={() => {
-                    setCurrentPage('Kontakt');
-                    setIsMobileMenuOpen(false);
+                    handleNavigate('Kontakt');
                   }}
                   className="mt-4 flex items-center justify-center w-full sm:hidden rounded-full px-[28px] py-[10px] bg-black/30 backdrop-blur-md border border-white/10 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:bg-gradient-to-r hover:from-black hover:to-blue-900/50 transition-all duration-500 hover:scale-105 cursor-pointer"
                 >
@@ -341,7 +358,7 @@ export default function App() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 mt-2 lg:mt-4">
                 <button 
-                  onClick={() => setCurrentPage('Kontakt')}
+                  onClick={() => handleNavigate('Kontakt')}
                   className="flex items-center justify-center gap-2 rounded-full px-[40px] py-[12px] bg-gradient-to-r from-brand-violet/20 to-brand-teal/20 border border-white/10 text-white text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:from-brand-violet/40 hover:to-brand-teal/40 transition-all duration-500 hover:scale-105 cursor-pointer group/cta animate-pulse-subtle"
                 >
                   <span className="relative z-10">Kontakt</span>
@@ -513,8 +530,10 @@ export default function App() {
                       <div className="wow-card-border" />
                       <button 
                         onClick={() => {
-                          setExpandedProject(isExpanded ? null : actualIndex);
-                          setIsInitialEntrance(false);
+                          startTransition(() => {
+                            setExpandedProject(isExpanded ? null : actualIndex);
+                            setIsInitialEntrance(false);
+                          });
                         }}
                         aria-expanded={isExpanded}
                         aria-label={isExpanded ? "Projekt-Details einklappen" : "Projekt-Details ausklappen"}
@@ -607,8 +626,10 @@ export default function App() {
                       <div className="wow-card-border" />
                       <button 
                         onClick={() => {
-                          setExpandedQual(isExpanded ? null : actualIndex);
-                          setIsInitialEntrance(false);
+                          startTransition(() => {
+                            setExpandedQual(isExpanded ? null : actualIndex);
+                            setIsInitialEntrance(false);
+                          });
                         }}
                         aria-expanded={isExpanded}
                         aria-label={isExpanded ? "Qualifikation-Details einklappen" : "Qualifikation-Details ausklappen"}
@@ -685,8 +706,10 @@ export default function App() {
                       <div className="wow-card-border" />
                       <button 
                         onClick={() => {
-                          setExpandedCert(isExpanded ? null : actualIndex);
-                          setIsInitialEntrance(false);
+                          startTransition(() => {
+                            setExpandedCert(isExpanded ? null : actualIndex);
+                            setIsInitialEntrance(false);
+                          });
                         }}
                         aria-expanded={isExpanded}
                         aria-label={isExpanded ? "Zertifikat-Details einklappen" : "Zertifikat-Details ausklappen"}
@@ -790,7 +813,7 @@ export default function App() {
                     <div className={`wow-card group flex flex-col ${isContactFormExpanded ? 'ring-1 ring-brand-violet/30' : 'overflow-hidden'}`}>
                       <div className="wow-card-border" />
                       <button 
-                        onClick={() => setIsContactFormExpanded(!isContactFormExpanded)}
+                        onClick={() => startTransition(() => setIsContactFormExpanded(!isContactFormExpanded))}
                         aria-expanded={isContactFormExpanded}
                         aria-label={isContactFormExpanded ? "Kontaktformular einklappen" : "Kontaktformular ausklappen"}
                         className="w-full text-left p-4 md:p-6 flex justify-between items-center group/btn relative z-10"
@@ -886,7 +909,7 @@ export default function App() {
                                   id="privacy" 
                                   name="privacy"
                                   checked={privacyAccepted}
-                                  onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                                  onChange={(e) => startTransition(() => setPrivacyAccepted(e.target.checked))}
                                   className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-brand-teal focus:ring-brand-teal focus:ring-offset-0 cursor-pointer"
                                   required
                                 />
@@ -931,7 +954,7 @@ export default function App() {
               className="flex items-center gap-2 cursor-pointer group" 
               onClick={(e) => {
                 e.preventDefault();
-                setCurrentPage('Start');
+                handleNavigate('Start');
               }}
             >
               <img 
@@ -946,8 +969,8 @@ export default function App() {
             </a>
             
             <div className="flex flex-row justify-end gap-4 md:gap-6 text-[11px]">
-              <button onClick={() => setIsImpressumOpen(true)} className="text-white hover:text-brand-teal transition-colors">Impressum</button>
-              <button onClick={() => setIsDatenschutzOpen(true)} className="text-white hover:text-brand-teal transition-colors">Datenschutz</button>
+              <button onClick={() => startTransition(() => setIsImpressumOpen(true))} className="text-white hover:text-brand-teal transition-colors">Impressum</button>
+              <button onClick={() => startTransition(() => setIsDatenschutzOpen(true))} className="text-white hover:text-brand-teal transition-colors">Datenschutz</button>
             </div>
           </div>
         </footer>
@@ -955,12 +978,12 @@ export default function App() {
         {/* Impressum Modal */}
         {isImpressumOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsImpressumOpen(false)} />
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => startTransition(() => setIsImpressumOpen(false))} />
             <div className="relative w-full max-w-2xl max-h-[85vh] bg-[#111] border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-300">
               <div className="flex items-center justify-between p-6 border-b border-white/10 shrink-0">
                 <h2 className="text-2xl font-medium text-white">Impressum</h2>
                 <button 
-                  onClick={() => setIsImpressumOpen(false)}
+                  onClick={() => startTransition(() => setIsImpressumOpen(false))}
                   className="p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-colors"
                 >
                   <X className="w-5 h-5" />
@@ -998,12 +1021,12 @@ export default function App() {
         {/* Datenschutz Modal */}
         {isDatenschutzOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsDatenschutzOpen(false)} />
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => startTransition(() => setIsDatenschutzOpen(false))} />
             <div className="relative w-full max-w-3xl max-h-[85vh] bg-[#111] border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-300">
               <div className="flex items-center justify-between p-6 border-b border-white/10 shrink-0">
                 <h2 className="text-2xl font-medium text-white">Datenschutzerklärung</h2>
                 <button 
-                  onClick={() => setIsDatenschutzOpen(false)}
+                  onClick={() => startTransition(() => setIsDatenschutzOpen(false))}
                   className="p-2 text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-colors"
                 >
                   <X className="w-5 h-5" />
