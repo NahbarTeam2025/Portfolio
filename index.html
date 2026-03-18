@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Security Meta Tags -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; img-src 'self' data: https://googleusercontent.com https://lh3.googleusercontent.com https://imagedelivery.net; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src 'self' https://fonts.bunny.net; media-src 'self' https://i.imgur.com https://raw.githubusercontent.com https://*.cloudflarestream.com https://*.cloudflare.com; connect-src 'self' https://cloudflareinsights.com;" />
+    <!-- CSP removed for debugging to ensure app loads correctly on custom domain -->
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
 
@@ -177,7 +177,7 @@
         <p style="font-size: 1.25rem; opacity: 0.8; max-width: 600px;">Digital Marketing Manager & KI-Experte. Portfolio und Projekte.</p>
       </div>
     </div>
-    <script type="module" src="./src/main.tsx" fetchpriority="high"></script>
+    <script type="module" src="/src/main.tsx" fetchpriority="high"></script>
     <script>
       (() => {
         const originalTitle = document.title;
