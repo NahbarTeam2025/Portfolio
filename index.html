@@ -171,21 +171,24 @@
         <strong>Hinweis:</strong> Diese Website benötigt JavaScript für die volle Funktionalität. Bitte aktivieren Sie JavaScript in Ihrem Browser.
       </div>
     </noscript>
-    <div id="root">
-      <div style="min-height: 100vh; background-color: #050505; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; padding: 2rem; text-align: center;">
-        <h1 style="font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem;">Robert Erbach</h1>
-        <p style="font-size: 1.25rem; opacity: 0.8; max-width: 600px;">Digital Marketing Manager & KI-Experte. Portfolio und Projekte.</p>
-      </div>
-    </div>
-    <script type="module" src="./src/main.tsx" fetchpriority="high"></script>
+    <div id="root"></div>
     <script>
-      (() => {
-        const originalTitle = document.title;
-        document.addEventListener('visibilitychange', () => {
-          document.title = document.hidden ? 'Komm zurück! 👋' : originalTitle;
-        });
-      })();
+      console.log('index.html: script tag reached');
+      window.addEventListener('error', function(e) {
+        if (e.target.tagName === 'SCRIPT') {
+          console.error('Script load error:', e.target.src);
+          const root = document.getElementById('root');
+          if (root) {
+            root.innerHTML = `<div style="padding: 20px; color: #ff4444; background: #111; min-height: 100vh; font-family: monospace;">
+              <h2>Script Load Error</h2>
+              <p>Failed to load: ${e.target.src}</p>
+              <p>Please check if the file exists and the path is correct.</p>
+            </div>`;
+          }
+        }
+      }, true);
     </script>
+    <script type="module" src="/src/main.tsx" fetchpriority="high"></script>
   </body>
 </html>
 
