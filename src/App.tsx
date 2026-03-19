@@ -232,15 +232,14 @@ export default function App() {
             muted
             playsInline
             preload="auto"
-            poster="https://i.imgur.com/Q0b4wA3.png"
+            poster="/poster.jpg"
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
             onError={(e) => console.error("Sub video error:", e.currentTarget.error)}
             onCanPlay={() => console.log("Sub video can play")}
           >
-            <source src="https://cdn.jsdelivr.net/gh/NahbarTeam2025/Portfolio@096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4" type="video/mp4" />
-            <source src="https://raw.githubusercontent.com/NahbarTeam2025/Portfolio/096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4" type="video/mp4" />
+            <source src="/Hintergrund%201.mp4" type="video/mp4" />
           </video>
           {/* Noise overlay */}
           <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
@@ -258,15 +257,14 @@ export default function App() {
             muted
             playsInline
             preload="auto"
-            poster="https://i.imgur.com/Q0b4wA3.png"
+            poster="/poster.jpg"
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
             onError={(e) => console.error("Start video error:", e.currentTarget.error)}
             onCanPlay={() => console.log("Start video can play")}
           >
-            <source src="https://cdn.jsdelivr.net/gh/NahbarTeam2025/Portfolio@096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4" type="video/mp4" />
-            <source src="https://raw.githubusercontent.com/NahbarTeam2025/Portfolio/096f1b0a9245e761d5df47f96821eb2ebfe8cda8/15794-266811402%20(1)%20(online-video-cutter.com)%20(1).mp4" type="video/mp4" />
+            <source src="/Hintergrund%201.mp4" type="video/mp4" />
           </video>
           {/* 50% Dark Overlay */}
           <div className="absolute inset-0 bg-black/60" />
