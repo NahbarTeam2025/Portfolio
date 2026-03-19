@@ -238,7 +238,7 @@ export default function App() {
             onError={(e) => console.error("Sub video error:", e.currentTarget.error)}
             onCanPlay={() => console.log("Sub video can play")}
           >
-            <source src="/Hintergrund%201.mp4" type="video/mp4" />
+            <source src="/background.mp4" type="video/mp4" />
           </video>
           {/* Noise overlay */}
           <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
@@ -262,7 +262,7 @@ export default function App() {
             onError={(e) => console.error("Start video error:", e.currentTarget.error)}
             onCanPlay={() => console.log("Start video can play")}
           >
-            <source src="/Hintergrund%201.mp4" type="video/mp4" />
+            <source src="/background.mp4" type="video/mp4" />
           </video>
           {/* 50% Dark Overlay */}
           <div className="absolute inset-0 bg-black/60" />
@@ -476,8 +476,6 @@ export default function App() {
                     src="/signature.png" 
                     alt="Unterschrift Robert Erbach" 
                     className="h-12 md:h-20 w-auto object-contain invert mix-blend-screen opacity-90"
-                    referrerPolicy="no-referrer"
-                    crossOrigin="anonymous"
                     loading="lazy"
                   />
                 </div>
@@ -1033,8 +1031,6 @@ export default function App() {
                 src="/logo.png" 
                 alt="Logo Robert Erbach Footer" 
                 className="h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)]"
-                referrerPolicy="no-referrer"
-                crossOrigin="anonymous"
                 loading="lazy"
               />
               <span className="text-white text-[11px] hidden sm:block group-hover:text-brand-teal transition-colors">Robert Erbach</span>
