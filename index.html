@@ -2,32 +2,38 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; img-src 'self' data:; font-src 'self' https://fonts.bunny.net; connect-src 'self'; media-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; img-src 'self' data: https://fonts.bunny.net https://ik.imagekit.io; font-src 'self' https://fonts.bunny.net; connect-src 'self' https://fonts.bunny.net https://ik.imagekit.io; media-src 'self' https://ik.imagekit.io; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Security Meta Tags -->
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
 
-    <title>Robert Erbach | Digital Marketing Manager & KI-Experte</title>
+    <title>Robert Erbach | Digital Marketing Manager</title>
     <meta name="description" content="Portfolio von Robert Erbach - Digital Marketing Manager mit Fokus auf SEO, Content Marketing und KI-gestützte Workflows. Entdecken Sie meine Projekte und Expertise." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://roberterbach.de/" />
+
+    <!-- Performance Resource Hints -->
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.bunny.net" />
+    <link rel="preconnect" href="https://ik.imagekit.io" crossorigin />
+    <link rel="dns-prefetch" href="https://ik.imagekit.io" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://roberterbach.de/" />
-    <meta property="og:title" content="Robert Erbach | Digital Marketing Manager & KI-Experte" />
+    <meta property="og:title" content="Robert Erbach | Digital Marketing Manager" />
     <meta property="og:description" content="Digital Marketing Experte für SEO, Content und KI-Workflows. Messbarer Erfolg durch technisches Know-how." />
-    <meta property="og:image" content="https://roberterbach.de/site-logo.png" />
+    <meta property="og:image" content="https://ik.imagekit.io/roberterbach/site-logo.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://roberterbach.de/" />
-    <meta property="twitter:title" content="Robert Erbach | Digital Marketing Manager & KI-Experte" />
+    <meta property="twitter:title" content="Robert Erbach | Digital Marketing Manager" />
     <meta property="twitter:description" content="Digital Marketing Experte für SEO, Content und KI-Workflows. Messbarer Erfolg durch technisches Know-how." />
-    <meta property="twitter:image" content="https://roberterbach.de/site-logo.png" />
+    <meta property="twitter:image" content="https://ik.imagekit.io/roberterbach/site-logo.png" />
 
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="https://ik.imagekit.io/roberterbach/favicon.png" />
     
     <link rel="preload" href="https://fonts.bunny.net/css?family=outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700&display=swap" as="style">
     <link href="https://fonts.bunny.net/css?family=outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -45,8 +51,8 @@
           "image": {
             "@type": "ImageObject",
             "@id": "https://roberterbach.de/#logo",
-            "url": "https://roberterbach.de/site-logo.png",
-            "contentUrl": "https://roberterbach.de/site-logo.png",
+            "url": "https://ik.imagekit.io/roberterbach/site-logo.png",
+            "contentUrl": "https://ik.imagekit.io/roberterbach/site-logo.png",
             "caption": "Robert Erbach Logo"
           },
           "sameAs": [
@@ -144,7 +150,7 @@
           "@id": "https://roberterbach.de/#service",
           "name": "Robert Erbach - Digital Marketing & KI-Consulting",
           "logo": { "@id": "https://roberterbach.de/#logo" },
-          "image": "https://roberterbach.de/site-logo.png",
+          "image": "https://ik.imagekit.io/roberterbach/site-logo.png",
           "url": "https://roberterbach.de",
           "telephone": "+49 152 04041124",
           "email": "roberterbach@web.de",
@@ -214,11 +220,6 @@
     <!-- Performance Optimizations -->
   </head>
   <body>
-    <noscript>
-      <div style="padding: 20px; background-color: #f8d7da; color: #721c24; text-align: center; font-family: sans-serif;">
-        <strong>Hinweis:</strong> Diese Website benötigt JavaScript für die volle Funktionalität. Bitte aktivieren Sie JavaScript in Ihrem Browser.
-      </div>
-    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

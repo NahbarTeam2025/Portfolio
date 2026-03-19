@@ -237,7 +237,7 @@ export default function App() {
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
-            src="/hero-video.mp4"
+            src="https://ik.imagekit.io/roberterbach/hero-video.mp4"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Sub video error details:", {
@@ -269,7 +269,7 @@ export default function App() {
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
-            src="/hero-video.mp4"
+            src="https://ik.imagekit.io/roberterbach/hero-video.mp4"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Start video error details:", {
@@ -302,11 +302,12 @@ export default function App() {
               }}
             >
               <img 
-                src="/site-logo.png" 
+                src="https://ik.imagekit.io/roberterbach/site-logo.png" 
                 alt="Logo Robert Erbach" 
                 width="37"
                 height="28"
                 decoding="async"
+                fetchPriority="high"
                 className="h-full w-auto object-contain"
               />
             </a>
@@ -488,10 +489,11 @@ export default function App() {
                 )}
                 <div className={`mt-4 md:mt-8 transition-opacity duration-1000 ${step >= 3 ? 'opacity-100' : 'opacity-0'}`}>
                   <img 
-                    src="/site-signature.png" 
+                    src="https://ik.imagekit.io/roberterbach/site-signature.png" 
                     alt="Unterschrift Robert Erbach" 
                     className="h-12 md:h-20 w-auto object-contain invert mix-blend-screen opacity-90"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -1043,10 +1045,11 @@ export default function App() {
               }}
             >
               <img 
-                src="/site-logo.png" 
+                src="https://ik.imagekit.io/roberterbach/site-logo.png" 
                 alt="Logo Robert Erbach Footer" 
                 className="h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)]"
                 loading="lazy"
+                decoding="async"
               />
               <span className="text-white text-[11px] hidden sm:block group-hover:text-brand-teal transition-colors">Robert Erbach</span>
             </a>
@@ -1182,7 +1185,13 @@ export default function App() {
                 <section>
                   <h3 className="text-lg font-medium text-white mb-3">5. Externe Ressourcen und CDN</h3>
                   <h4 className="text-base font-medium text-white/90 mb-2">Bunny Fonts</h4>
-                  <p className="mb-4">Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Webfonts direkt von den Servern des Anbieters (Bunny.net) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diesen Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt. Alle Bilder und Videos auf dieser Website werden lokal vom eigenen Server geladen, sodass hierfür keine Daten an Dritte (wie Google oder Imgur) übertragen werden.</p>
+                  <p className="mb-4">Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Webfonts direkt von den Servern des Anbieters (Bunny.net) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diesen Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.</p>
+                  
+                  <h4 className="text-base font-medium text-white/90 mb-2">Verwendung eines Content Delivery Networks (CDN) – ImageKit</h4>
+                  <p className="mb-4">Wir nutzen für unser Portfolio den Dienst ImageKit.io, ein Content Delivery Network (CDN) der ImageKit, Inc., 101 California St, San Francisco, CA 94111, USA.</p>
+                  <p className="mb-4">Zweck der Nutzung ist die Optimierung der Ladezeiten und die stabile Bereitstellung von Medieninhalten (wie Videos und Bildern). Durch die Nutzung dieses Dienstes werden Medieninhalte direkt von den Servern von ImageKit geladen. Um diese Inhalte auszuliefern, verarbeitet ImageKit die IP-Adresse Ihres Endgeräts.</p>
+                  <p className="mb-4">Wir haben ImageKit so konfiguriert, dass alle Daten über einen Serverstandort in Frankfurt, Deutschland verarbeitet werden, was das Risiko eines unbefugten Drittlandszugriffs minimiert.</p>
+                  <p>Die Rechtsgrundlage für diese Datenverarbeitung ist unser berechtigtes Interesse an einer performanten, technisch stabilen und nutzerfreundlichen Bereitstellung unseres Onlineangebots (Art. 6 Abs. 1 f DSGVO). Wir haben einen Auftragsverarbeitungsvertrag (AVV) mit ImageKit abgeschlossen, in dem sich das Unternehmen zur Einhaltung der EU-Datenschutzstandards verpflichtet.</p>
                 </section>
 
               </div>
