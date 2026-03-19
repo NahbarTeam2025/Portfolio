@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useCallback, useRef, startTransition, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useCallback, useRef, startTransition } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, Linkedin, ArrowRight, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'framer-motion';
@@ -19,13 +19,12 @@ import { Footer } from './components/Footer';
 import { ImpressumModal } from './components/ImpressumModal';
 import { DatenschutzModal } from './components/DatenschutzModal';
 
-// Lazy load sections for better performance
-const QualifikationSection = lazy(() => import('./components/QualifikationSection').then(m => ({ default: m.QualifikationSection })));
-const SkillsSection = lazy(() => import('./components/SkillsSection').then(m => ({ default: m.SkillsSection })));
-const ProjekteSection = lazy(() => import('./components/ProjekteSection').then(m => ({ default: m.ProjekteSection })));
-const ZertifikateSection = lazy(() => import('./components/ZertifikateSection').then(m => ({ default: m.ZertifikateSection })));
-const KontaktSection = lazy(() => import('./components/KontaktSection').then(m => ({ default: m.KontaktSection })));
-const UberMichSection = lazy(() => import('./components/UberMichSection').then(m => ({ default: m.UberMichSection })));
+import { QualifikationSection } from './components/QualifikationSection';
+import { SkillsSection } from './components/SkillsSection';
+import { ProjekteSection } from './components/ProjekteSection';
+import { ZertifikateSection } from './components/ZertifikateSection';
+import { KontaktSection } from './components/KontaktSection';
+import { UberMichSection } from './components/UberMichSection';
 
 
 
@@ -300,7 +299,8 @@ export default function App() {
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
-            src="https://ik.imagekit.io/roberterbach/hero-video.mp4"
+            style={{ transform: 'translateZ(0)', filter: 'contrast(1.1) saturate(1.1)' }}
+            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-100,w-1920"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Sub video error details:", {
@@ -332,7 +332,8 @@ export default function App() {
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
-            src="https://ik.imagekit.io/roberterbach/hero-video.mp4"
+            style={{ transform: 'translateZ(0)', filter: 'contrast(1.1) saturate(1.1)' }}
+            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-100,w-1920"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Start video error details:", {
@@ -352,7 +353,7 @@ export default function App() {
 
       {/* Content Overlay */}
       <MouseGlow />
-      <div className="relative z-10 flex flex-col h-[100dvh] overflow-y-auto overflow-x-hidden">
+      <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden ${currentPage === 'Qualifikation' ? 'overflow-hidden' : 'overflow-y-auto'}`}>
         {/* Navbar */}
         <nav className={`sticky top-0 flex items-center justify-between px-6 md:px-[120px] py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
@@ -483,11 +484,6 @@ export default function App() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className={`w-full flex flex-col ${currentPage === 'Start' ? 'h-full items-center justify-center' : ''}`}
             >
-              <Suspense fallback={
-                <div className="flex items-center justify-center w-full h-full min-h-[400px]">
-                  <div className="w-8 h-8 border-2 border-white/10 border-t-brand-teal rounded-full animate-spin" />
-                </div>
-              }>
                 {currentPage === 'Start' ? (
                   <HeroSection handleNavigate={handleNavigate} />
                 ) : currentPage === 'Über mich' ? (
@@ -540,7 +536,6 @@ export default function App() {
                     </p>
                   </div>
                 )}
-              </Suspense>
             </motion.div>
           </AnimatePresence>
         </main>
