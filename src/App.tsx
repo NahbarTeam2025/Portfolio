@@ -235,10 +235,19 @@ export default function App() {
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
-            onError={(e) => console.error("Sub video error:", e.currentTarget.error)}
+            onError={(e) => {
+              const error = e.currentTarget.error;
+              console.error("Sub video error details:", {
+                code: error?.code,
+                message: error?.message,
+                networkState: e.currentTarget.networkState,
+                readyState: e.currentTarget.readyState,
+                currentSrc: e.currentTarget.currentSrc
+              });
+            }}
             onCanPlay={() => console.log("Sub video can play")}
           >
-            <source src="/background.mp4" type="video/mp4" />
+            <source src="./background.mp4" type="video/mp4" />
           </video>
           {/* Noise overlay */}
           <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
@@ -259,10 +268,19 @@ export default function App() {
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
-            onError={(e) => console.error("Start video error:", e.currentTarget.error)}
+            onError={(e) => {
+              const error = e.currentTarget.error;
+              console.error("Start video error details:", {
+                code: error?.code,
+                message: error?.message,
+                networkState: e.currentTarget.networkState,
+                readyState: e.currentTarget.readyState,
+                currentSrc: e.currentTarget.currentSrc
+              });
+            }}
             onCanPlay={() => console.log("Start video can play")}
           >
-            <source src="/background.mp4" type="video/mp4" />
+            <source src="./background.mp4" type="video/mp4" />
           </video>
           {/* 50% Dark Overlay */}
           <div className="absolute inset-0 bg-black/60" />
@@ -284,14 +302,12 @@ export default function App() {
               }}
             >
               <img 
-                src="/logo.png" 
+                src="./logo.png" 
                 alt="Logo Robert Erbach" 
                 width="37"
                 height="28"
                 decoding="async"
                 className="h-full w-auto object-contain"
-                referrerPolicy="no-referrer"
-                crossOrigin="anonymous"
                 fetchPriority="high"
               />
             </a>
@@ -473,7 +489,7 @@ export default function App() {
                 )}
                 <div className={`mt-4 md:mt-8 transition-opacity duration-1000 ${step >= 3 ? 'opacity-100' : 'opacity-0'}`}>
                   <img 
-                    src="/signature.png" 
+                    src="./signature.png" 
                     alt="Unterschrift Robert Erbach" 
                     className="h-12 md:h-20 w-auto object-contain invert mix-blend-screen opacity-90"
                     loading="lazy"
@@ -1028,7 +1044,7 @@ export default function App() {
               }}
             >
               <img 
-                src="/logo.png" 
+                src="./logo.png" 
                 alt="Logo Robert Erbach Footer" 
                 className="h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)]"
                 loading="lazy"
