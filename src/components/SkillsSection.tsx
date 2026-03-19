@@ -1,0 +1,88 @@
+import React from 'react';
+
+export const SkillsSection = React.memo(() => {
+  const skillGroups = [
+    {
+      category: 'DIGITALE KOMPETENZEN',
+      skills: [
+        { name: 'Content Creation', value: 90 },
+        { name: 'SEO', value: 85 },
+        { name: 'Web & Landingpages', value: 85 },
+        { name: 'Design & Gestaltung', value: 80 }
+      ]
+    },
+    {
+      category: 'TECHNOLOGIE & KI',
+      skills: [
+        { name: 'Web Analytics', value: 80 },
+        { name: 'Daten & Tools', value: 85 },
+        { name: 'Prompt Engineering', value: 90 },
+        { name: 'KI-Workflows', value: 85 }
+      ]
+    },
+    {
+      category: 'ARBEITSWEISE & STÄRKEN',
+      skills: [
+        { name: 'Strukturierte Arbeitsweise', value: 90 },
+        { name: 'Kommunikationsstärke', value: 85 },
+        { name: 'Problemlösung', value: 85 },
+        { name: 'Zeitmanagement', value: 85 }
+      ]
+    },
+    {
+      category: 'Sprachen',
+      skills: [
+        { name: 'Deutsch', value: 100 },
+        { name: 'Englisch', value: 70 }
+      ]
+    }
+  ];
+
+  return (
+    <div className="flex flex-col items-start gap-3 md:gap-4 w-full animate-in fade-in duration-500">
+      <h1 className="heading-gradient text-[28px] md:text-[36px] lg:text-[48px] font-medium leading-[1.2] tracking-tight shrink-0">
+        Skills & Kompetenzen
+      </h1>
+      <div className="w-full h-[1px] bg-white/10 shrink-0" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-4 w-full max-w-[1400px] py-2 md:py-2">
+        {skillGroups.map((group, groupIndex) => (
+          <div key={group.category} className="wow-card flex flex-col gap-2 md:gap-4 p-4 md:p-6 lg:p-7">
+            <div className="wow-card-border" />
+            <h2 className="text-brand-teal text-[10px] md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold opacity-90 relative z-10">{group.category}</h2>
+            <div className="flex flex-col gap-2 md:gap-4 lg:gap-5 relative z-10">
+              {group.skills.map((skill, skillIndex) => {
+                const globalIndex = groupIndex * 4 + skillIndex;
+                return (
+                  <div key={skill.name} className="flex flex-col gap-1.5 md:gap-3 w-full group/skill relative">
+                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/80 border border-white/10 rounded-xl text-white text-[12px] md:text-[14px] whitespace-nowrap opacity-0 group-hover/skill:opacity-100 transition-all duration-300 pointer-events-none z-50 backdrop-blur-xl shadow-2xl translate-y-2 group-hover/skill:translate-y-0">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-brand-teal animate-pulse" />
+                        <span className="font-medium">{skill.name}</span>
+                        <span className="text-brand-teal font-bold ml-1">{skill.value}%</span>
+                      </div>
+                      <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-black/80 border-r border-b border-white/10 rotate-45"></div>
+                    </div>
+                    <div className="flex justify-between items-end w-full">
+                      <span className="text-white font-medium text-[13px] md:text-[15px] lg:text-[16px] leading-none">{skill.name}</span>
+                      <span className="text-brand-teal font-mono text-[10px] md:text-[13px] leading-none">{skill.value}%</span>
+                    </div>
+                    <div className="w-full h-1 md:h-1.5 bg-white/10 rounded-full overflow-hidden cursor-help">
+                      <div 
+                        className="h-full bg-gradient-to-r from-brand-violet to-brand-teal rounded-full shadow-[0_0_15px_rgba(5,184,194,0.4)] animate-gradient-shift animate-skill-fill" 
+                        style={{ 
+                          width: `${skill.value}%`,
+                          animationDelay: `${globalIndex * 200}ms`,
+                          animationFillMode: 'both'
+                        }} 
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+});
