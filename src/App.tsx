@@ -232,7 +232,6 @@ export default function App() {
             muted
             playsInline
             preload="auto"
-            poster="/poster.jpg"
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
@@ -257,7 +256,6 @@ export default function App() {
             muted
             playsInline
             preload="auto"
-            poster="/poster.jpg"
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
@@ -286,7 +284,7 @@ export default function App() {
               }}
             >
               <img 
-                src="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq=s120" 
+                src="/logo.png" 
                 alt="Logo Robert Erbach" 
                 width="37"
                 height="28"
@@ -475,7 +473,7 @@ export default function App() {
                 )}
                 <div className={`mt-4 md:mt-8 transition-opacity duration-1000 ${step >= 3 ? 'opacity-100' : 'opacity-0'}`}>
                   <img 
-                    src="https://lh3.googleusercontent.com/d/1QObFwkk3K9eYOvQaFoIlhzV5qZbvB2kC=s300" 
+                    src="/signature.png" 
                     alt="Unterschrift Robert Erbach" 
                     className="h-12 md:h-20 w-auto object-contain invert mix-blend-screen opacity-90"
                     referrerPolicy="no-referrer"
@@ -1032,7 +1030,7 @@ export default function App() {
               }}
             >
               <img 
-                src="https://lh3.googleusercontent.com/d/16rnCFNENaFv43lqZvgd7hPXDyKyMi2Zq" 
+                src="/logo.png" 
                 alt="Logo Robert Erbach Footer" 
                 className="h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)]"
                 referrerPolicy="no-referrer"
