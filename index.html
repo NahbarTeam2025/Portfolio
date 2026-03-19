@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Security Meta Tags -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; img-src 'self' data:; font-src 'self' https://fonts.bunny.net; connect-src 'self' https://api.web3forms.com; media-src 'self'; frame-src 'self' https://www.linkedin.com; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; img-src 'self' data:; font-src 'self' https://fonts.bunny.net; connect-src 'self' https://api.web3forms.com; media-src 'self'; frame-src 'self' https://www.linkedin.com; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
 
@@ -227,26 +227,6 @@
       </div>
     </noscript>
     <div id="root"></div>
-    <script>
-      console.log('index.html: script tag reached');
-      window.addEventListener('error', function(e) {
-        if (e.target.tagName === 'SCRIPT') {
-          // Ignore errors from Cloudflare Insights or other third-party scripts that might be blocked by adblockers
-          if (e.target.src.includes('cloudflareinsights.com') || e.target.src.includes('html2canvas-pro')) {
-            return;
-          }
-          console.error('Script load error:', e.target.src);
-          const root = document.getElementById('root');
-          if (root) {
-            root.innerHTML = `<div style="padding: 20px; color: #ff4444; background: #111; min-height: 100vh; font-family: monospace;">
-              <h2>Script Load Error</h2>
-              <p>Failed to load: ${e.target.src}</p>
-              <p>Please check if the file exists and the path is correct.</p>
-            </div>`;
-          }
-        }
-      }, true);
-    </script>
     <script type="module" src="/src/main.tsx" fetchpriority="high"></script>
   </body>
 </html>
