@@ -50,11 +50,6 @@ const routeToPage: Record<string, string> = Object.fromEntries(
 );
 
 // Asset Configuration - Replace these with your Cloudflare URLs if local hosting fails
-const ASSET_URLS = {
-  video: "/hero-video.mp4",
-  logo: "/site-logo.png",
-  signature: "/site-signature.png"
-};
 
 export default function App() {
   const location = useLocation();
@@ -242,7 +237,7 @@ export default function App() {
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
-            src={ASSET_URLS.video}
+            src="/hero-video.mp4"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Sub video error details:", {
@@ -274,7 +269,7 @@ export default function App() {
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
-            src={ASSET_URLS.video}
+            src="/hero-video.mp4"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Start video error details:", {
@@ -307,7 +302,7 @@ export default function App() {
               }}
             >
               <img 
-                src={ASSET_URLS.logo} 
+                src="/site-logo.png" 
                 alt="Logo Robert Erbach" 
                 width="37"
                 height="28"
@@ -493,7 +488,7 @@ export default function App() {
                 )}
                 <div className={`mt-4 md:mt-8 transition-opacity duration-1000 ${step >= 3 ? 'opacity-100' : 'opacity-0'}`}>
                   <img 
-                    src={ASSET_URLS.signature} 
+                    src="/site-signature.png" 
                     alt="Unterschrift Robert Erbach" 
                     className="h-12 md:h-20 w-auto object-contain invert mix-blend-screen opacity-90"
                     loading="lazy"
@@ -1048,7 +1043,7 @@ export default function App() {
               }}
             >
               <img 
-                src={ASSET_URLS.logo} 
+                src="/site-logo.png" 
                 alt="Logo Robert Erbach Footer" 
                 className="h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)]"
                 loading="lazy"
