@@ -135,6 +135,32 @@ export default function App() {
   };
 
   const requestRef = useRef<number>();
+  const cardRects = useRef<Map<HTMLElement, DOMRect>>(new Map());
+
+  useEffect(() => {
+    const updateRects = () => {
+      const cards = document.getElementsByClassName('wow-card');
+      const newRects = new Map<HTMLElement, DOMRect>();
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i] as HTMLElement;
+        newRects.set(card, card.getBoundingClientRect());
+      }
+      cardRects.current = newRects;
+    };
+
+    updateRects();
+    window.addEventListener('resize', updateRects);
+    window.addEventListener('scroll', updateRects, true);
+    
+    // Also update after a short delay to catch any layout shifts after initial load
+    const timer = setTimeout(updateRects, 1000);
+    
+    return () => {
+      window.removeEventListener('resize', updateRects);
+      window.removeEventListener('scroll', updateRects, true);
+      clearTimeout(timer);
+    };
+  }, [currentPage]); // Re-run when page changes as new cards might appear
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const clientX = e.clientX;
@@ -148,7 +174,14 @@ export default function App() {
       const cards = document.getElementsByClassName('wow-card');
       for (let i = 0; i < cards.length; i++) {
         const card = cards[i] as HTMLElement;
-        const rect = card.getBoundingClientRect();
+        let rect = cardRects.current.get(card);
+        
+        // Fallback if not cached (e.g. newly added to DOM)
+        if (!rect) {
+          rect = card.getBoundingClientRect();
+          cardRects.current.set(card, rect);
+        }
+        
         const x = clientX - rect.left;
         const y = clientY - rect.top;
         card.style.setProperty('--mouse-x', `${x}px`);
@@ -301,11 +334,11 @@ export default function App() {
                 handleNavigate('Start');
               }}
             >
-              <img 
-                src="https://ik.imagekit.io/roberterbach/site-logo.png" 
+            <img 
+                src="https://ik.imagekit.io/roberterbach/site-logo.png?tr=w-132,h-98" 
                 alt="Logo Robert Erbach" 
-                width="37"
-                height="28"
+                width="66"
+                height="49"
                 decoding="async"
                 fetchPriority="high"
                 className="h-full w-auto object-contain"
@@ -489,7 +522,7 @@ export default function App() {
                 )}
                 <div className={`mt-4 md:mt-8 transition-opacity duration-1000 ${step >= 3 ? 'opacity-100' : 'opacity-0'}`}>
                   <img 
-                    src="https://ik.imagekit.io/roberterbach/site-signature.png" 
+                    src="https://ik.imagekit.io/roberterbach/site-signature.png?tr=w-400" 
                     alt="Unterschrift Robert Erbach" 
                     className="h-12 md:h-20 w-auto object-contain invert mix-blend-screen opacity-90"
                     loading="lazy"
@@ -1045,8 +1078,10 @@ export default function App() {
               }}
             >
               <img 
-                src="https://ik.imagekit.io/roberterbach/site-logo.png" 
+                src="https://ik.imagekit.io/roberterbach/site-logo.png?tr=w-132,h-98" 
                 alt="Logo Robert Erbach Footer" 
+                width="66"
+                height="49"
                 className="h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)]"
                 loading="lazy"
                 decoding="async"
