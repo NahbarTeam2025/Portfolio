@@ -2,7 +2,7 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://roberterbach.de https://www.roberterbach.de https://*.run.app; script-src 'self' 'unsafe-inline' https://roberterbach.de https://www.roberterbach.de https://*.run.app; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://roberterbach.de https://www.roberterbach.de https://*.run.app; img-src 'self' data:; font-src 'self' https://fonts.bunny.net https://roberterbach.de https://www.roberterbach.de https://*.run.app; connect-src 'self' https://api.web3forms.com https://roberterbach.de https://www.roberterbach.de https://*.run.app; media-src 'self' blob: https://roberterbach.de https://www.roberterbach.de https://*.run.app; frame-src 'self' https://www.linkedin.com https://roberterbach.de https://www.roberterbach.de https://*.run.app; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; img-src 'self' data:; font-src 'self' https://fonts.bunny.net; connect-src 'self' https://api.web3forms.com; media-src 'self'; frame-src 'self' https://www.linkedin.com; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Security Meta Tags -->
@@ -18,26 +18,20 @@
     <meta property="og:url" content="https://roberterbach.de/" />
     <meta property="og:title" content="Robert Erbach | Digital Marketing Manager & KI-Experte" />
     <meta property="og:description" content="Digital Marketing Experte für SEO, Content und KI-Workflows. Messbarer Erfolg durch technisches Know-how." />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image" content="https://roberterbach.de/site-logo.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://roberterbach.de/" />
     <meta property="twitter:title" content="Robert Erbach | Digital Marketing Manager & KI-Experte" />
     <meta property="twitter:description" content="Digital Marketing Experte für SEO, Content und KI-Workflows. Messbarer Erfolg durch technisches Know-how." />
-    <meta property="twitter:image" content="/logo.png" />
+    <meta property="twitter:image" content="https://roberterbach.de/site-logo.png" />
 
-    <link rel="icon" type="image/png" href="/logo.png" />
-    
-    <!-- DNS Prefetch & Preconnect -->
-    <link rel="dns-prefetch" href="https://fonts.bunny.net">
-    
-    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+    <link rel="icon" type="image/png" href="/favicon.png" />
     
     <link rel="preload" href="https://fonts.bunny.net/css?family=outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700&display=swap" as="style">
     <link href="https://fonts.bunny.net/css?family=outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
-    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -51,8 +45,8 @@
           "image": {
             "@type": "ImageObject",
             "@id": "https://roberterbach.de/#logo",
-            "url": "https://roberterbach.de/logo.png",
-            "contentUrl": "https://roberterbach.de/logo.png",
+            "url": "https://roberterbach.de/site-logo.png",
+            "contentUrl": "https://roberterbach.de/site-logo.png",
             "caption": "Robert Erbach Logo"
           },
           "sameAs": [
@@ -150,7 +144,7 @@
           "@id": "https://roberterbach.de/#service",
           "name": "Robert Erbach - Digital Marketing & KI-Consulting",
           "logo": { "@id": "https://roberterbach.de/#logo" },
-          "image": "https://roberterbach.de/logo.png",
+          "image": "https://roberterbach.de/site-logo.png",
           "url": "https://roberterbach.de",
           "telephone": "+49 152 04041124",
           "email": "roberterbach@web.de",
@@ -226,7 +220,6 @@
       </div>
     </noscript>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx" fetchpriority="high"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

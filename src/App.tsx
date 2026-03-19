@@ -51,9 +51,9 @@ const routeToPage: Record<string, string> = Object.fromEntries(
 
 // Asset Configuration - Replace these with your Cloudflare URLs if local hosting fails
 const ASSET_URLS = {
-  video: "/background.mp4",
-  logo: "/logo.png",
-  signature: "/signature.png"
+  video: "/hero-video.mp4",
+  logo: "/site-logo.png",
+  signature: "/site-signature.png"
 };
 
 export default function App() {
