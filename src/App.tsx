@@ -407,9 +407,9 @@ export default function App() {
               {/* Heading & Subtitle Container */}
               <div className="flex flex-col items-center gap-4 lg:gap-6">
                 {/* Heading */}
-                <h1 className="flex flex-col items-center text-[32px] md:text-[48px] lg:text-[72px] font-medium leading-[1.1] max-w-[800px] lg:max-w-[1000px] tracking-tight">
-                  <span className="text-brand-teal text-glow">Robert Erbach</span>
-                  <span className="text-[18px] md:text-[24px] lg:text-[32px] text-white/80 mt-1 lg:mt-3">Digital Marketing Manager</span>
+                <h1 className="flex flex-col items-center text-[32px] md:text-[48px] lg:text-[72px] leading-[1.1] max-w-[800px] lg:max-w-[1000px]">
+                  <span className="font-display font-bold tracking-tighter text-glow-animated pb-2">Robert Erbach</span>
+                  <span className="text-[18px] md:text-[24px] lg:text-[32px] text-white/80 mt-1 lg:mt-3 font-medium tracking-tight">Digital Marketing Manager</span>
                 </h1>
 
                 {/* Subtitle */}
@@ -1170,8 +1170,8 @@ export default function App() {
 
                 <section>
                   <h3 className="text-lg font-medium text-white mb-3">5. Externe Ressourcen und CDN</h3>
-                  <h4 className="text-base font-medium text-white/90 mb-2">Bunny Fonts, Imgur & Google Photos</h4>
-                  <p className="mb-4">Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten und Medien externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Dateien direkt von den Servern der jeweiligen Anbieter (Bunny.net, Imgur) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diese Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.</p>
+                  <h4 className="text-base font-medium text-white/90 mb-2">Bunny Fonts</h4>
+                  <p className="mb-4">Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Webfonts direkt von den Servern des Anbieters (Bunny.net) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diesen Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt. Alle Bilder und Videos auf dieser Website werden lokal vom eigenen Server geladen, sodass hierfür keine Daten an Dritte (wie Google oder Imgur) übertragen werden.</p>
                 </section>
 
               </div>

@@ -3,6 +3,7 @@
 
 @theme {
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --color-brand-dark: #0d1b2a;
   --color-brand-violet: #7c3aed;
   --color-brand-teal: #05b8c2;
@@ -14,6 +15,16 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  .text-glow-animated {
+    background: linear-gradient(to right, #ffffff, var(--color-brand-teal), var(--color-brand-violet), #ffffff);
+    background-size: 300% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient-shift 6s linear infinite;
+    text-shadow: 0 0 30px rgba(5, 184, 194, 0.4);
   }
 
   .animate-border-rotate {
