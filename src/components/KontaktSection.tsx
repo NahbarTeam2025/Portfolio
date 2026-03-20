@@ -78,7 +78,9 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                   <div className={`grid transition-all duration-300 ease-in-out ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'} md:grid-rows-[1fr] md:opacity-100`}>
                     <div className="overflow-hidden">
                       <h3 className="text-white font-medium text-[16px] md:text-[18px] mb-6 hidden md:block">Kontaktformular</h3>
-                      <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:gap-4">
+                      <form action="https://api.web3forms.com/submit" method="POST" className="flex flex-col gap-3 md:gap-4">
+                        <input type="hidden" name="access_key" value="1ebce7a4-5cb3-49d8-b826-2be2c6447608" />
+                        <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
                         {submitError && (
                           <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-sm">
                             Es gab ein Problem beim Senden. Bitte versuchen Sie es später erneut.
@@ -133,7 +135,6 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                             Ich stimme der Verarbeitung meiner Daten gemäß der <button type="button" onClick={() => handleNavigate('Datenschutz')} className="text-brand-teal hover:underline">Datenschutzerklärung</button> zu.
                           </label>
                         </div>
-                        <div className="cf-turnstile" data-sitekey="0x4AAAAAAACtsvqlfSN85G8X5"></div>
                         <button 
                           type="submit" 
                           disabled={!privacyAccepted || isSubmitting}

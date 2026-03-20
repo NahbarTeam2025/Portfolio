@@ -300,8 +300,9 @@ export default function App() {
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
-            style={{ transform: 'translateZ(0)', filter: 'contrast(1.1) saturate(1.1)' }}
-            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-100,w-1920"
+            style={{ transform: 'translateZ(0)' }}
+            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-95,f-auto"
+            poster="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-80,f-jpg,w-1920"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Sub video error details:", {
@@ -333,8 +334,9 @@ export default function App() {
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
-            style={{ transform: 'translateZ(0)', filter: 'contrast(1.1) saturate(1.1)' }}
-            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-100,w-1920"
+            style={{ transform: 'translateZ(0)' }}
+            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-95,f-auto"
+            poster="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-80,f-jpg,w-1920"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Start video error details:", {

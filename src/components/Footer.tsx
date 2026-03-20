@@ -1,5 +1,6 @@
-import React, { startTransition } from 'react';
+import React from 'react';
 import { Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobileMenuOpen: boolean, handleNavigate: (page: string) => void }) => {
   return (
@@ -31,8 +32,8 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
           >
             <Linkedin size={18} strokeWidth={1.5} />
           </a>
-          <button onClick={() => handleNavigate('Impressum')} className="text-white hover:text-brand-teal transition-colors">Impressum</button>
-          <button onClick={() => handleNavigate('Datenschutz')} className="text-white hover:text-brand-teal transition-colors">Datenschutz</button>
+          <Link to="/impressum" className="text-white hover:text-brand-teal transition-colors">Impressum</Link>
+          <Link to="/datenschutz" className="text-white hover:text-brand-teal transition-colors">Datenschutz</Link>
         </div>
       </div>
     </footer>
