@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useCallback, useRef, startTransition } from 'react';
+import React, { useState, useEffect, useCallback, useRef, startTransition, Suspense, lazy } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, Linkedin, ArrowRight, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'framer-motion';
@@ -16,18 +16,19 @@ import { BentoCard } from './components/BentoCard';
 import { Typewriter } from './components/Typewriter';
 import { HeroSection } from './components/HeroSection';
 import { Footer } from './components/Footer';
-import { ImpressumPage } from './pages/ImpressumPage';
-import { DatenschutzPage } from './pages/DatenschutzPage';
 import { ImpressumModal } from './components/ImpressumModal';
 import { DatenschutzModal } from './components/DatenschutzModal';
-
-import { QualifikationSection } from './components/QualifikationSection';
-import { SkillsSection } from './components/SkillsSection';
-import { ProjekteSection } from './components/ProjekteSection';
-import { ZertifikateSection } from './components/ZertifikateSection';
-import { KontaktSection } from './components/KontaktSection';
-import { UberMichSection } from './components/UberMichSection';
 import { useSEO } from './hooks/useSEO';
+
+// Lazy load components
+const QualifikationSection = lazy(() => import('./components/QualifikationSection').then(m => ({ default: m.QualifikationSection })));
+const SkillsSection = lazy(() => import('./components/SkillsSection').then(m => ({ default: m.SkillsSection })));
+const ProjekteSection = lazy(() => import('./components/ProjekteSection').then(m => ({ default: m.ProjekteSection })));
+const ZertifikateSection = lazy(() => import('./components/ZertifikateSection').then(m => ({ default: m.ZertifikateSection })));
+const KontaktSection = lazy(() => import('./components/KontaktSection').then(m => ({ default: m.KontaktSection })));
+const UberMichSection = lazy(() => import('./components/UberMichSection').then(m => ({ default: m.UberMichSection })));
+const ImpressumPage = lazy(() => import('./pages/ImpressumPage').then(m => ({ default: m.ImpressumPage })));
+const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage').then(m => ({ default: m.DatenschutzPage })));
 
 const PAGE_ROUTES: Record<string, string> = {
   'Start': '/',
@@ -354,7 +355,7 @@ export default function App() {
 
       {/* Content Overlay */}
       <MouseGlow />
-      <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden overflow-y-auto`}>
+      <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden ${currentPage === 'Über mich' || currentPage === 'Qualifikation' ? 'overflow-y-hidden' : 'overflow-y-auto'}`}>
         {/* Navbar */}
         <nav className={`sticky top-0 flex items-center justify-between px-6 md:px-[120px] py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
@@ -485,6 +486,7 @@ export default function App() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className={`w-full flex flex-col ${currentPage === 'Start' ? 'h-full items-center justify-center' : ''}`}
             >
+              <Suspense fallback={<div className="text-white/50">Lade...</div>}>
                 {currentPage === 'Start' ? (
                   <HeroSection handleNavigate={handleNavigate} />
                 ) : currentPage === 'Über mich' ? (
@@ -539,6 +541,7 @@ export default function App() {
                     </p>
                   </div>
                 )}
+              </Suspense>
             </motion.div>
           </AnimatePresence>
         </main>

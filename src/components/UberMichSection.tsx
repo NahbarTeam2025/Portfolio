@@ -7,24 +7,24 @@ export const UberMichSection = React.memo(() => {
         Über mich
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className="flex flex-col gap-5 md:gap-8 text-white/80 text-[16px] md:text-[18px] lg:text-[22px] font-normal max-w-[1000px] leading-relaxed pt-4 md:pt-8 overflow-y-auto md:overflow-visible">
+      <div className="flex flex-col gap-2 md:gap-4 text-white/80 text-[14px] md:text-[16px] lg:text-[18px] font-normal max-w-[1000px] leading-relaxed pt-2 md:pt-4 overflow-hidden">
         <p>
           Digitale Lösungen entstehen für mich aus dem Zusammenspiel von Content, Design und Technologie. Ich arbeite strukturiert, praxisnah und mit dem Ziel, Ideen in funktionierende Ergebnisse zu übersetzen.
         </p>
-        <p className="text-brand-teal font-medium tracking-wider text-[13px] md:text-[15px] lg:text-[18px] uppercase leading-relaxed">
+        <p className="text-brand-teal font-medium tracking-wider text-[12px] md:text-[14px] lg:text-[16px] uppercase leading-relaxed">
           Strukturiert • Praxisnah • Lösungsorientiert • Umsetzungsstark
         </p>
         <p>
           Mein Schwerpunkt liegt auf der Entwicklung von Websites, Content-Strukturen und KI-gestützten Workflows – von der ersten Idee bis zur Umsetzung. Dabei verbinde ich kreative Ansätze mit klaren Prozessen.
         </p>
-        <p className="text-white font-medium mt-2 md:mt-6 text-[18px] md:text-[22px] lg:text-[28px] leading-snug">
+        <p className="text-white font-medium mt-1 md:mt-2 text-[16px] md:text-[18px] lg:text-[22px] leading-snug">
           Mein Antrieb: aus Ideen echte Ergebnisse machen.
         </p>
-        <div className="mt-4 md:mt-10">
+        <div className="mt-1 md:mt-4">
           <img 
             src="https://ik.imagekit.io/roberterbach/site-signature.png?tr=w-400" 
             alt="Unterschrift Robert Erbach" 
-            className="h-14 md:h-24 w-auto object-contain invert mix-blend-screen opacity-90"
+            className="h-8 md:h-16 w-auto object-contain invert mix-blend-screen opacity-90"
             loading="lazy"
             decoding="async"
           />

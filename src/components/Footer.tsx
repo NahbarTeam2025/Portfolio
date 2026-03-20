@@ -32,8 +32,6 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
           >
             <Linkedin size={18} strokeWidth={1.5} />
           </a>
-          <Link to="/impressum" className="text-white hover:text-brand-teal transition-colors">Impressum</Link>
-          <Link to="/datenschutz" className="text-white hover:text-brand-teal transition-colors">Datenschutz</Link>
         </div>
       </div>
     </footer>
