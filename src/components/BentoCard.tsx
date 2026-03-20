@@ -2,18 +2,12 @@ import React from 'react';
 import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-export const BentoCard = ({ project, index, isExpanded, onToggle }: { 
-  project: any, 
-  index: number, 
-  isExpanded: boolean, 
-  onToggle: () => void,
-  key?: any
-}) => {
+export const BentoCard: React.FC<{ project: any, index: number }> = ({ project, index }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), { stiffness: 150, damping: 20 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { stiffness: 150, damping: 20 });
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [4, -4]), { stiffness: 150, damping: 20 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-4, 4]), { stiffness: 150, damping: 20 });
 
   const spotlightX = useSpring(useMotionValue(0), { stiffness: 300, damping: 30 });
   const spotlightY = useSpring(useMotionValue(0), { stiffness: 300, damping: 30 });
@@ -40,19 +34,12 @@ export const BentoCard = ({ project, index, isExpanded, onToggle }: {
   const spotlightBackground = useMotionTemplate`
     radial-gradient(
       600px circle at ${spotlightX}px ${spotlightY}px,
-      rgba(124, 58, 237, 0.1),
+      rgba(124, 58, 237, 0.05),
       transparent 80%
     )
   `;
 
   // Bento grid classes based on index
-  const gridClasses = [
-    'md:col-span-2 md:row-span-2', // Large
-    'md:col-span-1 md:row-span-2', // Tall
-    'md:col-span-1 md:row-span-1', // Small
-    'md:col-span-2 md:row-span-1', // Wide
-  ][index % 4];
-
   return (
     <motion.div
       style={{
@@ -62,7 +49,7 @@ export const BentoCard = ({ project, index, isExpanded, onToggle }: {
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative group wow-card overflow-hidden flex flex-col h-full ${gridClasses} transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_30px_rgba(139,92,246,0.2)] hover:border-brand-violet/40`}
+      className={`relative group wow-card overflow-hidden flex flex-col h-full transition-all duration-500 hover:shadow-[0_0_20px_rgba(139,92,246,0.1)] hover:border-brand-violet/20`}
     >
       <div className="wow-card-border" />
       <motion.div
@@ -106,13 +93,12 @@ export const BentoCard = ({ project, index, isExpanded, onToggle }: {
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-2" />
             </a>
           ) : (
-            <button
-              onClick={onToggle}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] hover:from-brand-violet/30 hover:to-brand-teal/30 transition-all group/btn2"
+            <div
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] transition-all group/btn2 cursor-default"
             >
-              {isExpanded ? 'Schließen' : 'Details ansehen'}
-              <ArrowRight className={`w-4 h-4 transform transition-transform duration-300 ${isExpanded ? '-rotate-90' : 'group-hover/btn2:translate-x-2'}`} />
-            </button>
+              Details ansehen
+              <ArrowRight className="w-4 h-4 transform transition-transform duration-300" />
+            </div>
           )}
         </div>
       </div>

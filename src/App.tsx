@@ -60,7 +60,6 @@ export default function App() {
   const currentPage = ROUTE_TO_PAGE[location.pathname] || 'Start';
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [expandedProject, setExpandedProject] = useState<number | null>(null);
   const [step, setStep] = useState(0);
 
   useEffect(() => {
@@ -295,7 +294,7 @@ export default function App() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
@@ -328,7 +327,7 @@ export default function App() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
@@ -353,7 +352,7 @@ export default function App() {
 
       {/* Content Overlay */}
       <MouseGlow />
-      <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden ${currentPage === 'Qualifikation' ? 'overflow-hidden' : 'overflow-y-auto'}`}>
+      <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden overflow-y-auto`}>
         {/* Navbar */}
         <nav className={`sticky top-0 flex items-center justify-between px-6 md:px-[120px] py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
@@ -492,8 +491,6 @@ export default function App() {
                   <SkillsSection />
                 ) : currentPage === 'Projekte' ? (
                   <ProjekteSection 
-                    expandedProject={expandedProject} 
-                    setExpandedProject={setExpandedProject} 
                     setIsInitialEntrance={setIsInitialEntrance} 
                   />
                 ) : currentPage === 'Qualifikation' ? (

@@ -1,13 +1,15 @@
-import React, { startTransition } from 'react';
+import React, { useState, startTransition } from 'react';
 import { BentoCard } from './BentoCard';
 
-export const ProjekteSection = React.memo(({ expandedProject, setExpandedProject, setIsInitialEntrance }: any) => {
+export const ProjekteSection = React.memo(({ setIsInitialEntrance }: any) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const projects = [
     {
       title: 'SEO- & KI-Landingpage',
       category: 'Digital Marketing & Web',
       desc: 'Konzeption und Umsetzung einer Landingpage für ein SEO-System mit integrierten KI-Workflows.',
-      features: ['SEO-Optimierung', 'KI-Integration', 'Responsive Design', 'Lead-Generierung']
+      features: ['SEO-Optimierung', 'KI-Integration', 'Responsive Design', 'Lead-Generierung'],
+      link: 'https://visibilitylab.roberterbach.de'
     },
     {
       title: 'Content-Automatisierung',
@@ -29,22 +31,24 @@ export const ProjekteSection = React.memo(({ expandedProject, setExpandedProject
         Projekte
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className={`grid grid-cols-1 ${expandedProject === null ? 'md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'} gap-4 md:gap-6 w-full max-w-[1400px] pb-12`}>
+      <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full max-w-[1400px] pb-6`}>
         {projects.map((project, i) => (
-          <BentoCard 
-            key={i}
-            project={project}
-            index={i}
-            isExpanded={expandedProject === i}
-            onToggle={() => {
-              startTransition(() => {
-                setExpandedProject(expandedProject === i ? null : i);
-                setIsInitialEntrance(false);
-              });
-            }}
-          />
+          <div key={i} className={`${!isExpanded && i > 0 ? 'hidden md:block' : 'block'}`}>
+            <BentoCard 
+              project={project}
+              index={i}
+            />
+          </div>
         ))}
       </div>
+      {projects.length > 1 && (
+        <button 
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="md:hidden text-white/60 hover:text-brand-teal transition-colors text-sm font-medium"
+        >
+          {isExpanded ? 'Weniger anzeigen' : 'Alle Projekte anzeigen'}
+        </button>
+      )}
     </div>
   );
 });

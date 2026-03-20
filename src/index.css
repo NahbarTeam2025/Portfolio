@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.bunny.net/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
@@ -36,7 +36,7 @@
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: gradient-shift 6s linear infinite;
+    animation: gradient-shift 12s linear infinite;
     text-shadow: 0 0 30px rgba(5, 184, 194, 0.4);
   }
 

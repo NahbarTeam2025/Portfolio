@@ -3,12 +3,16 @@ import { ExternalLink } from 'lucide-react';
 
 export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, isCertUnlocked, certPasswordInput, setCertPasswordInput, certError, setIsCertUnlocked, setCertError }: any) => {
   const certs = [
-    { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH', date: '2026' },
-    { id: 2, title: 'SEO Spezialist', issuer: 'Google / Coursera', date: '2025' },
-    { id: 3, title: 'Social Media Strategie', issuer: 'HubSpot Academy', date: '2025' },
-    { id: 4, title: 'Web Analytics', issuer: 'Google Analytics', date: '2025' },
-    { id: 5, title: 'KI im Marketing', issuer: 'LinkedIn Learning', date: '2024' },
-    { id: 6, title: 'Kaufmännische Grundlagen', issuer: 'IBB', date: '2024' }
+    { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
+    { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
+    { id: 3, title: 'E-Commerce Manager/Assistenz', issuer: 'GFN GmbH' },
+    { id: 4, title: 'Neuromarketing', issuer: 'GFN GmbH' },
+    { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH' },
+    { id: 6, title: 'SEO', issuer: 'GFN GmbH' },
+    { id: 7, title: 'PPC-Manager', issuer: 'GFN GmbH' },
+    { id: 8, title: 'Web Analytics', issuer: 'GFN GmbH' },
+    { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH' },
+    { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic' }
   ];
 
   return (
@@ -17,7 +21,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
         Zertifikate
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 max-w-[1200px]' : 'max-w-[800px]'} gap-4 md:gap-6 w-full pb-32`}>
+      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 max-w-[1200px]' : 'max-w-[800px] mx-auto'} gap-4 md:gap-6 w-full pb-32`}>
         {certs.filter((_, i) => expandedCert === null || expandedCert === i).map((cert, i) => {
           const actualIndex = expandedCert === null ? i : expandedCert;
           const isExpanded = expandedCert !== null;
@@ -41,7 +45,6 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-3">
                       <h3 className="text-base md:text-lg font-semibold text-white leading-tight group-hover/btn:text-brand-teal transition-colors">{cert.title}</h3>
-                      <span className="text-brand-teal font-mono text-[10px] bg-brand-teal/10 px-2 py-0.5 rounded-md">{cert.date}</span>
                     </div>
                     <span className="text-white/60 text-[12px] md:text-[14px]">{cert.issuer}</span>
                   </div>
@@ -112,7 +115,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                               <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                             </div>
                             <h5 className="text-white font-bold text-lg mb-1">{cert.title}</h5>
-                            <p className="text-white/40 text-xs">{cert.issuer} • {cert.date}</p>
+                            <p className="text-white/40 text-xs">{cert.issuer}</p>
                             <div className="mt-4 pt-4 border-t border-white/10 w-full">
                               <div className="flex justify-between items-center text-[9px] uppercase tracking-widest text-white/20 font-bold">
                                 <span>Zertifikat ID: {cert.id}00X-2026</span>

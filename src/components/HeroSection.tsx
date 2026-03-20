@@ -39,7 +39,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
       <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 mt-2 lg:mt-4">
         <button 
           onClick={() => handleNavigate('Kontakt')}
-          className="flex items-center justify-center gap-2 rounded-full px-[40px] py-[12px] bg-gradient-to-r from-brand-violet/20 to-brand-teal/20 border border-white/10 text-white text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:from-brand-violet/40 hover:to-brand-teal/40 transition-all duration-500 hover:scale-105 cursor-pointer group/cta animate-pulse-subtle"
+          className="flex items-center justify-center gap-2 rounded-full px-[40px] py-[12px] bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/5 text-white text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(124,58,237,0.1)] hover:from-brand-violet/30 hover:to-brand-teal/30 transition-all duration-500 hover:scale-105 cursor-pointer group/cta animate-pulse-subtle"
         >
           <span className="relative z-10">Kontakt aufnehmen</span>
           <svg className="w-5 h-5 transform transition-transform duration-300 group-hover/cta:translate-x-2 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">

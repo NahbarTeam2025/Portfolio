@@ -5,17 +5,17 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500">
+    <div className="flex flex-col items-start gap-4 md:gap-8 w-full h-full animate-in fade-in duration-500 overflow-y-auto md:overflow-hidden">
       <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight shrink-0">
         Kontakt
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className="flex flex-col lg:flex-row gap-8 md:gap-12 w-full max-w-[1200px] pt-4 md:pt-8">
+      <div className="flex flex-col lg:flex-row gap-8 md:gap-12 w-full max-w-[1200px] pt-4 md:pt-8 h-full">
         <div className="flex flex-col gap-6 md:gap-10 w-full lg:w-1/2">
           <div className="space-y-4 md:space-y-6">
-            <h2 className="text-white text-[20px] md:text-[28px] font-medium leading-tight">Lassen Sie uns über Ihre digitale Strategie sprechen.</h2>
+            <h2 className="text-white text-[20px] md:text-[28px] font-medium leading-tight">Ich bin offen für neue Möglichkeiten.</h2>
             <p className="text-white/60 text-[14px] md:text-[18px] leading-relaxed">
-              Ob SEO, Content oder KI-Workflows – ich unterstütze Sie dabei, Ihre Ziele strukturiert und effizient zu erreichen.
+              Ob Jobanfrage, Projektidee oder fachlicher Austausch – schreib mir einfach. Ich melde mich zeitnah zurück.
             </p>
           </div>
           
@@ -36,7 +36,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
               </div>
               <div className="flex flex-col">
                 <span className="text-white/40 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/roberterbach" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors">Robert Erbach</a>
+                <a href="https://www.linkedin.com/in/roberterbach" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors">@roberterbach</a>
               </div>
             </div>
 
@@ -53,9 +53,9 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
         </div>
 
         <div className="w-full lg:w-1/2">
-          <div className="wow-card p-6 md:p-8 relative">
+          <div className="wow-card p-6 md:p-8 relative h-full">
             <div className="wow-card-border" />
-            <div className="relative z-10">
+            <div className="relative z-10 h-full">
               {submitSuccess ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in zoom-in duration-500">
                   <div className="w-20 h-20 rounded-full bg-brand-teal/10 flex items-center justify-center border border-brand-teal/20 mb-6">
@@ -67,59 +67,59 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                   <p className="text-white/60">Vielen Dank für Ihre Nachricht. Ich werde mich in Kürze bei Ihnen melden.</p>
                 </div>
               ) : (
-                <div className="flex flex-col">
+                <div className="flex flex-col h-full">
                   <button 
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="flex items-center justify-between w-full text-left text-white font-medium text-[16px] md:text-[18px] hover:text-brand-teal transition-colors"
+                    className="flex items-center justify-between w-full text-left text-white font-medium text-[16px] md:text-[18px] hover:text-brand-teal transition-colors md:hidden mb-6"
                   >
-                    <span>Kontaktformular öffnen</span>
+                    <span>Kontaktformular {isExpanded ? 'schließen' : 'öffnen'}</span>
                     <ChevronDown className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
                   </button>
-                  
-                  <div className={`grid transition-all duration-300 ease-in-out ${isExpanded ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0'}`}>
+                  <div className={`grid transition-all duration-300 ease-in-out ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'} md:grid-rows-[1fr] md:opacity-100`}>
                     <div className="overflow-hidden">
-                      <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-5">
+                      <h3 className="text-white font-medium text-[16px] md:text-[18px] mb-6 hidden md:block">Kontaktformular</h3>
+                      <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:gap-4">
                         {submitError && (
                           <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-sm">
                             Es gab ein Problem beim Senden. Bitte versuchen Sie es später erneut.
                           </div>
                         )}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                          <div className="flex flex-col gap-1.5 md:gap-2">
-                            <label htmlFor="name" className="text-white font-medium text-[13px] md:text-[14px]">Name</label>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                          <div className="flex flex-col gap-1">
+                            <label htmlFor="name" className="text-white font-medium text-[12px] md:text-[13px]">Name</label>
                             <input 
                               type="text" 
                               id="name" 
                               name="name"
                               placeholder="Ihr Name" 
                               required
-                              className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 md:px-3 md:py-2 text-[13px] md:text-[15px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 focus:bg-white/10 transition-all"
+                              className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 focus:bg-white/10 transition-all"
                             />
                           </div>
-                          <div className="flex flex-col gap-1.5 md:gap-2">
-                            <label htmlFor="email" className="text-white font-medium text-[13px] md:text-[14px]">E-Mail</label>
+                          <div className="flex flex-col gap-1">
+                            <label htmlFor="email" className="text-white font-medium text-[12px] md:text-[13px]">E-Mail</label>
                             <input 
                               type="email" 
                               id="email" 
                               name="email"
                               placeholder="ihre@email.de" 
                               required
-                              className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 md:px-3 md:py-2 text-[13px] md:text-[15px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 focus:bg-white/10 transition-all"
+                              className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 focus:bg-white/10 transition-all"
                             />
                           </div>
                         </div>
-                        <div className="flex flex-col gap-1.5 md:gap-2">
-                          <label htmlFor="message" className="text-white font-medium text-[13px] md:text-[14px]">Nachricht</label>
+                        <div className="flex flex-col gap-1">
+                          <label htmlFor="message" className="text-white font-medium text-[12px] md:text-[13px]">Nachricht</label>
                           <textarea 
                             id="message" 
                             name="message"
                             placeholder="Ihre Nachricht" 
                             required
                             rows={3}
-                            className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 md:px-3 md:py-2 text-[13px] md:text-[15px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 focus:bg-white/10 transition-all resize-none"
+                            className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 focus:bg-white/10 transition-all resize-none"
                           />
                         </div>
-                        <div className="flex items-start gap-3 mt-1">
+                        <div className="flex items-start gap-2 mt-1">
                           <input 
                             type="checkbox" 
                             id="privacy" 
@@ -129,14 +129,14 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                             className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-brand-teal focus:ring-brand-teal focus:ring-offset-0 cursor-pointer"
                             required
                           />
-                          <label htmlFor="privacy" className="text-[12px] md:text-[13px] text-white/60 leading-relaxed cursor-pointer">
+                          <label htmlFor="privacy" className="text-[11px] md:text-[12px] text-white/60 leading-relaxed cursor-pointer">
                             Ich stimme der Verarbeitung meiner Daten gemäß der <button type="button" onClick={() => setIsDatenschutzOpen(true)} className="text-brand-teal hover:underline">Datenschutzerklärung</button> zu.
                           </label>
                         </div>
                         <button 
                           type="submit" 
                           disabled={!privacyAccepted || isSubmitting}
-                          className={`mt-1 text-white text-[14px] md:text-base font-bold py-2.5 px-6 md:py-2.5 md:px-8 rounded-xl transition-all ${privacyAccepted && !isSubmitting ? 'bg-gradient-to-r from-brand-violet to-brand-teal hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(124,58,237,0.3)]' : 'bg-white/10 text-white/40 cursor-not-allowed'}`}
+                          className={`mt-1 text-white text-[13px] md:text-sm font-bold py-2 px-6 rounded-xl transition-all ${privacyAccepted && !isSubmitting ? 'bg-gradient-to-r from-brand-violet to-brand-teal hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(124,58,237,0.3)]' : 'bg-white/10 text-white/40 cursor-not-allowed'}`}
                         >
                           {isSubmitting ? 'Wird gesendet...' : 'Absenden'}
                         </button>
