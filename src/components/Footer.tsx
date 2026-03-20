@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobileMenuOpen: boolean, handleNavigate: (page: string) => void }) => {
   return (
-    <footer className={`w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-3 px-6 md:px-[120px] mt-auto relative z-10 shrink-0 ${isMobileMenuOpen ? 'hidden lg:block' : ''}`}>
+    <footer className="w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-3 px-6 md:px-[120px] mt-auto relative z-10 shrink-0">
       <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-4">
         <button 
           onClick={() => handleNavigate('Start')}

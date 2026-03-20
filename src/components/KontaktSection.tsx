@@ -21,27 +21,27 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
           
           <div className="flex flex-col gap-4 md:gap-6">
             <div className="flex items-center gap-4 md:gap-5 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-brand-teal/10 flex items-center justify-center border border-brand-teal/20 group-hover:bg-brand-teal/20 transition-all">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-brand-teal/10 flex items-center justify-center border border-brand-teal/20 group-hover:bg-brand-teal/20 transition-all shrink-0">
                 <Mail className="text-brand-teal" size={20} />
               </div>
               <div className="flex flex-col">
                 <span className="text-white/40 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">E-Mail</span>
-                <a href="mailto:roberterbach@web.de" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors">roberterbach@web.de</a>
+                <a href="mailto:roberterbach@web.de" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors break-all">roberterbach@web.de</a>
               </div>
             </div>
             
             <div className="flex items-center gap-4 md:gap-5 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-brand-violet/10 flex items-center justify-center border border-brand-violet/20 group-hover:bg-brand-violet/20 transition-all">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-brand-violet/10 flex items-center justify-center border border-brand-violet/20 group-hover:bg-brand-violet/20 transition-all shrink-0">
                 <Linkedin className="text-brand-violet" size={20} />
               </div>
               <div className="flex flex-col">
                 <span className="text-white/40 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/roberterbach" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors">@roberterbach</a>
+                <a href="https://www.linkedin.com/in/roberterbach" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors break-all">@roberterbach</a>
               </div>
             </div>
 
             <div className="flex items-center gap-4 md:gap-5 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-all">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-all shrink-0">
                 <MapPin className="text-white/60" size={20} />
               </div>
               <div className="flex flex-col">

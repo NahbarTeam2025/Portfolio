@@ -5,35 +5,35 @@ export const SkillsSection = React.memo(() => {
     {
       category: 'DIGITALE KOMPETENZEN',
       skills: [
-        { name: 'Content Creation', value: 90 },
-        { name: 'SEO', value: 85 },
-        { name: 'Web & Landingpages', value: 85 },
-        { name: 'Design & Gestaltung', value: 80 }
+        { name: 'Content Creation', value: 90, tooltip: 'Canva, Adobe Creative Cloud' },
+        { name: 'SEO', value: 85, tooltip: 'Seobility, Google Search Console' },
+        { name: 'Web & Landingpages', value: 85, tooltip: 'WordPress (Elementor)' },
+        { name: 'Design & Gestaltung', value: 80, tooltip: 'Figma, Adobe Illustrator' }
       ]
     },
     {
       category: 'TECHNOLOGIE & KI',
       skills: [
-        { name: 'Web Analytics', value: 80 },
-        { name: 'Daten & Tools', value: 85 },
-        { name: 'Prompt Engineering', value: 90 },
-        { name: 'KI-Workflows', value: 85 }
+        { name: 'Web Analytics', value: 80, tooltip: 'Google Analytics 4' },
+        { name: 'Daten & Tools', value: 85, tooltip: 'Looker Studio, Microsoft Excel' },
+        { name: 'Prompt Engineering', value: 90, tooltip: 'Gemini (Google), Claude (Anthropic)' },
+        { name: 'KI-Workflows', value: 85, tooltip: 'N8N, Make.com' }
       ]
     },
     {
       category: 'ARBEITSWEISE & STÄRKEN',
       skills: [
-        { name: 'Strukturierte Arbeitsweise', value: 90 },
-        { name: 'Kommunikationsstärke', value: 85 },
-        { name: 'Problemlösung', value: 85 },
-        { name: 'Zeitmanagement', value: 85 }
+        { name: 'Strukturierte Arbeitsweise', value: 90, tooltip: 'Notion, Trello' },
+        { name: 'Kommunikationsstärke', value: 85, tooltip: 'Slack, Microsoft Teams' },
+        { name: 'Problemlösung', value: 85, tooltip: 'Miro (Mindmapping), GitHub (für technisches Troubleshooting)' },
+        { name: 'Zeitmanagement', value: 85, tooltip: 'Google Calendar' }
       ]
     },
     {
       category: 'Sprachen',
       skills: [
-        { name: 'Deutsch', value: 100 },
-        { name: 'Englisch', value: 70 }
+        { name: 'Deutsch', value: 100, tooltip: 'Muttersprache' },
+        { name: 'Englisch', value: 70, tooltip: 'Fließend in Wort und Schrift' }
       ]
     }
   ];
@@ -54,13 +54,12 @@ export const SkillsSection = React.memo(() => {
                 const globalIndex = groupIndex * 4 + skillIndex;
                 return (
                   <div key={skill.name} className="flex flex-col gap-1.5 md:gap-3 w-full group/skill relative">
-                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/80 border border-white/10 rounded-xl text-white text-[12px] md:text-[14px] whitespace-nowrap opacity-0 group-hover/skill:opacity-100 transition-all duration-300 pointer-events-none z-50 backdrop-blur-xl shadow-2xl translate-y-2 group-hover/skill:translate-y-0">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-brand-teal animate-pulse" />
-                        <span className="font-medium">{skill.name}</span>
-                        <span className="text-brand-teal font-bold ml-1">{skill.value}%</span>
+                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/90 border border-white/10 rounded-xl text-white text-[12px] md:text-[14px] w-max max-w-[280px] md:max-w-[350px] whitespace-normal text-center opacity-0 group-hover/skill:opacity-100 transition-all duration-300 pointer-events-none z-50 backdrop-blur-xl shadow-2xl translate-y-2 group-hover/skill:translate-y-0">
+                      <div className="flex items-center justify-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-brand-teal animate-pulse shrink-0" />
+                        <span className="font-medium leading-snug">{skill.tooltip}</span>
                       </div>
-                      <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-black/80 border-r border-b border-white/10 rotate-45"></div>
+                      <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-black/90 border-r border-b border-white/10 rotate-45"></div>
                     </div>
                     <div className="flex justify-between items-end w-full">
                       <span className="text-white font-medium text-[13px] md:text-[15px] lg:text-[16px] leading-none">{skill.name}</span>

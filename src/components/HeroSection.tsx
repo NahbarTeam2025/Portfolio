@@ -1,6 +1,5 @@
 import React from 'react';
 import { GlitchWord } from './GlitchWord';
-import { TerminalStatus } from './TerminalStatus';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   return (
@@ -21,7 +20,6 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
           <span className="text-[18px] md:text-[24px] lg:text-[32px] text-white/80 mt-1 lg:mt-3 font-medium tracking-tight">
             Digital Specialist für <GlitchWord word="Marketing" colorClass="text-brand-teal" />, <GlitchWord word="Content" colorClass="text-brand-violet" /> & <GlitchWord word="KI" colorClass="text-brand-teal" />
           </span>
-          <TerminalStatus />
         </h1>
 
         {/* Subtitle */}

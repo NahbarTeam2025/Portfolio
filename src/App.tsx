@@ -27,11 +27,7 @@ import { ProjekteSection } from './components/ProjekteSection';
 import { ZertifikateSection } from './components/ZertifikateSection';
 import { KontaktSection } from './components/KontaktSection';
 import { UberMichSection } from './components/UberMichSection';
-
-
-
-
-
+import { useSEO } from './hooks/useSEO';
 
 const PAGE_ROUTES: Record<string, string> = {
   'Start': '/',
@@ -49,9 +45,11 @@ const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_ROUTES).map(([key, value]) => [value, key])
 );
 
-const PAGES = ['Start', 'Über mich', 'Skills', 'Projekte', 'Qualifikation', 'Zertifikate'];
+const PAGES = ['Start', 'Über mich', 'Skills', 'Projekte', 'Qualifikation', 'Zertifikate', 'Impressum', 'Datenschutz'];
 
 export default function App() {
+  useSEO(); // Initialize dynamic SEO tags
+  
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -393,7 +391,7 @@ export default function App() {
                     e.preventDefault();
                     handleNavigate(page);
                   }}
-                  className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all duration-500 cursor-pointer relative overflow-hidden group hover:scale-110 ${
+                  className={`px-2 xl:px-4 py-1.5 rounded-full text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative overflow-hidden group hover:scale-110 ${
                     currentPage === page
                       ? 'text-white'
                       : 'text-white/60 hover:text-white'
@@ -490,7 +488,7 @@ export default function App() {
                 {currentPage === 'Start' ? (
                   <HeroSection handleNavigate={handleNavigate} />
                 ) : currentPage === 'Über mich' ? (
-                  <UberMichSection step={step} setStep={setStep} />
+                  <UberMichSection />
                 ) : currentPage === 'Skills' ? (
                   <SkillsSection />
                 ) : currentPage === 'Projekte' ? (
