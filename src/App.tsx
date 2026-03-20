@@ -223,13 +223,17 @@ export default function App() {
     if (el) {
       el.defaultMuted = true;
       el.muted = true;
-      const playPromise = el.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          if (error.name !== 'AbortError' && error.name !== 'NotSupportedError') {
-            console.error("Start video play error:", error.message);
-          }
-        });
+      try {
+        const playPromise = el.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            if (error.name !== 'AbortError' && error.name !== 'NotSupportedError') {
+              console.error("Start video play error:", error.message);
+            }
+          });
+        }
+      } catch (error) {
+        console.error("Start video play error:", error);
       }
     }
   }, []);
@@ -238,13 +242,17 @@ export default function App() {
     if (el) {
       el.defaultMuted = true;
       el.muted = true;
-      const playPromise = el.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          if (error.name !== 'AbortError' && error.name !== 'NotSupportedError') {
-            console.error("Sub video play error:", error.message);
-          }
-        });
+      try {
+        const playPromise = el.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            if (error.name !== 'AbortError' && error.name !== 'NotSupportedError') {
+              console.error("Sub video play error:", error.message);
+            }
+          });
+        }
+      } catch (error) {
+        console.error("Sub video play error:", error);
       }
     }
   }, []);
@@ -291,17 +299,17 @@ export default function App() {
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#0a0a0a]">
           <video
             ref={handleSubVideoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
+            autoPlay={true}
+            loop={true}
+            muted={true}
+            playsInline={true}
             preload="metadata"
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
             style={{ transform: 'translateZ(0)' }}
-            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-95,f-auto"
-            poster="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-80,f-jpg,w-1920"
+            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-90,h-1080"
+            poster="https://ik.imagekit.io/roberterbach/hero-video.mp4"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Sub video error details:", {
@@ -325,17 +333,17 @@ export default function App() {
         <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
           <video
             ref={handleStartVideoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
+            autoPlay={true}
+            loop={true}
+            muted={true}
+            playsInline={true}
             preload="metadata"
             title="Hintergrundvideo Robert Erbach Portfolio"
             aria-hidden="true"
             className="w-full h-full object-cover"
             style={{ transform: 'translateZ(0)' }}
-            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-95,f-auto"
-            poster="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-80,f-jpg,w-1920"
+            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-90,h-1080"
+            poster="https://ik.imagekit.io/roberterbach/hero-video.mp4"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Start video error details:", {
