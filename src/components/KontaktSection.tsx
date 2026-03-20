@@ -1,7 +1,7 @@
 import React, { useState, startTransition } from 'react';
 import { Mail, Linkedin, MapPin, ChevronDown } from 'lucide-react';
 
-export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitError, privacyAccepted, setPrivacyAccepted, setIsDatenschutzOpen, handleSubmit }: any) => {
+export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitError, privacyAccepted, setPrivacyAccepted, handleNavigate, handleSubmit }: any) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -130,9 +130,10 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                             required
                           />
                           <label htmlFor="privacy" className="text-[11px] md:text-[12px] text-white/60 leading-relaxed cursor-pointer">
-                            Ich stimme der Verarbeitung meiner Daten gemäß der <button type="button" onClick={() => setIsDatenschutzOpen(true)} className="text-brand-teal hover:underline">Datenschutzerklärung</button> zu.
+                            Ich stimme der Verarbeitung meiner Daten gemäß der <button type="button" onClick={() => handleNavigate('Datenschutz')} className="text-brand-teal hover:underline">Datenschutzerklärung</button> zu.
                           </label>
                         </div>
+                        <div className="cf-turnstile" data-sitekey="0x4AAAAAAACtsvqlfSN85G8X5"></div>
                         <button 
                           type="submit" 
                           disabled={!privacyAccepted || isSubmitting}

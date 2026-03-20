@@ -16,6 +16,8 @@ import { BentoCard } from './components/BentoCard';
 import { Typewriter } from './components/Typewriter';
 import { HeroSection } from './components/HeroSection';
 import { Footer } from './components/Footer';
+import { ImpressumPage } from './pages/ImpressumPage';
+import { DatenschutzPage } from './pages/DatenschutzPage';
 import { ImpressumModal } from './components/ImpressumModal';
 import { DatenschutzModal } from './components/DatenschutzModal';
 
@@ -38,7 +40,9 @@ const PAGE_ROUTES: Record<string, string> = {
   'Projekte': '/projekte',
   'Qualifikation': '/qualifikation',
   'Zertifikate': '/zertifikate',
-  'Kontakt': '/kontakt'
+  'Kontakt': '/kontakt',
+  'Impressum': '/impressum',
+  'Datenschutz': '/datenschutz'
 };
 
 const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
@@ -86,8 +90,6 @@ export default function App() {
 
   const [isContactFormExpanded, setIsContactFormExpanded] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
-  const [isImpressumOpen, setIsImpressumOpen] = useState(false);
-  const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -519,9 +521,13 @@ export default function App() {
                     submitError={submitError}
                     privacyAccepted={privacyAccepted}
                     setPrivacyAccepted={setPrivacyAccepted}
-                    setIsDatenschutzOpen={setIsDatenschutzOpen}
+                    handleNavigate={handleNavigate}
                     handleSubmit={handleSubmit}
                   />
+                ) : currentPage === 'Impressum' ? (
+                  <ImpressumPage />
+                ) : currentPage === 'Datenschutz' ? (
+                  <DatenschutzPage />
                 ) : (
                   <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500 h-full">
                     <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight">
@@ -541,19 +547,8 @@ export default function App() {
         <Footer 
           isMobileMenuOpen={isMobileMenuOpen}
           handleNavigate={handleNavigate}
-          setIsImpressumOpen={setIsImpressumOpen}
-          setIsDatenschutzOpen={setIsDatenschutzOpen}
         />
 
-        {/* Impressum Modal */}
-        {isImpressumOpen && (
-          <ImpressumModal setIsImpressumOpen={setIsImpressumOpen} />
-        )}
-
-        {/* Datenschutz Modal */}
-        {isDatenschutzOpen && (
-          <DatenschutzModal setIsDatenschutzOpen={setIsDatenschutzOpen} />
-        )}
       </div>
     </div>
   );
