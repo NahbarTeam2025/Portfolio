@@ -30,13 +30,13 @@
   }
 
   .text-glow-animated {
-    background: linear-gradient(to right, #ffffff, var(--color-brand-teal), var(--color-brand-violet), #ffffff);
-    background-size: 300% auto;
+    background: linear-gradient(90deg, #ffffff 0%, #a5f3fc 30%, #7c3aed 100%);
+    background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: gradient-shift 12s linear infinite;
-    text-shadow: 0 0 30px rgba(5, 184, 194, 0.4);
+    animation: gradient-shift 12s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
   }
 
   .animate-border-rotate {

@@ -11,7 +11,7 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
           className="flex items-center gap-2 cursor-pointer group" 
         >
           <img 
-            src="https://ik.imagekit.io/roberterbach/site-logo.png?tr=w-132,h-98" 
+            src="https://meine-assets.pages.dev/logo.png" 
             alt="Logo Robert Erbach Footer" 
             width="66"
             height="49"
@@ -32,6 +32,18 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
           >
             <Linkedin size={18} strokeWidth={1.5} />
           </a>
+          <button 
+            onClick={() => handleNavigate('Impressum')}
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            Impressum
+          </button>
+          <button 
+            onClick={() => handleNavigate('Datenschutz')}
+            className="text-white/60 hover:text-white transition-colors"
+          >
+            Datenschutz
+          </button>
         </div>
       </div>
     </footer>

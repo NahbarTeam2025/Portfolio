@@ -14,38 +14,38 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
         <div className="flex flex-col gap-6 md:gap-10 w-full lg:w-1/2">
           <div className="space-y-4 md:space-y-6">
             <h2 className="text-white text-[20px] md:text-[28px] font-medium leading-tight">Ich bin offen für neue Möglichkeiten.</h2>
-            <p className="text-white/60 text-[14px] md:text-[18px] leading-relaxed">
+            <p className="text-white/90 text-[14px] md:text-[18px] leading-relaxed">
               Ob Jobanfrage, Projektidee oder fachlicher Austausch – schreib mir einfach. Ich melde mich zeitnah zurück.
             </p>
           </div>
           
           <div className="flex flex-col gap-4 md:gap-6">
             <div className="flex items-center gap-4 md:gap-5 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-brand-teal/10 flex items-center justify-center border border-brand-teal/20 group-hover:bg-brand-teal/20 transition-all shrink-0">
-                <Mail className="text-brand-teal" size={20} />
+              <div className="flex items-center justify-center shrink-0">
+                <Mail className="text-white" size={24} />
               </div>
               <div className="flex flex-col">
-                <span className="text-white/40 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">E-Mail</span>
+                <span className="text-white/80 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">E-Mail</span>
                 <a href="mailto:roberterbach@web.de" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors break-all">roberterbach@web.de</a>
               </div>
             </div>
             
             <div className="flex items-center gap-4 md:gap-5 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-brand-violet/10 flex items-center justify-center border border-brand-violet/20 group-hover:bg-brand-violet/20 transition-all shrink-0">
-                <Linkedin className="text-brand-violet" size={20} />
+              <div className="flex items-center justify-center shrink-0">
+                <Linkedin className="text-white" size={24} />
               </div>
               <div className="flex flex-col">
-                <span className="text-white/40 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">LinkedIn</span>
+                <span className="text-white/80 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">LinkedIn</span>
                 <a href="https://www.linkedin.com/in/roberterbach" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors break-all">@roberterbach</a>
               </div>
             </div>
 
             <div className="flex items-center gap-4 md:gap-5 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-all shrink-0">
-                <MapPin className="text-white/60" size={20} />
+              <div className="flex items-center justify-center shrink-0">
+                <MapPin className="text-white" size={24} />
               </div>
               <div className="flex flex-col">
-                <span className="text-white/40 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">Standort</span>
+                <span className="text-white/80 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">Standort</span>
                 <span className="text-white text-[14px] md:text-[18px]">Falkenberg/Elster</span>
               </div>
             </div>
@@ -95,7 +95,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                               name="name"
                               placeholder="Ihr Name" 
                               required
-                              className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 focus:bg-white/10 transition-all"
+                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/50 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
                             />
                           </div>
                           <div className="flex flex-col gap-1">
@@ -106,7 +106,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                               name="email"
                               placeholder="ihre@email.de" 
                               required
-                              className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 focus:bg-white/10 transition-all"
+                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/50 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
                             />
                           </div>
                         </div>
@@ -118,7 +118,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                             placeholder="Ihre Nachricht" 
                             required
                             rows={3}
-                            className="bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 focus:bg-white/10 transition-all resize-none"
+                            className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/50 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all resize-none"
                           />
                         </div>
                         <div className="flex items-start gap-2 mt-1">

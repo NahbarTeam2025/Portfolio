@@ -10,7 +10,6 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, 
 
 // Import refactored components
 import { MouseGlow } from './components/MouseGlow';
-import { GlitchWord } from './components/GlitchWord';
 import { TerminalStatus } from './components/TerminalStatus';
 import { BentoCard } from './components/BentoCard';
 import { Typewriter } from './components/Typewriter';
@@ -46,7 +45,7 @@ const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_ROUTES).map(([key, value]) => [value, key])
 );
 
-const PAGES = ['Start', 'Über mich', 'Skills', 'Projekte', 'Qualifikation', 'Zertifikate', 'Impressum', 'Datenschutz'];
+const PAGES = ['Start', 'Über mich', 'Skills', 'Projekte', 'Qualifikation', 'Zertifikate'];
 
 export default function App() {
   useSEO(); // Initialize dynamic SEO tags
@@ -219,7 +218,40 @@ export default function App() {
     });
   }, []);
 
+  const [subVideoOpacity, setSubVideoOpacity] = useState(0.2); // Further reduced opacity for subpages background
+  const [startVideoOpacity, setStartVideoOpacity] = useState(1.0);
+
+  const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>, setOpacity: React.Dispatch<React.SetStateAction<number>>) => {
+    const video = e.currentTarget;
+    const fadeDuration = 2.0; // seconds
+    
+    if (video.duration && video.currentTime > video.duration - fadeDuration) {
+      // Fade out (quadratic ease-in)
+      const progress = (video.currentTime - (video.duration - fadeDuration)) / fadeDuration;
+      const easedProgress = progress * progress;
+      setOpacity(Math.max(0, 1.0 - easedProgress));
+    } else if (video.currentTime < fadeDuration) {
+      // Fade in (quadratic ease-out)
+      const progress = video.currentTime / fadeDuration;
+      const easedProgress = progress * (2 - progress);
+      setOpacity(Math.min(1.0, easedProgress));
+    } else {
+      setOpacity(1.0);
+    }
+  };
+
+  const subVideoRef = useRef<HTMLVideoElement | null>(null);
+  const handleSubVideoRef = useCallback((el: HTMLVideoElement | null) => {
+    subVideoRef.current = el;
+    if (el) {
+      el.defaultMuted = true;
+      el.muted = true;
+    }
+  }, []);
+
+  const startVideoRef = useRef<HTMLVideoElement | null>(null);
   const handleStartVideoRef = useCallback((el: HTMLVideoElement | null) => {
+    startVideoRef.current = el;
     if (el) {
       el.defaultMuted = true;
       el.muted = true;
@@ -238,23 +270,49 @@ export default function App() {
     }
   }, []);
 
-  const handleSubVideoRef = useCallback((el: HTMLVideoElement | null) => {
-    if (el) {
-      el.defaultMuted = true;
-      el.muted = true;
-      try {
-        const playPromise = el.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(error => {
-            if (error.name !== 'AbortError' && error.name !== 'NotSupportedError') {
-              console.error("Sub video play error:", error.message);
-            }
-          });
-        }
-      } catch (error) {
-        console.error("Sub video play error:", error);
+  useEffect(() => {
+    const video = subVideoRef.current;
+    if (!video) return;
+
+    // Ensure it's muted
+    video.muted = true;
+
+    // Attempt to play
+    video.play().catch(e => {
+      if (e.name !== 'AbortError') console.error("Play error:", e);
+    });
+  }, [currentPage]);
+
+  useEffect(() => {
+    const video = startVideoRef.current;
+    if (!video) return;
+
+    const playVideo = () => {
+      video.play().catch(e => {
+        if (e.name !== 'AbortError') console.error("Play error:", e);
+      });
+    };
+
+    video.addEventListener('pause', playVideo);
+    video.addEventListener('ended', playVideo);
+    video.addEventListener('stalled', playVideo);
+    video.addEventListener('waiting', playVideo);
+
+    const interval = setInterval(() => {
+      if (video.paused) {
+        playVideo();
       }
-    }
+    }, 1000);
+
+    playVideo();
+
+    return () => {
+      video.removeEventListener('pause', playVideo);
+      video.removeEventListener('ended', playVideo);
+      video.removeEventListener('stalled', playVideo);
+      video.removeEventListener('waiting', playVideo);
+      clearInterval(interval);
+    };
   }, []);
 
   return (
@@ -295,21 +353,22 @@ export default function App() {
       </AnimatePresence>
 
       {/* Dynamic Subpages Background */}
-      {(currentPage !== 'Start' || isMobileMenuOpen) && (
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#0a0a0a]">
+      <motion.div 
+        animate={{ opacity: (currentPage !== 'Start' || isMobileMenuOpen) ? subVideoOpacity : 0 }}
+        transition={{ duration: 0.1 }}
+        className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#0a0a0a]"
+      >
           <video
             ref={handleSubVideoRef}
-            autoPlay={true}
             loop={true}
             muted={true}
             playsInline={true}
-            preload="metadata"
+            preload="auto"
             title="Abstraktes Hintergrundvideo"
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover opacity-40"
+            className="absolute inset-0 w-full h-full object-cover"
             style={{ transform: 'translateZ(0)' }}
-            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-90,h-1080"
-            poster="https://ik.imagekit.io/roberterbach/hero-video.mp4"
+            src="https://meine-assets.pages.dev/bgunterseiten.mp4"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Sub video error details:", {
@@ -325,12 +384,15 @@ export default function App() {
           {/* Noise overlay */}
           <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
           <div className="absolute inset-0 bg-black/40" />
-        </div>
-      )}
+        </motion.div>
 
       {/* Background Video */}
       {currentPage === 'Start' && !isMobileMenuOpen && (
-        <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
+        <motion.div 
+          animate={{ opacity: startVideoOpacity }}
+          transition={{ duration: 0.1 }}
+          className="absolute inset-0 z-0 bg-[#0a0a0a]"
+        >
           <video
             ref={handleStartVideoRef}
             autoPlay={true}
@@ -342,8 +404,8 @@ export default function App() {
             aria-hidden="true"
             className="w-full h-full object-cover"
             style={{ transform: 'translateZ(0)' }}
-            src="https://ik.imagekit.io/roberterbach/hero-video.mp4?tr=q-90,h-1080"
-            poster="https://ik.imagekit.io/roberterbach/hero-video.mp4"
+            src="https://meine-assets.pages.dev/bgstart.mp4"
+            poster="https://meine-assets.pages.dev/bgstart.mp4"
             onError={(e) => {
               const error = e.currentTarget.error;
               console.error("Start video error details:", {
@@ -358,7 +420,7 @@ export default function App() {
           />
           {/* 50% Dark Overlay */}
           <div className="absolute inset-0 bg-black/60" />
-        </div>
+        </motion.div>
       )}
 
       {/* Content Overlay */}
@@ -377,7 +439,7 @@ export default function App() {
               }}
             >
             <img 
-                src="https://ik.imagekit.io/roberterbach/site-logo.png?tr=w-132,h-98" 
+                src="https://meine-assets.pages.dev/logo.png" 
                 alt="Logo Robert Erbach" 
                 width="66"
                 height="49"
@@ -388,32 +450,33 @@ export default function App() {
             </a>
           </div>
 
-          {/* Right side: New Nav Bar + Join Waitlist Button */}
+          {/* Centered Navigation Bar */}
+          <div className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-1">
+            {PAGES.map((page) => (
+              <a
+                key={page}
+                href={PAGE_ROUTES[page]}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate(page);
+                }}
+                className={`px-2 xl:px-4 py-1.5 rounded-full text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative overflow-hidden group hover:scale-110 ${
+                  currentPage === page
+                    ? 'text-white'
+                    : 'text-white/60 hover:text-white'
+                }`}
+              >
+                {currentPage === page && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand-violet/20 via-brand-teal/20 to-brand-violet/20 rounded-full" />
+                )}
+                <span className="relative z-10">{page}</span>
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
+              </a>
+            ))}
+          </div>
+
+          {/* Right side: CTA Button + Mobile Menu Toggle */}
           <div className="flex items-center gap-4 lg:gap-6">
-            {/* New Page Switcher Navigation Bar */}
-            <div className="hidden lg:flex items-center gap-1">
-              {PAGES.map((page) => (
-                <a
-                  key={page}
-                  href={PAGE_ROUTES[page]}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavigate(page);
-                  }}
-                  className={`px-2 xl:px-4 py-1.5 rounded-full text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative overflow-hidden group hover:scale-110 ${
-                    currentPage === page
-                      ? 'text-white'
-                      : 'text-white/60 hover:text-white'
-                  }`}
-                >
-                  {currentPage === page && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-brand-violet/20 via-brand-teal/20 to-brand-violet/20 rounded-full" />
-                  )}
-                  <span className="relative z-10">{page}</span>
-                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
-                </a>
-              ))}
-            </div>
 
             {/* CTA Button */}
             <a 
@@ -422,7 +485,7 @@ export default function App() {
                 e.preventDefault();
                 handleNavigate('Kontakt');
               }}
-              className="hidden sm:flex items-center justify-center rounded-full px-[32px] py-[10px] bg-black/30 backdrop-blur-md border border-white/10 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:bg-gradient-to-r hover:from-black hover:to-blue-900/50 transition-all duration-500 hover:scale-105 cursor-pointer"
+              className="hidden sm:flex items-center justify-center rounded-full px-[20px] py-[8px] bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/5 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(124,58,237,0.1)] hover:bg-black hover:from-black hover:to-black transition-all duration-500 hover:scale-105 cursor-pointer"
             >
               <span className="relative z-10">Kontakt</span>
             </a>

@@ -1,14 +1,13 @@
 import React from 'react';
-import { GlitchWord } from './GlitchWord';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   return (
     <div id="hero" className="flex flex-col items-center gap-6 md:gap-8 lg:gap-12 max-w-[680px] lg:max-w-[900px] animate-in fade-in duration-500 subtle-float relative z-10">
       {/* Badge / Pill */}
-      <div className="flex items-center gap-2 rounded-[20px] bg-brand-teal/10 border border-brand-teal/20 px-4 py-1.5 backdrop-blur-sm">
-        <div className="w-1 h-1 bg-brand-teal rounded-full shadow-[0_0_8px_rgba(5,184,194,0.8)]" />
-        <span className="text-[12px] md:text-[14px] font-medium">
-          <span className="text-brand-teal">Portfolio & Projekte</span>
+      <div className="flex items-center gap-2 rounded-[20px] bg-white/5 border border-white/10 px-4 py-1.5 backdrop-blur-md">
+        <div className="w-1.5 h-1.5 bg-brand-violet rounded-full shadow-[0_0_10px_rgba(124,58,237,0.8)] animate-pulse" />
+        <span className="text-[12px] md:text-[14px] font-medium tracking-wide">
+          <span className="text-white/90">Portfolio & Projekte</span>
         </span>
       </div>
 
@@ -18,7 +17,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
         <h1 className="flex flex-col items-center text-[32px] md:text-[48px] lg:text-[72px] leading-[1.1] max-w-[800px] lg:max-w-[1000px]">
           <span className="font-audiowide font-bold tracking-tighter text-glow-animated pb-2">Robert Erbach</span>
           <span className="text-[18px] md:text-[24px] lg:text-[32px] text-white/80 mt-1 lg:mt-3 font-medium tracking-tight">
-            Digital Specialist für <GlitchWord word="Marketing" colorClass="text-brand-teal" />, <GlitchWord word="Content" colorClass="text-brand-violet" /> & <GlitchWord word="KI" colorClass="text-brand-teal" />
+            Digital Specialist für Marketing, Content & KI
           </span>
         </h1>
 
