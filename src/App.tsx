@@ -218,108 +218,82 @@ export default function App() {
     });
   }, []);
 
-  const [subVideoOpacity, setSubVideoOpacity] = useState(0.2); // Further reduced opacity for subpages background
-  const [startVideoOpacity, setStartVideoOpacity] = useState(1.0);
+  const [subVideoOpacity] = useState(0.2);
+  const [startVideoOpacity] = useState(1.0);
 
-  const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>, setOpacity: React.Dispatch<React.SetStateAction<number>>) => {
-    const video = e.currentTarget;
-    const fadeDuration = 2.0; // seconds
-    
-    if (video.duration && video.currentTime > video.duration - fadeDuration) {
-      // Fade out (quadratic ease-in)
-      const progress = (video.currentTime - (video.duration - fadeDuration)) / fadeDuration;
-      const easedProgress = progress * progress;
-      setOpacity(Math.max(0, 1.0 - easedProgress));
-    } else if (video.currentTime < fadeDuration) {
-      // Fade in (quadratic ease-out)
-      const progress = video.currentTime / fadeDuration;
-      const easedProgress = progress * (2 - progress);
-      setOpacity(Math.min(1.0, easedProgress));
-    } else {
-      setOpacity(1.0);
-    }
-  };
-
-  const subVideoRef = useRef<HTMLVideoElement | null>(null);
-  const handleSubVideoRef = useCallback((el: HTMLVideoElement | null) => {
-    subVideoRef.current = el;
-    if (el) {
-      el.defaultMuted = true;
-      el.muted = true;
-    }
-  }, []);
-
-  const startVideoRef = useRef<HTMLVideoElement | null>(null);
-  const handleStartVideoRef = useCallback((el: HTMLVideoElement | null) => {
-    startVideoRef.current = el;
-    if (el) {
-      el.defaultMuted = true;
-      el.muted = true;
-      try {
-        const playPromise = el.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(error => {
-            if (error.name !== 'AbortError' && error.name !== 'NotSupportedError') {
-              console.error("Start video play error:", error.message);
-            }
-          });
-        }
-      } catch (error) {
-        console.error("Start video play error:", error);
-      }
-    }
-  }, []);
-
+  // Force play videos on mount and page change
   useEffect(() => {
-    const video = subVideoRef.current;
-    if (!video) return;
-
-    // Ensure it's muted
-    video.muted = true;
-
-    // Attempt to play
-    video.play().catch(e => {
-      if (e.name !== 'AbortError') console.error("Play error:", e);
-    });
-  }, [currentPage]);
-
-  useEffect(() => {
-    const video = startVideoRef.current;
-    if (!video) return;
-
-    const playVideo = () => {
-      video.play().catch(e => {
-        if (e.name !== 'AbortError') console.error("Play error:", e);
+    const playVideos = () => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(v => {
+        v.play().catch(() => {
+          // Fallback for browsers that block autoplay
+          const playOnInteraction = () => {
+            v.play().catch(() => {});
+            document.removeEventListener('click', playOnInteraction);
+            document.removeEventListener('touchstart', playOnInteraction);
+          };
+          document.addEventListener('click', playOnInteraction);
+          document.addEventListener('touchstart', playOnInteraction);
+        });
       });
     };
 
-    video.addEventListener('pause', playVideo);
-    video.addEventListener('ended', playVideo);
-    video.addEventListener('stalled', playVideo);
-    video.addEventListener('waiting', playVideo);
-
-    const interval = setInterval(() => {
-      if (video.paused) {
-        playVideo();
-      }
-    }, 1000);
-
-    playVideo();
-
-    return () => {
-      video.removeEventListener('pause', playVideo);
-      video.removeEventListener('ended', playVideo);
-      video.removeEventListener('stalled', playVideo);
-      video.removeEventListener('waiting', playVideo);
-      clearInterval(interval);
-    };
-  }, []);
+    if (!isLoading) {
+      playVideos();
+      // Small delay to ensure DOM is ready
+      const timer = setTimeout(playVideos, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading, currentPage]);
 
   return (
     <div 
-      className="relative h-[100dvh] w-full bg-black font-sans overflow-hidden"
+      className="relative h-[100dvh] w-full font-sans overflow-hidden"
       onMouseMove={handleMouseMove}
     >
+      {/* Background Videos Layer */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
+        {/* Start Page Video */}
+        {currentPage === 'Start' && (
+          <div className="absolute inset-0">
+            <video
+              key="start-video-main"
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              playsInline={true}
+              preload="auto"
+              poster="https://meine-assets.pages.dev/logo.png"
+              className="w-full h-full object-cover"
+            >
+              <source src="https://meine-assets.pages.dev/bgstart.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-black/50" />
+          </div>
+        )}
+
+        {/* Subpages Video */}
+        {currentPage !== 'Start' && (
+          <div className="absolute inset-0 bg-black">
+            <video
+              key="sub-video-main"
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              playsInline={true}
+              preload="auto"
+              className="w-full h-full object-cover opacity-10"
+            >
+              <source src="https://meine-assets.pages.dev/bgunterseiten.mp4" type="video/mp4" />
+            </video>
+          </div>
+        )}
+        
+        {/* Global Noise Overlay */}
+        <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
+      </div>
+
       <AnimatePresence>
         {isLoading && (
           <motion.div
@@ -351,77 +325,6 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Dynamic Subpages Background */}
-      <motion.div 
-        animate={{ opacity: (currentPage !== 'Start' || isMobileMenuOpen) ? subVideoOpacity : 0 }}
-        transition={{ duration: 0.1 }}
-        className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#0a0a0a]"
-      >
-          <video
-            ref={handleSubVideoRef}
-            loop={true}
-            muted={true}
-            playsInline={true}
-            preload="auto"
-            title="Abstraktes Hintergrundvideo"
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ transform: 'translateZ(0)' }}
-            src="https://meine-assets.pages.dev/bgunterseiten.mp4"
-            onError={(e) => {
-              const error = e.currentTarget.error;
-              console.error("Sub video error details:", {
-                code: error?.code,
-                message: error?.message,
-                networkState: e.currentTarget.networkState,
-                readyState: e.currentTarget.readyState,
-                currentSrc: e.currentTarget.currentSrc
-              });
-            }}
-            onCanPlay={() => console.log("Sub video can play")}
-          />
-          {/* Noise overlay */}
-          <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
-          <div className="absolute inset-0 bg-black/40" />
-        </motion.div>
-
-      {/* Background Video */}
-      {currentPage === 'Start' && !isMobileMenuOpen && (
-        <motion.div 
-          animate={{ opacity: startVideoOpacity }}
-          transition={{ duration: 0.1 }}
-          className="absolute inset-0 z-0 bg-[#0a0a0a]"
-        >
-          <video
-            ref={handleStartVideoRef}
-            autoPlay={true}
-            loop={true}
-            muted={true}
-            playsInline={true}
-            preload="metadata"
-            title="Hintergrundvideo Robert Erbach Portfolio"
-            aria-hidden="true"
-            className="w-full h-full object-cover"
-            style={{ transform: 'translateZ(0)' }}
-            src="https://meine-assets.pages.dev/bgstart.mp4"
-            poster="https://meine-assets.pages.dev/bgstart.mp4"
-            onError={(e) => {
-              const error = e.currentTarget.error;
-              console.error("Start video error details:", {
-                code: error?.code,
-                message: error?.message,
-                networkState: e.currentTarget.networkState,
-                readyState: e.currentTarget.readyState,
-                currentSrc: e.currentTarget.currentSrc
-              });
-            }}
-            onCanPlay={() => console.log("Start video can play")}
-          />
-          {/* 50% Dark Overlay */}
-          <div className="absolute inset-0 bg-black/60" />
-        </motion.div>
-      )}
 
       {/* Content Overlay */}
       <MouseGlow />

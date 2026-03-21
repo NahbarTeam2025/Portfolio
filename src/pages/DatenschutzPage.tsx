@@ -74,11 +74,11 @@ export const DatenschutzPage = () => {
           <h4 className="text-lg font-medium text-white/90 mb-2">Bunny Fonts</h4>
           <p className="mb-4">Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Webfonts direkt von den Servern des Anbieters (Bunny.net) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diesen Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.</p>
           
-          <h4 className="text-lg font-medium text-white/90 mb-2">Verwendung eines Content Delivery Networks (CDN) – ImageKit</h4>
-          <p className="mb-4">Wir nutzen für unser Portfolio den Dienst ImageKit.io, ein Content Delivery Network (CDN) der ImageKit, Inc., 101 California St, San Francisco, CA 94111, USA.</p>
-          <p className="mb-4">Zweck der Nutzung ist die Optimierung der Ladezeiten und die stabile Bereitstellung von Medieninhalten (wie Videos und Bildern). Durch die Nutzung dieses Dienstes werden Medieninhalte direkt von den Servern von ImageKit geladen. Um diese Inhalte auszuliefern, verarbeitet ImageKit die IP-Adresse Ihres Endgeräts.</p>
-          <p className="mb-4">Wir haben ImageKit so konfiguriert, dass alle Daten über einen Serverstandort in Frankfurt, Deutschland verarbeitet werden, was das Risiko eines unbefugten Drittlandszugriffs minimiert.</p>
-          <p>Die Rechtsgrundlage für diese Datenverarbeitung ist unser berechtigtes Interesse an einer performanten, technisch stabilen und nutzerfreundlichen Bereitstellung unseres Onlineangebots (Art. 6 Abs. 1 f DSGVO). Wir haben einen Auftragsverarbeitungsvertrag (AVV) mit ImageKit abgeschlossen, in dem sich das Unternehmen zur Einhaltung der EU-Datenschutzstandards verpflichtet.</p>
+          <h4 className="text-lg font-medium text-white/90 mb-2">Verwendung eines Content Delivery Networks (CDN) – Cloudflare</h4>
+          <p className="mb-4">Wir nutzen für die Bereitstellung von Medieninhalten (wie Videos und Bildern) das Content Delivery Network (CDN) von Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA).</p>
+          <p className="mb-4">Zweck der Nutzung ist die Optimierung der Ladezeiten und die stabile, weltweite Bereitstellung unserer Assets. Durch die Nutzung dieses Dienstes werden Medieninhalte direkt von den Servern von Cloudflare geladen. Um diese Inhalte auszuliefern, verarbeitet Cloudflare technisch bedingt die IP-Adresse Ihres Endgeräts sowie weitere Log-Daten.</p>
+          <p className="mb-4">Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-brand-teal hover:underline">https://www.cloudflare.com/privacypolicy/</a>.</p>
+          <p>Die Rechtsgrundlage für diese Datenverarbeitung ist unser berechtigtes Interesse an einer performanten, technisch stabilen und nutzerfreundlichen Bereitstellung unseres Onlineangebots (Art. 6 Abs. 1 f DSGVO).</p>
         </section>
       </div>
     </div>

@@ -2,7 +2,7 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://api.web3forms.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; img-src 'self' data: https://fonts.bunny.net https://meine-assets.pages.dev; font-src 'self' https://fonts.bunny.net; connect-src 'self' https://fonts.bunny.net https://meine-assets.pages.dev https://api.web3forms.com; media-src 'self' https://meine-assets.pages.dev; object-src 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; img-src * data:; media-src *; font-src *; connect-src *;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -18,9 +18,9 @@
     <!-- Performance Resource Hints -->
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.bunny.net" />
-    <link href="https://fonts.bunny.net/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://meine-assets.pages.dev" />
+    <link rel="preconnect" href="https://meine-assets.pages.dev" crossorigin />
     <link rel="dns-prefetch" href="https://meine-assets.pages.dev" />
+    <link rel="preconnect" href="https://static.cloudflareinsights.com" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -40,10 +40,12 @@
     
     <!-- Preload Critical Assets -->
     <link rel="preload" href="https://meine-assets.pages.dev/bgstart.mp4" as="video" type="video/mp4" fetchpriority="high" />
+    <link rel="preload" href="https://meine-assets.pages.dev/bgunterseiten.mp4" as="video" type="video/mp4" fetchpriority="high" />
     <link rel="preload" href="https://meine-assets.pages.dev/logo.png" as="image" fetchpriority="high" />
     
-    <link rel="preload" href="https://fonts.bunny.net/css?family=audiowide:400|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700&display=swap" as="style">
-    <link href="https://fonts.bunny.net/css?family=audiowide:400|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Fonts -->
+    <link rel="preload" href="https://fonts.bunny.net/css?family=audiowide:400|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|jetbrains-mono:400,500&display=swap" as="style">
+    <link href="https://fonts.bunny.net/css?family=audiowide:400|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|jetbrains-mono:400,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <script type="application/ld+json">
     {

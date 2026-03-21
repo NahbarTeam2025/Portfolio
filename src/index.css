@@ -29,7 +29,12 @@
     color: transparent;
   }
 
-  .text-glow-animated {
+  /* Global Video Fix */
+video {
+  display: block !important;
+}
+
+.text-glow-animated {
     background: linear-gradient(90deg, #ffffff 0%, #a5f3fc 30%, #7c3aed 100%);
     background-size: 200% auto;
     color: transparent;
@@ -37,6 +42,7 @@
     background-clip: text;
     animation: gradient-shift 12s ease-in-out infinite;
     text-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+    will-change: background-position;
   }
 
   .animate-border-rotate {
