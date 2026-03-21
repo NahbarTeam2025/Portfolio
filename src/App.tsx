@@ -264,7 +264,6 @@ export default function App() {
               muted={true}
               playsInline={true}
               preload="auto"
-              poster="https://meine-assets.pages.dev/logo.png"
               className="w-full h-full object-cover"
             >
               <source src="https://meine-assets.pages.dev/bgstart.mp4" type="video/mp4" />
