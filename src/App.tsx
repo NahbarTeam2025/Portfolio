@@ -329,7 +329,7 @@ export default function App() {
       <MouseGlow />
       <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden overflow-y-auto`}>
         {/* Navbar */}
-        <nav className={`sticky top-0 flex items-center justify-between px-6 md:px-[120px] py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
+        <nav className={`sticky top-0 flex items-center justify-between px-6 py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
             {/* Logo */}
             <a 
