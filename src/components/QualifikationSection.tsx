@@ -69,7 +69,7 @@ export const QualifikationSection = React.memo(({
                     delay: i * 0.1 + 0.2,
                     ease: "backOut"
                   }}
-                  className="absolute -left-[23px] md:-left-[41px] top-[30px] w-3 h-3 rounded-full bg-black border border-brand-teal z-20 shadow-[0_0_10px_rgba(5,184,194,0.5)] group-hover:scale-125 transition-transform duration-300" 
+                  className="absolute -left-[23px] md:-left-[39px] top-[30px] w-3 h-3 rounded-full bg-black border border-brand-teal z-20 shadow-[0_0_10px_rgba(5,184,194,0.5)] group-hover:scale-125 transition-transform duration-300" 
                 />
               )}
               
