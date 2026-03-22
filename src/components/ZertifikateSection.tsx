@@ -1,7 +1,7 @@
 import React, { startTransition, useState } from 'react';
 import { ExternalLink, ChevronDown, Eye, EyeOff } from 'lucide-react';
 
-export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, isCertUnlocked, certPasswordInput, setCertPasswordInput, certError, setIsCertUnlocked, setCertError }: any) => {
+export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, isCertUnlocked, certPasswordInput, setCertPasswordInput, certError, setIsCertUnlocked, setCertError, handleNavigate }: any) => {
   const [showAllCerts, setShowAllCerts] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -25,12 +25,12 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
   });
 
   return (
-    <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500">
-      <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight shrink-0">
+    <div className="flex flex-col items-start gap-4 md:gap-6 w-full animate-in fade-in duration-500">
+      <h1 className="heading-gradient text-[24px] md:text-[32px] lg:text-[40px] font-medium leading-[1.28] tracking-tight shrink-0">
         Zertifikate
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 max-w-[1200px]' : 'max-w-[800px] mx-auto'} gap-4 md:gap-6 w-full pb-12 md:pb-32`}>
+      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 max-w-[1200px]' : 'max-w-[800px] mx-auto'} gap-4 md:gap-6 w-full pb-6`}>
         {visibleCerts.map((cert, i) => {
           const actualIndex = certs.findIndex(c => c.id === cert.id);
           const isExpanded = expandedCert !== null;
@@ -165,7 +165,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
 
       {/* Show More Button for Mobile */}
       {!showAllCerts && certs.length > 4 && expandedCert === null && (
-        <div className="w-full flex justify-center md:hidden pb-32 -mt-8">
+        <div className="w-full flex justify-center md:hidden pb-4 pt-2 shrink-0">
           <button 
             onClick={() => setShowAllCerts(true)}
             className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 hover:text-white transition-all group"
@@ -175,6 +175,17 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
           </button>
         </div>
       )}
+
+      {/* CTA Button */}
+      <div className="w-full flex justify-center pt-2 pb-8 shrink-0">
+        <button 
+          onClick={() => handleNavigate('Kontakt')}
+          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
+        >
+          <span className="relative z-10">Fragen zu den Zertifikaten?</span>
+          <span className="relative z-10">→</span>
+        </button>
+      </div>
     </div>
   );
 });

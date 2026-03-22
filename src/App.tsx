@@ -453,7 +453,7 @@ export default function App() {
         </nav>
 
         {/* Main Content */}
-        <main className={`grow shrink-0 flex flex-col px-6 ${currentPage === 'Start' ? 'items-center justify-center text-center' : 'items-start justify-start py-4 md:py-10 lg:py-16 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
+        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'Start' ? 'items-center justify-center text-center' : 'items-start justify-start py-4 md:py-6 lg:py-8 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentPage}
@@ -469,10 +469,11 @@ export default function App() {
                 ) : currentPage === 'Über mich' ? (
                   <UberMichSection handleNavigate={handleNavigate} />
                 ) : currentPage === 'Skills' ? (
-                  <SkillsSection />
+                  <SkillsSection handleNavigate={handleNavigate} />
                 ) : currentPage === 'Projekte' ? (
                   <ProjekteSection 
                     setIsInitialEntrance={setIsInitialEntrance} 
+                    handleNavigate={handleNavigate}
                   />
                 ) : currentPage === 'Qualifikation' ? (
                   <QualifikationSection 
@@ -481,6 +482,7 @@ export default function App() {
                     showTimeline={showTimeline}
                     isInitialEntrance={isInitialEntrance}
                     setIsInitialEntrance={setIsInitialEntrance}
+                    handleNavigate={handleNavigate}
                   />
                 ) : currentPage === 'Zertifikate' ? (
                   <ZertifikateSection 
@@ -492,6 +494,7 @@ export default function App() {
                     certError={certError}
                     setIsCertUnlocked={setIsCertUnlocked}
                     setCertError={setCertError}
+                    handleNavigate={handleNavigate}
                   />
                 ) : currentPage === 'Kontakt' ? (
                   <KontaktSection 

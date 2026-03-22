@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SkillsSection = React.memo(() => {
+export const SkillsSection = React.memo(({ handleNavigate }: any) => {
   const skillGroups = [
     {
       category: 'DIGITALE KOMPETENZEN',
@@ -39,14 +39,14 @@ export const SkillsSection = React.memo(() => {
   ];
 
   return (
-    <div className="flex flex-col items-start gap-2 md:gap-3 w-full animate-in fade-in duration-500">
-      <h1 className="heading-gradient text-[28px] md:text-[32px] lg:text-[40px] font-medium leading-[1.1] tracking-tight shrink-0">
+    <div className="flex flex-col items-start gap-4 md:gap-6 w-full animate-in fade-in duration-500">
+      <h1 className="heading-gradient text-[24px] md:text-[32px] lg:text-[40px] font-medium leading-[1.1] tracking-tight shrink-0">
         Skills & Kompetenzen
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-3 md:gap-y-3 w-full max-w-[1400px] py-1 md:py-1">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-6 w-full max-w-[1400px] py-4 mx-auto">
         {skillGroups.map((group, groupIndex) => (
-          <div key={group.category} className="wow-card flex flex-col gap-2 md:gap-3 p-4 md:p-5 lg:p-6">
+          <div key={group.category} className="wow-card flex flex-col gap-1.5 md:gap-2 p-3 md:p-4 lg:p-5">
             <div className="wow-card-border" />
             <h2 className="text-brand-teal text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.25em] font-bold opacity-90 relative z-10">{group.category}</h2>
             <div className="flex flex-col gap-2 md:gap-3 lg:gap-4 relative z-10">
@@ -80,6 +80,17 @@ export const SkillsSection = React.memo(() => {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* CTA Button */}
+      <div className="w-full flex justify-center pb-8 pt-4">
+        <button 
+          onClick={() => handleNavigate('Kontakt')}
+          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
+        >
+          <span className="relative z-10">Hast du Fragen? Schreib mir</span>
+          <span className="relative z-10">→</span>
+        </button>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { BentoCard } from './BentoCard';
 import { ProjectDetailsModal } from './ProjectDetailsModal';
 import { AnimatePresence } from 'framer-motion';
 
-export const ProjekteSection = React.memo(({ setIsInitialEntrance }: any) => {
+export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigate }: any) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedProject, setSelectedProject] = useState<any>(null);
   
@@ -63,14 +63,14 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance }: any) => {
   ];
 
   return (
-    <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500">
-      <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight shrink-0">
+    <div className="flex flex-col items-start gap-4 md:gap-6 w-full animate-in fade-in duration-500">
+      <h1 className="heading-gradient text-[24px] md:text-[32px] lg:text-[40px] font-medium leading-[1.28] tracking-tight shrink-0">
         Projekte
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full max-w-[1400px] pb-6`}>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full max-w-[1400px] pb-6">
         {projects.map((project, i) => (
-          <div key={i} className={`${!isExpanded && i > 0 ? 'hidden md:block' : 'block'}`}>
+          <div key={i} className="block">
             <BentoCard 
               project={project}
               index={i}
@@ -79,14 +79,17 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance }: any) => {
           </div>
         ))}
       </div>
-      {projects.length > 1 && (
+
+      {/* CTA Button */}
+      <div className="w-full flex justify-center pb-8">
         <button 
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="md:hidden text-white/60 hover:text-brand-teal transition-colors text-sm font-medium"
+          onClick={() => handleNavigate('Kontakt')}
+          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
         >
-          {isExpanded ? 'Weniger anzeigen' : 'Alle Projekte anzeigen'}
+          <span className="relative z-10">Lust auf ein Gespräch?</span>
+          <span className="relative z-10">→</span>
         </button>
-      )}
+      </div>
 
       <AnimatePresence>
         {selectedProject && (

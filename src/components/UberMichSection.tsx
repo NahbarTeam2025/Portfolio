@@ -2,7 +2,7 @@ import React from 'react';
 
 export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   return (
-    <div className="flex flex-col items-start gap-2.5 md:gap-4 lg:gap-6 w-full h-full animate-in fade-in duration-500">
+    <div className="flex flex-col items-start gap-4 md:gap-6 lg:gap-8 w-full animate-in fade-in duration-500">
       <h1 className="heading-gradient text-[24px] md:text-[36px] lg:text-[46px] font-medium leading-[1.1] tracking-tight shrink-0">
         Über mich
       </h1>
@@ -42,7 +42,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
             onClick={() => handleNavigate('Kontakt')}
             className="flex items-center justify-center gap-2 rounded-full px-6 py-2.5 md:px-[36px] md:py-[10px] bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
           >
-            <span className="relative z-10">Schreib mir jetzt</span>
+            <span className="relative z-10">Lass uns austauschen</span>
             <span className="relative z-10">→</span>
           </button>
         </div>
