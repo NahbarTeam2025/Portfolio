@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-export const BentoCard: React.FC<{ project: any, index: number }> = ({ project, index }) => {
+export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?: (project: any) => void }> = ({ project, index, onDetailsClick }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -68,7 +68,7 @@ export const BentoCard: React.FC<{ project: any, index: number }> = ({ project, 
             </div>
           </div>
           
-          <p className="text-white/70 text-[14px] md:text-[15px] lg:text-[16px] leading-relaxed line-clamp-4 md:line-clamp-6 transition-all duration-500">
+          <p className="text-white/90 text-[14px] md:text-[15px] lg:text-[16px] leading-relaxed line-clamp-4 md:line-clamp-6 transition-all duration-500">
             {project.desc}
           </p>
           
@@ -89,14 +89,22 @@ export const BentoCard: React.FC<{ project: any, index: number }> = ({ project, 
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] hover:from-brand-violet/30 hover:to-brand-teal/30 transition-all group/btn2 shadow-[0_0_15px_rgba(124,58,237,0.1)] hover:shadow-[0_0_20px_rgba(124,58,237,0.3)]"
             >
-              Details ansehen
+              {project.buttonText || 'Details ansehen'}
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-2" />
             </a>
+          ) : project.details ? (
+            <button
+              onClick={() => onDetailsClick?.(project)}
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] hover:from-brand-violet/30 hover:to-brand-teal/30 transition-all group/btn2 shadow-[0_0_15px_rgba(124,58,237,0.1)] hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] cursor-pointer"
+            >
+              {project.buttonText || 'Details ansehen'}
+              <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-2" />
+            </button>
           ) : (
             <div
               className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] transition-all group/btn2 cursor-default"
             >
-              Details ansehen
+              {project.buttonText || 'Details ansehen'}
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300" />
             </div>
           )}

@@ -95,7 +95,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                               name="name"
                               placeholder="Ihr Name" 
                               required
-                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/50 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
+                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
                             />
                           </div>
                           <div className="flex flex-col gap-1">
@@ -106,7 +106,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                               name="email"
                               placeholder="ihre@email.de" 
                               required
-                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/50 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
+                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
                             />
                           </div>
                         </div>
@@ -118,7 +118,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                             placeholder="Ihre Nachricht" 
                             required
                             rows={3}
-                            className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/50 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all resize-none"
+                            className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all resize-none"
                           />
                         </div>
                         <div className="flex items-start gap-2 mt-1">
@@ -131,7 +131,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                             className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-brand-teal focus:ring-brand-teal focus:ring-offset-0 cursor-pointer"
                             required
                           />
-                          <label htmlFor="privacy" className="text-[11px] md:text-[12px] text-white/60 leading-relaxed cursor-pointer">
+                          <label htmlFor="privacy" className="text-[11px] md:text-[12px] text-white leading-relaxed cursor-pointer">
                             Ich stimme der Verarbeitung meiner Daten gemäß der <button type="button" onClick={() => handleNavigate('Datenschutz')} className="text-brand-teal hover:underline">Datenschutzerklärung</button> zu.
                           </label>
                         </div>

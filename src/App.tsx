@@ -45,7 +45,7 @@ const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_ROUTES).map(([key, value]) => [value, key])
 );
 
-const PAGES = ['Start', 'Über mich', 'Skills', 'Projekte', 'Qualifikation', 'Zertifikate'];
+const PAGES = ['Über mich', 'Projekte', 'Skills', 'Qualifikation', 'Zertifikate'];
 
 export default function App() {
   useSEO(); // Initialize dynamic SEO tags
@@ -329,51 +329,55 @@ export default function App() {
       <MouseGlow />
       <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden overflow-y-auto`}>
         {/* Navbar */}
-        <nav className={`sticky top-0 flex items-center justify-between px-6 py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
+        <nav className={`sticky top-0 flex items-center justify-between px-4 py-2 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
             {/* Logo */}
             <a 
               href={PAGE_ROUTES['Start']} 
-              className="flex items-center h-[28px] cursor-pointer" 
+              className="flex items-center gap-3 h-[24px] md:h-[28px] cursor-pointer group" 
               onClick={(e) => {
                 e.preventDefault();
                 handleNavigate('Start');
               }}
             >
-            <img 
+              <img 
                 src="https://meine-assets.pages.dev/logo.png" 
                 alt="Logo Robert Erbach" 
                 width="66"
                 height="49"
                 decoding="async"
                 fetchPriority="high"
-                className="h-full w-auto object-contain"
+                className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
               />
+              <span className="font-audiowide font-bold text-white/90 text-[12px] md:text-[15px] ml-1 md:ml-2">
+                Robert Erbach
+              </span>
             </a>
           </div>
 
           {/* Centered Navigation Bar */}
           <div className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-1">
-            {PAGES.map((page) => (
-              <a
-                key={page}
-                href={PAGE_ROUTES[page]}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavigate(page);
-                }}
-                className={`px-2 xl:px-4 py-1.5 rounded-full text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative overflow-hidden group hover:scale-110 ${
-                  currentPage === page
-                    ? 'text-white'
-                    : 'text-white/60 hover:text-white'
-                }`}
-              >
-                {currentPage === page && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-brand-violet/20 via-brand-teal/20 to-brand-violet/20 rounded-full" />
+            {PAGES.map((page, index) => (
+              <React.Fragment key={page}>
+                <a
+                  href={PAGE_ROUTES[page]}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigate(page);
+                  }}
+                  className={`px-2 xl:px-4 py-1.5 text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative group hover:scale-110 ${
+                    currentPage === page
+                      ? 'text-white'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  <span className="relative z-10">{page}</span>
+                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
+                </a>
+                {index < PAGES.length - 1 && (
+                  <span className="w-[1px] h-3 bg-white/20 mx-1" />
                 )}
-                <span className="relative z-10">{page}</span>
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
-              </a>
+              </React.Fragment>
             ))}
           </div>
 
@@ -387,18 +391,18 @@ export default function App() {
                 e.preventDefault();
                 handleNavigate('Kontakt');
               }}
-              className="hidden sm:flex items-center justify-center rounded-full px-[20px] py-[8px] bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/5 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(124,58,237,0.1)] hover:bg-black hover:from-black hover:to-black transition-all duration-500 hover:scale-105 cursor-pointer"
+              className="hidden sm:flex items-center justify-center rounded-full px-6 py-2 bg-gradient-to-r from-brand-violet/20 to-brand-teal/20 backdrop-blur-md border border-white/10 text-white text-[11px] font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:scale-105 hover:from-brand-violet/40 hover:to-brand-teal/40 hover:border-white/20 hover:shadow-[0_0_20px_rgba(5,184,194,0.3)] shadow-[0_0_15px_rgba(124,58,237,0.1)] cursor-pointer active:scale-95"
             >
               <span className="relative z-10">Kontakt</span>
             </a>
 
             {/* Mobile Menu Toggle */}
             <button 
-              className="lg:hidden text-white p-2 -mr-2 cursor-pointer"
+              className="lg:hidden text-white p-1.5 md:p-2 -mr-1.5 md:-mr-2 cursor-pointer"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMobileMenuOpen ? <X className="w-6 h-6 md:w-7 md:h-7" /> : <Menu className="w-6 h-6 md:w-7 md:h-7" />}
             </button>
           </div>
 
@@ -439,7 +443,7 @@ export default function App() {
                     e.preventDefault();
                     handleNavigate('Kontakt');
                   }}
-                  className="mt-4 flex items-center justify-center w-full sm:hidden rounded-full px-[28px] py-[10px] bg-black/30 backdrop-blur-md border border-white/10 text-white text-[14px] font-semibold tracking-wide shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:bg-gradient-to-r hover:from-black hover:to-blue-900/50 transition-all duration-500 hover:scale-105 cursor-pointer"
+                  className="mt-4 flex items-center justify-center w-full sm:hidden rounded-full px-5 py-3 bg-gradient-to-r from-brand-violet/20 to-brand-teal/20 backdrop-blur-md border border-white/10 text-white text-[12px] font-bold tracking-[0.15em] uppercase transition-all duration-500 hover:from-brand-violet/40 hover:to-brand-teal/40 hover:shadow-[0_0_20px_rgba(5,184,194,0.3)] shadow-[0_0_15px_rgba(124,58,237,0.1)] cursor-pointer"
                 >
                   <span className="relative z-10">Kontakt</span>
                 </motion.a>
@@ -463,7 +467,7 @@ export default function App() {
                 {currentPage === 'Start' ? (
                   <HeroSection handleNavigate={handleNavigate} />
                 ) : currentPage === 'Über mich' ? (
-                  <UberMichSection />
+                  <UberMichSection handleNavigate={handleNavigate} />
                 ) : currentPage === 'Skills' ? (
                   <SkillsSection />
                 ) : currentPage === 'Projekte' ? (

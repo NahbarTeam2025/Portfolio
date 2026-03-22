@@ -89,11 +89,11 @@ export const QualifikationSection = React.memo(({
                   aria-label={isExpanded ? "Qualifikation-Details einklappen" : "Qualifikation-Details ausklappen"}
                   className={`w-full text-left p-4 md:p-5 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[80px]'}`}
                 >
-                <div className="flex flex-col gap-1">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-sm md:text-base font-semibold text-white leading-tight group-hover/btn:text-brand-teal transition-colors">{qual.title}</h3>
-                    <span className="hidden sm:inline-block text-brand-teal font-mono text-[10px] bg-brand-teal/10 px-2 py-0.5 rounded-md">{qual.date}</span>
-                  </div>
+                  <div className="flex flex-col gap-1">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-sm md:text-base font-semibold text-white leading-tight group-hover/btn:text-brand-teal transition-colors">{qual.title}</h3>
+                      <span className="hidden sm:inline-block text-white font-mono text-[10px] bg-brand-teal/20 border border-brand-teal/30 px-2 py-0.5 rounded-md">{qual.date}</span>
+                    </div>
                   <span className="text-white/60 text-[12px] md:text-[14px]">{qual.company}</span>
                 </div>
                 <div className={`w-7 h-7 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-violet/20 border-brand-violet/40' : ''}`}>
@@ -109,9 +109,9 @@ export const QualifikationSection = React.memo(({
                 <div className="px-4 pb-4 md:px-5 md:pb-5 flex flex-col gap-3 h-full">
                   <div className="w-full h-[1px] bg-white/5 shrink-0" />
                   <div className="pr-2 overflow-y-auto">
-                    <div className="sm:hidden mb-3">
-                      <span className="text-brand-teal font-mono text-[10px] bg-brand-teal/10 px-2 py-0.5 rounded-md">{qual.date}</span>
-                    </div>
+                      <div className="sm:hidden mb-3">
+                        <span className="text-white font-mono text-[10px] bg-brand-teal/20 border border-brand-teal/30 px-2 py-0.5 rounded-md">{qual.date}</span>
+                      </div>
                     {qual.desc && (
                       <p className="text-white/70 text-[13px] md:text-[14px] leading-relaxed whitespace-pre-line mb-3">{qual.desc}</p>
                     )}
@@ -122,8 +122,8 @@ export const QualifikationSection = React.memo(({
                             key={j} 
                             className={`px-2.5 py-1 rounded-full border text-[11px] md:text-[12px] font-medium transition-all duration-300 hover:scale-105 hover:bg-white/5 ${
                               j % 2 === 0 
-                                ? 'border-brand-teal/30 text-brand-teal/80' 
-                                : 'border-brand-violet/30 text-brand-violet/80'
+                                ? 'border-brand-teal/40 text-brand-teal' 
+                                : 'border-brand-violet/40 text-brand-violet'
                             }`}
                           >
                             {item}

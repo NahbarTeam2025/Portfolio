@@ -4,7 +4,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
   return (
     <div id="hero" className="flex flex-col items-center gap-6 md:gap-8 lg:gap-12 max-w-[680px] lg:max-w-[900px] animate-in fade-in duration-500 subtle-float relative z-10">
       {/* Badge / Pill */}
-      <div className="flex items-center gap-2 rounded-[20px] bg-white/5 border border-white/10 px-4 py-1.5 backdrop-blur-md">
+      <div className="flex items-center gap-2 px-4 py-1.5">
         <div className="w-1.5 h-1.5 bg-brand-violet rounded-full shadow-[0_0_10px_rgba(124,58,237,0.8)] animate-pulse" />
         <span className="text-[12px] md:text-[14px] font-medium tracking-wide">
           <span className="text-white/90">Portfolio & Projekte</span>
@@ -27,7 +27,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             Content Creation • SEO • Design • Automatisierung • KI
           </p>
           <p className="text-white/70 text-[14px] md:text-[16px] lg:text-[20px] font-normal max-w-[680px] lg:max-w-[800px] leading-relaxed text-center">
-            Ich verbinde Content, Design und KI-Workflows zu digitalen Lösungen, die strukturiert aufgebaut sind und in der Praxis funktionieren.
+            Ich verbinde Content, Design und KI-Workflows zu klaren, durchdachten Lösungen – strukturiert entwickelt und auf den Punkt gebracht.
           </p>
         </div>
       </div>
@@ -35,10 +35,10 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 mt-2 lg:mt-4">
         <button 
-          onClick={() => handleNavigate('Kontakt')}
+          onClick={() => handleNavigate('Projekte')}
           className="flex items-center justify-center gap-2 rounded-full px-[40px] py-[12px] bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/5 text-white text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(124,58,237,0.1)] hover:from-brand-violet/30 hover:to-brand-teal/30 transition-all duration-500 hover:scale-105 cursor-pointer group/cta animate-pulse-subtle"
         >
-          <span className="relative z-10">Kontakt aufnehmen</span>
+          <span className="relative z-10">Projekte entdecken</span>
           <svg className="w-5 h-5 transform transition-transform duration-300 group-hover/cta:translate-x-2 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>

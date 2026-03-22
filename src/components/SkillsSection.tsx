@@ -39,22 +39,22 @@ export const SkillsSection = React.memo(() => {
   ];
 
   return (
-    <div className="flex flex-col items-start gap-3 md:gap-4 w-full animate-in fade-in duration-500">
-      <h1 className="heading-gradient text-[28px] md:text-[36px] lg:text-[48px] font-medium leading-[1.2] tracking-tight shrink-0">
+    <div className="flex flex-col items-start gap-2 md:gap-3 w-full animate-in fade-in duration-500">
+      <h1 className="heading-gradient text-[28px] md:text-[32px] lg:text-[40px] font-medium leading-[1.1] tracking-tight shrink-0">
         Skills & Kompetenzen
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-4 md:gap-y-4 w-full max-w-[1400px] py-2 md:py-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-3 md:gap-y-3 w-full max-w-[1400px] py-1 md:py-1">
         {skillGroups.map((group, groupIndex) => (
-          <div key={group.category} className="wow-card flex flex-col gap-2 md:gap-4 p-4 md:p-6 lg:p-7">
+          <div key={group.category} className="wow-card flex flex-col gap-2 md:gap-3 p-4 md:p-5 lg:p-6">
             <div className="wow-card-border" />
-            <h2 className="text-brand-teal text-[10px] md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold opacity-90 relative z-10">{group.category}</h2>
-            <div className="flex flex-col gap-2 md:gap-4 lg:gap-5 relative z-10">
+            <h2 className="text-brand-teal text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.25em] font-bold opacity-90 relative z-10">{group.category}</h2>
+            <div className="flex flex-col gap-2 md:gap-3 lg:gap-4 relative z-10">
               {group.skills.map((skill, skillIndex) => {
                 const globalIndex = groupIndex * 4 + skillIndex;
                 return (
-                  <div key={skill.name} className="flex flex-col gap-1.5 md:gap-3 w-full group/skill relative">
-                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/90 border border-white/10 rounded-xl text-white text-[12px] md:text-[14px] w-max max-w-[280px] md:max-w-[350px] whitespace-normal text-center opacity-0 group-hover/skill:opacity-100 transition-all duration-300 pointer-events-none z-50 backdrop-blur-xl shadow-2xl translate-y-2 group-hover/skill:translate-y-0">
+                  <div key={skill.name} className="flex flex-col gap-1.5 md:gap-2 w-full group/skill relative">
+                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/90 border border-white/10 rounded-xl text-white text-[12px] md:text-[13px] w-max max-w-[280px] md:max-w-[350px] whitespace-normal text-center opacity-0 group-hover/skill:opacity-100 transition-all duration-300 pointer-events-none z-50 backdrop-blur-xl shadow-2xl translate-y-2 group-hover/skill:translate-y-0">
                       <div className="flex items-center justify-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-brand-teal animate-pulse shrink-0" />
                         <span className="font-medium leading-snug">{skill.tooltip}</span>
@@ -62,8 +62,7 @@ export const SkillsSection = React.memo(() => {
                       <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-black/90 border-r border-b border-white/10 rotate-45"></div>
                     </div>
                     <div className="flex justify-between items-end w-full">
-                      <span className="text-white font-medium text-[13px] md:text-[15px] lg:text-[16px] leading-none">{skill.name}</span>
-                      <span className="text-brand-teal font-mono text-[10px] md:text-[13px] leading-none">{skill.value}%</span>
+                      <span className="text-white font-medium text-[13px] md:text-[14px] lg:text-[15px] leading-none">{skill.name}</span>
                     </div>
                     <div className="w-full h-1 md:h-1.5 bg-white/10 rounded-full overflow-hidden cursor-help">
                       <div 

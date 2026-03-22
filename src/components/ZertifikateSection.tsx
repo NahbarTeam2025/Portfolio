@@ -1,7 +1,10 @@
-import React, { startTransition } from 'react';
-import { ExternalLink } from 'lucide-react';
+import React, { startTransition, useState } from 'react';
+import { ExternalLink, ChevronDown, Eye, EyeOff } from 'lucide-react';
 
 export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, isCertUnlocked, certPasswordInput, setCertPasswordInput, certError, setIsCertUnlocked, setCertError }: any) => {
+  const [showAllCerts, setShowAllCerts] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   const certs = [
     { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
     { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
@@ -15,20 +18,30 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
     { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic' }
   ];
 
+  // On mobile, we only show the first 4 if not expanded
+  const visibleCerts = certs.filter((_, i) => {
+    if (expandedCert !== null) return expandedCert === i;
+    return true;
+  });
+
   return (
     <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500">
       <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight shrink-0">
         Zertifikate
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 max-w-[1200px]' : 'max-w-[800px] mx-auto'} gap-4 md:gap-6 w-full pb-32`}>
-        {certs.filter((_, i) => expandedCert === null || expandedCert === i).map((cert, i) => {
-          const actualIndex = expandedCert === null ? i : expandedCert;
+      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 max-w-[1200px]' : 'max-w-[800px] mx-auto'} gap-4 md:gap-6 w-full pb-12 md:pb-32`}>
+        {visibleCerts.map((cert, i) => {
+          const actualIndex = certs.findIndex(c => c.id === cert.id);
           const isExpanded = expandedCert !== null;
+          
+          // Mobile visibility logic
+          const isHiddenOnMobile = !showAllCerts && actualIndex >= 4 && !isExpanded;
+
           return (
             <div 
               key={cert.id} 
-              className={`relative group ${isExpanded ? 'flex-1 min-h-0' : ''}`}
+              className={`relative group ${isExpanded ? 'flex-1 min-h-0' : ''} ${isHiddenOnMobile ? 'hidden md:block' : 'block'}`}
             >
               <div 
                 className={`wow-card flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-brand-teal/30' : 'overflow-hidden'}`}
@@ -70,30 +83,39 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                         </div>
                         <div className="space-y-2">
                           <h4 className="text-white font-medium text-lg">Geschützter Bereich</h4>
-                          <p className="text-white/60 text-sm max-w-[300px]">Bitte geben Sie das Passwort ein, um die Zertifikate einzusehen.</p>
+                          <p className="text-white/60 text-sm max-w-[300px]">Bitte gib das Passwort ein, um die Zertifikate einzusehen.</p>
                         </div>
                         <div className="w-full max-w-[280px] space-y-3">
-                          <input 
-                            type="password" 
-                            placeholder="Passwort"
-                            value={certPasswordInput}
-                            onChange={(e) => setCertPasswordInput(e.target.value)}
-                            onKeyDown={(e) => {
-                              if (e.key === 'Enter') {
-                                if (certPasswordInput === 'Robert2026') {
-                                  setIsCertUnlocked(true);
-                                  setCertError(false);
-                                } else {
-                                  setCertError(true);
+                          <div className="relative">
+                            <input 
+                              type={showPassword ? "text" : "password"} 
+                              placeholder="Passwort"
+                              value={certPasswordInput}
+                              onChange={(e) => setCertPasswordInput(e.target.value)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                  if (certPasswordInput === 'REZ2026') {
+                                    setIsCertUnlocked(true);
+                                    setCertError(false);
+                                  } else {
+                                    setCertError(true);
+                                  }
                                 }
-                              }
-                            }}
-                            className={`w-full bg-white/5 border ${certError ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 transition-all`}
-                          />
+                              }}
+                              className={`w-full bg-white/5 border ${certError ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 pr-12 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 transition-all`}
+                            />
+                            <button
+                              type="button"
+                              onClick={() => setShowPassword(!showPassword)}
+                              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors p-1"
+                            >
+                              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            </button>
+                          </div>
                           {certError && <p className="text-red-400 text-xs">Ungültiges Passwort</p>}
                           <button 
                             onClick={() => {
-                              if (certPasswordInput === 'Robert2026') {
+                              if (certPasswordInput === 'REZ2026') {
                                 setIsCertUnlocked(true);
                                 setCertError(false);
                               } else {
@@ -140,6 +162,19 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
           );
         })}
       </div>
+
+      {/* Show More Button for Mobile */}
+      {!showAllCerts && certs.length > 4 && expandedCert === null && (
+        <div className="w-full flex justify-center md:hidden pb-32 -mt-8">
+          <button 
+            onClick={() => setShowAllCerts(true)}
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 hover:text-white transition-all group"
+          >
+            Alle Zertifikate anzeigen
+            <ChevronDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
+          </button>
+        </div>
+      )}
     </div>
   );
 });
