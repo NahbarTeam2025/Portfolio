@@ -349,9 +349,6 @@ export default function App() {
                 fetchPriority="high"
                 className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
               />
-              <span className="font-audiowide font-bold text-white/90 text-[12px] md:text-[15px] ml-1 md:ml-2">
-                Robert Erbach
-              </span>
             </a>
           </div>
 

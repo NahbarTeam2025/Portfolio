@@ -15,6 +15,7 @@
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-audiowide: "Audiowide", system-ui, sans-serif;
+  --font-alex-brush: "Alex Brush", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --color-brand-dark: #0d1b2a;
   --color-brand-violet: #7c3aed;
@@ -70,6 +71,10 @@ video {
   .animate-gradient-shift {
     background-size: 200% 200%;
     animation: gradient-shift 5s ease infinite;
+  }
+
+  .font-alex-brush-custom {
+    font-family: 'Alex Brush', cursive;
   }
 
   .modern-glass {
