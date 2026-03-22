@@ -2,8 +2,9 @@
 @plugin "tailwindcss-animate";
 
 @layer base {
-  :root {
+  html {
     color-scheme: dark;
+    forced-color-adjust: none;
   }
   * {
     -ms-overflow-style: none; /* IE and Edge */
