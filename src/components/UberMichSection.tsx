@@ -2,12 +2,12 @@ import React from 'react';
 
 export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   return (
-    <div className="flex flex-col items-start gap-2.5 md:gap-4 lg:gap-6 w-full h-full overflow-hidden animate-in fade-in duration-500">
+    <div className="flex flex-col items-start gap-2.5 md:gap-4 lg:gap-6 w-full h-full animate-in fade-in duration-500">
       <h1 className="heading-gradient text-[24px] md:text-[36px] lg:text-[46px] font-medium leading-[1.1] tracking-tight shrink-0">
         Über mich
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className="flex flex-col gap-2 md:gap-3 text-white/80 text-[13px] sm:text-[15px] md:text-[16px] lg:text-[17px] font-normal max-w-[1000px] leading-snug md:leading-relaxed pt-1 md:pt-2 overflow-hidden">
+      <div className="flex flex-col gap-2 md:gap-3 text-white/80 text-[13px] sm:text-[15px] md:text-[16px] lg:text-[17px] font-normal max-w-[1000px] leading-snug md:leading-relaxed pt-1 md:pt-2">
         <p className="font-bold text-white text-[15px] sm:text-[17px] md:text-[18px]">
           Ich fordere mich selbst. Jeden Tag.
         </p>
@@ -37,10 +37,10 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
         </div>
         
         {/* CTA Button */}
-        <div className="mt-3 md:mt-4 lg:mt-6 w-full flex justify-start">
+        <div className="mt-3 md:mt-4 lg:mt-6 w-full flex justify-start p-4 -ml-4 -mb-4">
           <button 
             onClick={() => handleNavigate('Kontakt')}
-            className="flex items-center justify-center gap-2 rounded-full px-6 py-2.5 md:px-[36px] md:py-[10px] bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/5 text-white text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(124,58,237,0.1)] hover:from-brand-violet/30 hover:to-brand-teal/30 transition-colors duration-300 cursor-pointer"
+            className="flex items-center justify-center gap-2 rounded-full px-6 py-2.5 md:px-[36px] md:py-[10px] bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
           >
             <span className="relative z-10">Schreib mir jetzt</span>
             <span className="relative z-10">→</span>
