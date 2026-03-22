@@ -142,6 +142,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                         >
                           {isSubmitting ? 'Wird gesendet...' : 'Absenden'}
                         </button>
+                        <p className="text-white/50 text-[11px] md:text-xs text-center mt-1">Antwort meist innerhalb 24 Stunden</p>
                       </form>
                     </div>
                   </div>

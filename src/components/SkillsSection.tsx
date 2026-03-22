@@ -85,13 +85,13 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
       {/* CTA Button */}
       <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-4 gap-3 mt-auto shrink-0">
         <p className="text-white/60 text-sm md:text-base text-center">
-          Passt das zu dem, was du suchst?
+          Passt das zu deinem nächsten Projekt?
         </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
           className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
         >
-          <span className="relative z-10">Hast du Fragen dazu?</span>
+          <span className="relative z-10">Lass uns reden</span>
           <span className="relative z-10">→</span>
         </button>
       </div>
