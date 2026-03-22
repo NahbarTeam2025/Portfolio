@@ -249,7 +249,7 @@ export default function App() {
 
   return (
     <div 
-      className="relative h-[100dvh] w-full font-sans overflow-hidden"
+      className="relative min-h-screen w-full font-sans"
       onMouseMove={handleMouseMove}
     >
       {/* Background Videos Layer */}
@@ -327,7 +327,7 @@ export default function App() {
 
       {/* Content Overlay */}
       <MouseGlow />
-      <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden overflow-y-auto`}>
+      <div className={`relative z-10 flex flex-col min-h-screen overflow-x-hidden`}>
         {/* Navbar */}
         <nav className={`sticky top-0 flex items-center justify-between px-4 py-2 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/60 backdrop-blur-xl border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
@@ -453,7 +453,7 @@ export default function App() {
         </nav>
 
         {/* Main Content */}
-        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'Start' ? 'items-center justify-center text-center' : 'items-start justify-start py-4 md:py-6 lg:py-8 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
+        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'Start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-4 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentPage}
@@ -461,7 +461,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className={`w-full flex flex-col ${currentPage === 'Start' ? 'h-full items-center justify-center' : ''}`}
+              className={`w-full flex flex-col flex-grow ${currentPage === 'Start' ? 'items-center justify-center' : ''}`}
             >
               <Suspense fallback={<div className="text-white/50">Lade...</div>}>
                 {currentPage === 'Start' ? (

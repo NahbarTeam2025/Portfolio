@@ -25,12 +25,12 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
   });
 
   return (
-    <div className="flex flex-col items-start gap-4 md:gap-6 w-full animate-in fade-in duration-500">
+    <div className="flex flex-col items-start gap-4 md:gap-6 w-full flex-grow animate-in fade-in duration-500">
       <h1 className="heading-gradient text-[24px] md:text-[32px] lg:text-[40px] font-medium leading-[1.28] tracking-tight shrink-0">
         Zertifikate
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 max-w-[1200px]' : 'max-w-[800px] mx-auto'} gap-4 md:gap-6 w-full pb-6`}>
+      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-3 md:gap-4 w-full pb-0 md:pb-4`}>
         {visibleCerts.map((cert, i) => {
           const actualIndex = certs.findIndex(c => c.id === cert.id);
           const isExpanded = expandedCert !== null;
@@ -53,13 +53,13 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                       setExpandedCert(isExpanded ? null : actualIndex);
                     });
                   }}
-                  className={`w-full text-left p-5 md:p-6 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[90px]'}`}
+                  className={`w-full text-left p-4 md:p-5 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[80px]'}`}
                 >
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-1 pr-2">
                     <div className="flex items-center gap-3">
-                      <h3 className="text-base md:text-lg font-semibold text-white leading-tight group-hover/btn:text-brand-teal transition-colors">{cert.title}</h3>
+                      <h3 className="text-[14px] md:text-[15px] font-semibold text-white leading-tight group-hover/btn:text-brand-teal transition-colors">{cert.title}</h3>
                     </div>
-                    <span className="text-white/60 text-[12px] md:text-[14px]">{cert.issuer}</span>
+                    <span className="text-white/60 text-[11px] md:text-[12px]">{cert.issuer}</span>
                   </div>
                   <div className={`w-8 h-8 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-violet/20 border-brand-violet/40' : ''}`}>
                     <svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -165,10 +165,10 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
 
       {/* Show More Button for Mobile */}
       {!showAllCerts && certs.length > 4 && expandedCert === null && (
-        <div className="w-full flex justify-center md:hidden pb-4 pt-2 shrink-0">
+        <div className="w-full flex justify-center md:hidden pb-0 pt-0 shrink-0">
           <button 
             onClick={() => setShowAllCerts(true)}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 hover:text-white transition-all group"
+            className="flex items-center gap-2 px-6 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 hover:text-white transition-all group"
           >
             Alle Zertifikate anzeigen
             <ChevronDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
@@ -177,7 +177,10 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
       )}
 
       {/* CTA Button */}
-      <div className="w-full flex justify-center pt-2 pb-8 shrink-0">
+      <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-0 md:pt-4 gap-2 md:gap-3 mt-auto shrink-0">
+        <p className="text-white/60 text-sm md:text-base text-center">
+          Die Zertifikate geben einen guten Überblick – bei Interesse mehr.
+        </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
           className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"

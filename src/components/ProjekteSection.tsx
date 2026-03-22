@@ -6,6 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigate }: any) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [showAllProjects, setShowAllProjects] = useState(false);
   
   const projects = [
     {
@@ -63,14 +64,14 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
   ];
 
   return (
-    <div className="flex flex-col items-start gap-4 md:gap-6 w-full animate-in fade-in duration-500">
+    <div className="flex flex-col items-start gap-4 md:gap-6 w-full flex-grow animate-in fade-in duration-500">
       <h1 className="heading-gradient text-[24px] md:text-[32px] lg:text-[40px] font-medium leading-[1.28] tracking-tight shrink-0">
         Projekte
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full max-w-[1400px] pb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full max-w-[1400px] pb-0 md:pb-4">
         {projects.map((project, i) => (
-          <div key={i} className="block">
+          <div key={i} className={`block ${!showAllProjects && i > 0 ? 'hidden md:block' : ''}`}>
             <BentoCard 
               project={project}
               index={i}
@@ -80,8 +81,22 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
         ))}
       </div>
 
+      {!showAllProjects && projects.length > 1 && (
+        <div className="w-full flex justify-center md:hidden mt-1 mb-1">
+          <button
+            onClick={() => setShowAllProjects(true)}
+            className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 transition-colors"
+          >
+            Alle Projekte ansehen
+          </button>
+        </div>
+      )}
+
       {/* CTA Button */}
-      <div className="w-full flex justify-center pb-8">
+      <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-0 md:pt-4 gap-3 mt-auto shrink-0">
+        <p className="text-white/60 text-sm md:text-base text-center">
+          Das waren ein paar Beispiele meiner Arbeit – gerne mehr dazu.
+        </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
           className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"

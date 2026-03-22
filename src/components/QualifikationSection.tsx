@@ -36,12 +36,12 @@ export const QualifikationSection = React.memo(({
   ];
 
   return (
-    <div className="flex flex-col items-start gap-4 md:gap-6 w-full animate-in fade-in duration-500">
+    <div className="flex flex-col items-start gap-4 md:gap-6 w-full flex-grow animate-in fade-in duration-500">
       <h1 className="heading-gradient text-[24px] md:text-[32px] lg:text-[40px] font-medium leading-[1.2] tracking-tight shrink-0">
         Berufliche Qualifikation
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className={`relative flex flex-col gap-4 w-full max-w-[1200px] pb-6 transition-all duration-500 ${expandedQual === null ? 'pl-8 md:pl-16' : 'pl-0'}`}>
+      <div className={`relative flex flex-col gap-4 w-full max-w-[1200px] pb-0 md:pb-6 transition-all duration-500 ${expandedQual === null ? 'pl-8 md:pl-16' : 'pl-0'}`}>
         {/* Vertical Timeline Line */}
         {showTimeline && (
           <motion.div 
@@ -143,7 +143,10 @@ export const QualifikationSection = React.memo(({
       </div>
 
       {/* CTA Button */}
-      <div className="w-full flex justify-center pb-8 pt-4 shrink-0">
+      <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-0 md:pt-4 gap-3 mt-auto shrink-0">
+        <p className="text-white/60 text-sm md:text-base text-center">
+          Das ist mein beruflicher Weg bisher – neugierig auf mehr Details?
+        </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
           className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
