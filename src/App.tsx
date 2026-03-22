@@ -348,6 +348,7 @@ export default function App() {
                 decoding="async"
                 fetchPriority="high"
                 className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                style={{ forcedColorAdjust: 'none' }}
               />
             </a>
           </div>

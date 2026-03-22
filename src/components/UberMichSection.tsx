@@ -31,6 +31,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
             width="250"
             height="64"
             className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto object-contain invert mix-blend-screen opacity-90"
+              style={{ forcedColorAdjust: 'none' }}
             loading="lazy"
             decoding="async"
           />
