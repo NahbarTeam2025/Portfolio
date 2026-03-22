@@ -151,8 +151,7 @@ export const QualifikationSection = React.memo(({
           onClick={() => handleNavigate('Kontakt')}
           className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
         >
-          <span className="relative z-10">Fragen zur Laufbahn?</span>
-          <span className="relative z-10">→</span>
+          <span className="relative z-10">Klingt passend? Meld dich →</span>
         </button>
       </div>
     </div>

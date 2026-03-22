@@ -85,7 +85,7 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
       {/* CTA Button */}
       <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-4 gap-3 mt-auto shrink-0">
         <p className="text-white/60 text-sm md:text-base text-center">
-          Passt das zu dem, was du suchst oder brauchst?
+          Passt das zu dem, was du suchst?
         </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
