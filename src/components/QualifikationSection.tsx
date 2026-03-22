@@ -48,7 +48,7 @@ export const QualifikationSection = React.memo(({
             initial={{ scaleY: 0, originY: 0, opacity: 0 }}
             animate={{ scaleY: 1, opacity: 0.2 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute left-[15px] md:left-[31px] top-[30px] bottom-[76px] w-[1px] bg-gradient-to-b from-brand-teal via-brand-violet to-brand-teal" 
+            className="absolute left-[15px] md:left-[31px] top-[30px] bottom-[20px] md:bottom-[76px] w-[1px] bg-gradient-to-b from-brand-teal via-brand-violet to-brand-teal" 
           />
         )}
         
