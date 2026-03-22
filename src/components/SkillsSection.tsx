@@ -64,9 +64,9 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
                     <div className="flex justify-between items-end w-full">
                       <span className="text-white font-medium text-[13px] md:text-[14px] lg:text-[15px] leading-none">{skill.name}</span>
                     </div>
-                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden cursor-help">
+                    <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden cursor-help">
                       <div 
-                        className="h-full bg-gradient-to-r from-brand-violet to-brand-teal rounded-full shadow-[0_0_15px_rgba(5,184,194,0.4)] animate-gradient-shift animate-skill-fill" 
+                        className="h-full bg-gradient-to-r from-violet-400 to-teal-400 rounded-full shadow-[0_0_20px_rgba(5,184,194,0.6)] animate-gradient-shift animate-skill-fill" 
                         style={{ 
                           width: `${skill.value}%`,
                           animationDelay: `${globalIndex * 200}ms`,

@@ -24,7 +24,7 @@
 
 @layer utilities {
   .heading-gradient {
-    background: linear-gradient(144.5deg, #ffffff 35%, rgba(255, 255, 255, 0.7) 100%);
+    background: linear-gradient(144.5deg, #ffffff 35%, #d1d5db 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -36,13 +36,13 @@ video {
 }
 
 .text-glow-animated {
-    background: linear-gradient(90deg, #ffffff 0%, #a5f3fc 30%, #7c3aed 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #bae6fd 30%, #8b5cf6 100%);
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
     animation: gradient-shift 12s ease-in-out infinite;
-    text-shadow: 0 0 30px rgba(124, 58, 237, 0.3);
+    text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
     will-change: background-position;
   }
 
