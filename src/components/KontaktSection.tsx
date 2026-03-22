@@ -93,7 +93,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                               type="text" 
                               id="name" 
                               name="name"
-                              placeholder="Ihr Name" 
+                              placeholder="z. B. Max Mustermann" 
                               required
                               className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
                             />
@@ -104,7 +104,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                               type="email" 
                               id="email" 
                               name="email"
-                              placeholder="ihre@email.de" 
+                              placeholder="name@beispiel.de" 
                               required
                               className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
                             />
@@ -115,7 +115,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                           <textarea 
                             id="message" 
                             name="message"
-                            placeholder="Ihre Nachricht" 
+                            placeholder="Ich habe eine Frage zu …" 
                             required
                             rows={3}
                             className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all resize-none"
