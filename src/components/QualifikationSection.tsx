@@ -95,7 +95,7 @@ export const QualifikationSection = React.memo(({
                       <h3 className="text-sm md:text-base font-semibold text-white leading-tight group-hover/btn:text-blue-400 transition-colors">{qual.title}</h3>
                       <span className="hidden sm:inline-block text-white font-mono text-[10px] bg-blue-400/20 border border-blue-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
                     </div>
-                  <span className="text-white/60 text-[12px] md:text-[14px]">{qual.company}</span>
+                  <span className="text-white/80 text-[12px] md:text-[14px]">{qual.company}</span>
                 </div>
                 <div className={`w-7 h-7 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-blue/20 border-brand-blue/40' : ''}`}>
                   <svg className="w-3 h-3 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">

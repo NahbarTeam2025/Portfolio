@@ -8,21 +8,20 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
       <div className="flex flex-col gap-2 md:gap-3 text-white/80 text-[13px] sm:text-[15px] md:text-[16px] lg:text-[17px] font-normal max-w-[1000px] leading-snug md:leading-relaxed pt-1 md:pt-2">
-        <p className="font-bold text-white text-[15px] sm:text-[17px] md:text-[18px]">
-          Ich fordere mich selbst. Jeden Tag.
+        <p className="font-bold text-white">
+          Ich arbeite strukturiert und mit dem Anspruch, Dinge wirklich zu verstehen – nicht nur umzusetzen.
         </p>
         <p>
-          Nicht aus Pflichtgefühl – sondern weil halbfertig für mich keine Option ist. Ich nehme mir die Zeit, Dinge wirklich zu durchdenken. Ich höre nicht auf jeden. Aber wenn ich jemanden frage, dann meine ich es ernst – und setze es um.
+          Was man nicht sofort sieht: wie viel im Hintergrund passiert. Ich denke weiter, hinterfrage und erkenne Zusammenhänge, bevor sie offensichtlich werden. Dabei geht es mir nicht darum, möglichst viel zu machen, sondern die richtigen Dinge zu tun.
         </p>
         <p>
-          Ich denke strategisch, manchmal zu weit voraus. Ich will zeigen, was möglich ist – nicht was gerade bequem ist. Websites, Content-Strukturen, KI-Workflows: Ich baue Dinge, die tatsächlich funktionieren. Vom ersten Gedanken bis zum letzten Detail, ohne Abkürzungen.
+          Ich arbeite mich in Themen ein, analysiere, vereinfache und entwickle daraus Lösungen, die klar aufgebaut sind und funktionieren. Nicht als schnelle Idee, sondern als durchdachtes System.
         </p>
         <p>
-          Ich bin ruhig, bis ich brenne. Und wenn ich brenne, merkst du es.
-          Wenn du jemanden suchst, der liefert – nicht nur plant, sondern wirklich durchzieht – dann bist du hier richtig.
+          Komplexität zu durchdringen und auf das Wesentliche zu reduzieren, ist für mich die Grundlage guter Arbeit. Ich gehe Projekte mit Ehrgeiz und einem hohen Anspruch an Qualität an – mit dem Ziel, Ergebnisse zu schaffen, die nicht nur gut aussehen, sondern nachhaltig überzeugen.
         </p>
-        <p className="text-blue-400 font-medium tracking-wider text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] uppercase leading-relaxed">
-          Direkt. Tiefgründig. Konsequent umsetzungsstark.
+        <p className="text-blue-400 font-medium tracking-wider text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] uppercase leading-relaxed pt-2">
+          Klar im Denken. Strukturiert in der Umsetzung. Verlässlich im Ergebnis.
         </p>
         <div className="mt-1 md:mt-2 shrink-0">
           <img 

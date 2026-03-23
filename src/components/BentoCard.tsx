@@ -62,7 +62,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
       <div className="relative z-10 p-8 md:p-10 flex flex-col h-full items-center text-center">
         <div className="flex flex-col gap-6 items-center w-full flex-grow">
           {/* Top Badge */}
-          <div className="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] font-bold uppercase tracking-[0.2em]">
+          <div className="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-[10px] font-bold uppercase tracking-[0.2em]">
             Projekt {index + 1}
           </div>
 
@@ -79,7 +79,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           
           <div className="flex flex-wrap justify-center gap-2 pt-2">
             {project.features.map((feature: string) => (
-              <span key={feature} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/40 text-[10px] font-medium uppercase tracking-wider">
+              <span key={feature} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 text-[10px] font-medium uppercase tracking-wider">
                 {feature}
               </span>
             ))}

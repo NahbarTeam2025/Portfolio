@@ -59,7 +59,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                     <div className="flex items-center gap-3">
                       <h3 className="text-[14px] md:text-[15px] font-semibold text-white leading-tight group-hover/btn:text-blue-400 transition-colors">{cert.title}</h3>
                     </div>
-                    <span className="text-white/60 text-[11px] md:text-[12px]">{cert.issuer}</span>
+                    <span className="text-white/80 text-[11px] md:text-[12px]">{cert.issuer}</span>
                   </div>
                   <div className={`w-8 h-8 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-blue/20 border-brand-blue/40' : ''}`}>
                     <svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">

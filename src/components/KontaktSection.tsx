@@ -36,7 +36,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
               </div>
               <div className="flex flex-col">
                 <span className="text-white/80 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/roberterbach" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[18px] hover:text-blue-400 transition-colors break-all">@roberterbach</a>
+                <a href="https://www.linkedin.com/in/robert-erbach-a173b2371" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[18px] hover:text-blue-400 transition-colors break-all">@roberterbach</a>
               </div>
             </div>
 
