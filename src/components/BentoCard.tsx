@@ -92,7 +92,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
             >
               <span className="relative z-10">{project.buttonText || 'Live Demo'}</span>
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
@@ -100,7 +100,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           ) : project.details ? (
             <button
               onClick={() => onDetailsClick?.(project)}
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
             >
               <span className="relative z-10">{project.buttonText || 'Details'}</span>
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />

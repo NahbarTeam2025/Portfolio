@@ -146,7 +146,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                             </div>
                           </div>
                           <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/cert:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-                            <button className="bg-white text-black font-bold py-2 px-6 rounded-full flex items-center gap-2 hover:scale-105 transition-transform">
+                            <button className="bg-white text-black font-bold py-2 px-6 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform">
                               <ExternalLink size={16} />
                               Ansehen
                             </button>
@@ -168,7 +168,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
         <div className="w-full flex justify-center md:hidden pb-0 pt-0 shrink-0">
           <button 
             onClick={() => setShowAllCerts(true)}
-            className="flex items-center gap-2 px-6 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 hover:text-white transition-all group"
+            className="flex items-center gap-2 px-6 py-1.5 rounded-xl bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 hover:text-white transition-all group"
           >
             Alle Zertifikate anzeigen
             <ChevronDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
@@ -183,7 +183,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
         </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
-          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
+          className="w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
         >
           <span className="relative z-10">Fragen zu den Zertifikaten?</span>
           <span className="relative z-10">→</span>

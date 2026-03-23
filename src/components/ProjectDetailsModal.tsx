@@ -30,7 +30,7 @@ export const ProjectDetailsModal = ({
   if (!project.details) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -45,6 +45,7 @@ export const ProjectDetailsModal = ({
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
         className="relative w-full max-w-3xl max-h-[90vh] bg-[#0a0a0a] border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col"
+        tabIndex={-1}
       >
         {/* Header */}
         <div className="relative shrink-0 p-6 md:p-8 border-b border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent">
@@ -54,7 +55,7 @@ export const ProjectDetailsModal = ({
                 <Tag size={12} />
                 <span>{project.category}</span>
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+              <h2 id="modal-title" className="text-2xl md:text-3xl font-bold text-white leading-tight">
                 {project.title}
               </h2>
               <div className="text-white/60 text-sm md:text-base font-medium">
@@ -67,7 +68,8 @@ export const ProjectDetailsModal = ({
             </div>
             <button 
               onClick={() => startTransition(() => onClose())}
-              className="p-2 text-white/40 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300"
+              className="p-2 text-white/40 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300"
+              aria-label="Schließen"
             >
               <X className="w-6 h-6" />
             </button>

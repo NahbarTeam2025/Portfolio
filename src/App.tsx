@@ -395,7 +395,7 @@ export default function App() {
                 e.preventDefault();
                 handleNavigate('Kontakt');
               }}
-              className="hidden sm:flex items-center justify-center rounded-full px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
+              className="hidden sm:flex items-center justify-center rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
             >
               <span className="relative z-10">Kontakt</span>
             </a>
@@ -447,7 +447,7 @@ export default function App() {
                     e.preventDefault();
                     handleNavigate('Kontakt');
                   }}
-                  className="mt-4 flex items-center justify-center w-full sm:hidden rounded-full px-5 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[12px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
+                  className="mt-4 flex items-center justify-center w-full sm:hidden rounded-xl px-5 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[12px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
                 >
                   <span className="relative z-10">Kontakt</span>
                 </motion.a>

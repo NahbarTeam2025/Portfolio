@@ -85,7 +85,7 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
         <div className="w-full flex justify-center md:hidden mt-1 mb-1">
           <button
             onClick={() => setShowAllProjects(true)}
-            className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 transition-colors"
+            className="px-6 py-2 rounded-xl bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 transition-colors"
           >
             Alle Projekte ansehen
           </button>
@@ -99,7 +99,7 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
         </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
-          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
+          className="w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
         >
           <span className="relative z-10">Lust auf ein Gespräch?</span>
           <span className="relative z-10">→</span>
