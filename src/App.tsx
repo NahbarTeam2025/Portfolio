@@ -365,12 +365,20 @@ export default function App() {
                   }}
                   className={`px-2 xl:px-4 py-1.5 text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative group hover:scale-110 ${
                     currentPage === page
-                      ? 'text-white'
+                      ? 'text-white text-glow-blue'
                       : 'text-white/85 hover:text-white'
                   }`}
                 >
                   <span className="relative z-10">{page}</span>
-                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
+                  {currentPage === page ? (
+                    <motion.span 
+                      layoutId="active-nav-indicator"
+                      className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,1)]"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  ) : (
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
+                  )}
                 </a>
                 {/* No separator */}
               </React.Fragment>
@@ -424,7 +432,7 @@ export default function App() {
                       handleNavigate(page);
                     }}
                     className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors ${
-                      currentPage === page ? 'text-brand-teal' : 'text-white/85 hover:text-white'
+                      currentPage === page ? 'text-blue-400 text-glow-blue' : 'text-white/85 hover:text-white'
                     }`}
                   >
                     {page}

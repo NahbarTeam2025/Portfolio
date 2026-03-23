@@ -48,7 +48,7 @@ export const QualifikationSection = React.memo(({
             initial={{ scaleY: 0, originY: 0, opacity: 0 }}
             animate={{ scaleY: 1, opacity: 0.2 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute left-[15px] md:left-[31px] top-[30px] bottom-[20px] md:bottom-[76px] w-[1px] bg-gradient-to-b from-brand-teal via-brand-violet to-brand-teal" 
+            className="absolute left-[15px] md:left-[31px] top-[30px] bottom-[20px] md:bottom-[76px] w-[1px] bg-gradient-to-b from-brand-teal via-brand-blue to-brand-teal" 
           />
         )}
         
@@ -97,7 +97,7 @@ export const QualifikationSection = React.memo(({
                     </div>
                   <span className="text-white/60 text-[12px] md:text-[14px]">{qual.company}</span>
                 </div>
-                <div className={`w-7 h-7 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-violet/20 border-brand-violet/40' : ''}`}>
+                <div className={`w-7 h-7 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-blue/20 border-brand-blue/40' : ''}`}>
                   <svg className="w-3 h-3 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
@@ -124,7 +124,7 @@ export const QualifikationSection = React.memo(({
                             className={`px-2.5 py-1 rounded-full border text-[11px] md:text-[12px] font-medium transition-all duration-300 hover:scale-105 hover:bg-white/5 ${
                               j % 2 === 0 
                                 ? 'border-brand-teal/40 text-brand-teal' 
-                                : 'border-brand-violet/40 text-brand-violet'
+                                : 'border-brand-blue/40 text-brand-blue'
                             }`}
                           >
                             {item}
@@ -149,7 +149,7 @@ export const QualifikationSection = React.memo(({
         </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
-          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
+          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
         >
           <span className="relative z-10">Klingt passend? Meld dich →</span>
         </button>

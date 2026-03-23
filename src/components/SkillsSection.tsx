@@ -66,7 +66,7 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
                     </div>
                     <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden cursor-help">
                       <div 
-                        className="h-full bg-gradient-to-r from-violet-400 to-teal-400 rounded-full shadow-[0_0_20px_rgba(5,184,194,0.6)] animate-gradient-shift animate-skill-fill" 
+                        className="h-full bg-gradient-to-r from-blue-400 to-teal-400 rounded-full shadow-[0_0_20px_rgba(5,184,194,0.6)] animate-gradient-shift animate-skill-fill" 
                         style={{ 
                           width: `${skill.value}%`,
                           animationDelay: `${globalIndex * 200}ms`,
@@ -89,7 +89,7 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
         </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
-          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
+          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
         >
           <span className="relative z-10">Lass uns reden</span>
           <span className="relative z-10">→</span>

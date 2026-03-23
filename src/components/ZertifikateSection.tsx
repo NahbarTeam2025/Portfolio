@@ -61,7 +61,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                     </div>
                     <span className="text-white/60 text-[11px] md:text-[12px]">{cert.issuer}</span>
                   </div>
-                  <div className={`w-8 h-8 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-violet/20 border-brand-violet/40' : ''}`}>
+                  <div className={`w-8 h-8 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-blue/20 border-brand-blue/40' : ''}`}>
                     <svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
@@ -122,7 +122,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                                 setCertError(true);
                               }
                             }}
-                            className="w-full bg-gradient-to-r from-brand-violet to-brand-teal text-white font-bold py-3 rounded-xl shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+                            className="w-full bg-gradient-to-r from-brand-blue to-brand-teal text-white font-bold py-3 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all"
                           >
                             Entsperren
                           </button>
@@ -131,7 +131,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                     ) : (
                       <div className="flex-1 flex flex-col items-center justify-center gap-4 py-4">
                         <div className="relative group/cert w-full max-w-[320px] aspect-[1.414/1] bg-white/5 rounded-lg border border-white/10 overflow-hidden shadow-2xl">
-                          <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/5 to-brand-violet/5" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/5 to-brand-blue/5" />
                           <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                             <div className="w-10 h-10 mb-2 text-brand-teal/40">
                               <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -183,7 +183,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
         </p>
         <button 
           onClick={() => handleNavigate('Kontakt')}
-          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-purple-500/60 text-purple-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(168,85,247,0.5)] hover:shadow-[0_0_25px_rgba(168,85,247,0.8)] hover:bg-purple-500/20 hover:border-purple-400 transition-all duration-300 cursor-pointer"
+          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
         >
           <span className="relative z-10">Fragen zu den Zertifikaten?</span>
           <span className="relative z-10">→</span>

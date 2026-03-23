@@ -138,7 +138,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                         <button 
                           type="submit" 
                           disabled={!privacyAccepted || isSubmitting}
-                          className={`mt-1 text-white text-[13px] md:text-sm font-bold py-2 px-6 rounded-xl transition-all ${privacyAccepted && !isSubmitting ? 'bg-gradient-to-r from-brand-violet to-brand-teal hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(124,58,237,0.3)]' : 'bg-white/10 text-white/40 cursor-not-allowed'}`}
+                          className={`mt-1 text-white text-[13px] md:text-sm font-bold py-2 px-6 rounded-xl transition-all ${privacyAccepted && !isSubmitting ? 'bg-gradient-to-r from-brand-blue to-brand-teal hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/10 text-white/40 cursor-not-allowed'}`}
                         >
                           {isSubmitting ? 'Wird gesendet...' : 'Absenden'}
                         </button>

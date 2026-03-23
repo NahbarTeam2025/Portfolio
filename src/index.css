@@ -22,7 +22,7 @@
   --font-alex-brush: "Alex Brush", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --color-brand-dark: #0d1b2a;
-  --color-brand-violet: #7c3aed;
+  --color-brand-blue: #3b82f6;
   --color-brand-teal: #05b8c2;
 }
 
@@ -40,24 +40,24 @@ video {
 }
 
 .text-glow-animated {
-    background: linear-gradient(90deg, #ffffff 0%, #bae6fd 30%, #8b5cf6 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #bae6fd 30%, #3b82f6 100%);
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
     animation: gradient-shift 12s ease-in-out infinite;
-    text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
     will-change: background-position;
   }
 
   .animate-border-rotate {
-    background: conic-gradient(from 0deg, rgba(124, 58, 237, 0.5), rgba(5, 184, 194, 0.5), rgba(124, 58, 237, 0.5));
+    background: conic-gradient(from 0deg, rgba(59, 130, 246, 0.5), rgba(5, 184, 194, 0.5), rgba(59, 130, 246, 0.5));
     animation: rotate 10s linear infinite;
     filter: blur(15px);
   }
 
   .animate-border-rotate-slow {
-    background: conic-gradient(from 0deg, rgba(5, 184, 194, 0.5), rgba(124, 58, 237, 0.5), rgba(5, 184, 194, 0.5));
+    background: conic-gradient(from 0deg, rgba(5, 184, 194, 0.5), rgba(59, 130, 246, 0.5), rgba(5, 184, 194, 0.5));
     animation: rotate 15s linear infinite;
     filter: blur(15px);
   }
@@ -127,9 +127,9 @@ video {
     padding: 1.5px;
     background: linear-gradient(
       90deg, 
-      var(--color-brand-violet), 
+      var(--color-brand-blue), 
       var(--color-brand-teal), 
-      var(--color-brand-violet)
+      var(--color-brand-blue)
     );
     background-size: 200% 100%;
     animation: border-flow 6s linear infinite;
@@ -189,8 +189,8 @@ video {
     text-shadow: 0 0 20px rgba(5, 184, 194, 0.3);
   }
 
-  .text-glow-violet {
-    text-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+  .text-glow-blue {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
   }
 
   /* Basic Animation Utilities for compatibility */

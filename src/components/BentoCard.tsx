@@ -49,7 +49,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative group wow-card overflow-hidden flex flex-col h-full transition-all duration-500 hover:shadow-[0_0_20px_rgba(139,92,246,0.1)] hover:border-brand-violet/20`}
+      className={`relative group wow-card overflow-hidden flex flex-col h-full transition-all duration-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:border-brand-blue/20`}
     >
       <div className="wow-card-border" />
       <motion.div
@@ -87,7 +87,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] hover:from-brand-violet/30 hover:to-brand-teal/30 transition-all group/btn2 shadow-[0_0_15px_rgba(124,58,237,0.1)] hover:shadow-[0_0_20px_rgba(124,58,237,0.3)]"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] hover:from-brand-blue/30 hover:to-brand-teal/30 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.1)] hover:shadow-[0_0_20px_rgba(59,130,246,0.3)]"
             >
               {project.buttonText || 'Details ansehen'}
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-2" />
@@ -95,14 +95,14 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           ) : project.details ? (
             <button
               onClick={() => onDetailsClick?.(project)}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] hover:from-brand-violet/30 hover:to-brand-teal/30 transition-all group/btn2 shadow-[0_0_15px_rgba(124,58,237,0.1)] hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] hover:from-brand-blue/30 hover:to-brand-teal/30 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.1)] hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] cursor-pointer"
             >
               {project.buttonText || 'Details ansehen'}
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-2" />
             </button>
           ) : (
             <div
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-violet/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] transition-all group/btn2 cursor-default"
+              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] transition-all group/btn2 cursor-default"
             >
               {project.buttonText || 'Details ansehen'}
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300" />
