@@ -36,7 +36,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
       <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mt-2 lg:mt-4">
         <button 
           onClick={() => handleNavigate('Projekte')}
-          className="rounded-full px-8 py-3.5 bg-blue-900/20 backdrop-blur-md text-white text-[15px] font-semibold tracking-wide transition-all duration-300 hover:bg-white/20 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] cursor-pointer"
+          className="rounded-full px-8 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
         >
           Projekte entdecken
         </button>

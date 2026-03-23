@@ -366,15 +366,13 @@ export default function App() {
                   className={`px-2 xl:px-4 py-1.5 text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative group hover:scale-110 ${
                     currentPage === page
                       ? 'text-white'
-                      : 'text-white/60 hover:text-white'
+                      : 'text-white/85 hover:text-white'
                   }`}
                 >
                   <span className="relative z-10">{page}</span>
                   <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
                 </a>
-                {index < PAGES.length - 1 && (
-                  <span className="w-[1px] h-3 bg-white/20 mx-1" />
-                )}
+                {/* No separator */}
               </React.Fragment>
             ))}
           </div>
@@ -426,7 +424,7 @@ export default function App() {
                       handleNavigate(page);
                     }}
                     className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors ${
-                      currentPage === page ? 'text-brand-teal' : 'text-white/60 hover:text-white'
+                      currentPage === page ? 'text-brand-teal' : 'text-white/85 hover:text-white'
                     }`}
                   >
                     {page}
