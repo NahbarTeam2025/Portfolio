@@ -40,7 +40,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
 
       {/* CTA Button */}
       <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-4 gap-3 mt-auto shrink-0">
-        <p className="text-white/60 text-sm md:text-base text-center">
+        <p className="text-white/80 text-sm md:text-base text-center">
           Ich freue mich, wenn wir uns austauschen.
         </p>
         <button 

@@ -94,7 +94,7 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
 
       {/* CTA Button */}
       <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-0 md:pt-4 gap-3 mt-auto shrink-0">
-        <p className="text-white/60 text-sm md:text-base text-center">
+        <p className="text-white/80 text-sm md:text-base text-center">
           Das waren ein paar Beispiele meiner Arbeit – gerne mehr dazu.
         </p>
         <button 
