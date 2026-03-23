@@ -310,7 +310,7 @@ export default function App() {
                   duration: 1.5, 
                   ease: "easeInOut" 
                 }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-teal to-transparent"
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400 to-transparent"
               />
             </div>
             <motion.div

@@ -21,7 +21,7 @@ export const Typewriter = ({ text, delay = 20, onComplete }: { text: string, del
     <span>
       {currentText}
       {currentIndex < text.length && (
-        <span className="inline-block w-[2px] h-[1em] bg-brand-teal ml-1 animate-pulse align-middle" />
+        <span className="inline-block w-[2px] h-[1em] bg-blue-400 ml-1 animate-pulse align-middle" />
       )}
     </span>
   );

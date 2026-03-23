@@ -34,7 +34,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
   const spotlightBackground = useMotionTemplate`
     radial-gradient(
       600px circle at ${spotlightX}px ${spotlightY}px,
-      rgba(124, 58, 237, 0.05),
+      rgba(59, 130, 246, 0.05),
       transparent 80%
     )
   `;
@@ -49,63 +49,67 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative group wow-card overflow-hidden flex flex-col h-full transition-all duration-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:border-brand-blue/20`}
+      className={`relative group wow-card overflow-hidden flex flex-col h-full transition-all duration-500 border border-white/10 bg-black/40 card-glow-blue rounded-[24px]`}
     >
       <div className="wow-card-border" />
+      <div className="card-top-flare opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
       <motion.div
         className="pointer-events-none absolute -inset-px z-0 transition duration-300 opacity-0 group-hover:opacity-100"
         style={{ background: spotlightBackground }}
       />
       
-      <div className="relative z-10 p-6 md:p-8 flex flex-col h-full justify-between">
-        <div className="flex flex-col gap-4">
-          <div className="flex justify-between items-start">
-            <div className="flex flex-col gap-1">
-              <span className="text-brand-teal text-[10px] font-bold uppercase tracking-widest opacity-80">Projekt {index + 1}</span>
-              <h3 className="text-lg md:text-2xl font-semibold text-white leading-tight group-hover:text-brand-teal transition-colors">
-                {project.title}
-              </h3>
-            </div>
+      <div className="relative z-10 p-8 md:p-10 flex flex-col h-full items-center text-center">
+        <div className="flex flex-col gap-6 items-center w-full flex-grow">
+          {/* Top Badge */}
+          <div className="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] font-bold uppercase tracking-[0.2em]">
+            Projekt {index + 1}
+          </div>
+
+          <div className="flex flex-col gap-3 items-center">
+            <h3 className="text-xl md:text-2xl font-bold text-white leading-tight tracking-tight group-hover:text-glow-blue transition-all duration-300">
+              {project.title}
+            </h3>
+            <div className="w-12 h-[1px] bg-blue-500/40 group-hover:w-24 transition-all duration-500" />
           </div>
           
-          <p className="text-white/90 text-[14px] md:text-[15px] lg:text-[16px] leading-relaxed line-clamp-4 md:line-clamp-6 transition-all duration-500">
+          <p className="text-white/70 text-[14px] md:text-[15px] leading-relaxed max-w-[280px]">
             {project.desc}
           </p>
           
-          <div className="flex flex-wrap gap-2 mt-auto pt-4">
+          <div className="flex flex-wrap justify-center gap-2 pt-2">
             {project.features.map((feature: string) => (
-              <span key={feature} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-[11px] font-medium">
+              <span key={feature} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/40 text-[10px] font-medium uppercase tracking-wider">
                 {feature}
               </span>
             ))}
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-white/5 shrink-0">
+        <div className="mt-10 w-full flex flex-col gap-3">
           {project.link ? (
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] hover:from-brand-blue/30 hover:to-brand-teal/30 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.1)] hover:shadow-[0_0_20px_rgba(59,130,246,0.3)]"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
             >
-              {project.buttonText || 'Details ansehen'}
-              <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-2" />
+              <span className="relative z-10">{project.buttonText || 'Live Demo'}</span>
+              <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
             </a>
           ) : project.details ? (
             <button
               onClick={() => onDetailsClick?.(project)}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] hover:from-brand-blue/30 hover:to-brand-teal/30 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.1)] hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
             >
-              {project.buttonText || 'Details ansehen'}
-              <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-2" />
+              <span className="relative z-10">{project.buttonText || 'Details'}</span>
+              <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
             </button>
           ) : (
             <div
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-brand-blue/10 to-brand-teal/10 border border-white/10 text-white font-medium text-[13px] transition-all group/btn2 cursor-default"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-white/5 border border-white/10 text-white/40 font-bold text-[12px] uppercase tracking-widest cursor-default"
             >
-              {project.buttonText || 'Details ansehen'}
-              <ArrowRight className="w-4 h-4 transform transition-transform duration-300" />
+              <span className="relative z-10">Coming Soon</span>
             </div>
           )}
         </div>

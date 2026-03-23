@@ -26,7 +26,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
               </div>
               <div className="flex flex-col">
                 <span className="text-white/80 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">E-Mail</span>
-                <a href="mailto:roberterbach@web.de" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors break-all">roberterbach@web.de</a>
+                <a href="mailto:roberterbach@web.de" className="text-white text-[14px] md:text-[18px] hover:text-blue-400 transition-colors break-all">roberterbach@web.de</a>
               </div>
             </div>
             
@@ -36,7 +36,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
               </div>
               <div className="flex flex-col">
                 <span className="text-white/80 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/roberterbach" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[18px] hover:text-brand-teal transition-colors break-all">@roberterbach</a>
+                <a href="https://www.linkedin.com/in/roberterbach" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[18px] hover:text-blue-400 transition-colors break-all">@roberterbach</a>
               </div>
             </div>
 
@@ -58,8 +58,8 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
             <div className="relative z-10 h-full">
               {submitSuccess ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in zoom-in duration-500">
-                  <div className="w-20 h-20 rounded-full bg-brand-teal/10 flex items-center justify-center border border-brand-teal/20 mb-6">
-                    <svg className="w-10 h-10 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-20 h-20 rounded-full bg-blue-400/10 flex items-center justify-center border border-blue-400/20 mb-6">
+                    <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
@@ -70,7 +70,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                 <div className="flex flex-col h-full">
                   <button 
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="flex items-center justify-between w-full text-left text-white font-medium text-[16px] md:text-[18px] hover:text-brand-teal transition-colors md:hidden mb-6"
+                    className="flex items-center justify-between w-full text-left text-white font-medium text-[16px] md:text-[18px] hover:text-blue-400 transition-colors md:hidden mb-6"
                   >
                     <span>Kontaktformular {isExpanded ? 'schließen' : 'öffnen'}</span>
                     <ChevronDown className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
@@ -95,7 +95,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                               name="name"
                               placeholder="z. B. Max Mustermann" 
                               required
-                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
+                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-blue-400/50 focus:bg-white/20 transition-all"
                             />
                           </div>
                           <div className="flex flex-col gap-1">
@@ -106,7 +106,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                               name="email"
                               placeholder="name@beispiel.de" 
                               required
-                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all"
+                              className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-blue-400/50 focus:bg-white/20 transition-all"
                             />
                           </div>
                         </div>
@@ -118,7 +118,7 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                             placeholder="Ich habe eine Frage zu …" 
                             required
                             rows={3}
-                            className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-brand-teal/50 focus:bg-white/20 transition-all resize-none"
+                            className="bg-white/15 border border-white/25 rounded-xl px-3 py-2 text-[13px] md:text-[14px] text-white placeholder:text-white/75 focus:outline-none focus:border-blue-400/50 focus:bg-white/20 transition-all resize-none"
                           />
                         </div>
                         <div className="flex items-start gap-2 mt-1">
@@ -128,17 +128,17 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
                             name="privacy"
                             checked={privacyAccepted}
                             onChange={(e) => startTransition(() => setPrivacyAccepted(e.target.checked))}
-                            className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-brand-teal focus:ring-brand-teal focus:ring-offset-0 cursor-pointer"
+                            className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-blue-400 focus:ring-blue-400 focus:ring-offset-0 cursor-pointer"
                             required
                           />
                           <label htmlFor="privacy" className="text-[11px] md:text-[12px] text-white leading-relaxed cursor-pointer">
-                            Ich stimme der Verarbeitung meiner Daten gemäß der <button type="button" onClick={() => handleNavigate('Datenschutz')} className="text-brand-teal hover:underline">Datenschutzerklärung</button> zu.
+                            Ich stimme der Verarbeitung meiner Daten gemäß der <button type="button" onClick={() => handleNavigate('Datenschutz')} className="text-blue-400 hover:underline">Datenschutzerklärung</button> zu.
                           </label>
                         </div>
                         <button 
                           type="submit" 
                           disabled={!privacyAccepted || isSubmitting}
-                          className={`mt-1 text-white text-[13px] md:text-sm font-bold py-2 px-6 rounded-xl transition-all ${privacyAccepted && !isSubmitting ? 'bg-gradient-to-r from-brand-blue to-brand-teal hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/10 text-white/40 cursor-not-allowed'}`}
+                          className={`mt-1 text-white text-[13px] md:text-sm font-bold py-2 px-6 rounded-xl transition-all ${privacyAccepted && !isSubmitting ? 'bg-gradient-to-r from-brand-blue to-blue-400 hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/10 text-white/40 cursor-not-allowed'}`}
                         >
                           {isSubmitting ? 'Wird gesendet...' : 'Absenden'}
                         </button>

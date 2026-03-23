@@ -48,7 +48,7 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
         {skillGroups.map((group, groupIndex) => (
           <div key={group.category} className="wow-card flex flex-col gap-1.5 p-3">
             <div className="wow-card-border" />
-            <h2 className="text-brand-teal text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.25em] font-bold opacity-90 relative z-10">{group.category}</h2>
+            <h2 className="text-blue-400 text-[10px] md:text-[12px] uppercase tracking-[0.2em] md:tracking-[0.25em] font-bold opacity-90 relative z-10">{group.category}</h2>
             <div className="flex flex-col gap-1.5 relative z-10">
               {group.skills.map((skill, skillIndex) => {
                 const globalIndex = groupIndex * 4 + skillIndex;
@@ -56,7 +56,7 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
                   <div key={skill.name} className="flex flex-col gap-1 w-full group/skill relative">
                     <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/90 border border-white/10 rounded-xl text-white text-[12px] md:text-[13px] w-max max-w-[280px] md:max-w-[350px] whitespace-normal text-center opacity-0 group-hover/skill:opacity-100 transition-all duration-300 pointer-events-none z-50 backdrop-blur-xl shadow-2xl translate-y-2 group-hover/skill:translate-y-0">
                       <div className="flex items-center justify-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-brand-teal animate-pulse shrink-0" />
+                        <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse shrink-0" />
                         <span className="font-medium leading-snug">{skill.tooltip}</span>
                       </div>
                       <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-black/90 border-r border-b border-white/10 rotate-45"></div>
@@ -66,7 +66,7 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
                     </div>
                     <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden cursor-help">
                       <div 
-                        className="h-full bg-gradient-to-r from-blue-400 to-teal-400 rounded-full shadow-[0_0_20px_rgba(5,184,194,0.6)] animate-gradient-shift animate-skill-fill" 
+                        className="h-full bg-gradient-to-r from-blue-400 to-blue-300 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-gradient-shift animate-skill-fill" 
                         style={{ 
                           width: `${skill.value}%`,
                           animationDelay: `${globalIndex * 200}ms`,

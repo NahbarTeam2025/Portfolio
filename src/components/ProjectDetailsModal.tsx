@@ -50,7 +50,7 @@ export const ProjectDetailsModal = ({
         <div className="relative shrink-0 p-6 md:p-8 border-b border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent">
           <div className="flex justify-between items-start gap-4">
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2 text-brand-teal text-[10px] font-bold uppercase tracking-[0.2em]">
+              <div className="flex items-center gap-2 text-blue-400 text-[10px] font-bold uppercase tracking-[0.2em]">
                 <Tag size={12} />
                 <span>{project.category}</span>
               </div>
@@ -79,7 +79,7 @@ export const ProjectDetailsModal = ({
           <div className="space-y-8 md:space-y-10">
             {project.details.sections.map((section, idx) => (
               <div key={idx} className="space-y-3">
-                <h3 className="text-brand-teal text-[11px] font-bold uppercase tracking-[0.2em] opacity-80">
+                <h3 className="text-blue-400 text-[11px] font-bold uppercase tracking-[0.2em] opacity-80">
                   {section.title}
                 </h3>
                 <div className="text-white/80 text-[14px] md:text-[16px] leading-relaxed whitespace-pre-line">
@@ -90,7 +90,7 @@ export const ProjectDetailsModal = ({
 
             {project.details.images && project.details.images.length > 0 && (
               <div className="space-y-6 pt-4">
-                <h3 className="text-brand-teal text-[11px] font-bold uppercase tracking-[0.2em] opacity-80">
+                <h3 className="text-blue-400 text-[11px] font-bold uppercase tracking-[0.2em] opacity-80">
                   Visualisierungen
                 </h3>
                 <div className="grid grid-cols-1 gap-6">

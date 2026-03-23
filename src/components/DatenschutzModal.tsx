@@ -39,7 +39,7 @@ export const DatenschutzModal = ({ setIsDatenschutzOpen }: { setIsDatenschutzOpe
             <p className="mb-2">Ich hoste die Inhalte meiner Website bei folgendem Anbieter:</p>
             <h4 className="text-base font-medium text-white/90 mb-2">Cloudflare</h4>
             <p className="mb-4">Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (nachfolgend „Cloudflare“).</p>
-            <p className="mb-4">Wenn Sie meine Website besuchen, erfasst Cloudflare verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-brand-teal hover:underline">https://www.cloudflare.com/privacypolicy/</a>.</p>
+            <p className="mb-4">Wenn Sie meine Website besuchen, erfasst Cloudflare verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">https://www.cloudflare.com/privacypolicy/</a>.</p>
             <p>Die Verwendung von Cloudflare erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung meiner Website.</p>
           </section>
 
@@ -78,7 +78,7 @@ export const DatenschutzModal = ({ setIsDatenschutzOpen }: { setIsDatenschutzOpe
             <h4 className="text-base font-medium text-white/90 mb-2">Verwendung eines Content Delivery Networks (CDN) – Cloudflare</h4>
             <p className="mb-4">Wir nutzen für die Bereitstellung von Medieninhalten (wie Videos und Bildern) das Content Delivery Network (CDN) von Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA).</p>
             <p className="mb-4">Zweck der Nutzung ist die Optimierung der Ladezeiten und die stabile, weltweite Bereitstellung unserer Assets. Durch die Nutzung dieses Dienstes werden Medieninhalte direkt von den Servern von Cloudflare geladen. Um diese Inhalte auszuliefern, verarbeitet Cloudflare technisch bedingt die IP-Adresse Ihres Endgeräts sowie weitere Log-Daten.</p>
-            <p className="mb-4">Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-brand-teal hover:underline">https://www.cloudflare.com/privacypolicy/</a>.</p>
+            <p className="mb-4">Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">https://www.cloudflare.com/privacypolicy/</a>.</p>
             <p>Die Rechtsgrundlage für diese Datenverarbeitung ist unser berechtigtes Interesse an einer performanten, technisch stabilen und nutzerfreundlichen Bereitstellung unseres Onlineangebots (Art. 6 Abs. 1 f DSGVO).</p>
           </section>
 

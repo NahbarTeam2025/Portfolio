@@ -9,7 +9,7 @@ export const ImpressumPage = () => {
     <div className="flex flex-col items-start gap-8 w-full max-w-3xl mx-auto py-12 px-6 animate-in fade-in duration-500">
       <button 
         onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-white/60 hover:text-brand-teal transition-colors mb-4"
+        className="flex items-center gap-2 text-white/60 hover:text-blue-400 transition-colors mb-4"
       >
         <ArrowLeft size={20} />
         Zurück

@@ -44,7 +44,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
               className={`relative group ${isExpanded ? 'flex-1 min-h-0' : ''} ${isHiddenOnMobile ? 'hidden md:block' : 'block'}`}
             >
               <div 
-                className={`wow-card flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-brand-teal/30' : 'overflow-hidden'}`}
+                className={`wow-card flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-blue-400/30' : 'overflow-hidden'}`}
               >
                 <div className="wow-card-border" />
                 <button 
@@ -57,7 +57,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                 >
                   <div className="flex flex-col gap-1 pr-2">
                     <div className="flex items-center gap-3">
-                      <h3 className="text-[14px] md:text-[15px] font-semibold text-white leading-tight group-hover/btn:text-brand-teal transition-colors">{cert.title}</h3>
+                      <h3 className="text-[14px] md:text-[15px] font-semibold text-white leading-tight group-hover/btn:text-blue-400 transition-colors">{cert.title}</h3>
                     </div>
                     <span className="text-white/60 text-[11px] md:text-[12px]">{cert.issuer}</span>
                   </div>
@@ -76,8 +76,8 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                     
                     {!isCertUnlocked ? (
                       <div className="flex flex-col items-center justify-center gap-4 py-6 px-4 text-center">
-                        <div className="w-16 h-16 rounded-full bg-brand-teal/10 flex items-center justify-center border border-brand-teal/20">
-                          <svg className="w-8 h-8 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="w-16 h-16 rounded-full bg-blue-400/10 flex items-center justify-center border border-blue-400/20">
+                          <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                           </svg>
                         </div>
@@ -102,7 +102,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                                   }
                                 }
                               }}
-                              className={`w-full bg-white/5 border ${certError ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 pr-12 text-white placeholder:text-white/20 focus:outline-none focus:border-brand-teal/50 transition-all`}
+                              className={`w-full bg-white/5 border ${certError ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 pr-12 text-white placeholder:text-white/20 focus:outline-none focus:border-blue-400/50 transition-all`}
                             />
                             <button
                               type="button"
@@ -122,7 +122,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                                 setCertError(true);
                               }
                             }}
-                            className="w-full bg-gradient-to-r from-brand-blue to-brand-teal text-white font-bold py-3 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+                            className="w-full bg-gradient-to-r from-brand-blue to-blue-400 text-white font-bold py-3 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all"
                           >
                             Entsperren
                           </button>
@@ -131,9 +131,9 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                     ) : (
                       <div className="flex-1 flex flex-col items-center justify-center gap-4 py-4">
                         <div className="relative group/cert w-full max-w-[320px] aspect-[1.414/1] bg-white/5 rounded-lg border border-white/10 overflow-hidden shadow-2xl">
-                          <div className="absolute inset-0 bg-gradient-to-br from-brand-teal/5 to-brand-blue/5" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-brand-blue/5" />
                           <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                            <div className="w-10 h-10 mb-2 text-brand-teal/40">
+                            <div className="w-10 h-10 mb-2 text-blue-400/40">
                               <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                             </div>
                             <h5 className="text-white font-bold text-lg mb-1">{cert.title}</h5>

@@ -21,7 +21,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
           Ich bin ruhig, bis ich brenne. Und wenn ich brenne, merkst du es.
           Wenn du jemanden suchst, der liefert – nicht nur plant, sondern wirklich durchzieht – dann bist du hier richtig.
         </p>
-        <p className="text-brand-teal font-medium tracking-wider text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] uppercase leading-relaxed">
+        <p className="text-blue-400 font-medium tracking-wider text-[11px] sm:text-[13px] md:text-[14px] lg:text-[15px] uppercase leading-relaxed">
           Direkt. Tiefgründig. Konsequent umsetzungsstark.
         </p>
         <div className="mt-1 md:mt-2 shrink-0">
