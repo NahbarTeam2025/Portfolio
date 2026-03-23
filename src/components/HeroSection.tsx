@@ -2,7 +2,7 @@ import React from 'react';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   return (
-    <div id="hero" className="flex flex-col items-center gap-10 md:gap-12 lg:gap-20 max-w-[680px] lg:max-w-[900px] animate-in fade-in duration-500 subtle-float relative z-10">
+    <div id="hero" className="flex flex-col items-center justify-center gap-6 md:gap-8 lg:gap-12 max-w-[680px] lg:max-w-[900px] animate-in fade-in duration-500 subtle-float relative z-10 h-full">
       {/* Heading & Subtitle Container */}
       <div className="flex flex-col items-center gap-4 lg:gap-6">
         {/* Heading */}
@@ -25,7 +25,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
       </div>
 
       {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mt-12 lg:mt-20">
+      <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mt-4 lg:mt-6">
         <button 
           onClick={() => handleNavigate('Projekte')}
           className="flex items-center justify-center gap-3 rounded-full px-8 py-3.5 bg-white/10 border border-white/20 text-white text-[15px] font-semibold tracking-wide transition-all duration-300 hover:bg-white/20 hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] cursor-pointer group/cta"
