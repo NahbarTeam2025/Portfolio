@@ -10,20 +10,20 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
         <h1 className="flex flex-col items-center text-[36px] md:text-[56px] lg:text-[88px] leading-[1.1] max-w-[800px] lg:max-w-[1050px]">
           <span className="font-audiowide font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-blue-100 to-blue-500 pb-2">Robert Erbach</span>
           <span className="text-[16px] md:text-[20px] lg:text-[24px] text-white/85 mt-2 lg:mt-4 font-normal tracking-wider whitespace-nowrap">
-            Digital Specialist für Marketing, Content & KI
+            Design & KI – klar gedacht, sauber umgesetzt
           </span>
         </h1>
 
         {/* Subtitle */}
         <div className="flex flex-col items-center gap-3 lg:gap-6 mt-2 lg:mt-4">
           <p className="text-white/60 text-[14px] md:text-[16px] lg:text-[18px] font-normal max-w-[600px] lg:max-w-[700px] leading-relaxed text-center">
-            Ich verbinde Content, Design und KI-Workflows zu klaren, durchdachten Lösungen – strukturiert entwickelt und auf den Punkt gebracht.
+            Ich arbeite strukturiert, denke Zusammenhänge weiter und entwickle Lösungen, die klar aufgebaut sind.
           </p>
         </div>
 
         {/* Checkmark Row */}
         <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
-          {['Content Creation', 'SEO & Design', 'KI-Automatisierung'].map((item) => (
+          {['Design', 'Struktur', 'KI'].map((item) => (
             <div key={item} className="flex items-center gap-2 text-white/80 text-sm">
               <CheckCircle className="w-5 h-5 text-blue-500" />
               {item}
