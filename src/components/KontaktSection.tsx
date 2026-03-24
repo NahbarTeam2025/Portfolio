@@ -1,5 +1,5 @@
 import React, { useState, startTransition } from 'react';
-import { Mail, Linkedin, MapPin, ChevronDown } from 'lucide-react';
+import { User, Mail, Linkedin, MapPin, ChevronDown } from 'lucide-react';
 
 export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitError, privacyAccepted, setPrivacyAccepted, handleNavigate, handleSubmit }: any) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -20,6 +20,16 @@ export const KontaktSection = React.memo(({ isSubmitting, submitSuccess, submitE
           </div>
           
           <div className="flex flex-col gap-4 md:gap-6">
+            <div className="flex items-center gap-4 md:gap-5 group">
+              <div className="flex items-center justify-center shrink-0">
+                <User className="text-white" size={24} />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-white/80 text-[11px] md:text-[12px] uppercase tracking-widest font-bold">Name</span>
+                <span className="text-white text-[14px] md:text-[18px]">Robert Erbach</span>
+              </div>
+            </div>
+            
             <div className="flex items-center gap-4 md:gap-5 group">
               <div className="flex items-center justify-center shrink-0">
                 <Mail className="text-white" size={24} />
