@@ -9,7 +9,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
         {/* Heading */}
         <h1 className="flex flex-col items-center text-[36px] md:text-[56px] lg:text-[88px] leading-[1.1] max-w-[800px] lg:max-w-[1050px]">
           <span className="font-audiowide font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-blue-100 to-blue-500 pb-2">Robert Erbach</span>
-          <span className="text-[16px] md:text-[20px] lg:text-[24px] text-white/85 mt-2 lg:mt-4 font-normal tracking-wider whitespace-nowrap">
+          <span className="text-[14px] md:text-[22px] lg:text-[26px] text-white/85 mt-2 lg:mt-4 font-normal tracking-wider whitespace-nowrap">
             Design & KI – klar gedacht, sauber umgesetzt
           </span>
         </h1>
