@@ -41,10 +41,10 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
           return (
             <div 
               key={cert.id} 
-              className={`relative group ${isExpanded ? 'flex-1 min-h-0' : ''} ${isHiddenOnMobile ? 'hidden md:block' : 'block'}`}
+              className={`relative group transition-all duration-500 ${isExpanded ? 'flex-1 min-h-0 z-50' : 'z-10'} ${isHiddenOnMobile ? 'hidden md:block' : 'block'}`}
             >
               <div 
-                className={`wow-card flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-blue-400/30' : 'overflow-hidden'}`}
+                className={`wow-card flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-blue-400/30 expanded' : 'overflow-hidden'}`}
               >
                 <div className="wow-card-border" />
                 <button 

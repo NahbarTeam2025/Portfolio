@@ -58,7 +58,7 @@ export const QualifikationSection = React.memo(({
           return (
             <div 
               key={actualIndex} 
-              className={`relative group ${isExpanded ? 'flex-1 min-h-0' : ''}`}
+              className={`relative group transition-all duration-500 ${isExpanded ? 'flex-1 min-h-0 z-50' : 'z-10'}`}
             >
               {/* Timeline Node */}
               {showTimeline && (
@@ -75,7 +75,7 @@ export const QualifikationSection = React.memo(({
               )}
               
               <div 
-                className={`wow-card flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-blue-400/30' : 'overflow-hidden'} ${!isExpanded && isInitialEntrance ? 'animate-project-entrance' : ''}`}
+                className={`wow-card flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-blue-400/30 expanded' : 'overflow-hidden'} ${!isExpanded && isInitialEntrance ? 'animate-project-entrance' : ''}`}
                 style={{ animationDelay: isExpanded ? '0ms' : `${i * 400}ms` }}
               >
                 <div className="wow-card-border" />
