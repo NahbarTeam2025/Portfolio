@@ -19,7 +19,10 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
         setIsCertUnlocked(true);
         setCertError(false);
       } else {
+        const data = await response.json();
         setCertError(true);
+        // Optional: Hier könnte man die Fehlermeldung vom Server anzeigen
+        console.warn(data.message || 'Ungültiges Passwort');
       }
     } catch (error) {
       console.error('Fehler bei der Passwortprüfung:', error);

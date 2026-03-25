@@ -35,7 +35,10 @@ export const KontaktSection = React.memo(({
         setCvError(false);
         setShowPasswordInput(false);
       } else {
+        const data = await response.json();
         setCvError(true);
+        // Optional: Hier könnte man die Fehlermeldung vom Server anzeigen
+        console.warn(data.message || 'Ungültiges Passwort');
       }
     } catch (error) {
       console.error('Fehler bei der Passwortprüfung:', error);
