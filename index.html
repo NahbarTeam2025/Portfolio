@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="de">
   <head>
+    <!-- GA4 Integration -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-90T4169WJP');
+    </script>
+
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev data: https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; media-src 'self' meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com;">
     
@@ -14,15 +23,6 @@
         'ad_user_data': 'denied',
         'ad_personalization': 'denied'
       });
-    </script>
-
-    <!-- GA4 Integration -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J57DX8GS8T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J57DX8GS8T');
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
