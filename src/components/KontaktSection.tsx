@@ -1,7 +1,6 @@
 import React, { useState, startTransition } from 'react';
 import { User, Mail, Linkedin, MapPin, ChevronDown, Eye, EyeOff, Lock, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { PROTECTED_CONTENT_PASSWORD } from '../constants/auth';
 
 export const KontaktSection = React.memo(({ 
   isSubmitting, 
@@ -23,12 +22,23 @@ export const KontaktSection = React.memo(({
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordInput, setShowPasswordInput] = useState(false);
 
-  const handleUnlockCv = () => {
-    if (cvPasswordInput === PROTECTED_CONTENT_PASSWORD) {
-      setIsCvUnlocked(true);
-      setCvError(false);
-      setShowPasswordInput(false);
-    } else {
+  const handleUnlockCv = async () => {
+    try {
+      const response = await fetch('/api/verify-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: cvPasswordInput }),
+      });
+
+      if (response.ok) {
+        setIsCvUnlocked(true);
+        setCvError(false);
+        setShowPasswordInput(false);
+      } else {
+        setCvError(true);
+      }
+    } catch (error) {
+      console.error('Fehler bei der Passwortprüfung:', error);
       setCvError(true);
     }
   };

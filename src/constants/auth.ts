@@ -1,1 +1,0 @@
-export const PROTECTED_CONTENT_PASSWORD = '2026';

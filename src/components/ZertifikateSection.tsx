@@ -1,12 +1,31 @@
 import React, { startTransition, useState } from 'react';
 import { ExternalLink, ChevronDown, Eye, EyeOff } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { PROTECTED_CONTENT_PASSWORD } from '../constants/auth';
 
 export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, isCertUnlocked, certPasswordInput, setCertPasswordInput, certError, setIsCertUnlocked, setCertError, handleNavigate }: any) => {
   const { t } = useLanguage();
   const [showAllCerts, setShowAllCerts] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleUnlockCert = async () => {
+    try {
+      const response = await fetch('/api/verify-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: certPasswordInput }),
+      });
+
+      if (response.ok) {
+        setIsCertUnlocked(true);
+        setCertError(false);
+      } else {
+        setCertError(true);
+      }
+    } catch (error) {
+      console.error('Fehler bei der Passwortprüfung:', error);
+      setCertError(true);
+    }
+  };
 
   const certs = t.certificates.items;
 
@@ -86,12 +105,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                               onChange={(e) => setCertPasswordInput(e.target.value)}
                               onKeyDown={(e) => {
                                 if (e.key === 'Enter') {
-                                  if (certPasswordInput === PROTECTED_CONTENT_PASSWORD) {
-                                    setIsCertUnlocked(true);
-                                    setCertError(false);
-                                  } else {
-                                    setCertError(true);
-                                  }
+                                  handleUnlockCert();
                                 }
                               }}
                               className={`w-full bg-white/5 border ${certError ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 pr-12 text-white placeholder:text-white/20 focus:outline-none focus:border-blue-400/50 transition-all`}
@@ -106,14 +120,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                           </div>
                           {certError && <p className="text-red-400 text-xs">{t.certificates.invalidPassword}</p>}
                           <button 
-                            onClick={() => {
-                              if (certPasswordInput === PROTECTED_CONTENT_PASSWORD) {
-                                setIsCertUnlocked(true);
-                                setCertError(false);
-                              } else {
-                                setCertError(true);
-                              }
-                            }}
+                            onClick={handleUnlockCert}
                             className="w-full bg-gradient-to-r from-brand-blue to-blue-400 text-white font-bold py-3 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all"
                           >
                             {t.certificates.unlockButton}
