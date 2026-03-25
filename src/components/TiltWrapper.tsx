@@ -56,6 +56,7 @@ export const TiltWrapper: React.FC<TiltWrapperProps> = ({
           transform: "translateZ(50px)",
           transformStyle: "preserve-3d",
         }}
+        className="h-full"
       >
         {children}
       </div>

@@ -3,7 +3,6 @@ import { BentoCard } from './BentoCard';
 import { ProjectDetailsModal } from './ProjectDetailsModal';
 import { AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { TiltWrapper } from './TiltWrapper';
 
 export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigate }: any) => {
   const { t } = useLanguage();
@@ -13,21 +12,19 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
   const projects = t.projects.items;
 
   return (
-    <div className="flex flex-col items-start gap-4 md:gap-6 w-full flex-grow animate-in fade-in duration-500">
+    <div className="flex flex-col items-start gap-3 md:gap-4 w-full flex-grow animate-in fade-in duration-500 h-full">
       <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
         {t.projects.title}
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full max-w-[1400px] pb-0 md:pb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 w-full max-w-[1400px] pb-0 md:pb-2">
         {projects.map((project: any, i: number) => (
-          <div key={i} className={`block ${!showAllProjects && i > 0 ? 'hidden md:block' : ''}`}>
-            <TiltWrapper className="h-full">
-              <BentoCard 
-                project={project}
-                index={i}
-                onDetailsClick={(p) => startTransition(() => setSelectedProject(p))}
-              />
-            </TiltWrapper>
+          <div key={i} className={`block h-full ${!showAllProjects && i > 0 ? 'hidden md:block' : ''} ${i === 1 ? 'lg:col-span-2' : 'lg:col-span-1'}`}>
+            <BentoCard 
+              project={project}
+              index={i}
+              onDetailsClick={(p) => startTransition(() => setSelectedProject(p))}
+            />
           </div>
         ))}
       </div>
@@ -44,8 +41,8 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
       )}
 
       {/* CTA Button */}
-      <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-0 md:pt-4 gap-3 mt-auto shrink-0">
-        <p className="text-white/80 text-sm md:text-base text-center">
+      <div className="w-full flex flex-col items-center justify-center pb-16 md:pb-2 pt-0 md:pt-2 gap-2 mt-auto shrink-0">
+        <p className="text-white/80 text-xs md:text-sm text-center">
           {t.projects.cta.text}
         </p>
         <button 

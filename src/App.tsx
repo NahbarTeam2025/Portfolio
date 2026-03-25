@@ -23,6 +23,8 @@ import { useParallaxIntersection } from './hooks/useParallaxIntersection';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 
+import { BackgroundParticles } from './components/BackgroundParticles';
+
 // Lazy load components
 const CommandTerminal = lazy(() => import('./components/CommandTerminal'));
 const QualifikationSection = lazy(() => import('./components/QualifikationSection').then(m => ({ default: m.QualifikationSection })));
@@ -142,6 +144,8 @@ export default function App() {
   }, [t.common.backToTitle]);
 
   const [isCertUnlocked, setIsCertUnlocked] = useState(false);
+  const [isStartVideoReady, setIsStartVideoReady] = useState(false);
+  const [isSubVideoReady, setIsSubVideoReady] = useState(false);
   const [certPasswordInput, setCertPasswordInput] = useState('');
   const [certError, setCertError] = useState(false);
 
@@ -325,6 +329,7 @@ export default function App() {
     >
       {/* Background Videos Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
+        <BackgroundParticles />
         {/* Start Page Video */}
         {currentPage === 'Start' && (
           <div className="absolute inset-0">
@@ -335,7 +340,8 @@ export default function App() {
               muted={true}
               playsInline={true}
               preload="auto"
-              className="w-full h-full object-cover"
+              onCanPlay={() => setIsStartVideoReady(true)}
+              className={`w-full h-full object-cover transition-opacity duration-1000 ${isStartVideoReady ? 'opacity-100' : 'opacity-0'}`}
             >
               <source src="https://meine-assets.pages.dev/bgstart.mp4" type="video/mp4" />
             </video>
@@ -353,7 +359,8 @@ export default function App() {
               muted={true}
               playsInline={true}
               preload="auto"
-              className="w-full h-full object-cover opacity-10"
+              onCanPlay={() => setIsSubVideoReady(true)}
+              className={`w-full h-full object-cover transition-opacity duration-1000 ${isSubVideoReady ? 'opacity-10' : 'opacity-0'}`}
             >
               <source src="https://meine-assets.pages.dev/bgunterseiten.mp4" type="video/mp4" />
             </video>
@@ -482,10 +489,11 @@ export default function App() {
             {/* CTA Button */}
             <button
               onClick={() => setIsHighContrast(!isHighContrast)}
-              className="hidden lg:flex p-2 text-white/60 hover:text-white transition-colors focus-ring rounded-full"
+              className={`relative hidden lg:flex p-2 transition-colors focus-ring rounded-full ${isHighContrast ? 'text-blue-400' : 'text-white/60 hover:text-white'}`}
               aria-label="Toggle High Contrast Mode"
             >
               <span className="text-[10px] font-bold">HC</span>
+              {isHighContrast && <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-blue-400 rounded-full" />}
             </button>
 
             <MagneticButton className="hidden lg:flex">

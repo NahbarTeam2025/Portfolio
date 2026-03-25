@@ -51,7 +51,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative group wow-card parallax-element overflow-hidden flex flex-col h-full transition-all duration-500 border border-white/10 bg-black/40 card-glow-blue rounded-[24px]`}
+      className={`relative group wow-card parallax-element overflow-hidden flex flex-col h-full min-h-[380px] lg:min-h-[400px] transition-all duration-500 border border-white/10 bg-black/40 card-glow-blue rounded-[24px]`}
     >
       <div className="wow-card-border" />
       <div className="card-top-flare opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -61,40 +61,35 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
         style={{ background: spotlightBackground }}
       />
       
-      <div className="relative z-10 p-8 md:p-10 flex flex-col h-full items-center text-center">
-        <div className="flex flex-col gap-6 items-center w-full flex-grow">
-          {/* Top Badge */}
-          <div className="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-[10px] font-bold uppercase tracking-[0.2em]">
-            {t.projects.projectLabel} {index + 1}
-          </div>
-
-          <div className="flex flex-col gap-3 items-center">
-            <h3 className="text-xl md:text-2xl font-bold text-white leading-tight tracking-tight group-hover:text-glow-blue transition-all duration-300">
+      <div className="relative z-10 p-6 md:p-8 flex flex-col h-full items-center text-center" style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}>
+        <div className="flex flex-col gap-4 items-center w-full flex-grow">
+          <div className="flex flex-col gap-2 items-center">
+            <h3 className="text-lg md:text-xl font-bold text-white leading-tight tracking-tight group-hover:text-glow-blue transition-all duration-300">
               {project.title}
             </h3>
-            <div className="w-12 h-[1px] bg-blue-500/40 group-hover:w-24 transition-all duration-500" />
+            <div className="w-10 h-[1px] bg-blue-500/40 group-hover:w-20 transition-all duration-500" />
           </div>
           
-          <p className="text-white/70 text-[14px] md:text-[15px] leading-relaxed max-w-[280px]">
+          <p className="text-white/70 text-[13px] md:text-[14px] leading-relaxed max-w-[280px]">
             {project.desc}
           </p>
           
-          <div className="flex flex-wrap justify-center gap-2 pt-2">
+          <div className="flex flex-wrap justify-center gap-1.5 pt-1">
             {project.features?.map((feature: string) => (
-              <span key={feature} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 text-[10px] font-medium uppercase tracking-wider">
+              <span key={feature} className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/70 text-[9px] font-medium uppercase tracking-wider">
                 {feature}
               </span>
             ))}
           </div>
         </div>
 
-        <div className="mt-10 w-full flex flex-col gap-3">
+        <div className="mt-6 w-full flex flex-col gap-2">
           {project.link ? (
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {index === 0 && (
@@ -117,7 +112,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
             </button>
           ) : (
             <div
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-white/5 border border-white/10 text-white/40 font-bold text-[12px] uppercase tracking-widest cursor-default"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-white/5 border border-white/10 text-white/40 font-bold text-[12px] uppercase tracking-widest cursor-default"
             >
               <span className="relative z-10">{t.projects.comingSoon}</span>
             </div>
