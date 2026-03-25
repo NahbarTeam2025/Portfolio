@@ -357,7 +357,7 @@ export default function App() {
               playsInline={true}
               preload="auto"
               onCanPlay={() => setIsSubVideoReady(true)}
-              className={`w-full h-full object-cover transition-opacity duration-1000 ${isSubVideoReady ? 'opacity-10' : 'opacity-0'}`}
+              className={`w-full h-full object-cover transition-opacity duration-1000 ${isSubVideoReady ? 'opacity-15' : 'opacity-0'}`}
             >
               <source src="https://meine-assets.pages.dev/bgunterseiten.mp4" type="video/mp4" />
             </video>
