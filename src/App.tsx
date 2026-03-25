@@ -23,8 +23,6 @@ import { useParallaxIntersection } from './hooks/useParallaxIntersection';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 
-import { BackgroundParticles } from './components/BackgroundParticles';
-
 // Lazy load components
 const CommandTerminal = lazy(() => import('./components/CommandTerminal'));
 const QualifikationSection = lazy(() => import('./components/QualifikationSection').then(m => ({ default: m.QualifikationSection })));
@@ -329,7 +327,6 @@ export default function App() {
     >
       {/* Background Videos Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
-        <BackgroundParticles />
         {/* Start Page Video */}
         {currentPage === 'Start' && (
           <div className="absolute inset-0">
