@@ -29,13 +29,17 @@ export const translations = {
       text3: 'Komplexität zu durchdringen und auf das Wesentliche zu reduzieren, ist für mich die Grundlage guter Arbeit. Ich gehe Projekte mit Ehrgeiz und einem hohen Anspruch an Qualität an – mit dem Ziel, Ergebnisse zu schaffen, die nicht nur gut aussehen, sondern nachhaltig überzeugen.',
       motto: 'Klar im Denken. Strukturiert in der Umsetzung. Verlässlich im Ergebnis.',
       cta: {
-        text: 'Ich freue mich, wenn wir uns austauschen.',
-        button: 'Lass uns austauschen'
+        text: 'Ich freue mich darauf, dich persönlich kennenzulernen.',
+        button: 'Lass uns kennenlernen →'
       }
     },
     skills: {
       title: 'Skills',
       subtitle: 'Meine Werkzeuge',
+      cta: {
+        text: 'Passt dieses Profil zu deinen aktuellen Herausforderungen?',
+        button: 'Kontakt aufnehmen →'
+      }
     },
     projects: {
       title: 'Projekte',
@@ -46,8 +50,8 @@ export const translations = {
       comingSoon: 'Demnächst',
       showAll: 'Alle Projekte ansehen',
       cta: {
-        text: 'Das waren ein paar Beispiele meiner Arbeit – gerne mehr dazu.',
-        button: 'Lust auf ein Gespräch?'
+        text: 'Das sind Einblicke in meine Arbeitsweise – bereit für den Praxiseinsatz in deinem Team.',
+        button: 'Jetzt Gespräch anfragen →'
       },
       items: [
         {
@@ -61,7 +65,7 @@ export const translations = {
         {
           title: 'GA4-Tracking-Implementierung',
           category: 'Web Analytics',
-          desc: 'Konzeption eines vollständigen GA4-Tracking-Plans für einen fiktiven Outdoor-Onlineshop – von der Event-Strategie bis zum fertigen Implementierungsdokument.',
+          desc: 'Konzeption eines umfassenden Tracking-Frameworks am Beispiel E-Commerce – von der Event-Strategie bis zum fertigen Implementierungsdokument.',
           features: ['Web Analytics', 'GA4', 'E-Commerce', 'Tracking', 'Measurement Plan'],
           buttonText: 'Details ansehen',
           details: {
@@ -122,11 +126,13 @@ export const translations = {
       placeholderMessage: 'Ich habe eine Frage zu …',
       responseTime: 'Antwort meist innerhalb 24 Stunden',
       location: 'Standort',
+      locationValue: 'Falkenberg/Elster (bereit für Remote oder Umzug)',
+      downloadCV: 'Meinen Lebenslauf als PDF herunterladen',
     },
     qualifications: {
       title: 'Berufliche Qualifikation',
-      ctaText: 'Das ist mein beruflicher Weg bisher – neugierig auf mehr Details?',
-      ctaButton: 'Klingt passend? Meld dich →',
+      ctaText: 'Ein Werdegang mit Fokus auf Struktur und Fortschritt – bereit für den nächsten Schritt bei euch.',
+      ctaButton: 'Klingt passend? Melde dich →',
       items: [
         {
           date: '07/2025 – 04/2026',
@@ -164,8 +170,8 @@ export const translations = {
       view: 'Ansehen',
       preview: 'Vorschau des Zertifikats. Klicken Sie zum Vergrößern.',
       showAll: 'Alle Zertifikate anzeigen',
-      ctaText: 'Die Zertifikate geben einen guten Überblick – bei Interesse mehr.',
-      ctaButton: 'Fragen zu den Zertifikaten? →',
+      ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
+      ctaButton: 'Lernen wir uns kennen →',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
         { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
@@ -296,13 +302,17 @@ export const translations = {
       text3: 'Penetrating complexity and reducing it to the essentials is the basis of good work for me. I approach projects with ambition and a high standard of quality – with the goal of creating results that not only look good but also convince sustainably.',
       motto: 'Clear in thinking. Structured in implementation. Reliable in results.',
       cta: {
-        text: 'I look forward to our exchange.',
-        button: "Let's exchange"
+        text: 'I look forward to getting to know you personally.',
+        button: 'Let\'s get to know each other →'
       }
     },
     skills: {
       title: 'Skills',
       subtitle: 'My Tools',
+      cta: {
+        text: 'Does this profile fit your current challenges?',
+        button: 'Get in touch →'
+      }
     },
     projects: {
       title: 'Projects',
@@ -313,8 +323,8 @@ export const translations = {
       comingSoon: 'Coming Soon',
       showAll: 'View All Projects',
       cta: {
-        text: 'These were a few examples of my work – happy to share more.',
-        button: "Let's talk"
+        text: 'These are insights into my way of working – ready for practical use in your team.',
+        button: 'Request conversation now →'
       },
       items: [
         {
@@ -389,10 +399,12 @@ export const translations = {
       placeholderMessage: 'I have a question about …',
       responseTime: 'Response usually within 24 hours',
       location: 'Location',
+      locationValue: 'Falkenberg/Elster (ready for remote or relocation)',
+      downloadCV: 'Download my CV as PDF',
     },
     qualifications: {
       title: 'Professional Qualification',
-      ctaText: 'This is my professional journey so far – curious for more details?',
+      ctaText: 'A career path with a focus on structure and progress – ready for the next step with you.',
       ctaButton: 'Sounds like a fit? Get in touch →',
       items: [
         {
@@ -431,8 +443,8 @@ export const translations = {
       view: 'View',
       preview: 'Preview of the certificate. Click to enlarge.',
       showAll: 'Show all certificates',
-      ctaText: 'The certificates give a good overview – more if interested.',
-      ctaButton: 'Questions about the certificates? →',
+      ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
+      ctaButton: 'Lernen wir uns kennen →',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
         { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },

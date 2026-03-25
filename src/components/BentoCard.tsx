@@ -83,13 +83,13 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           </div>
         </div>
 
-        <div className="mt-6 w-full flex flex-col gap-2">
+        <div className="mt-6 w-full flex flex-col gap-2 items-center">
           {project.link ? (
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {index === 0 && (
@@ -105,14 +105,14 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           ) : project.details ? (
             <button
               onClick={() => onDetailsClick?.(project)}
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
             >
               <span className="relative z-10">{project.buttonText || t.projects.details}</span>
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
             </button>
           ) : (
             <div
-              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-white/5 border border-white/10 text-white/40 font-bold text-[12px] uppercase tracking-widest cursor-default"
+              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-white/5 border border-white/10 text-white/40 font-bold text-[12px] uppercase tracking-widest cursor-default"
             >
               <span className="relative z-10">{t.projects.comingSoon}</span>
             </div>

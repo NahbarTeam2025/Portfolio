@@ -35,8 +35,8 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
     {
       category: language === 'de' ? 'Sprachen' : 'Languages',
       skills: [
-        { name: language === 'de' ? 'Deutsch' : 'German', value: 100, tooltip: language === 'de' ? 'Muttersprache' : 'Native Speaker' },
-        { name: language === 'de' ? 'Englisch' : 'English', value: 70, tooltip: language === 'de' ? 'Fließend in Wort und Schrift' : 'Fluent in speech and writing' }
+        { name: language === 'de' ? 'Deutsch' : 'German', value: 100, tooltip: 'C2' },
+        { name: language === 'de' ? 'Englisch' : 'English', value: 90, tooltip: 'C1' }
       ]
     }
   ];
@@ -90,14 +90,13 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
       {/* CTA Button */}
       <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-4 gap-3 mt-auto shrink-0">
         <p className="text-white/80 text-sm md:text-base text-center">
-          {language === 'de' ? 'Passt das zu deinem nächsten Projekt?' : 'Does this fit your next project?'}
+          {t.skills.cta.text}
         </p>
         <button 
           onClick={() => handleNavigate(t.nav.contact)}
           className="w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
         >
-          <span className="relative z-10">{t.contact.send}</span>
-          <span className="relative z-10">→</span>
+          <span className="relative z-10">{t.skills.cta.button}</span>
         </button>
       </div>
     </div>

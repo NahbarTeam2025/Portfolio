@@ -71,7 +71,7 @@ export const QualifikationSection = React.memo(({
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-3">
                       <h3 className="text-sm md:text-base font-semibold text-white leading-tight group-hover/btn:text-blue-400 transition-colors">{qual.title}</h3>
-                      <span className="hidden sm:inline-block text-white font-mono text-[10px] bg-blue-400/20 border border-blue-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
+                      <span className="hidden sm:inline-block text-blue-100 font-mono text-[10px] bg-blue-400/20 border border-blue-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
                     </div>
                   <span className="text-white/80 text-[12px] md:text-[14px]">{qual.company}</span>
                 </div>
@@ -89,7 +89,7 @@ export const QualifikationSection = React.memo(({
                   <div className="w-full h-[1px] bg-white/5 shrink-0" />
                   <div className="pr-2 overflow-y-auto">
                       <div className="sm:hidden mb-3">
-                        <span className="text-white font-mono text-[10px] bg-blue-400/20 border border-blue-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
+                        <span className="text-blue-100 font-mono text-[10px] bg-blue-400/20 border border-blue-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
                       </div>
                     {qual.desc && (
                       <p className="text-white/70 text-[13px] md:text-[14px] leading-relaxed whitespace-pre-line mb-3">{qual.desc}</p>

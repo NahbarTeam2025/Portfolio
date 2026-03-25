@@ -142,10 +142,13 @@ export default function App() {
   }, [t.common.backToTitle]);
 
   const [isCertUnlocked, setIsCertUnlocked] = useState(false);
+  const [isCvUnlocked, setIsCvUnlocked] = useState(false);
   const [isStartVideoReady, setIsStartVideoReady] = useState(false);
   const [isSubVideoReady, setIsSubVideoReady] = useState(false);
   const [certPasswordInput, setCertPasswordInput] = useState('');
+  const [cvPasswordInput, setCvPasswordInput] = useState('');
   const [certError, setCertError] = useState(false);
+  const [cvError, setCvError] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -640,6 +643,12 @@ export default function App() {
                     setPrivacyAccepted={setPrivacyAccepted}
                     handleNavigate={handleNavigate}
                     handleSubmit={handleSubmit}
+                    isCvUnlocked={isCvUnlocked}
+                    cvPasswordInput={cvPasswordInput}
+                    setCvPasswordInput={setCvPasswordInput}
+                    cvError={cvError}
+                    setIsCvUnlocked={setIsCvUnlocked}
+                    setCvError={setCvError}
                   />
                 ) : currentPage === 'Impressum' ? (
                   <ImpressumPage />
