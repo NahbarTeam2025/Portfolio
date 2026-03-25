@@ -38,7 +38,7 @@ export const translations = {
       subtitle: 'Meine Werkzeuge',
       cta: {
         text: 'Passt dieses Profil zu deinen aktuellen Herausforderungen?',
-        button: 'Kontakt aufnehmen →'
+        button: 'Lass uns kennenlernen →'
       }
     },
     projects: {
@@ -51,7 +51,7 @@ export const translations = {
       showAll: 'Alle Projekte ansehen',
       cta: {
         text: 'Das sind Einblicke in meine Arbeitsweise – bereit für den Praxiseinsatz in deinem Team.',
-        button: 'Jetzt Gespräch anfragen →'
+        button: 'Lass uns kennenlernen →'
       },
       items: [
         {
@@ -132,7 +132,7 @@ export const translations = {
     qualifications: {
       title: 'Berufliche Qualifikation',
       ctaText: 'Ein Werdegang mit Fokus auf Struktur und Fortschritt – bereit für den nächsten Schritt bei euch.',
-      ctaButton: 'Klingt passend? Melde dich →',
+      ctaButton: 'Lass uns kennenlernen →',
       items: [
         {
           date: '07/2025 – 04/2026',
@@ -171,7 +171,7 @@ export const translations = {
       preview: 'Vorschau des Zertifikats. Klicken Sie zum Vergrößern.',
       showAll: 'Alle Zertifikate anzeigen',
       ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
-      ctaButton: 'Lernen wir uns kennen →',
+      ctaButton: 'Lass uns kennenlernen →',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
         { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
@@ -311,7 +311,7 @@ export const translations = {
       subtitle: 'My Tools',
       cta: {
         text: 'Does this profile fit your current challenges?',
-        button: 'Get in touch →'
+        button: 'Let\'s get to know each other →'
       }
     },
     projects: {
@@ -324,7 +324,7 @@ export const translations = {
       showAll: 'View All Projects',
       cta: {
         text: 'These are insights into my way of working – ready for practical use in your team.',
-        button: 'Request conversation now →'
+        button: 'Let\'s get to know each other →'
       },
       items: [
         {
@@ -405,7 +405,7 @@ export const translations = {
     qualifications: {
       title: 'Professional Qualification',
       ctaText: 'A career path with a focus on structure and progress – ready for the next step with you.',
-      ctaButton: 'Sounds like a fit? Get in touch →',
+      ctaButton: 'Let\'s get to know each other →',
       items: [
         {
           date: '07/2025 – 04/2026',
@@ -443,8 +443,8 @@ export const translations = {
       view: 'View',
       preview: 'Preview of the certificate. Click to enlarge.',
       showAll: 'Show all certificates',
-      ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
-      ctaButton: 'Lernen wir uns kennen →',
+      ctaText: 'Theoretically sound, practically motivated – ready for use in your team.',
+      ctaButton: 'Let\'s get to know each other →',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
         { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
