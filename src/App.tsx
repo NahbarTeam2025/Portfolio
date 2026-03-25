@@ -453,7 +453,7 @@ export default function App() {
                       e.preventDefault();
                       handleNavigate(page);
                     }}
-                    className={`px-2 xl:px-4 py-1.5 text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative group hover:scale-110 tech-mono focus-ring ${
+                    className={`px-2 xl:px-4 py-1.5 text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative group hover:scale-110 font-sans focus-ring ${
                       currentPage === page
                         ? 'text-white text-glow-blue'
                         : 'text-white/85 hover:text-white'
@@ -537,7 +537,7 @@ export default function App() {
                       e.preventDefault();
                       handleNavigate(page);
                     }}
-                    className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors tech-mono focus-ring ${
+                    className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors font-sans focus-ring ${
                       currentPage === page ? 'text-blue-400 text-glow-blue' : 'text-white/85 hover:text-white'
                     }`}
                   >
