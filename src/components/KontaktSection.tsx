@@ -130,7 +130,7 @@ export const KontaktSection = React.memo(({
                     <div className="wow-card-border" />
                     <div className="relative z-10 space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-white/60 text-[11px] uppercase tracking-wider font-bold">{t.certificates.protectedTitle}</span>
+                        <span className="text-white/60 text-[11px] uppercase tracking-wider font-bold">{t.contact.cvProtectedTitle}</span>
                         <button onClick={() => setShowPasswordInput(false)} className="text-white/40 hover:text-white"><ChevronDown className="rotate-180" size={16} /></button>
                       </div>
                       <div className="relative">
@@ -169,10 +169,10 @@ export const KontaktSection = React.memo(({
               <div className="hidden md:flex absolute inset-0 z-20 bg-[#0f1115] items-center justify-center rounded-2xl border border-white/10 p-6 animate-in fade-in duration-300">
                 <div className="w-full max-w-[300px] space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-white/60 text-[12px] uppercase tracking-wider font-bold">{t.certificates.protectedTitle}</span>
+                    <span className="text-white/60 text-[12px] uppercase tracking-wider font-bold">{t.contact.cvProtectedTitle}</span>
                     <button onClick={() => setShowPasswordInput(false)} className="text-white/40 hover:text-white"><X size={18} /></button>
                   </div>
-                  <p className="text-white/80 text-sm">{t.certificates.protectedDesc}</p>
+                  <p className="text-white/80 text-sm">{t.contact.cvProtectedDesc}</p>
                   <div className="relative">
                     <input 
                       type={showPassword ? "text" : "password"} 

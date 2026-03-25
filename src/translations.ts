@@ -128,6 +128,8 @@ export const translations = {
       location: 'Standort',
       locationValue: 'Falkenberg/Elster (bereit für Remote oder Umzug)',
       downloadCV: 'Meinen Lebenslauf als PDF herunterladen',
+      cvProtectedTitle: 'Lebenslauf geschützt',
+      cvProtectedDesc: 'Bitte gib das Passwort ein, um den Lebenslauf herunterzuladen.',
     },
     qualifications: {
       title: 'Berufliche Qualifikation',
@@ -401,6 +403,8 @@ export const translations = {
       location: 'Location',
       locationValue: 'Falkenberg/Elster (ready for remote or relocation)',
       downloadCV: 'Download my CV as PDF',
+      cvProtectedTitle: 'CV Protected',
+      cvProtectedDesc: 'Please enter the password to download the CV.',
     },
     qualifications: {
       title: 'Professional Qualification',
