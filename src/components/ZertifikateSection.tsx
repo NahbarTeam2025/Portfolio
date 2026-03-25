@@ -1,6 +1,7 @@
 import React, { startTransition, useState } from 'react';
 import { ExternalLink, ChevronDown, Eye, EyeOff } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { PROTECTED_CONTENT_PASSWORD } from '../constants/auth';
 
 export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, isCertUnlocked, certPasswordInput, setCertPasswordInput, certError, setIsCertUnlocked, setCertError, handleNavigate }: any) => {
   const { t } = useLanguage();
@@ -85,7 +86,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                               onChange={(e) => setCertPasswordInput(e.target.value)}
                               onKeyDown={(e) => {
                                 if (e.key === 'Enter') {
-                                  if (certPasswordInput === 'REZ2026') {
+                                  if (certPasswordInput === PROTECTED_CONTENT_PASSWORD) {
                                     setIsCertUnlocked(true);
                                     setCertError(false);
                                   } else {
@@ -106,7 +107,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                           {certError && <p className="text-red-400 text-xs">{t.certificates.invalidPassword}</p>}
                           <button 
                             onClick={() => {
-                              if (certPasswordInput === 'REZ2026') {
+                              if (certPasswordInput === PROTECTED_CONTENT_PASSWORD) {
                                 setIsCertUnlocked(true);
                                 setCertError(false);
                               } else {

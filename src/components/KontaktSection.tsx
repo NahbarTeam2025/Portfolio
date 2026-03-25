@@ -1,6 +1,7 @@
 import React, { useState, startTransition } from 'react';
 import { User, Mail, Linkedin, MapPin, ChevronDown, Eye, EyeOff, Lock, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { PROTECTED_CONTENT_PASSWORD } from '../constants/auth';
 
 export const KontaktSection = React.memo(({ 
   isSubmitting, 
@@ -23,7 +24,7 @@ export const KontaktSection = React.memo(({
   const [showPasswordInput, setShowPasswordInput] = useState(false);
 
   const handleUnlockCv = () => {
-    if (cvPasswordInput === 'REZ2026') {
+    if (cvPasswordInput === PROTECTED_CONTENT_PASSWORD) {
       setIsCvUnlocked(true);
       setCvError(false);
       setShowPasswordInput(false);
