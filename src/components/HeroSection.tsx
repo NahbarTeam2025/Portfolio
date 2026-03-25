@@ -19,7 +19,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
 
         {/* Subtitle */}
         <div className="flex flex-col items-center gap-3 lg:gap-6 mt-2 lg:mt-4">
-          <p className="text-white/60 text-[14px] md:text-[16px] lg:text-[18px] font-normal max-w-[600px] lg:max-w-[700px] leading-relaxed text-center">
+          <p className="text-white/80 text-[14px] md:text-[16px] lg:text-[18px] font-normal max-w-[600px] lg:max-w-[700px] leading-relaxed text-center">
             {t.hero.desc}
           </p>
         </div>

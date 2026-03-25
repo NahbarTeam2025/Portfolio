@@ -1,13 +1,22 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <!-- GA4 Integration -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP"></script>
+    <!-- GA4 Integration (Optimized) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-90T4169WJP');
+      
+      // Load GTM after a delay to improve initial page load performance
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = "https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP";
+          document.head.appendChild(script);
+        }, 2000);
+      });
     </script>
 
     <meta charset="UTF-8" />
@@ -44,6 +53,8 @@
     <link rel="preconnect" href="https://meine-assets.pages.dev" crossorigin />
     <link rel="dns-prefetch" href="https://meine-assets.pages.dev" />
     <link rel="preconnect" href="https://static.cloudflareinsights.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -285,7 +296,7 @@
       <div class="max-w-2xl w-full bg-black/40 backdrop-blur-[20px] saturate-[180%] border border-white/10 rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] p-4 md:p-5 text-white/90 text-[13px] leading-relaxed flex flex-col md:flex-row items-center justify-between gap-4">
         <p>Ich nutze Cookies, um die Website-Nutzung zu analysieren und mein Angebot zu optimieren. Details findest du in der <a href="/datenschutz" class="text-blue-400 hover:underline">Datenschutzerklärung</a>. <a href="/impressum" class="text-blue-400 hover:underline ml-2">Impressum</a>.</p>
         <div class="flex gap-2 shrink-0">
-          <button id="consent-accept" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors text-[11px] uppercase tracking-wider">Akzeptieren</button>
+          <button id="consent-accept" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-[11px] uppercase tracking-wider">Akzeptieren</button>
           <button id="consent-decline" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors text-[11px] uppercase tracking-wider">Ablehnen</button>
         </div>
       </div>

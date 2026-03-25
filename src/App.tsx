@@ -339,7 +339,7 @@ export default function App() {
               loop={true}
               muted={true}
               playsInline={true}
-              preload="auto"
+              preload="metadata"
               onCanPlay={() => setIsStartVideoReady(true)}
               className={`w-full h-full object-cover transition-opacity duration-1000 ${isStartVideoReady ? 'opacity-100' : 'opacity-0'}`}
             >
@@ -358,7 +358,7 @@ export default function App() {
               loop={true}
               muted={true}
               playsInline={true}
-              preload="auto"
+              preload="metadata"
               onCanPlay={() => setIsSubVideoReady(true)}
               className={`w-full h-full object-cover transition-opacity duration-1000 ${isSubVideoReady ? 'opacity-15' : 'opacity-0'}`}
             >

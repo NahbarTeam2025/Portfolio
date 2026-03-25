@@ -9,7 +9,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
         {t.about.title}
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className="flex flex-col gap-2 md:gap-3 text-white/80 text-[13px] sm:text-[15px] md:text-[16px] lg:text-[17px] font-normal max-w-[1000px] leading-snug md:leading-relaxed pt-1 md:pt-2">
+      <div className="flex flex-col gap-2 md:gap-3 text-white/90 text-[13px] sm:text-[15px] md:text-[16px] lg:text-[17px] font-normal max-w-[1000px] leading-snug md:leading-relaxed pt-1 md:pt-2">
         <p className="font-bold text-white">
           {t.about.boldText}
         </p>
