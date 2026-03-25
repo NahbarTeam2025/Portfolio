@@ -96,7 +96,15 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
             >
-              <span className="relative z-10">{project.buttonText || t.projects.live}</span>
+              <span className="relative z-10 flex items-center gap-2">
+                {index === 0 && (
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  </span>
+                )}
+                {project.buttonText || t.projects.live}
+              </span>
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
             </a>
           ) : project.details ? (

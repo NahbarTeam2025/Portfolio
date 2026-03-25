@@ -55,8 +55,8 @@ export const translations = {
           category: 'Digital Marketing & Web',
           desc: 'Konzeption und Umsetzung einer Landingpage für ein SEO-System mit integrierten KI-Workflows.',
           features: ['SEO-Optimierung', 'KI-Integration', 'Responsive Design', 'Lead-Generierung'],
-          buttonText: 'Jetzt live ansehen',
-          link: 'https://seo-ki-landingpage.pages.dev/'
+          buttonText: 'Live ansehen',
+          link: 'https://visibilitylab.roberterbach.de/'
         },
         {
           title: 'GA4-Tracking-Implementierung',

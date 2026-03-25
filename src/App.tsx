@@ -402,14 +402,14 @@ export default function App() {
       {/* Scroll Progress Indicator */}
       {currentPage !== 'Start' && (
         <motion.div 
-          className="fixed top-0 left-0 right-0 h-[1px] bg-blue-500 origin-left z-[100] shadow-[0_0_10px_rgba(59,130,246,0.8)]" 
+          className="fixed top-0 left-0 right-0 h-[1px] bg-blue-500 origin-left z-[100] shadow-[0_0_10px_rgba(59,130,246,0.8)] lg:hidden" 
           style={{ scaleX }} 
         />
       )}
 
       <div className={`relative z-10 flex flex-col min-h-screen overflow-x-hidden`}>
         {/* Navbar */}
-        <nav className={`sticky top-0 flex items-center justify-between px-4 py-2 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/20 backdrop-blur-[15px] saturate-[180%] border-b border-white/5' : 'bg-transparent'}`}>
+        <nav className={`sticky top-0 flex items-center justify-between px-4 py-1 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/20 backdrop-blur-[15px] saturate-[180%] border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
             {/* Logo */}
             <a 

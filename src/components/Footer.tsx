@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobileMenuOpen: boolean, handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
   return (
-    <footer className="w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-2 px-4 md:px-6 mt-auto relative z-10 shrink-0">
+    <footer className={`w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-2 px-4 md:px-6 mt-auto relative ${isMobileMenuOpen ? 'z-50' : 'z-10'} shrink-0`}>
       <div className="flex flex-row justify-between items-center gap-4">
         <button 
           onClick={() => handleNavigate('Start')}
