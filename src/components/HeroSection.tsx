@@ -38,6 +38,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mt-2 lg:mt-4">
         <motion.button 
+          id="btn-hero-projects"
           whileHover="hover"
           initial="initial"
           onClick={() => handleNavigate(t.nav.projects)}

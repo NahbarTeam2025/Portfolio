@@ -2,7 +2,29 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev data:; media-src 'self' meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev data: https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; media-src 'self' meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com;">
+    
+    <!-- Google Consent Mode v2 -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+    </script>
+
+    <!-- GA4 Integration -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J57DX8GS8T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-J57DX8GS8T');
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark only" />
     <meta name="theme-color" content="#000000" />
@@ -259,6 +281,57 @@
       </nav>
     </noscript>
     <div id="root"></div>
+    
+    <!-- Consent Banner -->
+    <div id="consent-banner" class="fixed bottom-0 left-0 right-0 z-[1000] p-4 md:p-6 flex justify-center">
+      <div class="max-w-3xl w-full bg-black/40 backdrop-blur-[20px] saturate-[180%] border border-white/10 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] p-6 text-white/90 text-sm leading-relaxed flex flex-col md:flex-row items-center justify-between gap-4">
+        <p>Ich nutze Cookies, um die Website-Nutzung zu analysieren und mein Angebot zu optimieren. Details findest du in der <a href="/datenschutz" class="text-blue-400 hover:underline">Datenschutzerklärung</a>. <a href="/impressum" class="text-blue-400 hover:underline ml-2">Impressum</a>.</p>
+        <div class="flex gap-3 shrink-0">
+          <button id="consent-accept" class="px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors text-xs uppercase tracking-wider">Akzeptieren</button>
+          <button id="consent-decline" class="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors text-xs uppercase tracking-wider">Ablehnen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Consent Banner Script -->
+    <script>
+      function closeBanner() {
+        document.getElementById('consent-banner').style.display = 'none';
+      }
+      document.getElementById('consent-accept').addEventListener('click', function() {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted',
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+        closeBanner();
+      });
+      document.getElementById('consent-decline').addEventListener('click', function() {
+        gtag('consent', 'update', {
+          'analytics_storage': 'denied',
+          'ad_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied'
+        });
+        closeBanner();
+      });
+    </script>
+
+    <!-- Button Tracking Script -->
+    <script>
+      // Wait for React to render the button
+      const checkButton = setInterval(() => {
+        const btn = document.getElementById('btn-hero-projects');
+        if (btn) {
+          btn.addEventListener('click', function() {
+            gtag('event', 'view_projects_click');
+          });
+          clearInterval(checkButton);
+        }
+      }, 500);
+    </script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
