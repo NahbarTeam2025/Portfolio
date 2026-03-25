@@ -11,8 +11,8 @@ export const LanguageSwitcher: React.FC = () => {
         onClick={() => setLanguage('de')}
         className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-300 ${
           language === 'de' 
-            ? 'bg-blue-500 text-white shadow-[0_0_10px_rgba(59,130,246,0.5)]' 
-            : 'text-white/50 hover:text-white'
+            ? 'bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.8)]' 
+            : 'text-white/60 hover:text-white'
         }`}
       >
         DE
@@ -21,8 +21,8 @@ export const LanguageSwitcher: React.FC = () => {
         onClick={() => setLanguage('en')}
         className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all duration-300 ${
           language === 'en' 
-            ? 'bg-blue-500 text-white shadow-[0_0_10px_rgba(59,130,246,0.5)]' 
-            : 'text-white/50 hover:text-white'
+            ? 'bg-blue-600 text-white shadow-[0_0_10px_rgba(37,99,235,0.8)]' 
+            : 'text-white/60 hover:text-white'
         }`}
       >
         EN
