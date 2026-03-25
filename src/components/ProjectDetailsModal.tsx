@@ -1,6 +1,7 @@
 import React, { startTransition } from 'react';
 import { X, Calendar, Tag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface ProjectDetails {
   subtitle: string;
@@ -27,6 +28,7 @@ export const ProjectDetailsModal = ({
   project: Project; 
   onClose: () => void 
 }) => {
+  const { language } = useLanguage();
   if (!project.details) return null;
 
   return (
@@ -69,7 +71,7 @@ export const ProjectDetailsModal = ({
             <button 
               onClick={() => startTransition(() => onClose())}
               className="p-2 text-white/40 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300"
-              aria-label="Schließen"
+              aria-label={language === 'de' ? 'Schließen' : 'Close'}
             >
               <X className="w-6 h-6" />
             </button>
@@ -93,14 +95,14 @@ export const ProjectDetailsModal = ({
             {project.details.images && project.details.images.length > 0 && (
               <div className="space-y-6 pt-4">
                 <h3 className="text-blue-400 text-[11px] font-bold uppercase tracking-[0.2em] opacity-80">
-                  Visualisierungen
+                  {language === 'de' ? 'Visualisierungen' : 'Visualizations'}
                 </h3>
                 <div className="grid grid-cols-1 gap-6">
                   {project.details.images.map((img, idx) => (
                     <div key={idx} className="relative group rounded-2xl overflow-hidden border border-white/10 bg-white/5">
                       <img 
                         src={img} 
-                        alt={`Projekt Visualisierung ${idx + 1}`} 
+                        alt={language === 'de' ? `Projekt Visualisierung ${idx + 1}` : `Project Visualization ${idx + 1}`} 
                         className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                         referrerPolicy="no-referrer"
                       />

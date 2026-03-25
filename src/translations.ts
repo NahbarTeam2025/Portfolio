@@ -1,0 +1,524 @@
+export type Language = 'de' | 'en';
+
+export const translations = {
+  de: {
+    nav: {
+      start: 'Start',
+      about: 'Über mich',
+      skills: 'Skills',
+      projects: 'Projekte',
+      qualification: 'Qualifikation',
+      certificates: 'Zertifikate',
+      contact: 'Kontakt',
+    },
+    hero: {
+      title: 'Robert Erbach',
+      subtitle: 'Design & KI – klar gedacht, sauber umgesetzt',
+      desc: 'Ich arbeite strukturiert, denke Zusammenhänge weiter und entwickle Lösungen, die klar aufgebaut sind.',
+      design: 'Design',
+      structure: 'Struktur',
+      ki: 'KI',
+      cta: 'Projekte entdecken',
+    },
+    about: {
+      title: 'Über mich',
+      subtitle: 'Wer ich bin',
+      boldText: 'Ich arbeite strukturiert und mit dem Anspruch, Dinge wirklich zu verstehen – nicht nur umzusetzen.',
+      text1: 'Was man nicht sofort sieht: wie viel im Hintergrund passiert. Ich denke weiter, hinterfrage und erkenne Zusammenhänge, bevor sie offensichtlich werden. Dabei geht es mir nicht darum, möglichst viel zu machen, sondern die richtigen Dinge zu tun.',
+      text2: 'Ich arbeite mich in Themen ein, analysiere, vereinfache und entwickle daraus Lösungen, die klar aufgebaut sind und funktionieren. Nicht als schnelle Idee, sondern als durchdachtes System.',
+      text3: 'Komplexität zu durchdringen und auf das Wesentliche zu reduzieren, ist für mich die Grundlage guter Arbeit. Ich gehe Projekte mit Ehrgeiz und einem hohen Anspruch an Qualität an – mit dem Ziel, Ergebnisse zu schaffen, die nicht nur gut aussehen, sondern nachhaltig überzeugen.',
+      motto: 'Klar im Denken. Strukturiert in der Umsetzung. Verlässlich im Ergebnis.',
+      cta: {
+        text: 'Ich freue mich, wenn wir uns austauschen.',
+        button: 'Lass uns austauschen'
+      }
+    },
+    skills: {
+      title: 'Skills',
+      subtitle: 'Meine Werkzeuge',
+    },
+    projects: {
+      title: 'Projekte',
+      subtitle: 'Ausgewählte Arbeiten',
+      projectLabel: 'Projekt',
+      details: 'Details',
+      live: 'Live Demo',
+      comingSoon: 'Demnächst',
+      showAll: 'Alle Projekte ansehen',
+      cta: {
+        text: 'Das waren ein paar Beispiele meiner Arbeit – gerne mehr dazu.',
+        button: 'Lust auf ein Gespräch?'
+      },
+      items: [
+        {
+          title: 'SEO- & KI-Landingpage',
+          category: 'Digital Marketing & Web',
+          desc: 'Konzeption und Umsetzung einer Landingpage für ein SEO-System mit integrierten KI-Workflows.',
+          features: ['SEO-Optimierung', 'KI-Integration', 'Responsive Design', 'Lead-Generierung'],
+          buttonText: 'Jetzt live ansehen',
+          link: 'https://seo-ki-landingpage.pages.dev/'
+        },
+        {
+          title: 'GA4-Tracking-Implementierung',
+          category: 'Web Analytics',
+          desc: 'Konzeption eines vollständigen GA4-Tracking-Plans für einen fiktiven Outdoor-Onlineshop – von der Event-Strategie bis zum fertigen Implementierungsdokument.',
+          features: ['Web Analytics', 'GA4', 'E-Commerce', 'Tracking', 'Measurement Plan'],
+          buttonText: 'Details ansehen',
+          details: {
+            subtitle: 'Nuraghi Outdoor Experience',
+            meta: 'Kursarbeit | Web Analytics | März 2026',
+            sections: [
+              {
+                title: 'Kontext',
+                content: 'Im Rahmen der Weiterbildung zum Digital Marketing Manager wurde anhand eines fiktiven Outdoor-Onlineshops ein vollständiger GA4-Tracking-Implementierungsplan entwickelt. Ziel war nicht die technische Umsetzung, sondern das konzeptionelle Handwerk: Welche Events braucht ein Shop wirklich – und warum?'
+              },
+              {
+                title: 'Aufgabe',
+                content: 'Zwei Geschäftsziele standen im Mittelpunkt: Steigerung der Produktverkäufe und Steigerung der Blog-Interaktionen. Daraus wurden sieben konkrete Tracking-Events abgeleitet, priorisiert und vollständig dokumentiert.'
+              },
+              {
+                title: 'Vorgehen',
+                content: 'Zunächst wurde die Customer Journey des Shops analysiert – vom Produktlisting bis zum Kauf. Darauf aufbauend wurden fünf GA4-Standard-E-Commerce-Events implementiert:\nview_item_list → view_item → add_to_cart → begin_checkout → purchase\nErgänzt durch zwei benutzerdefinierte Events: apply_promotion_code zur Kampagnenmessung und blog_interaction für Content-Engagement.\nFür jedes Event wurde ein vollständiger gtag()-Trackingcode erstellt, Trigger definiert, die Implementierungsmethode festgelegt und die Priorisierung begründet. Die Validierung würde über GA4 DebugView und den Measurement Protocol Validation Server erfolgen.'
+              },
+              {
+                title: 'Deliverable',
+                content: 'Vollständiger Implementierungsplan als Excel-Dokument mit Event-Namen, Triggern, Trackingcodes, Entwicklerdoku-Links, Implementierungsmethoden und Priorisierung.'
+              },
+              {
+                title: 'Erkenntnis',
+                content: 'Tracking-Konzepte scheitern meist nicht an der Technik, sondern daran, dass Events ohne Geschäftsziel-Bezug implementiert werden. Die Priorisierung – Purchase und Add-to-Cart als kritisch, Blog-Interaktion als mittel – zwingt zur strategischen Entscheidung bevor eine einzige Zeile Code geschrieben wird.'
+              }
+            ]
+          }
+        },
+        {
+          title: 'Marketing Dashboard',
+          category: 'Analytics & Data',
+          desc: 'Entwicklung von Dashboards zur Echtzeit-Überwachung von Marketing-KPIs.',
+          features: ['Data Studio', 'API Integration', 'Custom Dashboards', 'Automatisierung'],
+          buttonText: 'Coming soon'
+        }
+      ]
+    },
+    contact: {
+      title: 'Kontakt',
+      subtitle: 'Ich bin offen für neue Möglichkeiten.',
+      desc: 'Ob Jobanfrage, Projektidee oder fachlicher Austausch – schreib mir einfach. Ich melde mich zeitnah zurück.',
+      name: 'Name',
+      email: 'E-Mail',
+      message: 'Nachricht',
+      send: 'Absenden',
+      sending: 'Wird gesendet...',
+      privacy: 'Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.',
+      privacyLink: 'Datenschutzerklärung',
+      successTitle: 'Nachricht gesendet!',
+      successDesc: 'Vielen Dank für Ihre Nachricht. Ich werde mich in Kürze bei Ihnen melden.',
+      error: 'Es gab ein Problem beim Senden. Bitte versuchen Sie es später erneut.',
+      formOpen: 'Kontaktformular öffnen',
+      formClose: 'Kontaktformular schließen',
+      formTitle: 'Kontaktformular',
+      placeholderName: 'z. B. Max Mustermann',
+      placeholderEmail: 'name@beispiel.de',
+      placeholderMessage: 'Ich habe eine Frage zu …',
+      responseTime: 'Antwort meist innerhalb 24 Stunden',
+      location: 'Standort',
+    },
+    qualifications: {
+      title: 'Berufliche Qualifikation',
+      ctaText: 'Das ist mein beruflicher Weg bisher – neugierig auf mehr Details?',
+      ctaButton: 'Klingt passend? Meld dich →',
+      items: [
+        {
+          date: '07/2025 – 04/2026',
+          title: 'Digital Marketing Manager (Weiterbildung)',
+          company: 'GFN GmbH',
+          content: ['Content Marketing', 'Social Media Marketing', 'SEO / SEA', 'E-Commerce und datengetriebene Kampagnen', 'Web Analytics (Google Analytics, Tag Manager)', 'Neuromarketing']
+        },
+        {
+          date: '06/2024 – 05/2025',
+          title: 'Kaufmännische Weiterbildung',
+          company: 'Fortbildungsakademie der Wirtschaft (IBB)',
+          content: ['Kaufmännischer Schriftverkehr nach DIN 5008', 'MS Office', 'Datenbanken (MS Access)', 'IT-Sicherheit', 'Datenschutz (DSGVO)']
+        },
+        {
+          date: '07/2017 – 05/2024',
+          title: 'Berufliche Tätigkeiten',
+          company: 'Handwerker- und Büroservice',
+          desc: 'Berufliche Tätigkeiten im Handwerker- und Büroservice.\nParallel gezielte Vorbereitung auf den Einstieg ins Digital Marketing mit Fokus auf digitale Themen.'
+        },
+        {
+          date: '09/2013 – 09/2016',
+          title: 'Ausbildung Kaufmann im Gesundheitswesen',
+          company: 'Sanitätshaus Bauch'
+        }
+      ]
+    },
+    certificates: {
+      title: 'Zertifikate',
+      protectedTitle: 'Geschützter Bereich',
+      protectedDesc: 'Bitte gib das Passwort ein, um die Zertifikate einzusehen.',
+      passwordPlaceholder: 'Passwort',
+      unlockButton: 'Entsperren',
+      invalidPassword: 'Ungültiges Passwort',
+      verified: 'Verifiziert',
+      view: 'Ansehen',
+      preview: 'Vorschau des Zertifikats. Klicken Sie zum Vergrößern.',
+      showAll: 'Alle Zertifikate anzeigen',
+      ctaText: 'Die Zertifikate geben einen guten Überblick – bei Interesse mehr.',
+      ctaButton: 'Fragen zu den Zertifikaten? →',
+      items: [
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
+        { id: 3, title: 'E-Commerce Manager/Assistenz', issuer: 'GFN GmbH' },
+        { id: 4, title: 'Neuromarketing', issuer: 'GFN GmbH' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH' },
+        { id: 6, title: 'SEO', issuer: 'GFN GmbH' },
+        { id: 7, title: 'PPC-Manager', issuer: 'GFN GmbH' },
+        { id: 8, title: 'Web Analytics', issuer: 'GFN GmbH' },
+        { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH' },
+        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic' }
+      ]
+    },
+    footer: {
+      rights: 'Alle Rechte vorbehalten.',
+      impressum: 'Impressum',
+      privacy: 'Datenschutz',
+    },
+    impressum: {
+      title: "Impressum",
+      close: "Schließen",
+      section1Title: "Angaben gemäß § 5 TMG",
+      section2Title: "Kontakt",
+      section3Title: "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV",
+      name: "Robert Erbach",
+      address: "Am Stadtpark 43",
+      city: "04895 Falkenberg/Elster",
+      phone: "Telefon: 0152-04041124",
+      email: "E-Mail: roberterbach@web.de"
+    },
+    privacy: {
+      title: "Datenschutzerklärung",
+      close: "Schließen",
+      section1: {
+        title: "1. Datenschutz auf einen Blick",
+        subtitle1: "Allgemeine Hinweise",
+        text1: "Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.",
+        subtitle2: "Datenerfassung auf dieser Website",
+        q1: "Wer ist verantwortlich für die Datenerfassung auf dieser Website?",
+        a1: "Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.",
+        q2: "Wie erfasse ich Ihre Daten?",
+        a2: "Ihre Daten werden zum einen dadurch erhoben, dass Sie mir diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch meine IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).",
+        q3: "Wofür nutze ich Ihre Daten?",
+        a3: "Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.",
+        q4: "Welche Rechte haben Sie bezüglich Ihrer Daten?",
+        a4: "Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen."
+      },
+      section2: {
+        title: "2. Hosting",
+        text1: "Ich hoste die Inhalte meiner Website bei folgendem Anbieter:",
+        subtitle1: "Cloudflare",
+        text2: "Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (nachfolgend „Cloudflare“).",
+        text3: "Wenn Sie meine Website besuchen, erfasst Cloudflare verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare:",
+        text4: "Die Verwendung von Cloudflare erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung meiner Website."
+      },
+      section3: {
+        title: "3. Allgemeine Hinweise und Pflichtinformationen",
+        subtitle1: "Datenschutz",
+        text1: "Ich nehme den Schutz Ihrer persönlichen Daten sehr ernst. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.",
+        subtitle2: "Hinweis zur verantwortlichen Stelle",
+        text2: "Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:",
+        address: "Robert Erbach, Am Stadtpark 43, 04895 Falkenberg/Elster, Telefon: 0152-04041124, E-Mail: roberterbach@web.de"
+      },
+      section4: {
+        title: "4. Datenerfassung auf dieser Website",
+        subtitle1: "Kontaktformular (Web3Forms)",
+        text1: "Wenn Sie mir per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.",
+        text2: "Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt zur Abwicklung Ihrer Anfrage. Ich nutze für die Bereitstellung des Formulars den Dienst \"Web3Forms\" des Anbieters Web3Forms. Die von Ihnen eingegebenen Daten werden auf den Servern von Web3Forms verarbeitet.",
+        text3: "Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf meinem berechtigten Interesse an der effektiven Bearbeitung der an mich gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.",
+        text4: "Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei mir, bis Sie mich zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.",
+        subtitle2: "Bereitstellung von Downloads (Zertifikate)",
+        text5: "Ich biete auf meiner Website Zertifikate zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Cloudflare erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken."
+      },
+      section5: {
+        title: "5. Externe Ressourcen und CDN",
+        subtitle1: "Bunny Fonts",
+        text1: "Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Webfonts direkt von den Servern des Anbieters (Bunny.net) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diesen Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.",
+        subtitle2: "Verwendung eines Content Delivery Networks (CDN) – Cloudflare",
+        text2: "Wir nutzen für die Bereitstellung von Medieninhalten (wie Videos und Bildern) das Content Delivery Network (CDN) von Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA).",
+        text3: "Zweck der Nutzung ist die Optimierung der Ladezeiten und die stabile, weltweite Bereitstellung unserer Assets. Durch die Nutzung dieses Dienstes werden Medieninhalte direkt von den Servern von Cloudflare geladen. Um diese Inhalte auszuliefern, verarbeitet Cloudflare technisch bedingt die IP-Adresse Ihres Endgeräts sowie weitere Log-Daten.",
+        text4: "Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare:",
+        text5: "Die Rechtsgrundlage für diese Datenverarbeitung ist unser berechtigtes Interesse an einer performanten, technisch stabilen und nutzerfreundlichen Bereitstellung unseres Onlineangebots (Art. 6 Abs. 1 f DSGVO)."
+      }
+    },
+    common: {
+      loading: 'Wird geladen...',
+      success: 'Erfolgreich',
+      back: 'Zurück',
+      letsTalk: 'Lass uns reden',
+      backToTitle: 'Zurück zu Robert Erbach',
+      highContrastOn: 'Modus aktivieren',
+      highContrastOff: 'Modus deaktivieren',
+      loadingExperience: 'Erlebnis wird geladen',
+    }
+  },
+  en: {
+    nav: {
+      start: 'Home',
+      about: 'About Me',
+      skills: 'Skills',
+      projects: 'Projects',
+      qualification: 'Qualification',
+      certificates: 'Certificates',
+      contact: 'Contact',
+    },
+    hero: {
+      title: 'Robert Erbach',
+      subtitle: 'Design & AI – clearly thought out, cleanly implemented',
+      desc: 'I work in a structured way, think connections further and develop solutions that are clearly structured.',
+      design: 'Design',
+      structure: 'Structure',
+      ki: 'AI',
+      cta: 'Discover Projects',
+    },
+    about: {
+      title: 'About Me',
+      subtitle: 'Who I am',
+      boldText: 'I work in a structured way and with the aim of really understanding things – not just implementing them.',
+      text1: 'What you don\'t see immediately: how much happens in the background. I think ahead, question and recognize connections before they become obvious. For me, it\'s not about doing as much as possible, but about doing the right things.',
+      text2: 'I immerse myself in topics, analyze, simplify and develop solutions that are clearly structured and work. Not as a quick idea, but as a well-thought-out system.',
+      text3: 'Penetrating complexity and reducing it to the essentials is the basis of good work for me. I approach projects with ambition and a high standard of quality – with the goal of creating results that not only look good but also convince sustainably.',
+      motto: 'Clear in thinking. Structured in implementation. Reliable in results.',
+      cta: {
+        text: 'I look forward to our exchange.',
+        button: "Let's exchange"
+      }
+    },
+    skills: {
+      title: 'Skills',
+      subtitle: 'My Tools',
+    },
+    projects: {
+      title: 'Projects',
+      subtitle: 'Selected Works',
+      projectLabel: 'Project',
+      details: 'Details',
+      live: 'Live Demo',
+      comingSoon: 'Coming Soon',
+      showAll: 'View All Projects',
+      cta: {
+        text: 'These were a few examples of my work – happy to share more.',
+        button: "Let's talk"
+      },
+      items: [
+        {
+          title: 'SEO & AI Landing Page',
+          category: 'Digital Marketing & Web',
+          desc: 'Conception and implementation of a landing page for an SEO system with integrated AI workflows.',
+          features: ['SEO Optimization', 'AI Integration', 'Responsive Design', 'Lead Generation'],
+          buttonText: 'View Live Now',
+          link: 'https://seo-ki-landingpage.pages.dev/'
+        },
+        {
+          title: 'GA4 Tracking Implementation',
+          category: 'Web Analytics',
+          desc: 'Conception of a complete GA4 tracking plan for a fictional outdoor online shop – from event strategy to the finished implementation document.',
+          features: ['Web Analytics', 'GA4', 'E-Commerce', 'Tracking', 'Measurement Plan'],
+          buttonText: 'View Details',
+          details: {
+            subtitle: 'Nuraghi Outdoor Experience',
+            meta: 'Coursework | Web Analytics | March 2026',
+            sections: [
+              {
+                title: 'Context',
+                content: 'As part of the Digital Marketing Manager training, a complete GA4 tracking implementation plan was developed using a fictional outdoor online shop. The goal was not technical implementation, but conceptual craftsmanship: Which events does a shop really need – and why?'
+              },
+              {
+                title: 'Task',
+                content: 'Two business goals were at the center: increasing product sales and increasing blog interactions. From these, seven specific tracking events were derived, prioritized and fully documented.'
+              },
+              {
+                title: 'Approach',
+                content: 'First, the customer journey of the shop was analyzed – from product listing to purchase. Based on this, five GA4 standard e-commerce events were implemented:\nview_item_list → view_item → add_to_cart → begin_checkout → purchase\nSupplemented by two custom events: apply_promotion_code for campaign measurement and blog_interaction for content engagement.\nA complete gtag() tracking code was created for each event, triggers defined, the implementation method established and the prioritization justified. Validation would take place via GA4 DebugView and the Measurement Protocol Validation Server.'
+              },
+              {
+                title: 'Deliverable',
+                content: 'Complete implementation plan as an Excel document with event names, triggers, tracking codes, developer documentation links, implementation methods and prioritization.'
+              },
+              {
+                title: 'Insight',
+                content: 'Tracking concepts usually fail not because of technology, but because events are implemented without reference to business goals. Prioritization – Purchase and Add-to-Cart as critical, Blog interaction as medium – forces a strategic decision before a single line of code is written.'
+              }
+            ]
+          }
+        },
+        {
+          title: 'Marketing Dashboard',
+          category: 'Analytics & Data',
+          desc: 'Development of dashboards for real-time monitoring of marketing KPIs.',
+          features: ['Data Studio', 'API Integration', 'Custom Dashboards', 'Automation'],
+          buttonText: 'Coming soon'
+        }
+      ]
+    },
+    contact: {
+      title: 'Contact',
+      subtitle: 'I am open to new opportunities.',
+      desc: 'Whether it\'s a job inquiry, project idea or professional exchange – just write to me. I\'ll get back to you promptly.',
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      send: 'Submit',
+      sending: 'Sending...',
+      privacy: 'I agree to the processing of my data according to the privacy policy.',
+      privacyLink: 'Privacy Policy',
+      successTitle: 'Message sent!',
+      successDesc: 'Thank you for your message. I will get back to you shortly.',
+      error: 'There was a problem sending. Please try again later.',
+      formOpen: 'Open contact form',
+      formClose: 'Close contact form',
+      formTitle: 'Contact Form',
+      placeholderName: 'e.g. John Doe',
+      placeholderEmail: 'name@example.com',
+      placeholderMessage: 'I have a question about …',
+      responseTime: 'Response usually within 24 hours',
+      location: 'Location',
+    },
+    qualifications: {
+      title: 'Professional Qualification',
+      ctaText: 'This is my professional journey so far – curious for more details?',
+      ctaButton: 'Sounds like a fit? Get in touch →',
+      items: [
+        {
+          date: '07/2025 – 04/2026',
+          title: 'Digital Marketing Manager (Further Training)',
+          company: 'GFN GmbH',
+          content: ['Content Marketing', 'Social Media Marketing', 'SEO / SEA', 'E-Commerce and data-driven campaigns', 'Web Analytics (Google Analytics, Tag Manager)', 'Neuromarketing']
+        },
+        {
+          date: '06/2024 – 05/2025',
+          title: 'Commercial Further Training',
+          company: 'Fortbildungsakademie der Wirtschaft (IBB)',
+          content: ['Commercial correspondence according to DIN 5008', 'MS Office', 'Databases (MS Access)', 'IT Security', 'Data Protection (GDPR)']
+        },
+        {
+          date: '07/2017 – 05/2024',
+          title: 'Professional Activities',
+          company: 'Handyman and Office Service',
+          desc: 'Professional activities in handyman and office service.\nParallel targeted preparation for entry into Digital Marketing with a focus on digital topics.'
+        },
+        {
+          date: '09/2013 – 09/2016',
+          title: 'Apprenticeship Health Care Merchant',
+          company: 'Sanitätshaus Bauch'
+        }
+      ]
+    },
+    certificates: {
+      title: 'Certificates',
+      protectedTitle: 'Protected Area',
+      protectedDesc: 'Please enter the password to view the certificates.',
+      passwordPlaceholder: 'Password',
+      unlockButton: 'Unlock',
+      invalidPassword: 'Invalid Password',
+      verified: 'Verified',
+      view: 'View',
+      preview: 'Preview of the certificate. Click to enlarge.',
+      showAll: 'Show all certificates',
+      ctaText: 'The certificates give a good overview – more if interested.',
+      ctaButton: 'Questions about the certificates? →',
+      items: [
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
+        { id: 3, title: 'E-Commerce Manager/Assistant', issuer: 'GFN GmbH' },
+        { id: 4, title: 'Neuromarketing', issuer: 'GFN GmbH' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH' },
+        { id: 6, title: 'SEO', issuer: 'GFN GmbH' },
+        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH' },
+        { id: 8, title: 'Web Analytics', issuer: 'GFN GmbH' },
+        { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH' },
+        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic' }
+      ]
+    },
+    footer: {
+      rights: 'All rights reserved.',
+      impressum: 'Legal Notice',
+      privacy: 'Privacy Policy',
+    },
+    impressum: {
+      title: "Legal Notice",
+      close: "Close",
+      section1Title: "Information according to § 5 TMG",
+      section2Title: "Contact",
+      section3Title: "Responsible for content according to § 55 Abs. 2 RStV",
+      name: "Robert Erbach",
+      address: "Am Stadtpark 43",
+      city: "04895 Falkenberg/Elster",
+      phone: "Phone: 0152-04041124",
+      email: "Email: roberterbach@web.de"
+    },
+    privacy: {
+      title: "Privacy Policy",
+      close: "Close",
+      section1: {
+        title: "1. Privacy at a glance",
+        subtitle1: "General Information",
+        text1: "The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you can be personally identified.",
+        subtitle2: "Data collection on this website",
+        q1: "Who is responsible for data collection on this website?",
+        a1: "Data processing on this website is carried out by the website operator. You can find their contact details in the legal notice of this website.",
+        q2: "How do I collect your data?",
+        a2: "Your data is collected on the one hand by you communicating it to me. This can be, for example, data that you enter into a contact form. Other data is collected automatically or after your consent when you visit the website by my IT systems. These are mainly technical data (e.g. internet browser, operating system or time of the page view).",
+        q3: "What do I use your data for?",
+        a3: "Part of the data is collected to ensure error-free provision of the website. Other data can be used to analyze your user behavior.",
+        q4: "What rights do you have regarding your data?",
+        a4: "You have the right at any time to receive information free of charge about the origin, recipient and purpose of your stored personal data. You also have a right to request the correction or deletion of this data. If you have given your consent to data processing, you can revoke this consent at any time for the future. You also have the right, under certain circumstances, to request the restriction of the processing of your personal data."
+      },
+      section2: {
+        title: "2. Hosting",
+        text1: "I host the content of my website with the following provider:",
+        subtitle1: "Cloudflare",
+        text2: "Provider is Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (hereinafter “Cloudflare”).",
+        text3: "When you visit my website, Cloudflare collects various log files including your IP addresses. Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found in Cloudflare's privacy policy:",
+        text4: "The use of Cloudflare is based on Art. 6 Para. 1 lit. f GDPR. I have a legitimate interest in the most reliable presentation of my website."
+      },
+      section3: {
+        title: "3. General information and mandatory information",
+        subtitle1: "Data protection",
+        text1: "I take the protection of your personal data very seriously. I treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.",
+        subtitle2: "Note on the responsible body",
+        text2: "The responsible body for data processing on this website is:",
+        address: "Robert Erbach, Am Stadtpark 43, 04895 Falkenberg/Elster, Phone: 0152-04041124, Email: roberterbach@web.de"
+      },
+      section4: {
+        title: "4. Data collection on this website",
+        subtitle1: "Contact form (Web3Forms)",
+        text1: "If you send me inquiries via the contact form, your details from the inquiry form, including the contact details you provided there, will be stored by me for the purpose of processing the inquiry and in the event of follow-up questions. I will not pass on this data without your consent.",
+        text2: "The processing of the data entered into the contact form takes place to process your inquiry. I use the service \"Web3Forms\" from the provider Web3Forms to provide the form. The data you enter will be processed on the servers of Web3Forms.",
+        text3: "The processing of this data is based on Art. 6 Para. 1 lit. b GDPR, provided that your inquiry is related to the fulfillment of a contract or is necessary to carry out pre-contractual measures. In all other cases, the processing is based on my legitimate interest in the effective processing of the inquiries addressed to me (Art. 6 Para. 1 lit. f GDPR) or on your consent (Art. 6 Para. 1 lit. a GDPR) if this was requested; consent can be revoked at any time.",
+        text4: "The data you enter in the contact form will remain with me until you ask me to delete it, revoke your consent to storage or the purpose for data storage no longer applies (e.g. after your inquiry has been processed). Mandatory statutory provisions – in particular retention periods – remain unaffected.",
+        subtitle2: "Provision of downloads (certificates)",
+        text5: "I offer certificates for download on my website. When downloading these files, technical data (such as your IP address, time of download, file name) are collected by my host Cloudflare by default. This is technically necessary to provide the download (Art. 6 Para. 1 lit. f GDPR). There is no further evaluation of your download behavior for marketing purposes."
+      },
+      section5: {
+        title: "5. External resources and CDN",
+        subtitle1: "Bunny Fonts",
+        text1: "This site uses external resources for the uniform presentation of fonts. When you call up a page, your browser loads the required web fonts directly from the provider's servers (Bunny.net) into your browser cache. For technical reasons, your IP address is transmitted to this provider. Bunny Fonts is a privacy-friendly alternative to Google Fonts and is provided on servers within the EU.",
+        subtitle2: "Use of a Content Delivery Network (CDN) – Cloudflare",
+        text2: "We use the Content Delivery Network (CDN) from Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) to provide media content (such as videos and images).",
+        text3: "The purpose of use is to optimize loading times and the stable, worldwide provision of our assets. By using this service, media content is loaded directly from Cloudflare's servers. In order to deliver this content, Cloudflare processes the IP address of your end device and other log data for technical reasons.",
+        text4: "Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found in Cloudflare's privacy policy:",
+        text5: "The legal basis for this data processing is our legitimate interest in a high-performance, technically stable and user-friendly provision of our online offer (Art. 6 Para. 1 f GDPR)."
+      }
+    },
+    common: {
+      loading: 'Loading...',
+      success: 'Success',
+      back: 'Back',
+      letsTalk: "Let's talk",
+      backToTitle: 'Back to Robert Erbach',
+      highContrastOn: 'Enable Mode',
+      highContrastOff: 'Disable Mode',
+      loadingExperience: 'Loading Experience',
+    }
+  }
+};

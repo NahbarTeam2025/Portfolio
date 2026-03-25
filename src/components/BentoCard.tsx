@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?: (project: any) => void }> = ({ project, index, onDetailsClick }) => {
+  const { t, language } = useLanguage();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -49,7 +51,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative group wow-card overflow-hidden flex flex-col h-full transition-all duration-500 border border-white/10 bg-black/40 card-glow-blue rounded-[24px]`}
+      className={`relative group wow-card parallax-element overflow-hidden flex flex-col h-full transition-all duration-500 border border-white/10 bg-black/40 card-glow-blue rounded-[24px]`}
     >
       <div className="wow-card-border" />
       <div className="card-top-flare opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -63,7 +65,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
         <div className="flex flex-col gap-6 items-center w-full flex-grow">
           {/* Top Badge */}
           <div className="px-4 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-[10px] font-bold uppercase tracking-[0.2em]">
-            Projekt {index + 1}
+            {t.projects.projectLabel} {index + 1}
           </div>
 
           <div className="flex flex-col gap-3 items-center">
@@ -78,7 +80,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           </p>
           
           <div className="flex flex-wrap justify-center gap-2 pt-2">
-            {project.features.map((feature: string) => (
+            {project.features?.map((feature: string) => (
               <span key={feature} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 text-[10px] font-medium uppercase tracking-wider">
                 {feature}
               </span>
@@ -94,7 +96,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
             >
-              <span className="relative z-10">{project.buttonText || 'Live Demo'}</span>
+              <span className="relative z-10">{project.buttonText || t.projects.live}</span>
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
             </a>
           ) : project.details ? (
@@ -102,14 +104,14 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               onClick={() => onDetailsClick?.(project)}
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
             >
-              <span className="relative z-10">{project.buttonText || 'Details'}</span>
+              <span className="relative z-10">{project.buttonText || t.projects.details}</span>
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
             </button>
           ) : (
             <div
               className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-white/5 border border-white/10 text-white/40 font-bold text-[12px] uppercase tracking-widest cursor-default"
             >
-              <span className="relative z-10">Coming Soon</span>
+              <span className="relative z-10">{t.projects.comingSoon}</span>
             </div>
           )}
         </div>

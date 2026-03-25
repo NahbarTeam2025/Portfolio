@@ -35,7 +35,7 @@ export const TerminalStatus = () => {
   return (
     <div className="h-6 flex items-center justify-center w-full max-w-[400px] overflow-hidden">
       <p className="font-mono text-[10px] md:text-[12px] text-blue-400/90 tracking-wider">
-        {`> ${displayText}`}<span className="animate-pulse">_</span>
+        {`> ${displayText}`}<span className="animate-pulse-subtle">_</span>
       </p>
     </div>
   );

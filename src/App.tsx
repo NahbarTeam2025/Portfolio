@@ -6,10 +6,11 @@
 import React, { useState, useEffect, useCallback, useRef, startTransition, Suspense, lazy } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, Linkedin, ArrowRight, ExternalLink } from 'lucide-react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform, useScroll } from 'framer-motion';
 
 // Import refactored components
 import { MouseGlow } from './components/MouseGlow';
+import { MagneticButton } from './components/MagneticButton';
 import { TerminalStatus } from './components/TerminalStatus';
 import { BentoCard } from './components/BentoCard';
 import { Typewriter } from './components/Typewriter';
@@ -18,8 +19,12 @@ import { Footer } from './components/Footer';
 import { ImpressumModal } from './components/ImpressumModal';
 import { DatenschutzModal } from './components/DatenschutzModal';
 import { useSEO } from './hooks/useSEO';
+import { useParallaxIntersection } from './hooks/useParallaxIntersection';
+import { useLanguage } from './contexts/LanguageContext';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
 
 // Lazy load components
+const CommandTerminal = lazy(() => import('./components/CommandTerminal'));
 const QualifikationSection = lazy(() => import('./components/QualifikationSection').then(m => ({ default: m.QualifikationSection })));
 const SkillsSection = lazy(() => import('./components/SkillsSection').then(m => ({ default: m.SkillsSection })));
 const ProjekteSection = lazy(() => import('./components/ProjekteSection').then(m => ({ default: m.ProjekteSection })));
@@ -48,10 +53,21 @@ const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
 const PAGES = ['Über mich', 'Projekte', 'Skills', 'Qualifikation', 'Zertifikate'];
 
 export default function App() {
+  const { t } = useLanguage();
   useSEO(); // Initialize dynamic SEO tags
-  
   const location = useLocation();
   const navigate = useNavigate();
+  const currentPage = ROUTE_TO_PAGE[location.pathname] || 'Start';
+
+  const PAGES = [t.nav.about, t.nav.projects, t.nav.skills, t.nav.qualification, t.nav.certificates];
+
+  // Scroll Progress Indicator
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     if (!ROUTE_TO_PAGE[location.pathname]) {
@@ -59,9 +75,11 @@ export default function App() {
     }
   }, [location.pathname, navigate]);
 
-  const currentPage = ROUTE_TO_PAGE[location.pathname] || 'Start';
+  useParallaxIntersection([currentPage]);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isImpressumOpen, setIsImpressumOpen] = useState(false);
+  const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
   const [step, setStep] = useState(0);
 
   useEffect(() => {
@@ -88,7 +106,16 @@ export default function App() {
 
   const [isContactFormExpanded, setIsContactFormExpanded] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [isHighContrast, setIsHighContrast] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isHighContrast) {
+      document.documentElement.classList.add('high-contrast');
+    } else {
+      document.documentElement.classList.remove('high-contrast');
+    }
+  }, [isHighContrast]);
 
   useEffect(() => {
     // Shorter loading time if page is ready, but keep a minimum for the animation
@@ -102,7 +129,7 @@ export default function App() {
     const originalTitle = document.title;
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        document.title = "Zurück zu Robert Erbach";
+        document.title = t.common.backToTitle;
       } else {
         document.title = originalTitle;
       }
@@ -112,7 +139,7 @@ export default function App() {
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, []);
+  }, [t.common.backToTitle]);
 
   const [isCertUnlocked, setIsCertUnlocked] = useState(false);
   const [certPasswordInput, setCertPasswordInput] = useState('');
@@ -121,10 +148,54 @@ export default function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState(false);
-  const pages = ['Start', 'Über mich', 'Skills', 'Projekte', 'Qualifikation', 'Zertifikate'];
+  const pages = [t.nav.start, t.nav.about, t.nav.skills, t.nav.projects, t.nav.qualification, t.nav.certificates];
 
   const handleNavigate = useCallback((page: string) => {
-    const targetPath = PAGE_ROUTES[page] || '/';
+    // Check if it's a modal page
+    if (page === 'Impressum') {
+      setIsImpressumOpen(true);
+      setIsMobileMenuOpen(false);
+      return;
+    }
+    if (page === 'Datenschutz') {
+      setIsDatenschutzOpen(true);
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    // If the page is already a valid key in PAGE_ROUTES, use it directly
+    if (PAGE_ROUTES[page]) {
+      const targetPath = PAGE_ROUTES[page];
+      if (location.pathname === targetPath) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        startTransition(() => {
+          navigate(targetPath);
+        });
+      }
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    // Map translated page names back to PAGE_ROUTES keys if necessary
+    let targetPageKey = '';
+    Object.entries(t.nav).forEach(([key, value]) => {
+      if (value === page) {
+        // Map translation key to PAGE_ROUTES key
+        const keyMap: Record<string, string> = {
+          start: 'Start',
+          about: 'Über mich',
+          skills: 'Skills',
+          projects: 'Projekte',
+          qualification: 'Qualifikation',
+          certificates: 'Zertifikate',
+          contact: 'Kontakt'
+        };
+        targetPageKey = keyMap[key];
+      }
+    });
+
+    const targetPath = PAGE_ROUTES[targetPageKey] || '/';
     if (location.pathname === targetPath) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
@@ -133,7 +204,7 @@ export default function App() {
       });
     }
     setIsMobileMenuOpen(false);
-  }, [navigate, location.pathname]);
+  }, [navigate, location.pathname, t.nav]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -319,7 +390,7 @@ export default function App() {
               transition={{ delay: 0.5, duration: 0.5 }}
               className="mt-4 text-white/40 text-[10px] tracking-[0.3em] uppercase font-medium"
             >
-              Loading Experience
+              {t.common.loadingExperience}
             </motion.div>
           </motion.div>
         )}
@@ -327,6 +398,15 @@ export default function App() {
 
       {/* Content Overlay */}
       <MouseGlow />
+      
+      {/* Scroll Progress Indicator */}
+      {currentPage !== 'Start' && (
+        <motion.div 
+          className="fixed top-0 left-0 right-0 h-[1px] bg-blue-500 origin-left z-[100] shadow-[0_0_10px_rgba(59,130,246,0.8)]" 
+          style={{ scaleX }} 
+        />
+      )}
+
       <div className={`relative z-10 flex flex-col min-h-screen overflow-x-hidden`}>
         {/* Navbar */}
         <nav className={`sticky top-0 flex items-center justify-between px-4 py-2 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/20 backdrop-blur-[15px] saturate-[180%] border-b border-white/5' : 'bg-transparent'}`}>
@@ -357,18 +437,24 @@ export default function App() {
           <div className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-1">
             {PAGES.map((page, index) => (
               <React.Fragment key={page}>
-                <a
-                  href={PAGE_ROUTES[page]}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavigate(page);
-                  }}
-                  className={`px-2 xl:px-4 py-1.5 text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative group hover:scale-110 ${
-                    currentPage === page
-                      ? 'text-white text-glow-blue'
-                      : 'text-white/85 hover:text-white'
-                  }`}
-                >
+                  <a
+                    href={PAGE_ROUTES[page]}
+                    onMouseEnter={() => {
+                      // Pre-fetch component
+                      const componentName = page.replace(' ', '') + 'Section';
+                      // This is a simple pre-fetch strategy
+                      import(`./components/${componentName}`).catch(() => {});
+                    }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigate(page);
+                    }}
+                    className={`px-2 xl:px-4 py-1.5 text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative group hover:scale-110 tech-mono focus-ring ${
+                      currentPage === page
+                        ? 'text-white text-glow-blue'
+                        : 'text-white/85 hover:text-white'
+                    }`}
+                  >
                   <span className="relative z-10">{page}</span>
                   {currentPage === page ? (
                     <motion.span 
@@ -388,21 +474,36 @@ export default function App() {
           {/* Right side: CTA Button + Mobile Menu Toggle */}
           <div className="flex items-center gap-4 lg:gap-6">
 
+            {/* Language Switcher */}
+            <div className="hidden lg:block">
+              <LanguageSwitcher />
+            </div>
+
             {/* CTA Button */}
-            <a 
-              href={PAGE_ROUTES['Kontakt']}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavigate('Kontakt');
-              }}
-              className="hidden sm:flex items-center justify-center rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
+            <button
+              onClick={() => setIsHighContrast(!isHighContrast)}
+              className="hidden lg:flex p-2 text-white/60 hover:text-white transition-colors focus-ring rounded-full"
+              aria-label="Toggle High Contrast Mode"
             >
-              <span className="relative z-10">Kontakt</span>
-            </a>
+              <span className="text-[10px] font-bold">HC</span>
+            </button>
+
+            <MagneticButton className="hidden lg:flex">
+              <a 
+                href={PAGE_ROUTES['Kontakt']}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate('Kontakt');
+                }}
+                className="flex items-center justify-center rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+              >
+                <span className="relative z-10">{t.nav.contact}</span>
+              </a>
+            </MagneticButton>
 
             {/* Mobile Menu Toggle */}
             <button 
-              className="lg:hidden text-white p-1.5 md:p-2 -mr-1.5 md:-mr-2 cursor-pointer"
+              className="lg:hidden text-white p-1.5 md:p-2 -mr-1.5 md:-mr-2 cursor-pointer focus-ring"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
             >
@@ -431,7 +532,7 @@ export default function App() {
                       e.preventDefault();
                       handleNavigate(page);
                     }}
-                    className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors ${
+                    className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors tech-mono focus-ring ${
                       currentPage === page ? 'text-blue-400 text-glow-blue' : 'text-white/85 hover:text-white'
                     }`}
                   >
@@ -447,10 +548,35 @@ export default function App() {
                     e.preventDefault();
                     handleNavigate('Kontakt');
                   }}
-                  className="mt-4 flex items-center justify-center w-full sm:hidden rounded-xl px-5 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[12px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
+                  className="mt-4 flex items-center justify-center w-full lg:hidden rounded-xl px-5 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[12px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
                 >
-                  <span className="relative z-10">Kontakt</span>
+                  <span className="relative z-10">{t.nav.contact}</span>
                 </motion.a>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + (PAGES.length + 3) * 0.05, duration: 0.4 }}
+                  className="flex justify-center mt-4"
+                >
+                  <LanguageSwitcher />
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + (PAGES.length + 2) * 0.05, duration: 0.4 }}
+                  className="flex justify-center mt-2"
+                >
+                  <button
+                    onClick={() => setIsHighContrast(!isHighContrast)}
+                    className="flex items-center gap-2 px-4 py-2 text-white/60 hover:text-white transition-colors focus-ring rounded-full"
+                    aria-label="Toggle High Contrast Mode"
+                  >
+                    <span className="text-[12px] font-bold">HC</span>
+                    <span className="text-[12px] uppercase tracking-wider">{isHighContrast ? t.common.highContrastOff : t.common.highContrastOn}</span>
+                  </button>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -467,7 +593,7 @@ export default function App() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className={`w-full flex flex-col flex-grow ${currentPage === 'Start' ? 'items-center justify-center' : ''}`}
             >
-              <Suspense fallback={<div className="text-white/50">Lade...</div>}>
+              <Suspense fallback={<div className="text-white/50">{t.common.loading}</div>}>
                 {currentPage === 'Start' ? (
                   <HeroSection handleNavigate={handleNavigate} />
                 ) : currentPage === 'Über mich' ? (
@@ -535,6 +661,19 @@ export default function App() {
           isMobileMenuOpen={isMobileMenuOpen}
           handleNavigate={handleNavigate}
         />
+
+        {/* Easter Egg Terminal */}
+        <Suspense fallback={null}>
+          <CommandTerminal onNavigate={handleNavigate} />
+        </Suspense>
+
+        {/* Modals */}
+        {isImpressumOpen && (
+          <ImpressumModal setIsImpressum={setIsImpressumOpen} />
+        )}
+        {isDatenschutzOpen && (
+          <DatenschutzModal setIsDatenschutz={setIsDatenschutzOpen} />
+        )}
 
       </div>
     </div>

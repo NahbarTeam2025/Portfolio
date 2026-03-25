@@ -1,29 +1,31 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
+  const { t } = useLanguage();
   return (
     <div id="hero" className="flex flex-col items-center justify-center gap-4 md:gap-6 lg:gap-8 max-w-[680px] lg:max-w-[900px] animate-in fade-in duration-500 subtle-float relative z-10 h-full">
       {/* Heading & Subtitle Container */}
       <div className="flex flex-col items-center gap-2 lg:gap-4">
         {/* Heading */}
-        <h1 className="flex flex-col items-center text-[36px] md:text-[56px] lg:text-[88px] leading-[1.1] max-w-[800px] lg:max-w-[1050px]">
-          <span className="font-audiowide font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-blue-100 to-blue-500 pb-2">Robert Erbach</span>
-          <span className="text-[14px] md:text-[22px] lg:text-[26px] text-white/85 mt-2 lg:mt-4 font-normal tracking-wider whitespace-nowrap">
-            Design & KI – klar gedacht, sauber umgesetzt
+        <h1 className="flex flex-col items-center fluid-h1 max-w-[800px] lg:max-w-[1050px]">
+          <span className="font-audiowide font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-blue-100 to-blue-500 pb-2">{t.hero.title}</span>
+          <span className="fluid-h3 text-white/85 mt-2 lg:mt-4 font-normal tracking-wider whitespace-nowrap">
+            {t.hero.subtitle}
           </span>
         </h1>
 
         {/* Subtitle */}
         <div className="flex flex-col items-center gap-3 lg:gap-6 mt-2 lg:mt-4">
           <p className="text-white/60 text-[14px] md:text-[16px] lg:text-[18px] font-normal max-w-[600px] lg:max-w-[700px] leading-relaxed text-center">
-            Ich arbeite strukturiert, denke Zusammenhänge weiter und entwickle Lösungen, die klar aufgebaut sind.
+            {t.hero.desc}
           </p>
         </div>
 
         {/* Checkmark Row */}
         <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
-          {['Design', 'Struktur', 'KI'].map((item) => (
+          {[t.hero.design, t.hero.structure, t.hero.ki].map((item) => (
             <div key={item} className="flex items-center gap-2 text-white/80 text-sm">
               <CheckCircle className="w-5 h-5 text-blue-500" />
               {item}
@@ -35,10 +37,10 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mt-2 lg:mt-4">
         <button 
-          onClick={() => handleNavigate('Projekte')}
-          className="rounded-xl px-8 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer"
+          onClick={() => handleNavigate(t.nav.projects)}
+          className="rounded-xl px-8 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
         >
-          Projekte entdecken
+          {t.hero.cta}
         </button>
       </div>
     </div>

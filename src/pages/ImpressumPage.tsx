@@ -40,6 +40,14 @@ export const ImpressumPage = () => {
           </p>
         </div>
       </div>
+      <div className="pt-12 border-t border-white/10 flex justify-end w-full">
+        <button
+          onClick={() => navigate(-1)}
+          className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all font-medium hover:scale-[1.02] active:scale-[0.98]"
+        >
+          Schließen
+        </button>
+      </div>
     </div>
   );
 };

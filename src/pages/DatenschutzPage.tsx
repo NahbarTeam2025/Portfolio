@@ -80,6 +80,15 @@ export const DatenschutzPage = () => {
           <p className="mb-4">Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">https://www.cloudflare.com/privacypolicy/</a>.</p>
           <p>Die Rechtsgrundlage für diese Datenverarbeitung ist unser berechtigtes Interesse an einer performanten, technisch stabilen und nutzerfreundlichen Bereitstellung unseres Onlineangebots (Art. 6 Abs. 1 f DSGVO).</p>
         </section>
+
+        <div className="pt-12 border-t border-white/10 flex justify-end w-full">
+          <button
+            onClick={() => navigate(-1)}
+            className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all font-medium hover:scale-[1.02] active:scale-[0.98]"
+          >
+            Schließen
+          </button>
+        </div>
       </div>
     </div>
   );
