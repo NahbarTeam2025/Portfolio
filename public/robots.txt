@@ -1,37 +1,4 @@
 User-agent: *
 Allow: /
 
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: Amazonbot
-Disallow: /
-
-User-agent: anthropic-ai
-Disallow: /
-
-User-agent: Claude-Web
-Disallow: /
-
-User-agent: Omgili
-Disallow: /
-
-User-agent: OmgiliBot
-Disallow: /
-
-User-agent: FacebookBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
 Sitemap: https://roberterbach.de/sitemap.xml

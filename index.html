@@ -17,17 +17,10 @@
       // 2. Initialize GA
       gtag('js', new Date());
       gtag('config', 'G-90T4169WJP');
-      
-      // 3. Load GTM script after a delay to improve initial page load performance
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = "https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP";
-          document.head.appendChild(script);
-        }, 2000);
-      });
     </script>
+    
+    <!-- Load GTM script asynchronously -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP"></script>
 
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev data: https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; media-src 'self' meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com;">
@@ -84,9 +77,44 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Robert Erbach - Design & KI",
-      "url": "https://roberterbach.de"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://roberterbach.de/#website",
+          "url": "https://roberterbach.de",
+          "name": "Robert Erbach - Design & KI",
+          "description": "Ich denke Zusammenhänge weiter, arbeite strukturiert und entwickle klare digitale Lösungen mit Design und KI.",
+          "publisher": {
+            "@id": "https://roberterbach.de/#person"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://roberterbach.de/#person",
+          "name": "Robert Erbach",
+          "jobTitle": "Digital Marketing Manager & Web Designer",
+          "url": "https://roberterbach.de",
+          "image": "https://meine-assets.pages.dev/logo.png",
+          "email": "roberterbach@web.de",
+          "telephone": "+4915204041124",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Am Stadtpark 43",
+            "addressLocality": "Falkenberg/Elster",
+            "postalCode": "04895",
+            "addressCountry": "DE"
+          },
+          "knowsAbout": [
+            "Digital Marketing",
+            "SEO",
+            "Web Analytics",
+            "Web Design",
+            "Prompt Engineering",
+            "Google Analytics 4",
+            "Content Creation"
+          ]
+        }
+      ]
     }
     </script>
     
