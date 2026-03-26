@@ -41,7 +41,12 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
           id="btn-hero-projects"
           whileHover="hover"
           initial="initial"
-          onClick={() => handleNavigate('projects')}
+          onClick={() => {
+            if (typeof window !== 'undefined' && window.gtag) {
+              window.gtag('event', 'view_projects_click');
+            }
+            handleNavigate('projects');
+          }}
           className="group relative flex items-center gap-3 rounded-xl pl-2 pr-8 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-500 cursor-pointer focus-ring overflow-hidden"
         >
           {/* Switch Track */}

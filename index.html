@@ -204,20 +204,6 @@
       </nav>
     </noscript>
     <div id="root"></div>
-    
-    <!-- Button Tracking Script -->
-    <script>
-      // Wait for React to render the button
-      const checkButton = setInterval(() => {
-        const btn = document.getElementById('btn-hero-projects');
-        if (btn) {
-          btn.addEventListener('click', function() {
-            gtag('event', 'view_projects_click');
-          });
-          clearInterval(checkButton);
-        }
-      }, 500);
-    </script>
 
     <script type="module" src="/src/main.tsx"></script>
   </body>
