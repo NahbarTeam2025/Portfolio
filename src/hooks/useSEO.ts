@@ -54,7 +54,8 @@ export const useSEO = () => {
   useEffect(() => {
     const currentPath = location.pathname;
     const seo = SEO_DATA[currentPath] || SEO_DATA['/'];
-    const url = `https://roberterbach.de${currentPath === '/' ? '' : currentPath}`;
+    // Ensure canonical URL is consistent (with trailing slash for root)
+    const url = `https://roberterbach.de${currentPath === '/' ? '/' : currentPath}`;
 
     // Update Title
     document.title = seo.title;
@@ -85,24 +86,6 @@ export const useSEO = () => {
       document.head.appendChild(canonical);
     }
     canonical.setAttribute('href', url);
-
-    // Update JSON-LD
-    let scriptJsonLd = document.querySelector('script[type="application/ld+json"]');
-    if (scriptJsonLd) {
-      const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": seo.title,
-        "description": seo.description,
-        "url": url,
-        "publisher": {
-          "@type": "Person",
-          "name": "Robert Erbach",
-          "url": "https://roberterbach.de"
-        }
-      };
-      scriptJsonLd.textContent = JSON.stringify(jsonLd);
-    }
 
     // Update Open Graph Tags
     const updateMeta = (property: string, content: string, attr: string = 'property') => {
