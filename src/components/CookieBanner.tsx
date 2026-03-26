@@ -9,6 +9,16 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
     const consent = localStorage.getItem('cookie-consent');
     if (!consent) {
       setIsVisible(true);
+    } else if (consent === 'granted') {
+      // If previously granted, update consent state immediately
+      if (window.gtag) {
+        window.gtag('consent', 'update', {
+          'analytics_storage': 'granted',
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+      }
     }
   }, []);
 

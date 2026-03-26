@@ -1,14 +1,24 @@
 <!doctype html>
 <html lang="de">
   <head>
-    <!-- GA4 Integration (Optimized) -->
+    <!-- Google Analytics & Consent Mode v2 -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      
+      // 1. Set default consent to DENIED before doing anything else
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+      });
+
+      // 2. Initialize GA
       gtag('js', new Date());
       gtag('config', 'G-90T4169WJP');
       
-      // Load GTM after a delay to improve initial page load performance
+      // 3. Load GTM script after a delay to improve initial page load performance
       window.addEventListener('load', () => {
         setTimeout(() => {
           const script = document.createElement('script');
@@ -22,18 +32,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev data: https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; media-src 'self' meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com;">
     
-    <!-- Google Consent Mode v2 -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied'
-      });
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark only" />
     <meta name="theme-color" content="#000000" />
