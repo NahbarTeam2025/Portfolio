@@ -25,15 +25,15 @@ import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { CookieBanner } from './components/CookieBanner';
 
 // Lazy load components
-const CommandTerminal = lazy(() => import('./components/CommandTerminal'));
-const QualifikationSection = lazy(() => import('./components/QualifikationSection').then(m => ({ default: m.QualifikationSection })));
-const SkillsSection = lazy(() => import('./components/SkillsSection').then(m => ({ default: m.SkillsSection })));
-const ProjekteSection = lazy(() => import('./components/ProjekteSection').then(m => ({ default: m.ProjekteSection })));
-const ZertifikateSection = lazy(() => import('./components/ZertifikateSection').then(m => ({ default: m.ZertifikateSection })));
-const KontaktSection = lazy(() => import('./components/KontaktSection').then(m => ({ default: m.KontaktSection })));
-const UberMichSection = lazy(() => import('./components/UberMichSection').then(m => ({ default: m.UberMichSection })));
-const ImpressumPage = lazy(() => import('./pages/ImpressumPage').then(m => ({ default: m.ImpressumPage })));
-const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage').then(m => ({ default: m.DatenschutzPage })));
+const CommandTerminal = lazy(() => import('/src/components/CommandTerminal'));
+const QualifikationSection = lazy(() => import('/src/components/QualifikationSection').then(m => ({ default: m.QualifikationSection })));
+const SkillsSection = lazy(() => import('/src/components/SkillsSection').then(m => ({ default: m.SkillsSection })));
+const ProjekteSection = lazy(() => import('/src/components/ProjekteSection').then(m => ({ default: m.ProjekteSection })));
+const ZertifikateSection = lazy(() => import('/src/components/ZertifikateSection').then(m => ({ default: m.ZertifikateSection })));
+const KontaktSection = lazy(() => import('/src/components/KontaktSection').then(m => ({ default: m.KontaktSection })));
+const UberMichSection = lazy(() => import('/src/components/UberMichSection').then(m => ({ default: m.UberMichSection })));
+const ImpressumPage = lazy(() => import('/src/pages/ImpressumPage').then(m => ({ default: m.ImpressumPage })));
+const DatenschutzPage = lazy(() => import('/src/pages/DatenschutzPage').then(m => ({ default: m.DatenschutzPage })));
 
 const PAGE_ROUTES: Record<string, string> = {
   'start': '/',
