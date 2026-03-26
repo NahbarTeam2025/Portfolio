@@ -5,6 +5,7 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag; // Expose to global window object for React
       
       // 1. Set default consent to DENIED before doing anything else
       gtag('consent', 'default', {
@@ -17,10 +18,17 @@
       // 2. Initialize GA
       gtag('js', new Date());
       gtag('config', 'G-90T4169WJP');
+      
+      // 3. Load GTM script after a delay to improve initial page load performance
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = "https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP";
+          document.head.appendChild(script);
+        }, 2000);
+      });
     </script>
-    
-    <!-- Load GTM script asynchronously -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP"></script>
 
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev data: https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; media-src 'self' meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com;">
@@ -86,7 +94,15 @@
           "description": "Ich denke Zusammenhänge weiter, arbeite strukturiert und entwickle klare digitale Lösungen mit Design und KI.",
           "publisher": {
             "@id": "https://roberterbach.de/#person"
-          }
+          },
+          "hasPart": [
+            { "@id": "https://roberterbach.de/ueber-mich/#webpage" },
+            { "@id": "https://roberterbach.de/projekte/#webpage" },
+            { "@id": "https://roberterbach.de/skills/#webpage" },
+            { "@id": "https://roberterbach.de/qualifikation/#webpage" },
+            { "@id": "https://roberterbach.de/zertifikate/#webpage" },
+            { "@id": "https://roberterbach.de/kontakt/#webpage" }
+          ]
         },
         {
           "@type": "Person",
@@ -113,6 +129,66 @@
             "Google Analytics 4",
             "Content Creation"
           ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/ueber-mich/#webpage",
+          "url": "https://roberterbach.de/ueber-mich",
+          "name": "Über mich | Robert Erbach",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/projekte/#webpage",
+          "url": "https://roberterbach.de/projekte",
+          "name": "Projekte | Robert Erbach",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/skills/#webpage",
+          "url": "https://roberterbach.de/skills",
+          "name": "Skills & Expertise | Robert Erbach",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/qualifikation/#webpage",
+          "url": "https://roberterbach.de/qualifikation",
+          "name": "Qualifikation | Robert Erbach",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/zertifikate/#webpage",
+          "url": "https://roberterbach.de/zertifikate",
+          "name": "Zertifikate | Robert Erbach",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://roberterbach.de/kontakt/#webpage",
+          "url": "https://roberterbach.de/kontakt",
+          "name": "Kontakt | Robert Erbach",
+          "isPartOf": { "@id": "https://roberterbach.de/#website" }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://roberterbach.de/#service-webdesign",
+          "name": "Web Design & Development",
+          "provider": { "@id": "https://roberterbach.de/#person" }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://roberterbach.de/#service-seo",
+          "name": "SEO & Web Analytics",
+          "provider": { "@id": "https://roberterbach.de/#person" }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://roberterbach.de/#service-ai",
+          "name": "AI Integration & Prompt Engineering",
+          "provider": { "@id": "https://roberterbach.de/#person" }
         }
       ]
     }
