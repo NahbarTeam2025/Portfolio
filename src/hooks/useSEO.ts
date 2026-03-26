@@ -4,44 +4,47 @@ import { useLocation } from 'react-router-dom';
 interface SEOProps {
   title: string;
   description: string;
+  noindex?: boolean;
 }
 
 const SEO_DATA: Record<string, SEOProps> = {
   '/': {
     title: 'Robert Erbach - Design & KI',
-    description: 'Digital Specialist für Marketing, Content und KI. Fokus auf Websites, Content-Strukturen und automatisierte Workflows.'
+    description: 'Digital Specialist für Design und KI. Robert Erbach denkt Zusammenhänge weiter, arbeitet strukturiert und entwickelt klare digitale Lösungen.',
   },
   '/ueber-mich': {
     title: 'Über mich | Robert Erbach - Design & KI',
-    description: 'Erfahren Sie mehr über Robert Erbach, Digital Marketing Manager mit Fokus auf SEO, Content und KI-Workflows.'
+    description: 'Erfahren Sie mehr über Robert Erbach: Strukturiert, durchdacht und konsequent in der Umsetzung von Design- und KI-Projekten.',
   },
   '/skills': {
     title: 'Skills & Kompetenzen | Robert Erbach - Design & KI',
-    description: 'Fachkenntnisse in Digital Marketing, SEO, Social Media, Web Analytics und Prompt Engineering.'
+    description: 'Fachkenntnisse in Design, KI-Workflows, SEO, Web Analytics und Prompt Engineering.',
   },
   '/projekte': {
     title: 'Projekte & Referenzen | Robert Erbach - Design & KI',
-    description: 'Erfolgreiche Projekte in den Bereichen Social Media Kampagnen, KI-Workflows und SEO-Landingpages.'
+    description: 'Ausgewählte Arbeiten in den Bereichen Design, KI-Integration und digitale Strategie.',
   },
   '/qualifikation': {
     title: 'Berufliche Qualifikation | Robert Erbach - Design & KI',
-    description: 'Beruflicher Werdegang und Qualifikationen von Robert Erbach im Bereich Digital Marketing.'
+    description: 'Beruflicher Werdegang und Qualifikationen von Robert Erbach.',
   },
   '/zertifikate': {
     title: 'Zertifikate | Robert Erbach - Design & KI',
-    description: 'Zertifikate und Weiterbildungen in SEO, Web Analytics, Social Media und KI im Marketing.'
+    description: 'Zertifikate und Weiterbildungen in den Bereichen Design, Marketing und KI.',
   },
   '/kontakt': {
     title: 'Kontakt | Robert Erbach - Design & KI',
-    description: 'Nehmen Sie Kontakt mit Robert Erbach auf für Anfragen zu Digital Marketing und KI-Consulting.'
+    description: 'Nehmen Sie Kontakt mit Robert Erbach auf für Anfragen zu Design- und KI-Projekten.',
   },
   '/impressum': {
     title: 'Impressum | Robert Erbach - Design & KI',
-    description: 'Impressum und rechtliche Angaben für Robert Erbach.'
+    description: 'Impressum und rechtliche Angaben für Robert Erbach.',
+    noindex: true
   },
   '/datenschutz': {
     title: 'Datenschutz | Robert Erbach - Design & KI',
-    description: 'Datenschutzerklärung für die Website von Robert Erbach.'
+    description: 'Datenschutzerklärung für die Website von Robert Erbach.',
+    noindex: true
   }
 };
 
@@ -57,36 +60,67 @@ export const useSEO = () => {
     document.title = seo.title;
 
     // Update Meta Description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', seo.description);
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.setAttribute('name', 'description');
+      document.head.appendChild(metaDescription);
     }
+    metaDescription.setAttribute('content', seo.description);
+
+    // Update Robots (Noindex)
+    let metaRobots = document.querySelector('meta[name="robots"]');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    metaRobots.setAttribute('content', seo.noindex ? 'noindex, nofollow' : 'index, follow');
 
     // Update Canonical URL
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) {
-      canonical.setAttribute('href', url);
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', url);
+
+    // Update JSON-LD
+    let scriptJsonLd = document.querySelector('script[type="application/ld+json"]');
+    if (scriptJsonLd) {
+      const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": seo.title,
+        "description": seo.description,
+        "url": url,
+        "publisher": {
+          "@type": "Person",
+          "name": "Robert Erbach",
+          "url": "https://roberterbach.de"
+        }
+      };
+      scriptJsonLd.textContent = JSON.stringify(jsonLd);
     }
 
     // Update Open Graph Tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute('content', seo.title);
+    const updateMeta = (property: string, content: string, attr: string = 'property') => {
+      let el = document.querySelector(`meta[${attr}="${property}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, property);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    };
 
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.setAttribute('content', seo.description);
-
-    const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.setAttribute('content', url);
-
-    // Update Twitter Tags
-    const twitterTitle = document.querySelector('meta[property="twitter:title"]');
-    if (twitterTitle) twitterTitle.setAttribute('content', seo.title);
-
-    const twitterDescription = document.querySelector('meta[property="twitter:description"]');
-    if (twitterDescription) twitterDescription.setAttribute('content', seo.description);
-
-    const twitterUrl = document.querySelector('meta[property="twitter:url"]');
-    if (twitterUrl) twitterUrl.setAttribute('content', url);
+    updateMeta('og:title', seo.title);
+    updateMeta('og:description', seo.description);
+    updateMeta('og:url', url);
+    updateMeta('twitter:title', seo.title, 'name');
+    updateMeta('twitter:description', seo.description, 'name');
+    updateMeta('twitter:url', url, 'name');
 
   }, [location.pathname]);
 };
