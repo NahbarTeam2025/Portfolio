@@ -8,39 +8,39 @@ interface SEOProps {
 
 const SEO_DATA: Record<string, SEOProps> = {
   '/': {
-    title: 'Robert Erbach | Digital Specialist für Marketing, Content & KI',
+    title: 'Robert Erbach - Design & KI',
     description: 'Digital Specialist für Marketing, Content und KI. Fokus auf Websites, Content-Strukturen und automatisierte Workflows.'
   },
   '/ueber-mich': {
-    title: 'Über mich | Robert Erbach - Digital Specialist',
+    title: 'Über mich | Robert Erbach - Design & KI',
     description: 'Erfahren Sie mehr über Robert Erbach, Digital Marketing Manager mit Fokus auf SEO, Content und KI-Workflows.'
   },
   '/skills': {
-    title: 'Skills & Kompetenzen | Robert Erbach',
+    title: 'Skills & Kompetenzen | Robert Erbach - Design & KI',
     description: 'Fachkenntnisse in Digital Marketing, SEO, Social Media, Web Analytics und Prompt Engineering.'
   },
   '/projekte': {
-    title: 'Projekte & Referenzen | Robert Erbach',
+    title: 'Projekte & Referenzen | Robert Erbach - Design & KI',
     description: 'Erfolgreiche Projekte in den Bereichen Social Media Kampagnen, KI-Workflows und SEO-Landingpages.'
   },
   '/qualifikation': {
-    title: 'Berufliche Qualifikation | Robert Erbach',
+    title: 'Berufliche Qualifikation | Robert Erbach - Design & KI',
     description: 'Beruflicher Werdegang und Qualifikationen von Robert Erbach im Bereich Digital Marketing.'
   },
   '/zertifikate': {
-    title: 'Zertifikate | Robert Erbach',
+    title: 'Zertifikate | Robert Erbach - Design & KI',
     description: 'Zertifikate und Weiterbildungen in SEO, Web Analytics, Social Media und KI im Marketing.'
   },
   '/kontakt': {
-    title: 'Kontakt | Robert Erbach',
+    title: 'Kontakt | Robert Erbach - Design & KI',
     description: 'Nehmen Sie Kontakt mit Robert Erbach auf für Anfragen zu Digital Marketing und KI-Consulting.'
   },
   '/impressum': {
-    title: 'Impressum | Robert Erbach',
+    title: 'Impressum | Robert Erbach - Design & KI',
     description: 'Impressum und rechtliche Angaben für Robert Erbach.'
   },
   '/datenschutz': {
-    title: 'Datenschutz | Robert Erbach',
+    title: 'Datenschutz | Robert Erbach - Design & KI',
     description: 'Datenschutzerklärung für die Website von Robert Erbach.'
   }
 };
