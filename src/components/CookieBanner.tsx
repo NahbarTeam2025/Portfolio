@@ -41,8 +41,8 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
   if (!isVisible) return null;
 
   return (
-    <div id="consent-banner" className="fixed bottom-0 left-0 right-0 z-[1000] p-3 md:p-4 flex justify-center animate-in slide-in-from-bottom-full duration-500">
-      <div className="max-w-2xl w-full bg-black/40 backdrop-blur-[20px] saturate-[180%] border border-white/10 rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] p-4 md:p-5 text-white/90 text-[13px] leading-relaxed flex flex-col md:flex-row items-center justify-between gap-4">
+    <div id="consent-banner" className="fixed bottom-0 left-0 right-0 z-[9999] p-3 md:p-4 flex justify-center pointer-events-auto">
+      <div className="max-w-2xl w-full bg-black/80 backdrop-blur-[20px] saturate-[180%] border border-white/10 rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] p-4 md:p-5 text-white/90 text-[13px] leading-relaxed flex flex-col md:flex-row items-center justify-between gap-4 pointer-events-auto">
         <p>
           {t.common.cookieBanner.text}{' '}
           <button 

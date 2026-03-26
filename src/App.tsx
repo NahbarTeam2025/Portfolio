@@ -298,10 +298,11 @@ export default function App() {
   }, [isLoading, currentPage]);
 
   return (
-    <div 
-      className="relative min-h-screen w-full font-sans"
-      onMouseMove={handleMouseMove}
-    >
+    <>
+      <div 
+        className="relative min-h-screen w-full font-sans"
+        onMouseMove={handleMouseMove}
+      >
       {/* Background Videos Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
         {/* Start Page Video */}
@@ -664,8 +665,10 @@ export default function App() {
           <DatenschutzModal setIsDatenschutz={setIsDatenschutzOpen} />
         )}
 
-        <CookieBanner handleNavigate={handleNavigate} />
+        {/* Cookie Banner is now outside this container for better clickability */}
       </div>
     </div>
-  );
+    <CookieBanner handleNavigate={handleNavigate} />
+  </>
+);
 }

@@ -103,42 +103,6 @@
     </noscript>
     <div id="root"></div>
     
-    <!-- Consent Banner -->
-    <div id="consent-banner" class="fixed bottom-0 left-0 right-0 z-[1000] p-3 md:p-4 flex justify-center">
-      <div class="max-w-2xl w-full bg-black/40 backdrop-blur-[20px] saturate-[180%] border border-white/10 rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] p-4 md:p-5 text-white/90 text-[13px] leading-relaxed flex flex-col md:flex-row items-center justify-between gap-4">
-        <p>Ich nutze Cookies, um die Website-Nutzung zu analysieren und mein Angebot zu optimieren. Details findest du in der <a href="/datenschutz" class="text-blue-400 hover:underline">Datenschutzerklärung</a>. <a href="/impressum" class="text-blue-400 hover:underline ml-2">Impressum</a>.</p>
-        <div class="flex gap-2 shrink-0">
-          <button id="consent-accept" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-[11px] uppercase tracking-wider">Akzeptieren</button>
-          <button id="consent-decline" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors text-[11px] uppercase tracking-wider">Ablehnen</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Consent Banner Script -->
-    <script>
-      function closeBanner() {
-        document.getElementById('consent-banner').style.display = 'none';
-      }
-      document.getElementById('consent-accept').addEventListener('click', function() {
-        gtag('consent', 'update', {
-          'analytics_storage': 'granted',
-          'ad_storage': 'granted',
-          'ad_user_data': 'granted',
-          'ad_personalization': 'granted'
-        });
-        closeBanner();
-      });
-      document.getElementById('consent-decline').addEventListener('click', function() {
-        gtag('consent', 'update', {
-          'analytics_storage': 'denied',
-          'ad_storage': 'denied',
-          'ad_user_data': 'denied',
-          'ad_personalization': 'denied'
-        });
-        closeBanner();
-      });
-    </script>
-
     <!-- Button Tracking Script -->
     <script>
       // Wait for React to render the button
