@@ -44,28 +44,28 @@ export default function CommandTerminal({ onNavigate }: { onNavigate: (page: str
         newOutput.push({ text: 'Available commands: start, about, skills, projects, contact, clear, exit', isCommand: false });
         break;
       case 'start':
-        onNavigate('Start');
+        onNavigate('start');
         newOutput.push({ text: 'Navigating to Start...', isCommand: false });
         setTimeout(() => setIsOpen(false), 500);
         break;
       case 'about':
-        onNavigate('Über mich');
-        newOutput.push({ text: 'Navigating to Über mich...', isCommand: false });
+        onNavigate('about');
+        newOutput.push({ text: 'Navigating to About...', isCommand: false });
         setTimeout(() => setIsOpen(false), 500);
         break;
       case 'skills':
-        onNavigate('Skills');
+        onNavigate('skills');
         newOutput.push({ text: 'Navigating to Skills...', isCommand: false });
         setTimeout(() => setIsOpen(false), 500);
         break;
       case 'projects':
-        onNavigate('Projekte');
-        newOutput.push({ text: 'Navigating to Projekte...', isCommand: false });
+        onNavigate('projects');
+        newOutput.push({ text: 'Navigating to Projects...', isCommand: false });
         setTimeout(() => setIsOpen(false), 500);
         break;
       case 'contact':
-        onNavigate('Kontakt');
-        newOutput.push({ text: 'Navigating to Kontakt...', isCommand: false });
+        onNavigate('contact');
+        newOutput.push({ text: 'Navigating to Contact...', isCommand: false });
         setTimeout(() => setIsOpen(false), 500);
         break;
       case 'clear':

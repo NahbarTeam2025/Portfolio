@@ -7,7 +7,7 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
     <footer className={`w-full border-t border-white/5 bg-black/35 backdrop-blur-xl py-2 px-4 md:px-6 mt-auto relative ${isMobileMenuOpen ? 'z-50' : 'z-10'} shrink-0`}>
       <div className="flex flex-row justify-between items-center gap-4">
         <button 
-          onClick={() => handleNavigate('Start')}
+          onClick={() => handleNavigate('start')}
           className="flex items-center cursor-pointer group" 
         >
           <img 
@@ -23,13 +23,13 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
         
         <div className="flex flex-row justify-end items-center gap-4 md:gap-6 text-[11px]">
           <button 
-            onClick={() => handleNavigate('Impressum')}
+            onClick={() => handleNavigate('impressum')}
             className="text-white/60 hover:text-white transition-colors"
           >
             {t.footer.impressum}
           </button>
           <button 
-            onClick={() => handleNavigate('Datenschutz')}
+            onClick={() => handleNavigate('datenschutz')}
             className="text-white/60 hover:text-white transition-colors"
           >
             {t.footer.privacy}

@@ -36,6 +36,42 @@ export const translations = {
     skills: {
       title: 'Skills',
       subtitle: 'Meine Werkzeuge',
+      categories: {
+        digital: 'DIGITALE KOMPETENZEN',
+        tech: 'TECHNOLOGIE & KI',
+        working: 'ARBEITSWEISE & STÄRKEN',
+        languages: 'Sprachen'
+      },
+      items: {
+        design: 'Design & Gestaltung',
+        data: 'Daten & Tools',
+        workflows: 'KI-Workflows',
+        structured: 'Strukturierte Arbeitsweise',
+        communication: 'Kommunikationsstärke',
+        problemSolving: 'Problemlösung',
+        timeManagement: 'Zeitmanagement',
+        german: 'Deutsch',
+        english: 'Englisch',
+        contentCreation: 'Content Creation',
+        seo: 'SEO',
+        webLandingpages: 'Web & Landingpages',
+        webAnalytics: 'Web Analytics',
+        promptEngineering: 'Prompt Engineering',
+      },
+      tooltips: {
+        contentCreation: 'Canva, Adobe Creative Cloud',
+        seo: 'Seobility, Google Search Console',
+        webLandingpages: 'WordPress (Elementor)',
+        design: 'Figma, Adobe Illustrator',
+        webAnalytics: 'Google Analytics 4',
+        data: 'Looker Studio, Microsoft Excel',
+        promptEngineering: 'Gemini (Google), Claude (Anthropic)',
+        workflows: 'N8N, Make.com',
+        structured: 'Notion, Trello',
+        communication: 'Slack, Microsoft Teams',
+        problemSolving: 'Miro (Mindmapping), GitHub (für technisches Troubleshooting)',
+        timeManagement: 'Google Calendar',
+      },
       cta: {
         text: 'Passt dieses Profil zu deinen aktuellen Herausforderungen?',
         button: 'Lass uns kennenlernen →'
@@ -128,6 +164,9 @@ export const translations = {
       location: 'Standort',
       locationValue: 'Falkenberg/Elster (bereit für Remote oder Umzug)',
       downloadCV: 'Meinen Lebenslauf als PDF herunterladen',
+      downloadButton: 'PDF herunterladen',
+      unlockPrompt: 'Klicken zum Freischalten',
+      passwordPrompt: 'Passwort eingeben...',
       cvProtectedTitle: 'Lebenslauf geschützt',
       cvProtectedDesc: 'Bitte gib das Passwort ein, um den Lebenslauf herunterzuladen.',
     },
@@ -274,6 +313,13 @@ export const translations = {
       highContrastOn: 'Modus aktivieren',
       highContrastOff: 'Modus deaktivieren',
       loadingExperience: 'Erlebnis wird geladen',
+      cookieBanner: {
+        text: 'Ich nutze Cookies, um die Website-Nutzung zu analysieren und mein Angebot zu optimieren. Details findest du in der',
+        privacyLink: 'Datenschutzerklärung',
+        impressumLink: 'Impressum',
+        accept: 'Akzeptieren',
+        decline: 'Ablehnen'
+      }
     }
   },
   en: {
@@ -311,6 +357,42 @@ export const translations = {
     skills: {
       title: 'Skills',
       subtitle: 'My Tools',
+      categories: {
+        digital: 'DIGITAL COMPETENCIES',
+        tech: 'TECHNOLOGY & AI',
+        working: 'WORKING STYLE & STRENGTHS',
+        languages: 'Languages'
+      },
+      items: {
+        design: 'Design & Creation',
+        data: 'Data & Tools',
+        workflows: 'AI Workflows',
+        structured: 'Structured Working Style',
+        communication: 'Communication Skills',
+        problemSolving: 'Problem Solving',
+        timeManagement: 'Time Management',
+        german: 'German',
+        english: 'English',
+        contentCreation: 'Content Creation',
+        seo: 'SEO',
+        webLandingpages: 'Web & Landingpages',
+        webAnalytics: 'Web Analytics',
+        promptEngineering: 'Prompt Engineering',
+      },
+      tooltips: {
+        contentCreation: 'Canva, Adobe Creative Cloud',
+        seo: 'Seobility, Google Search Console',
+        webLandingpages: 'WordPress (Elementor)',
+        design: 'Figma, Adobe Illustrator',
+        webAnalytics: 'Google Analytics 4',
+        data: 'Looker Studio, Microsoft Excel',
+        promptEngineering: 'Gemini (Google), Claude (Anthropic)',
+        workflows: 'N8N, Make.com',
+        structured: 'Notion, Trello',
+        communication: 'Slack, Microsoft Teams',
+        problemSolving: 'Miro (Mindmapping), GitHub (for technical troubleshooting)',
+        timeManagement: 'Google Calendar',
+      },
       cta: {
         text: 'Does this profile fit your current challenges?',
         button: 'Let\'s get to know each other →'
@@ -403,6 +485,9 @@ export const translations = {
       location: 'Location',
       locationValue: 'Falkenberg/Elster (ready for remote or relocation)',
       downloadCV: 'Download my CV as PDF',
+      downloadButton: 'Download PDF',
+      unlockPrompt: 'Click to unlock',
+      passwordPrompt: 'Enter password...',
       cvProtectedTitle: 'CV Protected',
       cvProtectedDesc: 'Please enter the password to download the CV.',
     },
@@ -549,6 +634,13 @@ export const translations = {
       highContrastOn: 'Enable Mode',
       highContrastOff: 'Disable Mode',
       loadingExperience: 'Loading Experience',
+      cookieBanner: {
+        text: 'I use cookies to analyze website usage and optimize my offer. You can find details in the',
+        privacyLink: 'Privacy Policy',
+        impressumLink: 'Legal Notice',
+        accept: 'Accept',
+        decline: 'Decline'
+      }
     }
   }
 };

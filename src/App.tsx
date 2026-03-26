@@ -22,6 +22,7 @@ import { useSEO } from './hooks/useSEO';
 import { useParallaxIntersection } from './hooks/useParallaxIntersection';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { CookieBanner } from './components/CookieBanner';
 
 // Lazy load components
 const CommandTerminal = lazy(() => import('./components/CommandTerminal'));
@@ -35,31 +36,29 @@ const ImpressumPage = lazy(() => import('./pages/ImpressumPage').then(m => ({ de
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage').then(m => ({ default: m.DatenschutzPage })));
 
 const PAGE_ROUTES: Record<string, string> = {
-  'Start': '/',
-  'Über mich': '/ueber-mich',
-  'Skills': '/skills',
-  'Projekte': '/projekte',
-  'Qualifikation': '/qualifikation',
-  'Zertifikate': '/zertifikate',
-  'Kontakt': '/kontakt',
-  'Impressum': '/impressum',
-  'Datenschutz': '/datenschutz'
+  'start': '/',
+  'about': '/ueber-mich',
+  'skills': '/skills',
+  'projects': '/projekte',
+  'qualification': '/qualifikation',
+  'certificates': '/zertifikate',
+  'contact': '/kontakt',
+  'impressum': '/impressum',
+  'datenschutz': '/datenschutz'
 };
 
 const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_ROUTES).map(([key, value]) => [value, key])
 );
 
-const PAGES = ['Über mich', 'Projekte', 'Skills', 'Qualifikation', 'Zertifikate'];
+const PAGES = ['about', 'projects', 'skills', 'qualification', 'certificates'];
 
 export default function App() {
   const { t } = useLanguage();
   useSEO(); // Initialize dynamic SEO tags
   const location = useLocation();
   const navigate = useNavigate();
-  const currentPage = ROUTE_TO_PAGE[location.pathname] || 'Start';
-
-  const PAGES = [t.nav.about, t.nav.projects, t.nav.skills, t.nav.qualification, t.nav.certificates];
+  const currentPage = ROUTE_TO_PAGE[location.pathname] || 'start';
 
   // Scroll Progress Indicator
   const { scrollYProgress } = useScroll();
@@ -153,54 +152,29 @@ export default function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState(false);
-  const pages = [t.nav.start, t.nav.about, t.nav.skills, t.nav.projects, t.nav.qualification, t.nav.certificates];
+  const navPages = [
+    { id: 'start', label: t.nav.start },
+    { id: 'about', label: t.nav.about },
+    { id: 'skills', label: t.nav.skills },
+    { id: 'projects', label: t.nav.projects },
+    { id: 'qualification', label: t.nav.qualification },
+    { id: 'certificates', label: t.nav.certificates }
+  ];
 
-  const handleNavigate = useCallback((page: string) => {
+  const handleNavigate = useCallback((pageId: string) => {
     // Check if it's a modal page
-    if (page === 'Impressum') {
+    if (pageId === 'impressum') {
       setIsImpressumOpen(true);
       setIsMobileMenuOpen(false);
       return;
     }
-    if (page === 'Datenschutz') {
+    if (pageId === 'datenschutz') {
       setIsDatenschutzOpen(true);
       setIsMobileMenuOpen(false);
       return;
     }
 
-    // If the page is already a valid key in PAGE_ROUTES, use it directly
-    if (PAGE_ROUTES[page]) {
-      const targetPath = PAGE_ROUTES[page];
-      if (location.pathname === targetPath) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        startTransition(() => {
-          navigate(targetPath);
-        });
-      }
-      setIsMobileMenuOpen(false);
-      return;
-    }
-
-    // Map translated page names back to PAGE_ROUTES keys if necessary
-    let targetPageKey = '';
-    Object.entries(t.nav).forEach(([key, value]) => {
-      if (value === page) {
-        // Map translation key to PAGE_ROUTES key
-        const keyMap: Record<string, string> = {
-          start: 'Start',
-          about: 'Über mich',
-          skills: 'Skills',
-          projects: 'Projekte',
-          qualification: 'Qualifikation',
-          certificates: 'Zertifikate',
-          contact: 'Kontakt'
-        };
-        targetPageKey = keyMap[key];
-      }
-    });
-
-    const targetPath = PAGE_ROUTES[targetPageKey] || '/';
+    const targetPath = PAGE_ROUTES[pageId] || '/';
     if (location.pathname === targetPath) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
@@ -209,7 +183,7 @@ export default function App() {
       });
     }
     setIsMobileMenuOpen(false);
-  }, [navigate, location.pathname, t.nav]);
+  }, [navigate, location.pathname]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -331,7 +305,7 @@ export default function App() {
       {/* Background Videos Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
         {/* Start Page Video */}
-        {currentPage === 'Start' && (
+        {currentPage === 'start' && (
           <div className="absolute inset-0">
             <video
               key="start-video-main"
@@ -350,7 +324,7 @@ export default function App() {
         )}
 
         {/* Subpages Video */}
-        {currentPage !== 'Start' && (
+        {currentPage !== 'start' && (
           <div className="absolute inset-0 bg-black">
             <video
               key="sub-video-main"
@@ -407,7 +381,7 @@ export default function App() {
       <MouseGlow />
       
       {/* Scroll Progress Indicator */}
-      {currentPage !== 'Start' && (
+      {currentPage !== 'start' && (
         <motion.div 
           className="fixed top-0 left-0 right-0 h-[1px] bg-blue-500 origin-left z-[100] shadow-[0_0_10px_rgba(59,130,246,0.8)] lg:hidden" 
           style={{ scaleX }} 
@@ -416,15 +390,15 @@ export default function App() {
 
       <div className={`relative z-10 flex flex-col min-h-screen overflow-x-hidden`}>
         {/* Navbar */}
-        <nav className={`sticky top-0 flex items-center justify-between px-4 py-1 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'Start' || isMobileMenuOpen) ? 'bg-black/20 backdrop-blur-[15px] saturate-[180%] border-b border-white/5' : 'bg-transparent'}`}>
+        <nav className={`sticky top-0 flex items-center justify-between px-4 py-1 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'start' || isMobileMenuOpen) ? 'bg-black/20 backdrop-blur-[15px] saturate-[180%] border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
             {/* Logo */}
             <a 
-              href={PAGE_ROUTES['Start']} 
+              href={PAGE_ROUTES['start']} 
               className="flex items-center gap-3 h-[24px] md:h-[28px] cursor-pointer group" 
               onClick={(e) => {
                 e.preventDefault();
-                handleNavigate('Start');
+                handleNavigate('start');
               }}
             >
               <img 
@@ -442,28 +416,29 @@ export default function App() {
 
           {/* Centered Navigation Bar */}
           <div className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-1">
-            {PAGES.map((page, index) => (
-              <React.Fragment key={page}>
+            {PAGES.map((pageId, index) => (
+              <React.Fragment key={pageId}>
                   <a
-                    href={PAGE_ROUTES[page]}
+                    href={PAGE_ROUTES[pageId]}
                     onMouseEnter={() => {
                       // Pre-fetch component
-                      const componentName = page.replace(' ', '') + 'Section';
-                      // This is a simple pre-fetch strategy
-                      import(`./components/${componentName}`).catch(() => {});
+                      const componentName = pageId.charAt(0).toUpperCase() + pageId.slice(1) + 'Section';
+                      // Special case for 'about' -> UberMichSection
+                      const finalName = pageId === 'about' ? 'UberMichSection' : (pageId === 'projects' ? 'ProjekteSection' : (pageId === 'qualification' ? 'QualifikationSection' : (pageId === 'certificates' ? 'ZertifikateSection' : componentName)));
+                      import(`./components/${finalName}`).catch(() => {});
                     }}
                     onClick={(e) => {
                       e.preventDefault();
-                      handleNavigate(page);
+                      handleNavigate(pageId);
                     }}
                     className={`px-2 xl:px-4 py-1.5 text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative group hover:scale-110 font-sans focus-ring ${
-                      currentPage === page
+                      currentPage === pageId
                         ? 'text-white text-glow-blue'
                         : 'text-white/85 hover:text-white'
                     }`}
                   >
-                  <span className="relative z-10">{page}</span>
-                  {currentPage === page ? (
+                  <span className="relative z-10">{(t.nav as any)[pageId]}</span>
+                  {currentPage === pageId ? (
                     <motion.span 
                       layoutId="active-nav-indicator"
                       className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,1)]"
@@ -498,10 +473,10 @@ export default function App() {
 
             <MagneticButton className="hidden lg:flex">
               <a 
-                href={PAGE_ROUTES['Kontakt']}
+                href={PAGE_ROUTES['contact']}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavigate('Kontakt');
+                  handleNavigate('contact');
                 }}
                 className="flex items-center justify-center rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
               >
@@ -529,32 +504,32 @@ export default function App() {
                 transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                 className="absolute top-full left-0 w-full h-[calc(100dvh-100%)] bg-black/20 backdrop-blur-[15px] saturate-[180%] border-t border-white/5 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto pb-24 shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
               >
-                {PAGES.map((page, index) => (
+                {PAGES.map((pageId, index) => (
                   <motion.a
-                    key={page}
-                    href={PAGE_ROUTES[page]}
+                    key={pageId}
+                    href={PAGE_ROUTES[pageId]}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + index * 0.05, duration: 0.4 }}
                     onClick={(e) => {
                       e.preventDefault();
-                      handleNavigate(page);
+                      handleNavigate(pageId);
                     }}
                     className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors font-sans focus-ring ${
-                      currentPage === page ? 'text-blue-400 text-glow-blue' : 'text-white/85 hover:text-white'
+                      currentPage === pageId ? 'text-blue-400 text-glow-blue' : 'text-white/85 hover:text-white'
                     }`}
                   >
-                    {page}
+                    {(t.nav as any)[pageId]}
                   </motion.a>
                 ))}
                 <motion.a 
-                  href={PAGE_ROUTES['Kontakt']}
+                  href={PAGE_ROUTES['contact']}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + PAGES.length * 0.05, duration: 0.4 }}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavigate('Kontakt');
+                    handleNavigate('contact');
                   }}
                   className="mt-4 flex items-center justify-center w-full lg:hidden rounded-xl px-5 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[12px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
                 >
@@ -591,7 +566,7 @@ export default function App() {
         </nav>
 
         {/* Main Content */}
-        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'Start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-4 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
+        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-4 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentPage}
@@ -599,21 +574,21 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className={`w-full flex flex-col flex-grow ${currentPage === 'Start' ? 'items-center justify-center' : ''}`}
+              className={`w-full flex flex-col flex-grow ${currentPage === 'start' ? 'items-center justify-center' : ''}`}
             >
               <Suspense fallback={<div className="text-white/50">{t.common.loading}</div>}>
-                {currentPage === 'Start' ? (
+                {currentPage === 'start' ? (
                   <HeroSection handleNavigate={handleNavigate} />
-                ) : currentPage === 'Über mich' ? (
+                ) : currentPage === 'about' ? (
                   <UberMichSection handleNavigate={handleNavigate} />
-                ) : currentPage === 'Skills' ? (
+                ) : currentPage === 'skills' ? (
                   <SkillsSection handleNavigate={handleNavigate} />
-                ) : currentPage === 'Projekte' ? (
+                ) : currentPage === 'projects' ? (
                   <ProjekteSection 
                     setIsInitialEntrance={setIsInitialEntrance} 
                     handleNavigate={handleNavigate}
                   />
-                ) : currentPage === 'Qualifikation' ? (
+                ) : currentPage === 'qualification' ? (
                   <QualifikationSection 
                     expandedQual={expandedQual}
                     setExpandedQual={setExpandedQual}
@@ -622,7 +597,7 @@ export default function App() {
                     setIsInitialEntrance={setIsInitialEntrance}
                     handleNavigate={handleNavigate}
                   />
-                ) : currentPage === 'Zertifikate' ? (
+                ) : currentPage === 'certificates' ? (
                   <ZertifikateSection 
                     expandedCert={expandedCert}
                     setExpandedCert={setExpandedCert}
@@ -634,7 +609,7 @@ export default function App() {
                     setCertError={setCertError}
                     handleNavigate={handleNavigate}
                   />
-                ) : currentPage === 'Kontakt' ? (
+                ) : currentPage === 'contact' ? (
                   <KontaktSection 
                     isSubmitting={isSubmitting}
                     submitSuccess={submitSuccess}
@@ -650,9 +625,9 @@ export default function App() {
                     setIsCvUnlocked={setIsCvUnlocked}
                     setCvError={setCvError}
                   />
-                ) : currentPage === 'Impressum' ? (
+                ) : currentPage === 'impressum' ? (
                   <ImpressumPage />
-                ) : currentPage === 'Datenschutz' ? (
+                ) : currentPage === 'datenschutz' ? (
                   <DatenschutzPage />
                 ) : (
                   <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500 h-full">
@@ -689,6 +664,7 @@ export default function App() {
           <DatenschutzModal setIsDatenschutz={setIsDatenschutzOpen} />
         )}
 
+        <CookieBanner handleNavigate={handleNavigate} />
       </div>
     </div>
   );

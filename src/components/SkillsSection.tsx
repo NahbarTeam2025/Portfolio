@@ -6,37 +6,37 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
   const { t, language } = useLanguage();
   const skillGroups = [
     {
-      category: language === 'de' ? 'DIGITALE KOMPETENZEN' : 'DIGITAL COMPETENCIES',
+      category: t.skills.categories.digital,
       skills: [
-        { name: 'Content Creation', value: 90, tooltip: 'Canva, Adobe Creative Cloud' },
-        { name: 'SEO', value: 85, tooltip: 'Seobility, Google Search Console' },
-        { name: 'Web & Landingpages', value: 85, tooltip: 'WordPress (Elementor)' },
-        { name: 'Design & Gestaltung', value: 80, tooltip: 'Figma, Adobe Illustrator' }
+        { name: t.skills.items.contentCreation, value: 90, tooltip: t.skills.tooltips.contentCreation },
+        { name: t.skills.items.seo, value: 85, tooltip: t.skills.tooltips.seo },
+        { name: t.skills.items.webLandingpages, value: 85, tooltip: t.skills.tooltips.webLandingpages },
+        { name: t.skills.items.design, value: 80, tooltip: t.skills.tooltips.design }
       ]
     },
     {
-      category: language === 'de' ? 'TECHNOLOGIE & KI' : 'TECHNOLOGY & AI',
+      category: t.skills.categories.tech,
       skills: [
-        { name: 'Web Analytics', value: 80, tooltip: 'Google Analytics 4' },
-        { name: 'Daten & Tools', value: 85, tooltip: 'Looker Studio, Microsoft Excel' },
-        { name: 'Prompt Engineering', value: 90, tooltip: 'Gemini (Google), Claude (Anthropic)' },
-        { name: 'KI-Workflows', value: 85, tooltip: 'N8N, Make.com' }
+        { name: t.skills.items.webAnalytics, value: 80, tooltip: t.skills.tooltips.webAnalytics },
+        { name: t.skills.items.data, value: 85, tooltip: t.skills.tooltips.data },
+        { name: t.skills.items.promptEngineering, value: 90, tooltip: t.skills.tooltips.promptEngineering },
+        { name: t.skills.items.workflows, value: 85, tooltip: t.skills.tooltips.workflows }
       ]
     },
     {
-      category: language === 'de' ? 'ARBEITSWEISE & STÄRKEN' : 'WORKING STYLE & STRENGTHS',
+      category: t.skills.categories.working,
       skills: [
-        { name: 'Strukturierte Arbeitsweise', value: 90, tooltip: 'Notion, Trello' },
-        { name: 'Kommunikationsstärke', value: 85, tooltip: 'Slack, Microsoft Teams' },
-        { name: 'Problemlösung', value: 85, tooltip: 'Miro (Mindmapping), GitHub (für technisches Troubleshooting)' },
-        { name: 'Zeitmanagement', value: 85, tooltip: 'Google Calendar' }
+        { name: t.skills.items.structured, value: 90, tooltip: t.skills.tooltips.structured },
+        { name: t.skills.items.communication, value: 85, tooltip: t.skills.tooltips.communication },
+        { name: t.skills.items.problemSolving, value: 85, tooltip: t.skills.tooltips.problemSolving },
+        { name: t.skills.items.timeManagement, value: 85, tooltip: t.skills.tooltips.timeManagement }
       ]
     },
     {
-      category: language === 'de' ? 'Sprachen' : 'Languages',
+      category: t.skills.categories.languages,
       skills: [
-        { name: language === 'de' ? 'Deutsch' : 'German', value: 100, tooltip: 'C2' },
-        { name: language === 'de' ? 'Englisch' : 'English', value: 90, tooltip: 'C1' }
+        { name: t.skills.items.german, value: 100, tooltip: 'C2' },
+        { name: t.skills.items.english, value: 90, tooltip: 'C1' }
       ]
     }
   ];

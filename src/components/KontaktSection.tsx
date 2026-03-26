@@ -120,7 +120,7 @@ export const KontaktSection = React.memo(({
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
                         </div>
-                        <span>PDF herunterladen</span>
+                        <span>{t.contact.downloadButton}</span>
                       </a>
                     ) : (
                       <div className="flex items-center gap-3">
@@ -130,7 +130,7 @@ export const KontaktSection = React.memo(({
                         >
                           <span className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${showPasswordInput ? 'translate-x-5' : 'translate-x-0'}`} />
                         </button>
-                        <span className="text-white/40 text-[12px] md:text-[14px] italic">{showPasswordInput ? 'Passwort eingeben...' : 'Klicken zum Freischalten'}</span>
+                        <span className="text-white/40 text-[12px] md:text-[14px] italic">{showPasswordInput ? t.contact.passwordPrompt : t.contact.unlockPrompt}</span>
                       </div>
                     )}
                   </div>
@@ -299,7 +299,7 @@ export const KontaktSection = React.memo(({
                           />
                           <label htmlFor="privacy" className="text-[10px] md:text-[12px] text-white leading-relaxed cursor-pointer">
                             {t.contact.privacy.split(t.contact.privacyLink)[0]}
-                            <button type="button" onClick={() => handleNavigate('Datenschutz')} className="text-blue-400 hover:underline focus-ring">{t.contact.privacyLink}</button>
+                            <button type="button" onClick={() => handleNavigate('datenschutz')} className="text-blue-400 hover:underline focus-ring">{t.contact.privacyLink}</button>
                             {t.contact.privacy.split(t.contact.privacyLink)[1]}
                           </label>
                         </div>
