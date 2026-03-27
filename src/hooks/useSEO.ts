@@ -55,7 +55,7 @@ export const useSEO = () => {
     const currentPath = location.pathname;
     const seo = SEO_DATA[currentPath] || SEO_DATA['/'];
     // Ensure canonical URL is consistent (with trailing slash for root)
-    const url = `https://roberterbach.de${currentPath === '/' ? '/' : currentPath}`;
+    const url = `${window.location.origin}${currentPath === '/' ? '/' : currentPath}`;
 
     // Update Title
     document.title = seo.title;
