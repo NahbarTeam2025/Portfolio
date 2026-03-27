@@ -285,7 +285,7 @@ export default function App() {
       {/* Background Videos Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
         {/* Start Page Video */}
-        {currentPage === 'start' && !isMobile && (
+        {currentPage === 'start' && (
           <div className="absolute inset-0">
             <video
               key="start-video-main"
@@ -302,12 +302,9 @@ export default function App() {
             <div className="absolute inset-0 bg-black/50" />
           </div>
         )}
-        {currentPage === 'start' && isMobile && (
-          <div className="absolute inset-0 bg-black/90" />
-        )}
 
         {/* Subpages Video */}
-        {currentPage !== 'start' && !isMobile && (
+        {currentPage !== 'start' && (
           <div className="absolute inset-0 bg-black">
             <video
               key="sub-video-main"
@@ -322,9 +319,6 @@ export default function App() {
               <source src="https://meine-assets.pages.dev/bgunterseiten.mp4" type="video/mp4" />
             </video>
           </div>
-        )}
-        {currentPage !== 'start' && isMobile && (
-          <div className="absolute inset-0 bg-black" />
         )}
         
         {/* Global Noise Overlay */}
