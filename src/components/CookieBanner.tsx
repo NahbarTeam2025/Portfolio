@@ -49,11 +49,18 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
         'ad_personalization': 'granted'
       });
       
-      (window as any).gtag('event', 'page_view', {
-        page_location: window.location.href,
+      // Send a config update to ensure page view is tracked with new consent
+      (window as any).gtag('config', 'G-90T4169WJP', {
         page_path: window.location.pathname,
+        page_location: window.location.href,
         page_title: document.title,
-        debug_mode: true
+        send_page_view: true,
+      });
+
+      // Send a custom event to make it immediately visible in Realtime reports
+      (window as any).gtag('event', 'cookie_consent_granted', {
+        event_category: 'engagement',
+        event_label: 'Cookie Banner Accepted'
       });
     }
     
