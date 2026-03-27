@@ -40,7 +40,7 @@ const PAGE_ROUTES: Record<string, string> = {
   'about': '/ueber-mich',
   'skills': '/skills',
   'projects': '/projekte',
-  'qualification': '/qualifikation',
+  'qualification': '/werdegang',
   'certificates': '/zertifikate',
   'contact': '/kontakt',
   'impressum': '/impressum',
@@ -624,8 +624,6 @@ export default function App() {
         {isDatenschutzOpen && (
           <DatenschutzModal setIsDatenschutz={setIsDatenschutzOpen} />
         )}
-
-        {/* Cookie Banner is now outside this container for better clickability */}
       </div>
     </div>
     <CookieBanner handleNavigate={handleNavigate} />

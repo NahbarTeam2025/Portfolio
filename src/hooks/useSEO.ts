@@ -24,7 +24,7 @@ const SEO_DATA: Record<string, SEOProps> = {
     title: 'Projekte & Referenzen | Robert Erbach - Design & KI',
     description: 'Ausgewählte Arbeiten in den Bereichen Design, KI-Integration und digitale Strategie.',
   },
-  '/qualifikation': {
+  '/werdegang': {
     title: 'Berufliche Qualifikation | Robert Erbach - Design & KI',
     description: 'Beruflicher Werdegang und Qualifikationen von Robert Erbach.',
   },
