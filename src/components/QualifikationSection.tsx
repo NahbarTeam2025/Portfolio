@@ -121,8 +121,8 @@ export const QualifikationSection = React.memo(({
       </div>
 
       {/* CTA Button */}
-      <div className="w-full flex flex-col items-center justify-center pb-32 md:pb-4 pt-0 md:pt-4 gap-3 mt-auto shrink-0">
-        <p className="text-white/80 text-sm md:text-base text-center">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-32 md:pb-4 pt-0 md:pt-4 gap-3 mt-auto shrink-0">
+        <p className="text-white/80 text-sm md:text-base text-center whitespace-normal md:whitespace-nowrap">
           {t.qualifications.ctaText}
         </p>
         <button 

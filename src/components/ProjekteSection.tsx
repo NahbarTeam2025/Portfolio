@@ -41,8 +41,8 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
       )}
 
       {/* CTA Button */}
-      <div className="w-full flex flex-col items-center justify-center pb-16 md:pb-2 pt-0 md:pt-2 gap-2 mt-auto shrink-0">
-        <p className="text-white/80 text-xs md:text-sm text-center">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-16 md:pb-2 pt-0 md:pt-2 gap-2 mt-auto shrink-0">
+        <p className="text-white/80 text-xs md:text-sm text-center whitespace-normal md:whitespace-nowrap">
           {t.projects.cta.text}
         </p>
         <button 

@@ -18,7 +18,7 @@ export const translations = {
       design: 'Design',
       structure: 'Struktur',
       ki: 'KI',
-      cta: 'Mehr erfahren',
+      cta: 'Mehr lesen',
     },
     about: {
       title: 'Wer ist ... ?',
@@ -338,7 +338,7 @@ export const translations = {
       design: 'Design',
       structure: 'Structure',
       ki: 'AI',
-      cta: 'Learn more',
+      cta: 'Read more',
     },
     about: {
       title: 'Who is ... ?',
