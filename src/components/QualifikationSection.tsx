@@ -70,10 +70,10 @@ export const QualifikationSection = React.memo(({
                 >
                   <div className="flex flex-col gap-0.5">
                     <div className="flex items-center gap-3">
-                      <h3 className="text-sm md:text-base font-semibold text-white leading-tight group-hover/btn:text-blue-400 transition-colors">{qual.title}</h3>
+                      <h3 className="text-[15px] md:text-base font-semibold text-white leading-tight group-hover/btn:text-blue-400 transition-colors">{qual.title}</h3>
                       <span className="hidden sm:inline-block text-gray-200 font-mono text-[10px] bg-gray-400/20 border border-gray-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
                     </div>
-                  <span className="text-white/80 text-[12px] md:text-[13px]">{qual.company}</span>
+                  <span className="text-white/80 text-[13px] md:text-[14px]">{qual.company}</span>
                 </div>
                 <div className={`w-7 h-7 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-blue/20 border-brand-blue/40' : ''}`}>
                   <svg className="w-3 h-3 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,14 +92,14 @@ export const QualifikationSection = React.memo(({
                         <span className="text-gray-200 font-mono text-[10px] bg-gray-400/20 border border-gray-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
                       </div>
                     {qual.desc && (
-                      <p className="text-white/70 text-[13px] md:text-[14px] leading-relaxed whitespace-pre-line mb-3">{qual.desc}</p>
+                      <p className="text-white/70 text-[14px] md:text-[15px] leading-relaxed whitespace-pre-line mb-3">{qual.desc}</p>
                     )}
                     {qual.content && (
                       <div className="flex flex-wrap gap-2">
                         {qual.content.map((item: string, j: number) => (
                           <span 
                             key={j} 
-                            className={`px-2.5 py-1 rounded-full border text-[11px] md:text-[12px] font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-white/5 ${
+                            className={`px-2.5 py-1 rounded-full border text-[12px] md:text-[13px] font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-white/5 ${
                               j % 2 === 0 
                                 ? 'border-gray-400/40' 
                                 : 'border-gray-500/40'
@@ -121,7 +121,7 @@ export const QualifikationSection = React.memo(({
       </div>
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-32 md:pb-20 pt-0 md:pt-3 gap-2.5 mt-auto shrink-0">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-32 md:pb-20 pt-10 md:pt-3 gap-2.5 mt-auto shrink-0">
         <p className="text-white/80 text-sm md:text-base text-center whitespace-normal md:whitespace-nowrap">
           {t.qualifications.ctaText}
         </p>
