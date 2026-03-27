@@ -23,6 +23,7 @@ import { useParallaxIntersection } from './hooks/useParallaxIntersection';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { CookieBanner } from './components/CookieBanner';
+import { useIsMobile } from './hooks/useIsMobile';
 
 // Lazy load components
 const CommandTerminal = lazy(() => import('/src/components/CommandTerminal.tsx'));
@@ -159,6 +160,7 @@ export default function App() {
   const [isCvUnlocked, setIsCvUnlocked] = useState(false);
   const [isStartVideoReady, setIsStartVideoReady] = useState(false);
   const [isSubVideoReady, setIsSubVideoReady] = useState(false);
+  const isMobile = useIsMobile();
   const [certPasswordInput, setCertPasswordInput] = useState('');
   const [cvPasswordInput, setCvPasswordInput] = useState('');
   const [certError, setCertError] = useState(false);
@@ -283,7 +285,7 @@ export default function App() {
       {/* Background Videos Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
         {/* Start Page Video */}
-        {currentPage === 'start' && (
+        {currentPage === 'start' && !isMobile && (
           <div className="absolute inset-0">
             <video
               key="start-video-main"
@@ -300,9 +302,12 @@ export default function App() {
             <div className="absolute inset-0 bg-black/50" />
           </div>
         )}
+        {currentPage === 'start' && isMobile && (
+          <div className="absolute inset-0 bg-black/90" />
+        )}
 
         {/* Subpages Video */}
-        {currentPage !== 'start' && (
+        {currentPage !== 'start' && !isMobile && (
           <div className="absolute inset-0 bg-black">
             <video
               key="sub-video-main"
@@ -317,6 +322,9 @@ export default function App() {
               <source src="https://meine-assets.pages.dev/bgunterseiten.mp4" type="video/mp4" />
             </video>
           </div>
+        )}
+        {currentPage !== 'start' && isMobile && (
+          <div className="absolute inset-0 bg-black" />
         )}
         
         {/* Global Noise Overlay */}
