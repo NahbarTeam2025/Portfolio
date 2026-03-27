@@ -625,8 +625,9 @@ export default function App() {
           <DatenschutzModal setIsDatenschutz={setIsDatenschutzOpen} />
         )}
       </div>
+      
+      <CookieBanner handleNavigate={handleNavigate} />
     </div>
-    <CookieBanner handleNavigate={handleNavigate} />
   </>
 );
 }
