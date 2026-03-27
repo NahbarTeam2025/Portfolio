@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Audiowide&family=Alex+Brush&family=Mr+Dafoe&display=swap');
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
@@ -106,6 +107,7 @@
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-audiowide: "Audiowide", system-ui, sans-serif;
   --font-alex-brush: "Alex Brush", cursive;
+  --font-script: "Mr Dafoe", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --color-brand-dark: #0d1b2a;
   --color-brand-blue: #3b82f6;

@@ -115,6 +115,8 @@ export default function CommandTerminal({ onNavigate }: { onNavigate: (page: str
             <form onSubmit={handleCommand} className="flex items-center px-4 py-3 border-t border-gray-500/20 bg-gray-500/5">
               <span className="text-gray-400 mr-2">{'>'}</span>
               <input 
+                id="terminal-input"
+                name="terminal-input"
                 ref={inputRef}
                 type="text" 
                 value={input} 

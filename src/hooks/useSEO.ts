@@ -9,40 +9,40 @@ interface SEOProps {
 
 const SEO_DATA: Record<string, SEOProps> = {
   '/': {
-    title: 'Robert Erbach - Design & KI',
-    description: 'Digital Specialist für Design und KI. Robert Erbach denkt Zusammenhänge weiter, arbeitet strukturiert und entwickelt klare digitale Lösungen.',
+    title: 'Robert Erbach – Portfolio',
+    description: 'Ich entwickle KI-Workflows, baue damit funktionierende Webprojekte und gestalte alles so, dass es auch wirklich gut aussieht.',
   },
   '/ueber-mich': {
-    title: 'Über mich | Robert Erbach - Design & KI',
-    description: 'Erfahren Sie mehr über Robert Erbach: Strukturiert, durchdacht und konsequent in der Umsetzung von Design- und KI-Projekten.',
+    title: 'Über mich | Robert Erbach – Portfolio',
+    description: 'Erfahren Sie mehr über Robert Erbach: „Halbfertig ist keine Option.“ KI-Workflows, Webprojekte und durchdachtes Design.',
   },
   '/skills': {
-    title: 'Skills & Kompetenzen | Robert Erbach - Design & KI',
-    description: 'Fachkenntnisse in Design, KI-Workflows, SEO, Web Analytics und Prompt Engineering.',
+    title: 'Skills & Kompetenzen | Robert Erbach – Portfolio',
+    description: 'Fachkenntnisse in KI-Entwicklung, Prompt Engineering, kreativem Design, SEO und Web Analytics.',
   },
   '/projekte': {
-    title: 'Projekte & Referenzen | Robert Erbach - Design & KI',
-    description: 'Ausgewählte Arbeiten in den Bereichen Design, KI-Integration und digitale Strategie.',
+    title: 'Projekte & Referenzen | Robert Erbach – Portfolio',
+    description: 'Ausgewählte Arbeiten in den Bereichen KI-Integration, Web-Entwicklung und digitale Strategie.',
   },
   '/werdegang': {
-    title: 'Berufliche Qualifikation | Robert Erbach - Design & KI',
+    title: 'Berufliche Qualifikation | Robert Erbach – Portfolio',
     description: 'Beruflicher Werdegang und Qualifikationen von Robert Erbach.',
   },
   '/zertifikate': {
-    title: 'Zertifikate | Robert Erbach - Design & KI',
-    description: 'Zertifikate und Weiterbildungen in den Bereichen Design, Marketing und KI.',
+    title: 'Zertifikate | Robert Erbach – Portfolio',
+    description: 'Zertifikate und Weiterbildungen in den Bereichen Digital Marketing, Web Analytics und KI.',
   },
   '/kontakt': {
-    title: 'Kontakt | Robert Erbach - Design & KI',
-    description: 'Nehmen Sie Kontakt mit Robert Erbach auf für Anfragen zu Design- und KI-Projekten.',
+    title: 'Kontakt | Robert Erbach – Portfolio',
+    description: 'Nehmen Sie Kontakt mit Robert Erbach auf für Anfragen zu Websites, Apps und KI-Workflows.',
   },
   '/impressum': {
-    title: 'Impressum | Robert Erbach - Design & KI',
+    title: 'Impressum | Robert Erbach – Portfolio',
     description: 'Impressum und rechtliche Angaben für Robert Erbach.',
     noindex: true
   },
   '/datenschutz': {
-    title: 'Datenschutz | Robert Erbach - Design & KI',
+    title: 'Datenschutz | Robert Erbach – Portfolio',
     description: 'Datenschutzerklärung für die Website von Robert Erbach.',
     noindex: true
   }

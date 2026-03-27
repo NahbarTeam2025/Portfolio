@@ -139,6 +139,8 @@ export const KontaktSection = React.memo(({
                       </div>
                       <div className="relative">
                         <input 
+                          id="cv-password"
+                          name="cv-password"
                           type={showPassword ? "text" : "password"} 
                           placeholder={t.certificates.passwordPlaceholder}
                           value={cvPasswordInput}

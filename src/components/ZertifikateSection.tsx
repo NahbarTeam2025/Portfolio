@@ -102,6 +102,8 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                         <div className="w-full max-w-[280px] space-y-3">
                           <div className="relative">
                             <input 
+                              id="cert-password"
+                              name="cert-password"
                               type={showPassword ? "text" : "password"} 
                               placeholder={t.certificates.passwordPlaceholder}
                               value={certPasswordInput}
