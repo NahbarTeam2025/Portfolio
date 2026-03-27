@@ -95,7 +95,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
         className="relative group"
       >
         {/* Outer Glow Effect */}
-        <div className="absolute -inset-4 bg-blue-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute -inset-4 bg-blue-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
         
         <motion.button 
           id="btn-hero-projects"
