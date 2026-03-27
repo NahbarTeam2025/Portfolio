@@ -2,36 +2,49 @@
 <html lang="de">
   <head>
     <!-- Google Analytics & Consent Mode v2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       window.gtag = gtag; // Expose to global window object for React
       
-      // 1. Set default consent to DENIED before doing anything else
+      // 1. Set default consent to DENIED
       gtag('consent', 'default', {
         'analytics_storage': 'denied',
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
-        'ad_personalization': 'denied'
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
       });
+
+      // Check for existing consent in localStorage
+      try {
+        const consent = localStorage.getItem('cookie-consent');
+        if (consent === 'granted') {
+          console.log('GA: Existing consent found (granted), updating state');
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+          });
+        }
+      } catch (e) {
+        console.warn('GA: Could not access localStorage for consent check');
+      }
 
       // 2. Initialize GA
       gtag('js', new Date());
-      gtag('config', 'G-90T4169WJP');
-      
-      // 3. Load GTM script after a delay to improve initial page load performance
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = "https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP";
-          document.head.appendChild(script);
-        }, 2000);
+      gtag('config', 'G-90T4169WJP', {
+        'send_page_view': false, // We handle this manually in React for SPA
+        'debug_mode': true
       });
+      
+      console.log('GA Initialized with default denied consent');
     </script>
 
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev data: https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; media-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev data: https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net; media-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com;">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark only" />

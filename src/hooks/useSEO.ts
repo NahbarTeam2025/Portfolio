@@ -105,5 +105,15 @@ export const useSEO = () => {
     updateMeta('twitter:description', seo.description, 'name');
     updateMeta('twitter:url', url, 'name');
 
+    // Send Google Analytics Pageview
+    if ((window as any).gtag) {
+      (window as any).gtag('event', 'page_view', {
+        page_title: seo.title,
+        page_location: url,
+        page_path: currentPath,
+        debug_mode: true
+      });
+    }
+
   }, [location.pathname]);
 };
