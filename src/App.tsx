@@ -399,11 +399,17 @@ export default function App() {
                   <a
                     href={PAGE_ROUTES[pageId]}
                     onMouseEnter={() => {
-                      // Pre-fetch component
-                      const componentName = pageId.charAt(0).toUpperCase() + pageId.slice(1) + 'Section';
-                      // Special case for 'about' -> UberMichSection
-                      const finalName = pageId === 'about' ? 'UberMichSection' : (pageId === 'projects' ? 'ProjekteSection' : (pageId === 'qualification' ? 'QualifikationSection' : (pageId === 'certificates' ? 'ZertifikateSection' : componentName)));
-                      import(`./components/${finalName}`).catch(() => {});
+                      // Pre-fetch component using static map to avoid Vite dynamic import issues
+                      const prefetchMap: Record<string, () => Promise<any>> = {
+                        'about': () => import('./components/UberMichSection'),
+                        'projects': () => import('./components/ProjekteSection'),
+                        'qualification': () => import('./components/QualifikationSection'),
+                        'certificates': () => import('./components/ZertifikateSection'),
+                        'skills': () => import('./components/SkillsSection'),
+                      };
+                      if (prefetchMap[pageId]) {
+                        prefetchMap[pageId]().catch(() => {});
+                      }
                     }}
                     onClick={(e) => {
                       e.preventDefault();
