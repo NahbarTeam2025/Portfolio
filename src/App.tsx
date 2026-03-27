@@ -25,15 +25,15 @@ import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { CookieBanner } from './components/CookieBanner';
 
 // Lazy load components
-const CommandTerminal = lazy(() => import('./components/CommandTerminal'));
-const QualifikationSection = lazy(() => import('./components/QualifikationSection').then(m => ({ default: m.QualifikationSection })));
-const SkillsSection = lazy(() => import('./components/SkillsSection').then(m => ({ default: m.SkillsSection })));
-const ProjekteSection = lazy(() => import('./components/ProjekteSection').then(m => ({ default: m.ProjekteSection })));
-const ZertifikateSection = lazy(() => import('./components/ZertifikateSection').then(m => ({ default: m.ZertifikateSection })));
-const KontaktSection = lazy(() => import('./components/KontaktSection').then(m => ({ default: m.KontaktSection })));
-const UberMichSection = lazy(() => import('./components/UberMichSection').then(m => ({ default: m.UberMichSection })));
-const ImpressumPage = lazy(() => import('./pages/ImpressumPage').then(m => ({ default: m.ImpressumPage })));
-const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage').then(m => ({ default: m.DatenschutzPage })));
+const CommandTerminal = lazy(() => import('./components/CommandTerminal.tsx'));
+const QualifikationSection = lazy(() => import('./components/QualifikationSection.tsx').then(m => ({ default: m.QualifikationSection })));
+const SkillsSection = lazy(() => import('./components/SkillsSection.tsx').then(m => ({ default: m.SkillsSection })));
+const ProjekteSection = lazy(() => import('./components/ProjekteSection.tsx').then(m => ({ default: m.ProjekteSection })));
+const ZertifikateSection = lazy(() => import('./components/ZertifikateSection.tsx').then(m => ({ default: m.ZertifikateSection })));
+const KontaktSection = lazy(() => import('./components/KontaktSection.tsx').then(m => ({ default: m.KontaktSection })));
+const UberMichSection = lazy(() => import('./components/UberMichSection.tsx').then(m => ({ default: m.UberMichSection })));
+const ImpressumPage = lazy(() => import('./pages/ImpressumPage.tsx').then(m => ({ default: m.ImpressumPage })));
+const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage.tsx').then(m => ({ default: m.DatenschutzPage })));
 
 const PAGE_ROUTES: Record<string, string> = {
   'start': '/',
@@ -401,11 +401,11 @@ export default function App() {
                     onMouseEnter={() => {
                       // Pre-fetch component using static map to avoid Vite dynamic import issues
                       const prefetchMap: Record<string, () => Promise<any>> = {
-                        'about': () => import('./components/UberMichSection'),
-                        'projects': () => import('./components/ProjekteSection'),
-                        'qualification': () => import('./components/QualifikationSection'),
-                        'certificates': () => import('./components/ZertifikateSection'),
-                        'skills': () => import('./components/SkillsSection'),
+                        'about': () => import('./components/UberMichSection.tsx'),
+                        'projects': () => import('./components/ProjekteSection.tsx'),
+                        'qualification': () => import('./components/QualifikationSection.tsx'),
+                        'certificates': () => import('./components/ZertifikateSection.tsx'),
+                        'skills': () => import('./components/SkillsSection.tsx'),
                       };
                       if (prefetchMap[pageId]) {
                         prefetchMap[pageId]().catch(() => {});
