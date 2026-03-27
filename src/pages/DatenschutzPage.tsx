@@ -59,12 +59,6 @@ export const DatenschutzPage = () => {
 
         <section>
           <h3 className="text-xl font-medium text-white mb-4">4. Datenerfassung auf dieser Website</h3>
-          <h4 className="text-lg font-medium text-white/90 mb-2">Kontaktformular (Web3Forms)</h4>
-          <p className="mb-4">Wenn Sie mir per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.</p>
-          <p className="mb-4">Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt zur Abwicklung Ihrer Anfrage. Ich nutze für die Bereitstellung des Formulars den Dienst "Web3Forms" des Anbieters Web3Forms. Die von Ihnen eingegebenen Daten werden auf den Servern von Web3Forms verarbeitet.</p>
-          <p className="mb-4">Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf meinem berechtigten Interesse an der effektiven Bearbeitung der an mich gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.</p>
-          <p className="mb-6">Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei mir, bis Sie mich zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
-
           <h4 className="text-lg font-medium text-white/90 mb-2">Bereitstellung von Downloads (Zertifikate)</h4>
           <p className="mb-6">Ich biete auf meiner Website Zertifikate zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Cloudflare erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken.</p>
         </section>

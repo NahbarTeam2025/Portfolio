@@ -26,7 +26,7 @@ export const QualifikationSection = React.memo(({
             initial={{ scaleY: 0, originY: 0, opacity: 0 }}
             animate={{ scaleY: 1, opacity: 0.2 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute left-[15px] md:left-[31px] top-[30px] bottom-[20px] md:bottom-[76px] w-[1px] bg-gradient-to-b from-blue-400 via-brand-blue to-blue-400" 
+            className="absolute left-[15px] md:left-[31px] top-[30px] bottom-[20px] md:bottom-[76px] w-[1px] bg-gradient-to-b from-gray-300 via-gray-400 to-gray-300" 
           />
         )}
         
@@ -48,12 +48,12 @@ export const QualifikationSection = React.memo(({
                     delay: i * 0.1 + 0.2,
                     ease: "backOut"
                   }}
-                  className="absolute -left-[23px] md:-left-[39px] top-[30px] w-3 h-3 rounded-full bg-black border border-blue-400 z-20 shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:scale-125 transition-transform duration-300" 
+                  className="absolute -left-[23px] md:-left-[39px] top-[30px] w-3 h-3 rounded-full bg-black border border-gray-400 z-20 shadow-[0_0_10px_rgba(156,163,175,0.5)] group-hover:scale-125 transition-transform duration-300" 
                 />
               )}
               
               <div 
-                className={`wow-card parallax-element flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-blue-400/30 expanded' : 'overflow-hidden'} ${!isExpanded && isInitialEntrance ? 'animate-project-entrance' : ''}`}
+                className={`wow-card parallax-element flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-gray-400/30 expanded' : 'overflow-hidden'} ${!isExpanded && isInitialEntrance ? 'animate-project-entrance' : ''}`}
                 style={{ animationDelay: isExpanded ? '0ms' : `${i * 400}ms` }}
               >
                 <div className="wow-card-border" />
@@ -71,7 +71,7 @@ export const QualifikationSection = React.memo(({
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-3">
                       <h3 className="text-sm md:text-base font-semibold text-white leading-tight group-hover/btn:text-blue-400 transition-colors">{qual.title}</h3>
-                      <span className="hidden sm:inline-block text-blue-100 font-mono text-[10px] bg-blue-400/20 border border-blue-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
+                      <span className="hidden sm:inline-block text-gray-200 font-mono text-[10px] bg-gray-400/20 border border-gray-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
                     </div>
                   <span className="text-white/80 text-[12px] md:text-[14px]">{qual.company}</span>
                 </div>
@@ -89,7 +89,7 @@ export const QualifikationSection = React.memo(({
                   <div className="w-full h-[1px] bg-white/5 shrink-0" />
                   <div className="pr-2 overflow-y-auto">
                       <div className="sm:hidden mb-3">
-                        <span className="text-blue-100 font-mono text-[10px] bg-blue-400/20 border border-blue-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
+                        <span className="text-gray-200 font-mono text-[10px] bg-gray-400/20 border border-gray-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
                       </div>
                     {qual.desc && (
                       <p className="text-white/70 text-[13px] md:text-[14px] leading-relaxed whitespace-pre-line mb-3">{qual.desc}</p>
@@ -101,8 +101,8 @@ export const QualifikationSection = React.memo(({
                             key={j} 
                             className={`px-2.5 py-1 rounded-full border text-[11px] md:text-[12px] font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-white/5 ${
                               j % 2 === 0 
-                                ? 'border-blue-400/40' 
-                                : 'border-blue-500/40'
+                                ? 'border-gray-400/40' 
+                                : 'border-gray-500/40'
                             }`}
                           >
                             {item}

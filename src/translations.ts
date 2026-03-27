@@ -7,7 +7,7 @@ export const translations = {
       about: 'Über mich',
       skills: 'Skills',
       projects: 'Projekte',
-      qualification: 'Qualifikation',
+      qualification: 'Werdegang',
       certificates: 'Zertifikate',
       contact: 'Kontakt',
     },
@@ -18,19 +18,19 @@ export const translations = {
       design: 'Design',
       structure: 'Struktur',
       ki: 'KI',
-      cta: 'Projekte entdecken',
+      cta: 'Mehr erfahren',
     },
     about: {
-      title: 'Über mich',
+      title: 'Wer ist ... ?',
       subtitle: 'Wer ich bin',
-      boldText: 'Ich arbeite strukturiert und mit dem Anspruch, Dinge wirklich zu verstehen – nicht nur umzusetzen.',
-      text1: 'Was man nicht sofort sieht: wie viel im Hintergrund passiert. Ich denke weiter, hinterfrage und erkenne Zusammenhänge, bevor sie offensichtlich werden. Dabei geht es mir nicht darum, möglichst viel zu machen, sondern die richtigen Dinge zu tun.',
-      text2: 'Ich arbeite mich in Themen ein, analysiere, vereinfache und entwickle daraus Lösungen, die klar aufgebaut sind und funktionieren. Nicht als schnelle Idee, sondern als durchdachtes System.',
-      text3: 'Komplexität zu durchdringen und auf das Wesentliche zu reduzieren, ist für mich die Grundlage guter Arbeit. Ich gehe Projekte mit Ehrgeiz und einem hohen Anspruch an Qualität an – mit dem Ziel, Ergebnisse zu schaffen, die nicht nur gut aussehen, sondern nachhaltig überzeugen.',
+      boldText: 'Ich arbeite strukturiert und mit dem Anspruch, Dinge wirklich zu durchdringen.',
+      text1: 'Hinter den Kulissen passiert oft mehr, als auf den ersten Blick sichtbar ist. Ich denke einen Schritt weiter, hinterfrage den Status quo und erkenne Zusammenhänge, bevor sie offensichtlich werden. Mein Fokus liegt nicht darauf, blind Aufgaben abzuarbeiten, sondern die richtigen Hebel zu finden.',
+      text2: 'Ich arbeite mich tief in Themen ein, analysiere sie und vereinfache komplexe Sachverhalte. So entstehen Lösungen, die klar aufgebaut sind und in der Praxis funktionieren – als durchdachte Systeme, nicht als schnelle, kurzlebige Ideen.',
+      text3: 'Komplexität zu reduzieren und auf das Wesentliche zu fokussieren, ist für mich der Kern guter Arbeit. Ich gehe Projekte mit Ehrgeiz und einem hohen Qualitätsanspruch an, um Ergebnisse zu schaffen, die nachhaltig überzeugen.',
       motto: 'Klar im Denken. Strukturiert in der Umsetzung. Verlässlich im Ergebnis.',
       cta: {
         text: 'Ich freue mich darauf, dich persönlich kennenzulernen.',
-        button: 'Lass uns kennenlernen →'
+        button: 'Unverbindlich kennenlernen →'
       }
     },
     skills: {
@@ -74,7 +74,7 @@ export const translations = {
       },
       cta: {
         text: 'Passt dieses Profil zu deinen aktuellen Herausforderungen?',
-        button: 'Lass uns kennenlernen →'
+        button: 'Unverbindlich kennenlernen →'
       }
     },
     projects: {
@@ -87,14 +87,14 @@ export const translations = {
       showAll: 'Alle Projekte ansehen',
       cta: {
         text: 'Das sind Einblicke in meine Arbeitsweise – bereit für den Praxiseinsatz in deinem Team.',
-        button: 'Lass uns kennenlernen →'
+        button: 'Unverbindlich kennenlernen →'
       },
       items: [
         {
-          title: 'SEO- & KI-Landingpage',
+          title: 'Live Demo',
           category: 'Digital Marketing & Web',
           desc: 'Konzeption und Umsetzung einer Landingpage für ein SEO-System mit integrierten KI-Workflows.',
-          features: ['SEO-Optimierung', 'KI-Integration', 'Responsive Design', 'Lead-Generierung'],
+          features: ['SEO-Optimierung', 'KI-Integration', 'Responsive Design', 'Lead-Generierung', 'Google Ai Studio', 'GitHub', 'Cloudflare', 'Web3Forms', 'Gemini'],
           buttonText: 'Live ansehen',
           link: 'https://visibilitylab.roberterbach.de/'
         },
@@ -171,9 +171,9 @@ export const translations = {
       cvProtectedDesc: 'Bitte gib das Passwort ein, um den Lebenslauf herunterzuladen.',
     },
     qualifications: {
-      title: 'Berufliche Qualifikation',
+      title: 'Beruflicher Werdegang',
       ctaText: 'Ein Werdegang mit Fokus auf Struktur und Fortschritt – bereit für den nächsten Schritt bei euch.',
-      ctaButton: 'Lass uns kennenlernen →',
+      ctaButton: 'Unverbindlich kennenlernen →',
       items: [
         {
           date: '07/2025 – 04/2026',
@@ -212,7 +212,7 @@ export const translations = {
       preview: 'Vorschau des Zertifikats. Klicken Sie zum Vergrößern.',
       showAll: 'Alle Zertifikate anzeigen',
       ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
-      ctaButton: 'Lass uns kennenlernen →',
+      ctaButton: 'Unverbindlich kennenlernen →',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
         { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
@@ -283,8 +283,8 @@ export const translations = {
         text2: "Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt zur Abwicklung Ihrer Anfrage. Ich nutze für die Bereitstellung des Formulars den Dienst \"Web3Forms\" des Anbieters Web3Forms. Die von Ihnen eingegebenen Daten werden auf den Servern von Web3Forms verarbeitet.",
         text3: "Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf meinem berechtigten Interesse an der effektiven Bearbeitung der an mich gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.",
         text4: "Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei mir, bis Sie mich zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.",
-        subtitle2: "Bereitstellung von Downloads (Zertifikate)",
-        text5: "Ich biete auf meiner Website Zertifikate zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Cloudflare erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken."
+        subtitle2: "Bereitstellung von Downloads (Zertifikate & Lebenslauf)",
+        text5: "Ich biete auf meiner Website Zertifikate sowie meinen Lebenslauf zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Cloudflare erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken."
       },
       section5: {
         title: "5. Externe Ressourcen und CDN",
@@ -314,9 +314,8 @@ export const translations = {
       highContrastOff: 'Modus deaktivieren',
       loadingExperience: 'Erlebnis wird geladen',
       cookieBanner: {
-        text: 'Ich nutze Cookies, um die Website-Nutzung zu analysieren und mein Angebot zu optimieren. Details findest du in der',
+        text: 'Ich verwende ausschließlich analytische Cookies zur Seiten-Interaktion. Keine personenbezogenen Daten, keine Marketing-Cookies. Details findest du in der',
         privacyLink: 'Datenschutzerklärung',
-        impressumLink: 'Impressum',
         accept: 'Akzeptieren',
         decline: 'Ablehnen'
       }
@@ -328,7 +327,7 @@ export const translations = {
       about: 'About Me',
       skills: 'Skills',
       projects: 'Projects',
-      qualification: 'Qualification',
+      qualification: 'Experience',
       certificates: 'Certificates',
       contact: 'Contact',
     },
@@ -339,19 +338,19 @@ export const translations = {
       design: 'Design',
       structure: 'Structure',
       ki: 'AI',
-      cta: 'Discover Projects',
+      cta: 'Learn more',
     },
     about: {
-      title: 'About Me',
+      title: 'Who is ... ?',
       subtitle: 'Who I am',
-      boldText: 'I work in a structured way and with the aim of really understanding things – not just implementing them.',
-      text1: 'What you don\'t see immediately: how much happens in the background. I think ahead, question and recognize connections before they become obvious. For me, it\'s not about doing as much as possible, but about doing the right things.',
-      text2: 'I immerse myself in topics, analyze, simplify and develop solutions that are clearly structured and work. Not as a quick idea, but as a well-thought-out system.',
-      text3: 'Penetrating complexity and reducing it to the essentials is the basis of good work for me. I approach projects with ambition and a high standard of quality – with the goal of creating results that not only look good but also convince sustainably.',
+      boldText: 'I work in a structured way with the aim of really understanding things.',
+      text1: 'There is often more happening behind the scenes than meets the eye. I think ahead, challenge the status quo, and identify connections before they become obvious. My focus isn\'t on checking off tasks, but on finding the right levers to pull.',
+      text2: 'I immerse myself deeply in topics, analyze them, and simplify complex issues. This results in solutions that are clearly structured and work in practice—thought-out systems, not quick, fleeting ideas.',
+      text3: 'Reducing complexity and focusing on the essentials is the core of good work for me. I approach projects with ambition and high quality standards to create results that are sustainable and convincing.',
       motto: 'Clear in thinking. Structured in implementation. Reliable in results.',
       cta: {
         text: 'I look forward to getting to know you personally.',
-        button: 'Let\'s get to know each other →'
+        button: 'Get to know each other non-bindingly →'
       }
     },
     skills: {
@@ -395,7 +394,7 @@ export const translations = {
       },
       cta: {
         text: 'Does this profile fit your current challenges?',
-        button: 'Let\'s get to know each other →'
+        button: 'Get to know each other non-bindingly →'
       }
     },
     projects: {
@@ -408,14 +407,14 @@ export const translations = {
       showAll: 'View All Projects',
       cta: {
         text: 'These are insights into my way of working – ready for practical use in your team.',
-        button: 'Let\'s get to know each other →'
+        button: 'Get to know each other non-bindingly →'
       },
       items: [
         {
-          title: 'SEO & AI Landing Page',
+          title: 'Live Demo',
           category: 'Digital Marketing & Web',
           desc: 'Conception and implementation of a landing page for an SEO system with integrated AI workflows.',
-          features: ['SEO Optimization', 'AI Integration', 'Responsive Design', 'Lead Generation'],
+          features: ['SEO Optimization', 'AI Integration', 'Responsive Design', 'Lead Generation', 'Google Ai Studio', 'GitHub', 'Cloudflare', 'Web3Forms', 'Gemini'],
           buttonText: 'View Live Now',
           link: 'https://seo-ki-landingpage.pages.dev/'
         },
@@ -492,7 +491,7 @@ export const translations = {
       cvProtectedDesc: 'Please enter the password to download the CV.',
     },
     qualifications: {
-      title: 'Professional Qualification',
+      title: 'Professional Experience',
       ctaText: 'A career path with a focus on structure and progress – ready for the next step with you.',
       ctaButton: 'Let\'s get to know each other →',
       items: [
@@ -533,7 +532,7 @@ export const translations = {
       preview: 'Preview of the certificate. Click to enlarge.',
       showAll: 'Show all certificates',
       ctaText: 'Theoretically sound, practically motivated – ready for use in your team.',
-      ctaButton: 'Let\'s get to know each other →',
+      ctaButton: 'Get to know each other non-bindingly →',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
         { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
@@ -635,9 +634,8 @@ export const translations = {
       highContrastOff: 'Disable Mode',
       loadingExperience: 'Loading Experience',
       cookieBanner: {
-        text: 'I use cookies to analyze website usage and optimize my offer. You can find details in the',
+        text: 'I only use analytical cookies for site interaction. No personal data, no marketing cookies. You can find details in the',
         privacyLink: 'Privacy Policy',
-        impressumLink: 'Legal Notice',
         accept: 'Accept',
         decline: 'Decline'
       }

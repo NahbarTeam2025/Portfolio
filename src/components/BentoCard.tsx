@@ -51,10 +51,10 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative group wow-card parallax-element overflow-hidden flex flex-col h-full min-h-[380px] lg:min-h-[400px] transition-all duration-500 border border-white/10 bg-black/40 card-glow-blue rounded-[24px]`}
+      className={`relative group parallax-element overflow-hidden flex flex-col h-full min-h-[380px] lg:min-h-[400px] transition-all duration-500 wow-card`}
     >
-      <div className="wow-card-border" />
       <div className="card-top-flare opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="wow-card-border" />
       
       <motion.div
         className="pointer-events-none absolute -inset-px z-0 transition duration-300 opacity-0 group-hover:opacity-100"
@@ -67,7 +67,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
             <h3 className="text-lg md:text-xl font-bold text-white leading-tight tracking-tight group-hover:text-glow-blue transition-all duration-300">
               {project.title}
             </h3>
-            <div className="w-10 h-[1px] bg-blue-500/40 group-hover:w-20 transition-all duration-500" />
+            <div className="w-10 h-[1px] bg-gray-400/40 group-hover:w-20 transition-all duration-500" />
           </div>
           
           <p className="text-white/70 text-[13px] md:text-[14px] leading-relaxed max-w-[280px]">

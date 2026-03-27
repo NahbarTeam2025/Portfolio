@@ -60,12 +60,6 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
             className="text-blue-400 hover:underline"
           >
             {t.common.cookieBanner.privacyLink}
-          </button>.{' '}
-          <button 
-            onClick={() => handleNavigate('impressum')} 
-            className="text-blue-400 hover:underline ml-1"
-          >
-            {t.common.cookieBanner.impressumLink}
           </button>.
         </p>
         <div className="flex gap-2 shrink-0">

@@ -7,33 +7,85 @@
 @layer base {
   :root {
     --color-bg-base: #000000;
-    --color-brand-dark: #0d1b2a;
+    --color-brand-dark: #111111;
     --color-brand-blue: #3b82f6;
     --color-brand-blue-rgb: 59, 130, 246;
     --color-text-primary: #ffffff;
     --color-text-secondary: rgba(255, 255, 255, 0.85);
     --color-text-muted: rgba(255, 255, 255, 0.6);
-    --glass-bg: rgba(0, 0, 0, 0.2);
-    --glass-bg-hover: rgba(0, 0, 0, 0.3);
-    --glass-bg-expanded: rgba(0, 0, 0, 0.25);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-border-hover: rgba(255, 255, 255, 0.2);
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-bg-hover: rgba(255, 255, 255, 0.05);
+    --glass-bg-expanded: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-border-hover: rgba(255, 255, 255, 0.1);
   }
 
   .high-contrast {
-    --glass-bg: rgba(0, 0, 0, 0.85);
-    --glass-bg-hover: rgba(0, 0, 0, 0.95);
-    --glass-bg-expanded: rgba(0, 0, 0, 0.98);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --glass-border-hover: rgba(255, 255, 255, 0.6);
+    --glass-bg: #000000;
+    --glass-bg-hover: #000000;
+    --glass-bg-expanded: #000000;
+    --glass-border: #ffffff;
+    --glass-border-hover: #ffffff;
     --color-text-primary: #ffffff;
     --color-text-secondary: #ffffff;
-    --color-text-muted: #e0e0e0;
+    --color-text-muted: #ffffff;
   }
   
   .high-contrast .wow-card {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    background: #000000 !important;
+    border: 2px solid #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .high-contrast .wow-card-border {
+    display: none !important;
+  }
+
+  .high-contrast .bg-black\/20,
+  .high-contrast .bg-black\/40,
+  .high-contrast .bg-white\/5,
+  .high-contrast .bg-white\/10 {
+    background-color: #000000 !important;
+    border-color: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  .high-contrast .text-white\/70,
+  .high-contrast .text-white\/80,
+  .high-contrast .text-white\/85,
+  .high-contrast .text-white\/90 {
+    color: #ffffff !important;
+  }
+
+  .high-contrast .backdrop-blur-\[15px\],
+  .high-contrast .backdrop-blur-\[32px\],
+  .high-contrast .backdrop-blur-\[40px\],
+  .high-contrast .backdrop-blur-\[60px\] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .high-contrast .bg-blue-500\/20 {
+    background-color: #0000ff !important;
+  }
+
+  .high-contrast .border-blue-500\/60 {
+    border-color: #0000ff !important;
+    border-width: 2px !important;
+  }
+
+  .high-contrast .shadow-\[0_0_15px_rgba\(59,130,246,0.5\)\] {
+    box-shadow: none !important;
+  }
+
+  .high-contrast video {
+    display: none !important;
+  }
+
+  .high-contrast .fixed.inset-0.z-0 {
+    background-color: #000000 !important;
   }
 
   html {
@@ -87,7 +139,7 @@
   }
 
   .heading-gradient {
-    background: linear-gradient(144.5deg, #ffffff 35%, #d1d5db 100%);
+    background: linear-gradient(144.5deg, #ffffff 35%, #c0c0c0 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -99,24 +151,24 @@ video {
 }
 
 .text-glow-animated {
-    background: linear-gradient(90deg, #ffffff 0%, #bae6fd 30%, #3b82f6 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #e5e4e2 30%, #c0c0c0 100%);
     background-size: 200% auto;
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
     animation: gradient-shift 12s ease-in-out infinite;
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     will-change: background-position;
   }
 
   .animate-border-rotate {
-    background: conic-gradient(from 0deg, rgba(59, 130, 246, 0.5), rgba(96, 165, 250, 0.5), rgba(59, 130, 246, 0.5));
+    background: conic-gradient(from 0deg, rgba(192, 192, 192, 0.2), rgba(255, 255, 255, 0.4), rgba(192, 192, 192, 0.2));
     animation: rotate 10s linear infinite;
     filter: blur(15px);
   }
 
   .animate-border-rotate-slow {
-    background: conic-gradient(from 0deg, rgba(96, 165, 250, 0.5), rgba(59, 130, 246, 0.5), rgba(96, 165, 250, 0.5));
+    background: conic-gradient(from 0deg, rgba(255, 255, 255, 0.3), rgba(192, 192, 192, 0.1), rgba(255, 255, 255, 0.3));
     animation: rotate 15s linear infinite;
     filter: blur(15px);
   }
@@ -163,11 +215,11 @@ video {
 
   .wow-card {
     position: relative;
-    background: var(--glass-bg);
-    backdrop-filter: blur(15px) saturate(180%);
-    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(40px) saturate(120%);
+    -webkit-backdrop-filter: blur(40px) saturate(120%);
     border-radius: 24px;
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     transform: translateY(var(--parallax-y, 0px));
@@ -179,7 +231,7 @@ video {
   .wow-card:hover {
     background: var(--glass-bg-hover);
     border-color: var(--glass-border-hover);
-    box-shadow: 0 8px 30px rgba(var(--color-brand-blue-rgb), 0.1);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
     transform: translateY(calc(var(--parallax-y, 0px) - 2px));
   }
 
@@ -190,10 +242,10 @@ video {
 
   .wow-card.expanded {
     transform: translateY(var(--parallax-y, 0px)) scale(1.02);
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    backdrop-filter: blur(60px) saturate(120%);
+    -webkit-backdrop-filter: blur(60px) saturate(120%);
     z-index: 50;
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(var(--color-brand-blue-rgb), 0.15);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(255, 255, 255, 0.1);
     background: var(--glass-bg-expanded);
   }
 
@@ -206,28 +258,35 @@ video {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 1.5px;
-    background: linear-gradient(
-      90deg, 
-      var(--color-brand-blue), 
-      #60a5fa, 
-      var(--color-brand-blue)
-    );
-    background-size: 200% 100%;
-    animation: border-flow 6s linear infinite;
+    padding: 0.5px;
     mask: linear-gradient(#fff, #fff) content-box, linear-gradient(#fff, #fff);
     -webkit-mask: linear-gradient(#fff, #fff) content-box, linear-gradient(#fff, #fff);
     mask-composite: exclude;
     -webkit-mask-composite: destination-out;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.6;
-    will-change: background-position, opacity;
+    opacity: 0.8;
+    overflow: hidden;
   }
 
-  @keyframes border-flow {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
+  .wow-card-border::before {
+    content: "";
+    position: absolute;
+    inset: -100%;
+    background: conic-gradient(
+      from 0deg,
+      rgba(59, 130, 246, 0.2) 0%,
+      rgba(59, 130, 246, 0.8) 25%,
+      rgba(59, 130, 246, 0.2) 50%,
+      rgba(59, 130, 246, 0.8) 75%,
+      rgba(59, 130, 246, 0.2) 100%
+    );
+    animation: spin-blue 40s linear infinite;
+  }
+
+  @keyframes spin-blue {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
   @keyframes skill-fill {
@@ -268,11 +327,11 @@ video {
   }
 
   .text-glow {
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   }
 
   .text-glow-blue {
-    text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
   }
 
   .card-top-flare {
@@ -282,18 +341,18 @@ video {
     transform: translateX(-50%);
     width: 60%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.8), #fff, rgba(59, 130, 246, 0.8), transparent);
-    box-shadow: 0 0 15px 2px rgba(59, 130, 246, 0.6);
+    background: linear-gradient(90deg, transparent, rgba(192, 192, 192, 0.8), #fff, rgba(192, 192, 192, 0.8), transparent);
+    box-shadow: 0 0 15px 2px rgba(255, 255, 255, 0.4);
     z-index: 20;
     pointer-events: none;
   }
 
   .card-glow-blue {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
   }
 
   .card-glow-blue:hover {
-    box-shadow: 0 0 50px rgba(59, 130, 246, 0.25);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
   }
 
   /* Basic Animation Utilities for compatibility */

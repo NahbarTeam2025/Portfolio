@@ -59,12 +59,6 @@ export const DatenschutzModal = ({ setIsDatenschutz }: { setIsDatenschutz: (open
 
           <section>
             <h3 className="text-lg font-medium text-white mb-3">{t.privacy.section4.title}</h3>
-            <h4 className="text-base font-medium text-white/90 mb-2">{t.privacy.section4.subtitle1}</h4>
-            <p className="mb-4">{t.privacy.section4.text1}</p>
-            <p className="mb-4">{t.privacy.section4.text2}</p>
-            <p className="mb-4">{t.privacy.section4.text3}</p>
-            <p className="mb-6">{t.privacy.section4.text4}</p>
-
             <h4 className="text-base font-medium text-white/90 mb-2">{t.privacy.section4.subtitle2}</h4>
             <p className="mb-6">{t.privacy.section4.text5}</p>
           </section>

@@ -58,7 +58,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
               className={`relative group transition-all duration-500 ${isExpanded ? 'flex-1 min-h-0 z-50' : 'z-10'} ${isHiddenOnMobile ? 'hidden md:block' : 'block'}`}
             >
               <div 
-                className={`wow-card parallax-element flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-blue-400/30 expanded' : 'overflow-hidden'}`}
+                className={`wow-card parallax-element flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-gray-400/30 expanded' : 'overflow-hidden'}`}
               >
                 <div className="wow-card-border" />
                 <button 
@@ -133,7 +133,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                     ) : (
                       <div className="flex-1 flex flex-col items-center justify-center gap-4 py-4">
                         <div className="relative group/cert w-full max-w-[320px] aspect-[1.414/1] bg-white/5 rounded-lg border border-white/10 overflow-hidden shadow-2xl">
-                          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/5 to-brand-blue/5" />
+                          <div className="absolute inset-0 bg-gradient-to-br from-gray-400/5 to-gray-500/5" />
                           <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
                             <div className="w-10 h-10 mb-2 text-blue-400/40">
                               <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>

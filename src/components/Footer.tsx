@@ -19,18 +19,19 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
             loading="lazy"
             decoding="async"
           />
+          <span className="ml-3 text-white/70 text-[10px] md:text-xs font-medium">Falkenberg/Elster</span>
         </button>
         
         <div className="flex flex-row justify-end items-center gap-4 md:gap-6 text-[11px]">
           <button 
             onClick={() => handleNavigate('impressum')}
-            className="text-white/60 hover:text-white transition-colors"
+            className="text-white/70 hover:text-white transition-colors"
           >
             {t.footer.impressum}
           </button>
           <button 
             onClick={() => handleNavigate('datenschutz')}
-            className="text-white/60 hover:text-white transition-colors"
+            className="text-white/70 hover:text-white transition-colors"
           >
             {t.footer.privacy}
           </button>

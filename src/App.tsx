@@ -51,7 +51,7 @@ const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_ROUTES).map(([key, value]) => [value, key])
 );
 
-const PAGES = ['about', 'projects', 'skills', 'qualification', 'certificates'];
+const PAGES = ['about', 'qualification', 'projects', 'skills', 'certificates'];
 
 export default function App() {
   const { t } = useLanguage();
@@ -103,16 +103,21 @@ export default function App() {
     setIsInitialEntrance(true);
   }, [currentPage]);
 
-  const [isContactFormExpanded, setIsContactFormExpanded] = useState(false);
-  const [privacyAccepted, setPrivacyAccepted] = useState(false);
-  const [isHighContrast, setIsHighContrast] = useState(false);
+  const [isHighContrast, setIsHighContrast] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('high-contrast') === 'true';
+    }
+    return false;
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (isHighContrast) {
       document.documentElement.classList.add('high-contrast');
+      localStorage.setItem('high-contrast', 'true');
     } else {
       document.documentElement.classList.remove('high-contrast');
+      localStorage.setItem('high-contrast', 'false');
     }
   }, [isHighContrast]);
 
@@ -149,18 +154,6 @@ export default function App() {
   const [certError, setCertError] = useState(false);
   const [cvError, setCvError] = useState(false);
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
-  const navPages = [
-    { id: 'start', label: t.nav.start },
-    { id: 'about', label: t.nav.about },
-    { id: 'skills', label: t.nav.skills },
-    { id: 'projects', label: t.nav.projects },
-    { id: 'qualification', label: t.nav.qualification },
-    { id: 'certificates', label: t.nav.certificates }
-  ];
-
   const handleNavigate = useCallback((pageId: string) => {
     // Check if it's a modal page
     if (pageId === 'impressum') {
@@ -184,32 +177,6 @@ export default function App() {
     }
     setIsMobileMenuOpen(false);
   }, [navigate, location.pathname]);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitError(false);
-    
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData as any).toString(),
-    })
-      .then(() => {
-        setSubmitSuccess(true);
-        setIsSubmitting(false);
-        form.reset();
-        setPrivacyAccepted(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setSubmitError(true);
-        setIsSubmitting(false);
-      });
-  };
 
   const requestRef = useRef<number>();
   const cardRects = useRef<Map<HTMLElement, DOMRect>>(new Map());
@@ -567,7 +534,7 @@ export default function App() {
         </nav>
 
         {/* Main Content */}
-        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-4 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
+        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-2 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentPage}
@@ -612,13 +579,6 @@ export default function App() {
                   />
                 ) : currentPage === 'contact' ? (
                   <KontaktSection 
-                    isSubmitting={isSubmitting}
-                    submitSuccess={submitSuccess}
-                    submitError={submitError}
-                    privacyAccepted={privacyAccepted}
-                    setPrivacyAccepted={setPrivacyAccepted}
-                    handleNavigate={handleNavigate}
-                    handleSubmit={handleSubmit}
                     isCvUnlocked={isCvUnlocked}
                     cvPasswordInput={cvPasswordInput}
                     setCvPasswordInput={setCvPasswordInput}
