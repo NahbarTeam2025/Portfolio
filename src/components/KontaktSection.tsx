@@ -41,15 +41,15 @@ export const KontaktSection = React.memo(({
 
   return (
     <div className="flex flex-col items-start gap-1 md:gap-2 w-full h-full animate-in fade-in duration-500 overflow-y-auto md:overflow-hidden">
-      <h1 className="heading-gradient text-xl md:text-3xl font-medium tracking-tight shrink-0">
+      <h1 className="heading-gradient text-2xl md:text-4xl font-medium tracking-tight shrink-0">
         {t.contact.title}
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
       <div className="flex flex-col gap-2 md:gap-3 w-full max-w-2xl mx-auto pt-1 md:pt-2 h-full">
         <div className="flex flex-col gap-3 md:gap-2 w-full">
           <div className="space-y-1 md:space-y-1 text-center">
-            <h2 className="text-white text-[18px] md:text-[24px] font-medium leading-tight">{t.contact.subtitle}</h2>
-            <p className="text-white/90 text-[13px] md:text-[16px] leading-relaxed">
+            <h2 className="text-white text-[20px] md:text-[28px] font-medium leading-tight">{t.contact.subtitle}</h2>
+            <p className="text-white/90 text-[15px] md:text-[18px] leading-relaxed">
               {t.contact.desc}
             </p>
           </div>
@@ -61,8 +61,8 @@ export const KontaktSection = React.memo(({
                 <User className="text-white w-4 h-4 md:w-5 md:h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-white/60 text-[10px] md:text-[12px] uppercase tracking-widest font-bold">{t.contact.name}</span>
-                <span className="text-white text-[14px] md:text-[16px] font-medium">Robert Erbach</span>
+                <span className="text-white/60 text-[11px] md:text-[13px] uppercase tracking-widest font-bold">{t.contact.name}</span>
+                <span className="text-white text-[16px] md:text-[18px] font-medium">Robert Erbach</span>
               </div>
             </div>
             
@@ -71,8 +71,8 @@ export const KontaktSection = React.memo(({
                 <Mail className="text-white w-4 h-4 md:w-5 md:h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-white/60 text-[10px] md:text-[12px] uppercase tracking-widest font-bold">{t.contact.email}</span>
-                <a href="mailto:roberterbach@web.de" className="text-white text-[14px] md:text-[16px] font-medium hover:text-blue-400 transition-colors break-all">roberterbach@web.de</a>
+                <span className="text-white/60 text-[11px] md:text-[13px] uppercase tracking-widest font-bold">{t.contact.email}</span>
+                <a href="mailto:roberterbach@web.de" className="text-white text-[16px] md:text-[18px] font-medium hover:text-blue-400 transition-colors break-all">roberterbach@web.de</a>
               </div>
             </div>
             
@@ -81,8 +81,8 @@ export const KontaktSection = React.memo(({
                 <Linkedin className="text-white w-4 h-4 md:w-5 md:h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-white/60 text-[10px] md:text-[12px] uppercase tracking-widest font-bold">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/robert-erbach-a173b2371" target="_blank" rel="noopener noreferrer" className="text-white text-[14px] md:text-[16px] font-medium hover:text-blue-400 transition-colors break-all">@roberterbach</a>
+                <span className="text-white/60 text-[11px] md:text-[13px] uppercase tracking-widest font-bold">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/robert-erbach-a173b2371" target="_blank" rel="noopener noreferrer" className="text-white text-[16px] md:text-[18px] font-medium hover:text-blue-400 transition-colors break-all">@roberterbach</a>
               </div>
             </div>
             
@@ -91,8 +91,8 @@ export const KontaktSection = React.memo(({
                 <MapPin className="text-white w-4 h-4 md:w-5 md:h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="text-white/60 text-[10px] md:text-[12px] uppercase tracking-widest font-bold">{t.contact.location}</span>
-                <span className="text-white text-[14px] md:text-[16px] font-medium">{t.contact.locationValue}</span>
+                <span className="text-white/60 text-[11px] md:text-[13px] uppercase tracking-widest font-bold">{t.contact.location}</span>
+                <span className="text-white text-[16px] md:text-[18px] font-medium">{t.contact.locationValue}</span>
               </div>
             </div>
 

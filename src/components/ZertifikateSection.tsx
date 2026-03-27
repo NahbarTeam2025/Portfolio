@@ -181,7 +181,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
       )}
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-8 md:pb-4 pt-0 md:pt-2 gap-1.5 md:gap-2 mt-auto shrink-0">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-4 md:pb-4 pt-0 md:pt-2 gap-1 md:gap-1.5 mt-auto mb-8 md:mb-12 shrink-0">
         <p className="text-white/80 text-xs md:text-sm text-center whitespace-normal md:whitespace-nowrap">
           {t.certificates.ctaText}
         </p>
