@@ -14,19 +14,19 @@ export const QualifikationSection = React.memo(({
   const qualData = t.qualifications.items;
 
   return (
-    <div className="flex flex-col items-start gap-4 md:gap-6 w-full flex-grow animate-in fade-in duration-500">
-      <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
+    <div className="flex flex-col items-start gap-2 md:gap-3 w-full flex-grow animate-in fade-in duration-500">
+      <h1 className="heading-gradient text-[26px] md:text-[34px] lg:text-[44px] font-medium tracking-tight shrink-0">
         {t.qualifications.title}
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className={`relative flex flex-col gap-4 w-full max-w-[1200px] pb-0 md:pb-6 transition-all duration-500 ${expandedQual === null ? 'pl-8 md:pl-16' : 'pl-0'}`}>
+      <div className={`relative flex flex-col gap-2.5 w-full max-w-[1200px] pb-0 md:pb-2 transition-all duration-500 ${expandedQual === null ? 'pl-8 md:pl-16' : 'pl-0'}`}>
         {/* Vertical Timeline Line */}
         {showTimeline && (
           <motion.div 
             initial={{ scaleY: 0, originY: 0, opacity: 0 }}
             animate={{ scaleY: 1, opacity: 0.2 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute left-[15px] md:left-[31px] top-[30px] bottom-[20px] md:bottom-[76px] w-[1px] bg-gradient-to-b from-gray-300 via-gray-400 to-gray-300" 
+            className="absolute left-[15px] md:left-[31px] top-[30px] bottom-[20px] md:bottom-[40px] w-[1px] bg-gradient-to-b from-gray-300 via-gray-400 to-gray-300" 
           />
         )}
         
@@ -66,14 +66,14 @@ export const QualifikationSection = React.memo(({
                   }}
                   aria-expanded={isExpanded}
                   aria-label={isExpanded ? "Qualifikation-Details einklappen" : "Qualifikation-Details ausklappen"}
-                  className={`w-full text-left p-4 md:p-5 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[80px]'}`}
+                  className={`w-full text-left p-3 md:p-4 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[70px]'}`}
                 >
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-0.5">
                     <div className="flex items-center gap-3">
                       <h3 className="text-sm md:text-base font-semibold text-white leading-tight group-hover/btn:text-blue-400 transition-colors">{qual.title}</h3>
                       <span className="hidden sm:inline-block text-gray-200 font-mono text-[10px] bg-gray-400/20 border border-gray-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
                     </div>
-                  <span className="text-white/80 text-[12px] md:text-[14px]">{qual.company}</span>
+                  <span className="text-white/80 text-[12px] md:text-[13px]">{qual.company}</span>
                 </div>
                 <div className={`w-7 h-7 rounded-full border border-white/20 flex items-center justify-center transition-transform duration-300 ${isExpanded ? 'rotate-180 bg-brand-blue/20 border-brand-blue/40' : ''}`}>
                   <svg className="w-3 h-3 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,7 +121,7 @@ export const QualifikationSection = React.memo(({
       </div>
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-32 md:pb-4 pt-0 md:pt-4 gap-3 mt-auto shrink-0">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-32 md:pb-20 pt-0 md:pt-3 gap-2.5 mt-auto shrink-0">
         <p className="text-white/80 text-sm md:text-base text-center whitespace-normal md:whitespace-nowrap">
           {t.qualifications.ctaText}
         </p>

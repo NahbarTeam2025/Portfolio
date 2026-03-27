@@ -19,7 +19,7 @@
     --glass-border: rgba(255, 255, 255, 0.05);
     --glass-border-hover: rgba(255, 255, 255, 0.1);
   }
-
+  
   .high-contrast {
     --glass-bg: #000000;
     --glass-bg-hover: #000000;
