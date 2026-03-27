@@ -4,37 +4,33 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> = ({ handleNavigate }) => {
   const { t } = useLanguage();
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    try {
-      const consent = localStorage.getItem('cookie-consent');
-      const urlParams = new URLSearchParams(window.location.search);
-      const forceShow = urlParams.get('debug_cookies') === 'true';
-      
-      if (forceShow) {
-        setIsVisible(true);
-        return;
-      }
+    const checkConsent = () => {
+      try {
+        const consent = localStorage.getItem('cookie-consent');
+        const urlParams = new URLSearchParams(window.location.search);
+        const forceShow = urlParams.get('debug_cookies') === 'true';
+        
+        if (forceShow) {
+          setIsVisible(true);
+          return;
+        }
 
-      if (consent === 'granted' || consent === 'denied') {
-        setIsVisible(false);
-      } else {
+        // Only show if no consent has been given yet
+        if (!consent) {
+          setIsVisible(true);
+        }
+      } catch (e) {
         setIsVisible(true);
       }
-    } catch (e) {
-      setIsVisible(true);
-    }
+    };
+
+    // Small delay to ensure page is loaded and avoid flashing
+    const timer = setTimeout(checkConsent, 600);
+    return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    if (isVisible) {
-      const el = document.getElementById('consent-banner');
-      if (!el) {
-        // Silent error check
-      }
-    }
-  }, [isVisible]);
 
   const handleAccept = () => {
     localStorage.setItem('cookie-consent', 'granted');
@@ -84,12 +80,11 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
   return createPortal(
     <div 
       id="consent-banner" 
-      className="fixed bottom-0 left-0 right-0 md:bottom-6 md:left-4 md:right-4 z-[2147483647] flex justify-center pointer-events-auto"
-      style={{ display: 'flex', visibility: 'visible', opacity: 1 }}
+      className="fixed bottom-0 left-0 right-0 md:bottom-6 md:left-4 md:right-4 z-[2147483647] flex justify-center pointer-events-auto animate-in fade-in slide-in-from-bottom-4 duration-500"
     >
-      <div className="max-w-2xl w-full bg-black/80 backdrop-blur-md border border-white/10 rounded-t-xl md:rounded-xl shadow-2xl p-4 text-white flex flex-col md:flex-row items-center justify-between gap-4 pointer-events-auto">
-        <div className="flex-grow">
-          <p className="text-[13px] leading-relaxed text-white/90 font-medium">
+      <div className="max-w-xl w-full bg-black/85 backdrop-blur-lg border border-white/10 rounded-t-xl md:rounded-xl shadow-2xl p-3 md:p-4 text-white flex flex-col sm:flex-row items-center justify-between gap-3 md:gap-4 pointer-events-auto">
+        <div className="flex-grow text-center sm:text-left">
+          <p className="text-[12px] md:text-[13px] leading-relaxed text-white/90 font-medium">
             {t?.common?.cookieBanner?.text || 'Ich verwende analytische Cookies zur Seiten-Interaktion.'}{' '}
             <button 
               onClick={() => handleNavigate('datenschutz')}
@@ -100,16 +95,16 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
           </p>
         </div>
         
-        <div className="flex items-center gap-2 shrink-0 w-full md:w-auto">
+        <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto">
           <button
             onClick={handleAccept}
-            className="flex-1 md:flex-none px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-[12px] font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(37,99,235,0.3)] transition-all duration-300"
+            className="flex-1 sm:flex-none px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-bold uppercase tracking-wider transition-all duration-300"
           >
             {t?.common?.cookieBanner?.accept || 'Akzeptieren'}
           </button>
           <button
             onClick={handleDecline}
-            className="flex-1 md:flex-none px-5 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white text-[12px] font-bold transition-all duration-300"
+            className="flex-1 sm:flex-none px-4 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white text-[11px] font-bold transition-all duration-300"
           >
             {t?.common?.cookieBanner?.decline || 'Ablehnen'}
           </button>
