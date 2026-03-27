@@ -26,15 +26,15 @@ import { CookieBanner } from './components/CookieBanner';
 import { useIsMobile } from './hooks/useIsMobile';
 
 // Lazy load components
-const CommandTerminal = lazy(() => import('/src/components/CommandTerminal.tsx'));
-const QualifikationSection = lazy(() => import('/src/components/QualifikationSection.tsx').then(m => ({ default: m.QualifikationSection })));
-const SkillsSection = lazy(() => import('/src/components/SkillsSection.tsx').then(m => ({ default: m.SkillsSection })));
-const ProjekteSection = lazy(() => import('/src/components/ProjekteSection.tsx').then(m => ({ default: m.ProjekteSection })));
-const ZertifikateSection = lazy(() => import('/src/components/ZertifikateSection.tsx').then(m => ({ default: m.ZertifikateSection })));
-const KontaktSection = lazy(() => import('/src/components/KontaktSection.tsx').then(m => ({ default: m.KontaktSection })));
-const UberMichSection = lazy(() => import('/src/components/UberMichSection.tsx').then(m => ({ default: m.UberMichSection })));
-const ImpressumPage = lazy(() => import('/src/pages/ImpressumPage.tsx').then(m => ({ default: m.ImpressumPage })));
-const DatenschutzPage = lazy(() => import('/src/pages/DatenschutzPage.tsx').then(m => ({ default: m.DatenschutzPage })));
+const CommandTerminal = lazy(() => import('./components/CommandTerminal.tsx'));
+const QualifikationSection = lazy(() => import('./components/QualifikationSection.tsx').then(m => ({ default: m.QualifikationSection })));
+const SkillsSection = lazy(() => import('./components/SkillsSection.tsx').then(m => ({ default: m.SkillsSection })));
+const ProjekteSection = lazy(() => import('./components/ProjekteSection.tsx').then(m => ({ default: m.ProjekteSection })));
+const ZertifikateSection = lazy(() => import('./components/ZertifikateSection.tsx').then(m => ({ default: m.ZertifikateSection })));
+const KontaktSection = lazy(() => import('./components/KontaktSection.tsx').then(m => ({ default: m.KontaktSection })));
+const UberMichSection = lazy(() => import('./components/UberMichSection.tsx').then(m => ({ default: m.UberMichSection })));
+const ImpressumPage = lazy(() => import('./pages/ImpressumPage.tsx').then(m => ({ default: m.ImpressumPage })));
+const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage.tsx').then(m => ({ default: m.DatenschutzPage })));
 
 const PAGE_ROUTES: Record<string, string> = {
   'start': '/',
@@ -374,7 +374,7 @@ export default function App() {
         />
       )}
 
-      <div className={`relative z-10 flex flex-col min-h-screen overflow-x-hidden`}>
+      <div className={`relative z-10 flex flex-col h-screen overflow-x-hidden`}>
         {/* Navbar */}
         <nav className={`sticky top-0 flex items-center justify-between px-4 py-1 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'start' || isMobileMenuOpen) ? 'bg-black/20 backdrop-blur-[15px] saturate-[180%] border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
@@ -400,8 +400,8 @@ export default function App() {
             </a>
           </div>
 
-          {/* Centered Navigation Bar */}
-          <div className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-1">
+          {/* Navigation Bar */}
+          <div className="hidden lg:flex items-center gap-1 ml-6">
             {PAGES.map((pageId, index) => (
               <React.Fragment key={pageId}>
                   <a
@@ -409,11 +409,11 @@ export default function App() {
                     onMouseEnter={() => {
                       // Pre-fetch component using static map to avoid Vite dynamic import issues
                       const prefetchMap: Record<string, () => Promise<any>> = {
-                        'about': () => import('/src/components/UberMichSection.tsx'),
-                        'projects': () => import('/src/components/ProjekteSection.tsx'),
-                        'qualification': () => import('/src/components/QualifikationSection.tsx'),
-                        'certificates': () => import('/src/components/ZertifikateSection.tsx'),
-                        'skills': () => import('/src/components/SkillsSection.tsx'),
+                        'about': () => import('./components/UberMichSection.tsx'),
+                        'projects': () => import('./components/ProjekteSection.tsx'),
+                        'qualification': () => import('./components/QualifikationSection.tsx'),
+                        'certificates': () => import('./components/ZertifikateSection.tsx'),
+                        'skills': () => import('./components/SkillsSection.tsx'),
                       };
                       if (prefetchMap[pageId]) {
                         prefetchMap[pageId]().catch(() => {});
@@ -446,7 +446,7 @@ export default function App() {
           </div>
 
           {/* Right side: CTA Button + Mobile Menu Toggle */}
-          <div className="flex items-center gap-4 lg:gap-6">
+          <div className="flex items-center gap-4 lg:gap-6 ml-auto">
 
             {/* Language Switcher */}
             <div className="hidden lg:block">
@@ -558,7 +558,7 @@ export default function App() {
         </nav>
 
         {/* Main Content */}
-        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-2 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
+        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-2 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''} lg:h-[calc(100vh-80px)] lg:overflow-hidden`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentPage}
@@ -566,7 +566,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className={`w-full flex flex-col flex-grow ${currentPage === 'start' ? 'items-center justify-center' : ''}`}
+              className={`w-full flex flex-col flex-grow lg:overflow-y-auto glass-scrollbar ${currentPage === 'start' ? 'items-center justify-center h-full' : 'h-full'}`}
             >
               <Suspense fallback={<div className="text-white/50">{t.common.loading}</div>}>
                 {currentPage === 'start' ? (

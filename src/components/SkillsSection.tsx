@@ -90,13 +90,13 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
       </div>
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-32 md:pb-20 pt-2 gap-2 mt-auto shrink-0">
-        <p className="text-white/80 text-sm md:text-base text-center whitespace-normal md:whitespace-nowrap">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-8 md:pb-4 pt-2 gap-2 mt-auto shrink-0">
+        <p className="text-white/80 text-xs md:text-sm text-center whitespace-normal md:whitespace-nowrap">
           {t.skills.cta.text}
         </p>
         <button 
           onClick={() => handleNavigate('contact')}
-          className="w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+          className="w-full flex items-center justify-center gap-2 rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[13px] md:text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
         >
           <span className="relative z-10">{t.skills.cta.button}</span>
         </button>

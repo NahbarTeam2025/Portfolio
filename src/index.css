@@ -378,15 +378,22 @@ video {
     animation-name: zoom-in;
   }
 
-  @keyframes subtle-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+  @keyframes shine {
+    0% { left: -100%; }
+    100% { left: 200%; }
   }
-  .subtle-float {
-    animation: subtle-float 6s ease-in-out infinite;
+  .animate-shine {
+    animation: shine 1.5s ease-in-out;
   }
 
-  /* Modern Glass Scrollbar */
+  /* 2026 Typographic Refinements */
+  .tracking-tighter-2026 {
+    letter-spacing: -0.05em;
+  }
+  .tracking-widest-2026 {
+    letter-spacing: 0.4em;
+  }
+
   .glass-scrollbar::-webkit-scrollbar {
     width: 6px;
     height: 6px;

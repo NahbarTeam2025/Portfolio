@@ -39,12 +39,12 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
   });
 
   return (
-    <div className="flex flex-col items-start gap-4 md:gap-6 w-full flex-grow animate-in fade-in duration-500">
+    <div className="flex flex-col items-start gap-2 md:gap-3 w-full flex-grow animate-in fade-in duration-500">
       <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
         {t.certificates.title}
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
-      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-3 md:gap-4 w-full pb-0 md:pb-4`}>
+      <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2.5 md:gap-3 w-full pb-0 md:pb-1`}>
         {visibleCerts.map((cert: any) => {
           const actualIndex = certs.findIndex((c: any) => c.id === cert.id);
           const isExpanded = expandedCert !== null;
@@ -181,13 +181,13 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
       )}
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-32 md:pb-20 pt-0 md:pt-4 gap-2 md:gap-3 mt-auto shrink-0">
-        <p className="text-white/80 text-sm md:text-base text-center whitespace-normal md:whitespace-nowrap">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-8 md:pb-4 pt-0 md:pt-2 gap-1.5 md:gap-2 mt-auto shrink-0">
+        <p className="text-white/80 text-xs md:text-sm text-center whitespace-normal md:whitespace-nowrap">
           {t.certificates.ctaText}
         </p>
         <button 
           onClick={() => handleNavigate('contact')}
-          className="w-full flex items-center justify-center gap-2 rounded-xl px-6 py-3 bg-black/40 border border-blue-500/60 text-blue-50 text-[14px] md:text-[15px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+          className="w-full flex items-center justify-center gap-2 rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[13px] md:text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
         >
           <span className="relative z-10">{t.certificates.ctaButton}</span>
         </button>

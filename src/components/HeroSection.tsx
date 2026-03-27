@@ -1,89 +1,117 @@
 import React from 'react';
-import { CheckCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
   return (
-    <div id="hero" className="flex flex-col items-center justify-center gap-0 max-w-[680px] lg:max-w-[900px] animate-in fade-in duration-500 subtle-float relative z-10 h-full px-4">
-      {/* Heading & Subtitle Container */}
-      <div className="flex flex-col items-center gap-0">
-        {/* Heading */}
-        <h1 className="flex flex-col items-center max-w-[800px] lg:max-w-[1050px]">
-          <span className="font-audiowide font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-400 text-[32px] sm:text-[48px] md:text-[60px] lg:text-[72px] leading-tight text-center">{t.hero.title}</span>
-          <span className="text-white/85 mt-[6px] md:mt-[8px] font-normal tracking-wider text-center block">
-            <span className="text-blue-500 block mb-[6px] md:mb-[10px] text-[18px] sm:text-[24px] md:text-[28px] lg:text-[32px] italic leading-tight">{t.hero.subtitlePart1}</span>
-            <span className="block text-[14px] sm:text-[18px] md:text-[20px] lg:text-[22px] leading-tight">{t.hero.subtitlePart2}</span>
+    <div id="hero" className="flex flex-col items-center justify-center w-full max-w-[1200px] mx-auto relative z-10 h-full px-6 lg:py-0 pt-2 pb-4 lg:max-h-[70vh]">
+      
+      {/* 01. Minimalist Status Badge */}
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-4 lg:mb-6"
+      >
+        <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/[0.02] border border-white/10 backdrop-blur-2xl">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-40"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
           </span>
-        </h1>
-
-        {/* Subtitle */}
-        <div className="flex flex-col items-center gap-0 mt-[16px] md:mt-[28px]">
-          <p className="text-white/80 text-[13px] sm:text-[15px] md:text-[16px] lg:text-[17px] font-normal max-w-[600px] lg:max-w-[700px] leading-relaxed text-center">
-            {t.hero.desc}
-          </p>
+          <span className="text-white/70 text-[10px] font-bold tracking-[0.4em] uppercase">Status: Available</span>
         </div>
+      </motion.div>
 
-        {/* Checkmark Row */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-[20px] md:mt-[36px]">
-          {[t.hero.design, t.hero.structure, t.hero.ki].map((item) => (
-            <div key={item} className="flex items-center gap-1.5 sm:gap-2 text-white/80 text-[11px] sm:text-sm">
-              <CheckCircle className="w-4 h-4 sm:w-5 h-5 text-blue-500" />
-              {item}
+      {/* 02. Main Typographic Core */}
+      <div className="flex flex-col items-center text-center w-full">
+        
+        {/* Name - Fluid & Massive */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="font-display font-bold tracking-[-0.04em] text-white text-[clamp(2.5rem,8vw,6.5rem)] leading-[0.9] mb-3 lg:mb-4"
+        >
+          {t.hero.title}
+        </motion.h1>
+        
+        {/* Motto - Elegant & Balanced */}
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="font-sans text-blue-400/90 text-[clamp(1rem,2.5vw,1.8rem)] font-light tracking-tight leading-tight max-w-[90%] mb-4 lg:mb-6"
+        >
+          {t.hero.subtitlePart1}
+        </motion.h2>
+        
+        {/* Subtitle Part 2 - Technical Rail */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.4 }}
+          className="flex items-center gap-6 text-white/80 font-sans text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-semibold mb-5 lg:mb-6"
+        >
+          <div className="w-10 h-px bg-gradient-to-r from-transparent to-white/80" />
+          {t.hero.subtitlePart2}
+          <div className="w-10 h-px bg-gradient-to-l from-transparent to-white/80" />
+        </motion.div>
+
+        {/* Description - Focused Content */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+          className="text-white/70 font-sans text-[clamp(0.85rem,1.4vw,1rem)] font-light leading-relaxed max-w-[550px] mb-8 lg:mb-10"
+        >
+          {t.hero.desc}
+        </motion.p>
+
+        {/* 03. Feature Rail - Minimalist Grid */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-8 w-full max-w-[650px] border-y border-white/5 py-6 mb-8 lg:mb-10"
+        >
+          {[t.hero.design, t.hero.structure, t.hero.ki].map((item, idx) => (
+            <div key={item} className="flex flex-col items-center gap-3 group">
+              <div className="text-white/30 text-[9px] font-mono tracking-widest uppercase mb-0.5">0{idx + 1}</div>
+              <div className="flex items-center gap-2.5">
+                <div className="w-1 h-1 rounded-full bg-green-500/70 group-hover:bg-green-400 transition-colors" />
+                <span className="text-white/70 text-[10px] lg:text-xs font-medium tracking-[0.2em] uppercase transition-colors group-hover:text-white">{item}</span>
+              </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mt-[24px] md:mt-[36px]">
+      {/* 04. Primary Action - High Contrast CTA */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+        className="relative group"
+      >
+        {/* Outer Glow Effect */}
+        <div className="absolute -inset-4 bg-blue-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        
         <motion.button 
           id="btn-hero-projects"
-          whileHover="hover"
-          initial="initial"
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => {
             if (typeof window !== 'undefined' && window.gtag) {
               window.gtag('event', 'view_projects_click');
             }
             handleNavigate('projects');
           }}
-          className="group relative flex items-center gap-3 rounded-xl pl-2 pr-8 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[11px] font-bold tracking-[0.15em] uppercase shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-500 cursor-pointer focus-ring overflow-hidden"
+          className="w-full flex items-center justify-center gap-2 rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[13px] md:text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
         >
-          {/* Switch Track */}
-          <div className="relative flex items-center w-12 h-7 rounded-lg bg-blue-500/10 border border-blue-500/30 overflow-hidden px-1">
-            {/* Switch Thumb */}
-            <motion.div 
-              variants={{
-                initial: { x: 0, backgroundColor: "rgb(59, 130, 246)" }, // blue-500
-                hover: { x: 20, backgroundColor: "rgb(255, 255, 255)", boxShadow: "0 0 15px rgba(255, 255, 255, 0.8)" }
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="w-5 h-5 rounded-md shadow-[0_0_8px_rgba(59,130,246,0.5)] flex items-center justify-center"
-            >
-              {/* Inner light dot */}
-              <motion.div 
-                variants={{
-                  initial: { backgroundColor: "rgb(255, 255, 255)" },
-                  hover: { backgroundColor: "rgb(59, 130, 246)" }
-                }}
-                className="w-1.5 h-1.5 rounded-sm" 
-              />
-            </motion.div>
-          </div>
-          
-          <span className="relative z-10">{t.hero.cta}</span>
-          
-          {/* Subtle Glow Background */}
-          <motion.div 
-            variants={{
-              initial: { opacity: 0, scale: 0.8 },
-              hover: { opacity: 1, scale: 1.2 }
-            }}
-            className="absolute inset-0 bg-blue-500/5 blur-xl pointer-events-none"
-          />
+          {t.hero.cta}
         </motion.button>
-      </div>
+      </motion.div>
     </div>
   );
 });
