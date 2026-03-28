@@ -20,8 +20,6 @@ export const AccessibilityHealer: React.FC = () => {
     { id: '2', type: 'button', label: t.tools.accessibilityHealer.elements.button, solution: 'contrast', isHealed: false },
     { id: '3', type: 'input', label: t.tools.accessibilityHealer.elements.input, solution: 'label', isHealed: false },
     { id: '4', type: 'image', label: 'Missing Heading', solution: 'heading', isHealed: false },
-    { id: '5', type: 'button', label: 'Wrong Tab Order', solution: 'tabIndex', isHealed: false },
-    { id: '6', type: 'input', label: 'No Aria Label', solution: 'aria', isHealed: false },
   ]);
 
   const solutions = [
