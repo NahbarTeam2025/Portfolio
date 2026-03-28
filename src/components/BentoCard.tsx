@@ -89,6 +89,14 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).gtag) {
+                  (window as any).gtag('event', 'project_live_click', {
+                    'event_category': 'engagement',
+                    'event_label': project.title
+                  });
+                }
+              }}
               className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -104,7 +112,15 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
             </a>
           ) : project.details ? (
             <button
-              onClick={() => onDetailsClick?.(project)}
+              onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).gtag) {
+                  (window as any).gtag('event', 'project_details_click', {
+                    'event_category': 'engagement',
+                    'event_label': project.title
+                  });
+                }
+                onDetailsClick?.(project);
+              }}
               className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] cursor-pointer"
             >
               <span className="relative z-10">{project.buttonText || t.projects.details}</span>

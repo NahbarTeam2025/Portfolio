@@ -46,7 +46,15 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
           {t.projects.cta.text}
         </p>
         <button 
-          onClick={() => handleNavigate('contact')}
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).gtag) {
+              (window as any).gtag('event', 'cta_contact_click', {
+                'event_category': 'engagement',
+                'event_label': 'Projects Section CTA'
+              });
+            }
+            handleNavigate('contact');
+          }}
           className="w-full flex items-center justify-center gap-2 rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[13px] md:text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
         >
           <span className="relative z-10">{t.projects.cta.button}</span>

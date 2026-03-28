@@ -139,7 +139,15 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                 {t.about.cta.text}
               </p>
               <button 
-                onClick={() => handleNavigate('contact')}
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).gtag) {
+                    (window as any).gtag('event', 'cta_contact_click', {
+                      'event_category': 'engagement',
+                      'event_label': 'About Section CTA'
+                    });
+                  }
+                  handleNavigate('contact');
+                }}
                 className="flex items-center justify-center gap-2 rounded-xl px-4 py-1 md:px-6 md:py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[13px] md:text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
               >
                 <span className="relative z-10">{t.about.cta.button}</span>

@@ -121,11 +121,8 @@ export default function App() {
   // Loading timer removed for immediate LCP rendering
 
   useEffect(() => {
-    // Defer video loading to prioritize LCP text rendering
-    const timer = setTimeout(() => {
-      setIsVideoDeferred(true);
-    }, 500);
-    return () => clearTimeout(timer);
+    // Start video loading immediately
+    setIsVideoDeferred(true);
   }, []);
 
   useEffect(() => {
@@ -279,7 +276,7 @@ export default function App() {
               loop={true}
               muted={true}
               playsInline={true}
-              preload="metadata"
+              preload="auto"
               onCanPlay={() => setIsStartVideoReady(true)}
               className={`w-full h-full object-cover transition-opacity duration-1000 ${isStartVideoReady ? 'opacity-100' : 'opacity-0'}`}
             >
@@ -360,6 +357,12 @@ export default function App() {
               className="flex items-center gap-3 h-[24px] md:h-[28px] cursor-pointer group" 
               onClick={(e) => {
                 e.preventDefault();
+                if (typeof window !== 'undefined' && (window as any).gtag) {
+                  (window as any).gtag('event', 'logo_click', {
+                    'event_category': 'navigation',
+                    'event_label': 'Header Logo'
+                  });
+                }
                 handleNavigate('start');
               }}
             >

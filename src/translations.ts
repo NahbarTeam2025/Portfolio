@@ -18,7 +18,7 @@ export const translations = {
       design: 'KI-Entwicklung',
       structure: 'Prompt Engineering',
       ki: 'Kreatives Design',
-      cta: '→ Projekte ansehen',
+      cta: 'Projekte ansehen',
     },
     about: {
       title: 'Wer ist ... ?',
@@ -328,7 +328,7 @@ export const translations = {
       design: 'AI Development',
       structure: 'Prompt Engineering',
       ki: 'Creative Design',
-      cta: '→ View Projects',
+      cta: 'View Projects',
     },
     about: {
       title: 'Who is ... ?',

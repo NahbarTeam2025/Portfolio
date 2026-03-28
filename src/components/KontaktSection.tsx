@@ -38,7 +38,20 @@ export const KontaktSection = React.memo(() => {
               </div>
               <div className="flex flex-col">
                 <span className="text-white/60 text-[11px] md:text-[13px] uppercase tracking-widest font-bold">{t.contact.email}</span>
-                <a href="mailto:roberterbach@web.de" className="text-white text-[16px] md:text-[18px] font-medium hover:text-blue-400 transition-colors break-all">roberterbach@web.de</a>
+                <a 
+                  href="mailto:roberterbach@web.de" 
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'email_click', {
+                        'event_category': 'contact',
+                        'event_label': 'roberterbach@web.de'
+                      });
+                    }
+                  }}
+                  className="text-white text-[16px] md:text-[18px] font-medium hover:text-blue-400 transition-colors break-all"
+                >
+                  roberterbach@web.de
+                </a>
               </div>
             </div>
             
@@ -48,7 +61,22 @@ export const KontaktSection = React.memo(() => {
               </div>
               <div className="flex flex-col">
                 <span className="text-white/60 text-[11px] md:text-[13px] uppercase tracking-widest font-bold">LinkedIn</span>
-                <a href="https://www.linkedin.com/in/robert-erbach-a173b2371" target="_blank" rel="noopener noreferrer" className="text-white text-[16px] md:text-[18px] font-medium hover:text-blue-400 transition-colors break-all">@roberterbach</a>
+                <a 
+                  href="https://www.linkedin.com/in/robert-erbach-a173b2371" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'linkedin_click', {
+                        'event_category': 'contact',
+                        'event_label': 'LinkedIn Profile'
+                      });
+                    }
+                  }}
+                  className="text-white text-[16px] md:text-[18px] font-medium hover:text-blue-400 transition-colors break-all"
+                >
+                  @roberterbach
+                </a>
               </div>
             </div>
             
@@ -68,13 +96,10 @@ export const KontaktSection = React.memo(() => {
                 <div className="flex flex-col w-full items-center">
                   <span className="text-white/60 text-[10px] md:text-[12px] uppercase tracking-widest font-bold mb-3 text-center">{t.contact.downloadCV}</span>
                   <div className="flex items-center gap-2 w-full">
-                      <a 
-                        href="https://meine-assets.pages.dev/Lebenslauf_Robert_Erbach.pdf" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
+                      <div 
                         onClick={() => {
                           if (typeof window !== 'undefined' && (window as any).gtag) {
-                            (window as any).gtag('event', 'cv_download', {
+                            (window as any).gtag('event', 'cv_download_attempt', {
                               'event_category': 'engagement',
                               'event_label': 'Lebenslauf_Robert_Erbach.pdf'
                             });
@@ -86,7 +111,7 @@ export const KontaktSection = React.memo(() => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         <span className="relative z-10">{t.contact.downloadButton}</span>
-                      </a>
+                      </div>
                   </div>
                 </div>
               </div>
