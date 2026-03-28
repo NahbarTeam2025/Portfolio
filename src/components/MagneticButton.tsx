@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export const MagneticButton = ({ children, className, onClick, href }: { children: React.ReactNode, className?: string, onClick?: (e: React.MouseEvent) => void, href?: string }) => {
   const ref = useRef<HTMLDivElement>(null);

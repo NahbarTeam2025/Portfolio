@@ -1,7 +1,7 @@
 import React, { useState, startTransition } from 'react';
 import { BentoCard } from './BentoCard';
 import { ProjectDetailsModal } from './ProjectDetailsModal';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigate }: any) => {
@@ -30,7 +30,7 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
       </div>
 
       {!showAllProjects && projects.length > 1 && (
-        <div className="w-full flex justify-center md:hidden mt-1 mb-1">
+        <div className="w-full flex justify-center md:hidden mt-1 mb-8">
           <button
             onClick={() => setShowAllProjects(true)}
             className="px-6 py-2 rounded-xl bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 transition-colors"

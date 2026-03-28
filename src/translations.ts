@@ -7,7 +7,6 @@ export const translations = {
       about: 'Über mich',
       skills: 'Skills',
       projects: 'Projekte',
-      qualification: 'Werdegang',
       certificates: 'Zertifikate',
       contact: 'Kontakt',
     },
@@ -173,7 +172,7 @@ export const translations = {
       cvProtectedDesc: 'Bitte gib das Passwort ein, um den Lebenslauf herunterzuladen.',
     },
     qualifications: {
-      title: 'Beruflicher Werdegang',
+      title: 'Stationen',
       ctaText: 'Ein Werdegang mit Fokus auf Struktur und Fortschritt – bereit für den nächsten Schritt bei euch.',
       ctaButton: 'Unverbindlich kennenlernen →',
       items: [
@@ -188,17 +187,6 @@ export const translations = {
           title: 'Kaufmännische Weiterbildung',
           company: 'Fortbildungsakademie der Wirtschaft (IBB)',
           content: ['Kaufmännischer Schriftverkehr nach DIN 5008', 'MS Office', 'Datenbanken (MS Access)', 'IT-Sicherheit', 'Datenschutz (DSGVO)']
-        },
-        {
-          date: '07/2017 – 05/2024',
-          title: 'Berufliche Tätigkeiten',
-          company: 'Handwerker- und Büroservice',
-          desc: 'Berufliche Tätigkeiten im Handwerker- und Büroservice.\nParallel gezielte Vorbereitung auf den Einstieg ins Digital Marketing mit Fokus auf digitale Themen.'
-        },
-        {
-          date: '09/2013 – 09/2016',
-          title: 'Ausbildung Kaufmann im Gesundheitswesen',
-          company: 'Sanitätshaus Bauch'
         }
       ]
     },
@@ -210,7 +198,7 @@ export const translations = {
       unlockButton: 'Entsperren',
       invalidPassword: 'Ungültiges Passwort',
       verified: 'Verifiziert',
-      view: 'Ansehen',
+      view: 'PDF herunterladen',
       preview: 'Vorschau des Zertifikats. Klicken Sie zum Vergrößern.',
       showAll: 'Alle Zertifikate anzeigen',
       ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
@@ -329,7 +317,6 @@ export const translations = {
       about: 'About Me',
       skills: 'Skills',
       projects: 'Projects',
-      qualification: 'Experience',
       certificates: 'Certificates',
       contact: 'Contact',
     },
@@ -495,7 +482,7 @@ export const translations = {
       cvProtectedDesc: 'Please enter the password to download the CV.',
     },
     qualifications: {
-      title: 'Professional Experience',
+      title: 'Stations',
       ctaText: 'A career path with a focus on structure and progress – ready for the next step with you.',
       ctaButton: 'Let\'s get to know each other →',
       items: [
@@ -510,17 +497,6 @@ export const translations = {
           title: 'Commercial Further Training',
           company: 'Fortbildungsakademie der Wirtschaft (IBB)',
           content: ['Commercial correspondence according to DIN 5008', 'MS Office', 'Databases (MS Access)', 'IT Security', 'Data Protection (GDPR)']
-        },
-        {
-          date: '07/2017 – 05/2024',
-          title: 'Professional Activities',
-          company: 'Handyman and Office Service',
-          desc: 'Professional activities in handyman and office service.\nParallel targeted preparation for entry into Digital Marketing with a focus on digital topics.'
-        },
-        {
-          date: '09/2013 – 09/2016',
-          title: 'Apprenticeship Health Care Merchant',
-          company: 'Sanitätshaus Bauch'
         }
       ]
     },
@@ -532,7 +508,7 @@ export const translations = {
       unlockButton: 'Unlock',
       invalidPassword: 'Invalid Password',
       verified: 'Verified',
-      view: 'View',
+      view: 'Download PDF',
       preview: 'Preview of the certificate. Click to enlarge.',
       showAll: 'Show all certificates',
       ctaText: 'Theoretically sound, practically motivated – ready for use in your team.',

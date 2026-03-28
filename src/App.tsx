@@ -6,10 +6,9 @@
 import React, { useState, useEffect, useCallback, useRef, startTransition, Suspense, lazy } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, Linkedin, ArrowRight, ExternalLink } from 'lucide-react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform, useScroll } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform, useScroll } from 'motion/react';
 
 // Import refactored components
-import { MouseGlow } from './components/MouseGlow';
 import { MagneticButton } from './components/MagneticButton';
 import { TerminalStatus } from './components/TerminalStatus';
 import { BentoCard } from './components/BentoCard';
@@ -24,7 +23,6 @@ import { useIsMobile } from './hooks/useIsMobile';
 
 // Lazy load components
 const CommandTerminal = lazy(() => import('./components/CommandTerminal.tsx'));
-const QualifikationSection = lazy(() => import('./components/QualifikationSection.tsx').then(m => ({ default: m.QualifikationSection })));
 const SkillsSection = lazy(() => import('./components/SkillsSection.tsx').then(m => ({ default: m.SkillsSection })));
 const ProjekteSection = lazy(() => import('./components/ProjekteSection.tsx').then(m => ({ default: m.ProjekteSection })));
 const ZertifikateSection = lazy(() => import('./components/ZertifikateSection.tsx').then(m => ({ default: m.ZertifikateSection })));
@@ -41,7 +39,6 @@ const PAGE_ROUTES: Record<string, string> = {
   'about': '/ueber-mich',
   'skills': '/skills',
   'projects': '/projekte',
-  'qualification': '/werdegang',
   'certificates': '/zertifikate',
   'contact': '/kontakt',
   'impressum': '/impressum',
@@ -52,7 +49,7 @@ const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_ROUTES).map(([key, value]) => [value, key])
 );
 
-const PAGES = ['about', 'qualification', 'projects', 'skills', 'certificates'];
+const PAGES = ['about', 'projects', 'skills', 'certificates'];
 
 export default function App() {
   const { t } = useLanguage();
@@ -95,17 +92,6 @@ export default function App() {
   useEffect(() => {
     setStep(0);
   }, [currentPage]);
-  const [expandedQual, setExpandedQual] = useState<number | null>(null);
-  const [showTimeline, setShowTimeline] = useState(expandedQual === null);
-
-  useEffect(() => {
-    if (expandedQual === null) {
-      const timer = setTimeout(() => setShowTimeline(true), 500);
-      return () => clearTimeout(timer);
-    } else {
-      setShowTimeline(false);
-    }
-  }, [expandedQual]);
 
   const [expandedCert, setExpandedCert] = useState<number | null>(null);
   const [isInitialEntrance, setIsInitialEntrance] = useState(true);
@@ -159,15 +145,12 @@ export default function App() {
   }, [t.common.backToTitle]);
 
   const [isCertUnlocked, setIsCertUnlocked] = useState(false);
-  const [isCvUnlocked, setIsCvUnlocked] = useState(false);
   const [isStartVideoReady, setIsStartVideoReady] = useState(false);
   const [isSubVideoReady, setIsSubVideoReady] = useState(false);
   const [isVideoDeferred, setIsVideoDeferred] = useState(false);
   const isMobile = useIsMobile();
   const [certPasswordInput, setCertPasswordInput] = useState('');
-  const [cvPasswordInput, setCvPasswordInput] = useState('');
   const [certError, setCertError] = useState(false);
-  const [cvError, setCvError] = useState(false);
 
   const handleNavigate = useCallback((pageId: string) => {
     // Check if it's a modal page
@@ -323,9 +306,6 @@ export default function App() {
             </video>
           </div>
         )}
-        
-        {/* Global Noise Overlay */}
-        <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
       </div>
 
       <AnimatePresence>
@@ -361,7 +341,6 @@ export default function App() {
       </AnimatePresence>
 
       {/* Content Overlay */}
-      <MouseGlow />
       
       {/* Scroll Progress Indicator */}
       {currentPage !== 'start' && (
@@ -407,7 +386,6 @@ export default function App() {
                       const prefetchMap: Record<string, () => Promise<any>> = {
                         'about': () => import('./components/UberMichSection.tsx'),
                         'projects': () => import('./components/ProjekteSection.tsx'),
-                        'qualification': () => import('./components/QualifikationSection.tsx'),
                         'certificates': () => import('./components/ZertifikateSection.tsx'),
                         'skills': () => import('./components/SkillsSection.tsx'),
                       };
@@ -576,15 +554,6 @@ export default function App() {
                     setIsInitialEntrance={setIsInitialEntrance} 
                     handleNavigate={handleNavigate}
                   />
-                ) : currentPage === 'qualification' ? (
-                  <QualifikationSection 
-                    expandedQual={expandedQual}
-                    setExpandedQual={setExpandedQual}
-                    showTimeline={showTimeline}
-                    isInitialEntrance={isInitialEntrance}
-                    setIsInitialEntrance={setIsInitialEntrance}
-                    handleNavigate={handleNavigate}
-                  />
                 ) : currentPage === 'certificates' ? (
                   <ZertifikateSection 
                     expandedCert={expandedCert}
@@ -598,14 +567,7 @@ export default function App() {
                     handleNavigate={handleNavigate}
                   />
                 ) : currentPage === 'contact' ? (
-                  <KontaktSection 
-                    isCvUnlocked={isCvUnlocked}
-                    cvPasswordInput={cvPasswordInput}
-                    setCvPasswordInput={setCvPasswordInput}
-                    cvError={cvError}
-                    setIsCvUnlocked={setIsCvUnlocked}
-                    setCvError={setCvError}
-                  />
+                  <KontaktSection />
                 ) : currentPage === 'impressum' ? (
                   <ImpressumPage />
                 ) : currentPage === 'datenschutz' ? (

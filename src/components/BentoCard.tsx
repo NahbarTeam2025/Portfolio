@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 

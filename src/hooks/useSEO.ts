@@ -24,10 +24,6 @@ const SEO_DATA: Record<string, SEOProps> = {
     title: 'Projekte & Referenzen | Robert Erbach – Portfolio',
     description: 'Ausgewählte Arbeiten in den Bereichen KI-Integration, Web-Entwicklung und digitale Strategie.',
   },
-  '/werdegang': {
-    title: 'Berufliche Qualifikation | Robert Erbach – Portfolio',
-    description: 'Beruflicher Werdegang und Qualifikationen von Robert Erbach.',
-  },
   '/zertifikate': {
     title: 'Zertifikate | Robert Erbach – Portfolio',
     description: 'Zertifikate und Weiterbildungen in den Bereichen Digital Marketing, Web Analytics und KI.',

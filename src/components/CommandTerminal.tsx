@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { Terminal, X } from 'lucide-react';
 
 export default function CommandTerminal({ onNavigate }: { onNavigate: (page: string) => void }) {

@@ -2,33 +2,9 @@ import React, { startTransition, useState } from 'react';
 import { ExternalLink, ChevronDown, Eye, EyeOff } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, isCertUnlocked, certPasswordInput, setCertPasswordInput, certError, setIsCertUnlocked, setCertError, handleNavigate }: any) => {
+export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, handleNavigate }: any) => {
   const { t } = useLanguage();
   const [showAllCerts, setShowAllCerts] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleUnlockCert = async () => {
-    try {
-      const response = await fetch('/api/verify-password', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: certPasswordInput }),
-      });
-
-      if (response.ok) {
-        setIsCertUnlocked(true);
-        setCertError(false);
-      } else {
-        const data = await response.json();
-        setCertError(true);
-        // Optional: Hier könnte man die Fehlermeldung vom Server anzeigen
-        console.warn(data.message || 'Ungültiges Passwort');
-      }
-    } catch (error) {
-      console.error('Fehler bei der Passwortprüfung:', error);
-      setCertError(true);
-    }
-  };
 
   const certs = t.certificates.items;
 
@@ -88,77 +64,27 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
                   <div className="px-5 pb-5 md:px-6 md:pb-6 flex flex-col gap-6 h-full">
                     <div className="w-full h-[1px] bg-white/5 shrink-0" />
                     
-                    {!isCertUnlocked ? (
-                      <div className="flex flex-col items-center justify-center gap-4 py-6 px-4 text-center">
-                        <div className="w-16 h-16 rounded-full bg-blue-400/10 flex items-center justify-center border border-blue-400/20">
-                          <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      <div className="flex-1 flex flex-col items-center justify-center gap-4 py-6">
+                        <a 
+                          href="#"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            if (typeof window !== 'undefined' && (window as any).gtag) {
+                              (window as any).gtag('event', 'certificate_download', {
+                                'event_category': 'engagement',
+                                'event_label': cert.title
+                              });
+                            }
+                          }}
+                          className="flex items-center justify-center w-full max-w-[280px] gap-2 rounded-xl px-6 py-3 bg-black/10 border border-green-500/60 text-green-50 text-[13px] md:text-[15px] font-bold tracking-wide shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:shadow-[0_0_25px_rgba(34,197,94,0.8)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer focus-ring"
+                        >
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
-                        </div>
-                        <div className="space-y-2">
-                          <h4 className="text-white font-medium text-lg">{t.certificates.protectedTitle}</h4>
-                          <p className="text-white/60 text-sm max-w-[300px]">{t.certificates.protectedDesc}</p>
-                        </div>
-                        <div className="w-full max-w-[280px] space-y-3">
-                          <div className="relative">
-                            <input 
-                              id="cert-password"
-                              name="cert-password"
-                              type={showPassword ? "text" : "password"} 
-                              placeholder={t.certificates.passwordPlaceholder}
-                              value={certPasswordInput}
-                              onChange={(e) => setCertPasswordInput(e.target.value)}
-                              onKeyDown={(e) => {
-                                if (e.key === 'Enter') {
-                                  handleUnlockCert();
-                                }
-                              }}
-                              className={`w-full bg-white/5 border ${certError ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 pr-12 text-white placeholder:text-white/20 focus:outline-none focus:border-blue-400/50 transition-all`}
-                            />
-                            <button
-                              type="button"
-                              onClick={() => setShowPassword(!showPassword)}
-                              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors p-1"
-                            >
-                              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                            </button>
-                          </div>
-                          {certError && <p className="text-red-400 text-xs">{t.certificates.invalidPassword}</p>}
-                          <button 
-                            onClick={handleUnlockCert}
-                            className="w-full bg-gradient-to-r from-brand-blue to-blue-400 text-white font-bold py-3 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all"
-                          >
-                            {t.certificates.unlockButton}
-                          </button>
-                        </div>
+                          <span className="relative z-10">{t.certificates.view}</span>
+                        </a>
                       </div>
-                    ) : (
-                      <div className="flex-1 flex flex-col items-center justify-center gap-4 py-4">
-                        <div className="relative group/cert w-full max-w-[320px] aspect-[1.414/1] bg-white/5 rounded-lg border border-white/10 overflow-hidden shadow-2xl">
-                          <div className="absolute inset-0 bg-gradient-to-br from-gray-400/5 to-gray-500/5" />
-                          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                            <div className="w-10 h-10 mb-2 text-blue-400/40">
-                              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            </div>
-                            <h5 className="text-white font-bold text-lg mb-1">{cert.title}</h5>
-                            <p className="text-white/40 text-xs">{cert.issuer}</p>
-                            <div className="mt-4 pt-4 border-t border-white/10 w-full">
-                              <div className="flex justify-between items-center text-[9px] uppercase tracking-widest text-white/20 font-bold">
-                                <span>Zertifikat ID: {cert.id}00X-2026</span>
-                                <span>{t.certificates.verified}</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/cert:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-                            <button className="bg-white text-black font-bold py-2 px-6 rounded-xl flex items-center gap-2 hover:scale-105 transition-transform">
-                              <ExternalLink size={16} />
-                              {t.certificates.view}
-                            </button>
-                          </div>
-                        </div>
-                        <p className="text-white/40 text-xs italic">{t.certificates.preview}</p>
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>
@@ -169,7 +95,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
 
       {/* Show More Button for Mobile */}
       {!showAllCerts && certs.length > 4 && expandedCert === null && (
-        <div className="w-full flex justify-center md:hidden pb-0 pt-0 shrink-0">
+        <div className="w-full flex justify-center md:hidden pb-0 pt-6 shrink-0">
           <button 
             onClick={() => setShowAllCerts(true)}
             className="flex items-center gap-2 px-6 py-1.5 rounded-xl bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 hover:text-white transition-all group"
@@ -181,7 +107,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, i
       )}
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-4 md:pb-4 pt-0 md:pt-2 gap-1 md:gap-1.5 mt-auto mb-8 md:mb-12 shrink-0">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-4 md:pb-4 pt-8 md:pt-2 gap-1 md:gap-1.5 mt-auto mb-8 md:mb-12 shrink-0">
         <p className="text-white/80 text-xs md:text-sm text-center whitespace-normal md:whitespace-nowrap">
           {t.certificates.ctaText}
         </p>

@@ -1,6 +1,6 @@
 import React, { startTransition } from 'react';
 import { X, Calendar, Tag } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface ProjectDetails {
