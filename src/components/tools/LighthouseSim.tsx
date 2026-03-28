@@ -59,7 +59,10 @@ export const LighthouseSim: React.FC = () => {
     <div className="flex flex-col h-full overflow-hidden">
       <div className="mb-2 shrink-0">
         <h2 className="text-lg font-bold text-white mb-0.5">{t.tools.lighthouseSim.title}</h2>
-        <p className="text-[10px] text-white/60">{t.tools.lighthouseSim.desc}</p>
+        <p className="text-[10px] text-white/60">
+          Simuliere die Ladezeit deiner Website unter verschiedenen Netzwerkbedingungen. 
+          LCP (Largest Contentful Paint) misst, wie schnell der Hauptinhalt geladen wird.
+        </p>
       </div>
 
       <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-y-auto pr-2 custom-scrollbar">

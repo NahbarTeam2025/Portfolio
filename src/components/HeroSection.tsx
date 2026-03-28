@@ -102,17 +102,6 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
           className="w-full flex items-center justify-center gap-3 rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[13px] md:text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
         >
           <span className="relative z-10">{t.hero.cta}</span>
-          {/* Switch Toggle */}
-          <div className="relative w-8 h-4 rounded-full bg-white/10 border border-white/20 transition-colors group-hover:bg-blue-500/20 group-hover:border-blue-400/50">
-            <motion.div 
-              className="absolute top-0.5 left-0.5 w-2.5 h-2.5 rounded-full"
-              variants={{
-                initial: { x: 0, backgroundColor: "rgba(255, 255, 255, 0.4)" },
-                hover: { x: 16, backgroundColor: "rgba(34, 197, 94, 0.8)" }
-              }}
-              transition={{ type: "spring", stiffness: 500, damping: 30 }}
-            />
-          </div>
         </motion.button>
       </motion.div>
     </div>

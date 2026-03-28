@@ -46,6 +46,9 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
       <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
         {t.skills.title}
       </h1>
+      <p className="text-white/60 text-[10px] md:text-[12px] uppercase tracking-[0.2em] font-medium">
+        Selbsteinschätzung nach Weiterbildung & eigenen Projekten.
+      </p>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 lg:gap-x-8 gap-y-3 md:gap-2 w-full max-w-[1400px] py-1 mx-auto">
         {skillGroups.map((group, groupIndex) => (

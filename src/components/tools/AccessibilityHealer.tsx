@@ -19,13 +19,19 @@ export const AccessibilityHealer: React.FC = () => {
     { id: '1', type: 'image', label: t.tools.accessibilityHealer.elements.image, solution: 'altText', isHealed: false },
     { id: '2', type: 'button', label: t.tools.accessibilityHealer.elements.button, solution: 'contrast', isHealed: false },
     { id: '3', type: 'input', label: t.tools.accessibilityHealer.elements.input, solution: 'label', isHealed: false },
+    { id: '4', type: 'image', label: 'Missing Heading', solution: 'heading', isHealed: false },
+    { id: '5', type: 'button', label: 'Wrong Tab Order', solution: 'tabIndex', isHealed: false },
+    { id: '6', type: 'input', label: 'No Aria Label', solution: 'aria', isHealed: false },
   ]);
 
   const solutions = [
-    { id: 'altText', label: t.tools.accessibilityHealer.solutions.altText, icon: ImageIcon },
     { id: 'contrast', label: t.tools.accessibilityHealer.solutions.contrast, icon: Palette },
     { id: 'label', label: t.tools.accessibilityHealer.solutions.label, icon: Type },
-  ];
+    { id: 'altText', label: t.tools.accessibilityHealer.solutions.altText, icon: ImageIcon },
+    { id: 'heading', label: 'Add Heading Structure', icon: Type },
+    { id: 'tabIndex', label: 'Fix Tab Order', icon: MousePointer2 },
+    { id: 'aria', label: 'Add ARIA Label', icon: AlertCircle },
+  ].sort(() => Math.random() - 0.5);
 
   const handleHeal = (elementId: string) => {
     if (!selectedSolution) return;

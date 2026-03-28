@@ -61,8 +61,8 @@ export const PasswordGuardian: React.FC = () => {
           </AnimatePresence>
 
           {/* Base Character (Body) */}
-          <circle cx="100" cy="70" r="35" fill="#1a1a1a" stroke="#333" strokeWidth="2" />
-          <path d="M65 105 Q100 95 135 105 L145 185 H55 Z" fill="#222" stroke="#333" strokeWidth="2" />
+          <circle cx="100" cy="70" r="35" fill="#333" stroke="#555" strokeWidth="2" />
+          <path d="M65 105 Q100 95 135 105 L145 185 H55 Z" fill="#444" stroke="#555" strokeWidth="2" />
           
           {/* Level 1: Helmet */}
           <AnimatePresence>
@@ -71,9 +71,9 @@ export const PasswordGuardian: React.FC = () => {
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
               >
-                <path d="M65 70 A35 35 0 0 1 135 70 L135 85 L115 85 L100 100 L85 85 L65 85 Z" fill="#333" stroke="#444" />
-                <rect x="98" y="40" width="4" height="15" fill="#666" />
-                <path d="M90 40 L110 40 L100 20 Z" fill="#8b0000" />
+                <path d="M65 70 A35 35 0 0 1 135 70 L135 85 L115 85 L100 100 L85 85 L65 85 Z" fill="#555" stroke="#666" />
+                <rect x="98" y="40" width="4" height="15" fill="#888" />
+                <path d="M90 40 L110 40 L100 20 Z" fill="#d97706" />
               </motion.g>
             )}
           </AnimatePresence>
@@ -85,11 +85,11 @@ export const PasswordGuardian: React.FC = () => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
               >
-                <path d="M70 110 L130 110 L135 150 L100 175 L65 150 Z" fill="#2a2a2a" stroke="#444" strokeWidth="2" />
-                <path d="M80 120 L120 120 L125 145 L100 165 L75 145 Z" fill="#333" stroke="#555" />
+                <path d="M70 110 L130 110 L135 150 L100 175 L65 150 Z" fill="#444" stroke="#666" strokeWidth="2" />
+                <path d="M80 120 L120 120 L125 145 L100 165 L75 145 Z" fill="#555" stroke="#777" />
                 {/* Shoulder Pads */}
-                <path d="M55 105 Q65 90 80 105 Z" fill="#333" stroke="#444" />
-                <path d="M145 105 Q135 90 120 105 Z" fill="#333" stroke="#444" />
+                <path d="M55 105 Q65 90 80 105 Z" fill="#555" stroke="#666" />
+                <path d="M145 105 Q135 90 120 105 Z" fill="#555" stroke="#666" />
               </motion.g>
             )}
           </AnimatePresence>
@@ -101,11 +101,11 @@ export const PasswordGuardian: React.FC = () => {
                 initial={{ x: -30, opacity: 0, rotate: -10 }}
                 animate={{ x: 0, opacity: 1, rotate: 0 }}
               >
-                <path d="M25 100 Q25 160 60 175 Q95 160 95 100 Z" fill="#222" stroke="#444" strokeWidth="3" />
-                <path d="M35 110 Q35 155 60 165 Q85 155 85 110 Z" fill="#2a2a2a" stroke="#333" />
-                <Shield className="w-8 h-8 text-blue-500/50" x="44" y="115" />
+                <path d="M25 100 Q25 160 60 175 Q95 160 95 100 Z" fill="#444" stroke="#666" strokeWidth="3" />
+                <path d="M35 110 Q35 155 60 165 Q85 155 85 110 Z" fill="#555" stroke="#666" />
+                <Shield className="w-8 h-8 text-green-500/50" x="44" y="115" />
                 {/* Glowing Trim */}
-                <path d="M25 100 Q25 160 60 175 Q95 160 95 100 Z" fill="none" stroke="#3b82f6" strokeWidth="1" className="animate-pulse" />
+                <path d="M25 100 Q25 160 60 175 Q95 160 95 100 Z" fill="none" stroke="#22c55e" strokeWidth="1" className="animate-pulse" />
               </motion.g>
             )}
           </AnimatePresence>
@@ -119,15 +119,15 @@ export const PasswordGuardian: React.FC = () => {
               >
                 {/* Sword Blade */}
                 <path d="M145 145 L185 45 L195 55 L155 155 Z" fill="#fff" />
-                <path d="M145 145 L185 45 L195 55 L155 155 Z" fill="none" stroke="#3b82f6" strokeWidth="2" className="animate-pulse" />
+                <path d="M145 145 L185 45 L195 55 L155 155 Z" fill="none" stroke="#22c55e" strokeWidth="2" className="animate-pulse" />
                 {/* Hilt */}
-                <rect x="135" y="145" width="30" height="8" fill="#444" rx="2" transform="rotate(-45 150 150)" />
-                <rect x="145" y="150" width="10" height="25" fill="#333" rx="2" transform="rotate(-45 150 150)" />
+                <rect x="135" y="145" width="30" height="8" fill="#666" rx="2" transform="rotate(-45 150 150)" />
+                <rect x="145" y="150" width="10" height="25" fill="#555" rx="2" transform="rotate(-45 150 150)" />
                 {/* Glow Effect */}
                 <circle cx="170" cy="70" r="20" fill="url(#swordGlow)" opacity="0.3" />
                 <defs>
                   <radialGradient id="swordGlow">
-                    <stop offset="0%" stopColor="#3b82f6" />
+                    <stop offset="0%" stopColor="#22c55e" />
                     <stop offset="100%" stopColor="transparent" />
                   </radialGradient>
                 </defs>
@@ -137,8 +137,8 @@ export const PasswordGuardian: React.FC = () => {
 
           {/* Eyes */}
           <motion.g animate={{ opacity: [1, 0.5, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
-            <circle cx="88" cy="75" r="4" fill={strength > 0 ? "#3b82f6" : "#444"} className={strength >= 4 ? "shadow-[0_0_10px_#3b82f6]" : ""} />
-            <circle cx="112" cy="75" r="4" fill={strength > 0 ? "#3b82f6" : "#444"} className={strength >= 4 ? "shadow-[0_0_10px_#3b82f6]" : ""} />
+            <circle cx="88" cy="75" r="4" fill={strength > 0 ? "#22c55e" : "#666"} className={strength >= 4 ? "shadow-[0_0_10px_#22c55e]" : ""} />
+            <circle cx="112" cy="75" r="4" fill={strength > 0 ? "#22c55e" : "#666"} className={strength >= 4 ? "shadow-[0_0_10px_#22c55e]" : ""} />
           </motion.g>
         </svg>
       </div>
@@ -165,6 +165,7 @@ export const PasswordGuardian: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder={t.tools.passwordGuardian.placeholder}
+              autoComplete="new-password"
               className="w-full bg-black/40 border border-white/10 rounded-xl px-12 py-3 text-white focus:outline-none focus:border-blue-500/50 transition-all font-mono"
             />
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
