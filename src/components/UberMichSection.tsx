@@ -28,22 +28,20 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
             <p className="text-white font-medium tracking-wider text-[13px] sm:text-[14px] md:text-[17px] lg:text-[18px] leading-relaxed">
               {t.about.motto}
             </p>
-            <div className="flex flex-col gap-0.5 md:gap-1">
-              <p className="text-blue-400 font-medium tracking-wider text-[13px] sm:text-[14px] md:text-[17px] lg:text-[18px] leading-relaxed">
-                {t.about.mottoBlue}
-              </p>
-              <div className="shrink-0">
-                <img 
-                  src="https://meine-assets.pages.dev/signature.png" 
-                  alt={t.hero.title} 
-                  width="200"
-                  height="50"
-                  className="h-5 sm:h-8 md:h-10 lg:h-12 w-auto object-contain invert mix-blend-screen opacity-90"
-                  style={{ forcedColorAdjust: 'none' }}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
+            <p className="text-blue-400 font-medium tracking-wider text-[13px] sm:text-[14px] md:text-[17px] lg:text-[18px] leading-relaxed">
+              {t.about.mottoBlue}
+            </p>
+            <div className="shrink-0 my-4 md:my-8">
+              <img 
+                src="https://meine-assets.pages.dev/signature.png" 
+                alt={t.hero.title} 
+                width="200"
+                height="50"
+                className="h-8 sm:h-10 md:h-12 lg:h-16 w-auto object-contain invert mix-blend-screen opacity-90"
+                style={{ forcedColorAdjust: 'none' }}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
           

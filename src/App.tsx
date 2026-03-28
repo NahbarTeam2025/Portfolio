@@ -133,10 +133,18 @@ export default function App() {
   }, [isHighContrast]);
 
   useEffect(() => {
-    // Shorter loading time if page is ready, but keep a minimum for the animation
+    // Reduced loading time to improve LCP (Largest Contentful Paint) score
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1800);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Defer video loading to prioritize LCP text rendering
+    const timer = setTimeout(() => {
+      setIsVideoDeferred(true);
+    }, 100);
     return () => clearTimeout(timer);
   }, []);
 
@@ -160,6 +168,7 @@ export default function App() {
   const [isCvUnlocked, setIsCvUnlocked] = useState(false);
   const [isStartVideoReady, setIsStartVideoReady] = useState(false);
   const [isSubVideoReady, setIsSubVideoReady] = useState(false);
+  const [isVideoDeferred, setIsVideoDeferred] = useState(false);
   const isMobile = useIsMobile();
   const [certPasswordInput, setCertPasswordInput] = useState('');
   const [cvPasswordInput, setCvPasswordInput] = useState('');
@@ -285,7 +294,7 @@ export default function App() {
       {/* Background Videos Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
         {/* Start Page Video */}
-        {currentPage === 'start' && (
+        {currentPage === 'start' && isVideoDeferred && (
           <div className="absolute inset-0">
             <video
               key="start-video-main"
@@ -304,7 +313,7 @@ export default function App() {
         )}
 
         {/* Subpages Video */}
-        {currentPage !== 'start' && (
+        {currentPage !== 'start' && isVideoDeferred && (
           <div className="absolute inset-0 bg-black">
             <video
               key="sub-video-main"
@@ -330,7 +339,7 @@ export default function App() {
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center"
           >
             <div className="relative w-48 h-[2px] bg-white/10 overflow-hidden rounded-full">
@@ -387,7 +396,6 @@ export default function App() {
                 width="66"
                 height="49"
                 decoding="async"
-                fetchPriority="high"
                 className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                 style={{ forcedColorAdjust: 'none' }}
               />
