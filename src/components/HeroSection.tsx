@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
   return (
-    <div id="hero" className="flex flex-col items-center justify-center w-full max-w-[1200px] mx-auto relative z-10 h-full px-6 lg:py-0 pt-2 pb-4 lg:max-h-[70vh]">
+    <div id="hero" className="flex flex-col items-center justify-center w-full max-w-[1200px] mx-auto relative z-10 h-full px-6 lg:py-0 pt-2 pb-4 lg:max-h-[70dvh]">
       
       {/* 01. Minimalist Status Badge */}
       <motion.div 

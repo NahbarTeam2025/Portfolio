@@ -92,6 +92,8 @@
   html {
     color-scheme: dark;
     forced-color-adjust: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   * {
     -ms-overflow-style: none; /* IE and Edge */

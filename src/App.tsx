@@ -282,7 +282,7 @@ export default function App() {
   return (
     <>
       <div 
-        className="relative min-h-screen w-full font-sans"
+        className="relative min-h-[100dvh] w-full font-sans"
         onMouseMove={handleMouseMove}
       >
       {/* Background Videos Layer */}
@@ -371,7 +371,7 @@ export default function App() {
         />
       )}
 
-      <div className={`relative z-10 flex flex-col h-screen overflow-x-hidden`}>
+      <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden`}>
         {/* Navbar */}
         <nav className={`sticky top-0 flex items-center justify-between px-4 py-1 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'start' || isMobileMenuOpen) ? 'bg-black/20 backdrop-blur-[15px] saturate-[180%] border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
@@ -554,7 +554,7 @@ export default function App() {
         </nav>
 
         {/* Main Content */}
-        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-2 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''} lg:h-[calc(100vh-80px)] lg:overflow-hidden`}>
+        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-2 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''} lg:h-[calc(100dvh-80px)] lg:overflow-hidden`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentPage}
