@@ -75,6 +75,15 @@ export const DatenschutzPage = () => {
           <p>Die Rechtsgrundlage für diese Datenverarbeitung ist unser berechtigtes Interesse an einer performanten, technisch stabilen und nutzerfreundlichen Bereitstellung unseres Onlineangebots (Art. 6 Abs. 1 f DSGVO).</p>
         </section>
 
+        <section>
+          <h3 className="text-xl font-medium text-white mb-4">6. Sicherheit- und Privacy-Tools</h3>
+          <p className="mb-4">
+            Auf dieser Website biete ich verschiedene Werkzeuge an, wie z.B. den "Password Guardian" und den "Fingerprint Detector". 
+            Ich möchte ausdrücklich darauf hinweisen, dass bei der Nutzung dieser Tools <strong>keine personenbezogenen Daten gespeichert oder an Dritte übertragen werden</strong>. 
+            Die Verarbeitung der Daten erfolgt ausschließlich lokal in Ihrem Browser und dient lediglich der Bereitstellung der jeweiligen Funktion. Es findet keine dauerhafte Speicherung oder Protokollierung Ihrer Eingaben oder Analyseergebnisse statt.
+          </p>
+        </section>
+
         <div className="pt-12 border-t border-white/10 flex justify-end w-full">
           <button
             onClick={() => navigate(-1)}

@@ -33,6 +33,7 @@ const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage.tsx').then(m 
 const ImpressumModal = lazy(() => import('./components/ImpressumModal.tsx').then(m => ({ default: m.ImpressumModal })));
 const DatenschutzModal = lazy(() => import('./components/DatenschutzModal.tsx').then(m => ({ default: m.DatenschutzModal })));
 const CookieBanner = lazy(() => import('./components/CookieBanner.tsx').then(m => ({ default: m.CookieBanner })));
+const ToolsPage = lazy(() => import('./pages/ToolsPage.tsx').then(m => ({ default: m.ToolsPage })));
 
 const PAGE_ROUTES: Record<string, string> = {
   'start': '/',
@@ -40,6 +41,7 @@ const PAGE_ROUTES: Record<string, string> = {
   'skills': '/skills',
   'projects': '/projekte',
   'certificates': '/zertifikate',
+  'tools': '/tools',
   'contact': '/kontakt',
   'impressum': '/impressum',
   'datenschutz': '/datenschutz'
@@ -49,7 +51,7 @@ const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_ROUTES).map(([key, value]) => [value, key])
 );
 
-const PAGES = ['about', 'projects', 'skills', 'certificates'];
+const PAGES = ['about', 'projects', 'skills', 'certificates', 'tools'];
 
 export default function App() {
   const { t } = useLanguage();
@@ -571,6 +573,8 @@ export default function App() {
                   />
                 ) : currentPage === 'contact' ? (
                   <KontaktSection />
+                ) : currentPage === 'tools' ? (
+                  <ToolsPage />
                 ) : currentPage === 'impressum' ? (
                   <ImpressumPage />
                 ) : currentPage === 'datenschutz' ? (
