@@ -63,14 +63,14 @@ export const ProjectDetailsModal = ({
               <div className="text-white/60 text-sm md:text-base font-medium">
                 {project.details.subtitle}
               </div>
-              <div className="flex items-center gap-2 text-white/40 text-[11px] md:text-xs mt-1">
+              <div className="flex items-center gap-2 text-white/60 text-[11px] md:text-xs mt-1">
                 <Calendar size={12} />
                 <span>{project.details.meta}</span>
               </div>
             </div>
             <button 
               onClick={() => startTransition(() => onClose())}
-              className="p-2 text-white/40 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300"
+              className="p-2 text-white/60 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300"
               aria-label={language === 'de' ? 'Schließen' : 'Close'}
             >
               <X className="w-6 h-6" />

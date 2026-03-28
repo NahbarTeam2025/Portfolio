@@ -128,7 +128,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
             </button>
           ) : (
             <div
-              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-white/5 border border-white/10 text-white/40 font-bold text-[12px] uppercase tracking-widest cursor-default"
+              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-white/5 border border-white/10 text-white/60 font-bold text-[12px] uppercase tracking-widest cursor-default"
             >
               <span className="relative z-10">{t.projects.comingSoon}</span>
             </div>

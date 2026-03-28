@@ -329,7 +329,7 @@ export default function App() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="mt-4 text-white/40 text-[10px] tracking-[0.3em] uppercase font-medium"
+              className="mt-4 text-white/60 text-[11px] tracking-[0.3em] uppercase font-medium"
             >
               {t.common.loadingExperience}
             </motion.div>

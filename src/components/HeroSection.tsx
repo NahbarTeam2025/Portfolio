@@ -68,7 +68,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
         >
           {[t.hero.design, t.hero.structure, t.hero.ki].map((item, idx) => (
             <div key={item} className="flex flex-col items-center gap-3 group">
-              <div className="text-white/30 text-[9px] font-mono tracking-widest uppercase mb-0.5">0{idx + 1}</div>
+              <div className="text-white/60 text-[10px] font-mono tracking-widest uppercase mb-0.5">0{idx + 1}</div>
               <div className="flex items-center gap-2.5">
                 <div className="w-1 h-1 rounded-full bg-green-500/70 group-hover:bg-green-400 transition-colors" />
                 <span className="text-white/70 text-[10px] lg:text-xs font-medium tracking-[0.2em] uppercase transition-colors group-hover:text-white">{item}</span>
