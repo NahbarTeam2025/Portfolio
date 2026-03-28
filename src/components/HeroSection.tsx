@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
@@ -27,24 +27,18 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
       <div className="flex flex-col items-center text-center w-full">
         
         {/* Name - Fluid & Massive */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="font-display font-bold tracking-[-0.04em] text-white text-[clamp(2.5rem,8vw,6.5rem)] leading-[0.9] mb-3 lg:mb-4"
+        <h1 
+          className="font-display font-bold tracking-[-0.04em] text-white text-[clamp(2.5rem,8vw,6.5rem)] leading-[0.9] mb-3 lg:mb-4 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both"
         >
           {t.hero.title}
-        </motion.h1>
+        </h1>
         
         {/* Motto - Elegant & Balanced */}
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="font-sans text-blue-400/90 text-[clamp(1rem,2.5vw,1.8rem)] font-light tracking-tight leading-tight max-w-[90%] mb-4 lg:mb-6"
+        <h2 
+          className="font-sans text-blue-400/90 text-[clamp(1rem,2.5vw,1.8rem)] font-light tracking-tight leading-tight max-w-[90%] mb-4 lg:mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 fill-mode-both"
         >
           {t.hero.subtitlePart1}
-        </motion.h2>
+        </h2>
         
         {/* Subtitle Part 2 - Technical Rail */}
         <motion.div 
@@ -59,14 +53,11 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
         </motion.div>
 
         {/* Description - Focused Content */}
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="text-white/70 font-sans text-[clamp(0.85rem,1.4vw,1rem)] font-light leading-relaxed max-w-[550px] mb-8 lg:mb-10"
+        <p 
+          className="text-white/70 font-sans text-[clamp(0.85rem,1.4vw,1rem)] font-light leading-relaxed max-w-[550px] mb-8 lg:mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 fill-mode-both"
         >
           {t.hero.desc}
-        </motion.p>
+        </p>
 
         {/* 03. Feature Rail - Minimalist Grid */}
         <motion.div 

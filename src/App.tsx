@@ -16,13 +16,10 @@ import { BentoCard } from './components/BentoCard';
 import { Typewriter } from './components/Typewriter';
 import { HeroSection } from './components/HeroSection';
 import { Footer } from './components/Footer';
-import { ImpressumModal } from './components/ImpressumModal';
-import { DatenschutzModal } from './components/DatenschutzModal';
 import { useSEO } from './hooks/useSEO';
 import { useParallaxIntersection } from './hooks/useParallaxIntersection';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
-import { CookieBanner } from './components/CookieBanner';
 import { useIsMobile } from './hooks/useIsMobile';
 
 // Lazy load components
@@ -35,6 +32,9 @@ const KontaktSection = lazy(() => import('./components/KontaktSection.tsx').then
 const UberMichSection = lazy(() => import('./components/UberMichSection.tsx').then(m => ({ default: m.UberMichSection })));
 const ImpressumPage = lazy(() => import('./pages/ImpressumPage.tsx').then(m => ({ default: m.ImpressumPage })));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage.tsx').then(m => ({ default: m.DatenschutzPage })));
+const ImpressumModal = lazy(() => import('./components/ImpressumModal.tsx').then(m => ({ default: m.ImpressumModal })));
+const DatenschutzModal = lazy(() => import('./components/DatenschutzModal.tsx').then(m => ({ default: m.DatenschutzModal })));
+const CookieBanner = lazy(() => import('./components/CookieBanner.tsx').then(m => ({ default: m.CookieBanner })));
 
 const PAGE_ROUTES: Record<string, string> = {
   'start': '/',
@@ -120,7 +120,7 @@ export default function App() {
     }
     return false;
   });
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (isHighContrast) {
@@ -132,19 +132,13 @@ export default function App() {
     }
   }, [isHighContrast]);
 
-  useEffect(() => {
-    // Reduced loading time to improve LCP (Largest Contentful Paint) score
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+  // Loading timer removed for immediate LCP rendering
 
   useEffect(() => {
     // Defer video loading to prioritize LCP text rendering
     const timer = setTimeout(() => {
       setIsVideoDeferred(true);
-    }, 100);
+    }, 500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -277,13 +271,13 @@ export default function App() {
       });
     };
 
-    if (!isLoading) {
+    if (!isLoading && isVideoDeferred) {
       playVideos();
       // Small delay to ensure DOM is ready
       const timer = setTimeout(playVideos, 500);
       return () => clearTimeout(timer);
     }
-  }, [isLoading, currentPage]);
+  }, [isLoading, currentPage, isVideoDeferred]);
 
   return (
     <>
