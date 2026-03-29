@@ -1,11 +1,13 @@
-import React, { useState, startTransition } from 'react';
+import React, { useState, startTransition, useRef } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
+import ReactMarkdown from 'react-markdown';
 
 export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
   const [expandedQual, setExpandedQual] = useState<number | null>(null);
   const qualData = t.qualifications.items;
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
       <div className="flex flex-col items-start gap-1 md:gap-1.5 lg:gap-2 w-full flex-grow animate-in fade-in duration-500 pb-1 md:pb-1">
@@ -52,7 +54,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
           </div>
 
           {/* Werdegang Section */}
-          <div className="mt-24 md:mt-16 w-full">
+          <div className="mt-16 md:mt-24 w-full">
             <h2 className="heading-gradient text-[20px] md:text-[26px] lg:text-[32px] font-medium tracking-tight mb-6">
               {t.qualifications.title}
             </h2>
@@ -69,7 +71,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
               {qualData.map((qual: any, i: number) => {
                 const isExpanded = expandedQual === i;
                 return (
-                  <div key={i} className="relative group">
+                  <div key={i} className="relative group" ref={(el) => (cardRefs.current[i] = el)}>
                     {/* Timeline Node */}
                     <motion.div 
                       initial={{ scale: 0, opacity: 0 }}
@@ -86,7 +88,13 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                       <button 
                         onClick={() => {
                           startTransition(() => {
-                            setExpandedQual(isExpanded ? null : i);
+                            const nextExpanded = isExpanded ? null : i;
+                            setExpandedQual(nextExpanded);
+                            if (nextExpanded !== null) {
+                                setTimeout(() => {
+                                    cardRefs.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }, 500);
+                            }
                           });
                         }}
                         className="w-full text-left p-3 md:p-4 flex justify-between items-center group/btn relative z-10"
@@ -105,14 +113,16 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                         </div>
                       </button>
 
-                      <div className={`transition-all duration-500 ease-in-out relative z-10 ${isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                      <div className={`transition-all duration-500 ease-in-out relative z-10 ${isExpanded ? 'max-h-[none] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                         <div className="px-4 pb-4 md:px-5 md:pb-5 flex flex-col gap-3">
                           <div className="w-full h-[1px] bg-white/5 shrink-0" />
                           <div className="sm:hidden mb-1">
                             <span className="text-gray-200 font-mono text-[10px] bg-gray-400/20 border border-gray-400/30 px-2 py-0.5 rounded-md">{qual.date}</span>
                           </div>
                           {qual.desc && (
-                            <p className="text-white/70 text-[14px] md:text-[15px] leading-relaxed whitespace-pre-line">{qual.desc}</p>
+                            <div className="text-white/70 text-[14px] md:text-[15px] leading-relaxed [&_strong]:text-white [&_strong]:font-bold [&_p]:mb-4">
+                              <ReactMarkdown>{qual.desc}</ReactMarkdown>
+                            </div>
                           )}
                           {qual.content && (
                             <div className="flex flex-wrap gap-2">
@@ -132,7 +142,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
             </div>
           </div>
           
-          <div className="flex flex-col items-center sm:items-start gap-1 mt-12 md:mt-16 pb-12 md:pb-20">
+          <div className="flex flex-col items-center sm:items-start gap-1 mt-16 md:mt-24 pb-12 md:pb-20">
             {/* CTA Button */}
             <div className="flex flex-col items-stretch gap-1 shrink-0 w-full sm:w-auto">
               <p className="text-white/70 text-[12px] md:text-[13px] italic text-center sm:text-left">

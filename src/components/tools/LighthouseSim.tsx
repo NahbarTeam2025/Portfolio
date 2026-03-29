@@ -1,206 +1,225 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Zap, Wifi, Clock, CheckCircle2, AlertTriangle, Info } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Gauge, Image as ImageIcon, FileCode2, Zap, Globe, CheckCircle2, Info } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 
-interface NetworkProfile {
+interface Optimization {
   id: string;
-  name: string;
-  delay: number;
+  title: string;
+  desc: string;
   icon: React.ElementType;
+  scoreBoost: number;
+  lcpReduction: number; // in seconds
+  fcpReduction: number; // in seconds
 }
 
-const NETWORK_PROFILES: NetworkProfile[] = [
-  { id: '4g', name: '4G (Fast)', delay: 500, icon: Wifi },
-  { id: '3g', name: '3G (Slow)', delay: 2500, icon: Wifi },
-  { id: 'edge', name: 'Edge (Very Slow)', delay: 6000, icon: Wifi },
+const OPTIMIZATIONS: Optimization[] = [
+  {
+    id: 'webp',
+    title: 'Bilder optimieren (WebP)',
+    desc: 'Konvertiert große Bilder in moderne, kleinere Formate.',
+    icon: ImageIcon,
+    scoreBoost: 20,
+    lcpReduction: 1.2,
+    fcpReduction: 0.2,
+  },
+  {
+    id: 'minify',
+    title: 'CSS/JS Minifizierung',
+    desc: 'Entfernt unnötige Zeichen aus dem Code für schnellere Downloads.',
+    icon: FileCode2,
+    scoreBoost: 15,
+    lcpReduction: 0.4,
+    fcpReduction: 0.8,
+  },
+  {
+    id: 'lazyload',
+    title: 'Lazy Loading',
+    desc: 'Lädt Bilder erst, wenn sie im sichtbaren Bereich sind.',
+    icon: Zap,
+    scoreBoost: 10,
+    lcpReduction: 0.6,
+    fcpReduction: 0.1,
+  },
+  {
+    id: 'cdn',
+    title: 'Content Delivery Network (CDN)',
+    desc: 'Verteilt Inhalte weltweit für kürzere Server-Antwortzeiten.',
+    icon: Globe,
+    scoreBoost: 15,
+    lcpReduction: 0.8,
+    fcpReduction: 0.5,
+  },
 ];
+
+const ScoreGauge = ({ score }: { score: number }) => {
+  const color = score >= 90 ? 'text-green-500' : score >= 50 ? 'text-yellow-500' : 'text-red-500';
+  const strokeColor = score >= 90 ? '#22c55e' : score >= 50 ? '#eab308' : '#ef4444';
+
+  return (
+    <div className="relative w-32 h-32 flex items-center justify-center">
+      <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="8" className="text-white/10" />
+        <motion.circle
+          cx="50" cy="50" r="40" fill="none" stroke={strokeColor} strokeWidth="8"
+          strokeDasharray="251.2"
+          initial={{ strokeDashoffset: 251.2 }}
+          animate={{ strokeDashoffset: 251.2 - (251.2 * score) / 100 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          strokeLinecap="round"
+        />
+      </svg>
+      <div className={`absolute text-4xl font-bold ${color}`}>{score}</div>
+    </div>
+  );
+};
 
 export const LighthouseSim: React.FC = () => {
   const { t } = useLanguage();
-  const [selectedNetwork, setSelectedNetwork] = useState(NETWORK_PROFILES[0]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [lcpTime, setLcpTime] = useState(0);
-  const [showContent, setShowContent] = useState(false);
-  const [optimization, setOptimization] = useState(false);
+  const [activeOpts, setActiveOpts] = useState<Set<string>>(new Set());
 
-  const startSimulation = () => {
-    setIsLoading(true);
-    setShowContent(false);
-    setLcpTime(0);
+  // Base metrics (unoptimized)
+  const baseScore = 40;
+  const baseLcp = 4.5;
+  const baseFcp = 2.8;
 
-    const startTime = Date.now();
-    const delay = optimization ? selectedNetwork.delay * 0.4 : selectedNetwork.delay;
+  // Calculate current metrics
+  const currentScore = Math.min(100, baseScore + Array.from(activeOpts).reduce((sum, id) => {
+    const opt = OPTIMIZATIONS.find(o => o.id === id);
+    return sum + (opt?.scoreBoost || 0);
+  }, 0));
 
-    setTimeout(() => {
-      setIsLoading(false);
-      setShowContent(true);
-      setLcpTime(Date.now() - startTime);
+  const currentLcp = Math.max(0.8, baseLcp - Array.from(activeOpts).reduce((sum, id) => {
+    const opt = OPTIMIZATIONS.find(o => o.id === id);
+    return sum + (opt?.lcpReduction || 0);
+  }, 0));
 
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'lighthouse_simulated', {
-          event_category: 'tool_interaction',
-          event_label: 'Lighthouse Sim',
-          network: selectedNetwork.id,
-          optimization_active: optimization,
-          lcp_time: Date.now() - startTime
-        });
-      }
-    }, delay);
-  };
+  const currentFcp = Math.max(0.4, baseFcp - Array.from(activeOpts).reduce((sum, id) => {
+    const opt = OPTIMIZATIONS.find(o => o.id === id);
+    return sum + (opt?.fcpReduction || 0);
+  }, 0));
 
-  const getLcpStatus = (time: number) => {
-    if (time < 2500) return { color: 'text-green-400', label: 'Good', icon: CheckCircle2 };
-    if (time < 4000) return { color: 'text-yellow-400', label: 'Needs Improvement', icon: Info };
-    return { color: 'text-red-400', label: 'Poor', icon: AlertTriangle };
+  const toggleOpt = (id: string) => {
+    const next = new Set(activeOpts);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    setActiveOpts(next);
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'lighthouse_optimization_toggled', {
+        event_category: 'tool_interaction',
+        event_label: id,
+        active: next.has(id)
+      });
+    }
   };
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
-      <div className="mb-2 shrink-0">
-        <h2 className="text-lg font-bold text-white mb-0.5">{t.tools.lighthouseSim.title}</h2>
-        <p className="text-[10px] text-white/60">
-          Simuliere die Ladezeit deiner Website unter verschiedenen Netzwerkbedingungen. 
-          LCP (Largest Contentful Paint) misst, wie schnell der Hauptinhalt geladen wird.
-        </p>
+    <div className="flex flex-col h-full overflow-hidden p-4 bg-white/5 rounded-2xl border border-white/10">
+      <div className="mb-4 shrink-0 flex items-center gap-3">
+        <div className="p-2 bg-blue-500/20 rounded-xl">
+          <Gauge className="w-6 h-6 text-blue-400" />
+        </div>
+        <div>
+          <h2 className="text-xl font-bold text-white">Performance Optimizer</h2>
+          <p className="text-xs text-white/60">Aktiviere Optimierungen, um den PageSpeed Score zu verbessern.</p>
+        </div>
       </div>
 
-      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-y-auto pr-2 custom-scrollbar">
-        {/* Simulation Controls */}
-        <div className="space-y-4 bg-white/5 border border-white/10 p-4 rounded-2xl shrink-0">
-          <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-white/40 block">{t.tools.lighthouseSim.network}</label>
-            <div className="grid grid-cols-3 gap-1.5">
-              {NETWORK_PROFILES.map((profile) => (
-                <button
-                  key={profile.id}
-                  onClick={() => setSelectedNetwork(profile)}
-                  className={`p-2 rounded-lg border transition-all flex flex-col items-center gap-1 ${
-                    selectedNetwork.id === profile.id
-                      ? 'bg-blue-500/20 border-blue-500 text-blue-400'
-                      : 'bg-white/5 border-white/10 text-white/60 hover:border-white/20'
-                  }`}
-                >
-                  <profile.icon className="w-4 h-4" />
-                  <span className="text-[8px] font-bold uppercase tracking-wider">{profile.name.split(' ')[0]}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-[10px] uppercase tracking-widest text-white/60 block">Optimierungen</label>
-            <div className="flex items-center justify-between p-3 bg-white/5 border border-white/10 rounded-xl">
-              <div className="flex items-center gap-2">
-                <Zap className={`w-4 h-4 ${optimization ? 'text-yellow-400' : 'text-white/20'}`} />
-                <div>
-                  <p className="text-xs font-medium text-white">WebP & Caching</p>
-                  <p className="text-[9px] text-white/60">~60% schneller</p>
-                </div>
-              </div>
+      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto custom-scrollbar pr-2">
+        {/* Optimizations List */}
+        <div className="space-y-3">
+          <h3 className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2">Verfügbare Optimierungen</h3>
+          {OPTIMIZATIONS.map((opt) => {
+            const isActive = activeOpts.has(opt.id);
+            return (
               <button
-                onClick={() => setOptimization(!optimization)}
-                className={`w-10 h-5 rounded-full relative transition-colors ${optimization ? 'bg-blue-500' : 'bg-white/10'}`}
+                key={opt.id}
+                onClick={() => toggleOpt(opt.id)}
+                className={`w-full text-left p-4 rounded-xl border transition-all duration-300 relative overflow-hidden group ${
+                  isActive 
+                    ? 'bg-blue-500/10 border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.1)]' 
+                    : 'bg-white/5 border-white/10 hover:border-white/20'
+                }`}
               >
-                <motion.div
-                  animate={{ x: optimization ? 22 : 2 }}
-                  className="absolute top-0.5 left-0 w-4 h-4 bg-white rounded-full shadow-lg"
-                />
+                <div className="flex items-start gap-3 relative z-10">
+                  <div className={`p-2 rounded-lg mt-0.5 transition-colors ${isActive ? 'bg-blue-500/20 text-blue-400' : 'bg-white/10 text-white/60'}`}>
+                    <opt.icon className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <h4 className={`text-sm font-bold transition-colors ${isActive ? 'text-blue-400' : 'text-white'}`}>{opt.title}</h4>
+                      {isActive && <CheckCircle2 className="w-4 h-4 text-blue-400" />}
+                    </div>
+                    <p className="text-[11px] text-white/60 leading-relaxed">{opt.desc}</p>
+                    
+                    <div className="mt-2 flex gap-2">
+                      <span className="text-[9px] font-mono text-green-400 bg-green-400/10 px-1.5 py-0.5 rounded">+{opt.scoreBoost} Score</span>
+                      <span className="text-[9px] font-mono text-blue-400 bg-blue-400/10 px-1.5 py-0.5 rounded">-{opt.lcpReduction}s LCP</span>
+                    </div>
+                  </div>
+                </div>
+                {isActive && (
+                  <motion.div
+                    layoutId={`active-opt-${opt.id}`}
+                    className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-transparent pointer-events-none"
+                  />
+                )}
               </button>
-            </div>
-          </div>
-
-          <button
-            onClick={startSimulation}
-            disabled={isLoading}
-            className="w-full py-3 bg-blue-500 hover:bg-blue-600 disabled:bg-blue-500/50 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center gap-2"
-          >
-            {isLoading ? (
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
-              />
-            ) : (
-              <Zap className="w-4 h-4" />
-            )}
-            Simulation starten
-          </button>
+            );
+          })}
         </div>
 
-        {/* Simulation Viewport */}
-        <div className="bg-black/40 border border-white/10 rounded-2xl flex flex-col overflow-hidden">
-          <div className="bg-white/5 border-b border-white/10 p-3 flex items-center gap-2">
-            <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
-              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
-              <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
-            </div>
-            <div className="flex-1 bg-white/5 rounded-md h-5 flex items-center px-2">
-              <span className="text-[10px] text-white/20 font-mono">https://my-awesome-app.com</span>
-            </div>
-          </div>
+        {/* Live Results Dashboard */}
+        <div className="flex flex-col items-center justify-center bg-black/40 rounded-2xl p-6 border border-white/5 relative overflow-hidden">
+          {/* Background Grid */}
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
 
-          <div className="flex-1 relative p-4 flex flex-col items-center justify-center min-h-[200px]">
-            <AnimatePresence mode="wait">
-              {isLoading ? (
-                <motion.div
-                  key="loading"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="flex flex-col items-center gap-3"
-                >
-                  <div className="w-10 h-10 rounded-full border-4 border-white/5 border-t-blue-500 animate-spin" />
-                  <p className="text-[10px] text-white/60 font-mono tracking-widest uppercase">Loading Assets...</p>
-                </motion.div>
-              ) : showContent ? (
-                <motion.div
-                  key="content"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="w-full space-y-3"
-                >
-                  <div className="h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl border border-white/10 flex items-center justify-center">
-                    <span className="text-xl font-bold text-white/80 tracking-tighter">HERO IMAGE</span>
-                  </div>
-                  <div className="space-y-1.5">
-                    <div className="h-3 bg-white/10 rounded w-3/4" />
-                    <div className="h-3 bg-white/10 rounded w-1/2" />
-                    <div className="h-3 bg-white/10 rounded w-2/3" />
-                  </div>
-                </motion.div>
-              ) : (
-                <div className="text-center space-y-2">
-                  <Clock className="w-10 h-10 text-white/10 mx-auto" />
-                  <p className="text-[10px] text-white/60 uppercase tracking-widest">Ready to simulate</p>
-                </div>
-              )}
-            </AnimatePresence>
+          <div className="relative z-10 w-full flex flex-col items-center gap-8">
+            <div className="text-center space-y-2">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-white/60">Live PageSpeed Score</h3>
+              <ScoreGauge score={currentScore} />
+            </div>
 
-            {/* LCP Overlay */}
-            {showContent && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="absolute bottom-3 left-3 right-3 bg-black/80 backdrop-blur-md border border-white/10 p-3 rounded-xl flex items-center justify-between"
-              >
-                <div>
-                  <p className="text-[8px] uppercase tracking-wider text-white/60 mb-0.5">{t.tools.lighthouseSim.lcp}</p>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-lg font-bold ${getLcpStatus(lcpTime).color}`}>
-                      {(lcpTime / 1000).toFixed(1)}s
-                    </span>
-                    <span className={`text-[8px] font-bold uppercase ${getLcpStatus(lcpTime).color}`}>
-                      {getLcpStatus(lcpTime).label}
-                    </span>
-                  </div>
-                </div>
-                {React.createElement(getLcpStatus(lcpTime).icon, {
-                  className: `w-6 h-6 ${getLcpStatus(lcpTime).color}`
-                })}
-              </motion.div>
-            )}
+            <div className="w-full grid grid-cols-2 gap-4">
+              <div className="p-4 bg-white/5 rounded-xl border border-white/10 flex flex-col items-center text-center">
+                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">LCP (Largest Contentful Paint)</p>
+                <motion.p 
+                  key={currentLcp}
+                  initial={{ scale: 1.2, color: '#60a5fa' }}
+                  animate={{ scale: 1, color: '#ffffff' }}
+                  className="text-2xl font-bold font-mono"
+                >
+                  {currentLcp.toFixed(1)}s
+                </motion.p>
+                <p className="text-[9px] text-white/40 mt-1">Ladezeit des Hauptinhalts</p>
+              </div>
+              
+              <div className="p-4 bg-white/5 rounded-xl border border-white/10 flex flex-col items-center text-center">
+                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">FCP (First Contentful Paint)</p>
+                <motion.p 
+                  key={currentFcp}
+                  initial={{ scale: 1.2, color: '#60a5fa' }}
+                  animate={{ scale: 1, color: '#ffffff' }}
+                  className="text-2xl font-bold font-mono"
+                >
+                  {currentFcp.toFixed(1)}s
+                </motion.p>
+                <p className="text-[9px] text-white/40 mt-1">Erste sichtbare Elemente</p>
+              </div>
+            </div>
+
+            <div className="w-full p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg flex items-start gap-3">
+              <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+              <p className="text-[10px] text-blue-200/80 leading-relaxed">
+                {currentScore >= 90 
+                  ? "Hervorragend! Deine Website ist optimal konfiguriert und lädt blitzschnell." 
+                  : currentScore >= 50 
+                    ? "Gut, aber es gibt noch Verbesserungspotenzial. Aktiviere weitere Optimierungen." 
+                    : "Kritisch! Die Ladezeiten sind zu lang. Besucher könnten abspringen."}
+              </p>
+            </div>
           </div>
         </div>
       </div>

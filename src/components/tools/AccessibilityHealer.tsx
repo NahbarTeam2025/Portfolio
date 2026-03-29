@@ -69,8 +69,8 @@ export const AccessibilityHealer: React.FC = () => {
   const progress = (healedCount / elements.length) * 100;
 
   return (
-    <div className="flex flex-col items-center gap-2 md:gap-4 p-2 w-full h-full max-w-4xl mx-auto overflow-y-auto lg:overflow-hidden">
-      <div className="text-center space-y-0.5">
+    <div className="flex flex-col items-center gap-2 md:gap-4 p-2 w-full h-full max-w-4xl mx-auto overflow-y-auto custom-scrollbar">
+      <div className="text-center space-y-0.5 shrink-0">
         <h2 className="text-lg md:text-2xl font-bold heading-gradient">
           {t.tools.accessibilityHealer.title}
         </h2>
@@ -94,7 +94,7 @@ export const AccessibilityHealer: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-6 w-full flex-1 min-h-0 overflow-y-auto lg:overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-6 w-full flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2">
         {/* Solutions Panel */}
         <div className="space-y-1.5">
           <h3 className="text-[8px] uppercase tracking-[0.2em] text-white/60 font-mono mb-1">

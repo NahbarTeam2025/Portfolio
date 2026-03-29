@@ -51,7 +51,7 @@ const ROUTE_TO_PAGE: Record<string, string> = Object.fromEntries(
   Object.entries(PAGE_ROUTES).map(([key, value]) => [value, key])
 );
 
-const PAGES = ['about', 'projects', 'skills', 'certificates', 'tools'];
+const PAGES = ['about', 'skills', 'certificates', 'projects', 'tools'];
 
 export default function App() {
   const { t } = useLanguage();

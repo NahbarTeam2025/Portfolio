@@ -257,15 +257,15 @@ export const translations = {
       items: [
         {
           date: '07/2025 – 04/2026',
-          title: 'Digital Marketing Manager (Weiterbildung)',
+          title: 'Weiterbildung: Digital Marketing Manager',
           company: 'GFN GmbH',
-          content: ['Content Marketing', 'Social Media Marketing', 'SEO / SEA', 'E-Commerce und datengetriebene Kampagnen', 'Web Analytics (Google Analytics, Tag Manager)', 'Neuromarketing']
+          desc: '**Online-Vollzeit-Weiterbildung** · Abschluss: 5 Zertifikate von Webmasters Europe e.V. mit abschließendem Diplom\n\nGesamtausbildung im digitalen Marketing: Online-Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics sowie E-Commerce.\n\n**Online-Marketing & Verkaufspsychologie · 4 Wochen**\n\nGrundlagen digitales Marketing, Zielgruppenanalyse, Neuromarketing und Kaufpsychologie, KI-Tools im Marketing. Abschluss: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 Monate**\n\nPlattformstrategie (Facebook, Instagram, LinkedIn, YouTube), Social Ads, virales Marketing, Facebook Advertising. Abschluss: Certified Social Media Manager:in\n\n**Content Marketing · 2 Monate**\n\nContent-Strategie, E-Mail-Marketing, WordPress, Blogging und SEO-Content. Abschluss: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 Monate**\n\nSuchmaschinenoptimierung, Google Ads, Kampagnenmanagement, Google Analytics, Google Tag Manager. Abschluss: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 Monate**\n\nOnline-Shop-Strategie, WooCommerce, Google Analytics, Social Ads, Projektarbeit mit eigenem Shop-Konzept. Abschluss: GFN-Zertifikat E-Commerce Manager\n\n*Alle Kurse über GFN GmbH, online, gefördert. Zertifikate von Webmasters Europe e.V. sind anerkannte Branchenzertifizierungen.*'
         },
         {
           date: '06/2024 – 05/2025',
-          title: 'Kaufmännische Weiterbildung',
-          company: 'Fortbildungsakademie der Wirtschaft (IBB)',
-          content: ['Kaufmännischer Schriftverkehr nach DIN 5008', 'MS Office', 'Datenbanken (MS Access)', 'IT-Sicherheit', 'Datenschutz (DSGVO)']
+          title: 'Büro & digitale Kompetenzen',
+          company: 'Vollzeit-Weiterbildungsreihe · FAW Akademie Cottbus',
+          desc: 'Praxisorientierte Qualifizierung in Bürokommunikation, MS-Office-Anwendungen, Datenschutz, IT-Sicherheit und digitaler Arbeitswelt.\n\n**Büroverwaltung & Kommunikation · 180 Std.**\n\nKommunikationsformen, Selbst- und Zeitmanagement, Projektdokumentation\n\n**MS Word – Grundlagen · 90 Std.**\n\nDokumentenerstellung, Formatierung, Seriendruck, Vorlagen\n\n**MS Excel – Grundlagen & Aufbaukurs · je 90 Std.**\n\nTabellen, Formeln, PIVOT, Diagramme, Datenbankfunktionen\n\n**Layout mit MS Office · 90 Std.**\n\nTypografie, Corporate Design, Geschäftsdokumente, Formulare, Drucksachen\n\n**Datenbanken mit MS Access · 90 Std.**\n\nDatenbankstruktur, Abfragen, Formulare, Berichte\n\n**Bildbearbeitung mit GIMP · 90 Std.**\n\nBildretusche, Freistellung, Filter, Pixel- und Vektorgrafiken\n\n**Kaufmännischer Schriftverkehr · 45 Std.**\n\nGeschäftsdokumente, Rechnungsrecht §14 UStG, Datensicherheit\n\n**Datenschutz – BDSG & DSGVO · 45 Std.**\n\nGesetzliche Grundlagen, betrieblicher Datenschutz, technisch-organisatorische Maßnahmen\n\n**IT-Sicherheit · 45 Std.**\n\nNetzwerksicherheit, Malware, Datensicherung, Zugangskontrolle\n\n**Digitalisierte Arbeitswelt 4.0 · begleitend**\n\nVernetztes Arbeiten, agile Methoden, virtuelle Teams (IBB AG / VIONA)'
         }
       ]
     },
@@ -284,15 +284,26 @@ export const translations = {
       ctaButton: 'Unverbindlich kennenlernen →',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
-        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
-        { id: 3, title: 'E-Commerce Manager/Assistenz', issuer: 'GFN GmbH' },
-        { id: 4, title: 'Neuromarketing', issuer: 'GFN GmbH' },
-        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH' },
-        { id: 6, title: 'SEO', issuer: 'GFN GmbH' },
-        { id: 7, title: 'PPC-Manager', issuer: 'GFN GmbH' },
-        { id: 8, title: 'Web Analytics', issuer: 'GFN GmbH' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
+        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
+        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
+        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
+        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
+        { id: 8, title: 'Web Analytics via GA4', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_web-analyst.pdf' },
         { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH' },
-        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic' }
+        { id: 11, title: 'Bildbearbeitung mit Gimp', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
+        { id: 12, title: 'Büroverwaltung und Kommunikation', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
+        { id: 13, title: 'Datenbanken mit MS Access', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
+        { id: 14, title: 'Datenschutz', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
+        { id: 15, title: 'Digitalisierte Arbeitswelt', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
+        { id: 16, title: 'IT-Sicherheit', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
+        { id: 17, title: 'Kaufmännischer Schriftverkehr', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
+        { id: 18, title: 'Layout mit MS Office', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
+        { id: 19, title: 'MS Excel Grundlagen', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
+        { id: 20, title: 'MS Excel Aufbaukurs', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
+        { id: 21, title: 'MS Word', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
+        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf' }
       ]
     },
     footer: {
@@ -648,13 +659,13 @@ export const translations = {
           date: '07/2025 – 04/2026',
           title: 'Digital Marketing Manager (Further Training)',
           company: 'GFN GmbH',
-          content: ['Content Marketing', 'Social Media Marketing', 'SEO / SEA', 'E-Commerce and data-driven campaigns', 'Web Analytics (Google Analytics, Tag Manager)', 'Neuromarketing']
+          desc: '**Online Full-time Further Training** · Completion: 5 Certificates from Webmasters Europe e.V.\n\nComprehensive training in digital marketing: Online Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics as well as E-Commerce.\n\n**Online Marketing & Sales Psychology · 4 weeks**\n\nBasics of digital marketing, target group analysis, neuromarketing and buying psychology, AI tools in marketing. Completion: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 months**\n\nPlatform strategy (Facebook, Instagram, LinkedIn, YouTube), Social Ads, viral marketing, Facebook Advertising. Completion: Certified Social Media Manager\n\n**Content Marketing · 2 months**\n\nContent strategy, email marketing, WordPress, blogging and SEO content. Completion: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 months**\n\nSearch engine optimization, Google Ads, campaign management, Google Analytics, Google Tag Manager. Completion: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 months**\n\nOnline shop strategy, WooCommerce, Google Analytics, Social Ads, project work with own shop concept. Completion: GFN Certificate E-Commerce Manager\n\n*All courses via GFN GmbH, online, funded. Certificates from Webmasters Europe e.V. are recognized industry certifications.*'
         },
         {
           date: '06/2024 – 05/2025',
           title: 'Commercial Further Training',
           company: 'Fortbildungsakademie der Wirtschaft (IBB)',
-          content: ['Commercial correspondence according to DIN 5008', 'MS Office', 'Databases (MS Access)', 'IT Security', 'Data Protection (GDPR)']
+          desc: '**Office & Digital Competencies** · Full-time training series · FAW Akademie Cottbus\n\nPractice-oriented qualification in office communication, MS Office applications, data protection, IT security, and the digital working world.\n\n**Office Administration & Communication · 180 hrs.**\n\nForms of communication, self- and time management, project documentation\n\n**MS Word – Basics · 90 hrs.**\n\nDocument creation, formatting, mail merge, templates\n\n**MS Excel – Basics & Advanced · 90 hrs. each**\n\nTables, formulas, PIVOT, diagrams, database functions\n\n**Layout with MS Office · 90 hrs.**\n\nTypography, corporate design, business documents, forms, printed matter\n\n**Databases with MS Access · 90 hrs.**\n\nDatabase structure, queries, forms, reports\n\n**Image Editing with GIMP · 90 hrs.**\n\nImage retouching, cropping, filters, pixel and vector graphics\n\n**Commercial Correspondence · 45 hrs.**\n\nBusiness documents, accounting law §14 UStG, data security\n\n**Data Protection – BDSG & GDPR · 45 hrs.**\n\nLegal foundations, operational data protection, technical-organizational measures\n\n**IT Security · 45 hrs.**\n\nNetwork security, malware, data backup, access control\n\n**Digitalized Working World 4.0 · accompanying**\n\nNetworked working, agile methods, virtual teams (IBB AG / VIONA)'
         }
       ]
     },
@@ -673,15 +684,26 @@ export const translations = {
       ctaButton: 'Get to know each other non-bindingly →',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
-        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH' },
-        { id: 3, title: 'E-Commerce Manager/Assistant', issuer: 'GFN GmbH' },
-        { id: 4, title: 'Neuromarketing', issuer: 'GFN GmbH' },
-        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH' },
-        { id: 6, title: 'SEO', issuer: 'GFN GmbH' },
-        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH' },
-        { id: 8, title: 'Web Analytics', issuer: 'GFN GmbH' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
+        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
+        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
+        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
+        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
+        { id: 8, title: 'Web Analytics via GA4', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_web-analyst.pdf' },
         { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH' },
-        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic' }
+        { id: 11, title: 'Image Editing with GIMP', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
+        { id: 12, title: 'Office Administration and Communication', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
+        { id: 13, title: 'Databases with MS Access', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
+        { id: 14, title: 'Data Protection', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
+        { id: 15, title: 'Digitalized Working World', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
+        { id: 16, title: 'IT Security', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
+        { id: 17, title: 'Commercial Correspondence', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
+        { id: 18, title: 'Layout with MS Office', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
+        { id: 19, title: 'MS Excel Basics', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
+        { id: 20, title: 'MS Excel Advanced Course', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
+        { id: 21, title: 'MS Word', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
+        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf' }
       ]
     },
     footer: {
