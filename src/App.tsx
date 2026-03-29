@@ -175,7 +175,7 @@ export default function App() {
     setIsMobileMenuOpen(false);
   }, [navigate, location.pathname]);
 
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number>(0);
   const cardRects = useRef<Map<HTMLElement, DOMRect>>(new Map());
 
   useEffect(() => {
@@ -264,7 +264,7 @@ export default function App() {
   return (
     <>
       <div 
-        className="relative min-h-[100dvh] w-full font-sans"
+        className="relative min-h-screen min-h-[100dvh] w-full font-sans"
         onMouseMove={handleMouseMove}
       >
       {/* Background Videos Layer */}
@@ -349,7 +349,7 @@ export default function App() {
         />
       )}
 
-      <div className={`relative z-10 flex flex-col h-[100dvh] overflow-x-hidden`}>
+      <div className={`relative z-10 flex flex-col ${currentPage === 'start' ? 'h-screen h-[100dvh] overflow-hidden' : 'min-h-screen min-h-[100dvh] overflow-x-hidden'}`}>
         {/* Navbar */}
         <nav className={`sticky top-0 flex items-center justify-between px-4 py-1 md:px-6 md:py-3 w-full z-50 transition-all duration-300 ${(currentPage !== 'start' || isMobileMenuOpen) ? 'bg-black/20 backdrop-blur-[15px] saturate-[180%] border-b border-white/5' : 'bg-transparent'}`}>
           <div className="flex items-center">
@@ -473,7 +473,7 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                className="absolute top-full left-0 w-full h-[calc(100dvh-100%)] bg-black/20 backdrop-blur-[15px] saturate-[180%] border-t border-white/5 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto pb-24 shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+                className="absolute top-full left-0 w-full h-[calc(100vh-100%)] h-[calc(100dvh-100%)] bg-black/20 backdrop-blur-[15px] saturate-[180%] border-t border-white/5 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto pb-24 shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
               >
                 {PAGES.map((pageId, index) => (
                   <motion.a
@@ -537,7 +537,7 @@ export default function App() {
         </nav>
 
         {/* Main Content */}
-        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'start' ? 'items-center justify-center text-center' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-2 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''} lg:h-[calc(100dvh-80px)] lg:overflow-hidden`}>
+        <main className={`flex-grow flex flex-col px-6 ${currentPage === 'start' ? 'items-center justify-center text-center overflow-hidden' : 'items-start justify-start pt-4 pb-12 md:py-6 lg:py-2 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentPage}
@@ -545,7 +545,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className={`w-full flex flex-col flex-grow lg:overflow-y-auto glass-scrollbar ${currentPage === 'start' ? 'items-center justify-center h-full' : 'h-full'}`}
+              className={`w-full flex flex-col flex-grow ${currentPage === 'start' ? 'items-center justify-center' : ''}`}
             >
               <Suspense fallback={<div className="text-white/50">{t.common.loading}</div>}>
                 {currentPage === 'start' ? (

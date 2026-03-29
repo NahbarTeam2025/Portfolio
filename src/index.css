@@ -2,6 +2,19 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
+/* Safari Backdrop Filter Fixes */
+@supports (-webkit-backdrop-filter: none) {
+  .backdrop-blur-sm { -webkit-backdrop-filter: blur(4px); }
+  .backdrop-blur-md { -webkit-backdrop-filter: blur(12px); }
+  .backdrop-blur-xl { -webkit-backdrop-filter: blur(24px); }
+  .backdrop-blur-2xl { -webkit-backdrop-filter: blur(40px); }
+  .backdrop-blur-\[15px\] { -webkit-backdrop-filter: blur(15px); }
+  .backdrop-blur-\[20px\] { -webkit-backdrop-filter: blur(20px); }
+  
+  .backdrop-blur-\[15px\].saturate-\[180\%\] { -webkit-backdrop-filter: blur(15px) saturate(1.8); }
+  .backdrop-blur-\[20px\].saturate-\[180\%\] { -webkit-backdrop-filter: blur(20px) saturate(1.8); }
+}
+
 @theme {
 }
 
@@ -147,6 +160,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 
   /* Global Video Fix */
@@ -158,6 +172,7 @@ video {
     background: linear-gradient(90deg, #ffffff 0%, #e5e4e2 30%, #c0c0c0 100%);
     background-size: 200% auto;
     color: transparent;
+    -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
     animation: gradient-shift 12s ease-in-out infinite;

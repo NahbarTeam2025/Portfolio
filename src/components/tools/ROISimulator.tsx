@@ -43,7 +43,7 @@ export const ROISimulator: React.FC = () => {
         <p className="text-[10px] text-white/60">{t.tools.roiSimulator.desc}</p>
       </div>
 
-      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-y-auto pr-2 custom-scrollbar">
+      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-y-auto pr-2 glass-scrollbar">
         {/* Controls */}
         <div className="space-y-4 bg-white/5 border border-white/10 p-4 rounded-2xl shrink-0">
           <div className="space-y-2">

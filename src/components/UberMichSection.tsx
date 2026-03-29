@@ -45,7 +45,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                 alt={t.hero.title} 
                 width="250"
                 height="60"
-                className="h-8 sm:h-11 md:h-16 lg:h-20 w-auto object-contain invert mix-blend-screen opacity-90"
+                className="h-8 sm:h-11 md:h-16 lg:h-20 w-auto object-contain invert mix-blend-screen opacity-90 transform-gpu"
                 style={{ forcedColorAdjust: 'none' }}
                 loading="lazy"
                 decoding="async"
@@ -71,7 +71,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
               {qualData.map((qual: any, i: number) => {
                 const isExpanded = expandedQual === i;
                 return (
-                  <div key={i} className="relative group" ref={(el) => (cardRefs.current[i] = el)}>
+                  <div key={i} className="relative group scroll-mt-20 lg:scroll-mt-0" ref={(el) => { cardRefs.current[i] = el; }}>
                     {/* Timeline Node */}
                     <motion.div 
                       initial={{ scale: 0, opacity: 0 }}
@@ -142,10 +142,10 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
             </div>
           </div>
           
-          <div className="flex flex-col items-center sm:items-start gap-1 mt-16 md:mt-24 pb-12 md:pb-20">
+          <div className="flex flex-col items-center gap-1 mt-16 md:mt-24 pb-12 md:pb-20 w-full">
             {/* CTA Button */}
-            <div className="flex flex-col items-stretch gap-1 shrink-0 w-full sm:w-auto">
-              <p className="text-white/70 text-[12px] md:text-[13px] italic text-center sm:text-left">
+            <div className="flex flex-col items-center gap-1 shrink-0 w-fit mx-auto">
+              <p className="text-white/70 text-[12px] md:text-[13px] italic text-center">
                 {t.about.cta.text}
               </p>
               <button 
@@ -158,7 +158,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                   }
                   handleNavigate('contact');
                 }}
-                className="flex items-center justify-center gap-2 rounded-xl px-4 py-1 md:px-6 md:py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[13px] md:text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+                className="w-full flex items-center justify-center gap-2 rounded-xl px-4 py-1 md:px-6 md:py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[13px] md:text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
               >
                 <span className="relative z-10">{t.about.cta.button}</span>
               </button>

@@ -128,7 +128,7 @@ export const LighthouseSim: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto custom-scrollbar pr-2">
+      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto glass-scrollbar pr-2">
         {/* Optimizations List */}
         <div className="space-y-3">
           <h3 className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2">{t.tools.performanceOptimizer.availableOpts}</h3>

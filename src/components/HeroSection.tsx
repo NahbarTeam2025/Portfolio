@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
   return (
-    <div id="hero" className="flex flex-col items-center justify-center w-full max-w-[1200px] mx-auto relative z-10 h-full px-6 lg:py-0 pt-2 pb-4 lg:max-h-[70dvh]">
+    <div id="hero" className="flex flex-col items-center justify-center w-full max-w-[1200px] mx-auto relative z-10 h-full px-6 lg:py-0 pt-1 pb-2 lg:max-h-[70dvh]">
       
       {/* 01. Minimalist Status Badge */}
       <motion.div 
@@ -54,7 +54,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
 
         {/* Description - Focused Content */}
         <p 
-          className="text-white/70 font-sans text-[clamp(0.85rem,1.4vw,1rem)] font-light leading-relaxed max-w-[550px] mb-8 lg:mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 fill-mode-both"
+          className="text-white/70 font-sans text-[clamp(0.8rem,1.4vw,1rem)] font-light leading-relaxed max-w-[550px] mb-6 lg:mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 fill-mode-both"
         >
           {t.hero.desc}
         </p>
@@ -64,15 +64,15 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-8 w-full max-w-[650px] border-y border-white/5 py-6 mb-8 lg:mb-10"
+          className="grid grid-cols-3 gap-2 sm:gap-8 w-full max-w-[650px] border-y border-white/5 py-4 lg:py-6 mb-6 lg:mb-10"
         >
           {[t.hero.design, t.hero.structure, t.hero.ki].map((item, idx) => (
-            <div key={item} className="flex flex-col items-center gap-3 group">
-              <div className="text-white/60 text-[10px] font-mono tracking-widest uppercase mb-0.5">0{idx + 1}</div>
-              <div className="flex items-center gap-2.5">
+            <div key={item} className="grid grid-cols-[auto_1fr] gap-x-2 items-center group">
+              <div className="flex flex-col items-center justify-center h-full">
+                <div className="text-white/60 text-[9px] md:text-[10px] font-mono tracking-widest uppercase leading-none mb-1">0{idx + 1}</div>
                 <div className="w-1 h-1 rounded-full bg-green-500/70 group-hover:bg-green-400 transition-colors" />
-                <span className="text-white/70 text-[10px] lg:text-xs font-medium tracking-[0.2em] uppercase transition-colors group-hover:text-white">{item}</span>
               </div>
+              <span className="text-white/70 text-[8px] sm:text-[10px] lg:text-xs font-medium tracking-[0.1em] sm:tracking-[0.2em] uppercase transition-colors group-hover:text-white text-left leading-none flex items-center h-full">{item}</span>
             </div>
           ))}
         </motion.div>

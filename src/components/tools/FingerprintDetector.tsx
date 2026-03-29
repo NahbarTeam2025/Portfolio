@@ -114,7 +114,7 @@ export const FingerprintDetector: React.FC = () => {
           </div>
         )}
 
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 overflow-y-auto pr-2 custom-scrollbar">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 overflow-y-auto pr-2 glass-scrollbar">
           <AnimatePresence>
             {results.map((item, index) => (
               <motion.div

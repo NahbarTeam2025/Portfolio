@@ -6,25 +6,32 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // FOR TESTING: Clear the saved consent so the banner shows up immediately on reload
+    // Force clear once for the user to see it now
     localStorage.removeItem('cookie-consent');
 
     const checkConsent = () => {
+      console.log('Checking cookie consent...');
       try {
         const consent = localStorage.getItem('cookie-consent');
+        console.log('Current consent:', consent);
         const urlParams = new URLSearchParams(window.location.search);
         const forceShow = urlParams.get('debug_cookies') === 'true';
         
         if (forceShow) {
+          console.log('Forcing show via URL param');
           setIsVisible(true);
           return;
         }
 
         // Only show if no consent has been given yet
         if (!consent) {
+          console.log('No consent found, showing banner');
           setIsVisible(true);
+        } else {
+          console.log('Consent already given, hiding banner');
         }
       } catch (e) {
+        console.error('Error checking consent:', e);
         setIsVisible(true);
       }
     };

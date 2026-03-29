@@ -7,7 +7,7 @@ export const ImpressumModal = ({ setIsImpressum }: { setIsImpressum: (open: bool
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-md" onClick={() => startTransition(() => setIsImpressum(false))} />
-      <div className="relative w-full max-w-2xl max-h-[85dvh] bg-black/20 backdrop-blur-[20px] saturate-[180%] border border-white/10 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-300" tabIndex={-1}>
+      <div className="relative w-full max-w-2xl max-h-[85vh] max-h-[85dvh] bg-black/20 backdrop-blur-[20px] saturate-[180%] border border-white/10 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-300" tabIndex={-1}>
         <div className="flex items-center justify-between p-6 border-b border-white/5 shrink-0">
           <h2 id="modal-title" className="text-2xl font-medium text-white">{t.impressum.title}</h2>
           <button 
