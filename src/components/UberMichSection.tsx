@@ -54,7 +54,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
           </div>
 
           {/* Werdegang Section */}
-          <div className="mt-32 md:mt-24 w-full">
+          <div className="mt-40 md:mt-32 w-full">
             <h2 className="heading-gradient text-[20px] md:text-[26px] lg:text-[32px] font-medium tracking-tight mb-6">
               {t.qualifications.title}
             </h2>
