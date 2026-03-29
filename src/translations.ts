@@ -42,17 +42,26 @@ export const translations = {
           image: 'Bild ohne Alt-Text',
           button: 'Kontrast zu gering',
           input: 'Fehlendes Label',
+          heading: 'Fehlende Überschrift',
         },
         solutions: {
           altText: 'Alt-Text hinzufügen',
           contrast: 'Kontrast erhöhen',
           label: 'Label verknüpfen',
+          heading: 'Überschriftenstruktur hinzufügen',
+          tabIndex: 'Tab-Reihenfolge korrigieren',
+          aria: 'ARIA-Label hinzufügen',
         },
         success: 'Geheilt!',
+        availableFixes: 'Verfügbare Lösungen',
+        brokenElements: 'Fehlerhafte UI-Elemente',
+        submitForm: 'Formular senden',
+        fullName: 'Vollständiger Name',
       },
       funnelTycoon: {
         title: 'Funnel Tycoon',
         desc: 'Optimiere deinen Marketing-Funnel und schließe die Conversion-Lecks.',
+        budget: 'Budget',
         stats: {
           visitors: 'Besucher',
           leads: 'Leads',
@@ -63,6 +72,51 @@ export const translations = {
           pageSpeed: 'Page Speed Fix',
           copywriting: 'Copywriting Pro',
         },
+        messages: {
+          insufficientBudget: 'Nicht genug Budget!',
+          accountFlagged: 'Werbekonto gesperrt! Conversion gesunken.',
+          upgradeSuccess: 'Upgrade erfolgreich!',
+          ready: 'Bereit',
+        },
+        strategies: 'Wachstumsstrategien',
+        cost: 'Kosten',
+        liveAnalytics: 'Live-Analysen',
+        totalConversion: 'Gesamt-Conversion',
+        roiGrowth: 'ROI-Wachstum',
+      },
+      performanceOptimizer: {
+        title: 'Performance Optimizer',
+        desc: 'Aktiviere Optimierungen, um den PageSpeed Score zu verbessern.',
+        availableOpts: 'Verfügbare Optimierungen',
+        liveScore: 'Live PageSpeed Score',
+        lcp: 'LCP (Largest Contentful Paint)',
+        lcpDesc: 'Ladezeit des Hauptinhalts',
+        fcp: 'FCP (First Contentful Paint)',
+        fcpDesc: 'Erste sichtbare Elemente',
+        score: 'Score',
+        feedback: {
+          good: 'Hervorragend! Deine Website ist optimal konfiguriert und lädt blitzschnell.',
+          average: 'Gut, aber es gibt noch Verbesserungspotenzial. Aktiviere weitere Optimierungen.',
+          poor: 'Kritisch! Die Ladezeiten sind zu lang. Besucher könnten abspringen.'
+        },
+        opts: {
+          webp: {
+            title: 'Bilder optimieren (WebP)',
+            desc: 'Konvertiert große Bilder in moderne, kleinere Formate.'
+          },
+          minify: {
+            title: 'CSS/JS Minifizierung',
+            desc: 'Entfernt unnötige Zeichen aus dem Code für schnellere Downloads.'
+          },
+          lazyload: {
+            title: 'Lazy Loading',
+            desc: 'Lädt Bilder erst, wenn sie im sichtbaren Bereich sind.'
+          },
+          cdn: {
+            title: 'Content Delivery Network (CDN)',
+            desc: 'Verteilt Inhalte weltweit für kürzere Server-Antwortzeiten.'
+          }
+        }
       },
       fingerprintDetector: {
         title: 'Fingerprint Detector',
@@ -442,17 +496,26 @@ export const translations = {
           image: 'Image without Alt-Text',
           button: 'Contrast too low',
           input: 'Missing Label',
+          heading: 'Missing Heading',
         },
         solutions: {
           altText: 'Add Alt-Text',
           contrast: 'Increase Contrast',
           label: 'Link Label',
+          heading: 'Add Heading Structure',
+          tabIndex: 'Fix Tab Order',
+          aria: 'Add ARIA Label',
         },
         success: 'Healed!',
+        availableFixes: 'Available Fixes',
+        brokenElements: 'Broken UI Elements',
+        submitForm: 'Submit Form',
+        fullName: 'Full Name',
       },
       funnelTycoon: {
         title: 'Funnel Tycoon',
         desc: 'Optimize your marketing funnel and close conversion leaks.',
+        budget: 'Budget',
         stats: {
           visitors: 'Visitors',
           leads: 'Leads',
@@ -463,6 +526,51 @@ export const translations = {
           pageSpeed: 'Page Speed Fix',
           copywriting: 'Copywriting Pro',
         },
+        messages: {
+          insufficientBudget: 'Not enough budget!',
+          accountFlagged: 'Ad account flagged! Conversion dropped.',
+          upgradeSuccess: 'Upgrade successful!',
+          ready: 'Ready',
+        },
+        strategies: 'Growth Strategies',
+        cost: 'Cost',
+        liveAnalytics: 'Live Analytics',
+        totalConversion: 'Total Conversion',
+        roiGrowth: 'ROI Growth',
+      },
+      performanceOptimizer: {
+        title: 'Performance Optimizer',
+        desc: 'Enable optimizations to improve the PageSpeed Score.',
+        availableOpts: 'Available Optimizations',
+        liveScore: 'Live PageSpeed Score',
+        lcp: 'LCP (Largest Contentful Paint)',
+        lcpDesc: 'Loading time of main content',
+        fcp: 'FCP (First Contentful Paint)',
+        fcpDesc: 'First visible elements',
+        score: 'Score',
+        feedback: {
+          good: 'Excellent! Your website is optimally configured and loads lightning fast.',
+          average: 'Good, but there is still room for improvement. Enable more optimizations.',
+          poor: 'Critical! Loading times are too long. Visitors might bounce.'
+        },
+        opts: {
+          webp: {
+            title: 'Optimize Images (WebP)',
+            desc: 'Converts large images into modern, smaller formats.'
+          },
+          minify: {
+            title: 'CSS/JS Minification',
+            desc: 'Removes unnecessary characters from code for faster downloads.'
+          },
+          lazyload: {
+            title: 'Lazy Loading',
+            desc: 'Loads images only when they enter the visible area.'
+          },
+          cdn: {
+            title: 'Content Delivery Network (CDN)',
+            desc: 'Distributes content globally for faster server response times.'
+          }
+        }
       },
       fingerprintDetector: {
         title: 'Fingerprint Detector',

@@ -33,7 +33,7 @@ export const FunnelTycoon: React.FC = () => {
 
     const cost = 200;
     if (!upgrade.isActive && budget < cost) {
-      setMessage({ text: "Insufficient Budget!", type: 'error' });
+      setMessage({ text: t.tools.funnelTycoon.messages.insufficientBudget, type: 'error' });
       setTimeout(() => setMessage(null), 2000);
       return;
     }
@@ -45,11 +45,11 @@ export const FunnelTycoon: React.FC = () => {
           setBudget(b => b - cost);
           // 20% chance of "Risk" backfiring for copywriting
           if (id === 'copywriting' && Math.random() < 0.2) {
-            setMessage({ text: "Ad Account Flagged! Conversion dropped.", type: 'error' });
+            setMessage({ text: t.tools.funnelTycoon.messages.accountFlagged, type: 'error' });
             setTimeout(() => setMessage(null), 3000);
             // We'll handle the negative impact in the effect
           } else {
-            setMessage({ text: "Upgrade Successful!", type: 'success' });
+            setMessage({ text: t.tools.funnelTycoon.messages.upgradeSuccess, type: 'success' });
             setTimeout(() => setMessage(null), 2000);
           }
         } else {
@@ -77,7 +77,7 @@ export const FunnelTycoon: React.FC = () => {
 
     upgrades.forEach(up => {
       if (up.isActive) {
-        if (up.id === 'copywriting' && message?.text.includes('Flagged')) {
+        if (up.id === 'copywriting' && message?.text === t.tools.funnelTycoon.messages.accountFlagged) {
           customerMultiplier *= 0.5; // Penalty
         } else {
           leadMultiplier *= (1 + (up.impact - 1) * 0.5);
@@ -126,7 +126,7 @@ export const FunnelTycoon: React.FC = () => {
                 {message.text}
               </motion.div>
             ) : (
-              <div className="text-[8px] font-bold uppercase tracking-wider text-white/20">Ready</div>
+              <div className="text-[8px] font-bold uppercase tracking-wider text-white/20">{t.tools.funnelTycoon.messages.ready}</div>
             )}
           </AnimatePresence>
         </div>
@@ -187,7 +187,7 @@ export const FunnelTycoon: React.FC = () => {
               {customerRate}% CR
             </div>
 
-            {(!upgrades.find(u => u.id === 'copywriting')?.isActive || message?.text.includes('Flagged')) && (
+            {(!upgrades.find(u => u.id === 'copywriting')?.isActive || message?.text === t.tools.funnelTycoon.messages.accountFlagged) && (
               <motion.div animate={{ y: [0, 10], opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1.8, delay: 0.6 }} className="absolute right-4 top-1/2 w-0.5 h-3 bg-red-500/30 rounded-full" />
             )}
           </motion.div>
@@ -210,7 +210,7 @@ export const FunnelTycoon: React.FC = () => {
         <div className="space-y-3">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="w-4 h-4 text-blue-400" />
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white/80">Growth Strategies</h3>
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white/80">{t.tools.funnelTycoon.strategies}</h3>
           </div>
 
           <div className="grid grid-cols-1 gap-2">
@@ -230,7 +230,7 @@ export const FunnelTycoon: React.FC = () => {
                   </div>
                   <div className="text-left">
                     <div className="text-[10px] font-bold uppercase tracking-widest mb-0.5">{up.label}</div>
-                    <div className="text-[8px] font-mono opacity-50">Cost: $200</div>
+                    <div className="text-[8px] font-mono opacity-50">{t.tools.funnelTycoon.cost}: 200 €</div>
                   </div>
                 </div>
                 
@@ -248,18 +248,18 @@ export const FunnelTycoon: React.FC = () => {
           <div className="mt-4 p-4 bg-black/40 rounded-xl border border-white/5 backdrop-blur-sm">
             <div className="flex items-center gap-2 mb-2">
               <Activity className="w-3 h-3 text-blue-400/60" />
-              <span className="text-[8px] uppercase tracking-widest text-white/30 font-mono">Live Analytics</span>
+              <span className="text-[8px] uppercase tracking-widest text-white/30 font-mono">{t.tools.funnelTycoon.liveAnalytics}</span>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-0.5">
                 <div className="text-lg font-bold text-white/90">{((stats.customers / stats.visitors) * 100).toFixed(2)}%</div>
-                <div className="text-[8px] uppercase tracking-widest text-white/30 font-mono">Total Conversion</div>
+                <div className="text-[8px] uppercase tracking-widest text-white/30 font-mono">{t.tools.funnelTycoon.totalConversion}</div>
               </div>
               <div className="space-y-0.5">
                 <div className={`text-lg font-bold ${stats.customers > 5 ? 'text-green-400' : 'text-white/40'}`}>
                   {stats.customers > 5 ? `+${Math.round(((stats.customers / 5) - 1) * 100)}%` : '0%'}
                 </div>
-                <div className="text-[8px] uppercase tracking-widest text-white/30 font-mono">ROI Growth</div>
+                <div className="text-[8px] uppercase tracking-widest text-white/30 font-mono">{t.tools.funnelTycoon.roiGrowth}</div>
               </div>
             </div>
           </div>

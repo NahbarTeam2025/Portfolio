@@ -13,44 +13,7 @@ interface Optimization {
   fcpReduction: number; // in seconds
 }
 
-const OPTIMIZATIONS: Optimization[] = [
-  {
-    id: 'webp',
-    title: 'Bilder optimieren (WebP)',
-    desc: 'Konvertiert große Bilder in moderne, kleinere Formate.',
-    icon: ImageIcon,
-    scoreBoost: 20,
-    lcpReduction: 1.2,
-    fcpReduction: 0.2,
-  },
-  {
-    id: 'minify',
-    title: 'CSS/JS Minifizierung',
-    desc: 'Entfernt unnötige Zeichen aus dem Code für schnellere Downloads.',
-    icon: FileCode2,
-    scoreBoost: 15,
-    lcpReduction: 0.4,
-    fcpReduction: 0.8,
-  },
-  {
-    id: 'lazyload',
-    title: 'Lazy Loading',
-    desc: 'Lädt Bilder erst, wenn sie im sichtbaren Bereich sind.',
-    icon: Zap,
-    scoreBoost: 10,
-    lcpReduction: 0.6,
-    fcpReduction: 0.1,
-  },
-  {
-    id: 'cdn',
-    title: 'Content Delivery Network (CDN)',
-    desc: 'Verteilt Inhalte weltweit für kürzere Server-Antwortzeiten.',
-    icon: Globe,
-    scoreBoost: 15,
-    lcpReduction: 0.8,
-    fcpReduction: 0.5,
-  },
-];
+
 
 const ScoreGauge = ({ score }: { score: number }) => {
   const color = score >= 90 ? 'text-green-500' : score >= 50 ? 'text-yellow-500' : 'text-red-500';
@@ -77,6 +40,45 @@ const ScoreGauge = ({ score }: { score: number }) => {
 export const LighthouseSim: React.FC = () => {
   const { t } = useLanguage();
   const [activeOpts, setActiveOpts] = useState<Set<string>>(new Set());
+
+  const OPTIMIZATIONS: Optimization[] = [
+    {
+      id: 'webp',
+      title: t.tools.performanceOptimizer.opts.webp.title,
+      desc: t.tools.performanceOptimizer.opts.webp.desc,
+      icon: ImageIcon,
+      scoreBoost: 20,
+      lcpReduction: 1.2,
+      fcpReduction: 0.2,
+    },
+    {
+      id: 'minify',
+      title: t.tools.performanceOptimizer.opts.minify.title,
+      desc: t.tools.performanceOptimizer.opts.minify.desc,
+      icon: FileCode2,
+      scoreBoost: 15,
+      lcpReduction: 0.4,
+      fcpReduction: 0.8,
+    },
+    {
+      id: 'lazyload',
+      title: t.tools.performanceOptimizer.opts.lazyload.title,
+      desc: t.tools.performanceOptimizer.opts.lazyload.desc,
+      icon: Zap,
+      scoreBoost: 10,
+      lcpReduction: 0.6,
+      fcpReduction: 0.1,
+    },
+    {
+      id: 'cdn',
+      title: t.tools.performanceOptimizer.opts.cdn.title,
+      desc: t.tools.performanceOptimizer.opts.cdn.desc,
+      icon: Globe,
+      scoreBoost: 15,
+      lcpReduction: 0.8,
+      fcpReduction: 0.5,
+    },
+  ];
 
   // Base metrics (unoptimized)
   const baseScore = 40;
@@ -121,15 +123,15 @@ export const LighthouseSim: React.FC = () => {
           <Gauge className="w-6 h-6 text-blue-400" />
         </div>
         <div>
-          <h2 className="text-xl font-bold text-white">Performance Optimizer</h2>
-          <p className="text-xs text-white/60">Aktiviere Optimierungen, um den PageSpeed Score zu verbessern.</p>
+          <h2 className="text-xl font-bold text-white">{t.tools.performanceOptimizer.title}</h2>
+          <p className="text-xs text-white/60">{t.tools.performanceOptimizer.desc}</p>
         </div>
       </div>
 
       <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto custom-scrollbar pr-2">
         {/* Optimizations List */}
         <div className="space-y-3">
-          <h3 className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2">Verfügbare Optimierungen</h3>
+          <h3 className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2">{t.tools.performanceOptimizer.availableOpts}</h3>
           {OPTIMIZATIONS.map((opt) => {
             const isActive = activeOpts.has(opt.id);
             return (
@@ -154,7 +156,7 @@ export const LighthouseSim: React.FC = () => {
                     <p className="text-[11px] text-white/60 leading-relaxed">{opt.desc}</p>
                     
                     <div className="mt-2 flex gap-2">
-                      <span className="text-[9px] font-mono text-green-400 bg-green-400/10 px-1.5 py-0.5 rounded">+{opt.scoreBoost} Score</span>
+                      <span className="text-[9px] font-mono text-green-400 bg-green-400/10 px-1.5 py-0.5 rounded">+{opt.scoreBoost} {t.tools.performanceOptimizer.score}</span>
                       <span className="text-[9px] font-mono text-blue-400 bg-blue-400/10 px-1.5 py-0.5 rounded">-{opt.lcpReduction}s LCP</span>
                     </div>
                   </div>
@@ -177,14 +179,14 @@ export const LighthouseSim: React.FC = () => {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
 
           <div className="relative z-10 w-full flex flex-col items-center gap-8">
-            <div className="text-center space-y-2">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-white/60">Live PageSpeed Score</h3>
+            <div className="text-center space-y-2 flex flex-col items-center">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-white/60">{t.tools.performanceOptimizer.liveScore}</h3>
               <ScoreGauge score={currentScore} />
             </div>
 
             <div className="w-full grid grid-cols-2 gap-4">
               <div className="p-4 bg-white/5 rounded-xl border border-white/10 flex flex-col items-center text-center">
-                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">LCP (Largest Contentful Paint)</p>
+                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">{t.tools.performanceOptimizer.lcp}</p>
                 <motion.p 
                   key={currentLcp}
                   initial={{ scale: 1.2, color: '#60a5fa' }}
@@ -193,11 +195,11 @@ export const LighthouseSim: React.FC = () => {
                 >
                   {currentLcp.toFixed(1)}s
                 </motion.p>
-                <p className="text-[9px] text-white/40 mt-1">Ladezeit des Hauptinhalts</p>
+                <p className="text-[9px] text-white/40 mt-1">{t.tools.performanceOptimizer.lcpDesc}</p>
               </div>
               
               <div className="p-4 bg-white/5 rounded-xl border border-white/10 flex flex-col items-center text-center">
-                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">FCP (First Contentful Paint)</p>
+                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">{t.tools.performanceOptimizer.fcp}</p>
                 <motion.p 
                   key={currentFcp}
                   initial={{ scale: 1.2, color: '#60a5fa' }}
@@ -206,7 +208,7 @@ export const LighthouseSim: React.FC = () => {
                 >
                   {currentFcp.toFixed(1)}s
                 </motion.p>
-                <p className="text-[9px] text-white/40 mt-1">Erste sichtbare Elemente</p>
+                <p className="text-[9px] text-white/40 mt-1">{t.tools.performanceOptimizer.fcpDesc}</p>
               </div>
             </div>
 
@@ -214,10 +216,10 @@ export const LighthouseSim: React.FC = () => {
               <Info className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
               <p className="text-[10px] text-blue-200/80 leading-relaxed">
                 {currentScore >= 90 
-                  ? "Hervorragend! Deine Website ist optimal konfiguriert und lädt blitzschnell." 
+                  ? t.tools.performanceOptimizer.feedback.good 
                   : currentScore >= 50 
-                    ? "Gut, aber es gibt noch Verbesserungspotenzial. Aktiviere weitere Optimierungen." 
-                    : "Kritisch! Die Ladezeiten sind zu lang. Besucher könnten abspringen."}
+                    ? t.tools.performanceOptimizer.feedback.average 
+                    : t.tools.performanceOptimizer.feedback.poor}
               </p>
             </div>
           </div>

@@ -19,16 +19,16 @@ export const AccessibilityHealer: React.FC = () => {
     { id: '1', type: 'image', label: t.tools.accessibilityHealer.elements.image, solution: 'altText', isHealed: false },
     { id: '2', type: 'button', label: t.tools.accessibilityHealer.elements.button, solution: 'contrast', isHealed: false },
     { id: '3', type: 'input', label: t.tools.accessibilityHealer.elements.input, solution: 'label', isHealed: false },
-    { id: '4', type: 'image', label: 'Missing Heading', solution: 'heading', isHealed: false },
+    { id: '4', type: 'image', label: t.tools.accessibilityHealer.elements.heading, solution: 'heading', isHealed: false },
   ]);
 
   const solutions = [
     { id: 'contrast', label: t.tools.accessibilityHealer.solutions.contrast, icon: Palette },
     { id: 'label', label: t.tools.accessibilityHealer.solutions.label, icon: Type },
     { id: 'altText', label: t.tools.accessibilityHealer.solutions.altText, icon: ImageIcon },
-    { id: 'heading', label: 'Add Heading Structure', icon: Type },
-    { id: 'tabIndex', label: 'Fix Tab Order', icon: MousePointer2 },
-    { id: 'aria', label: 'Add ARIA Label', icon: AlertCircle },
+    { id: 'heading', label: t.tools.accessibilityHealer.solutions.heading, icon: Type },
+    { id: 'tabIndex', label: t.tools.accessibilityHealer.solutions.tabIndex, icon: MousePointer2 },
+    { id: 'aria', label: t.tools.accessibilityHealer.solutions.aria, icon: AlertCircle },
   ].sort(() => Math.random() - 0.5);
 
   const handleHeal = (elementId: string) => {
@@ -98,7 +98,7 @@ export const AccessibilityHealer: React.FC = () => {
         {/* Solutions Panel */}
         <div className="space-y-1.5">
           <h3 className="text-[8px] uppercase tracking-[0.2em] text-white/60 font-mono mb-1">
-            Available Fixes
+            {t.tools.accessibilityHealer.availableFixes}
           </h3>
           <div className="grid grid-cols-1 gap-1.5">
             {solutions.map((sol) => (
@@ -127,7 +127,7 @@ export const AccessibilityHealer: React.FC = () => {
         {/* Game Board */}
         <div className="space-y-1.5">
           <h3 className="text-[8px] uppercase tracking-[0.2em] text-white/60 font-mono mb-1">
-            Broken UI Elements
+            {t.tools.accessibilityHealer.brokenElements}
           </h3>
           <div className="grid grid-cols-1 gap-1.5">
             {elements.map((el) => (
@@ -183,7 +183,7 @@ export const AccessibilityHealer: React.FC = () => {
                           ? 'bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]' 
                           : 'bg-white/5 text-white/10'
                       }`}>
-                        Submit Form
+                        {t.tools.accessibilityHealer.submitForm}
                       </div>
                     </div>
                   )}
@@ -192,7 +192,7 @@ export const AccessibilityHealer: React.FC = () => {
                       <AnimatePresence>
                         {el.isHealed && (
                           <motion.label initial={{ opacity: 0, x: -5 }} animate={{ opacity: 1, x: 0 }} className="text-[8px] uppercase tracking-widest text-blue-400 font-bold">
-                            Full Name
+                            {t.tools.accessibilityHealer.fullName}
                           </motion.label>
                         )}
                       </AnimatePresence>

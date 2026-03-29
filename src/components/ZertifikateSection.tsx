@@ -44,7 +44,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
                 setExpandedCert(isExpanded ? null : actualIndex);
               });
             }}
-            className={`w-full text-left p-4 md:p-5 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[80px]'}`}
+            className={`w-full text-left p-3 md:p-5 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[70px] md:min-h-[80px]'}`}
           >
             <div className="flex flex-col gap-1 pr-2">
               <div className="flex items-center gap-3">
@@ -74,7 +74,8 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
                       download
                       onClick={() => {
                         if (typeof window !== 'undefined' && (window as any).gtag) {
-                          (window as any).gtag('event', 'download_certificate', {
+                          const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
+                          (window as any).gtag('event', `download_cert_${formattedTitle}`, {
                             'cert_title': cert.title
                           });
                         }
@@ -90,7 +91,8 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
                     <div 
                       onClick={() => {
                         if (typeof window !== 'undefined' && (window as any).gtag) {
-                          (window as any).gtag('event', 'certificate_view_attempt', {
+                          const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
+                          (window as any).gtag('event', `view_attempt_${formattedTitle}`, {
                             'event_category': 'engagement',
                             'event_label': cert.title
                           });
@@ -128,14 +130,14 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
       </h1>
       <div className="w-full h-[1px] bg-white/10 shrink-0" />
       
-      <div className="w-full flex flex-col gap-6 md:gap-8 mt-2">
+      <div className="w-full flex flex-col gap-4 md:gap-8 mt-1">
         {/* GFN GmbH Category */}
         {gfnCerts.length > 0 && (expandedCert === null || gfnCerts.some((c: any) => certs.findIndex((orig: any) => orig.id === c.id) === expandedCert)) && (
           <div className={`flex-col gap-3 ${isCategoryHiddenOnMobile(gfnCerts) ? 'hidden md:flex' : 'flex'}`}>
             {expandedCert === null && (
               <h2 className="text-lg md:text-xl font-bold text-white/90 px-1">GFN GmbH</h2>
             )}
-            <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2.5 md:gap-3 w-full pb-0 md:pb-1`}>
+            <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2 md:gap-3 w-full pb-0 md:pb-1`}>
               {gfnCerts.map(renderCertCard)}
             </div>
           </div>
@@ -147,7 +149,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
             {expandedCert === null && (
               <h2 className="text-lg md:text-xl font-bold text-white/90 px-1">FAW</h2>
             )}
-            <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2.5 md:gap-3 w-full pb-0 md:pb-1`}>
+            <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2 md:gap-3 w-full pb-0 md:pb-1`}>
               {fawCerts.map(renderCertCard)}
             </div>
           </div>
@@ -159,7 +161,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
             {expandedCert === null && (
               <h2 className="text-lg md:text-xl font-bold text-white/90 px-1">KI</h2>
             )}
-            <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2.5 md:gap-3 w-full pb-0 md:pb-1`}>
+            <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2 md:gap-3 w-full pb-0 md:pb-1`}>
               {kiCerts.map(renderCertCard)}
             </div>
           </div>
@@ -168,7 +170,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
 
       {/* Show More Button for Mobile */}
       {!showAllCerts && certs.length > 3 && expandedCert === null && (
-        <div className="w-full flex justify-center md:hidden pb-0 pt-6 shrink-0">
+        <div className="w-full flex justify-center md:hidden pb-0 pt-3 shrink-0">
           <button 
             onClick={() => setShowAllCerts(true)}
             className="flex items-center gap-2 px-6 py-1.5 rounded-xl bg-white/5 border border-white/10 text-white/80 text-sm font-medium hover:bg-white/10 hover:text-white transition-all group"
@@ -180,7 +182,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
       )}
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-4 md:pb-4 pt-8 md:pt-2 gap-1 md:gap-1.5 mt-auto mb-8 md:mb-12 shrink-0">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-2 md:pb-4 pt-4 md:pt-2 gap-1 md:gap-1.5 mt-auto mb-4 md:mb-12 shrink-0">
         <p className="text-white/80 text-xs md:text-sm text-center whitespace-normal md:whitespace-nowrap">
           {t.certificates.ctaText}
         </p>
