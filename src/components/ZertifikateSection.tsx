@@ -80,7 +80,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
                           });
                         }
                       }}
-                      className="flex items-center justify-center w-full max-w-[280px] gap-2 rounded-xl px-6 py-3 bg-black/10 border border-green-500/60 text-green-50 text-[13px] md:text-[15px] font-bold tracking-wide shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:shadow-[0_0_25px_rgba(34,197,94,0.8)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer focus-ring"
+                      className="flex items-center justify-center w-full max-w-[280px] gap-2 rounded-xl px-6 py-3 bg-black/10 border border-blue-500/60 text-blue-50 text-[13px] md:text-[15px] font-bold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -98,7 +98,7 @@ export const ZertifikateSection = React.memo(({ expandedCert, setExpandedCert, h
                           });
                         }
                       }}
-                      className="flex items-center justify-center w-full max-w-[280px] gap-2 rounded-xl px-6 py-3 bg-black/10 border border-green-500/60 text-green-50 text-[13px] md:text-[15px] font-bold tracking-wide shadow-[0_0_15px_rgba(34,197,94,0.5)] hover:shadow-[0_0_25px_rgba(34,197,94,0.8)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer focus-ring opacity-50"
+                      className="flex items-center justify-center w-full max-w-[280px] gap-2 rounded-xl px-6 py-3 bg-black/10 border border-blue-500/60 text-blue-50 text-[13px] md:text-[15px] font-bold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring opacity-50"
                       title="Zertifikat bald verfügbar"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
