@@ -5,7 +5,7 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
   const { t } = useLanguage();
   return (
     <footer className={`w-full border-t border-white/10 bg-black/30 backdrop-blur-xl py-2 px-4 md:px-6 mt-auto relative ${isMobileMenuOpen ? 'z-50' : 'z-10'} shrink-0`}>
-      <div className="flex flex-row justify-between items-center gap-4">
+      <div className="max-w-7xl mx-auto w-full flex flex-row justify-between items-center gap-4">
         <button 
           onClick={() => handleNavigate('start')}
           className="flex items-center cursor-pointer group" 

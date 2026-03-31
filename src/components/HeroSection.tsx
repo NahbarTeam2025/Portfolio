@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
   return (
-    <div id="hero" className="flex flex-col items-center justify-center w-full max-w-[1200px] mx-auto relative z-10 h-full px-6 lg:py-0 pt-1 pb-2 lg:max-h-[70dvh]">
+    <div id="hero" className="flex flex-col items-center justify-center w-full max-w-[1200px] mx-auto relative z-10 flex-grow px-6 lg:py-0 pt-1 pb-2 lg:max-h-[70dvh]">
       
       {/* 01. Minimalist Status Badge */}
       <motion.div 
@@ -99,9 +99,12 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             }
             handleNavigate('projects');
           }}
-          className="w-full flex items-center justify-center gap-3 rounded-xl px-6 py-2 bg-black/40 border border-blue-500/60 text-blue-50 text-[13px] md:text-[14px] font-semibold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+          className="w-full sm:w-auto flex items-center justify-center gap-3 rounded-full px-8 py-3.5 bg-black/20 border border-blue-500/50 text-white text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
         >
           <span className="relative z-10">{t.hero.cta}</span>
+          <svg className="w-4 h-4 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
         </motion.button>
       </motion.div>
     </div>

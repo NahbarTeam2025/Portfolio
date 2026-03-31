@@ -92,27 +92,23 @@ export const KontaktSection = React.memo(() => {
 
             {/* CV Download Section */}
             <div className="pt-3 md:pt-4 mt-1 border-t border-white/10">
-              <div className="flex items-center gap-3 group">
-                <div className="flex flex-col w-full items-center">
-                  <span className="text-white/60 text-[10px] md:text-[12px] uppercase tracking-widest font-bold mb-3 text-center">{t.contact.downloadCV}</span>
-                  <div className="flex items-center gap-2 w-full">
-                      <div 
-                        onClick={() => {
-                          if (typeof window !== 'undefined' && (window as any).gtag) {
-                            (window as any).gtag('event', 'cv_download_attempt', {
-                              'event_category': 'engagement',
-                              'event_label': 'Lebenslauf_Robert_Erbach.pdf'
-                            });
-                          }
-                        }}
-                        className="flex items-center justify-center w-full gap-2 rounded-xl px-6 py-3 bg-black/10 border border-blue-500/60 text-blue-50 text-[13px] md:text-[15px] font-bold tracking-wide shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <span className="relative z-10">{t.contact.downloadButton}</span>
-                      </div>
-                  </div>
+              <div className="flex flex-col items-center w-fit mx-auto">
+                <span className="text-white/60 text-[10px] md:text-[12px] uppercase tracking-widest font-bold mb-3 text-center w-full">{t.contact.downloadCV}</span>
+                <div 
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'cv_download_attempt', {
+                        'event_category': 'engagement',
+                        'event_label': 'Lebenslauf_Robert_Erbach.pdf'
+                      });
+                    }
+                  }}
+                  className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-black/20 border border-blue-500/50 text-white text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+                >
+                  <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span className="relative z-10">{t.contact.downloadButton}</span>
                 </div>
               </div>
             </div>

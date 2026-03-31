@@ -156,11 +156,8 @@
   }
 
   .heading-gradient {
-    background: linear-gradient(144.5deg, #ffffff 35%, #c0c0c0 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
   }
 
   /* Global Video Fix */
@@ -234,12 +231,12 @@ video {
 
   .wow-card {
     position: relative;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.015);
     backdrop-filter: blur(40px) saturate(120%);
     -webkit-backdrop-filter: blur(40px) saturate(120%);
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     transform: translateY(var(--parallax-y, 0px));
     overflow: hidden;
@@ -248,9 +245,9 @@ video {
   }
 
   .wow-card:hover {
-    background: var(--glass-bg-hover);
-    border-color: var(--glass-border-hover);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
     transform: translateY(calc(var(--parallax-y, 0px) - 2px));
   }
 
