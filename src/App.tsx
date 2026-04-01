@@ -293,15 +293,10 @@ export default function App() {
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Transparent background to ensure video is seen clearly */}
         
-        <AnimatePresence mode="wait">
           {!isLoading && (
-            <motion.div
+            <div
               key="bg-video-layer"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.5 }}
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 w-full h-full animate-in fade-in duration-1000"
             >
               <video
                 key="video-element"
@@ -309,6 +304,7 @@ export default function App() {
                 loop
                 muted
                 playsInline
+                preload="none"
                 className="w-full h-full object-cover"
                 style={{ filter: 'brightness(1)', opacity: 0.97 }}
               >
@@ -317,9 +313,8 @@ export default function App() {
                   type="video/mp4" 
                 />
               </video>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
       </div>
 
       <AnimatePresence>
@@ -574,61 +569,57 @@ export default function App() {
               ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 max-w-7xl mx-auto w-full lg:h-screen lg:overflow-hidden'
               : 'pt-24 md:pt-28 lg:pt-32 items-start justify-start pb-12 max-w-7xl mx-auto w-full'
         } ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
-          <AnimatePresence mode="wait">
-            <motion.div
+            <div
               key={currentPage}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className={`w-full flex flex-col flex-grow ${currentPage === 'start' ? 'items-start justify-center' : ''}`}
+              className={`w-full flex flex-col flex-grow animate-in fade-in slide-in-from-bottom-4 duration-500 ${currentPage === 'start' ? 'items-start justify-center' : ''}`}
             >
-              <Suspense fallback={<div className="text-black/50">{t.common.loading}</div>}>
                 {currentPage === 'start' ? (
                   <HeroSection handleNavigate={handleNavigate} />
-                ) : currentPage === 'about' ? (
-                  <UberMichSection handleNavigate={handleNavigate} />
-                ) : currentPage === 'skills' ? (
-                  <SkillsSection handleNavigate={handleNavigate} />
-                ) : currentPage === 'projects' ? (
-                  <ProjekteSection 
-                    setIsInitialEntrance={setIsInitialEntrance} 
-                    handleNavigate={handleNavigate}
-                  />
-                ) : currentPage === 'certificates' ? (
-                  <ZertifikateSection 
-                    expandedCert={expandedCert}
-                    setExpandedCert={setExpandedCert}
-                    handleNavigate={handleNavigate}
-                  />
-                ) : currentPage === 'contact' ? (
-                  <KontaktSection 
-                    isCVUnlocked={isCVUnlocked}
-                    cvPasswordInput={cvPasswordInput}
-                    setCVPasswordInput={setCVPasswordInput}
-                    cvError={cvError}
-                    handleVerifyPassword={(pw: string) => handleVerifyPassword(pw, 'cv')}
-                  />
-                ) : currentPage === 'tools' ? (
-                  <ToolsPage />
-                ) : currentPage === 'impressum' ? (
-                  <ImpressumPage />
-                ) : currentPage === 'datenschutz' ? (
-                  <DatenschutzPage />
                 ) : (
-                  <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500 h-full">
-                    <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight">
-                      {currentPage}
-                    </h1>
-                    <div className="w-full h-[1px] bg-black/10 shrink-0" />
-                    <p className="text-black/70 text-[14px] md:text-lg font-normal max-w-[680px] leading-relaxed">
-                      This is the placeholder page for {currentPage}. The background is now solid black, and the content can fill the page.
-                    </p>
-                  </div>
+                  <Suspense fallback={<div className="text-black/50">{t.common.loading}</div>}>
+                    {currentPage === 'about' ? (
+                      <UberMichSection handleNavigate={handleNavigate} />
+                    ) : currentPage === 'skills' ? (
+                      <SkillsSection handleNavigate={handleNavigate} />
+                    ) : currentPage === 'projects' ? (
+                      <ProjekteSection 
+                        setIsInitialEntrance={setIsInitialEntrance} 
+                        handleNavigate={handleNavigate}
+                      />
+                    ) : currentPage === 'certificates' ? (
+                      <ZertifikateSection 
+                        expandedCert={expandedCert}
+                        setExpandedCert={setExpandedCert}
+                        handleNavigate={handleNavigate}
+                      />
+                    ) : currentPage === 'contact' ? (
+                      <KontaktSection 
+                        isCVUnlocked={isCVUnlocked}
+                        cvPasswordInput={cvPasswordInput}
+                        setCVPasswordInput={setCVPasswordInput}
+                        cvError={cvError}
+                        handleVerifyPassword={(pw: string) => handleVerifyPassword(pw, 'cv')}
+                      />
+                    ) : currentPage === 'tools' ? (
+                      <ToolsPage />
+                    ) : currentPage === 'impressum' ? (
+                      <ImpressumPage />
+                    ) : currentPage === 'datenschutz' ? (
+                      <DatenschutzPage />
+                    ) : (
+                      <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500 h-full">
+                        <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight">
+                          {currentPage}
+                        </h1>
+                        <div className="w-full h-[1px] bg-black/10 shrink-0" />
+                        <p className="text-black/70 text-[14px] md:text-lg font-normal max-w-[680px] leading-relaxed">
+                          This is the placeholder page for {currentPage}. The background is now solid black, and the content can fill the page.
+                        </p>
+                      </div>
+                    )}
+                  </Suspense>
                 )}
-              </Suspense>
-            </motion.div>
-          </AnimatePresence>
+            </div>
         </main>
 
         {/* Footer */}

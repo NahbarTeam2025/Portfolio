@@ -142,7 +142,8 @@
     <link rel="manifest" href="https://meine-assets.pages.dev/site.webmanifest" />
     
     <!-- Preload Critical Assets -->
-    <!-- Removed logo preload to prioritize LCP text rendering -->
+    <link rel="preload" as="image" href="https://meine-assets.pages.dev/ich.png" fetchpriority="high" />
+    <link rel="preload" as="video" href="https://meine-assets.pages.dev/bgstart.mp4" type="video/mp4" />
     
     <!-- Fonts -->
     <link rel="preload" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" as="style">

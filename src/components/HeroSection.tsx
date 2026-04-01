@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
@@ -9,11 +8,8 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center w-full">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           {/* 01. Minimalist Status Badge */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-2 lg:mb-6"
+          <div 
+            className="mb-2 lg:mb-6 animate-in fade-in slide-in-from-left-4 duration-700 fill-mode-both"
           >
             <div className="inline-flex items-center gap-2 lg:gap-3 px-2.5 py-1 lg:px-4 lg:py-1.5 rounded-full bg-black/[0.02] border border-black/10 backdrop-blur-2xl">
               <span className="relative flex h-1.5 w-1.5">
@@ -22,7 +18,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
               </span>
               <span className="text-black/70 text-[9px] lg:text-[10px] font-bold tracking-[0.4em] uppercase">Status: Available</span>
             </div>
-          </motion.div>
+          </div>
 
           {/* 02. Main Typographic Core */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left w-full">
@@ -42,15 +38,12 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             </h2>
             
             {/* Subtitle Part 2 - Technical Rail */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.5, delay: 0.4 }}
-              className="flex items-center justify-center lg:justify-start gap-3 lg:gap-6 text-black font-sans text-[7px] md:text-[10px] uppercase tracking-[0.2em] lg:tracking-[0.5em] font-bold mb-4 lg:mb-6 whitespace-nowrap"
+            <div 
+              className="flex items-center justify-center lg:justify-start gap-3 lg:gap-6 text-black font-sans text-[7px] md:text-[10px] uppercase tracking-[0.2em] lg:tracking-[0.5em] font-bold mb-4 lg:mb-6 whitespace-nowrap animate-in fade-in slide-in-from-left-4 duration-700 delay-150 fill-mode-both"
             >
               {t.hero.subtitlePart2}
               <div className="hidden lg:block w-8 lg:w-20 h-px bg-gradient-to-r from-black to-transparent" />
-            </motion.div>
+            </div>
 
             {/* Description - Focused Content */}
             <p 
@@ -60,11 +53,8 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             </p>
 
             {/* 03. Feature Rail - Minimalist Grid */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-8 w-full max-w-[650px] border-y border-black/10 py-3 lg:py-6 mb-5 lg:mb-10"
+            <div 
+              className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-8 w-full max-w-[650px] border-y border-black/10 py-3 lg:py-6 mb-5 lg:mb-10 animate-in fade-in slide-in-from-left-4 duration-700 delay-300 fill-mode-both"
             >
               {[t.hero.design, t.hero.structure, t.hero.ki].map((item, idx) => (
                 <div key={item} className="flex items-center justify-center lg:justify-start gap-x-2 group">
@@ -75,46 +65,37 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
                   <span className="text-black/80 text-[7px] sm:text-[10px] lg:text-xs font-semibold tracking-[0.1em] sm:tracking-[0.2em] uppercase transition-colors group-hover:text-blue-600 text-center lg:text-left leading-none">{item}</span>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* 04. Primary Action - High Contrast CTA */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95, x: -20 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-            className="relative group w-full sm:w-auto flex justify-center lg:justify-start"
+          <div 
+            className="relative group w-full sm:w-auto flex justify-center lg:justify-start animate-in fade-in slide-in-from-left-4 duration-700 delay-500 fill-mode-both"
           >
             {/* Outer Glow Effect */}
             <div className="absolute -inset-4 bg-blue-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             
-            <motion.button 
+            <button 
               id="btn-hero-projects"
-              initial="initial"
-              whileHover="hover"
-              whileTap={{ scale: 0.98 }}
               onClick={() => {
                 if (typeof window !== 'undefined' && window.gtag) {
                   window.gtag('event', 'view_projects_click');
                 }
                 handleNavigate('projects');
               }}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring hover:scale-[0.98] active:scale-95"
             >
               <span className="relative z-10">{t.hero.cta}</span>
               <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </motion.button>
-          </motion.div>
+            </button>
+          </div>
         </div>
 
         {/* Hero Image Container */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="relative flex justify-center items-center mt-2 lg:mt-0"
+        <div
+          className="relative flex justify-center items-center mt-2 lg:mt-0 animate-in fade-in zoom-in-95 duration-1000 delay-300 fill-mode-both"
         >
           {/* Removed decorative blue blur to ensure background video clarity */}
           
@@ -150,11 +131,15 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             <img 
               src="https://meine-assets.pages.dev/ich.png" 
               alt="Robert Erbach" 
+              width="500"
+              height="500"
+              fetchpriority="high"
+              loading="eager"
               className="w-full h-auto object-contain opacity-[0.90] relative z-[5]"
               referrerPolicy="no-referrer"
             />
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
