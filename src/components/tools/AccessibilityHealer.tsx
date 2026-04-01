@@ -74,18 +74,18 @@ export const AccessibilityHealer: React.FC = () => {
         <h2 className="text-lg md:text-2xl font-bold heading-gradient">
           {t.tools.accessibilityHealer.title}
         </h2>
-        <p className="text-white/60 text-[9px] md:text-xs">
+        <p className="text-black/60 text-[9px] md:text-xs">
           {t.tools.accessibilityHealer.desc}
         </p>
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full max-w-md space-y-1 bg-white/5 p-2 rounded-xl border border-white/10 shrink-0">
-        <div className="flex justify-between text-[9px] uppercase tracking-widest text-white/60 font-mono">
+      <div className="w-full max-w-md space-y-1 bg-black/5 p-2 rounded-xl border border-black/10 shrink-0">
+        <div className="flex justify-between text-[9px] uppercase tracking-widest text-black/60 font-mono">
           <span>{t.tools.accessibilityHealer.progress}</span>
           <span>{Math.round(progress)}%</span>
         </div>
-        <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+        <div className="h-1 w-full bg-black/5 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
@@ -97,7 +97,7 @@ export const AccessibilityHealer: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-6 w-full flex-1 min-h-0 overflow-y-auto glass-scrollbar pr-2">
         {/* Solutions Panel */}
         <div className="space-y-1.5">
-          <h3 className="text-[8px] uppercase tracking-[0.2em] text-white/60 font-mono mb-1">
+          <h3 className="text-[8px] uppercase tracking-[0.2em] text-black/60 font-mono mb-1">
             {t.tools.accessibilityHealer.availableFixes}
           </h3>
           <div className="grid grid-cols-1 gap-1.5">
@@ -108,7 +108,7 @@ export const AccessibilityHealer: React.FC = () => {
                 className={`flex items-center gap-2 p-2 rounded-lg border transition-all duration-300 text-left relative overflow-hidden ${
                   selectedSolution === sol.id
                     ? 'bg-blue-500/20 border-blue-500/50 text-blue-400 shadow-[0_0_10px_rgba(59,130,246,0.1)]'
-                    : 'bg-white/5 border-white/10 text-white/70 hover:border-white/20 hover:text-white'
+                    : 'bg-black/5 border-black/10 text-black/70 hover:border-black/20 hover:text-black'
                 }`}
               >
                 <sol.icon className="w-3.5 h-3.5" />
@@ -126,7 +126,7 @@ export const AccessibilityHealer: React.FC = () => {
 
         {/* Game Board */}
         <div className="space-y-1.5">
-          <h3 className="text-[8px] uppercase tracking-[0.2em] text-white/60 font-mono mb-1">
+          <h3 className="text-[8px] uppercase tracking-[0.2em] text-black/60 font-mono mb-1">
             {t.tools.accessibilityHealer.brokenElements}
           </h3>
           <div className="grid grid-cols-1 gap-1.5">
@@ -139,7 +139,7 @@ export const AccessibilityHealer: React.FC = () => {
                 className={`relative group p-3 rounded-xl border transition-all duration-500 cursor-pointer overflow-hidden ${
                   el.isHealed
                     ? 'bg-green-500/10 border-green-500/30 text-green-400'
-                    : 'bg-white/5 border-white/10 text-white/70 hover:border-white/20'
+                    : 'bg-black/5 border-black/10 text-black/70 hover:border-black/20'
                 }`}
               >
                 <div className="flex items-center justify-between relative z-10 mb-2">
@@ -149,7 +149,7 @@ export const AccessibilityHealer: React.FC = () => {
                     ) : (
                       <AlertCircle className={`w-3.5 h-3.5 ${wrongElementId === el.id ? 'text-red-500' : 'text-red-500/60'} animate-pulse`} />
                     )}
-                    <span className={`text-[9px] font-bold uppercase tracking-wider ${el.isHealed ? 'text-green-400' : 'text-white/90'}`}>
+                    <span className={`text-[9px] font-bold uppercase tracking-wider ${el.isHealed ? 'text-green-400' : 'text-black/90'}`}>
                       {el.isHealed ? t.tools.accessibilityHealer.success : el.label}
                     </span>
                   </div>
@@ -161,10 +161,10 @@ export const AccessibilityHealer: React.FC = () => {
                 </div>
 
                 {/* Visual Representation */}
-                <div className={`p-2 rounded-lg border transition-colors duration-500 ${el.isHealed ? 'bg-green-500/5 border-green-500/20' : 'bg-black/40 border-white/5'}`}>
+                <div className={`p-2 rounded-lg border transition-colors duration-500 ${el.isHealed ? 'bg-green-500/5 border-green-500/20' : 'bg-white/40 border-black/5'}`}>
                   {el.type === 'image' && (
                     <div className="flex flex-col gap-1">
-                      <div className={`w-full h-10 rounded flex items-center justify-center gap-3 ${el.isHealed ? 'bg-green-500/10' : 'bg-white/5'}`}>
+                      <div className={`w-full h-10 rounded flex items-center justify-center gap-3 ${el.isHealed ? 'bg-green-500/10' : 'bg-black/5'}`}>
                         <ImageIcon className={`w-4 h-4 ${el.isHealed ? 'text-green-500/40' : 'opacity-20'}`} />
                       </div>
                       <AnimatePresence>
@@ -181,7 +181,7 @@ export const AccessibilityHealer: React.FC = () => {
                       <div className={`px-3 py-1 rounded-lg text-[8px] font-bold uppercase tracking-[0.2em] transition-all duration-500 ${
                         el.isHealed 
                           ? 'bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]' 
-                          : 'bg-white/5 text-white/10'
+                          : 'bg-black/5 text-black/10'
                       }`}>
                         {t.tools.accessibilityHealer.submitForm}
                       </div>
@@ -196,7 +196,7 @@ export const AccessibilityHealer: React.FC = () => {
                           </motion.label>
                         )}
                       </AnimatePresence>
-                      <div className={`w-full h-6 rounded border transition-colors duration-500 ${el.isHealed ? 'bg-green-500/5 border-green-500/20' : 'bg-white/5 border-white/10'}`} />
+                      <div className={`w-full h-6 rounded border transition-colors duration-500 ${el.isHealed ? 'bg-green-500/5 border-green-500/20' : 'bg-black/5 border-black/10'}`} />
                     </div>
                   )}
                 </div>

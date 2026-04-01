@@ -51,7 +51,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative group parallax-element overflow-hidden flex flex-col h-full min-h-[320px] md:min-h-[380px] lg:min-h-[400px] transition-all duration-500 wow-card`}
+      className={`relative group parallax-element overflow-hidden flex flex-col h-full min-h-[320px] md:min-h-[380px] lg:min-h-[400px] transition-all duration-500 wow-card shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)]`}
     >
       <div className="card-top-flare opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="wow-card-border" />
@@ -64,19 +64,19 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
       <div className="relative z-10 p-5 md:p-8 flex flex-col h-full items-center text-center" style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}>
         <div className="flex flex-col gap-3 md:gap-4 items-center w-full flex-grow">
           <div className="flex flex-col gap-1.5 md:gap-2 items-center">
-            <h3 className="text-base md:text-xl font-bold text-white leading-tight tracking-tight group-hover:text-glow-blue transition-all duration-300">
+            <h3 className="text-base md:text-xl font-bold text-black dark:text-white leading-tight tracking-tight group-hover:text-glow-blue transition-all duration-300">
               {project.title}
             </h3>
-            <div className="w-8 h-[1px] bg-gray-400/40 group-hover:w-20 transition-all duration-500" />
+            <div className="w-8 h-[1px] bg-gray-600/40 dark:bg-gray-400/40 group-hover:w-20 transition-all duration-500" />
           </div>
           
-          <p className="text-white/70 text-[12px] md:text-[14px] leading-relaxed max-w-[280px]">
+          <p className="text-black/70 dark:text-white/70 text-[12px] md:text-[14px] leading-relaxed max-w-[280px]">
             {project.desc}
           </p>
           
           <div className="flex flex-wrap justify-center gap-1 pt-0.5">
             {project.features?.map((feature: string) => (
-              <span key={feature} className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/70 text-[8px] font-medium uppercase tracking-wider">
+              <span key={feature} className="px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-black/70 dark:text-white/70 text-[8px] font-medium uppercase tracking-wider">
                 {feature}
               </span>
             ))}
@@ -97,7 +97,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
                   });
                 }
               }}
-              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-600 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {index === 0 && (
@@ -121,14 +121,14 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
                 }
                 onDetailsClick?.(project);
               }}
-              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-100 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 text-blue-600 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 cursor-pointer"
             >
               <span className="relative z-10">{project.buttonText || t.projects.details}</span>
               <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
             </button>
           ) : (
             <div
-              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-white/5 border border-white/10 text-white/60 font-bold text-[12px] uppercase tracking-widest cursor-default"
+              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-black/60 dark:text-white/60 font-bold text-[12px] uppercase tracking-widest cursor-default"
             >
               <span className="relative z-10">{t.projects.comingSoon}</span>
             </div>

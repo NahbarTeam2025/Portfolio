@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect, useCallback, useRef, startTransition, Suspense, lazy } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
-import { Menu, X, Phone, Mail, MapPin, Linkedin, ArrowRight, ExternalLink } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, Linkedin, ArrowRight, ExternalLink, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform, useScroll } from 'motion/react';
 
 // Import refactored components
@@ -102,23 +102,25 @@ export default function App() {
     setIsInitialEntrance(true);
   }, [currentPage]);
 
-  const [isHighContrast, setIsHighContrast] = useState(() => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('high-contrast') === 'true';
+      return localStorage.getItem('theme') === 'dark';
     }
     return false;
   });
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (isHighContrast) {
-      document.documentElement.classList.add('high-contrast');
-      localStorage.setItem('high-contrast', 'true');
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0a0a0a');
     } else {
-      document.documentElement.classList.remove('high-contrast');
-      localStorage.setItem('high-contrast', 'false');
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#ffffff');
     }
-  }, [isHighContrast]);
+  }, [isDarkMode]);
 
   // Loading timer removed for immediate LCP rendering
 
@@ -143,13 +145,33 @@ export default function App() {
     };
   }, [t.common.backToTitle]);
 
-  const [isCertUnlocked, setIsCertUnlocked] = useState(false);
+  const [isCVUnlocked, setIsCVUnlocked] = useState(false);
   const [isStartVideoReady, setIsStartVideoReady] = useState(false);
   const [isSubVideoReady, setIsSubVideoReady] = useState(false);
   const [isVideoDeferred, setIsVideoDeferred] = useState(false);
   const isMobile = useIsMobile();
-  const [certPasswordInput, setCertPasswordInput] = useState('');
-  const [certError, setCertError] = useState(false);
+  const [cvPasswordInput, setCVPasswordInput] = useState('');
+  const [cvError, setCVError] = useState(false);
+
+  const handleVerifyPassword = async (password: string, type: 'cv') => {
+    try {
+      const response = await fetch('/api/verify-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setIsCVUnlocked(true);
+        setCVError(false);
+      } else {
+        setCVError(true);
+      }
+    } catch (error) {
+      console.error('Verification error:', error);
+      setCVError(true);
+    }
+  };
 
   const handleNavigate = useCallback((pageId: string) => {
     // Check if it's a modal page
@@ -268,43 +290,36 @@ export default function App() {
         onMouseMove={handleMouseMove}
       >
       {/* Background Videos Layer */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
-        {/* Start Page Video */}
-        {currentPage === 'start' && isVideoDeferred && (
-          <div className="absolute inset-0">
-            <video
-              key="start-video-main"
-              autoPlay={true}
-              loop={true}
-              muted={true}
-              playsInline={true}
-              preload="auto"
-              onCanPlay={() => setIsStartVideoReady(true)}
-              className={`w-full h-full object-cover transition-opacity duration-1000 ${isStartVideoReady ? 'opacity-100' : 'opacity-0'}`}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Transparent background to ensure video is seen clearly */}
+        
+        <AnimatePresence mode="wait">
+          {!isLoading && (
+            <motion.div
+              key="bg-video-layer"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5 }}
+              className="absolute inset-0 w-full h-full"
             >
-              <source src="https://meine-assets.pages.dev/bgstart.mp4" type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-        )}
-
-        {/* Subpages Video */}
-        {currentPage !== 'start' && isVideoDeferred && (
-          <div className="absolute inset-0 bg-black">
-            <video
-              key="sub-video-main"
-              autoPlay={true}
-              loop={true}
-              muted={true}
-              playsInline={true}
-              preload="metadata"
-              onCanPlay={() => setIsSubVideoReady(true)}
-              className={`w-full h-full object-cover transition-opacity duration-1000 ${isSubVideoReady ? 'opacity-15' : 'opacity-0'}`}
-            >
-              <source src="https://meine-assets.pages.dev/bgunterseiten.mp4" type="video/mp4" />
-            </video>
-          </div>
-        )}
+              <video
+                key="video-element"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+                style={{ filter: 'brightness(1)', opacity: 0.97 }}
+              >
+                <source 
+                  src="https://meine-assets.pages.dev/bgstart.mp4" 
+                  type="video/mp4" 
+                />
+              </video>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <AnimatePresence>
@@ -313,9 +328,9 @@ export default function App() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center"
           >
-            <div className="relative w-48 h-[2px] bg-white/10 overflow-hidden rounded-full">
+            <div className="relative w-48 h-[2px] bg-black/10 overflow-hidden rounded-full">
               <motion.div
                 initial={{ x: "-100%" }}
                 animate={{ x: "100%" }}
@@ -331,7 +346,7 @@ export default function App() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="mt-4 text-white/60 text-[11px] tracking-[0.3em] uppercase font-medium"
+              className="mt-4 text-black/60 text-[11px] tracking-[0.3em] uppercase font-medium"
             >
               {t.common.loadingExperience}
             </motion.div>
@@ -351,122 +366,111 @@ export default function App() {
 
       <div className={`relative z-10 flex flex-col ${currentPage === 'start' ? 'h-screen h-[100dvh] overflow-hidden' : 'min-h-screen min-h-[100dvh] overflow-x-hidden'}`}>
         {/* Navigation Wrapper */}
-        <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-0 pointer-events-none transition-all duration-300">
+        <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-0 pointer-events-auto transition-all duration-300">
           {/* Navbar */}
-          <nav className={`pointer-events-auto flex items-center justify-between px-4 py-2 md:px-6 md:py-3 w-full transition-all duration-300 ${(currentPage !== 'start' || isMobileMenuOpen) ? 'bg-[#050505]/40 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]' : 'bg-transparent'}`}>
+          <nav className={`flex items-center justify-between w-full h-[52px] md:h-[60px] px-6 transition-all duration-300 ${currentPage === 'start' ? 'bg-transparent' : 'bg-white/90 backdrop-blur-md border-b border-black/5 shadow-sm'}`}>
             <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
-              <div className="flex items-center">
-              {/* Logo */}
-              <a 
-                href={PAGE_ROUTES['start']} 
-                className="flex items-center gap-3 h-[24px] md:h-[28px] cursor-pointer group" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (typeof window !== 'undefined' && (window as any).gtag) {
-                    (window as any).gtag('event', 'logo_click', {
-                      'event_category': 'navigation',
-                      'event_label': 'Header Logo'
-                    });
-                  }
-                  handleNavigate('start');
-                }}
-              >
-                <img 
-                  src="https://meine-assets.pages.dev/logo.png" 
-                  alt="Logo Robert Erbach" 
-                  width="66"
-                  height="49"
-                  decoding="async"
-                  className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                  style={{ forcedColorAdjust: 'none' }}
-                />
-              </a>
-            </div>
-
-            {/* Navigation Bar */}
-            <div className="hidden lg:flex items-center gap-1 ml-6">
-              {PAGES.map((pageId, index) => (
-                <React.Fragment key={pageId}>
-                    <a
-                      href={PAGE_ROUTES[pageId]}
-                      onMouseEnter={() => {
-                        // Pre-fetch component using static map to avoid Vite dynamic import issues
-                        const prefetchMap: Record<string, () => Promise<any>> = {
-                          'about': () => import('./components/UberMichSection.tsx'),
-                          'projects': () => import('./components/ProjekteSection.tsx'),
-                          'certificates': () => import('./components/ZertifikateSection.tsx'),
-                          'skills': () => import('./components/SkillsSection.tsx'),
-                        };
-                        if (prefetchMap[pageId]) {
-                          prefetchMap[pageId]().catch(() => {});
-                        }
-                      }}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavigate(pageId);
-                      }}
-                      className={`px-2 xl:px-4 py-1.5 text-[11px] xl:text-[13px] font-medium transition-all duration-500 cursor-pointer relative group hover:scale-110 font-sans focus-ring ${
-                        currentPage === pageId
-                          ? 'text-white text-glow-blue'
-                          : 'text-white/85 hover:text-white'
-                      }`}
-                    >
-                    <span className="relative z-10">{(t.nav as any)[pageId]}</span>
-                    {currentPage === pageId ? (
-                      <motion.span 
-                        layoutId="active-nav-indicator"
-                        className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,1)]"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      />
-                    ) : (
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-1/3" />
-                    )}
-                  </a>
-                  {/* No separator */}
-                </React.Fragment>
-              ))}
-            </div>
-
-            {/* Right side: CTA Button + Mobile Menu Toggle */}
-            <div className="flex items-center gap-4 lg:gap-6 ml-auto">
-
-              {/* Language Switcher */}
-              <div className="hidden lg:block">
-                <LanguageSwitcher />
-              </div>
-
-              {/* CTA Button */}
-              <button
-                onClick={() => setIsHighContrast(!isHighContrast)}
-                className={`relative hidden lg:flex p-2 transition-colors focus-ring rounded-full ${isHighContrast ? 'text-blue-400' : 'text-white/60 hover:text-white'}`}
-                aria-label="Toggle High Contrast Mode"
-              >
-                <span className="text-[10px] font-bold">HC</span>
-                {isHighContrast && <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-blue-400 rounded-full" />}
-              </button>
-
-              <MagneticButton className="hidden lg:flex">
+              {/* Left side: Logo + Navigation Links */}
+              <div className="flex items-center gap-8">
+                {/* Logo */}
                 <a 
-                  href={PAGE_ROUTES['contact']}
+                  href={PAGE_ROUTES['start']} 
+                  className="flex items-center gap-3 h-[24px] md:h-[28px] cursor-pointer group" 
                   onClick={(e) => {
                     e.preventDefault();
-                    handleNavigate('contact');
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'logo_click', {
+                        'event_category': 'navigation',
+                        'event_label': 'Header Logo'
+                      });
+                    }
+                    handleNavigate('start');
                   }}
-                  className="flex items-center justify-center rounded-full px-8 py-3.5 bg-black/20 border border-blue-500/50 text-white text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
                 >
-                  <span className="relative z-10">{t.nav.contact}</span>
+                  <img 
+                    src="https://meine-assets.pages.dev/logo.png" 
+                    alt="Logo Robert Erbach" 
+                    width="66"
+                    height="49"
+                    decoding="async"
+                    className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 invert"
+                    style={{ forcedColorAdjust: 'none' }}
+                  />
                 </a>
-              </MagneticButton>
 
-              {/* Mobile Menu Toggle */}
-              <button 
-                className="lg:hidden text-white p-1.5 md:p-2 -mr-1.5 md:-mr-2 cursor-pointer focus-ring"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
-              >
-                {isMobileMenuOpen ? <X className="w-6 h-6 md:w-7 md:h-7" /> : <Menu className="w-6 h-6 md:w-7 md:h-7" />}
-              </button>
-            </div>
+                {/* Navigation Bar */}
+                <div className="hidden lg:flex items-center gap-1">
+                  {PAGES.map((pageId, index) => (
+                    <React.Fragment key={pageId}>
+                        <a
+                          href={PAGE_ROUTES[pageId]}
+                          onMouseEnter={() => {
+                            // Pre-fetch component using static map to avoid Vite dynamic import issues
+                            const prefetchMap: Record<string, () => Promise<any>> = {
+                              'about': () => import('./components/UberMichSection.tsx'),
+                              'projects': () => import('./components/ProjekteSection.tsx'),
+                              'certificates': () => import('./components/ZertifikateSection.tsx'),
+                              'skills': () => import('./components/SkillsSection.tsx'),
+                            };
+                            if (prefetchMap[pageId]) {
+                              prefetchMap[pageId]().catch(() => {});
+                            }
+                          }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleNavigate(pageId);
+                          }}
+                          className={`px-2 xl:px-4 py-1.5 text-[10px] xl:text-[11px] font-bold transition-all duration-500 cursor-pointer relative group hover:scale-110 font-sans focus-ring uppercase tracking-widest ${
+                            currentPage === pageId
+                              ? 'text-blue-400 text-glow-blue'
+                              : 'text-black/85 hover:text-black'
+                          }`}
+                        >
+                        <span className="relative z-10">{(t.nav as any)[pageId]}</span>
+                        {currentPage !== pageId && (
+                          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-black/40 transition-all duration-300 group-hover:w-1/3" />
+                        )}
+                      </a>
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right side: Language Switcher + HC + Contact Button + Mobile Menu Toggle */}
+              <div className="flex items-center gap-4 lg:gap-6">
+
+                {/* Language Switcher */}
+                <div className="hidden lg:block">
+                  <LanguageSwitcher />
+                </div>
+
+                {/* Dark Mode Toggle */}
+                <button
+                  onClick={() => setIsDarkMode(!isDarkMode)}
+                  className={`relative hidden lg:flex p-2 transition-all duration-300 focus-ring rounded-full ${isDarkMode ? 'text-blue-400 bg-blue-400/10' : 'text-black/60 hover:text-black bg-black/5 hover:bg-black/10'}`}
+                  aria-label="Toggle Dark Mode"
+                >
+                  {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+                  {isDarkMode && <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />}
+                </button>
+
+                {/* Contact Button */}
+                <button 
+                  onClick={() => handleNavigate('contact')}
+                  className="hidden lg:flex items-center justify-center rounded-full px-6 py-2 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] font-medium tracking-wide shadow-[0_0_10px_rgba(37,99,235,0.1)] hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+                >
+                  {t.nav.contact}
+                </button>
+
+                {/* Mobile Menu Toggle */}
+                <button 
+                  className="lg:hidden text-black p-1.5 md:p-2 -mr-1.5 md:-mr-2 cursor-pointer focus-ring"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
+                >
+                  {isMobileMenuOpen ? <X className="w-6 h-6 md:w-7 md:h-7" /> : <Menu className="w-6 h-6 md:w-7 md:h-7" />}
+                </button>
+              </div>
             </div>
 
             {/* Mobile Menu Overlay */}
@@ -477,7 +481,7 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                className="absolute top-full left-0 right-0 mt-0 bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
+                className="absolute top-full left-0 right-0 mt-0 bg-white/95 backdrop-blur-2xl border-b border-black/10 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
               >
                 {PAGES.map((pageId, index) => (
                   <motion.a
@@ -490,8 +494,8 @@ export default function App() {
                       e.preventDefault();
                       handleNavigate(pageId);
                     }}
-                    className={`text-center text-lg font-medium py-3 border-b border-white/5 transition-colors font-sans focus-ring ${
-                      currentPage === pageId ? 'text-blue-400 text-glow-blue' : 'text-white/85 hover:text-white'
+                    className={`text-center text-lg font-medium py-3 border-b border-black/5 transition-colors font-sans focus-ring ${
+                      currentPage === pageId ? 'text-blue-400 text-glow-blue' : 'text-black/85 hover:text-black'
                     }`}
                   >
                     {(t.nav as any)[pageId]}
@@ -506,7 +510,7 @@ export default function App() {
                     e.preventDefault();
                     handleNavigate('contact');
                   }}
-                  className="mt-4 flex items-center justify-center w-full lg:hidden rounded-full px-8 py-3.5 bg-black/20 border border-blue-500/50 text-white text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+                  className="mt-4 flex items-center justify-center w-full lg:hidden rounded-full px-8 py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
                 >
                   <span className="relative z-10">{t.nav.contact}</span>
                 </motion.a>
@@ -527,12 +531,12 @@ export default function App() {
                   className="flex justify-center mt-2"
                 >
                   <button
-                    onClick={() => setIsHighContrast(!isHighContrast)}
-                    className="flex items-center gap-2 px-4 py-2 text-white/60 hover:text-white transition-colors focus-ring rounded-full"
-                    aria-label="Toggle High Contrast Mode"
+                    onClick={() => setIsDarkMode(!isDarkMode)}
+                    className="flex items-center gap-2 px-4 py-2 text-black/60 hover:text-black dark:text-white/60 dark:hover:text-white transition-colors focus-ring rounded-full bg-black/5 dark:bg-white/5"
+                    aria-label="Toggle Dark Mode"
                   >
-                    <span className="text-[12px] font-bold">HC</span>
-                    <span className="text-[12px] uppercase tracking-wider">{isHighContrast ? t.common.highContrastOff : t.common.highContrastOn}</span>
+                    {isDarkMode ? <Sun size={14} /> : <Moon size={14} />}
+                    <span className="text-[12px] uppercase tracking-wider">{isDarkMode ? t.common.darkModeOff : t.common.darkModeOn}</span>
                   </button>
                 </motion.div>
               </motion.div>
@@ -542,7 +546,13 @@ export default function App() {
         </div>
 
         {/* Main Content */}
-        <main className={`flex-grow flex flex-col px-6 pt-24 md:pt-28 lg:pt-32 ${currentPage === 'start' ? 'items-center justify-center text-center overflow-hidden' : 'items-start justify-start pb-12 max-w-7xl mx-auto w-full'} ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
+        <main className={`flex-grow flex flex-col px-6 ${
+          currentPage === 'start' 
+            ? 'pt-[52px] lg:pt-[60px] items-start justify-center text-left overflow-hidden max-w-7xl mx-auto w-full' 
+            : (currentPage === 'skills' || currentPage === 'projects')
+              ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 max-w-7xl mx-auto w-full lg:h-screen lg:overflow-hidden'
+              : 'pt-24 md:pt-28 lg:pt-32 items-start justify-start pb-12 max-w-7xl mx-auto w-full'
+        } ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentPage}
@@ -550,9 +560,9 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className={`w-full flex flex-col flex-grow ${currentPage === 'start' ? 'items-center justify-center' : ''}`}
+              className={`w-full flex flex-col flex-grow ${currentPage === 'start' ? 'items-start justify-center' : ''}`}
             >
-              <Suspense fallback={<div className="text-white/50">{t.common.loading}</div>}>
+              <Suspense fallback={<div className="text-black/50">{t.common.loading}</div>}>
                 {currentPage === 'start' ? (
                   <HeroSection handleNavigate={handleNavigate} />
                 ) : currentPage === 'about' ? (
@@ -568,16 +578,16 @@ export default function App() {
                   <ZertifikateSection 
                     expandedCert={expandedCert}
                     setExpandedCert={setExpandedCert}
-                    isCertUnlocked={isCertUnlocked}
-                    certPasswordInput={certPasswordInput}
-                    setCertPasswordInput={setCertPasswordInput}
-                    certError={certError}
-                    setIsCertUnlocked={setIsCertUnlocked}
-                    setCertError={setCertError}
                     handleNavigate={handleNavigate}
                   />
                 ) : currentPage === 'contact' ? (
-                  <KontaktSection />
+                  <KontaktSection 
+                    isCVUnlocked={isCVUnlocked}
+                    cvPasswordInput={cvPasswordInput}
+                    setCVPasswordInput={setCVPasswordInput}
+                    cvError={cvError}
+                    handleVerifyPassword={(pw: string) => handleVerifyPassword(pw, 'cv')}
+                  />
                 ) : currentPage === 'tools' ? (
                   <ToolsPage />
                 ) : currentPage === 'impressum' ? (
@@ -589,8 +599,8 @@ export default function App() {
                     <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight">
                       {currentPage}
                     </h1>
-                    <div className="w-full h-[1px] bg-white/10 shrink-0" />
-                    <p className="text-white/70 text-[14px] md:text-lg font-normal max-w-[680px] leading-relaxed">
+                    <div className="w-full h-[1px] bg-black/10 shrink-0" />
+                    <p className="text-black/70 text-[14px] md:text-lg font-normal max-w-[680px] leading-relaxed">
                       This is the placeholder page for {currentPage}. The background is now solid black, and the content can fill the page.
                     </p>
                   </div>

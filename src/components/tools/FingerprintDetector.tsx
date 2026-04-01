@@ -65,12 +65,12 @@ export const FingerprintDetector: React.FC = () => {
   return (
     <div className="flex flex-col h-full overflow-hidden">
       <div className="mb-2 shrink-0">
-        <h2 className="text-lg font-bold text-white mb-0.5">{t.tools.fingerprintDetector.title}</h2>
-        <p className="text-[10px] text-white/60">{t.tools.fingerprintDetector.desc}</p>
+        <h2 className="text-lg font-bold text-black mb-0.5">{t.tools.fingerprintDetector.title}</h2>
+        <p className="text-[10px] text-black/60">{t.tools.fingerprintDetector.desc}</p>
       </div>
 
-      <div className="flex-1 min-h-0 flex flex-col items-center justify-center bg-black/40 rounded-2xl border border-white/10 p-4 relative overflow-hidden">
-        <p className="absolute top-2 text-[8px] text-white/60 text-center uppercase tracking-widest z-10">
+      <div className="flex-1 min-h-0 flex flex-col items-center justify-center bg-white/40 rounded-2xl border border-black/10 p-4 relative overflow-hidden">
+        <p className="absolute top-2 text-[8px] text-black/60 text-center uppercase tracking-widest z-10">
           {t.tools.noDataStored}
         </p>
         {results.length > 0 && !isScanning && (
@@ -94,7 +94,7 @@ export const FingerprintDetector: React.FC = () => {
             <div className="w-20 h-20 rounded-full bg-blue-500/20 border border-blue-500/50 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
               <Search className="w-10 h-10 text-blue-400" />
             </div>
-            <span className="text-lg font-medium text-white">{t.tools.fingerprintDetector.scan}</span>
+            <span className="text-lg font-medium text-black">{t.tools.fingerprintDetector.scan}</span>
           </motion.button>
         )}
 
@@ -121,14 +121,14 @@ export const FingerprintDetector: React.FC = () => {
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-white/5 border border-white/10 p-3 rounded-xl flex items-center gap-3"
+                className="bg-black/5 border border-black/10 p-3 rounded-xl flex items-center gap-3"
               >
-                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-black/5 flex items-center justify-center">
                   <item.icon className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-wider text-white/60">{item.label}</p>
-                  <p className="text-sm font-medium text-white truncate max-w-[150px]">{item.value}</p>
+                  <p className="text-[10px] uppercase tracking-wider text-black/60">{item.label}</p>
+                  <p className="text-sm font-medium text-black truncate max-w-[150px]">{item.value}</p>
                 </div>
               </motion.div>
             ))}
@@ -140,7 +140,7 @@ export const FingerprintDetector: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={startScan}
-            className="mt-6 text-xs text-white/60 hover:text-white transition-colors underline"
+            className="mt-6 text-xs text-black/60 hover:text-black transition-colors underline"
           >
             {t.tools.fingerprintDetector.scan}
           </motion.button>

@@ -444,8 +444,8 @@ export const translations = {
       back: 'Zurück',
       letsTalk: 'Lass uns reden',
       backToTitle: 'Zurück zu Robert Erbach',
-      highContrastOn: 'Modus aktivieren',
-      highContrastOff: 'Modus deaktivieren',
+      darkModeOn: 'Dark Mode aktivieren',
+      darkModeOff: 'Light Mode aktivieren',
       loadingExperience: 'Erlebnis wird geladen',
       cookieBanner: {
         text: 'Ich verwende ausschließlich analytische Cookies zur Seiten-Interaktion. Keine personenbezogenen Daten, keine Marketing-Cookies. Details findest du in der',
@@ -898,8 +898,8 @@ export const translations = {
       back: 'Back',
       letsTalk: "Let's talk",
       backToTitle: 'Back to Robert Erbach',
-      highContrastOn: 'Enable Mode',
-      highContrastOff: 'Disable Mode',
+      darkModeOn: 'Enable Dark Mode',
+      darkModeOff: 'Enable Light Mode',
       loadingExperience: 'Loading Experience',
       cookieBanner: {
         text: 'I only use analytical cookies for site interaction. No personal data, no marketing cookies. You can find details in the',

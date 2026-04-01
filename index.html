@@ -1,6 +1,38 @@
 <!doctype html>
 <html lang="de">
   <head>
+    <script>
+      // Anti-DarkReader / Force Light Mode Script
+      // This script runs immediately to suppress extensions that try to inject dark mode
+      (function() {
+        const suppress = () => {
+          const html = document.documentElement;
+          // Remove Dark Reader attributes
+          if (html.hasAttribute('data-darkreader-scheme') || html.hasAttribute('data-darkreader-proxy-injected')) {
+            const attrs = html.getAttributeNames();
+            attrs.forEach(name => {
+              if (name.includes('darkreader')) html.removeAttribute(name);
+            });
+          }
+          // Remove Dark Reader injected style tags
+          const styles = document.querySelectorAll('style.darkreader, .darkreader--fallback, .darkreader--user-agent');
+          styles.forEach(s => s.remove());
+        };
+
+        // Monitor for any changes (extensions injecting styles)
+        const observer = new MutationObserver(suppress);
+        observer.observe(document.documentElement, { 
+          attributes: true, 
+          childList: true, 
+          subtree: true 
+        });
+        
+        // Initial run
+        suppress();
+        window.addEventListener('DOMContentLoaded', suppress);
+      })();
+    </script>
+
     <!-- Google Analytics & Consent Mode v2 -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -71,8 +103,10 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev data: https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net https://grainy-gradients.vercel.app; media-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com;">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <meta name="color-scheme" content="dark only" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <meta name="darkreader-lock" content="true" />
+    <meta name="theme-color" content="#ffffff" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     
     <!-- Security Meta Tags -->

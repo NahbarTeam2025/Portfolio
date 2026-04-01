@@ -104,17 +104,17 @@ export const FunnelTycoon: React.FC = () => {
           <h2 className="text-lg md:text-xl font-bold heading-gradient">
             {t.tools.funnelTycoon.title}
           </h2>
-          <p className="text-white/40 text-[9px]">
+          <p className="text-black/40 text-[9px]">
             {t.tools.funnelTycoon.desc}
           </p>
         </div>
         
-        <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10 backdrop-blur-md">
+        <div className="flex items-center gap-2 bg-black/5 px-3 py-1.5 rounded-xl border border-black/10 backdrop-blur-md">
           <div className="flex flex-col">
-            <span className="text-[7px] uppercase tracking-widest text-white/40 font-mono">Budget</span>
+            <span className="text-[7px] uppercase tracking-widest text-black/40 font-mono">Budget</span>
             <span className={`text-sm font-bold font-mono ${budget < 200 ? 'text-red-400' : 'text-green-400'}`}>${budget}</span>
           </div>
-          <div className="w-[1px] h-4 bg-white/10" />
+          <div className="w-[1px] h-4 bg-black/10" />
           <AnimatePresence mode="wait">
             {message ? (
               <motion.div
@@ -126,7 +126,7 @@ export const FunnelTycoon: React.FC = () => {
                 {message.text}
               </motion.div>
             ) : (
-              <div className="text-[8px] font-bold uppercase tracking-wider text-white/20">{t.tools.funnelTycoon.messages.ready}</div>
+              <div className="text-[8px] font-bold uppercase tracking-wider text-black/20">{t.tools.funnelTycoon.messages.ready}</div>
             )}
           </AnimatePresence>
         </div>
@@ -143,9 +143,9 @@ export const FunnelTycoon: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent" />
             <div className="flex items-center gap-1.5">
               <Users className="w-4 h-4 text-blue-400/60" />
-              <span className="text-xl font-bold text-white/90">{stats.visitors}</span>
+              <span className="text-xl font-bold text-black/90">{stats.visitors}</span>
             </div>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-mono">{t.tools.funnelTycoon.stats.visitors}</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-black/60 font-mono">{t.tools.funnelTycoon.stats.visitors}</span>
             
             {!upgrades.find(u => u.id === 'pageSpeed')?.isActive && (
               <motion.div animate={{ y: [0, 10], opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1.5 }} className="absolute right-4 top-1/2 w-0.5 h-3 bg-red-500/30 rounded-full" />
@@ -160,10 +160,10 @@ export const FunnelTycoon: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent" />
             <div className="flex items-center gap-1.5">
               <Target className="w-4 h-4 text-blue-400/70" />
-              <span className="text-xl font-bold text-white/90">{stats.leads}</span>
+              <span className="text-xl font-bold text-black/90">{stats.leads}</span>
             </div>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-mono">{t.tools.funnelTycoon.stats.leads}</span>
-            <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-blue-400 bg-black px-2 py-0.5 rounded-full border border-blue-500/20">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-black/60 font-mono">{t.tools.funnelTycoon.stats.leads}</span>
+            <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-blue-400 bg-white px-2 py-0.5 rounded-full border border-blue-500/20">
               {leadRate}% CR
             </div>
 
@@ -180,10 +180,10 @@ export const FunnelTycoon: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent" />
             <div className="flex items-center gap-1.5">
               <ShoppingBag className="w-4 h-4 text-blue-400/80" />
-              <span className="text-xl font-bold text-white/90">{stats.customers}</span>
+              <span className="text-xl font-bold text-black/90">{stats.customers}</span>
             </div>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-mono">{t.tools.funnelTycoon.stats.customers}</span>
-            <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-blue-400 bg-black px-2 py-0.5 rounded-full border border-blue-500/20">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-black/60 font-mono">{t.tools.funnelTycoon.stats.customers}</span>
+            <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[10px] font-bold text-blue-400 bg-white px-2 py-0.5 rounded-full border border-blue-500/20">
               {customerRate}% CR
             </div>
 
@@ -210,7 +210,7 @@ export const FunnelTycoon: React.FC = () => {
         <div className="space-y-3">
           <div className="flex items-center gap-2 mb-2">
             <TrendingUp className="w-4 h-4 text-blue-400" />
-            <h3 className="text-[11px] font-bold uppercase tracking-widest text-white/80">{t.tools.funnelTycoon.strategies}</h3>
+            <h3 className="text-[11px] font-bold uppercase tracking-widest text-black/80">{t.tools.funnelTycoon.strategies}</h3>
           </div>
 
           <div className="grid grid-cols-1 gap-2">
@@ -221,11 +221,11 @@ export const FunnelTycoon: React.FC = () => {
                 className={`group relative flex items-center justify-between p-3 rounded-xl border transition-all duration-500 ${
                   up.isActive
                     ? 'bg-blue-500/10 border-blue-500/40 text-blue-400'
-                    : 'bg-white/5 border-white/10 text-white/60 hover:border-white/20 hover:text-white'
+                    : 'bg-black/5 border-black/10 text-black/60 hover:border-black/20 hover:text-black'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded-lg transition-colors ${up.isActive ? 'bg-blue-500/20' : 'bg-white/5'}`}>
+                  <div className={`p-2 rounded-lg transition-colors ${up.isActive ? 'bg-blue-500/20' : 'bg-black/5'}`}>
                     <up.icon className="w-4 h-4" />
                   </div>
                   <div className="text-left">
@@ -234,10 +234,10 @@ export const FunnelTycoon: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className={`w-8 h-4 rounded-full relative transition-colors duration-500 ${up.isActive ? 'bg-blue-500' : 'bg-white/10'}`}>
+                <div className={`w-8 h-4 rounded-full relative transition-colors duration-500 ${up.isActive ? 'bg-blue-500' : 'bg-black/10'}`}>
                   <motion.div 
                     animate={{ x: up.isActive ? 18 : 2 }}
-                    className="absolute top-0.5 w-3 h-3 bg-white rounded-full shadow-lg"
+                    className="absolute top-0.5 w-3 h-3 bg-black rounded-full shadow-lg"
                   />
                 </div>
               </button>
@@ -245,21 +245,21 @@ export const FunnelTycoon: React.FC = () => {
           </div>
 
           {/* Performance Metrics */}
-          <div className="mt-4 p-4 bg-black/40 rounded-xl border border-white/5 backdrop-blur-sm">
+          <div className="mt-4 p-4 bg-white/40 rounded-xl border border-black/5 backdrop-blur-sm">
             <div className="flex items-center gap-2 mb-2">
               <Activity className="w-3 h-3 text-blue-400/60" />
-              <span className="text-[8px] uppercase tracking-widest text-white/30 font-mono">{t.tools.funnelTycoon.liveAnalytics}</span>
+              <span className="text-[8px] uppercase tracking-widest text-black/30 font-mono">{t.tools.funnelTycoon.liveAnalytics}</span>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-0.5">
-                <div className="text-lg font-bold text-white/90">{((stats.customers / stats.visitors) * 100).toFixed(2)}%</div>
-                <div className="text-[8px] uppercase tracking-widest text-white/30 font-mono">{t.tools.funnelTycoon.totalConversion}</div>
+                <div className="text-lg font-bold text-black/90">{((stats.customers / stats.visitors) * 100).toFixed(2)}%</div>
+                <div className="text-[8px] uppercase tracking-widest text-black/30 font-mono">{t.tools.funnelTycoon.totalConversion}</div>
               </div>
               <div className="space-y-0.5">
-                <div className={`text-lg font-bold ${stats.customers > 5 ? 'text-green-400' : 'text-white/40'}`}>
+                <div className={`text-lg font-bold ${stats.customers > 5 ? 'text-green-400' : 'text-black/40'}`}>
                   {stats.customers > 5 ? `+${Math.round(((stats.customers / 5) - 1) * 100)}%` : '0%'}
                 </div>
-                <div className="text-[8px] uppercase tracking-widest text-white/30 font-mono">{t.tools.funnelTycoon.roiGrowth}</div>
+                <div className="text-[8px] uppercase tracking-widest text-black/30 font-mono">{t.tools.funnelTycoon.roiGrowth}</div>
               </div>
             </div>
           </div>

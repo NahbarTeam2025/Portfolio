@@ -39,19 +39,19 @@ export const ROISimulator: React.FC = () => {
   return (
     <div className="flex flex-col h-full overflow-hidden">
       <div className="mb-2 shrink-0">
-        <h2 className="text-lg font-bold text-white mb-0.5">{t.tools.roiSimulator.title}</h2>
-        <p className="text-[10px] text-white/60">{t.tools.roiSimulator.desc}</p>
+        <h2 className="text-lg font-bold text-black mb-0.5">{t.tools.roiSimulator.title}</h2>
+        <p className="text-[10px] text-black/60">{t.tools.roiSimulator.desc}</p>
       </div>
 
       <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 gap-4 overflow-y-auto pr-2 glass-scrollbar">
         {/* Controls */}
-        <div className="space-y-4 bg-white/5 border border-white/10 p-4 rounded-2xl shrink-0">
+        <div className="space-y-4 bg-black/5 border border-black/10 p-4 rounded-2xl shrink-0">
           <div className="space-y-2">
             <div className="flex justify-between text-xs">
-              <span className="text-white/60 flex items-center gap-1.5">
+              <span className="text-black/60 flex items-center gap-1.5">
                 <DollarSign className="w-3.5 h-3.5" /> {t.tools.roiSimulator.budget}
               </span>
-              <span className="text-white font-mono">{budget}€</span>
+              <span className="text-black font-mono">{budget}€</span>
             </div>
             <input
               type="range"
@@ -60,16 +60,16 @@ export const ROISimulator: React.FC = () => {
               step="100"
               value={budget}
               onChange={(e) => setBudget(Number(e.target.value))}
-              className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              className="w-full h-1.5 bg-black/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
             />
           </div>
 
           <div className="space-y-2">
             <div className="flex justify-between text-xs">
-              <span className="text-white/60 flex items-center gap-1.5">
+              <span className="text-black/60 flex items-center gap-1.5">
                 <MousePointer2 className="w-3.5 h-3.5" /> {t.tools.roiSimulator.cpc}
               </span>
-              <span className="text-white font-mono">{cpc.toFixed(2)}€</span>
+              <span className="text-black font-mono">{cpc.toFixed(2)}€</span>
             </div>
             <input
               type="range"
@@ -78,16 +78,16 @@ export const ROISimulator: React.FC = () => {
               step="0.01"
               value={cpc}
               onChange={(e) => setCpc(Number(e.target.value))}
-              className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              className="w-full h-1.5 bg-black/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
             />
           </div>
 
           <div className="space-y-2">
             <div className="flex justify-between text-xs">
-              <span className="text-white/60 flex items-center gap-1.5">
+              <span className="text-black/60 flex items-center gap-1.5">
                 <Percent className="w-3.5 h-3.5" /> {t.tools.roiSimulator.convRate}
               </span>
-              <span className="text-white font-mono">{convRate}%</span>
+              <span className="text-black font-mono">{convRate}%</span>
             </div>
             <input
               type="range"
@@ -96,16 +96,16 @@ export const ROISimulator: React.FC = () => {
               step="0.1"
               value={convRate}
               onChange={(e) => setConvRate(Number(e.target.value))}
-              className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              className="w-full h-1.5 bg-black/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
             />
           </div>
 
           <div className="space-y-2">
             <div className="flex justify-between text-xs">
-              <span className="text-white/60 flex items-center gap-1.5">
+              <span className="text-black/60 flex items-center gap-1.5">
                 <ShoppingCart className="w-3.5 h-3.5" /> {t.tools.roiSimulator.orderValue}
               </span>
-              <span className="text-white font-mono">{orderValue}€</span>
+              <span className="text-black font-mono">{orderValue}€</span>
             </div>
             <input
               type="range"
@@ -114,7 +114,7 @@ export const ROISimulator: React.FC = () => {
               step="1"
               value={orderValue}
               onChange={(e) => setOrderValue(Number(e.target.value))}
-              className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              className="w-full h-1.5 bg-black/10 rounded-lg appearance-none cursor-pointer accent-blue-500"
             />
           </div>
         </div>
@@ -122,23 +122,23 @@ export const ROISimulator: React.FC = () => {
         {/* Results */}
         <div className="flex flex-col gap-3">
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white/5 border border-white/10 p-3 rounded-xl">
-              <p className="text-[9px] uppercase tracking-wider text-white/60 mb-0.5">Clicks</p>
-              <p className="text-base font-bold text-white">{Math.floor(stats.clicks)}</p>
+            <div className="bg-black/5 border border-black/10 p-3 rounded-xl">
+              <p className="text-[9px] uppercase tracking-wider text-black/60 mb-0.5">Clicks</p>
+              <p className="text-base font-bold text-black">{Math.floor(stats.clicks)}</p>
             </div>
-            <div className="bg-white/5 border border-white/10 p-3 rounded-xl">
-              <p className="text-[9px] uppercase tracking-wider text-white/60 mb-0.5">Conversions</p>
-              <p className="text-base font-bold text-white">{Math.floor(stats.conversions)}</p>
+            <div className="bg-black/5 border border-black/10 p-3 rounded-xl">
+              <p className="text-[9px] uppercase tracking-wider text-black/60 mb-0.5">Conversions</p>
+              <p className="text-base font-bold text-black">{Math.floor(stats.conversions)}</p>
             </div>
           </div>
 
-          <div className="flex-1 min-h-0 bg-black/40 border border-white/10 p-4 rounded-2xl flex flex-col justify-between relative overflow-hidden">
+          <div className="flex-1 min-h-0 bg-white/40 border border-black/10 p-4 rounded-2xl flex flex-col justify-between relative overflow-hidden">
              {/* Background Glow */}
             <div className={`absolute -right-20 -top-20 w-48 h-48 rounded-full blur-[80px] opacity-20 transition-colors duration-500 ${isProfitable ? 'bg-green-500' : 'bg-red-500'}`} />
 
             <div className="space-y-3 relative z-10">
               <div>
-                <p className="text-[11px] text-white/60 mb-0.5">{t.tools.roiSimulator.roas}</p>
+                <p className="text-[11px] text-black/60 mb-0.5">{t.tools.roiSimulator.roas}</p>
                 <div className="flex items-baseline gap-2">
                   <span className={`text-3xl font-bold ${isProfitable ? 'text-green-400' : 'text-red-400'}`}>
                     {stats.roas.toFixed(0)}%
@@ -148,13 +148,13 @@ export const ROISimulator: React.FC = () => {
               </div>
 
               <div className="space-y-1.5">
-                <div className="flex justify-between text-[10px] text-white/60">
+                <div className="flex justify-between text-[10px] text-black/60">
                   <span>{t.tools.roiSimulator.profit}</span>
                   <span className={isProfitable ? 'text-green-400' : 'text-red-400'}>
                     {isProfitable ? '+' : ''}{stats.profit.toFixed(2)}€
                   </span>
                 </div>
-                <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                <div className="h-2 bg-black/5 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${Math.min(100, Math.max(0, (stats.roas / 500) * 100))}%` }}
@@ -164,10 +164,10 @@ export const ROISimulator: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-4 pt-4 border-t border-white/10 grid grid-cols-2 gap-3 relative z-10">
+            <div className="mt-4 pt-4 border-t border-black/10 grid grid-cols-2 gap-3 relative z-10">
               <div>
-                <p className="text-[9px] uppercase tracking-wider text-white/60 mb-0.5">Revenue</p>
-                <p className="text-lg font-bold text-white">{stats.revenue.toFixed(2)}€</p>
+                <p className="text-[9px] uppercase tracking-wider text-black/60 mb-0.5">Revenue</p>
+                <p className="text-lg font-bold text-black">{stats.revenue.toFixed(2)}€</p>
               </div>
               <div className="flex items-end justify-end">
                 <div className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-widest ${isProfitable ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'}`}>

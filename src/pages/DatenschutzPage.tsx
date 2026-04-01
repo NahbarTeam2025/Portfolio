@@ -9,20 +9,20 @@ export const DatenschutzPage = () => {
     <div className="flex flex-col items-start gap-8 w-full max-w-3xl mx-auto py-12 px-6 animate-in fade-in duration-500">
       <button 
         onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-white/60 hover:text-blue-400 transition-colors mb-4"
+        className="flex items-center gap-2 text-black/60 hover:text-blue-400 transition-colors mb-4"
       >
         <ArrowLeft size={20} />
         Zurück
       </button>
-      <h1 className="text-3xl md:text-4xl font-medium text-white">Datenschutzerklärung</h1>
-      <div className="text-white/70 text-base leading-relaxed space-y-8">
+      <h1 className="text-3xl md:text-4xl font-medium text-black">Datenschutzerklärung</h1>
+      <div className="text-black/70 text-base leading-relaxed space-y-8">
         <section>
-          <h3 className="text-xl font-medium text-white mb-4">1. Datenschutz auf einen Blick</h3>
-          <h4 className="text-lg font-medium text-white/90 mb-2">Allgemeine Hinweise</h4>
+          <h3 className="text-xl font-medium text-black mb-4">1. Datenschutz auf einen Blick</h3>
+          <h4 className="text-lg font-medium text-black/90 mb-2">Allgemeine Hinweise</h4>
           <p className="mb-4">
             Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
           </p>
-          <h4 className="text-lg font-medium text-white/90 mb-2">Datenerfassung auf dieser Website</h4>
+          <h4 className="text-lg font-medium text-black/90 mb-2">Datenerfassung auf dieser Website</h4>
           <p className="mb-2"><strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong></p>
           <p className="mb-4">Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
           <p className="mb-2"><strong>Wie erfasse ich Ihre Daten?</strong></p>
@@ -34,19 +34,19 @@ export const DatenschutzPage = () => {
         </section>
 
         <section>
-          <h3 className="text-xl font-medium text-white mb-4">2. Hosting</h3>
+          <h3 className="text-xl font-medium text-black mb-4">2. Hosting</h3>
           <p className="mb-2">Ich hoste die Inhalte meiner Website bei folgendem Anbieter:</p>
-          <h4 className="text-lg font-medium text-white/90 mb-2">Cloudflare</h4>
+          <h4 className="text-lg font-medium text-black/90 mb-2">Cloudflare</h4>
           <p className="mb-4">Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (nachfolgend „Cloudflare“).</p>
           <p className="mb-4">Wenn Sie meine Website besuchen, erfasst Cloudflare verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">https://www.cloudflare.com/privacypolicy/</a>.</p>
           <p>Die Verwendung von Cloudflare erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung meiner Website.</p>
         </section>
 
         <section>
-          <h3 className="text-xl font-medium text-white mb-4">3. Allgemeine Hinweise und Pflichtinformationen</h3>
-          <h4 className="text-lg font-medium text-white/90 mb-2">Datenschutz</h4>
+          <h3 className="text-xl font-medium text-black mb-4">3. Allgemeine Hinweise und Pflichtinformationen</h3>
+          <h4 className="text-lg font-medium text-black/90 mb-2">Datenschutz</h4>
           <p className="mb-4">Ich nehme den Schutz Ihrer persönlichen Daten sehr ernst. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-          <h4 className="text-lg font-medium text-white/90 mb-2">Hinweis zur verantwortlichen Stelle</h4>
+          <h4 className="text-lg font-medium text-black/90 mb-2">Hinweis zur verantwortlichen Stelle</h4>
           <p className="mb-4">Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
           <p className="mb-4">
             Robert Erbach<br />
@@ -58,17 +58,17 @@ export const DatenschutzPage = () => {
         </section>
 
         <section>
-          <h3 className="text-xl font-medium text-white mb-4">4. Datenerfassung auf dieser Website</h3>
-          <h4 className="text-lg font-medium text-white/90 mb-2">Bereitstellung von Downloads (Zertifikate)</h4>
+          <h3 className="text-xl font-medium text-black mb-4">4. Datenerfassung auf dieser Website</h3>
+          <h4 className="text-lg font-medium text-black/90 mb-2">Bereitstellung von Downloads (Zertifikate)</h4>
           <p className="mb-6">Ich biete auf meiner Website Zertifikate zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Cloudflare erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken.</p>
         </section>
 
         <section>
-          <h3 className="text-xl font-medium text-white mb-4">5. Externe Ressourcen und CDN</h3>
-          <h4 className="text-lg font-medium text-white/90 mb-2">Bunny Fonts</h4>
+          <h3 className="text-xl font-medium text-black mb-4">5. Externe Ressourcen und CDN</h3>
+          <h4 className="text-lg font-medium text-black/90 mb-2">Bunny Fonts</h4>
           <p className="mb-4">Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Webfonts direkt von den Servern des Anbieters (Bunny.net) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diesen Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.</p>
           
-          <h4 className="text-lg font-medium text-white/90 mb-2">Verwendung eines Content Delivery Networks (CDN) – Cloudflare</h4>
+          <h4 className="text-lg font-medium text-black/90 mb-2">Verwendung eines Content Delivery Networks (CDN) – Cloudflare</h4>
           <p className="mb-4">Wir nutzen für die Bereitstellung von Medieninhalten (wie Videos und Bildern) das Content Delivery Network (CDN) von Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA).</p>
           <p className="mb-4">Zweck der Nutzung ist die Optimierung der Ladezeiten und die stabile, weltweite Bereitstellung unserer Assets. Durch die Nutzung dieses Dienstes werden Medieninhalte direkt von den Servern von Cloudflare geladen. Um diese Inhalte auszuliefern, verarbeitet Cloudflare technisch bedingt die IP-Adresse Ihres Endgeräts sowie weitere Log-Daten.</p>
           <p className="mb-4">Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">https://www.cloudflare.com/privacypolicy/</a>.</p>
@@ -76,7 +76,7 @@ export const DatenschutzPage = () => {
         </section>
 
         <section>
-          <h3 className="text-xl font-medium text-white mb-4">6. Sicherheit- und Privacy-Tools</h3>
+          <h3 className="text-xl font-medium text-black mb-4">6. Sicherheit- und Privacy-Tools</h3>
           <p className="mb-4">
             Auf dieser Website biete ich verschiedene Werkzeuge an, wie z.B. den "Password Guardian" und den "Fingerprint Detector". 
             Ich möchte ausdrücklich darauf hinweisen, dass bei der Nutzung dieser Tools <strong>keine personenbezogenen Daten gespeichert oder an Dritte übertragen werden</strong>. 
@@ -84,10 +84,10 @@ export const DatenschutzPage = () => {
           </p>
         </section>
 
-        <div className="pt-12 border-t border-white/10 flex justify-end w-full">
+        <div className="pt-12 border-t border-black/10 flex justify-end w-full">
           <button
             onClick={() => navigate(-1)}
-            className="px-8 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all font-medium hover:scale-[1.02] active:scale-[0.98]"
+            className="px-8 py-3 bg-black/10 hover:bg-black/20 text-black rounded-xl transition-all font-medium hover:scale-[1.02] active:scale-[0.98]"
           >
             Schließen
           </button>

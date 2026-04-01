@@ -46,13 +46,13 @@ export const ToolsPage: React.FC = () => {
           <select
             value={activeTab}
             onChange={(e) => setActiveTab(e.target.value as ToolTab)}
-            className="w-full p-2 bg-black/80 border border-blue-500/50 rounded-lg text-[10px] uppercase tracking-widest text-white focus:outline-none focus:border-blue-500/50"
+            className="w-full p-2 bg-white/80 border border-blue-500/50 rounded-lg text-[10px] uppercase tracking-widest text-black focus:outline-none focus:border-blue-500/50"
           >
             {tabs.map((tab) => (
               <option 
                 key={tab.id} 
                 value={tab.id} 
-                className={`bg-black ${activeTab === tab.id ? 'text-blue-400 font-bold' : 'text-white'}`}
+                className={`bg-white ${activeTab === tab.id ? 'text-blue-400 font-bold' : 'text-black'}`}
               >
                 {tab.label}
               </option>
@@ -60,13 +60,13 @@ export const ToolsPage: React.FC = () => {
           </select>
         </div>
         {/* Desktop Tab Bar */}
-        <div className="hidden md:flex items-center gap-1 p-0.5 bg-white/5 border border-white/10 rounded-lg self-start backdrop-blur-md min-w-max">
+        <div className="hidden md:flex items-center gap-1 p-0.5 bg-black/5 border border-black/10 rounded-lg self-start backdrop-blur-md min-w-max">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`relative flex items-center gap-1 px-3 py-1 rounded-md text-[9px] font-bold tracking-widest uppercase transition-all duration-300 focus-ring whitespace-nowrap ${
-                activeTab === tab.id ? 'text-white' : 'text-white/40 hover:text-white/70'
+                activeTab === tab.id ? 'text-black' : 'text-black/40 hover:text-black/70'
               }`}
             >
               {activeTab === tab.id && (
@@ -76,7 +76,7 @@ export const ToolsPage: React.FC = () => {
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
               )}
-              <tab.icon className={`w-3 h-3 relative z-10 ${activeTab === tab.id ? 'text-blue-400' : 'text-white/40'}`} />
+              <tab.icon className={`w-3 h-3 relative z-10 ${activeTab === tab.id ? 'text-blue-400' : 'text-black/40'}`} />
               <span className="relative z-10">{tab.label}</span>
             </button>
           ))}
