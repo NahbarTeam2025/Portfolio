@@ -10,28 +10,39 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
           onClick={() => handleNavigate('start')}
           className="flex items-center cursor-pointer group" 
         >
+          {/* Light mode logo */}
           <img 
-            src="https://meine-assets.pages.dev/logo.png" 
+            src="https://3dab3910.meine-assets.pages.dev/favicon-96x96.png" 
             alt="Logo Robert Erbach Footer" 
             width="66"
             height="49"
-            className="h-[24px] md:h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)] invert dark:invert-0"
+            className="h-[24px] md:h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)] dark:hidden"
             loading="lazy"
             decoding="async"
           />
-          <span className="ml-3 text-black/70 dark:text-white/70 text-[10px] md:text-xs font-medium">Falkenberg/Elster</span>
+          {/* Dark mode logo */}
+          <img 
+            src="https://3dab3910.meine-assets.pages.dev/favicon.ico" 
+            alt="Logo Robert Erbach Footer" 
+            width="66"
+            height="49"
+            className="h-[24px] md:h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)] hidden dark:block"
+            loading="lazy"
+            decoding="async"
+          />
+          <span className="ml-3 text-black/70 text-[10px] md:text-xs font-medium">Falkenberg/Elster</span>
         </button>
         
         <div className="flex flex-row justify-end items-center gap-4 md:gap-6 text-[11px]">
           <button 
             onClick={() => handleNavigate('impressum')}
-            className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors"
+            className="text-black/70 hover:text-black transition-colors"
           >
             {t.footer.impressum}
           </button>
           <button 
             onClick={() => handleNavigate('datenschutz')}
-            className="text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors"
+            className="text-black/70 hover:text-black transition-colors"
           >
             {t.footer.privacy}
           </button>

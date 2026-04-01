@@ -161,6 +161,12 @@
     border-color: rgba(255, 255, 255, 0.05) !important;
   }
 
+  .dark footer {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+
   .dark .fixed.inset-0.z-0 {
     background-color: #000000 !important;
   }
@@ -184,7 +190,7 @@
   }
   
   /* Prevent extensions like Dark Reader from inverting the page */
-  html, body, #root, video, img:not(.invert), div, section, footer, header, main, nav {
+  html, body, #root, video, div, section, footer, header, main, nav {
     filter: none !important;
   }
   
@@ -192,6 +198,12 @@
   .invert {
     filter: invert(1) !important;
   }
+  
+  /* Force logo to be black in light mode */
+  html:not(.dark) img[alt*="Logo Robert Erbach"] {
+    filter: brightness(0) !important;
+  }
+  
   * {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */

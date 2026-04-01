@@ -387,13 +387,24 @@ export default function App() {
                     handleNavigate('start');
                   }}
                 >
+                  {/* Light mode logo */}
                   <img 
-                    src="https://meine-assets.pages.dev/logo.png" 
+                    src="https://3dab3910.meine-assets.pages.dev/favicon-96x96.png" 
                     alt="Logo Robert Erbach" 
                     width="66"
                     height="49"
                     decoding="async"
-                    className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 invert"
+                    className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)] dark:hidden"
+                    style={{ forcedColorAdjust: 'none' }}
+                  />
+                  {/* Dark mode logo */}
+                  <img 
+                    src="https://3dab3910.meine-assets.pages.dev/favicon.ico" 
+                    alt="Logo Robert Erbach" 
+                    width="66"
+                    height="49"
+                    decoding="async"
+                    className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)] hidden dark:block"
                     style={{ forcedColorAdjust: 'none' }}
                   />
                 </a>
@@ -481,26 +492,30 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                className="absolute top-full left-0 right-0 mt-0 bg-white/95 backdrop-blur-2xl border-b border-black/10 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
+                className="fixed top-[80px] bottom-0 left-0 right-0 bg-white/95 backdrop-blur-2xl border-b border-black/10 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
               >
-                {PAGES.map((pageId, index) => (
-                  <motion.a
-                    key={pageId}
-                    href={PAGE_ROUTES[pageId]}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + index * 0.05, duration: 0.4 }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavigate(pageId);
-                    }}
-                    className={`text-center text-lg font-medium py-3 border-b border-black/5 transition-colors font-sans focus-ring ${
-                      currentPage === pageId ? 'text-blue-400 text-glow-blue' : 'text-black/85 hover:text-black'
-                    }`}
-                  >
-                    {(t.nav as any)[pageId]}
-                  </motion.a>
-                ))}
+                {/* Navigation Links */}
+                <div className="flex flex-col gap-1">
+                  {PAGES.map((pageId, index) => (
+                    <motion.a
+                      key={pageId}
+                      href={PAGE_ROUTES[pageId]}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + index * 0.05, duration: 0.4 }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavigate(pageId);
+                      }}
+                      className={`text-center text-lg font-medium py-3 border-b border-black/5 transition-colors font-sans focus-ring ${
+                        currentPage === pageId ? 'text-blue-400 text-glow-blue' : 'text-black/85 hover:text-black'
+                      }`}
+                    >
+                      {(t.nav as any)[pageId]}
+                    </motion.a>
+                  ))}
+                </div>
+
                 <motion.a 
                   href={PAGE_ROUTES['contact']}
                   initial={{ opacity: 0, y: 10 }}
@@ -510,35 +525,41 @@ export default function App() {
                     e.preventDefault();
                     handleNavigate('contact');
                   }}
-                  className="mt-4 flex items-center justify-center w-full lg:hidden rounded-full px-8 py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+                  className="mt-2 flex items-center justify-center w-full lg:hidden rounded-full px-8 py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
                 >
                   <span className="relative z-10">{t.nav.contact}</span>
                 </motion.a>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + (PAGES.length + 3) * 0.05, duration: 0.4 }}
-                  className="flex justify-center mt-4"
-                >
-                  <LanguageSwitcher />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + (PAGES.length + 2) * 0.05, duration: 0.4 }}
-                  className="flex justify-center mt-2"
-                >
-                  <button
-                    onClick={() => setIsDarkMode(!isDarkMode)}
-                    className="flex items-center gap-2 px-4 py-2 text-black/60 hover:text-black dark:text-white/60 dark:hover:text-white transition-colors focus-ring rounded-full bg-black/5 dark:bg-white/5"
-                    aria-label="Toggle Dark Mode"
+                <div className="flex flex-col items-center gap-4 mt-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + (PAGES.length + 3) * 0.05, duration: 0.4 }}
                   >
-                    {isDarkMode ? <Sun size={14} /> : <Moon size={14} />}
-                    <span className="text-[12px] uppercase tracking-wider">{isDarkMode ? t.common.darkModeOff : t.common.darkModeOn}</span>
-                  </button>
-                </motion.div>
+                    <LanguageSwitcher />
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + (PAGES.length + 2) * 0.05, duration: 0.4 }}
+                  >
+                    <button
+                      onClick={() => setIsDarkMode(!isDarkMode)}
+                      className={`flex items-center justify-center gap-2 px-4 py-1.5 transition-all duration-300 focus-ring rounded-xl border text-[10px] font-bold ${
+                        isDarkMode 
+                          ? 'text-blue-400 bg-blue-400/10 border-blue-400/30' 
+                          : 'text-black/70 bg-black/5 border-black/10 hover:bg-black/10'
+                      }`}
+                      aria-label="Toggle Dark Mode"
+                    >
+                      {isDarkMode ? <Sun size={14} /> : <Moon size={14} />}
+                      <span className="uppercase tracking-widest">
+                        {isDarkMode ? t.common.darkModeOff : t.common.darkModeOn}
+                      </span>
+                    </button>
+                  </motion.div>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -548,7 +569,7 @@ export default function App() {
         {/* Main Content */}
         <main className={`flex-grow flex flex-col px-6 ${
           currentPage === 'start' 
-            ? 'pt-[52px] lg:pt-[60px] items-start justify-center text-left overflow-hidden max-w-7xl mx-auto w-full' 
+            ? 'pt-[52px] lg:pt-[60px] items-start justify-center text-left max-w-7xl mx-auto w-full' 
             : (currentPage === 'skills' || currentPage === 'projects')
               ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 max-w-7xl mx-auto w-full lg:h-screen lg:overflow-hidden'
               : 'pt-24 md:pt-28 lg:pt-32 items-start justify-start pb-12 max-w-7xl mx-auto w-full'
