@@ -62,7 +62,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
                     <div className="text-black/60 text-[8px] md:text-[10px] font-mono tracking-widest uppercase leading-none mb-0.5 font-bold">0{idx + 1}</div>
                     <div className="w-1 h-1 rounded-full bg-green-500/60 group-hover:bg-green-400 transition-colors" />
                   </div>
-                  <span className="text-black/80 text-[7px] sm:text-[10px] lg:text-xs font-semibold tracking-[0.1em] sm:tracking-[0.2em] uppercase transition-colors group-hover:text-blue-600 text-center lg:text-left leading-none">{item}</span>
+                  <span className="text-black/80 text-[7px] sm:text-[10px] lg:text-xs font-semibold tracking-[0.1em] sm:tracking-[0.2em] uppercase transition-colors group-hover:text-blue-600 text-center lg:text-left leading-[1.2] whitespace-normal sm:whitespace-pre-line">{item}</span>
                 </div>
               ))}
             </div>
@@ -73,7 +73,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             className="relative group w-full sm:w-auto flex justify-center lg:justify-start animate-in fade-in slide-in-from-left-4 duration-700 delay-500 fill-mode-both"
           >
             {/* Outer Glow Effect */}
-            <div className="absolute -inset-4 bg-blue-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="absolute -inset-4 bg-blue-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full" />
             
             <button 
               id="btn-hero-projects"
@@ -83,7 +83,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
                 }
                 handleNavigate('projects');
               }}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring hover:scale-[0.98] active:scale-95"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
             >
               <span className="relative z-10">{t.hero.cta}</span>
               <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,7 +133,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
               alt="Robert Erbach" 
               width="500"
               height="500"
-              fetchpriority="high"
+              fetchPriority="high"
               loading="eager"
               className="w-full h-auto object-contain opacity-[0.90] relative z-[5]"
               referrerPolicy="no-referrer"

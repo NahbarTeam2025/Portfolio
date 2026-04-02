@@ -34,7 +34,7 @@ export const ToolsPage: React.FC = () => {
             {t.tools.subtitle}
           </span>
         </div>
-        <h1 className="heading-gradient text-[20px] md:text-[28px] lg:text-[36px] font-medium leading-tight tracking-tight">
+        <h1 className="heading-gradient fluid-h2 font-medium leading-tight tracking-tight">
           {t.tools.title}
         </h1>
       </div>

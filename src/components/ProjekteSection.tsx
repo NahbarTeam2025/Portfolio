@@ -12,7 +12,7 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
   const projects = t.projects.items;
 
   return (
-    <div className="flex flex-col items-start gap-1.5 md:gap-3 w-full flex-grow animate-in fade-in duration-500 h-full">
+    <div className="flex flex-col items-start gap-1.5 md:gap-3 w-full flex-grow animate-in fade-in duration-500 h-full text-black ProjekteSection-container">
       <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
         {t.projects.title}
       </h1>

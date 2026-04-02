@@ -1,5 +1,5 @@
 import React, { useState, startTransition } from 'react';
-import { User, Mail, Linkedin, MapPin, ChevronDown, Eye, EyeOff, Lock, X } from 'lucide-react';
+import { User, Mail, Linkedin, MapPin, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export const KontaktSection = ({ 
@@ -14,7 +14,7 @@ export const KontaktSection = ({
 
   return (
     <div className="flex flex-col items-start gap-1 md:gap-2 w-full h-full animate-in fade-in duration-500 overflow-y-auto md:overflow-hidden">
-      <h1 className="heading-gradient text-2xl md:text-4xl font-medium tracking-tight shrink-0">
+      <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
         {t.contact.title}
       </h1>
       <div className="w-full h-[1px] bg-black/10 shrink-0" />
@@ -22,7 +22,7 @@ export const KontaktSection = ({
         <div className="flex flex-col gap-3 md:gap-2 w-full">
           <div className="space-y-1 md:space-y-1 text-center">
             <h2 className="text-black text-[20px] md:text-[28px] font-medium leading-tight">{t.contact.subtitle}</h2>
-            <p className="text-black/90 text-[15px] md:text-[18px] leading-relaxed">
+            <p className="text-black/90 text-[15px] md:text-[18px] leading-relaxed whitespace-normal md:whitespace-pre-line">
               {t.contact.desc}
             </p>
           </div>
@@ -101,7 +101,9 @@ export const KontaktSection = ({
                         onClick={() => setShowPasswordPrompt(true)}
                         className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
                       >
-                        <Lock className="w-4 h-4 text-blue-400" />
+                        <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
                         <span className="relative z-10">{t.contact.unlockPrompt}</span>
                       </button>
                     ) : (

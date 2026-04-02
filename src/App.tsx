@@ -478,8 +478,9 @@ export default function App() {
                 </button>
               </div>
             </div>
+          </nav>
 
-            {/* Mobile Menu Overlay */}
+          {/* Mobile Menu Overlay */}
           <AnimatePresence>
             {isMobileMenuOpen && (
               <motion.div 
@@ -487,7 +488,7 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                className="fixed top-[80px] bottom-0 left-0 right-0 bg-white/95 backdrop-blur-2xl border-b border-black/10 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
+                className="fixed top-[52px] md:top-[60px] bottom-[40px] left-0 right-0 bg-white/95 backdrop-blur-2xl border-b border-black/10 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
               >
                 {/* Navigation Links */}
                 <div className="flex flex-col gap-1">
@@ -558,7 +559,6 @@ export default function App() {
               </motion.div>
             )}
           </AnimatePresence>
-          </nav>
         </div>
 
         {/* Main Content */}
@@ -608,7 +608,7 @@ export default function App() {
                       <DatenschutzPage />
                     ) : (
                       <div className="flex flex-col items-start gap-4 md:gap-8 w-full animate-in fade-in duration-500 h-full">
-                        <h1 className="heading-gradient text-[28px] md:text-[40px] lg:text-[56px] font-medium leading-[1.28] tracking-tight">
+                        <h1 className="heading-gradient fluid-h2 font-medium tracking-tight">
                           {currentPage}
                         </h1>
                         <div className="w-full h-[1px] bg-black/10 shrink-0" />

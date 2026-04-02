@@ -55,20 +55,6 @@
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) !important;
   }
 
-  .dark .text-black,
-  .dark .text-black\/60,
-  .dark .text-black\/70,
-  .dark .text-black\/80,
-  .dark .text-black\/85,
-  .dark .text-black\/90 {
-    color: var(--color-text-primary) !important;
-  }
-
-  .dark .text-black\/50,
-  .dark .text-black\/40 {
-    color: var(--color-text-muted) !important;
-  }
-
   .dark .hover\:text-black:hover {
     color: #ffffff !important;
   }
@@ -183,8 +169,8 @@
     background-color: var(--color-bg-base) !important;
   }
   body, #root {
-    background-color: var(--color-bg-base) !important;
-    color: var(--color-text-primary) !important;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
     margin: 0;
     padding: 0;
   }
@@ -202,6 +188,20 @@
   /* Force logo to be black in light mode */
   html:not(.dark) img[alt*="Logo Robert Erbach"] {
     filter: brightness(0) !important;
+  }
+
+  /* Force project card text to be black in light mode */
+  html:not(.dark) .wow-card h3,
+  html:not(.dark) .wow-card p,
+  html:not(.dark) .wow-card span,
+  html:not(.dark) .ProjekteSection-container p,
+  html:not(.dark) .ProjekteSection-container span,
+  html:not(.dark) .ProjekteSection-container button:not(.bg-blue-500),
+  html:not(.dark) .project-modal-content h2,
+  html:not(.dark) .project-modal-content h3,
+  html:not(.dark) .project-modal-content div,
+  html:not(.dark) .project-modal-content span {
+    color: #000000 !important;
   }
   
   * {

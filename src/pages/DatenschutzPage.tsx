@@ -14,7 +14,7 @@ export const DatenschutzPage = () => {
         <ArrowLeft size={20} />
         Zurück
       </button>
-      <h1 className="text-3xl md:text-4xl font-medium text-black">Datenschutzerklärung</h1>
+      <h1 className="heading-gradient fluid-h2 font-medium text-black">Datenschutzerklärung</h1>
       <div className="text-black/70 text-base leading-relaxed space-y-8">
         <section>
           <h3 className="text-xl font-medium text-black mb-4">1. Datenschutz auf einen Blick</h3>

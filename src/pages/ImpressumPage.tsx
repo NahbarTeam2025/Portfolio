@@ -14,7 +14,7 @@ export const ImpressumPage = () => {
         <ArrowLeft size={20} />
         Zurück
       </button>
-      <h1 className="text-3xl md:text-4xl font-medium text-black">Impressum</h1>
+      <h1 className="heading-gradient fluid-h2 font-medium text-black">Impressum</h1>
       <div className="text-black/70 text-base leading-relaxed space-y-8">
         <div>
           <h3 className="text-xl font-medium text-black mb-3">Angaben gemäß § 5 TMG</h3>
