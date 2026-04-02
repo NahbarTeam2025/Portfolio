@@ -59,6 +59,20 @@
     color: #ffffff !important;
   }
 
+  .dark .text-black, .dark .\!text-black { color: #ffffff !important; }
+  .dark .text-black\/95, .dark .\!text-black\/95 { color: rgba(255, 255, 255, 0.95) !important; }
+  .dark .text-black\/90, .dark .\!text-black\/90 { color: rgba(255, 255, 255, 0.9) !important; }
+  .dark .text-black\/85, .dark .\!text-black\/85 { color: rgba(255, 255, 255, 0.85) !important; }
+  .dark .text-black\/80, .dark .\!text-black\/80 { color: rgba(255, 255, 255, 0.8) !important; }
+  .dark .text-black\/70, .dark .\!text-black\/70 { color: rgba(255, 255, 255, 0.7) !important; }
+  .dark .text-black\/60, .dark .\!text-black\/60 { color: rgba(255, 255, 255, 0.6) !important; }
+  .dark .text-black\/50, .dark .\!text-black\/50 { color: rgba(255, 255, 255, 0.5) !important; }
+  .dark .text-black\/40, .dark .\!text-black\/40 { color: rgba(255, 255, 255, 0.4) !important; }
+  .dark .text-black\/30, .dark .\!text-black\/30 { color: rgba(255, 255, 255, 0.3) !important; }
+  .dark .text-black\/20, .dark .\!text-black\/20 { color: rgba(255, 255, 255, 0.2) !important; }
+  .dark .text-black\/10, .dark .\!text-black\/10 { color: rgba(255, 255, 255, 0.1) !important; }
+  .dark .text-black\/5, .dark .\!text-black\/5 { color: rgba(255, 255, 255, 0.05) !important; }
+
   .dark .text-gray-700,
   .dark .text-gray-600,
   .dark .text-gray-800 {
