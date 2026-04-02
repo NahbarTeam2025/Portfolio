@@ -369,7 +369,7 @@ export default function App() {
                 {/* Logo */}
                 <a 
                   href={PAGE_ROUTES['start']} 
-                  className="flex items-center gap-3 h-[24px] md:h-[28px] cursor-pointer group" 
+                  className="flex items-center gap-3 h-[28px] md:h-[34px] cursor-pointer group" 
                   onClick={(e) => {
                     e.preventDefault();
                     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -385,8 +385,8 @@ export default function App() {
                   <img 
                     src="https://3dab3910.meine-assets.pages.dev/favicon-96x96.png" 
                     alt="Logo Robert Erbach" 
-                    width="66"
-                    height="49"
+                    width="74"
+                    height="55"
                     decoding="async"
                     className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)] dark:hidden"
                     style={{ forcedColorAdjust: 'none' }}
@@ -395,8 +395,8 @@ export default function App() {
                   <img 
                     src="https://3dab3910.meine-assets.pages.dev/favicon.ico" 
                     alt="Logo Robert Erbach" 
-                    width="66"
-                    height="49"
+                    width="74"
+                    height="55"
                     decoding="async"
                     className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)] hidden dark:block"
                     style={{ forcedColorAdjust: 'none' }}

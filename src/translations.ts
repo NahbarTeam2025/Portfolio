@@ -312,8 +312,8 @@ export const translations = {
         {
           date: '07/2025 – 04/2026',
           title: 'Weiterbildung: Digital Marketing Manager',
-          company: 'GFN GmbH',
-          desc: '**Online-Vollzeit-Weiterbildung** · Abschluss: 5 Zertifikate von Webmasters Europe e.V. mit abschließendem Diplom\n\nGesamtausbildung im digitalen Marketing: Online-Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics sowie E-Commerce.\n\n**Online-Marketing & Verkaufspsychologie · 4 Wochen**\n\nGrundlagen digitales Marketing, Zielgruppenanalyse, Neuromarketing und Kaufpsychologie, KI-Tools im Marketing. Abschluss: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 Monate**\n\nPlattformstrategie (Facebook, Instagram, LinkedIn, YouTube), Social Ads, virales Marketing, Facebook Advertising. Abschluss: Certified Social Media Manager:in\n\n**Content Marketing · 2 Monate**\n\nContent-Strategie, E-Mail-Marketing, WordPress, Blogging und SEO-Content. Abschluss: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 Monate**\n\nSuchmaschinenoptimierung, Google Ads, Kampagnenmanagement, Google Analytics, Google Tag Manager. Abschluss: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 Monate**\n\nOnline-Shop-Strategie, WooCommerce, Google Analytics, Social Ads, Projektarbeit mit eigenem Shop-Konzept. Abschluss: GFN-Zertifikat E-Commerce Manager\n\n*Alle Kurse über GFN GmbH, online, gefördert. Zertifikate von Webmasters Europe e.V. sind anerkannte Branchenzertifizierungen.*'
+          company: 'GFN GmbH / WPI',
+          desc: '**Online-Vollzeit-Weiterbildung** · Abschluss: 5 Zertifikate von Webmasters Europe e.V. mit abschließendem Diplom\n\nGesamtausbildung im digitalen Marketing: Online-Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics sowie E-Commerce.\n\n**Online-Marketing & Verkaufspsychologie · 4 Wochen**\n\nGrundlagen digitales Marketing, Zielgruppenanalyse, Neuromarketing und Kaufpsychologie, KI-Tools im Marketing. Abschluss: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 Monate**\n\nPlattformstrategie (Facebook, Instagram, LinkedIn, YouTube), Social Ads, virales Marketing, Facebook Advertising. Abschluss: Certified Social Media Manager:in\n\n**Content Marketing · 2 Monate**\n\nContent-Strategie, E-Mail-Marketing, WordPress, Blogging und SEO-Content. Abschluss: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 Monate**\n\nSuchmaschinenoptimierung, Google Ads, Kampagnenmanagement, Google Analytics, Google Tag Manager. Abschluss: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 Monate**\n\nOnline-Shop-Strategie, WooCommerce, Google Analytics, Social Ads, Projektarbeit mit eigenem Shop-Konzept. Abschluss: GFN-Zertifikat E-Commerce Manager\n\n*Alle Kurse über GFN GmbH / WPI, online, gefördert. Zertifikate von Webmasters Europe e.V. sind anerkannte Branchenzertifizierungen.*'
         },
         {
           date: '06/2024 – 05/2025',
@@ -337,15 +337,15 @@ export const translations = {
       ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
       ctaButton: 'Unverbindlich kennenlernen →',
       items: [
-        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
-        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
-        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
-        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
-        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
-        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
-        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
-        { id: 8, title: 'Web Analytics via GA4', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_web-analyst.pdf' },
-        { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH' },
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH / WPI' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
+        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
+        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
+        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
+        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
+        { id: 8, title: 'Web Analytics via GA4', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_web-analyst.pdf' },
+        { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH / WPI' },
         { id: 11, title: 'Bildbearbeitung mit Gimp', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
         { id: 12, title: 'Büroverwaltung und Kommunikation', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
         { id: 13, title: 'Datenbanken mit MS Access', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
@@ -766,8 +766,8 @@ export const translations = {
         {
           date: '07/2025 – 04/2026',
           title: 'Digital Marketing Manager (Further Training)',
-          company: 'GFN GmbH',
-          desc: '**Online Full-time Further Training** · Completion: 5 Certificates from Webmasters Europe e.V.\n\nComprehensive training in digital marketing: Online Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics as well as E-Commerce.\n\n**Online Marketing & Sales Psychology · 4 weeks**\n\nBasics of digital marketing, target group analysis, neuromarketing and buying psychology, AI tools in marketing. Completion: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 months**\n\nPlatform strategy (Facebook, Instagram, LinkedIn, YouTube), Social Ads, viral marketing, Facebook Advertising. Completion: Certified Social Media Manager\n\n**Content Marketing · 2 months**\n\nContent strategy, email marketing, WordPress, blogging and SEO content. Completion: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 months**\n\nSearch engine optimization, Google Ads, campaign management, Google Analytics, Google Tag Manager. Completion: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 months**\n\nOnline shop strategy, WooCommerce, Google Analytics, Social Ads, project work with own shop concept. Completion: GFN Certificate E-Commerce Manager\n\n*All courses via GFN GmbH, online, funded. Certificates from Webmasters Europe e.V. are recognized industry certifications.*'
+          company: 'GFN GmbH / WPI',
+          desc: '**Online Full-time Further Training** · Completion: 5 Certificates from Webmasters Europe e.V.\n\nComprehensive training in digital marketing: Online Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics as well as E-Commerce.\n\n**Online Marketing & Sales Psychology · 4 weeks**\n\nBasics of digital marketing, target group analysis, neuromarketing and buying psychology, AI tools in marketing. Completion: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 months**\n\nPlatform strategy (Facebook, Instagram, LinkedIn, YouTube), Social Ads, viral marketing, Facebook Advertising. Completion: Certified Social Media Manager\n\n**Content Marketing · 2 months**\n\nContent strategy, email marketing, WordPress, blogging and SEO content. Completion: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 months**\n\nSearch engine optimization, Google Ads, campaign management, Google Analytics, Google Tag Manager. Completion: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 months**\n\nOnline shop strategy, WooCommerce, Google Analytics, Social Ads, project work with own shop concept. Completion: GFN Certificate E-Commerce Manager\n\n*All courses via GFN GmbH / WPI, online, funded. Certificates from Webmasters Europe e.V. are recognized industry certifications.*'
         },
         {
           date: '06/2024 – 05/2025',
@@ -791,15 +791,15 @@ export const translations = {
       ctaText: 'Theoretically sound, practically motivated – ready for use in your team.',
       ctaButton: 'Get to know each other non-bindingly →',
       items: [
-        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
-        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
-        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
-        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
-        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
-        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
-        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
-        { id: 8, title: 'Web Analytics via GA4', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_web-analyst.pdf' },
-        { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH' },
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH / WPI' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
+        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
+        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
+        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
+        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
+        { id: 8, title: 'Web Analytics via GA4', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_web-analyst.pdf' },
+        { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH / WPI' },
         { id: 11, title: 'Image Editing with GIMP', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
         { id: 12, title: 'Office Administration and Communication', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
         { id: 13, title: 'Databases with MS Access', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },

@@ -11,7 +11,7 @@ export const ZertifikateSection = ({
 
   const certs = t.certificates.items || [];
 
-  const gfnCerts = certs.filter((c: any) => c.issuer === 'GFN GmbH');
+  const gfnCerts = certs.filter((c: any) => c.issuer === 'GFN GmbH / WPI');
   const fawCerts = certs.filter((c: any) => c.issuer === 'FAW');
   const kiCerts = certs.filter((c: any) => c.issuer === 'Anthropic');
 
@@ -72,12 +72,12 @@ export const ZertifikateSection = ({
                           });
                         }
                       }}
-                      className="flex items-center justify-center w-full max-w-[280px] gap-2 rounded-lg px-6 py-3 bg-blue-600 text-white text-[13px] md:text-[15px] font-medium tracking-wide hover:bg-blue-500 transition-all duration-300 cursor-pointer focus-ring"
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
                     >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <span className="relative z-10">{t.certificates.view}</span>
+                      <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
-                      <span className="relative z-10">{t.certificates.view}</span>
                     </a>
                   ) : (
                     <div 
@@ -90,13 +90,13 @@ export const ZertifikateSection = ({
                           });
                         }
                       }}
-                      className="flex items-center justify-center w-full max-w-[280px] gap-2 rounded-lg px-6 py-3 bg-blue-600 text-white text-[13px] md:text-[15px] font-medium tracking-wide hover:bg-blue-500 transition-all duration-300 cursor-pointer focus-ring opacity-50"
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95 opacity-50"
                       title="Zertifikat bald verfügbar"
                     >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <span className="relative z-10">{t.certificates.view}</span>
+                      <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
-                      <span className="relative z-10">{t.certificates.view}</span>
                     </div>
                   )}
                 </div>
@@ -119,7 +119,7 @@ export const ZertifikateSection = ({
         {gfnCerts.length > 0 && (expandedCert === null || gfnCerts.some((c: any) => certs.findIndex((orig: any) => orig.id === c.id) === expandedCert)) && (
           <div className="flex flex-col gap-3 w-full">
             {expandedCert === null && (
-              <h2 className="text-lg md:text-xl font-bold text-black/90 px-1">GFN GmbH</h2>
+              <h2 className="text-lg md:text-xl font-bold text-black/90 px-1">GFN GmbH / WPI</h2>
             )}
             <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2 md:gap-3 w-full pb-0 md:pb-1`}>
               {gfnCerts.map(renderCertCard)}
@@ -167,9 +167,12 @@ export const ZertifikateSection = ({
             }
             handleNavigate('contact');
           }}
-          className="w-full flex items-center justify-center gap-2 rounded-full px-8 py-3 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
         >
           <span className="relative z-10">{t.certificates.ctaButton}</span>
+          <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
         </button>
       </div>
     </div>

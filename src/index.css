@@ -204,17 +204,48 @@
     filter: brightness(0) !important;
   }
 
-  /* Force project card text to be black in light mode */
+  /* Force project card text to be black in light mode, but EXCLUDE primary buttons and their children */
+  html:not(.dark) .wow-card h1,
+  html:not(.dark) .wow-card h2,
   html:not(.dark) .wow-card h3,
+  html:not(.dark) .wow-card h4,
+  html:not(.dark) .wow-card h5,
+  html:not(.dark) .wow-card h6,
   html:not(.dark) .wow-card p,
-  html:not(.dark) .wow-card span,
+  html:not(.dark) .wow-card span:not(.text-white),
+  html:not(.dark) .wow-card div:not(.bg-blue-600):not(.bg-blue-500),
+  html:not(.dark) .wow-card a:not(.bg-blue-600):not(.bg-blue-500),
+  html:not(.dark) .wow-card strong,
+  html:not(.dark) .wow-card em,
+  html:not(.dark) .wow-card li,
+  html:not(.dark) .wow-card ul,
+  html:not(.dark) .wow-card ol,
   html:not(.dark) .ProjekteSection-container p,
-  html:not(.dark) .ProjekteSection-container span,
-  html:not(.dark) .ProjekteSection-container button:not(.bg-blue-500),
+  html:not(.dark) .ProjekteSection-container span:not(.text-white),
+  html:not(.dark) .ProjekteSection-container a:not(.bg-blue-600):not(.bg-blue-500),
+  html:not(.dark) .ProjekteSection-container button:not(.bg-blue-500):not(.bg-blue-600),
+  html:not(.dark) .UberMichSection-container h1,
+  html:not(.dark) .UberMichSection-container h2,
+  html:not(.dark) .UberMichSection-container h3,
+  html:not(.dark) .UberMichSection-container h4,
+  html:not(.dark) .UberMichSection-container h5,
+  html:not(.dark) .UberMichSection-container h6,
+  html:not(.dark) .UberMichSection-container p,
+  html:not(.dark) .UberMichSection-container span:not(.text-white),
+  html:not(.dark) .UberMichSection-container div:not(.bg-blue-600):not(.bg-blue-500),
+  html:not(.dark) .UberMichSection-container a:not(.bg-blue-600):not(.bg-blue-500),
+  html:not(.dark) .UberMichSection-container strong,
+  html:not(.dark) .UberMichSection-container em,
+  html:not(.dark) .UberMichSection-container li,
+  html:not(.dark) .UberMichSection-container ul,
+  html:not(.dark) .UberMichSection-container ol,
+  html:not(.dark) .UberMichSection-container button:not(.bg-blue-500):not(.bg-blue-600),
   html:not(.dark) .project-modal-content h2,
   html:not(.dark) .project-modal-content h3,
-  html:not(.dark) .project-modal-content div,
-  html:not(.dark) .project-modal-content span {
+  html:not(.dark) .project-modal-content div:not(.bg-blue-600):not(.bg-blue-500),
+  html:not(.dark) .project-modal-content a:not(.bg-blue-600):not(.bg-blue-500),
+  html:not(.dark) .project-modal-content span:not(.text-white),
+  html:not(.dark) .project-modal-content strong {
     color: #000000 !important;
   }
   

@@ -10,7 +10,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
-      <div className="flex flex-col items-start gap-1 md:gap-1.5 lg:gap-2 w-full flex-grow animate-in fade-in duration-500 pb-1 md:pb-1">
+      <div className="UberMichSection-container flex flex-col items-start gap-1 md:gap-1.5 lg:gap-2 w-full flex-grow animate-in fade-in duration-500 pb-1 md:pb-1">
         <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
           {t.about.title}
         </h1>

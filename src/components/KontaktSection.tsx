@@ -99,9 +99,9 @@ export const KontaktSection = ({
                     {!showPasswordPrompt ? (
                       <button 
                         onClick={() => setShowPasswordPrompt(true)}
-                        className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+                        className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer focus-ring"
                       >
-                        <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         <span className="relative z-10">{t.contact.unlockPrompt}</span>
@@ -151,12 +151,12 @@ export const KontaktSection = ({
                         });
                       }
                     }}
-                    className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-blue-600 text-white text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-500 transition-all duration-300 cursor-pointer focus-ring"
+                    className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer focus-ring"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span className="relative z-10">{t.contact.downloadButton}</span>
+                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <span className="relative z-10">{t.contact.downloadButton}</span>
                   </a>
                 )}
               </div>
