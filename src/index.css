@@ -1,4 +1,3 @@
-@import url('https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap');
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
