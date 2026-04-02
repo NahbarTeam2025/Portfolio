@@ -70,11 +70,8 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
 
           {/* 04. Primary Action - High Contrast CTA */}
           <div 
-            className="relative group w-full sm:w-auto flex justify-center lg:justify-start animate-in fade-in slide-in-from-left-4 duration-700 delay-500 fill-mode-both"
+            className="relative w-full sm:w-auto flex justify-center lg:justify-start animate-in fade-in slide-in-from-left-4 duration-700 delay-500 fill-mode-both"
           >
-            {/* Outer Glow Effect */}
-            <div className="absolute -inset-4 bg-blue-500/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full" />
-            
             <button 
               id="btn-hero-projects"
               onClick={() => {
