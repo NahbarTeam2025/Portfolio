@@ -156,33 +156,11 @@ export default function App() {
     };
   }, [t.common.backToTitle]);
 
-  const [isCVUnlocked, setIsCVUnlocked] = useState(false);
   const [isStartVideoReady, setIsStartVideoReady] = useState(false);
   const [isSubVideoReady, setIsSubVideoReady] = useState(false);
   const [isVideoDeferred, setIsVideoDeferred] = useState(false);
   const isMobile = useIsMobile();
-  const [cvPasswordInput, setCVPasswordInput] = useState('');
-  const [cvError, setCVError] = useState(false);
 
-  const handleVerifyPassword = async (password: string, type: 'cv') => {
-    try {
-      const response = await fetch('/api/verify-password', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
-      });
-      const data = await response.json();
-      if (data.success) {
-        setIsCVUnlocked(true);
-        setCVError(false);
-      } else {
-        setCVError(true);
-      }
-    } catch (error) {
-      console.error('Verification error:', error);
-      setCVError(true);
-    }
-  };
 
   const handleNavigate = useCallback((pageId: string) => {
     // Check if it's a modal page
@@ -603,13 +581,7 @@ export default function App() {
                         handleNavigate={handleNavigate}
                       />
                     ) : currentPage === 'contact' ? (
-                      <KontaktSection 
-                        isCVUnlocked={isCVUnlocked}
-                        cvPasswordInput={cvPasswordInput}
-                        setCVPasswordInput={setCVPasswordInput}
-                        cvError={cvError}
-                        handleVerifyPassword={(pw: string) => handleVerifyPassword(pw, 'cv')}
-                      />
+                      <KontaktSection />
                     ) : currentPage === 'tools' ? (
                       <ToolsPage />
                     ) : currentPage === 'impressum' ? (

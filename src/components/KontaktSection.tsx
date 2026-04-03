@@ -2,15 +2,8 @@ import React, { useState, startTransition } from 'react';
 import { User, Mail, Linkedin, MapPin, X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-export const KontaktSection = ({ 
-  isCVUnlocked, 
-  cvPasswordInput, 
-  setCVPasswordInput, 
-  cvError, 
-  handleVerifyPassword 
-}: any) => {
+export const KontaktSection = () => {
   const { t } = useLanguage();
-  const [showPasswordPrompt, setShowPasswordPrompt] = useState(false);
 
   return (
     <div className="flex flex-col items-start gap-1 md:gap-2 w-full h-full animate-in fade-in duration-500 overflow-y-auto md:overflow-hidden">
@@ -94,71 +87,26 @@ export const KontaktSection = ({
               <div className="flex flex-col items-center w-fit mx-auto">
                 <span className="text-black/60 text-[10px] md:text-[12px] uppercase tracking-widest font-bold mb-3 text-center w-full">{t.contact.downloadCV}</span>
                 
-                {!isCVUnlocked ? (
-                  <div className="w-full flex flex-col gap-3">
-                    {!showPasswordPrompt ? (
-                      <button 
-                        onClick={() => setShowPasswordPrompt(true)}
-                        className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer focus-ring"
-                      >
-                        <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        <span className="relative z-10">{t.contact.unlockPrompt}</span>
-                      </button>
-                    ) : (
-                      <div className="flex flex-col gap-2 animate-in slide-in-from-top-2 duration-300">
-                        <div className="flex gap-2">
-                          <input 
-                            type="password"
-                            value={cvPasswordInput}
-                            onChange={(e) => setCVPasswordInput(e.target.value)}
-                            onKeyDown={(e) => e.key === 'Enter' && handleVerifyPassword(cvPasswordInput)}
-                            placeholder={t.contact.passwordPrompt}
-                            autoFocus
-                            className={`flex-1 px-4 py-2 rounded-lg bg-black/5 border text-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${cvError ? 'border-red-500/50' : 'border-black/10'}`}
-                          />
-                          <button 
-                            onClick={() => handleVerifyPassword(cvPasswordInput)}
-                            className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-bold hover:bg-blue-500 transition-all"
-                          >
-                            OK
-                          </button>
-                          <button 
-                            onClick={() => setShowPasswordPrompt(false)}
-                            className="p-2 rounded-lg bg-black/5 border border-black/10 text-black/60 hover:text-black transition-all"
-                          >
-                            <X className="w-4 h-4" />
-                          </button>
-                        </div>
-                        {cvError && (
-                          <p className="text-red-500 text-[10px] font-medium text-center">{t.certificates.invalidPassword}</p>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <a 
-                    href="https://meine-assets.pages.dev/pdf/lebenslauf_robert_erbach.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    download
-                    onClick={() => {
-                      if (typeof window !== 'undefined' && (window as any).gtag) {
-                        (window as any).gtag('event', 'cv_download_success', {
-                          'event_category': 'engagement',
-                          'event_label': 'Lebenslauf_Robert_Erbach.pdf'
-                        });
-                      }
-                    }}
-                    className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer focus-ring"
-                  >
-                    <span className="relative z-10">{t.contact.downloadButton}</span>
-                    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </a>
-                )}
+                <a 
+                  href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'cv_download_click', {
+                        'event_category': 'engagement',
+                        'event_label': 'robert_erbach_lebenslauf.pdf'
+                      });
+                    }
+                  }}
+                  className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer focus-ring"
+                >
+                  <span className="relative z-10">{t.contact.downloadButton}</span>
+                  <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
