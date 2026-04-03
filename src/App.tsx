@@ -273,13 +273,13 @@ export default function App() {
     const loadVideo = () => {
       if (lcpFired) return;
       lcpFired = true;
-      // Wait another 1 second after LCP or window.onload to ensure image is fully rendered
+      // Wait another 50ms after LCP or window.onload to ensure image is fully rendered
       setTimeout(() => {
         setVideoSrc({
           webm: "https://meine-assets.pages.dev/bgstart.webm",
           mp4: "https://meine-assets.pages.dev/bgstart.mp4"
         });
-      }, 1000);
+      }, 50);
     };
 
     // Use PerformanceObserver to detect LCP
