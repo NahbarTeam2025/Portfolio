@@ -247,6 +247,14 @@
   html:not(.dark) .project-modal-content strong {
     color: #000000 !important;
   }
+
+  html:not(.dark) .wow-card a:hover,
+  html:not(.dark) .ProjekteSection-container a:hover,
+  html:not(.dark) .UberMichSection-container a:hover,
+  html:not(.dark) .project-modal-content a:hover,
+  html:not(.dark) .hover\:text-blue-500:hover {
+    color: #3b82f6 !important;
+  }
   
   * {
     -ms-overflow-style: none; /* IE and Edge */

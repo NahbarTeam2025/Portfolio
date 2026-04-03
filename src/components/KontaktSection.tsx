@@ -51,7 +51,7 @@ export const KontaktSection = ({
                       });
                     }
                   }}
-                  className="text-black text-[16px] md:text-[18px] font-medium hover:text-blue-400 transition-colors break-all"
+                  className="text-black text-[16px] md:text-[18px] font-medium hover:!text-blue-500 transition-colors break-all"
                 >
                   roberterbach@web.de
                 </a>
@@ -74,7 +74,7 @@ export const KontaktSection = ({
                       });
                     }
                   }}
-                  className="text-black text-[16px] md:text-[18px] font-medium hover:text-blue-400 transition-colors break-all"
+                  className="text-black text-[16px] md:text-[18px] font-medium hover:!text-blue-500 transition-colors break-all"
                 >
                   @roberterbach
                 </a>
