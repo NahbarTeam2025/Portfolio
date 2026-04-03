@@ -403,10 +403,9 @@ export default function App() {
         <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-0 pointer-events-auto transition-all duration-300">
           {/* Navbar */}
           <nav className={`flex items-center justify-between w-full h-[52px] md:h-[60px] px-6 transition-all duration-300 ${currentPage === 'start' ? 'bg-transparent' : 'bg-white/90 backdrop-blur-md border-b border-black/5 shadow-sm'}`}>
-            <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
-              {/* Left side: Logo + Navigation Links */}
-              <div className="flex items-center gap-8">
-                {/* Logo */}
+            <div className="flex items-center w-full max-w-7xl mx-auto">
+              {/* Logo */}
+              <div className="flex-shrink-0">
                 <a 
                   href={PAGE_ROUTES['start']} 
                   className="flex items-center gap-3 h-[28px] md:h-[34px] cursor-pointer group" 
@@ -438,47 +437,47 @@ export default function App() {
                     style={{ forcedColorAdjust: 'none' }}
                   />
                 </a>
+              </div>
 
-                {/* Navigation Bar */}
-                <div className="hidden lg:flex items-center gap-0.5">
-                  {PAGES.map((pageId, index) => (
-                    <React.Fragment key={pageId}>
-                        <a
-                          href={PAGE_ROUTES[pageId]}
-                          onMouseEnter={() => {
-                            // Pre-fetch component using static map to avoid Vite dynamic import issues
-                            const prefetchMap: Record<string, () => Promise<any>> = {
-                              'about': () => import('@/components/UberMichSection.tsx'),
-                              'projects': () => import('@/components/ProjekteSection.tsx'),
-                              'certificates': () => import('@/components/ZertifikateSection.tsx'),
-                              'skills': () => import('@/components/SkillsSection.tsx'),
-                            };
-                            if (prefetchMap[pageId]) {
-                              prefetchMap[pageId]().catch(() => {});
-                            }
-                          }}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavigate(pageId);
-                          }}
-                          className={`px-1.5 xl:px-2.5 py-1.5 text-[10px] xl:text-[11px] font-bold transition-all duration-500 cursor-pointer relative group hover:scale-110 font-sans focus-ring uppercase tracking-widest ${
-                            currentPage === pageId
-                              ? 'text-blue-400 text-glow-blue'
-                              : 'text-black/85 hover:text-black'
-                          }`}
-                        >
-                        <span className="relative z-10">{(t.nav as any)[pageId]}</span>
-                        {currentPage !== pageId && (
-                          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-black/40 transition-all duration-300 group-hover:w-1/3" />
-                        )}
-                      </a>
-                    </React.Fragment>
-                  ))}
-                </div>
+              {/* Navigation Bar - Centered between logo and right side */}
+              <div className="hidden lg:flex flex-grow justify-center items-center gap-2">
+                {PAGES.map((pageId, index) => (
+                  <React.Fragment key={pageId}>
+                      <a
+                        href={PAGE_ROUTES[pageId]}
+                        onMouseEnter={() => {
+                          // Pre-fetch component using static map to avoid Vite dynamic import issues
+                          const prefetchMap: Record<string, () => Promise<any>> = {
+                            'about': () => import('@/components/UberMichSection.tsx'),
+                            'projects': () => import('@/components/ProjekteSection.tsx'),
+                            'certificates': () => import('@/components/ZertifikateSection.tsx'),
+                            'skills': () => import('@/components/SkillsSection.tsx'),
+                          };
+                          if (prefetchMap[pageId]) {
+                            prefetchMap[pageId]().catch(() => {});
+                          }
+                        }}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavigate(pageId);
+                        }}
+                        className={`px-2 xl:px-4 py-1.5 text-[10px] xl:text-[11px] font-bold transition-all duration-500 cursor-pointer relative group hover:scale-110 font-sans focus-ring uppercase tracking-widest ${
+                          currentPage === pageId
+                            ? 'text-blue-400 text-glow-blue'
+                            : 'text-black/85 hover:text-black'
+                        }`}
+                      >
+                      <span className="relative z-10">{(t.nav as any)[pageId]}</span>
+                      {currentPage !== pageId && (
+                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-black/40 transition-all duration-300 group-hover:w-1/3" />
+                      )}
+                    </a>
+                  </React.Fragment>
+                ))}
               </div>
 
               {/* Right side: Dark Mode Toggle + Language Switcher + HC + Contact Button + Mobile Menu Toggle */}
-              <div className="flex items-center gap-4 lg:gap-6">
+              <div className="flex-shrink-0 flex items-center gap-4 lg:gap-6">
 
                 {/* Dark Mode Toggle */}
                 <button
