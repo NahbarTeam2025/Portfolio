@@ -97,20 +97,6 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
           {/* Removed decorative blue blur to ensure background video clarity */}
           
           <div className="relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group translate-x-0 -translate-y-[10px] lg:translate-x-[10px] lg:translate-y-0">
-            {/* White background layer to block video - Shaped to the image pixels */}
-            <div 
-              className="absolute inset-0 bg-white pointer-events-none z-0"
-              style={{ 
-                maskImage: 'url(https://meine-assets.pages.dev/ich.png)',
-                WebkitMaskImage: 'url(https://meine-assets.pages.dev/ich.png)',
-                maskSize: 'contain',
-                WebkitMaskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                WebkitMaskRepeat: 'no-repeat',
-                maskPosition: 'center',
-                WebkitMaskPosition: 'center'
-              }}
-            />
             {/* Soft Blue Veil Overlay - Shaped to the image pixels */}
             <div 
               className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10"
@@ -132,7 +118,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
               height="500"
               fetchPriority="high"
               loading="eager"
-              className="w-full h-auto object-contain opacity-[0.90] relative z-[5]"
+              className="w-full h-auto object-contain relative z-[5] drop-shadow-2xl"
               referrerPolicy="no-referrer"
             />
           </div>
