@@ -25,7 +25,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             
             {/* Name - Fluid & Massive */}
             <h1 
-              className="font-display font-bold tracking-[-0.04em] text-black text-[clamp(1.6rem,8vw,5rem)] leading-[0.9] mb-2 lg:mb-4 animate-in fade-in slide-in-from-left-8 duration-700 fill-mode-both -ml-[0.05em]"
+              className="font-display font-bold tracking-[-0.04em] text-black text-[clamp(1.6rem,8vw,5rem)] leading-[0.9] mb-2 lg:mb-4 -ml-[0.05em]"
             >
               {t.hero.title}
             </h1>
@@ -92,7 +92,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
 
         {/* Hero Image Container */}
         <div
-          className="relative flex justify-center items-center mt-2 lg:mt-0 animate-in fade-in zoom-in-95 duration-1000 delay-300 fill-mode-both"
+          className="relative flex justify-center items-center mt-2 lg:mt-0"
         >
           {/* Removed decorative blue blur to ensure background video clarity */}
           
