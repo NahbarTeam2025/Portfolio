@@ -144,7 +144,7 @@ export const ZertifikateSection = ({
       </div>
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-2 md:pb-4 pt-4 md:pt-2 gap-1 md:gap-1.5 mt-auto mb-4 md:mb-12 shrink-0">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-2 md:pb-4 pt-11 md:pt-9 gap-1 md:gap-1.5 mt-auto mb-4 md:mb-12 shrink-0">
         <p className="text-black/80 text-[12px] md:text-[13px] text-center whitespace-normal md:whitespace-nowrap">
           {t.certificates.ctaText}
         </p>
