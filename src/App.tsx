@@ -554,7 +554,7 @@ export default function App() {
         } ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
             <div
               key={currentPage}
-              className={`w-full flex flex-col flex-grow animate-in fade-in slide-in-from-bottom-4 duration-500 ${currentPage === 'start' ? 'items-start justify-center' : ''}`}
+              className={`w-full flex flex-col flex-grow ${currentPage === 'start' ? 'items-start justify-center' : 'animate-in fade-in slide-in-from-bottom-4 duration-500'}`}
             >
                 {currentPage === 'start' ? (
                   <HeroSection handleNavigate={handleNavigate} />

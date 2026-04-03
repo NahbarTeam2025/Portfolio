@@ -102,8 +102,8 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             <div 
               className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10"
               style={{ 
-                maskImage: 'url(https://meine-assets.pages.dev/ich.png)',
-                WebkitMaskImage: 'url(https://meine-assets.pages.dev/ich.png)',
+                maskImage: 'url(https://meine-assets.pages.dev/ich.webp)',
+                WebkitMaskImage: 'url(https://meine-assets.pages.dev/ich.webp)',
                 maskSize: 'contain',
                 WebkitMaskSize: 'contain',
                 maskRepeat: 'no-repeat',
@@ -112,11 +112,10 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
                 WebkitMaskPosition: 'center'
               }}
             />
-            <m.img 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            <img 
               src="https://meine-assets.pages.dev/ich.webp" 
+              srcSet="https://meine-assets.pages.dev/ichklein.webp 500w, https://meine-assets.pages.dev/ich.webp 1000w"
+              sizes="(max-width: 768px) 320px, 500px"
               alt="Robert Erbach" 
               width="500"
               height="500"
