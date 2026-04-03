@@ -36,7 +36,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
             <p className="text-black font-medium tracking-wider text-[13px] sm:text-[15px] md:text-[17px] lg:text-[19px] leading-relaxed">
               {t.about.motto}
             </p>
-            <p className="text-blue-400 font-medium tracking-wider text-[13px] sm:text-[15px] md:text-[17px] lg:text-[19px] leading-relaxed">
+            <p className="text-blue-600 font-medium tracking-wider text-[13px] sm:text-[15px] md:text-[17px] lg:text-[19px] leading-relaxed">
               {t.about.mottoBlue}
             </p>
             <div className="shrink-0 my-2 md:my-3">
@@ -79,9 +79,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                       viewport={{ once: true }}
                       transition={{ delay: 0.5 + i * 0.2, duration: 0.5 }}
                       className="absolute -left-[16px] md:-left-[24px] -translate-x-1/2 top-6 w-3 h-3 md:w-4 md:h-4 rounded-full bg-white border-2 border-blue-500/60 z-10 group-hover:scale-125 group-hover:border-blue-400 transition-all duration-300"
-                    >
-                      <div className="absolute inset-0 rounded-full bg-blue-500/20 animate-ping" />
-                    </motion.div>
+                    />
 
                     <div className={`wow-card flex flex-col transition-all duration-500 ${isExpanded ? 'ring-1 ring-gray-600/30' : 'overflow-hidden'}`}>
                       <div className="wow-card-border" />

@@ -137,8 +137,22 @@ export const PasswordGuardian: React.FC = () => {
 
           {/* Eyes */}
           <motion.g animate={{ opacity: [1, 0.5, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
-            <circle cx="88" cy="75" r="4" fill={strength > 0 ? "#22c55e" : "#666"} className={strength >= 4 ? "shadow-[0_0_10px_#22c55e]" : ""} />
-            <circle cx="112" cy="75" r="4" fill={strength > 0 ? "#22c55e" : "#666"} className={strength >= 4 ? "shadow-[0_0_10px_#22c55e]" : ""} />
+            <circle 
+              cx="88" 
+              cy="75" 
+              r="4" 
+              fill="#ffffff" 
+              className={`guardian-eye ${strength >= 4 ? "drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]" : ""}`} 
+              style={{ fill: '#ffffff' }}
+            />
+            <circle 
+              cx="112" 
+              cy="75" 
+              r="4" 
+              fill="#ffffff" 
+              className={`guardian-eye ${strength >= 4 ? "drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]" : ""}`} 
+              style={{ fill: '#ffffff' }}
+            />
           </motion.g>
         </svg>
       </div>

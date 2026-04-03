@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Shield, Accessibility, TrendingUp, Fingerprint, Calculator, Zap } from 'lucide-react';
+import { Shield, Accessibility, TrendingUp, Fingerprint, Calculator, Zap, Link2 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { PasswordGuardian } from '../components/tools/PasswordGuardian';
 import { AccessibilityHealer } from '../components/tools/AccessibilityHealer';
@@ -8,8 +8,9 @@ import { FunnelTycoon } from '../components/tools/FunnelTycoon';
 import { FingerprintDetector } from '../components/tools/FingerprintDetector';
 import { ROISimulator } from '../components/tools/ROISimulator';
 import { LighthouseSim } from '../components/tools/LighthouseSim';
+import { UTMLinkBuilder } from '../components/tools/UTMLinkBuilder';
 
-type ToolTab = 'security' | 'accessibility' | 'marketing' | 'privacy' | 'roi' | 'performance';
+type ToolTab = 'security' | 'accessibility' | 'marketing' | 'privacy' | 'roi' | 'performance' | 'utm';
 
 export const ToolsPage: React.FC = () => {
   const { t } = useLanguage();
@@ -21,6 +22,7 @@ export const ToolsPage: React.FC = () => {
     { id: 'performance' as ToolTab, label: t.tools.tabs.performance, icon: Zap },
     { id: 'accessibility' as ToolTab, label: t.tools.tabs.accessibility, icon: Accessibility },
     { id: 'marketing' as ToolTab, label: t.tools.tabs.marketing, icon: TrendingUp },
+    { id: 'utm' as ToolTab, label: t.tools.tabs.utm, icon: Link2 },
     { id: 'roi' as ToolTab, label: t.tools.tabs.roi, icon: Calculator },
   ];
 
@@ -101,6 +103,7 @@ export const ToolsPage: React.FC = () => {
               {activeTab === 'privacy' && <FingerprintDetector />}
               {activeTab === 'roi' && <ROISimulator />}
               {activeTab === 'performance' && <LighthouseSim />}
+              {activeTab === 'utm' && <UTMLinkBuilder />}
             </div>
           </motion.div>
         </AnimatePresence>

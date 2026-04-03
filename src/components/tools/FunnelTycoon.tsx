@@ -9,6 +9,7 @@ interface Upgrade {
   icon: any;
   impact: number;
   isActive: boolean;
+  isFlagged?: boolean;
 }
 
 export const FunnelTycoon: React.FC = () => {
@@ -24,7 +25,7 @@ export const FunnelTycoon: React.FC = () => {
   const [upgrades, setUpgrades] = useState<Upgrade[]>([
     { id: 'abTesting', label: t.tools.funnelTycoon.upgrades.abTesting, icon: MousePointer2, impact: 1.5, isActive: false },
     { id: 'pageSpeed', label: t.tools.funnelTycoon.upgrades.pageSpeed, icon: Zap, impact: 1.3, isActive: false },
-    { id: 'copywriting', label: t.tools.funnelTycoon.upgrades.copywriting, icon: Code, impact: 1.8, isActive: false },
+    { id: 'copywriting', label: t.tools.funnelTycoon.upgrades.copywriting, icon: Code, impact: 1.8, isActive: false, isFlagged: false },
   ]);
 
   const toggleUpgrade = (id: string) => {
@@ -38,22 +39,32 @@ export const FunnelTycoon: React.FC = () => {
       return;
     }
 
+    const newState = !upgrade.isActive;
+    
+    // Update budget first, outside of the other state setter
+    if (newState) {
+      setBudget(prev => prev - cost);
+    } else {
+      setBudget(prev => prev + cost);
+    }
+
     setUpgrades(prev => prev.map(up => {
       if (up.id === id) {
-        const newState = !up.isActive;
+        let flagged = up.isFlagged;
+
         if (newState) {
-          setBudget(b => b - cost);
           // 20% chance of "Risk" backfiring for copywriting
           if (id === 'copywriting' && Math.random() < 0.2) {
+            flagged = true;
             setMessage({ text: t.tools.funnelTycoon.messages.accountFlagged, type: 'error' });
             setTimeout(() => setMessage(null), 3000);
-            // We'll handle the negative impact in the effect
           } else {
+            flagged = false;
             setMessage({ text: t.tools.funnelTycoon.messages.upgradeSuccess, type: 'success' });
             setTimeout(() => setMessage(null), 2000);
           }
         } else {
-          setBudget(b => b + cost * 0.5); // Partial refund
+          flagged = false; // Reset flag when deactivated
         }
         
         if (newState && (window as any).gtag) {
@@ -64,7 +75,7 @@ export const FunnelTycoon: React.FC = () => {
           });
         }
         
-        return { ...up, isActive: newState };
+        return { ...up, isActive: newState, isFlagged: flagged };
       }
       return up;
     }));
@@ -77,7 +88,7 @@ export const FunnelTycoon: React.FC = () => {
 
     upgrades.forEach(up => {
       if (up.isActive) {
-        if (up.id === 'copywriting' && message?.text === t.tools.funnelTycoon.messages.accountFlagged) {
+        if (up.id === 'copywriting' && up.isFlagged) {
           customerMultiplier *= 0.5; // Penalty
         } else {
           leadMultiplier *= (1 + (up.impact - 1) * 0.5);
@@ -92,7 +103,7 @@ export const FunnelTycoon: React.FC = () => {
       leads: Math.round(50 * leadMultiplier * visitorMultiplier),
       customers: Math.round(5 * customerMultiplier * visitorMultiplier),
     });
-  }, [upgrades, message]);
+  }, [upgrades]);
 
   const leadRate = ((stats.leads / stats.visitors) * 100).toFixed(1);
   const customerRate = ((stats.customers / stats.leads) * 100).toFixed(1);
@@ -112,7 +123,7 @@ export const FunnelTycoon: React.FC = () => {
         <div className="flex items-center gap-2 bg-black/5 px-3 py-1.5 rounded-xl border border-black/10 backdrop-blur-md">
           <div className="flex flex-col">
             <span className="text-[7px] uppercase tracking-widest text-black/40 font-mono">Budget</span>
-            <span className={`text-sm font-bold font-mono ${budget < 200 ? 'text-red-400' : 'text-green-400'}`}>${budget}</span>
+            <span className={`text-sm font-bold font-mono ${budget < 200 ? 'text-red-400' : 'text-green-400'}`}>{budget} €</span>
           </div>
           <div className="w-[1px] h-4 bg-black/10" />
           <AnimatePresence mode="wait">
@@ -187,7 +198,7 @@ export const FunnelTycoon: React.FC = () => {
               {customerRate}% CR
             </div>
 
-            {(!upgrades.find(u => u.id === 'copywriting')?.isActive || message?.text === t.tools.funnelTycoon.messages.accountFlagged) && (
+            {(!upgrades.find(u => u.id === 'copywriting')?.isActive || upgrades.find(u => u.id === 'copywriting')?.isFlagged) && (
               <motion.div animate={{ y: [0, 10], opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1.8, delay: 0.6 }} className="absolute right-4 top-1/2 w-0.5 h-3 bg-red-500/30 rounded-full" />
             )}
           </motion.div>

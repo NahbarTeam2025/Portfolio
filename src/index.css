@@ -229,7 +229,7 @@
   html:not(.dark) .UberMichSection-container h4,
   html:not(.dark) .UberMichSection-container h5,
   html:not(.dark) .UberMichSection-container h6,
-  html:not(.dark) .UberMichSection-container p,
+  html:not(.dark) .UberMichSection-container p:not(.text-blue-600):not(.text-blue-400),
   html:not(.dark) .UberMichSection-container span:not(.text-white):not(.tooltip-text),
   html:not(.dark) .UberMichSection-container div:not(.bg-blue-600):not(.bg-blue-500):not(.tooltip-content),
   html:not(.dark) .UberMichSection-container a:not(.bg-blue-600):not(.bg-blue-500),
@@ -246,6 +246,14 @@
   html:not(.dark) .project-modal-content span:not(.text-white):not(.tooltip-text),
   html:not(.dark) .project-modal-content strong {
     color: #000000 !important;
+  }
+
+  html:not(.dark) .UberMichSection-container p.text-blue-600 {
+    color: #2563eb !important;
+  }
+
+  .guardian-eye {
+    fill: #ffffff !important;
   }
 
   html:not(.dark) .wow-card a:hover,

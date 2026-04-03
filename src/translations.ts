@@ -21,6 +21,7 @@ export const translations = {
         privacy: 'Privacy',
         roi: 'ROI',
         performance: 'Performance',
+        utm: 'UTM Builder',
       },
       passwordGuardian: {
         title: 'Password Guardian',
@@ -142,6 +143,26 @@ export const translations = {
         lcp: 'LCP (Largest Contentful Paint)',
         optimization: 'Optimierungstipp',
       },
+      utmBuilder: {
+        title: 'UTM Link Builder',
+        desc: 'Erstelle professionelle Tracking-Links für deine Kampagnen.',
+        websiteUrl: 'Website-URL',
+        source: 'Kampagnenquelle (utm_source)',
+        medium: 'Kampagnenmedium (utm_medium)',
+        campaign: 'Kampagnenname (utm_campaign)',
+        content: 'Kampagneninhalt (utm_content)',
+        term: 'Kampagnenbegriff (utm_term)',
+        placeholderUrl: 'https://deine-website.de',
+        placeholderSource: 'google, newsletter, social',
+        placeholderMedium: 'cpc, email, banner',
+        placeholderCampaign: 'sommersale_2025',
+        placeholderContent: 'banner_a, sidebar',
+        placeholderTerm: 'laufschuhe, marketing',
+        copy: 'Link kopieren',
+        copied: 'Kopiert!',
+        error: 'URL und Quelle sind erforderlich.',
+        hint: 'UTM-Parameter helfen dir, den Erfolg deiner Kampagnen in Google Analytics präzise zu messen.'
+      }
     },
     hero: {
       title: 'Robert Erbach',
@@ -475,6 +496,7 @@ export const translations = {
         privacy: 'Privacy',
         roi: 'ROI',
         performance: 'Performance',
+        utm: 'UTM Builder',
       },
       passwordGuardian: {
         title: 'Password Guardian',
@@ -596,6 +618,26 @@ export const translations = {
         lcp: 'LCP (Largest Contentful Paint)',
         optimization: 'Optimization Tip',
       },
+      utmBuilder: {
+        title: 'UTM Link Builder',
+        desc: 'Create professional tracking links for your campaigns.',
+        websiteUrl: 'Website URL',
+        source: 'Campaign Source (utm_source)',
+        medium: 'Campaign Medium (utm_medium)',
+        campaign: 'Campaign Name (utm_campaign)',
+        content: 'Campaign Content (utm_content)',
+        term: 'Campaign Term (utm_term)',
+        placeholderUrl: 'https://your-website.com',
+        placeholderSource: 'google, newsletter, social',
+        placeholderMedium: 'cpc, email, banner',
+        placeholderCampaign: 'summersale_2025',
+        placeholderContent: 'banner_a, sidebar',
+        placeholderTerm: 'runningshoes, marketing',
+        copy: 'Copy Link',
+        copied: 'Copied!',
+        error: 'URL and Source are required.',
+        hint: 'UTM parameters help you precisely measure the success of your campaigns in Google Analytics.'
+      }
     },
     hero: {
       title: 'Robert Erbach',
