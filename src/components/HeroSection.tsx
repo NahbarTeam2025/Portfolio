@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { trackEvent } from '@/lib/analytics';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
@@ -75,11 +76,10 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             <button 
               id="btn-hero-projects"
               onClick={() => {
-                if (typeof window !== 'undefined' && window.gtag) {
-                  window.gtag('event', 'view_projects_click');
-                }
+                trackEvent('click', 'projects_cta', 'hero');
                 handleNavigate('projects');
               }}
+              aria-label={t.hero.cta}
               className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
             >
               <span className="relative z-10">{t.hero.cta}</span>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { trackEvent } from '@/lib/analytics';
 
 export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobileMenuOpen: boolean, handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
@@ -7,8 +8,12 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
     <footer className={`w-full bg-transparent py-1 px-6 mt-auto relative ${isMobileMenuOpen ? 'z-50' : 'z-10'} shrink-0`}>
       <div className="max-w-7xl mx-auto w-full flex flex-row justify-between items-center gap-4">
         <button 
-          onClick={() => handleNavigate('start')}
+          onClick={() => {
+            trackEvent('click', 'logo', 'footer');
+            handleNavigate('start');
+          }}
           className="flex items-center cursor-pointer group" 
+          aria-label="Robert Erbach Portfolio Home"
         >
           {/* Light mode logo */}
           <img 
@@ -35,13 +40,19 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
         
         <div className="flex flex-row justify-end items-center gap-4 md:gap-6 text-[11px]">
           <button 
-            onClick={() => handleNavigate('impressum')}
+            onClick={() => {
+              trackEvent('click', 'impressum', 'footer');
+              handleNavigate('impressum');
+            }}
             className="text-black/70 hover:text-black transition-colors"
           >
             {t.footer.impressum}
           </button>
           <button 
-            onClick={() => handleNavigate('datenschutz')}
+            onClick={() => {
+              trackEvent('click', 'datenschutz', 'footer');
+              handleNavigate('datenschutz');
+            }}
             className="text-black/70 hover:text-black transition-colors"
           >
             {t.footer.privacy}

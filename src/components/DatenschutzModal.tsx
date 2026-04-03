@@ -1,7 +1,7 @@
 import React, { startTransition } from 'react';
 import { X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const DatenschutzModal = ({ setIsDatenschutz }: { setIsDatenschutz: (open: boolean) => void }) => {
   const { t } = useLanguage();

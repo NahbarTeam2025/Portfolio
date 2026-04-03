@@ -1,6 +1,7 @@
 import React, { useState, startTransition } from 'react';
-import { User, Mail, Linkedin, MapPin, X } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { User, Mail, Linkedin, MapPin } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { trackEvent } from '@/lib/analytics';
 
 export const KontaktSection = () => {
   const { t } = useLanguage();
@@ -37,12 +38,7 @@ export const KontaktSection = () => {
                 <a 
                   href="mailto:roberterbach@web.de" 
                   onClick={() => {
-                    if (typeof window !== 'undefined' && (window as any).gtag) {
-                      (window as any).gtag('event', 'email_click', {
-                        'event_category': 'contact',
-                        'event_label': 'roberterbach@web.de'
-                      });
-                    }
+                    trackEvent('click', 'email', 'contact', { email: 'roberterbach@web.de' });
                   }}
                   className="text-black text-[16px] md:text-[18px] font-medium hover:!text-blue-500 transition-colors break-all"
                 >
@@ -60,12 +56,7 @@ export const KontaktSection = () => {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   onClick={() => {
-                    if (typeof window !== 'undefined' && (window as any).gtag) {
-                      (window as any).gtag('event', 'linkedin_click', {
-                        'event_category': 'contact',
-                        'event_label': 'LinkedIn Profile'
-                      });
-                    }
+                    trackEvent('click', 'linkedin', 'contact');
                   }}
                   className="text-black text-[16px] md:text-[18px] font-medium hover:!text-blue-500 transition-colors break-all"
                 >
@@ -93,12 +84,7 @@ export const KontaktSection = () => {
                   rel="noopener noreferrer"
                   download
                   onClick={() => {
-                    if (typeof window !== 'undefined' && (window as any).gtag) {
-                      (window as any).gtag('event', 'cv_download_click', {
-                        'event_category': 'engagement',
-                        'event_label': 'robert_erbach_lebenslauf.pdf'
-                      });
-                    }
+                    trackEvent('download', 'cv', 'contact', { file: 'robert_erbach_lebenslauf.pdf' });
                   }}
                   className="flex items-center justify-center w-full gap-2 rounded-full px-4 py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer focus-ring"
                 >

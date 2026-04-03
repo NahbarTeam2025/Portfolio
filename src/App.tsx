@@ -5,35 +5,36 @@
 
 import React, { useState, useEffect, useCallback, useRef, startTransition, Suspense, lazy } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
-import { Menu, X, Phone, Mail, MapPin, Linkedin, ArrowRight, ExternalLink, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform, useScroll } from 'motion/react';
 
 // Import refactored components
-import { MagneticButton } from './components/MagneticButton';
-import { TerminalStatus } from './components/TerminalStatus';
-import { BentoCard } from './components/BentoCard';
-import { Typewriter } from './components/Typewriter';
-import { HeroSection } from './components/HeroSection';
-import { Footer } from './components/Footer';
-import { useSEO } from './hooks/useSEO';
-import { useParallaxIntersection } from './hooks/useParallaxIntersection';
-import { useLanguage } from './contexts/LanguageContext';
-import { LanguageSwitcher } from './components/LanguageSwitcher';
-import { useIsMobile } from './hooks/useIsMobile';
-import { CookieBanner } from './components/CookieBanner';
+import { MagneticButton } from '@/components/MagneticButton';
+import { TerminalStatus } from '@/components/TerminalStatus';
+import { BentoCard } from '@/components/BentoCard';
+import { Typewriter } from '@/components/Typewriter';
+import { HeroSection } from '@/components/HeroSection';
+import { Footer } from '@/components/Footer';
+import { useSEO } from '@/hooks/useSEO';
+import { useParallaxIntersection } from '@/hooks/useParallaxIntersection';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { useIsMobile } from '@/hooks/useIsMobile';
+import { CookieBanner } from '@/components/CookieBanner';
+import { trackEvent, trackPageView } from '@/lib/analytics';
 
 // Lazy load components
-const CommandTerminal = lazy(() => import('./components/CommandTerminal.tsx'));
-const SkillsSection = lazy(() => import('./components/SkillsSection.tsx').then(m => ({ default: m.SkillsSection })));
-const ProjekteSection = lazy(() => import('./components/ProjekteSection.tsx').then(m => ({ default: m.ProjekteSection })));
-const ZertifikateSection = lazy(() => import('./components/ZertifikateSection.tsx').then(m => ({ default: m.ZertifikateSection })));
-const KontaktSection = lazy(() => import('./components/KontaktSection.tsx').then(m => ({ default: m.KontaktSection })));
-const UberMichSection = lazy(() => import('./components/UberMichSection.tsx').then(m => ({ default: m.UberMichSection })));
-const ImpressumPage = lazy(() => import('./pages/ImpressumPage.tsx').then(m => ({ default: m.ImpressumPage })));
-const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage.tsx').then(m => ({ default: m.DatenschutzPage })));
-const ImpressumModal = lazy(() => import('./components/ImpressumModal.tsx').then(m => ({ default: m.ImpressumModal })));
-const DatenschutzModal = lazy(() => import('./components/DatenschutzModal.tsx').then(m => ({ default: m.DatenschutzModal })));
-const ToolsPage = lazy(() => import('./pages/ToolsPage.tsx').then(m => ({ default: m.ToolsPage })));
+const CommandTerminal = lazy(() => import('@/components/CommandTerminal.tsx'));
+const SkillsSection = lazy(() => import('@/components/SkillsSection.tsx').then(m => ({ default: m.SkillsSection })));
+const ProjekteSection = lazy(() => import('@/components/ProjekteSection.tsx').then(m => ({ default: m.ProjekteSection })));
+const ZertifikateSection = lazy(() => import('@/components/ZertifikateSection.tsx').then(m => ({ default: m.ZertifikateSection })));
+const KontaktSection = lazy(() => import('@/components/KontaktSection.tsx').then(m => ({ default: m.KontaktSection })));
+const UberMichSection = lazy(() => import('@/components/UberMichSection.tsx').then(m => ({ default: m.UberMichSection })));
+const ImpressumPage = lazy(() => import('@/pages/ImpressumPage.tsx').then(m => ({ default: m.ImpressumPage })));
+const DatenschutzPage = lazy(() => import('@/pages/DatenschutzPage.tsx').then(m => ({ default: m.DatenschutzPage })));
+const ImpressumModal = lazy(() => import('@/components/ImpressumModal.tsx').then(m => ({ default: m.ImpressumModal })));
+const DatenschutzModal = lazy(() => import('@/components/DatenschutzModal.tsx').then(m => ({ default: m.DatenschutzModal })));
+const ToolsPage = lazy(() => import('@/pages/ToolsPage.tsx').then(m => ({ default: m.ToolsPage })));
 
 const PAGE_ROUTES: Record<string, string> = {
   'start': '/',
@@ -73,14 +74,7 @@ export default function App() {
       navigate('/', { replace: true });
     } else {
       // Track page view on route change
-      if ((window as any).gtag) {
-        (window as any).gtag('config', 'G-90T4169WJP', {
-          page_path: location.pathname,
-          page_location: window.location.href,
-          page_title: document.title,
-          send_page_view: true,
-        });
-      }
+      trackPageView(location.pathname, document.title);
     }
   }, [location.pathname, navigate]);
 
@@ -289,10 +283,12 @@ export default function App() {
             >
               <video
                 key="video-element"
+                autoPlay
                 loop
                 muted
                 playsInline
-                preload="none"
+                poster="https://meine-assets.pages.dev/ich.png"
+                aria-hidden="true"
                 className="w-full h-full object-cover"
                 style={{ filter: 'brightness(1)', opacity: 0.97 }}
               >
@@ -359,14 +355,10 @@ export default function App() {
                 <a 
                   href={PAGE_ROUTES['start']} 
                   className="flex items-center gap-3 h-[28px] md:h-[34px] cursor-pointer group" 
+                  aria-label="Robert Erbach Portfolio Home"
                   onClick={(e) => {
                     e.preventDefault();
-                    if (typeof window !== 'undefined' && (window as any).gtag) {
-                      (window as any).gtag('event', 'logo_click', {
-                        'event_category': 'navigation',
-                        'event_label': 'Header Logo'
-                      });
-                    }
+                    trackEvent('click', 'logo', 'header');
                     handleNavigate('start');
                   }}
                 >
@@ -401,10 +393,10 @@ export default function App() {
                           onMouseEnter={() => {
                             // Pre-fetch component using static map to avoid Vite dynamic import issues
                             const prefetchMap: Record<string, () => Promise<any>> = {
-                              'about': () => import('./components/UberMichSection.tsx'),
-                              'projects': () => import('./components/ProjekteSection.tsx'),
-                              'certificates': () => import('./components/ZertifikateSection.tsx'),
-                              'skills': () => import('./components/SkillsSection.tsx'),
+                              'about': () => import('@/components/UberMichSection.tsx'),
+                              'projects': () => import('@/components/ProjekteSection.tsx'),
+                              'certificates': () => import('@/components/ZertifikateSection.tsx'),
+                              'skills': () => import('@/components/SkillsSection.tsx'),
                             };
                             if (prefetchMap[pageId]) {
                               prefetchMap[pageId]().catch(() => {});

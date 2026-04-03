@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { trackEvent } from '@/lib/analytics';
 
 export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?: (project: any) => void }> = ({ project, index, onDetailsClick }) => {
   const { t, language } = useLanguage();
@@ -90,12 +91,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'project_live_click', {
-                    'event_category': 'engagement',
-                    'event_label': project.title
-                  });
-                }
+                trackEvent('click', 'project_live', 'projects', { project_title: project.title });
               }}
               className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 !text-blue-600 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 cursor-pointer"
             >
@@ -113,12 +109,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           ) : project.details ? (
             <button
               onClick={() => {
-                if (typeof window !== 'undefined' && (window as any).gtag) {
-                  (window as any).gtag('event', 'project_details_click', {
-                    'event_category': 'engagement',
-                    'event_label': project.title
-                  });
-                }
+                trackEvent('click', 'project_details', 'projects', { project_title: project.title });
                 onDetailsClick?.(project);
               }}
               className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 !text-blue-600 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 cursor-pointer"

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { trackPageView } from '@/lib/analytics';
 
 interface SEOProps {
   title: string;
@@ -102,14 +103,6 @@ export const useSEO = () => {
     updateMeta('twitter:url', url, 'name');
 
     // Send Google Analytics Pageview
-    if ((window as any).gtag) {
-      (window as any).gtag('event', 'page_view', {
-        page_title: seo.title,
-        page_location: url,
-        page_path: currentPath,
-        debug_mode: true
-      });
-    }
-
+    trackPageView(currentPath, seo.title);
   }, [location.pathname]);
 };

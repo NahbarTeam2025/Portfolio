@@ -27,7 +27,7 @@ export const ToolsPage: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col w-full h-full overflow-hidden pb-2">
+    <div className="flex flex-col w-full h-full h-[100dvh] overflow-hidden pb-2">
       {/* Header - Very Compact */}
       <div className="flex flex-col gap-0 mb-2 md:mb-3 shrink-0">
         <div className="flex items-center gap-2">

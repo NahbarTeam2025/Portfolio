@@ -1,6 +1,6 @@
 import React, { startTransition, useState } from 'react';
-import { ExternalLink, ChevronDown } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { trackEvent } from '@/lib/analytics';
 
 export const ZertifikateSection = ({ 
   expandedCert, 
@@ -65,12 +65,8 @@ export const ZertifikateSection = ({
                       rel="noopener noreferrer"
                       download
                       onClick={() => {
-                        if (typeof window !== 'undefined' && (window as any).gtag) {
-                          const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
-                          (window as any).gtag('event', `download_cert_${formattedTitle}`, {
-                            'cert_title': cert.title
-                          });
-                        }
+                        const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
+                        trackEvent('download', `cert_${formattedTitle}`, 'certificates', { cert_title: cert.title });
                       }}
                       className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
                     >
@@ -82,13 +78,8 @@ export const ZertifikateSection = ({
                   ) : (
                     <div 
                       onClick={() => {
-                        if (typeof window !== 'undefined' && (window as any).gtag) {
-                          const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
-                          (window as any).gtag('event', `view_attempt_${formattedTitle}`, {
-                            'event_category': 'engagement',
-                            'event_label': cert.title
-                          });
-                        }
+                        const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
+                        trackEvent('click', `view_attempt_${formattedTitle}`, 'certificates', { cert_title: cert.title });
                       }}
                       className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95 opacity-50"
                       title="Zertifikat bald verfügbar"
@@ -159,12 +150,7 @@ export const ZertifikateSection = ({
         </p>
         <button 
           onClick={() => {
-            if (typeof window !== 'undefined' && (window as any).gtag) {
-              (window as any).gtag('event', 'cta_contact_click', {
-                'event_category': 'engagement',
-                'event_label': 'Certificates Section CTA'
-              });
-            }
+            trackEvent('click', 'contact_cta', 'certificates');
             handleNavigate('contact');
           }}
           className="w-full flex items-center justify-center gap-2 rounded-full py-2.5 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
