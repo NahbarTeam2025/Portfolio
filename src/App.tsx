@@ -97,6 +97,14 @@ export default function App() {
 
   const [expandedCert, setExpandedCert] = useState<number | null>(null);
   const [isInitialEntrance, setIsInitialEntrance] = useState(true);
+  const [showCookieBanner, setShowCookieBanner] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowCookieBanner(true);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     setIsInitialEntrance(true);
@@ -641,7 +649,7 @@ export default function App() {
         )}
       </div>
       
-      <CookieBanner handleNavigate={handleNavigate} />
+      {showCookieBanner && <CookieBanner handleNavigate={handleNavigate} />}
     </div>
   </>
 );
