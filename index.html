@@ -135,14 +135,21 @@
     <meta property="twitter:description" content="Ich entwickle KI-Workflows, baue damit funktionierende Webprojekte und gestalte alles so, dass es auch wirklich gut aussieht." />
     <meta property="twitter:image" content="https://meine-assets.pages.dev/logo.png" />
 
-    <link rel="icon" type="image/png" href="https://07f33f72.meine-assets.pages.dev/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="https://3dab3910.meine-assets.pages.dev/favicon-96x96.png" />
+    <link rel="shortcut icon" href="https://3dab3910.meine-assets.pages.dev/favicon.ico" />
     <link rel="apple-touch-icon" href="https://07f33f72.meine-assets.pages.dev/apple-touch-icon.png" />
     <link rel="manifest" href="https://meine-assets.pages.dev/site.webmanifest" />
     
-    <!-- Preload Critical Assets removed to prevent cross-origin double fetch -->
+    <!-- Preload Critical Assets -->
+    <link rel="preload" as="image" href="https://meine-assets.pages.dev/ich.png" fetchpriority="high" referrerpolicy="no-referrer" />
     
     <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" rel="stylesheet">
+    </noscript>
 
     <script type="application/ld+json">
     {

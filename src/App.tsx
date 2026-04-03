@@ -133,8 +133,11 @@ export default function App() {
   // Loading timer removed for immediate LCP rendering
 
   useEffect(() => {
-    // Start video loading immediately
-    setIsVideoDeferred(true);
+    // Start video loading almost immediately, but yield 50ms to let the browser prioritize the LCP image fetch
+    const timer = setTimeout(() => {
+      setIsVideoDeferred(true);
+    }, 50);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -308,10 +311,10 @@ export default function App() {
             >
               <video
                 key="video-element"
-                autoPlay
                 loop
                 muted
                 playsInline
+                preload="none"
                 className="w-full h-full object-cover"
                 style={{ filter: 'brightness(1)', opacity: 0.97 }}
               >
