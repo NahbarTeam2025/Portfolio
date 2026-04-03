@@ -123,7 +123,7 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
 
       {/* CTA Button */}
       <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-1 md:pb-2 pt-2 md:pt-3 gap-1 md:gap-1 mt-auto mb-7 md:mb-9 shrink-0">
-        <p className="text-black/80 text-[11px] md:text-xs text-center whitespace-normal md:whitespace-nowrap">
+        <p className="text-black/80 text-[12px] md:text-[13px] text-center whitespace-normal md:whitespace-nowrap">
           {t.skills.cta.text}
         </p>
         <button 

@@ -143,7 +143,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
           <div className="flex flex-col items-center gap-1 mt-16 md:mt-24 pb-12 md:pb-20 w-full">
             {/* CTA Button */}
             <div className="flex flex-col items-center gap-1 shrink-0 w-fit mx-auto">
-              <p className="text-black/70 text-[12px] md:text-[13px] italic text-center">
+              <p className="text-black/70 text-[12px] md:text-[13px] text-center">
                 {t.about.cta.text}
               </p>
               <button 
