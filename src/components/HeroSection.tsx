@@ -1,4 +1,5 @@
 import React from 'react';
+import { m } from 'motion/react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
 
@@ -111,7 +112,10 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
                 WebkitMaskPosition: 'center'
               }}
             />
-            <img 
+            <m.img 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               src="https://meine-assets.pages.dev/ich.png" 
               alt="Robert Erbach" 
               width="500"

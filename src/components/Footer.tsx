@@ -19,8 +19,8 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
           <img 
             src="https://3dab3910.meine-assets.pages.dev/favicon-96x96.png" 
             alt="Logo Robert Erbach Footer" 
-            width="66"
-            height="49"
+            width="38"
+            height="28"
             className="h-[24px] md:h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)] dark:hidden"
             loading="lazy"
             decoding="async"
@@ -29,8 +29,8 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
           <img 
             src="https://3dab3910.meine-assets.pages.dev/favicon.ico" 
             alt="Logo Robert Erbach Footer" 
-            width="66"
-            height="49"
+            width="38"
+            height="28"
             className="h-[24px] md:h-[28px] w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(5,184,194,0.6)] hidden dark:block"
             loading="lazy"
             decoding="async"
