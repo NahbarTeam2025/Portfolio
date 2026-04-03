@@ -20,6 +20,7 @@ import { useParallaxIntersection } from './hooks/useParallaxIntersection';
 import { useLanguage } from './contexts/LanguageContext';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { useIsMobile } from './hooks/useIsMobile';
+import { CookieBanner } from './components/CookieBanner';
 
 // Lazy load components
 const CommandTerminal = lazy(() => import('./components/CommandTerminal.tsx'));
@@ -32,7 +33,6 @@ const ImpressumPage = lazy(() => import('./pages/ImpressumPage.tsx').then(m => (
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage.tsx').then(m => ({ default: m.DatenschutzPage })));
 const ImpressumModal = lazy(() => import('./components/ImpressumModal.tsx').then(m => ({ default: m.ImpressumModal })));
 const DatenschutzModal = lazy(() => import('./components/DatenschutzModal.tsx').then(m => ({ default: m.DatenschutzModal })));
-const CookieBanner = lazy(() => import('./components/CookieBanner.tsx').then(m => ({ default: m.CookieBanner })));
 const ToolsPage = lazy(() => import('./pages/ToolsPage.tsx').then(m => ({ default: m.ToolsPage })));
 
 const PAGE_ROUTES: Record<string, string> = {
