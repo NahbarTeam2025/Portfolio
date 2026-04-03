@@ -333,8 +333,8 @@ export const translations = {
         {
           date: '07/2025 – 04/2026',
           title: 'Weiterbildung: Digital Marketing Manager',
-          company: 'GFN GmbH / WPI',
-          desc: '**Online-Vollzeit-Weiterbildung** · Abschluss: 5 Zertifikate von Webmasters Europe e.V. mit abschließendem Diplom\n\nGesamtausbildung im digitalen Marketing: Online-Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics sowie E-Commerce.\n\n**Online-Marketing & Verkaufspsychologie · 4 Wochen**\n\nGrundlagen digitales Marketing, Zielgruppenanalyse, Neuromarketing und Kaufpsychologie, KI-Tools im Marketing. Abschluss: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 Monate**\n\nPlattformstrategie (Facebook, Instagram, LinkedIn, YouTube), Social Ads, virales Marketing, Facebook Advertising. Abschluss: Certified Social Media Manager:in\n\n**Content Marketing · 2 Monate**\n\nContent-Strategie, E-Mail-Marketing, WordPress, Blogging und SEO-Content. Abschluss: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 Monate**\n\nSuchmaschinenoptimierung, Google Ads, Kampagnenmanagement, Google Analytics, Google Tag Manager. Abschluss: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 Monate**\n\nOnline-Shop-Strategie, WooCommerce, Google Analytics, Social Ads, Projektarbeit mit eigenem Shop-Konzept. Abschluss: GFN-Zertifikat E-Commerce Manager\n\n*Alle Kurse über GFN GmbH / WPI, online, gefördert. Zertifikate von Webmasters Europe e.V. sind anerkannte Branchenzertifizierungen.*'
+          company: 'GFN GmbH',
+          desc: '**Online-Vollzeit-Weiterbildung** · Abschluss: 5 Zertifikate von Webmasters Europe e.V. mit abschließendem Diplom\n\nGesamtausbildung im digitalen Marketing: Online-Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics sowie E-Commerce.\n\n**Online-Marketing & Verkaufspsychologie · 4 Wochen**\n\nGrundlagen digitales Marketing, Zielgruppenanalyse, Neuromarketing und Kaufpsychologie, KI-Tools im Marketing. Abschluss: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 Monate**\n\nPlattformstrategie (Facebook, Instagram, LinkedIn, YouTube), Social Ads, virales Marketing, Facebook Advertising. Abschluss: Certified Social Media Manager:in\n\n**Content Marketing · 2 Monate**\n\nContent-Strategie, E-Mail-Marketing, WordPress, Blogging und SEO-Content. Abschluss: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 Monate**\n\nSuchmaschinenoptimierung, Google Ads, Kampagnenmanagement, Google Analytics, Google Tag Manager. Abschluss: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 Monate**\n\nOnline-Shop-Strategie, WooCommerce, Google Analytics, Social Ads, Projektarbeit mit eigenem Shop-Konzept. Abschluss: GFN-Zertifikat E-Commerce Manager\n\n*Alle Kurse über GFN GmbH, online, gefördert. Zertifikate von Webmasters Europe e.V. sind anerkannte Branchenzertifizierungen.*'
         },
         {
           date: '06/2024 – 05/2025',
@@ -358,15 +358,14 @@ export const translations = {
       ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
       ctaButton: 'Unverbindlich kennenlernen →',
       items: [
-        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH / WPI' },
-        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
-        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
-        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
-        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
-        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
-        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
-        { id: 8, title: 'Web Analytics via GA4', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_web-analyst.pdf' },
-        { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH / WPI' },
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
+        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
+        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
+        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
+        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
+        { id: 9, title: 'Webanalyse', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf' },
         { id: 11, title: 'Bildbearbeitung mit Gimp', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
         { id: 12, title: 'Büroverwaltung und Kommunikation', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
         { id: 13, title: 'Datenbanken mit MS Access', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
@@ -378,7 +377,8 @@ export const translations = {
         { id: 19, title: 'MS Excel Grundlagen', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
         { id: 20, title: 'MS Excel Aufbaukurs', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
         { id: 21, title: 'MS Word', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
-        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf' }
+        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf', category: 'KI' },
+        { id: 22, title: 'KI Führerschein', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ki_f%C3%BChrerschein.pdf', category: 'KI' }
       ]
     },
     footer: {
@@ -401,63 +401,97 @@ export const translations = {
     privacy: {
       title: "Datenschutzerklärung",
       close: "Schließen",
-      section1: {
-        title: "1. Datenschutz auf einen Blick",
-        subtitle1: "Allgemeine Hinweise",
-        text1: "Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.",
-        subtitle2: "Datenerfassung auf dieser Website",
-        q1: "Wer ist verantwortlich für die Datenerfassung auf dieser Website?",
-        a1: "Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.",
-        q2: "Wie erfasse ich Ihre Daten?",
-        a2: "Ihre Daten werden zum einen dadurch erhoben, dass Sie mir diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch meine IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).",
-        q3: "Wofür nutze ich Ihre Daten?",
-        a3: "Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.",
-        q4: "Welche Rechte haben Sie bezüglich Ihrer Daten?",
-        a4: "Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen."
-      },
-      section2: {
-        title: "2. Hosting",
-        text1: "Ich hoste die Inhalte meiner Website bei folgendem Anbieter:",
-        subtitle1: "Cloudflare",
-        text2: "Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (nachfolgend „Cloudflare“).",
-        text3: "Wenn Sie meine Website besuchen, erfasst Cloudflare verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare:",
-        text4: "Die Verwendung von Cloudflare erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung meiner Website."
-      },
-      section3: {
-        title: "3. Allgemeine Hinweise und Pflichtinformationen",
-        subtitle1: "Datenschutz",
-        text1: "Ich nehme den Schutz Ihrer persönlichen Daten sehr ernst. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.",
-        subtitle2: "Hinweis zur verantwortlichen Stelle",
-        text2: "Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:",
-        address: "Robert Erbach, Am Stadtpark 43, 04895 Falkenberg/Elster, Telefon: 0152-04041124, E-Mail: roberterbach@web.de"
-      },
-      section4: {
-        title: "4. Datenerfassung auf dieser Website",
-        subtitle1: "Kontaktformular (Web3Forms)",
-        text1: "Wenn Sie mir per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.",
-        text2: "Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt zur Abwicklung Ihrer Anfrage. Ich nutze für die Bereitstellung des Formulars den Dienst \"Web3Forms\" des Anbieters Web3Forms. Die von Ihnen eingegebenen Daten werden auf den Servern von Web3Forms verarbeitet.",
-        text3: "Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf meinem berechtigten Interesse an der effektiven Bearbeitung der an mich gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sofern diese abgefragt wurde; die Einwilligung ist jederzeit widerrufbar.",
-        text4: "Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei mir, bis Sie mich zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.",
-        subtitle2: "Bereitstellung von Downloads (Zertifikate & Lebenslauf)",
-        text5: "Ich biete auf meiner Website Zertifikate sowie meinen Lebenslauf zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Cloudflare erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken."
-      },
-      section5: {
-        title: "5. Externe Ressourcen und CDN",
-        subtitle1: "Bunny Fonts",
-        text1: "Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Webfonts direkt von den Servern des Anbieters (Bunny.net) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diesen Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.",
-        subtitle2: "Verwendung eines Content Delivery Networks (CDN) – Cloudflare",
-        text2: "Wir nutzen für die Bereitstellung von Medieninhalten (wie Videos und Bildern) das Content Delivery Network (CDN) von Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA).",
-        text3: "Zweck der Nutzung ist die Optimierung der Ladezeiten und die stabile, weltweite Bereitstellung unserer Assets. Durch die Nutzung dieses Dienstes werden Medieninhalte direkt von den Servern von Cloudflare geladen. Um diese Inhalte auszuliefern, verarbeitet Cloudflare technisch bedingt die IP-Adresse Ihres Endgeräts sowie weitere Log-Daten.",
-        text4: "Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare:",
-        text5: "Die Rechtsgrundlage für diese Datenverarbeitung ist unser berechtigtes Interesse an einer performanten, technisch stabilen und nutzerfreundlichen Bereitstellung unseres Onlineangebots (Art. 6 Abs. 1 f DSGVO)."
-      },
-      section6: {
-        title: "6. Analyse-Tools (Google Analytics)",
-        text1: "Diese Website nutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google“).",
-        text2: "Google Analytics verwendet sog. „Cookies“, Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglichen. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert.",
-        text3: "Die Speicherung von Google Analytics-Cookies und die Nutzung dieses Analyse-Tools erfolgen auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der Analyse des Nutzerverhaltens, um sowohl sein Webangebot als auch seine Werbung zu optimieren. Sofern eine entsprechende Einwilligung abgefragt wurde (z. B. Einwilligung zur Speicherung von Cookies), erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.",
-        text4: "Sie können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; ich weise Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können. Sie können darüber hinaus die Erfassung der durch das Cookie erzeugten und auf Ihre Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem Sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren: https://tools.google.com/dlpage/gaoptout?hl=de."
-      }
+      content: `**Datenschutzerklärung**
+
+---
+
+**1. Datenschutz auf einen Blick**
+
+**Allgemeine Hinweise**
+Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
+
+**Datenerfassung auf dieser Website**
+
+*Wer ist verantwortlich für die Datenerfassung auf dieser Website?*
+Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.
+
+*Wie erfasse ich Ihre Daten?*
+Ihre Daten werden zum einen dadurch erhoben, dass Sie mir diese mitteilen, z. B. wenn Sie mich per E-Mail kontaktieren. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch meine IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).
+
+*Wofür nutze ich Ihre Daten?*
+Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können nach Ihrer Einwilligung zur Analyse Ihres Nutzerverhaltens verwendet werden.
+
+*Welche Rechte haben Sie bezüglich Ihrer Daten?*
+Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.
+
+---
+
+**2. Hosting**
+
+**Cloudflare**
+Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (nachfolgend „Cloudflare").
+
+Wenn Sie meine Website besuchen, erfasst Cloudflare verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: https://www.cloudflare.com/privacypolicy/
+
+Die Verwendung von Cloudflare erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung meiner Website.
+
+---
+
+**3. Allgemeine Hinweise und Pflichtinformationen**
+
+**Datenschutz**
+Ich nehme den Schutz Ihrer persönlichen Daten sehr ernst. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
+
+**Hinweis zur verantwortlichen Stelle**
+Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
+
+Robert Erbach, Am Stadtpark 43, 04895 Falkenberg/Elster
+Telefon: 0152-04041124
+E-Mail: roberterbach@web.de
+
+---
+
+**4. Datenerfassung auf dieser Website**
+
+**Bereitstellung von Downloads (Zertifikate & Lebenslauf)**
+Ich biete auf meiner Website Zertifikate sowie meinen Lebenslauf zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Cloudflare erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken.
+
+---
+
+**5. Externe Ressourcen und CDN**
+
+**Bunny Fonts**
+Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Webfonts direkt von den Servern des Anbieters (Bunny.net) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diesen Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.
+
+**Content Delivery Network – Cloudflare**
+Ich nutze für die Bereitstellung von Medieninhalten das Content Delivery Network (CDN) von Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA.
+
+Zweck der Nutzung ist die Optimierung der Ladezeiten und die stabile Bereitstellung meiner Assets. Durch die Nutzung dieses Dienstes werden Medieninhalte direkt von den Servern von Cloudflare geladen. Dabei verarbeitet Cloudflare technisch bedingt die IP-Adresse Ihres Endgeräts sowie weitere Log-Daten.
+
+Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie unter: https://www.cloudflare.com/privacypolicy/
+
+Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.
+
+**Cloudflare Web Analytics**
+Diese Website nutzt Cloudflare Web Analytics, einen datenschutzfreundlichen Analysedienst der Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA.
+
+Cloudflare Web Analytics setzt keine Cookies und speichert keine personenbezogenen Daten auf Ihrem Endgerät. Es werden ausschließlich aggregierte, nicht personenbezogene Nutzungsdaten erfasst (z. B. Seitenaufrufe, Verweildauer, verwendeter Browser). Eine Identifizierung einzelner Personen ist nicht möglich.
+
+Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer anonymen Analyse der Websitenutzung zur technischen Verbesserung meines Angebots.
+
+Details: https://www.cloudflare.com/privacypolicy/
+
+---
+
+**6. Analyse-Tools (Google Analytics)**
+
+Diese Website nutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google").
+
+Google Analytics wird auf dieser Website ausschließlich nach Ihrer ausdrücklichen Einwilligung aktiviert. Ohne Ihre Zustimmung werden keine Daten an Google übertragen. Die Nutzung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO. Ihre Einwilligung ist jederzeit mit Wirkung für die Zukunft widerrufbar.
+
+Im Fall Ihrer Einwilligung verwendet Google Analytics sog. „Cookies", die eine Analyse der Benutzung der Website ermöglichen. Die erzeugten Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt.
+
+Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie das Browser-Plugin unter folgendem Link herunterladen und installieren: https://tools.google.com/dlpage/gaoptout?hl=de`
     },
     common: {
       loading: 'Wird geladen...',
@@ -808,8 +842,8 @@ export const translations = {
         {
           date: '07/2025 – 04/2026',
           title: 'Digital Marketing Manager (Further Training)',
-          company: 'GFN GmbH / WPI',
-          desc: '**Online Full-time Further Training** · Completion: 5 Certificates from Webmasters Europe e.V.\n\nComprehensive training in digital marketing: Online Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics as well as E-Commerce.\n\n**Online Marketing & Sales Psychology · 4 weeks**\n\nBasics of digital marketing, target group analysis, neuromarketing and buying psychology, AI tools in marketing. Completion: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 months**\n\nPlatform strategy (Facebook, Instagram, LinkedIn, YouTube), Social Ads, viral marketing, Facebook Advertising. Completion: Certified Social Media Manager\n\n**Content Marketing · 2 months**\n\nContent strategy, email marketing, WordPress, blogging and SEO content. Completion: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 months**\n\nSearch engine optimization, Google Ads, campaign management, Google Analytics, Google Tag Manager. Completion: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 months**\n\nOnline shop strategy, WooCommerce, Google Analytics, Social Ads, project work with own shop concept. Completion: GFN Certificate E-Commerce Manager\n\n*All courses via GFN GmbH / WPI, online, funded. Certificates from Webmasters Europe e.V. are recognized industry certifications.*'
+          company: 'GFN GmbH',
+          desc: '**Online Full-time Further Training** · Completion: 5 Certificates from Webmasters Europe e.V.\n\nComprehensive training in digital marketing: Online Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics as well as E-Commerce.\n\n**Online Marketing & Sales Psychology · 4 weeks**\n\nBasics of digital marketing, target group analysis, neuromarketing and buying psychology, AI tools in marketing. Completion: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 months**\n\nPlatform strategy (Facebook, Instagram, LinkedIn, YouTube), Social Ads, viral marketing, Facebook Advertising. Completion: Certified Social Media Manager\n\n**Content Marketing · 2 months**\n\nContent strategy, email marketing, WordPress, blogging and SEO content. Completion: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 months**\n\nSearch engine optimization, Google Ads, campaign management, Google Analytics, Google Tag Manager. Completion: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 months**\n\nOnline shop strategy, WooCommerce, Google Analytics, Social Ads, project work with own shop concept. Completion: GFN Certificate E-Commerce Manager\n\n*All courses via GFN GmbH, online, funded. Certificates from Webmasters Europe e.V. are recognized industry certifications.*'
         },
         {
           date: '06/2024 – 05/2025',
@@ -833,15 +867,14 @@ export const translations = {
       ctaText: 'Theoretically sound, practically motivated – ready for use in your team.',
       ctaButton: 'Get to know each other non-bindingly →',
       items: [
-        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH / WPI' },
-        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
-        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
-        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
-        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
-        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
-        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
-        { id: 8, title: 'Web Analytics via GA4', issuer: 'GFN GmbH / WPI', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_web-analyst.pdf' },
-        { id: 9, title: 'Web Analytics via Google Tag Manager', issuer: 'GFN GmbH / WPI' },
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
+        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
+        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
+        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
+        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
+        { id: 9, title: 'Webanalyse', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf' },
         { id: 11, title: 'Image Editing with GIMP', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
         { id: 12, title: 'Office Administration and Communication', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
         { id: 13, title: 'Databases with MS Access', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
@@ -853,7 +886,8 @@ export const translations = {
         { id: 19, title: 'MS Excel Basics', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
         { id: 20, title: 'MS Excel Advanced Course', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
         { id: 21, title: 'MS Word', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
-        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf' }
+        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf', category: 'KI' },
+        { id: 22, title: 'AI Driver\'s License', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ki_f%C3%BChrerschein.pdf', category: 'KI' }
       ]
     },
     footer: {
@@ -876,63 +910,97 @@ export const translations = {
     privacy: {
       title: "Privacy Policy",
       close: "Close",
-      section1: {
-        title: "1. Privacy at a glance",
-        subtitle1: "General Information",
-        text1: "The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you can be personally identified.",
-        subtitle2: "Data collection on this website",
-        q1: "Who is responsible for data collection on this website?",
-        a1: "Data processing on this website is carried out by the website operator. You can find their contact details in the legal notice of this website.",
-        q2: "How do I collect your data?",
-        a2: "Your data is collected on the one hand by you communicating it to me. This can be, for example, data that you enter into a contact form. Other data is collected automatically or after your consent when you visit the website by my IT systems. These are mainly technical data (e.g. internet browser, operating system or time of the page view).",
-        q3: "What do I use your data for?",
-        a3: "Part of the data is collected to ensure error-free provision of the website. Other data can be used to analyze your user behavior.",
-        q4: "What rights do you have regarding your data?",
-        a4: "You have the right at any time to receive information free of charge about the origin, recipient and purpose of your stored personal data. You also have a right to request the correction or deletion of this data. If you have given your consent to data processing, you can revoke this consent at any time for the future. You also have the right, under certain circumstances, to request the restriction of the processing of your personal data."
-      },
-      section2: {
-        title: "2. Hosting",
-        text1: "I host the content of my website with the following provider:",
-        subtitle1: "Cloudflare",
-        text2: "Provider is Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (hereinafter “Cloudflare”).",
-        text3: "When you visit my website, Cloudflare collects various log files including your IP addresses. Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found in Cloudflare's privacy policy:",
-        text4: "The use of Cloudflare is based on Art. 6 Para. 1 lit. f GDPR. I have a legitimate interest in the most reliable presentation of my website."
-      },
-      section3: {
-        title: "3. General information and mandatory information",
-        subtitle1: "Data protection",
-        text1: "I take the protection of your personal data very seriously. I treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.",
-        subtitle2: "Note on the responsible body",
-        text2: "The responsible body for data processing on this website is:",
-        address: "Robert Erbach, Am Stadtpark 43, 04895 Falkenberg/Elster, Phone: 0152-04041124, Email: roberterbach@web.de"
-      },
-      section4: {
-        title: "4. Data collection on this website",
-        subtitle1: "Contact form (Web3Forms)",
-        text1: "If you send me inquiries via the contact form, your details from the inquiry form, including the contact details you provided there, will be stored by me for the purpose of processing the inquiry and in the event of follow-up questions. I will not pass on this data without your consent.",
-        text2: "The processing of the data entered into the contact form takes place to process your inquiry. I use the service \"Web3Forms\" from the provider Web3Forms to provide the form. The data you enter will be processed on the servers of Web3Forms.",
-        text3: "The processing of this data is based on Art. 6 Para. 1 lit. b GDPR, provided that your inquiry is related to the fulfillment of a contract or is necessary to carry out pre-contractual measures. In all other cases, the processing is based on my legitimate interest in the effective processing of the inquiries addressed to me (Art. 6 Para. 1 lit. f GDPR) or on your consent (Art. 6 Para. 1 lit. a GDPR) if this was requested; consent can be revoked at any time.",
-        text4: "The data you enter in the contact form will remain with me until you ask me to delete it, revoke your consent to storage or the purpose for data storage no longer applies (e.g. after your inquiry has been processed). Mandatory statutory provisions – in particular retention periods – remain unaffected.",
-        subtitle2: "Provision of downloads (certificates)",
-        text5: "I offer certificates for download on my website. When downloading these files, technical data (such as your IP address, time of download, file name) are collected by my host Cloudflare by default. This is technically necessary to provide the download (Art. 6 Para. 1 lit. f GDPR). There is no further evaluation of your download behavior for marketing purposes."
-      },
-      section5: {
-        title: "5. External resources and CDN",
-        subtitle1: "Bunny Fonts",
-        text1: "This site uses external resources for the uniform presentation of fonts. When you call up a page, your browser loads the required web fonts directly from the provider's servers (Bunny.net) into your browser cache. For technical reasons, your IP address is transmitted to this provider. Bunny Fonts is a privacy-friendly alternative to Google Fonts and is provided on servers within the EU.",
-        subtitle2: "Use of a Content Delivery Network (CDN) – Cloudflare",
-        text2: "We use the Content Delivery Network (CDN) from Cloudflare (Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA) to provide media content (such as videos and images).",
-        text3: "The purpose of use is to optimize loading times and the stable, worldwide provision of our assets. By using this service, media content is loaded directly from Cloudflare's servers. In order to deliver this content, Cloudflare processes the IP address of your end device and other log data for technical reasons.",
-        text4: "Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found in Cloudflare's privacy policy:",
-        text5: "The legal basis for this data processing is our legitimate interest in a high-performance, technically stable and user-friendly provision of our online offer (Art. 6 Para. 1 f GDPR)."
-      },
-      section6: {
-        title: "6. Analytics Tools (Google Analytics)",
-        text1: "This website uses Google Analytics, a web analytics service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland (\"Google\").",
-        text2: "Google Analytics uses \"cookies\", which are text files placed on your computer, to help the website analyze how users use the site. The information generated by the cookie about your use of the website will usually be transmitted to and stored by Google on servers in the United States.",
-        text3: "The storage of Google Analytics cookies and the use of this analysis tool are based on Art. 6 Para. 1 lit. a GDPR. The website operator has a legitimate interest in analyzing user behavior in order to optimize both its website and its advertising. If consent has been requested (e.g., consent to the storage of cookies), processing takes place exclusively on the basis of Art. 6 Para. 1 lit. a GDPR; consent can be revoked at any time.",
-        text4: "You may refuse the use of cookies by selecting the appropriate settings on your browser, however please note that if you do this you may not be able to use the full functionality of this website. You can also prevent Google from collecting the data generated by the cookie and relating to your use of the website (including your IP address) and from processing this data by Google by downloading and installing the browser plug-in available at the following link: https://tools.google.com/dlpage/gaoptout?hl=en."
-      }
+      content: `**Privacy Policy**
+
+---
+
+**1. Privacy at a glance**
+
+**General Information**
+The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you can be personally identified.
+
+**Data collection on this website**
+
+*Who is responsible for data collection on this website?*
+Data processing on this website is carried out by the website operator. You can find their contact details in the legal notice of this website.
+
+*How do I collect your data?*
+Your data is collected on the one hand by you communicating it to me, e.g., when you contact me by email. Other data is collected automatically or after your consent when you visit the website by my IT systems. These are mainly technical data (e.g., internet browser, operating system, or time of page view).
+
+*What do I use your data for?*
+Part of the data is collected to ensure error-free provision of the website. Other data can be used to analyze your user behavior after your consent.
+
+*What rights do you have regarding your data?*
+You have the right at any time to receive information free of charge about the origin, recipient, and purpose of your stored personal data. You also have a right to request the correction or deletion of this data. If you have given your consent to data processing, you can revoke this consent at any time for the future. You also have the right, under certain circumstances, to request the restriction of the processing of your personal data.
+
+---
+
+**2. Hosting**
+
+**Cloudflare**
+Provider is Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (hereinafter “Cloudflare”).
+
+When you visit my website, Cloudflare collects various log files including your IP addresses. Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found in Cloudflare's privacy policy: https://www.cloudflare.com/privacypolicy/
+
+The use of Cloudflare is based on Art. 6 Para. 1 lit. f GDPR. I have a legitimate interest in the most reliable presentation of my website.
+
+---
+
+**3. General information and mandatory information**
+
+**Data protection**
+I take the protection of your personal data very seriously. I treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.
+
+**Note on the responsible body**
+The responsible body for data processing on this website is:
+
+Robert Erbach, Am Stadtpark 43, 04895 Falkenberg/Elster
+Phone: 0152-04041124
+Email: roberterbach@web.de
+
+---
+
+**4. Data collection on this website**
+
+**Provision of downloads (certificates & CV)**
+I offer certificates and my CV for download on my website. When downloading these files, technical data (such as your IP address, time of download, file name) are collected by my host Cloudflare by default. This is technically necessary to provide the download (Art. 6 Para. 1 lit. f GDPR). There is no further evaluation of your download behavior for marketing purposes.
+
+---
+
+**5. External resources and CDN**
+
+**Bunny Fonts**
+This site uses external resources for the uniform presentation of fonts. When you call up a page, your browser loads the required web fonts directly from the provider's servers (Bunny.net) into your browser cache. For technical reasons, your IP address is transmitted to this provider. Bunny Fonts is a privacy-friendly alternative to Google Fonts and is provided on servers within the EU.
+
+**Content Delivery Network – Cloudflare**
+I use the Content Delivery Network (CDN) from Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA to provide media content.
+
+The purpose of use is to optimize loading times and the stable provision of my assets. By using this service, media content is loaded directly from Cloudflare's servers. In order to deliver this content, Cloudflare processes the IP address of your end device and other log data for technical reasons.
+
+Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found at: https://www.cloudflare.com/privacypolicy/
+
+Legal basis: Art. 6 Para. 1 lit. f GDPR.
+
+**Cloudflare Web Analytics**
+This website uses Cloudflare Web Analytics, a privacy-friendly analysis service from Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA.
+
+Cloudflare Web Analytics does not set cookies and does not store any personal data on your end device. Only aggregated, non-personal usage data is collected (e.g., page views, duration of stay, browser used). Identification of individual persons is not possible.
+
+Legal basis: Art. 6 Para. 1 lit. f GDPR. I have a legitimate interest in an anonymous analysis of website usage for the technical improvement of my offer.
+
+Details: https://www.cloudflare.com/privacypolicy/
+
+---
+
+**6. Analytics Tools (Google Analytics)**
+
+This website uses Google Analytics, a web analytics service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (“Google”).
+
+Google Analytics is only activated on this website after your express consent. Without your consent, no data will be transmitted to Google. The use is based on Art. 6 Para. 1 lit. a GDPR. Your consent can be revoked at any time with effect for the future.
+
+In the event of your consent, Google Analytics uses so-called “cookies”, which enable an analysis of the use of the website. The generated information is usually transmitted to a Google server in the USA and stored there. Data transfer to the USA is based on the standard contractual clauses of the EU Commission.
+
+You can also prevent collection by Google Analytics by downloading and installing the browser plug-in available at the following link: https://tools.google.com/dlpage/gaoptout?hl=en`
     },
     common: {
       loading: 'Loading...',

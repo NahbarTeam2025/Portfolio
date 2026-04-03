@@ -11,9 +11,9 @@ export const ZertifikateSection = ({
 
   const certs = t.certificates.items || [];
 
-  const gfnCerts = certs.filter((c: any) => c.issuer === 'GFN GmbH / WPI');
+  const gfnCerts = certs.filter((c: any) => c.issuer === 'GFN GmbH' && c.category !== 'KI');
   const fawCerts = certs.filter((c: any) => c.issuer === 'FAW');
-  const kiCerts = certs.filter((c: any) => c.issuer === 'Anthropic');
+  const kiCerts = certs.filter((c: any) => c.category === 'KI');
 
   const renderCertCard = (cert: any) => {
     const actualIndex = certs.findIndex((c: any) => c.id === cert.id);
@@ -119,7 +119,7 @@ export const ZertifikateSection = ({
         {gfnCerts.length > 0 && (expandedCert === null || gfnCerts.some((c: any) => certs.findIndex((orig: any) => orig.id === c.id) === expandedCert)) && (
           <div className="flex flex-col gap-3 w-full">
             {expandedCert === null && (
-              <h2 className="text-lg md:text-xl font-bold text-black/90 px-1">GFN GmbH / WPI</h2>
+              <h2 className="text-lg md:text-xl font-bold text-black/90 px-1">GFN GmbH</h2>
             )}
             <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2 md:gap-3 w-full pb-0 md:pb-1`}>
               {gfnCerts.map(renderCertCard)}
@@ -167,12 +167,9 @@ export const ZertifikateSection = ({
             }
             handleNavigate('contact');
           }}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
+          className="w-full flex items-center justify-center gap-2 rounded-full py-2.5 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
         >
           <span className="relative z-10">{t.certificates.ctaButton}</span>
-          <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
         </button>
       </div>
     </div>
