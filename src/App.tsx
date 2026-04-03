@@ -334,6 +334,7 @@ export default function App() {
                 muted
                 playsInline
                 preload="none"
+                {...({ fetchPriority: "low" } as any)}
                 aria-hidden="true"
                 className="w-full h-full object-cover"
                 style={{ filter: 'brightness(1)', opacity: 0.97 }}

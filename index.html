@@ -173,10 +173,10 @@
     <link rel="manifest" href="https://meine-assets.pages.dev/site.webmanifest" />
     
     <!-- Preload Critical Assets -->
-    <link rel="preload" as="image" imagesrcset="https://meine-assets.pages.dev/ichklein.webp 500w, https://meine-assets.pages.dev/ich.webp 1000w" imagesizes="(max-width: 768px) 100vw, 500px" fetchpriority="high" referrerpolicy="no-referrer" />
+    <link rel="preload" as="image" href="https://meine-assets.pages.dev/ichklein.webp" media="(max-width: 768px)" fetchpriority="high" referrerpolicy="no-referrer" />
+    <link rel="preload" as="image" href="https://meine-assets.pages.dev/ich.webp" media="(min-width: 768.1px)" fetchpriority="high" referrerpolicy="no-referrer" />
     
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
     <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
