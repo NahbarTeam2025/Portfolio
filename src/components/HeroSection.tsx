@@ -105,23 +105,18 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             <div 
               className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10 opacity-0 animate-hero-fade-in hero-mask"
             />
-            <picture className="absolute inset-0 w-full h-full z-[5] block">
-              <source 
-                media="(max-width: 768px)" 
-                srcSet="https://meine-assets.pages.dev/ichklein.webp" 
-                type="image/webp"
-              />
-              <img 
-                src="https://meine-assets.pages.dev/ich.webp" 
-                alt="Robert Erbach" 
-                width="500"
-                height="500"
-                fetchPriority="high"
-                loading="eager"
-                className="w-full h-full object-contain drop-shadow-2xl opacity-0 animate-hero-fade-in block"
-                referrerPolicy="no-referrer"
-              />
-            </picture>
+            <img 
+              src="https://meine-assets.pages.dev/ich.webp" 
+              srcSet="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w"
+              sizes="(max-width: 768px) 100vw, 500px"
+              alt="Robert Erbach" 
+              width="500"
+              height="500"
+              fetchPriority="high"
+              loading="eager"
+              className="absolute inset-0 w-full h-full object-contain z-[5] drop-shadow-2xl opacity-0 animate-hero-fade-in block"
+              referrerPolicy="no-referrer"
+            />
           </div>
         </div>
       </div>
