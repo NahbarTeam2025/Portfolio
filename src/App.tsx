@@ -269,19 +269,47 @@ export default function App() {
   const [videoSrc, setVideoSrc] = useState<{ webm: string; mp4: string } | null>(null);
 
   useEffect(() => {
+    let lcpFired = false;
     const loadVideo = () => {
-      setVideoSrc({
-        webm: "https://meine-assets.pages.dev/bgstart.webm",
-        mp4: "https://meine-assets.pages.dev/bgstart.mp4"
-      });
+      if (lcpFired) return;
+      lcpFired = true;
+      // Wait another 1 second after LCP or window.onload to ensure image is fully rendered
+      setTimeout(() => {
+        setVideoSrc({
+          webm: "https://meine-assets.pages.dev/bgstart.webm",
+          mp4: "https://meine-assets.pages.dev/bgstart.mp4"
+        });
+      }, 1000);
     };
 
-    if (document.readyState === 'complete') {
-      loadVideo();
-    } else {
-      window.addEventListener('load', loadVideo);
-      return () => window.removeEventListener('load', loadVideo);
+    // Use PerformanceObserver to detect LCP
+    const observer = new PerformanceObserver((list) => {
+      const entries = list.getEntries();
+      if (entries.length > 0) {
+        loadVideo();
+        observer.disconnect();
+      }
+    });
+
+    try {
+      observer.observe({ type: 'largest-contentful-paint', buffered: true });
+    } catch (e) {
+      // Fallback if LCP observer is not supported
+      if (document.readyState === 'complete') {
+        loadVideo();
+      } else {
+        window.addEventListener('load', loadVideo, { once: true });
+      }
     }
+
+    // Safety fallback: always load after 5 seconds if LCP didn't fire
+    const fallbackTimer = setTimeout(loadVideo, 5000);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('load', loadVideo);
+      clearTimeout(fallbackTimer);
+    };
   }, []);
 
   return (

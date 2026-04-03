@@ -121,6 +121,38 @@
     <link rel="preconnect" href="https://meine-assets.pages.dev" />
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
     
+    <style>
+      @keyframes hero-fade-in {
+        from { 
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to { 
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-hero-fade-in {
+        animation: hero-fade-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .hero-mask {
+        mask-image: url(https://meine-assets.pages.dev/ich.webp);
+        -webkit-mask-image: url(https://meine-assets.pages.dev/ich.webp);
+        mask-size: contain;
+        -webkit-mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-position: center;
+      }
+      @media (max-width: 768px) {
+        .hero-mask {
+          mask-image: url(https://meine-assets.pages.dev/ichklein.webp);
+          -webkit-mask-image: url(https://meine-assets.pages.dev/ichklein.webp);
+        }
+      }
+    </style>
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://roberterbach.de/" />
@@ -287,6 +319,6 @@
     </noscript>
     <div id="root"></div>
 
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" async src="/src/main.tsx"></script>
   </body>
 </html>
