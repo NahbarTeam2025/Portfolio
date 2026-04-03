@@ -269,14 +269,19 @@ export default function App() {
   const [videoSrc, setVideoSrc] = useState<{ webm: string; mp4: string } | null>(null);
 
   useEffect(() => {
-    // Defer video loading by 2 seconds to give priority to the hero image
-    const timer = setTimeout(() => {
+    const loadVideo = () => {
       setVideoSrc({
         webm: "https://meine-assets.pages.dev/bgstart.webm",
         mp4: "https://meine-assets.pages.dev/bgstart.mp4"
       });
-    }, 2000);
-    return () => clearTimeout(timer);
+    };
+
+    if (document.readyState === 'complete') {
+      loadVideo();
+    } else {
+      window.addEventListener('load', loadVideo);
+      return () => window.removeEventListener('load', loadVideo);
+    }
   }, []);
 
   return (
@@ -406,7 +411,7 @@ export default function App() {
                 </a>
 
                 {/* Navigation Bar */}
-                <div className="hidden lg:flex items-center gap-1">
+                <div className="hidden lg:flex items-center gap-0.5">
                   {PAGES.map((pageId, index) => (
                     <React.Fragment key={pageId}>
                         <a
@@ -427,7 +432,7 @@ export default function App() {
                             e.preventDefault();
                             handleNavigate(pageId);
                           }}
-                          className={`px-2 xl:px-4 py-1.5 text-[10px] xl:text-[11px] font-bold transition-all duration-500 cursor-pointer relative group hover:scale-110 font-sans focus-ring uppercase tracking-widest ${
+                          className={`px-1.5 xl:px-2.5 py-1.5 text-[10px] xl:text-[11px] font-bold transition-all duration-500 cursor-pointer relative group hover:scale-110 font-sans focus-ring uppercase tracking-widest ${
                             currentPage === pageId
                               ? 'text-blue-400 text-glow-blue'
                               : 'text-black/85 hover:text-black'
@@ -443,13 +448,8 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Right side: Language Switcher + HC + Contact Button + Mobile Menu Toggle */}
+              {/* Right side: Dark Mode Toggle + Language Switcher + HC + Contact Button + Mobile Menu Toggle */}
               <div className="flex items-center gap-4 lg:gap-6">
-
-                {/* Language Switcher */}
-                <div className="hidden lg:block">
-                  <LanguageSwitcher />
-                </div>
 
                 {/* Dark Mode Toggle */}
                 <button
@@ -460,6 +460,11 @@ export default function App() {
                   {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
                   {isDarkMode && <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />}
                 </button>
+
+                {/* Language Switcher */}
+                <div className="hidden lg:block">
+                  <LanguageSwitcher />
+                </div>
 
                 {/* Contact Button */}
                 <button 
@@ -531,14 +536,6 @@ export default function App() {
                   <m.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + (PAGES.length + 3) * 0.05, duration: 0.4 }}
-                  >
-                    <LanguageSwitcher />
-                  </m.div>
-
-                  <m.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + (PAGES.length + 2) * 0.05, duration: 0.4 }}
                   >
                     <button
@@ -555,6 +552,14 @@ export default function App() {
                         {isDarkMode ? t.common.darkModeOff : t.common.darkModeOn}
                       </span>
                     </button>
+                  </m.div>
+
+                  <m.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + (PAGES.length + 3) * 0.05, duration: 0.4 }}
+                  >
+                    <LanguageSwitcher />
                   </m.div>
                 </div>
               </m.div>
