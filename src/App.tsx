@@ -266,6 +266,19 @@ export default function App() {
     }
   }, [isLoading, currentPage, isVideoDeferred]);
 
+  const [videoSrc, setVideoSrc] = useState<{ webm: string; mp4: string } | null>(null);
+
+  useEffect(() => {
+    // Defer video loading by 2 seconds to give priority to the hero image
+    const timer = setTimeout(() => {
+      setVideoSrc({
+        webm: "https://meine-assets.pages.dev/bgstart.webm",
+        mp4: "https://meine-assets.pages.dev/bgstart.mp4"
+      });
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <LazyMotion features={domAnimation}>
       <div 
@@ -287,18 +300,23 @@ export default function App() {
                 loop
                 muted
                 playsInline
+                preload="none"
                 aria-hidden="true"
                 className="w-full h-full object-cover"
                 style={{ filter: 'brightness(1)', opacity: 0.97 }}
               >
-                <source 
-                  src="https://meine-assets.pages.dev/bgstart.webm" 
-                  type="video/webm" 
-                />
-                <source 
-                  src="https://meine-assets.pages.dev/bgstart.mp4" 
-                  type="video/mp4" 
-                />
+                {videoSrc && (
+                  <>
+                    <source 
+                      src={videoSrc.webm} 
+                      type="video/webm" 
+                    />
+                    <source 
+                      src={videoSrc.mp4} 
+                      type="video/mp4" 
+                    />
+                  </>
+                )}
               </video>
             </div>
           )}

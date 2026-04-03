@@ -115,13 +115,13 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             <img 
               src="https://meine-assets.pages.dev/ich.webp" 
               srcSet="https://meine-assets.pages.dev/ichklein.webp 500w, https://meine-assets.pages.dev/ich.webp 1000w"
-              sizes="(max-width: 768px) 320px, 500px"
+              sizes="(max-width: 768px) 100vw, 500px"
               alt="Robert Erbach" 
               width="500"
               height="500"
               fetchPriority="high"
               loading="eager"
-              className="w-full h-auto object-contain relative z-[5] drop-shadow-2xl"
+              className="w-full h-auto object-contain relative z-[5] drop-shadow-2xl opacity-0 animate-hero-fade-in"
               referrerPolicy="no-referrer"
             />
           </div>
