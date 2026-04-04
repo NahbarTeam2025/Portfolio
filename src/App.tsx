@@ -403,7 +403,7 @@ export default function App() {
         <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-0 pointer-events-auto transition-all duration-300">
           {/* Navbar */}
           <nav className={`flex items-center justify-between w-full h-[52px] md:h-[60px] px-6 transition-all duration-300 ${currentPage === 'start' ? 'bg-transparent' : 'bg-white/90 backdrop-blur-md border-b border-black/5 shadow-sm'}`}>
-            <div className="flex items-center w-full max-w-7xl mx-auto">
+            <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
               {/* Logo */}
               <div className="flex-shrink-0">
                 <a 
