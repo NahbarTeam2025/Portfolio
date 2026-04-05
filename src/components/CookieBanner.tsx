@@ -103,7 +103,7 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
       id="consent-banner" 
       className="fixed bottom-0 left-0 right-0 md:bottom-6 md:left-4 md:right-4 z-[2147483647] flex justify-center pointer-events-auto animate-in fade-in slide-in-from-bottom-4 duration-500"
     >
-      <div className="max-w-xl w-full bg-black border border-white/10 rounded-t-xl md:rounded-xl shadow-2xl p-4 md:p-5 text-white flex flex-col sm:flex-row items-center justify-between gap-4 md:gap-6 pointer-events-auto ring-1 ring-white/5">
+      <div className="max-w-xl w-full bg-zinc-800/95 backdrop-blur-md border border-white/10 rounded-t-xl md:rounded-xl shadow-2xl p-4 md:p-5 text-white flex flex-col sm:flex-row items-center justify-between gap-4 md:gap-6 pointer-events-auto ring-1 ring-white/5">
         <div className="flex-grow text-center sm:text-left">
           <p className="text-[12px] md:text-[13px] leading-relaxed text-white/90 font-medium">
             {t?.common?.cookieBanner?.text || 'Ich verwende ausschließlich analytische Cookies zur Seiten-Interaktion. Keine personenbezogenen Daten, keine Marketing-Cookies. Details findest du in der'}{' '}

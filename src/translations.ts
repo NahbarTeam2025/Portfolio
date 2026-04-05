@@ -172,7 +172,7 @@ export const translations = {
       design: 'KI\nEntwicklung',
       structure: 'Prompt Engineering',
       ki: 'Kreatives Design',
-      cta: 'Projekte ansehen',
+      cta: 'Meine Projekte ansehen',
     },
     about: {
       title: 'Wer ist ... ?',
@@ -185,7 +185,7 @@ export const translations = {
       mottoBlue: 'Direkt. Tiefgründig. Konsequent umsetzungsstark.',
       cta: {
         text: 'Ich freue mich darauf, dich persönlich kennenzulernen.',
-        button: 'Unverbindlich kennenlernen →'
+        button: 'Unverbindlich kennenlernen'
       }
     },
     skills: {
@@ -229,7 +229,7 @@ export const translations = {
       },
       cta: {
         text: 'Passt dieses Profil zu deinen aktuellen Herausforderungen?',
-        button: 'Unverbindlich kennenlernen →'
+        button: 'Unverbindlich kennenlernen'
       }
     },
     projects: {
@@ -242,7 +242,7 @@ export const translations = {
       showAll: 'Alle Projekte ansehen',
       cta: {
         text: 'Das sind Einblicke in meine Arbeitsweise – bereit für den Praxiseinsatz in deinem Team.',
-        button: 'Unverbindlich kennenlernen →'
+        button: 'Unverbindlich kennenlernen'
       },
       items: [
         {
@@ -259,7 +259,7 @@ export const translations = {
           category: 'Analytics & Data',
           desc: 'Ein vollständiger, automatisierbarer Workflow der vier KI-Systeme mit klar definierten Rollen kombiniert – für konsistent faktengeprüfte, optimierte und validierte Antworten.',
           features: ['GEMINI', 'PERPLEXITY', 'CLAUDE', 'GROK', 'MAKE.COM', 'PROMPT ENGINEERING'],
-          buttonText: 'PDF ansehen →',
+          buttonText: 'PDF ansehen',
           link: 'https://meine-assets.pages.dev/pdf/robert_erbach_4_ki_workflow.pdf',
           image: 'https://meine-assets.pages.dev/robert_erbach_4_ki_workflow.webp'
         },
@@ -306,7 +306,7 @@ export const translations = {
     contact: {
       title: 'Kontakt',
       subtitle: 'Ich bin offen für neue Möglichkeiten.',
-      desc: 'Ob Jobanfrage, Projektidee oder fachlicher Austausch – schreib mir einfach.\nIch melde mich zeitnah zurück.',
+      desc: 'Ob Jobanfrage, Projektidee oder fachlicher Austausch – schreib mir einfach.\nAntwort innerhalb von 48 Stunden.',
       name: 'Name',
       email: 'E-Mail',
       message: 'Nachricht',
@@ -325,7 +325,8 @@ export const translations = {
       placeholderMessage: 'Ich habe eine Frage zu …',
       responseTime: 'Antwort meist innerhalb 24 Stunden',
       location: 'Standort',
-      locationValue: 'Falkenberg/Elster (bereit für Remote oder Umzug)',
+      locationValue: 'Falkenberg/Elster',
+      locationSub: '(bereit für Remote oder Umzug)',
       downloadCV: 'Meinen Lebenslauf als PDF herunterladen',
       downloadButton: 'PDF herunterladen',
       unlockPrompt: 'PDF herunterladen',
@@ -336,7 +337,7 @@ export const translations = {
     qualifications: {
       title: 'Stationen',
       ctaText: 'Ein Werdegang mit Fokus auf Struktur und Fortschritt – bereit für den nächsten Schritt bei euch.',
-      ctaButton: 'Unverbindlich kennenlernen →',
+      ctaButton: 'Unverbindlich kennenlernen',
       items: [
         {
           date: '07/2025 – 04/2026',
@@ -365,7 +366,7 @@ export const translations = {
       preview: 'Vorschau des Zertifikats. Klicken Sie zum Vergrößern.',
       showAll: 'Alle Zertifikate anzeigen',
       ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
-      ctaButton: 'Unverbindlich kennenlernen →',
+      ctaButton: 'Unverbindlich kennenlernen',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH', date: 'laufend' },
         { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', date: '19.01.2026', info: 'Note: 94% (ausgezeichnet)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
@@ -381,17 +382,17 @@ export const translations = {
         { id: 24, title: 'Arbeitsschutzschulung', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_arbeitsschutzschulung.pdf' },
         { id: 25, title: 'AGG-Schulung', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_agg_schulung.pdf' },
         { id: 26, title: 'IT-Sicherheitsschulung', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheitsschulung.pdf' },
-        { id: 21, title: 'MS Word', issuer: 'FAW gGmbH', date: '05.07.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
-        { id: 11, title: 'Bildbearbeitung mit GIMP', issuer: 'FAW gGmbH', date: '19.07.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
-        { id: 17, title: 'Kaufmännischer Schriftverkehr', issuer: 'FAW gGmbH', date: '02.08.2024', info: '45 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
-        { id: 18, title: 'Layout mit MS Office', issuer: 'FAW gGmbH', date: '16.08.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
-        { id: 12, title: 'Büroverwaltung & Kommunikation', issuer: 'FAW gGmbH', date: '27.09.2024', info: '180 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
-        { id: 19, title: 'MS Excel Grundlagen', issuer: 'FAW gGmbH', date: '25.10.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
-        { id: 20, title: 'MS Excel Aufbaukurs', issuer: 'FAW gGmbH', date: '08.11.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
-        { id: 13, title: 'Datenbanken mit MS Access', issuer: 'FAW gGmbH', date: '22.11.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
-        { id: 14, title: 'Datenschutz', issuer: 'FAW gGmbH', date: '29.11.2024', info: '45 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
-        { id: 16, title: 'IT-Sicherheit', issuer: 'FAW gGmbH', date: '06.12.2024', info: '45 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
-        { id: 15, title: 'Digitalisierte Arbeitswelt', issuer: 'FAW gGmbH', date: '10.12.2024', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
+        { id: 21, title: 'MS Word', issuer: 'FAW', date: '05.07.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
+        { id: 11, title: 'Bildbearbeitung mit GIMP', issuer: 'FAW', date: '19.07.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
+        { id: 17, title: 'Kaufmännischer Schriftverkehr', issuer: 'FAW', date: '02.08.2024', info: '45 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
+        { id: 18, title: 'Layout mit MS Office', issuer: 'FAW', date: '16.08.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
+        { id: 12, title: 'Büroverwaltung & Kommunikation', issuer: 'FAW', date: '27.09.2024', info: '180 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
+        { id: 19, title: 'MS Excel Grundlagen', issuer: 'FAW', date: '25.10.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
+        { id: 20, title: 'MS Excel Aufbaukurs', issuer: 'FAW', date: '08.11.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
+        { id: 13, title: 'Datenbanken mit MS Access', issuer: 'FAW', date: '22.11.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
+        { id: 14, title: 'Datenschutz', issuer: 'FAW', date: '29.11.2024', info: '45 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
+        { id: 16, title: 'IT-Sicherheit', issuer: 'FAW', date: '06.12.2024', info: '45 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
+        { id: 15, title: 'Digitalisierte Arbeitswelt', issuer: 'FAW', date: '10.12.2024', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
         { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', date: 'Certificate of Completion', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf', category: 'KI' }
       ]
     },
@@ -695,7 +696,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       design: 'AI\nDevelopment',
       structure: 'Prompt Engineering',
       ki: 'Creative Design',
-      cta: 'View Projects',
+      cta: 'View My Projects',
     },
     about: {
       title: 'Who is ... ?',
@@ -708,7 +709,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       mottoBlue: 'Direct. Profound. Consistently strong in implementation.',
       cta: {
         text: 'I look forward to getting to know you personally.',
-        button: 'Get to know each other non-bindingly →'
+        button: 'Get to know each other non-bindingly'
       }
     },
     skills: {
@@ -752,7 +753,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       },
       cta: {
         text: 'Does this profile fit your current challenges?',
-        button: 'Get to know each other non-bindingly →'
+        button: 'Get to know each other non-bindingly'
       }
     },
     projects: {
@@ -765,7 +766,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       showAll: 'View All Projects',
       cta: {
         text: 'These are insights into my way of working – ready for practical use in your team.',
-        button: 'Get to know each other non-bindingly →'
+        button: 'Get to know each other non-bindingly'
       },
       items: [
         {
@@ -782,7 +783,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
           category: 'Analytics & Data',
           desc: 'A complete, automatable workflow combining four AI systems with clearly defined roles – for consistently fact-checked, optimized, and validated answers.',
           features: ['GEMINI', 'PERPLEXITY', 'CLAUDE', 'GROK', 'MAKE.COM', 'PROMPT ENGINEERING'],
-          buttonText: 'View PDF →',
+          buttonText: 'View PDF',
           link: 'https://meine-assets.pages.dev/pdf/robert_erbach_4_ki_workflow.pdf',
           image: 'https://meine-assets.pages.dev/robert_erbach_4_ki_workflow.webp'
         },
@@ -829,7 +830,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
     contact: {
       title: 'Contact',
       subtitle: 'I am open to new opportunities.',
-      desc: 'Whether it\'s a job inquiry, project idea or professional exchange – just write to me.\nI\'ll get back to you promptly.',
+      desc: 'Whether it\'s a job inquiry, project idea or professional exchange – just write to me.\nResponse within 48 hours.',
       name: 'Name',
       email: 'Email',
       message: 'Message',
@@ -848,7 +849,8 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       placeholderMessage: 'I have a question about …',
       responseTime: 'Response usually within 24 hours',
       location: 'Location',
-      locationValue: 'Falkenberg/Elster (ready for remote or relocation)',
+      locationValue: 'Falkenberg/Elster',
+      locationSub: '(ready for remote or relocation)',
       downloadCV: 'Download my CV as PDF',
       downloadButton: 'Download PDF',
       unlockPrompt: 'Download PDF',
@@ -859,7 +861,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
     qualifications: {
       title: 'Stations',
       ctaText: 'A career path with a focus on structure and progress – ready for the next step with you.',
-      ctaButton: 'Let\'s get to know each other →',
+      ctaButton: 'Let\'s get to know each other',
       items: [
         {
           date: '07/2025 – 04/2026',
@@ -888,7 +890,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       preview: 'Preview of the certificate. Click to enlarge.',
       showAll: 'Show all certificates',
       ctaText: 'Theoretically sound, practically motivated – ready for use in your team.',
-      ctaButton: 'Get to know each other non-bindingly →',
+      ctaButton: 'Get to know each other non-bindingly',
       items: [
         { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH', date: 'ongoing' },
         { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', date: '19.01.2026', info: 'Grade: 94% (excellent)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
@@ -904,17 +906,17 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
         { id: 24, title: 'Occupational Safety Training', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_arbeitsschutzschulung.pdf' },
         { id: 25, title: 'AGG Training', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_agg_schulung.pdf' },
         { id: 26, title: 'IT Security Training', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheitsschulung.pdf' },
-        { id: 21, title: 'MS Word', issuer: 'FAW gGmbH', date: '05.07.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
-        { id: 11, title: 'Image Editing with GIMP', issuer: 'FAW gGmbH', date: '19.07.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
-        { id: 17, title: 'Commercial Correspondence', issuer: 'FAW gGmbH', date: '02.08.2024', info: '45 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
-        { id: 18, title: 'Layout with MS Office', issuer: 'FAW gGmbH', date: '16.08.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
-        { id: 12, title: 'Office Administration and Communication', issuer: 'FAW gGmbH', date: '27.09.2024', info: '180 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
-        { id: 19, title: 'MS Excel Basics', issuer: 'FAW gGmbH', date: '25.10.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
-        { id: 20, title: 'MS Excel Advanced Course', issuer: 'FAW gGmbH', date: '08.11.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
-        { id: 13, title: 'Databases with MS Access', issuer: 'FAW gGmbH', date: '22.11.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
-        { id: 14, title: 'Data Protection', issuer: 'FAW gGmbH', date: '29.11.2024', info: '45 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
-        { id: 16, title: 'IT Security', issuer: 'FAW gGmbH', date: '06.12.2024', info: '45 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
-        { id: 15, title: 'Digitalized Working World', issuer: 'FAW gGmbH', date: '10.12.2024', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
+        { id: 21, title: 'MS Word', issuer: 'FAW', date: '05.07.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
+        { id: 11, title: 'Image Editing with GIMP', issuer: 'FAW', date: '19.07.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
+        { id: 17, title: 'Commercial Correspondence', issuer: 'FAW', date: '02.08.2024', info: '45 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
+        { id: 18, title: 'Layout with MS Office', issuer: 'FAW', date: '16.08.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
+        { id: 12, title: 'Office Administration and Communication', issuer: 'FAW', date: '27.09.2024', info: '180 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
+        { id: 19, title: 'MS Excel Basics', issuer: 'FAW', date: '25.10.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
+        { id: 20, title: 'MS Excel Advanced Course', issuer: 'FAW', date: '08.11.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
+        { id: 13, title: 'Databases with MS Access', issuer: 'FAW', date: '22.11.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
+        { id: 14, title: 'Data Protection', issuer: 'FAW', date: '29.11.2024', info: '45 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
+        { id: 16, title: 'IT Security', issuer: 'FAW', date: '06.12.2024', info: '45 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
+        { id: 15, title: 'Digitalized Working World', issuer: 'FAW', date: '10.12.2024', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
         { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', date: 'Certificate of Completion', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf', category: 'KI' }
       ]
     },

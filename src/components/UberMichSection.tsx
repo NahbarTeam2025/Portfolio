@@ -161,7 +161,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                   }
                   handleNavigate('contact');
                 }}
-                className="w-full flex items-center justify-center gap-2 rounded-full px-8 py-3 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+                className="w-full flex items-center justify-center gap-2 rounded-full px-8 py-3 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
               >
                 <span className="relative z-10">{t.about.cta.button}</span>
               </button>

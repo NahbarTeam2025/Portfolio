@@ -14,7 +14,7 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
   const projects = t.projects.items;
 
   return (
-    <div className="flex flex-col items-start gap-1.5 md:gap-3 w-full flex-grow animate-in fade-in duration-500 h-full text-black ProjekteSection-container">
+    <div className="flex flex-col items-start gap-1.5 md:gap-3 w-full flex-grow animate-in fade-in duration-500 text-black ProjekteSection-container">
       <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
         {t.projects.title}
       </h1>
@@ -37,7 +37,7 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
       </div>
 
       {!showAllProjects && projects.length > 1 && (
-        <div className="w-full flex justify-center md:hidden mt-0.5 mb-2">
+        <div className="w-full flex justify-center md:hidden mt-0.5 mb-6">
           <button
             onClick={() => setShowAllProjects(true)}
             className="px-6 py-1.5 rounded-full bg-black/5 border border-black/10 text-black/80 text-xs font-medium hover:bg-black/10 transition-colors"
@@ -62,7 +62,7 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
             }
             handleNavigate('contact');
           }}
-          className="w-full flex items-center justify-center gap-2 rounded-full px-8 py-3 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+          className="w-full flex items-center justify-center gap-2 rounded-full px-8 py-3 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
         >
           <span className="relative z-10">{t.projects.cta.button}</span>
         </button>

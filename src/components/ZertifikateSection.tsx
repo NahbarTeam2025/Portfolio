@@ -13,7 +13,7 @@ export const ZertifikateSection = ({
   const certs = t.certificates.items || [];
 
   const gfnCerts = certs.filter((c: any) => (c.issuer === 'GFN GmbH / WPI' || c.issuer === 'GFN GmbH') && c.category !== 'KI');
-  const fawCerts = certs.filter((c: any) => c.issuer === 'FAW gGmbH' || c.issuer === 'FAW');
+  const fawCerts = certs.filter((c: any) => c.issuer === 'FAW');
   const kiCerts = certs.filter((c: any) => c.category === 'KI');
 
   const renderCertCard = (cert: any) => {
@@ -29,7 +29,7 @@ export const ZertifikateSection = ({
         className={`relative group transition-all duration-500 ${isExpanded ? 'flex-1 min-h-0 z-50' : 'z-10'}`}
       >
         <div 
-          className={`wow-card parallax-element flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-gray-600/30 expanded' : 'overflow-hidden'}`}
+          className={`wow-card flex flex-col h-full ${isExpanded ? 'flex-1 min-h-0 ring-1 ring-gray-600/30 expanded' : 'overflow-hidden'}`}
         >
           <div className="wow-card-border" />
           <button 
@@ -95,10 +95,10 @@ export const ZertifikateSection = ({
                         const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
                         trackEvent('download', `cert_${formattedTitle}`, 'certificates', { cert_title: cert.title });
                       }}
-                      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
                     >
                       <span className="relative z-10">{t.certificates.view}</span>
-                      <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </a>
@@ -108,11 +108,11 @@ export const ZertifikateSection = ({
                         const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
                         trackEvent('click', `view_attempt_${formattedTitle}`, 'certificates', { cert_title: cert.title });
                       }}
-                      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/10 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/20 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95 opacity-50"
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95 opacity-50"
                       title="Zertifikat bald verfügbar"
                     >
                       <span className="relative z-10">{t.certificates.view}</span>
-                      <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </div>
@@ -180,7 +180,7 @@ export const ZertifikateSection = ({
             trackEvent('click', 'contact_cta', 'certificates');
             handleNavigate('contact');
           }}
-          className="w-full flex items-center justify-center gap-2 rounded-full py-2.5 lg:py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
+          className="w-full flex items-center justify-center gap-2 rounded-full py-2.5 lg:py-3.5 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
         >
           <span className="relative z-10">{t.certificates.ctaButton}</span>
         </button>

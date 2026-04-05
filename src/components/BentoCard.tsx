@@ -122,7 +122,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               onClick={() => {
                 trackEvent('click', 'project_live', 'projects', { project_title: project.title });
               }}
-              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 !text-blue-600 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {index === 0 && (
@@ -133,7 +133,13 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
                 )}
                 {project.buttonText || t.projects.live}
               </span>
-              <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
+              {project.buttonText?.includes('PDF') ? (
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              ) : (
+                <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
+              )}
             </a>
           ) : project.details ? (
             <button
@@ -141,10 +147,16 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
                 trackEvent('click', 'project_details', 'projects', { project_title: project.title });
                 onDetailsClick?.(project);
               }}
-              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-blue-600/10 border border-blue-500/30 !text-blue-600 font-bold text-[12px] uppercase tracking-widest hover:bg-blue-600/20 hover:border-blue-400 transition-all group/btn2 cursor-pointer"
+              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer"
             >
               <span className="relative z-10">{project.buttonText || t.projects.details}</span>
-              <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
+              {project.buttonText?.includes('PDF') ? (
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              ) : (
+                <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
+              )}
             </button>
           ) : (
             <div

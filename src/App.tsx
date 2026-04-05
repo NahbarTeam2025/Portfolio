@@ -610,7 +610,7 @@ export default function App() {
           currentPage === 'start' 
             ? 'pt-[52px] lg:pt-[60px] items-start justify-center text-left max-w-7xl mx-auto w-full' 
             : (currentPage === 'skills' || currentPage === 'projects')
-              ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 max-w-7xl mx-auto w-full lg:h-screen lg:overflow-hidden'
+              ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 max-w-7xl mx-auto w-full lg:min-h-screen'
               : 'pt-24 md:pt-28 lg:pt-32 items-start justify-start pb-12 max-w-7xl mx-auto w-full'
         } ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
             <div
