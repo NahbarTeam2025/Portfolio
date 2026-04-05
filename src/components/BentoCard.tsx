@@ -113,6 +113,8 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           {project.link ? (
             <MagneticButton
               href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => {
                 trackEvent('click', 'project_live', 'projects', { project_title: project.title });
               }}

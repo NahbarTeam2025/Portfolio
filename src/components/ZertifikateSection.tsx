@@ -90,6 +90,8 @@ export const ZertifikateSection = ({
                 {cert.url ? (
                     <MagneticButton 
                       href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => {
                         const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
                         trackEvent('download', `cert_${formattedTitle}`, 'certificates', { cert_title: cert.title });

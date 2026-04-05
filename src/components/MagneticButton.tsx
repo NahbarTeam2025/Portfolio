@@ -8,6 +8,8 @@ interface MagneticButtonProps {
   href?: string;
   id?: string;
   type?: "button" | "submit" | "reset";
+  target?: string;
+  rel?: string;
 }
 
 export const MagneticButton = ({ 
@@ -16,7 +18,9 @@ export const MagneticButton = ({
   onClick, 
   href,
   id,
-  type = "button"
+  type = "button",
+  target,
+  rel
 }: MagneticButtonProps) => {
   const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
   
@@ -60,6 +64,8 @@ export const MagneticButton = ({
       href={href}
       id={id}
       type={!href ? type : undefined}
+      target={target}
+      rel={rel}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
