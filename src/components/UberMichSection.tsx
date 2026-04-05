@@ -2,6 +2,7 @@ import React, { useState, startTransition, useRef } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import ReactMarkdown from 'react-markdown';
+import { MagneticButton, IconShift } from './MagneticButton';
 
 export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
@@ -10,7 +11,12 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
-      <div className="UberMichSection-container flex flex-col items-center gap-1 md:gap-1.5 lg:gap-2 w-full flex-grow animate-in fade-in duration-500 pb-1 md:pb-1">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="UberMichSection-container flex flex-col items-center gap-1 md:gap-1.5 lg:gap-2 w-full flex-grow pb-1 md:pb-1"
+      >
         <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0 w-full max-w-2xl text-center">
           {t.about.title}
         </h1>
@@ -63,7 +69,16 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
             <h2 className="heading-gradient text-[20px] md:text-[26px] lg:text-[32px] font-medium tracking-tight mb-6 text-center">
               {t.qualifications.title}
             </h2>
-            <div className="relative flex flex-col gap-4 w-full pl-8 md:pl-0">
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
+              }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="relative flex flex-col gap-4 w-full pl-8 md:pl-0"
+            >
               {/* Timeline Line */}
               <motion.div 
                 initial={{ height: 0 }}
@@ -76,13 +91,15 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
               {qualData.map((qual: any, i: number) => {
                 const isExpanded = expandedQual === i;
                 return (
-                  <div key={i} className="relative group scroll-mt-20 lg:scroll-mt-0" ref={(el) => { cardRefs.current[i] = el; }}>
+                  <motion.div 
+                    key={i} 
+                    variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+                    className="relative group scroll-mt-20 lg:scroll-mt-0" 
+                    ref={(el) => { cardRefs.current[i] = el; }}
+                  >
                     {/* Timeline Node */}
                     <motion.div 
-                      initial={{ scale: 0, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.5 + i * 0.2, duration: 0.5 }}
+                      variants={{ hidden: { scale: 0, opacity: 0 }, visible: { scale: 1, opacity: 1 } }}
                       className="absolute -left-[16px] md:-left-[24px] -translate-x-1/2 top-6 w-3 h-3 md:w-4 md:h-4 rounded-full bg-white border-2 border-blue-500/60 z-10 group-hover:scale-125 group-hover:border-blue-400 transition-all duration-300"
                     />
 
@@ -139,10 +156,10 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
           
           <div className="flex flex-col items-center gap-1 mt-16 md:mt-24 pb-12 md:pb-20 w-full">
@@ -151,7 +168,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
               <p className="text-black/70 text-[12px] md:text-[13px] text-center">
                 {t.about.cta.text}
               </p>
-              <button 
+              <MagneticButton 
                 onClick={() => {
                   if (typeof window !== 'undefined' && (window as any).gtag) {
                     (window as any).gtag('event', 'cta_contact_click', {
@@ -161,14 +178,18 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                   }
                   handleNavigate('contact');
                 }}
-                className="w-full flex items-center justify-center gap-2 rounded-full px-8 py-3 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+                className="w-full rounded-full px-8 py-3 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300"
               >
-                <span className="relative z-10">{t.about.cta.button}</span>
-              </button>
+                <span className="relative z-10 mr-2">{t.about.cta.button}</span>
+                <IconShift>
+                  <svg className="w-3 h-3 md:w-4 md:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </IconShift>
+              </MagneticButton>
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
   );
 });
-

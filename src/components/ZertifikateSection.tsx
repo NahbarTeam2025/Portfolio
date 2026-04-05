@@ -1,7 +1,9 @@
 import React, { startTransition, useState } from 'react';
 import { flushSync } from 'react-dom';
+import { motion as m } from 'motion/react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
+import { MagneticButton, IconShift } from './MagneticButton';
 
 export const ZertifikateSection = ({ 
   expandedCert, 
@@ -86,29 +88,28 @@ export const ZertifikateSection = ({
 
               <div className="flex-1 flex flex-col items-center justify-center gap-4 py-4">
                 {cert.url ? (
-                    <a 
+                    <MagneticButton 
                       href={cert.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      download
                       onClick={() => {
                         const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
                         trackEvent('download', `cert_${formattedTitle}`, 'certificates', { cert_title: cert.title });
                       }}
-                      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
+                      className="w-full sm:w-auto rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300 cursor-pointer"
                     >
-                      <span className="relative z-10">{t.certificates.view}</span>
-                      <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </a>
+                      <span className="relative z-10 mr-2">{t.certificates.view}</span>
+                      <IconShift>
+                        <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      </IconShift>
+                    </MagneticButton>
                   ) : (
                     <div 
                       onClick={() => {
                         const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
                         trackEvent('click', `view_attempt_${formattedTitle}`, 'certificates', { cert_title: cert.title });
                       }}
-                      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95 opacity-50"
+                      className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300 cursor-pointer opacity-50"
                       title="Zertifikat bald verfügbar"
                     >
                       <span className="relative z-10">{t.certificates.view}</span>
@@ -132,7 +133,15 @@ export const ZertifikateSection = ({
       </h1>
       <div className="w-full h-[1px] bg-black/10 shrink-0" />
       
-      <div className="w-full flex flex-col gap-4 md:gap-8 mt-1">
+      <m.div 
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
+        }}
+        initial="hidden"
+        animate="visible"
+        className="w-full flex flex-col gap-4 md:gap-8 mt-1"
+      >
         {/* GFN GmbH Category */}
         {gfnCerts.length > 0 && (expandedCert === null || gfnCerts.some((c: any) => certs.findIndex((orig: any) => orig.id === c.id) === expandedCert)) && (
           <div className="flex flex-col gap-3 w-full">
@@ -140,7 +149,11 @@ export const ZertifikateSection = ({
               <h2 className="text-lg md:text-xl font-bold text-black/90 px-1">GFN GmbH / WPI</h2>
             )}
             <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2 md:gap-3 w-full pb-0 md:pb-1`}>
-              {gfnCerts.map(renderCertCard)}
+              {gfnCerts.map((cert: any) => (
+                <m.div key={cert.id} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
+                  {renderCertCard(cert)}
+                </m.div>
+              ))}
             </div>
           </div>
         )}
@@ -152,7 +165,11 @@ export const ZertifikateSection = ({
               <h2 className="text-lg md:text-xl font-bold text-black/90 px-1">FAW</h2>
             )}
             <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2 md:gap-3 w-full pb-0 md:pb-1`}>
-              {fawCerts.map(renderCertCard)}
+              {fawCerts.map((cert: any) => (
+                <m.div key={cert.id} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
+                  {renderCertCard(cert)}
+                </m.div>
+              ))}
             </div>
           </div>
         )}
@@ -164,26 +181,35 @@ export const ZertifikateSection = ({
               <h2 className="text-lg md:text-xl font-bold text-black/90 px-1">KI</h2>
             )}
             <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2 md:gap-3 w-full pb-0 md:pb-1`}>
-              {kiCerts.map(renderCertCard)}
+              {kiCerts.map((cert: any) => (
+                <m.div key={cert.id} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
+                  {renderCertCard(cert)}
+                </m.div>
+              ))}
             </div>
           </div>
         )}
-      </div>
+      </m.div>
 
       {/* CTA Button */}
       <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-2 md:pb-4 pt-11 md:pt-9 gap-1 md:gap-1.5 mt-auto mb-4 md:mb-12 shrink-0">
         <p className="text-black/80 text-[12px] md:text-[13px] text-center whitespace-normal md:whitespace-nowrap">
           {t.certificates.ctaText}
         </p>
-        <button 
+        <MagneticButton 
           onClick={() => {
             trackEvent('click', 'contact_cta', 'certificates');
             handleNavigate('contact');
           }}
-          className="w-full flex items-center justify-center gap-2 rounded-full py-2.5 lg:py-3.5 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 cursor-pointer hover:scale-[0.98] active:scale-95"
+          className="w-full rounded-full py-2.5 lg:py-3.5 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300"
         >
-          <span className="relative z-10">{t.certificates.ctaButton}</span>
-        </button>
+          <span className="relative z-10 mr-2">{t.certificates.ctaButton}</span>
+          <IconShift>
+            <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </IconShift>
+        </MagneticButton>
       </div>
     </div>
   );

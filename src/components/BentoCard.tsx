@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } fr
 import { ArrowRight, ZoomIn } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
+import { MagneticButton, IconShift } from './MagneticButton';
 
 export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?: (project: any) => void, onImageClick?: (url: string) => void }> = ({ project, index, onDetailsClick, onImageClick }) => {
   const { t, language } = useLanguage();
@@ -45,11 +46,6 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
   // Bento grid classes based on index
   return (
     <motion.div
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={`relative group parallax-element overflow-hidden flex flex-col h-full min-h-[320px] md:min-h-[380px] lg:min-h-[400px] transition-all duration-500 wow-card shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] text-black dark:text-white`}
@@ -62,7 +58,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
         style={{ background: spotlightBackground }}
       />
       
-      <div className="relative z-10 p-5 md:p-8 flex flex-col h-full items-center text-center" style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }}>
+      <div className="relative z-10 p-5 md:p-8 flex flex-col h-full items-center text-center">
         <div className="flex flex-col gap-3 md:gap-4 items-center w-full flex-grow">
           <div className="flex flex-col gap-1.5 md:gap-2 items-center">
             <h3 className="text-base md:text-xl font-bold !text-black dark:!text-white leading-tight tracking-tight group-hover:text-glow-blue transition-all duration-300">
@@ -87,13 +83,13 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
         <div className="mt-4 md:mt-6 w-full flex flex-col gap-3 items-center">
           {project.image && (
             <div 
-              className="w-full max-w-[280px] rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-sm mb-2 cursor-zoom-in group/img relative z-[100] block p-0"
-              style={{ pointerEvents: 'auto', transform: 'translateZ(50px)' }}
+              className="w-fit rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-sm mb-2 cursor-zoom-in group/img relative z-[100] block p-0"
+              style={{ pointerEvents: 'auto' }}
             >
               <img 
                 src={project.image} 
                 alt={project.title} 
-                className="w-full h-auto object-cover transition-transform duration-500 group-hover/img:scale-105 pointer-events-none"
+                className="w-full max-w-[280px] h-auto object-cover transition-transform duration-500 pointer-events-none"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 pointer-events-none flex items-center justify-center">
@@ -115,16 +111,14 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
             </div>
           )}
           {project.link ? (
-            <a
+            <MagneticButton
               href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
               onClick={() => {
                 trackEvent('click', 'project_live', 'projects', { project_title: project.title });
               }}
-              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer"
+              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer"
             >
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="relative z-10 flex items-center gap-2 mr-2">
                 {index === 0 && (
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -133,31 +127,35 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
                 )}
                 {project.buttonText || t.projects.live}
               </span>
-              {project.buttonText?.includes('PDF') ? (
-                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              ) : (
-                <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
-              )}
-            </a>
+              <IconShift>
+                {project.buttonText?.includes('PDF') ? (
+                  <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                ) : (
+                  <ArrowRight className="w-4 h-4" />
+                )}
+              </IconShift>
+            </MagneticButton>
           ) : project.details ? (
-            <button
+            <MagneticButton
               onClick={() => {
                 trackEvent('click', 'project_details', 'projects', { project_title: project.title });
                 onDetailsClick?.(project);
               }}
-              className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer"
+              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer"
             >
-              <span className="relative z-10">{project.buttonText || t.projects.details}</span>
-              {project.buttonText?.includes('PDF') ? (
-                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              ) : (
-                <ArrowRight className="w-4 h-4 transform transition-transform duration-300 group-hover/btn2:translate-x-1" />
-              )}
-            </button>
+              <span className="relative z-10 mr-2">{project.buttonText || t.projects.details}</span>
+              <IconShift>
+                {project.buttonText?.includes('PDF') ? (
+                  <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                ) : (
+                  <ArrowRight className="w-4 h-4" />
+                )}
+              </IconShift>
+            </MagneticButton>
           ) : (
             <div
               className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 !text-black/60 dark:!text-white/60 font-bold text-[12px] uppercase tracking-widest cursor-default"

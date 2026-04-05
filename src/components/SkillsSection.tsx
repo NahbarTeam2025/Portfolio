@@ -1,6 +1,8 @@
 import React from 'react';
+import { motion as m } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Bot, MessageSquareCode, LayoutTemplate, Palette } from 'lucide-react';
+import { MagneticButton, IconShift } from './MagneticButton';
 
 export const SkillsSection = React.memo(({ handleNavigate }: any) => {
   const { t } = useLanguage();
@@ -67,7 +69,15 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
   ];
 
   return (
-    <div className="flex flex-col items-start gap-1 md:gap-2 w-full flex-grow animate-in fade-in duration-500">
+    <m.div 
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
+      }}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col items-start gap-1 md:gap-2 w-full flex-grow"
+    >
       <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
         {t.skills.title}
       </h1>
@@ -77,23 +87,43 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
       <div className="w-full h-[1px] bg-black/10 shrink-0" />
       
       {/* HIGHLIGHT CARDS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 w-full max-w-[1400px] py-1 md:py-2 mx-auto">
+      <m.div 
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
+        }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 w-full max-w-[1400px] py-1 md:py-2 mx-auto"
+      >
         {highlights.map((item, idx) => (
-          <div key={idx} className="bg-gray-300/90 dark:bg-gray-700/90 backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-2 border border-black/55 dark:border-white/10 shadow-sm relative overflow-hidden group hover:bg-gray-400/90 dark:hover:bg-gray-600 transition-all duration-300">
+          <m.div 
+            key={idx} 
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+            className="bg-gray-300/90 dark:bg-gray-700/90 backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-2 border border-black/55 dark:border-white/10 shadow-sm relative overflow-hidden group hover:bg-gray-400/90 dark:hover:bg-gray-600 transition-all duration-300"
+          >
             <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="p-2 bg-black/5 dark:bg-white/5 rounded-xl w-fit border border-black/5 dark:border-white/5 shadow-inner">
               {item.icon}
             </div>
             <h3 className="text-black dark:text-white font-semibold text-[14px] tracking-tight mt-0.5">{item.title}</h3>
             <p className="text-black/70 dark:text-white/70 text-[12px] leading-relaxed">{item.description}</p>
-          </div>
+          </m.div>
         ))}
-      </div>
+      </m.div>
 
       {/* CATEGORY BLOCKS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-6 gap-y-2 md:gap-y-3 w-full max-w-[1400px] mx-auto">
+      <m.div 
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
+        }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-6 gap-y-2 md:gap-y-3 w-full max-w-[1400px] mx-auto"
+      >
         {skillGroups.map((group) => (
-          <div key={group.category} className="h-full">
+          <m.div 
+            key={group.category} 
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+            className="h-full"
+          >
             <div className="wow-card flex flex-col gap-3 p-4 md:p-4 h-full">
               <div className="wow-card-border" />
               <h2 className="text-gray-700 text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em] font-bold opacity-90 relative z-10">
@@ -117,16 +147,16 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
                 ))}
               </div>
             </div>
-          </div>
+          </m.div>
         ))}
-      </div>
+      </m.div>
 
       {/* CTA Button */}
       <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-1 md:pb-2 pt-11 md:pt-9 gap-1 md:gap-1 mt-auto mb-7 md:mb-9 shrink-0">
         <p className="text-black/80 text-[12px] md:text-[13px] text-center whitespace-normal md:whitespace-nowrap">
           {t.skills.cta.text}
         </p>
-        <button 
+        <MagneticButton 
           onClick={() => {
             if (typeof window !== 'undefined' && (window as any).gtag) {
               (window as any).gtag('event', 'cta_contact_click', {
@@ -136,11 +166,16 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
             }
             handleNavigate('contact');
           }}
-          className="w-full flex items-center justify-center gap-2 rounded-full px-6 py-2.5 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+          className="w-full rounded-full px-6 py-2.5 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300"
         >
-          <span className="relative z-10">{t.skills.cta.button}</span>
-        </button>
+          <span className="relative z-10 mr-2">{t.skills.cta.button}</span>
+          <IconShift>
+            <svg className="w-3 h-3 md:w-4 md:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </IconShift>
+        </MagneticButton>
       </div>
-    </div>
+    </m.div>
   );
 });

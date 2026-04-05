@@ -471,15 +471,19 @@ export default function App() {
                           e.preventDefault();
                           handleNavigate(pageId);
                         }}
-                        className={`px-2 xl:px-4 py-1.5 text-[10px] xl:text-[11px] font-bold transition-all duration-500 cursor-pointer relative group hover:scale-110 font-sans focus-ring uppercase tracking-widest ${
+                        className={`px-4 py-1.5 text-[11px] font-bold transition-all duration-300 cursor-pointer relative group hover:scale-105 font-sans focus-ring uppercase tracking-widest ${
                           currentPage === pageId
-                            ? 'text-blue-400 text-glow-blue'
+                            ? 'text-black'
                             : 'text-black/85 hover:text-black'
                         }`}
                       >
                       <span className="relative z-10">{(t.nav as any)[pageId]}</span>
-                      {currentPage !== pageId && (
-                        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-black/40 transition-all duration-300 group-hover:w-1/3" />
+                      {currentPage === pageId && (
+                        <m.div
+                          layoutId="nav-pill"
+                          className="absolute inset-0 bg-blue-500/10 backdrop-blur-md border border-blue-500/20 rounded-full z-0 shadow-[0_0_10px_rgba(59,130,246,0.1)]"
+                          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                        />
                       )}
                     </a>
                   </React.Fragment>

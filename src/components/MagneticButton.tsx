@@ -1,35 +1,82 @@
-import React, { useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import React, { useRef } from 'react';
+import { m, useMotionValue, useSpring } from 'motion/react';
 
-export const MagneticButton = ({ children, className, onClick, href }: { children: React.ReactNode, className?: string, onClick?: (e: React.MouseEvent) => void, href?: string }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+interface MagneticButtonProps {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: (e: React.MouseEvent) => void;
+  href?: string;
+  id?: string;
+  type?: "button" | "submit" | "reset";
+}
+
+export const MagneticButton = ({ 
+  children, 
+  className, 
+  onClick, 
+  href,
+  id,
+  type = "button"
+}: MagneticButtonProps) => {
+  const ref = useRef<HTMLButtonElement | HTMLAnchorElement>(null);
+  
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { stiffness: 150, damping: 15 };
+  const x = useSpring(mouseX, springConfig);
+  const y = useSpring(mouseY, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const { clientX, clientY } = e;
-    const { width, height, left, top } = ref.current!.getBoundingClientRect();
-    const x = clientX - (left + width / 2);
-    const y = clientY - (top + height / 2);
-    setPosition({ x: x * 0.3, y: y * 0.3 });
+    if (ref.current) {
+      const { width, height, left, top } = ref.current.getBoundingClientRect();
+      const centerX = left + width / 2;
+      const centerY = top + height / 2;
+      
+      // Calculate distance from center
+      const deltaX = (clientX - centerX) * 0.35;
+      const deltaY = (clientY - centerY) * 0.35;
+      
+      // Limit translation to 15px
+      const limitedX = Math.max(-15, Math.min(15, deltaX));
+      const limitedY = Math.max(-15, Math.min(15, deltaY));
+      
+      mouseX.set(limitedX);
+      mouseY.set(limitedY);
+    }
   };
 
   const handleMouseLeave = () => {
-    setPosition({ x: 0, y: 0 });
+    mouseX.set(0);
+    mouseY.set(0);
   };
 
-  const content = (
-    <motion.div
-      ref={ref}
+  const Component = href ? m.a : m.button;
+
+  return (
+    <Component
+      ref={ref as any}
+      href={href}
+      id={id}
+      type={!href ? type : undefined}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
-      className={className}
       onClick={onClick}
+      style={{ x, y }}
+      initial="initial"
+      whileHover="hover"
+      className={`relative group flex items-center justify-center ${className}`}
     >
       {children}
-    </motion.div>
+    </Component>
   );
+};
 
-  return href ? <a href={href} className="block">{content}</a> : content;
+export const IconShift = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
+  return (
+    <span className={`flex items-center justify-center ${className}`}>
+      {children}
+    </span>
+  );
 };

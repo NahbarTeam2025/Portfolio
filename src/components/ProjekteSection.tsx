@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { createPortal } from 'react-dom';
+import { MagneticButton, IconShift } from './MagneticButton';
 
 export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) => {
   const { t } = useLanguage();
@@ -19,9 +20,21 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
         {t.projects.title}
       </h1>
       <div className="w-full h-[1px] bg-black/10 shrink-0 mb-1 md:mb-0" />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1.5 md:gap-3 w-full max-w-[1400px] pb-0 md:pb-0.5">
+      <motion.div 
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
+        }}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1.5 md:gap-3 w-full max-w-[1400px] pb-0 md:pb-0.5"
+      >
         {projects.map((project: any, i: number) => (
-          <div key={i} className={`block h-full ${!showAllProjects && i > 0 ? 'hidden md:block' : ''} ${i === 1 ? 'lg:col-span-2' : 'lg:col-span-1'}`}>
+          <motion.div 
+            key={i} 
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+            className={`block h-full ${!showAllProjects && i > 0 ? 'hidden md:block' : ''} ${i === 1 ? 'lg:col-span-2' : 'lg:col-span-1'}`}
+          >
             <BentoCard 
               project={project}
               index={i}
@@ -32,9 +45,9 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
                 }
               }}
             />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {!showAllProjects && projects.length > 1 && (
         <div className="w-full flex justify-center md:hidden mt-0.5 mb-6">
@@ -52,7 +65,7 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
         <p className="text-black/80 text-[12px] md:text-[13px] text-center whitespace-normal md:whitespace-nowrap">
           {t.projects.cta.text}
         </p>
-        <button 
+        <MagneticButton 
           onClick={() => {
             if (typeof window !== 'undefined' && (window as any).gtag) {
               (window as any).gtag('event', 'cta_contact_click', {
@@ -62,10 +75,15 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
             }
             handleNavigate('contact');
           }}
-          className="w-full flex items-center justify-center gap-2 rounded-full px-8 py-3 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+          className="w-full rounded-full px-8 py-3 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300"
         >
-          <span className="relative z-10">{t.projects.cta.button}</span>
-        </button>
+          <span className="relative z-10 mr-2">{t.projects.cta.button}</span>
+          <IconShift>
+            <svg className="w-3 h-3 md:w-4 md:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </IconShift>
+        </MagneticButton>
       </div>
 
       <AnimatePresence>

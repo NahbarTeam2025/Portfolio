@@ -396,7 +396,6 @@ video {
                 inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     transform: translateY(var(--parallax-y, 0px));
-    will-change: transform, opacity, background, backdrop-filter;
     z-index: 1;
   }
 
