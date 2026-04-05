@@ -88,7 +88,7 @@ export const ZertifikateSection = ({
 
               <div className="flex-1 flex flex-col items-center justify-center gap-4 py-4">
                 {cert.url ? (
-                    <MagneticButton 
+                    <a 
                       href={cert.url}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -96,7 +96,7 @@ export const ZertifikateSection = ({
                         const formattedTitle = cert.title.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '');
                         trackEvent('download', `cert_${formattedTitle}`, 'certificates', { cert_title: cert.title });
                       }}
-                      className="w-full sm:w-auto rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300 cursor-pointer"
+                      className="w-full sm:w-auto rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300 cursor-pointer flex items-center justify-center"
                     >
                       <span className="relative z-10 mr-2">{t.certificates.view}</span>
                       <IconShift>
@@ -104,7 +104,7 @@ export const ZertifikateSection = ({
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                       </IconShift>
-                    </MagneticButton>
+                    </a>
                   ) : (
                     <div 
                       onClick={() => {
@@ -198,20 +198,18 @@ export const ZertifikateSection = ({
         <p className="text-black/80 text-[12px] md:text-[13px] text-center whitespace-normal md:whitespace-nowrap">
           {t.certificates.ctaText}
         </p>
-        <MagneticButton 
+        <button 
           onClick={() => {
             trackEvent('click', 'contact_cta', 'certificates');
             handleNavigate('contact');
           }}
-          className="w-full rounded-full py-2.5 lg:py-3.5 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300"
+          className="w-full rounded-full py-2.5 lg:py-3.5 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 flex items-center justify-center"
         >
           <span className="relative z-10 mr-2">{t.certificates.ctaButton}</span>
-          <IconShift>
-            <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </IconShift>
-        </MagneticButton>
+          <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
       </div>
     </div>
   );

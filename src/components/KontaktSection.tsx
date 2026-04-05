@@ -111,20 +111,20 @@ export const KontaktSection = () => {
               <div className="flex flex-col items-center w-fit mx-auto">
                 <span className="text-black/60 text-[10px] md:text-[12px] uppercase tracking-widest font-bold mb-3 text-center w-full">{t.contact.downloadCV}</span>
                 
-                <MagneticButton 
+                <a 
                   href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => {
                     trackEvent('download', 'cv', 'contact', { file: 'robert_erbach_lebenslauf.pdf' });
                   }}
-                  className="w-full rounded-full px-4 py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300"
+                  className="w-full rounded-full px-6 py-3.5 bg-green-500/15 border border-green-500/50 text-black text-[13px] md:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(74,222,128,0.2)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:bg-green-500/25 hover:border-green-400 transition-all duration-300 flex items-center justify-center"
                 >
                   <span className="relative z-10 mr-2">{t.contact.downloadButton}</span>
-                  <IconShift>
-                    <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </IconShift>
-                </MagneticButton>
+                  <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>

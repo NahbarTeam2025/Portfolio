@@ -111,16 +111,16 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
             </div>
           )}
           {project.link ? (
-            <MagneticButton
+            <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
                 trackEvent('click', 'project_live', 'projects', { project_title: project.title });
               }}
-              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer"
+              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
             >
-              <span className="relative z-10 flex items-center gap-2 mr-2">
+              <span className="relative z-10 flex items-center gap-2">
                 {index === 0 && (
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -129,35 +129,31 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
                 )}
                 {project.buttonText || t.projects.live}
               </span>
-              <IconShift>
-                {project.buttonText?.includes('PDF') ? (
-                  <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                ) : (
-                  <ArrowRight className="w-4 h-4" />
-                )}
-              </IconShift>
-            </MagneticButton>
+              {project.buttonText?.includes('PDF') ? (
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              ) : (
+                <ArrowRight className="w-4 h-4" />
+              )}
+            </a>
           ) : project.details ? (
-            <MagneticButton
+            <button
               onClick={() => {
                 trackEvent('click', 'project_details', 'projects', { project_title: project.title });
                 onDetailsClick?.(project);
               }}
-              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer"
+              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
             >
-              <span className="relative z-10 mr-2">{project.buttonText || t.projects.details}</span>
-              <IconShift>
-                {project.buttonText?.includes('PDF') ? (
-                  <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                ) : (
-                  <ArrowRight className="w-4 h-4" />
-                )}
-              </IconShift>
-            </MagneticButton>
+              <span className="relative z-10">{project.buttonText || t.projects.details}</span>
+              {project.buttonText?.includes('PDF') ? (
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              ) : (
+                <ArrowRight className="w-4 h-4" />
+              )}
+            </button>
           ) : (
             <div
               className="flex items-center justify-center gap-2 w-full max-w-[220px] py-3.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 !text-black/60 dark:!text-white/60 font-bold text-[12px] uppercase tracking-widest cursor-default"

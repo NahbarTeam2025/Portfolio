@@ -96,21 +96,19 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
           <div 
             className="relative w-full sm:w-auto flex justify-center lg:justify-start animate-in fade-in slide-in-from-left-4 duration-700 delay-500 fill-mode-both"
           >
-            <MagneticButton 
+            <button 
               id="btn-hero-projects"
               onClick={() => {
                 trackEvent('click', 'projects_cta', 'hero');
                 handleNavigate('projects');
               }}
-              className="w-full sm:w-auto rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300"
+              className="w-full sm:w-auto rounded-full px-6 py-2.5 lg:px-8 lg:py-3.5 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] lg:text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 flex items-center justify-center"
             >
               <span className="relative z-10 mr-2">{t.hero.cta}</span>
-              <IconShift>
-                <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </IconShift>
-            </MagneticButton>
+              <svg className="w-3 h-3 lg:w-4 lg:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
           </div>
         </div>
 
