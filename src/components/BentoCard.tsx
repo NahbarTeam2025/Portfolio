@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ZoomIn } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
 
-export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?: (project: any) => void }> = ({ project, index, onDetailsClick }) => {
+export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?: (project: any) => void, onImageClick?: (url: string) => void }> = ({ project, index, onDetailsClick, onImageClick }) => {
   const { t, language } = useLanguage();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -54,8 +54,8 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
       onMouseLeave={handleMouseLeave}
       className={`relative group parallax-element overflow-hidden flex flex-col h-full min-h-[320px] md:min-h-[380px] lg:min-h-[400px] transition-all duration-500 wow-card shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] text-black dark:text-white`}
     >
-      <div className="card-top-flare opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="wow-card-border" />
+      <div className="card-top-flare opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="wow-card-border pointer-events-none" />
       
       <motion.div
         className="pointer-events-none absolute -inset-px z-0 transition duration-300 opacity-0 group-hover:opacity-100"
@@ -84,7 +84,36 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           </div>
         </div>
 
-        <div className="mt-4 md:mt-6 w-full flex flex-col gap-2 items-center">
+        <div className="mt-4 md:mt-6 w-full flex flex-col gap-3 items-center">
+          {project.image && (
+            <div 
+              className="w-full max-w-[280px] rounded-xl overflow-hidden border border-black/10 dark:border-white/10 shadow-sm mb-2 cursor-zoom-in group/img relative z-[100] block p-0"
+              style={{ pointerEvents: 'auto', transform: 'translateZ(50px)' }}
+            >
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                className="w-full h-auto object-cover transition-transform duration-500 group-hover/img:scale-105 pointer-events-none"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors duration-300 pointer-events-none flex items-center justify-center">
+                <div className="opacity-0 group-hover/img:opacity-100 transition-all duration-300 bg-white/40 backdrop-blur-md p-3 rounded-full shadow-lg border border-white/20">
+                  <ZoomIn className="w-6 h-6 text-white drop-shadow-md" />
+                </div>
+              </div>
+              {/* Invisible click overlay to ensure detection */}
+              <div 
+                className="absolute inset-0 z-[110] cursor-zoom-in" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (onImageClick) {
+                    onImageClick(project.image!);
+                  }
+                }}
+              />
+            </div>
+          )}
           {project.link ? (
             <a
               href={project.link}

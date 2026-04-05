@@ -79,13 +79,13 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
       {/* HIGHLIGHT CARDS */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 w-full max-w-[1400px] py-1 md:py-2 mx-auto">
         {highlights.map((item, idx) => (
-          <div key={idx} className="bg-gray-900/95 backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-2 border border-white/10 shadow-xl relative overflow-hidden group">
+          <div key={idx} className="bg-gray-300/90 dark:bg-gray-700/90 backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-2 border border-black/55 dark:border-white/10 shadow-sm relative overflow-hidden group hover:bg-gray-400/90 dark:hover:bg-gray-600 transition-all duration-300">
             <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="p-2 bg-white/5 rounded-xl w-fit border border-white/10 shadow-inner">
+            <div className="p-2 bg-black/5 dark:bg-white/5 rounded-xl w-fit border border-black/5 dark:border-white/5 shadow-inner">
               {item.icon}
             </div>
-            <h3 className="text-white font-semibold text-[14px] tracking-tight mt-0.5">{item.title}</h3>
-            <p className="text-white/70 text-[12px] leading-relaxed">{item.description}</p>
+            <h3 className="text-black dark:text-white font-semibold text-[14px] tracking-tight mt-0.5">{item.title}</h3>
+            <p className="text-black/70 dark:text-white/70 text-[12px] leading-relaxed">{item.description}</p>
           </div>
         ))}
       </div>

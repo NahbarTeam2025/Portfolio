@@ -251,7 +251,17 @@ export const translations = {
           desc: 'Konzeption und Umsetzung einer Landingpage für ein SEO-System mit integrierten KI-Workflows.',
           features: ['SEO-Optimierung', 'KI-Integration', 'Responsive Design', 'Lead-Generierung', 'Google Ai Studio', 'GitHub', 'Cloudflare', 'Web3Forms', 'Gemini'],
           buttonText: 'Live ansehen',
-          link: 'https://visibilitylab.roberterbach.de/'
+          link: 'https://visibilitylab.roberterbach.de/',
+          image: 'https://meine-assets.pages.dev/robert_erbach_visibility_hero.webp'
+        },
+        {
+          title: 'Vier-KI-Workflow',
+          category: 'Analytics & Data',
+          desc: 'Ein vollständiger, automatisierbarer Workflow der vier KI-Systeme mit klar definierten Rollen kombiniert – für konsistent faktengeprüfte, optimierte und validierte Antworten.',
+          features: ['GEMINI', 'PERPLEXITY', 'CLAUDE', 'GROK', 'MAKE.COM', 'PROMPT ENGINEERING'],
+          buttonText: 'PDF ansehen →',
+          link: 'https://meine-assets.pages.dev/pdf/robert_erbach_4_ki_workflow.pdf',
+          image: 'https://meine-assets.pages.dev/robert_erbach_4_ki_workflow.webp'
         },
         {
           title: 'GA4-Tracking-Implementierung',
@@ -259,6 +269,7 @@ export const translations = {
           desc: 'Konzeption eines umfassenden Tracking-Frameworks am Beispiel E-Commerce – von der Event-Strategie bis zum fertigen Implementierungsdokument.',
           features: ['Web Analytics', 'GA4', 'E-Commerce', 'Tracking', 'Measurement Plan'],
           buttonText: 'Details ansehen',
+          image: 'https://meine-assets.pages.dev/nuraghi.webp',
           details: {
             subtitle: 'Nuraghi Outdoor Experience',
             meta: 'Kursarbeit | Web Analytics | März 2026',
@@ -283,15 +294,12 @@ export const translations = {
                 title: 'Erkenntnis',
                 content: 'Tracking-Konzepte scheitern meist nicht an der Technik, sondern daran, dass Events ohne Geschäftsziel-Bezug implementiert werden. Die Priorisierung – Purchase und Add-to-Cart als kritisch, Blog-Interaktion als mittel – zwingt zur strategischen Entscheidung bevor eine einzige Zeile Code geschrieben wird.'
               }
+            ],
+            images: [
+              'https://meine-assets.pages.dev/projekt2trackingevents.webp',
+              'https://meine-assets.pages.dev/projekt2excel.webp'
             ]
           }
-        },
-        {
-          title: 'Marketing Dashboard',
-          category: 'Analytics & Data',
-          desc: 'Entwicklung von Dashboards zur Echtzeit-Überwachung von Marketing-KPIs.',
-          features: ['Data Studio', 'API Integration', 'Custom Dashboards', 'Automatisierung'],
-          buttonText: 'Coming soon'
         }
       ]
     },
@@ -333,8 +341,8 @@ export const translations = {
         {
           date: '07/2025 – 04/2026',
           title: 'Weiterbildung: Digital Marketing Manager',
-          company: 'GFN GmbH',
-          desc: '**Online-Vollzeit-Weiterbildung** · Abschluss: 5 Zertifikate von Webmasters Europe e.V. mit abschließendem Diplom\n\nGesamtausbildung im digitalen Marketing: Online-Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics sowie E-Commerce.\n\n**Online-Marketing & Verkaufspsychologie · 4 Wochen**\n\nGrundlagen digitales Marketing, Zielgruppenanalyse, Neuromarketing und Kaufpsychologie, KI-Tools im Marketing. Abschluss: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 Monate**\n\nPlattformstrategie (Facebook, Instagram, LinkedIn, YouTube), Social Ads, virales Marketing, Facebook Advertising. Abschluss: Certified Social Media Manager:in\n\n**Content Marketing · 2 Monate**\n\nContent-Strategie, E-Mail-Marketing, WordPress, Blogging und SEO-Content. Abschluss: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 Monate**\n\nSuchmaschinenoptimierung, Google Ads, Kampagnenmanagement, Google Analytics, Google Tag Manager. Abschluss: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 Monate**\n\nOnline-Shop-Strategie, WooCommerce, Google Analytics, Social Ads, Projektarbeit mit eigenem Shop-Konzept. Abschluss: GFN-Zertifikat E-Commerce Manager\n\n*Alle Kurse über GFN GmbH, online, gefördert. Zertifikate von Webmasters Europe e.V. sind anerkannte Branchenzertifizierungen.*'
+          company: 'GFN GmbH / WPI',
+          desc: '**Online-Vollzeit-Weiterbildung** · Abschluss: 5 Zertifikate von Webmasters Europe e.V. mit abschließendem Diplom\n\nGesamtausbildung im digitalen Marketing: Online-Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics sowie E-Commerce.\n\n**Online-Marketing & Verkaufspsychologie · 4 Wochen**\n\nGrundlagen digitales Marketing, Zielgruppenanalyse, Neuromarketing und Kaufpsychologie, KI-Tools im Marketing. Abschluss: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 Monate**\n\nPlattformstrategie (Facebook, Instagram, LinkedIn, YouTube), Social Ads, virales Marketing, Facebook Advertising. Abschluss: Certified Social Media Manager:in\n\n**Content Marketing · 2 Monate**\n\nContent-Strategie, E-Mail-Marketing, WordPress, Blogging und SEO-Content. Abschluss: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 Monate**\n\nSuchmaschinenoptimierung, Google Ads, Kampagnenmanagement, Google Analytics, Google Tag Manager. Abschluss: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 Monate**\n\nOnline-Shop-Strategie, WooCommerce, Google Analytics, Social Ads, Projektarbeit mit eigenem Shop-Konzept. Abschluss: GFN-Zertifikat E-Commerce Manager\n\n*Alle Kurse über GFN GmbH / WPI, online, gefördert. Zertifikate von Webmasters Europe e.V. sind anerkannte Branchenzertifizierungen.*'
         },
         {
           date: '06/2024 – 05/2025',
@@ -352,33 +360,39 @@ export const translations = {
       unlockButton: 'Entsperren',
       invalidPassword: 'Ungültiges Passwort',
       verified: 'Verifiziert',
+      issuerLabel: 'Aussteller:',
       view: 'PDF herunterladen',
       preview: 'Vorschau des Zertifikats. Klicken Sie zum Vergrößern.',
       showAll: 'Alle Zertifikate anzeigen',
       ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
       ctaButton: 'Unverbindlich kennenlernen →',
       items: [
-        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
-        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
-        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
-        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
-        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
-        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
-        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
-        { id: 9, title: 'Webanalyse', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf' },
-        { id: 11, title: 'Bildbearbeitung mit Gimp', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
-        { id: 12, title: 'Büroverwaltung und Kommunikation', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
-        { id: 13, title: 'Datenbanken mit MS Access', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
-        { id: 14, title: 'Datenschutz', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
-        { id: 15, title: 'Digitalisierte Arbeitswelt', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
-        { id: 16, title: 'IT-Sicherheit', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
-        { id: 17, title: 'Kaufmännischer Schriftverkehr', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
-        { id: 18, title: 'Layout mit MS Office', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
-        { id: 19, title: 'MS Excel Grundlagen', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
-        { id: 20, title: 'MS Excel Aufbaukurs', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
-        { id: 21, title: 'MS Word', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
-        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf', category: 'KI' },
-        { id: 22, title: 'KI Führerschein', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ki_f%C3%BChrerschein.pdf', category: 'KI' }
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH', date: 'laufend' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', date: '19.01.2026', info: 'Note: 94% (ausgezeichnet)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
+        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH / WPI', date: '19.02.2026', info: 'Note: 89% (sehr gut)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
+        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH / WPI', date: '12.03.2026', info: 'Note: 93% (ausgezeichnet)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
+        { id: 9, title: 'Webanalyse', issuer: 'GFN GmbH / WPI', date: '24.03.2026', info: 'Note: 96% (ausgezeichnet)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf' },
+        { id: 22, title: 'KI Führerschein', issuer: 'GFN GmbH', date: '03.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ki_f%C3%BChrerschein.pdf', category: 'KI' },
+        { id: 27, title: 'Arbeiten mit Copilot', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_arbeiten_mit_copilot.pdf', category: 'KI' },
+        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', date: '19.09.2025', info: 'Projektabschluss: 80%', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
+        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', date: '28.07.2025', info: 'Teilnahmebescheinigung', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', date: '14.11.2025', info: 'Teilnahmebescheinigung', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
+        { id: 23, title: 'Datenschutzschulung', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutzschulung.pdf' },
+        { id: 24, title: 'Arbeitsschutzschulung', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_arbeitsschutzschulung.pdf' },
+        { id: 25, title: 'AGG-Schulung', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_agg_schulung.pdf' },
+        { id: 26, title: 'IT-Sicherheitsschulung', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheitsschulung.pdf' },
+        { id: 21, title: 'MS Word', issuer: 'FAW gGmbH', date: '05.07.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
+        { id: 11, title: 'Bildbearbeitung mit GIMP', issuer: 'FAW gGmbH', date: '19.07.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
+        { id: 17, title: 'Kaufmännischer Schriftverkehr', issuer: 'FAW gGmbH', date: '02.08.2024', info: '45 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
+        { id: 18, title: 'Layout mit MS Office', issuer: 'FAW gGmbH', date: '16.08.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
+        { id: 12, title: 'Büroverwaltung & Kommunikation', issuer: 'FAW gGmbH', date: '27.09.2024', info: '180 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
+        { id: 19, title: 'MS Excel Grundlagen', issuer: 'FAW gGmbH', date: '25.10.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
+        { id: 20, title: 'MS Excel Aufbaukurs', issuer: 'FAW gGmbH', date: '08.11.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
+        { id: 13, title: 'Datenbanken mit MS Access', issuer: 'FAW gGmbH', date: '22.11.2024', info: '90 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
+        { id: 14, title: 'Datenschutz', issuer: 'FAW gGmbH', date: '29.11.2024', info: '45 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
+        { id: 16, title: 'IT-Sicherheit', issuer: 'FAW gGmbH', date: '06.12.2024', info: '45 Stunden', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
+        { id: 15, title: 'Digitalisierte Arbeitswelt', issuer: 'FAW gGmbH', date: '10.12.2024', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
+        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', date: 'Certificate of Completion', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf', category: 'KI' }
       ]
     },
     footer: {
@@ -760,7 +774,17 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
           desc: 'Conception and implementation of a landing page for an SEO system with integrated AI workflows.',
           features: ['SEO Optimization', 'AI Integration', 'Responsive Design', 'Lead Generation', 'Google Ai Studio', 'GitHub', 'Cloudflare', 'Web3Forms', 'Gemini'],
           buttonText: 'View Live Now',
-          link: 'https://seo-ki-landingpage.pages.dev/'
+          link: 'https://seo-ki-landingpage.pages.dev/',
+          image: 'https://meine-assets.pages.dev/robert_erbach_visibility_hero.webp'
+        },
+        {
+          title: 'Four-AI-Workflow',
+          category: 'Analytics & Data',
+          desc: 'A complete, automatable workflow combining four AI systems with clearly defined roles – for consistently fact-checked, optimized, and validated answers.',
+          features: ['GEMINI', 'PERPLEXITY', 'CLAUDE', 'GROK', 'MAKE.COM', 'PROMPT ENGINEERING'],
+          buttonText: 'View PDF →',
+          link: 'https://meine-assets.pages.dev/pdf/robert_erbach_4_ki_workflow.pdf',
+          image: 'https://meine-assets.pages.dev/robert_erbach_4_ki_workflow.webp'
         },
         {
           title: 'GA4 Tracking Implementation',
@@ -768,6 +792,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
           desc: 'Conception of a complete GA4 tracking plan for a fictional outdoor online shop – from event strategy to the finished implementation document.',
           features: ['Web Analytics', 'GA4', 'E-Commerce', 'Tracking', 'Measurement Plan'],
           buttonText: 'View Details',
+          image: 'https://meine-assets.pages.dev/nuraghi.webp',
           details: {
             subtitle: 'Nuraghi Outdoor Experience',
             meta: 'Coursework | Web Analytics | March 2026',
@@ -792,15 +817,12 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
                 title: 'Insight',
                 content: 'Tracking concepts usually fail not because of technology, but because events are implemented without reference to business goals. Prioritization – Purchase and Add-to-Cart as critical, Blog interaction as medium – forces a strategic decision before a single line of code is written.'
               }
+            ],
+            images: [
+              'https://meine-assets.pages.dev/projekt2trackingevents.webp',
+              'https://meine-assets.pages.dev/projekt2excel.webp'
             ]
           }
-        },
-        {
-          title: 'Marketing Dashboard',
-          category: 'Analytics & Data',
-          desc: 'Development of dashboards for real-time monitoring of marketing KPIs.',
-          features: ['Data Studio', 'API Integration', 'Custom Dashboards', 'Automation'],
-          buttonText: 'Coming soon'
         }
       ]
     },
@@ -842,8 +864,8 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
         {
           date: '07/2025 – 04/2026',
           title: 'Digital Marketing Manager (Further Training)',
-          company: 'GFN GmbH',
-          desc: '**Online Full-time Further Training** · Completion: 5 Certificates from Webmasters Europe e.V.\n\nComprehensive training in digital marketing: Online Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics as well as E-Commerce.\n\n**Online Marketing & Sales Psychology · 4 weeks**\n\nBasics of digital marketing, target group analysis, neuromarketing and buying psychology, AI tools in marketing. Completion: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 months**\n\nPlatform strategy (Facebook, Instagram, LinkedIn, YouTube), Social Ads, viral marketing, Facebook Advertising. Completion: Certified Social Media Manager\n\n**Content Marketing · 2 months**\n\nContent strategy, email marketing, WordPress, blogging and SEO content. Completion: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 months**\n\nSearch engine optimization, Google Ads, campaign management, Google Analytics, Google Tag Manager. Completion: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 months**\n\nOnline shop strategy, WooCommerce, Google Analytics, Social Ads, project work with own shop concept. Completion: GFN Certificate E-Commerce Manager\n\n*All courses via GFN GmbH, online, funded. Certificates from Webmasters Europe e.V. are recognized industry certifications.*'
+          company: 'GFN GmbH / WPI',
+          desc: '**Online Full-time Further Training** · Completion: 5 Certificates from Webmasters Europe e.V.\n\nComprehensive training in digital marketing: Online Marketing & Neuromarketing, Social Media Management, Content Marketing, SEO/SEA & Web Analytics as well as E-Commerce.\n\n**Online Marketing & Sales Psychology · 4 weeks**\n\nBasics of digital marketing, target group analysis, neuromarketing and buying psychology, AI tools in marketing. Completion: Certified Digital Marketing Assistant\n\n**Social Media Management · 2 months**\n\nPlatform strategy (Facebook, Instagram, LinkedIn, YouTube), Social Ads, viral marketing, Facebook Advertising. Completion: Certified Social Media Manager\n\n**Content Marketing · 2 months**\n\nContent strategy, email marketing, WordPress, blogging and SEO content. Completion: Certified Content Marketing Manager\n\n**SEO, SEA & Web Analytics · 2 months**\n\nSearch engine optimization, Google Ads, campaign management, Google Analytics, Google Tag Manager. Completion: Certified Search Engine Marketing Manager & Web Analyst\n\n**E-Commerce · 2 months**\n\nOnline shop strategy, WooCommerce, Google Analytics, Social Ads, project work with own shop concept. Completion: GFN Certificate E-Commerce Manager\n\n*All courses via GFN GmbH / WPI, online, funded. Certificates from Webmasters Europe e.V. are recognized industry certifications.*'
         },
         {
           date: '06/2024 – 05/2025',
@@ -861,33 +883,39 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       unlockButton: 'Unlock',
       invalidPassword: 'Invalid Password',
       verified: 'Verified',
+      issuerLabel: 'Issuer:',
       view: 'Download PDF',
       preview: 'Preview of the certificate. Click to enlarge.',
       showAll: 'Show all certificates',
       ctaText: 'Theoretically sound, practically motivated – ready for use in your team.',
       ctaButton: 'Get to know each other non-bindingly →',
       items: [
-        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH' },
-        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
-        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
-        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
-        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
-        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
-        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
-        { id: 9, title: 'Webanalyse', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf' },
-        { id: 11, title: 'Image Editing with GIMP', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
-        { id: 12, title: 'Office Administration and Communication', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
-        { id: 13, title: 'Databases with MS Access', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
-        { id: 14, title: 'Data Protection', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
-        { id: 15, title: 'Digitalized Working World', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
-        { id: 16, title: 'IT Security', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
-        { id: 17, title: 'Commercial Correspondence', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
-        { id: 18, title: 'Layout with MS Office', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
-        { id: 19, title: 'MS Excel Basics', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
-        { id: 20, title: 'MS Excel Advanced Course', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
-        { id: 21, title: 'MS Word', issuer: 'FAW', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
-        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf', category: 'KI' },
-        { id: 22, title: 'AI Driver\'s License', issuer: 'GFN GmbH', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ki_f%C3%BChrerschein.pdf', category: 'KI' }
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN GmbH', date: 'ongoing' },
+        { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', date: '19.01.2026', info: 'Grade: 94% (excellent)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
+        { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH / WPI', date: '19.02.2026', info: 'Grade: 89% (very good)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
+        { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH / WPI', date: '12.03.2026', info: 'Grade: 93% (excellent)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
+        { id: 9, title: 'Web Analysis', issuer: 'GFN GmbH / WPI', date: '24.03.2026', info: 'Grade: 96% (excellent)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf' },
+        { id: 22, title: 'AI Driver\'s License', issuer: 'GFN GmbH', date: '03.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ki_f%C3%BChrerschein.pdf', category: 'KI' },
+        { id: 27, title: 'Working with Copilot', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_arbeiten_mit_copilot.pdf', category: 'KI' },
+        { id: 3, title: 'E-Commerce Manager', issuer: 'GFN GmbH', date: '19.09.2025', info: 'Project completion: 80%', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf' },
+        { id: 4, title: 'E-Marketing Manager', issuer: 'GFN GmbH', date: '28.07.2025', info: 'Certificate of participation', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf' },
+        { id: 2, title: 'Content Marketing Manager', issuer: 'GFN GmbH', date: '14.11.2025', info: 'Certificate of participation', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf' },
+        { id: 23, title: 'Data Protection Training', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutzschulung.pdf' },
+        { id: 24, title: 'Occupational Safety Training', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_arbeitsschutzschulung.pdf' },
+        { id: 25, title: 'AGG Training', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_agg_schulung.pdf' },
+        { id: 26, title: 'IT Security Training', issuer: 'GFN GmbH', date: '05.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheitsschulung.pdf' },
+        { id: 21, title: 'MS Word', issuer: 'FAW gGmbH', date: '05.07.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf' },
+        { id: 11, title: 'Image Editing with GIMP', issuer: 'FAW gGmbH', date: '19.07.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf' },
+        { id: 17, title: 'Commercial Correspondence', issuer: 'FAW gGmbH', date: '02.08.2024', info: '45 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_kaufm%C3%A4nnischer_schriftverkehr.pdf' },
+        { id: 18, title: 'Layout with MS Office', issuer: 'FAW gGmbH', date: '16.08.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf' },
+        { id: 12, title: 'Office Administration and Communication', issuer: 'FAW gGmbH', date: '27.09.2024', info: '180 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_b%C3%BCroverwaltung_und_kommunikation.pdf' },
+        { id: 19, title: 'MS Excel Basics', issuer: 'FAW gGmbH', date: '25.10.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf' },
+        { id: 20, title: 'MS Excel Advanced Course', issuer: 'FAW gGmbH', date: '08.11.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf' },
+        { id: 13, title: 'Databases with MS Access', issuer: 'FAW gGmbH', date: '22.11.2024', info: '90 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf' },
+        { id: 14, title: 'Data Protection', issuer: 'FAW gGmbH', date: '29.11.2024', info: '45 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf' },
+        { id: 16, title: 'IT Security', issuer: 'FAW gGmbH', date: '06.12.2024', info: '45 hours', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf' },
+        { id: 15, title: 'Digitalized Working World', issuer: 'FAW gGmbH', date: '10.12.2024', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf' },
+        { id: 10, title: 'AI Fluency: Framework & Foundations', issuer: 'Anthropic', date: 'Certificate of Completion', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf', category: 'KI' }
       ]
     },
     footer: {

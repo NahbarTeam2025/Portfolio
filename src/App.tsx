@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useCallback, useRef, startTransition, Suspense, lazy } from 'react';
+import { createPortal } from 'react-dom';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { LazyMotion, domAnimation, m, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform, useScroll } from 'motion/react';
@@ -92,12 +93,21 @@ export default function App() {
   const [expandedCert, setExpandedCert] = useState<number | null>(null);
   const [isInitialEntrance, setIsInitialEntrance] = useState(true);
   const [showCookieBanner, setShowCookieBanner] = useState(false);
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).setFullscreenImage = setFullscreenImage;
+    }
     const timer = setTimeout(() => {
       setShowCookieBanner(true);
     }, 2500);
-    return () => clearTimeout(timer);
+    return () => {
+      if (typeof window !== 'undefined') {
+        delete (window as any).setFullscreenImage;
+      }
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -671,6 +681,49 @@ export default function App() {
       </div>
       
       {showCookieBanner && <CookieBanner handleNavigate={handleNavigate} />}
+
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {fullscreenImage && (
+            <m.div
+              key="global-fullscreen-image"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 flex items-center justify-center bg-black/95 p-4 md:p-8 cursor-zoom-out"
+              style={{ zIndex: 2147483647, position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'auto' }}
+              onClick={() => setFullscreenImage(null)}
+            >
+              <button 
+                className="absolute top-4 right-4 text-white/70 hover:text-white p-3 bg-white/10 hover:bg-white/20 rounded-full transition-all z-50"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFullscreenImage(null);
+                }}
+                aria-label="Close fullscreen image"
+              >
+                <X className="w-8 h-8" />
+              </button>
+              <m.div
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="relative w-full h-full flex items-center justify-center p-4"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <img
+                  src={fullscreenImage}
+                  alt="Fullscreen view"
+                  className="max-w-full max-h-full object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.8)]"
+                  referrerPolicy="no-referrer"
+                />
+              </m.div>
+            </m.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
     </LazyMotion>
   );

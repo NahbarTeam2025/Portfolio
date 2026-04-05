@@ -10,12 +10,12 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
-      <div className="UberMichSection-container flex flex-col items-start gap-1 md:gap-1.5 lg:gap-2 w-full flex-grow animate-in fade-in duration-500 pb-1 md:pb-1">
-        <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
+      <div className="UberMichSection-container flex flex-col items-center gap-1 md:gap-1.5 lg:gap-2 w-full flex-grow animate-in fade-in duration-500 pb-1 md:pb-1">
+        <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0 w-full max-w-2xl text-center">
           {t.about.title}
         </h1>
-        <div className="w-full h-[1px] bg-black/10 shrink-0" />
-        <div className="flex flex-col gap-1 md:gap-1.5 text-black/90 text-[15px] sm:text-[17px] md:text-[19px] lg:text-[21px] font-normal max-w-2xl leading-relaxed pt-0.5 md:pt-2">
+        <div className="w-full max-w-2xl h-[1px] bg-black/10 shrink-0" />
+        <div className="flex flex-col gap-1 md:gap-1.5 text-black/90 text-[15px] sm:text-[17px] md:text-[19px] lg:text-[21px] font-normal max-w-2xl leading-relaxed pt-0.5 md:pt-2 text-center">
           <p className="font-bold text-black text-[16px] sm:text-[19px] md:text-[23px] lg:text-[26px] mb-0.5 md:mb-1.5">
             {t.about.boldText}
           </p>
@@ -39,33 +39,38 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
             <p className="text-blue-600 font-medium tracking-wider text-[13px] sm:text-[15px] md:text-[17px] lg:text-[19px] leading-relaxed">
               {t.about.mottoBlue}
             </p>
-            <div className="shrink-0 my-2 md:my-3">
+            <div className="shrink-0 my-2 md:my-3 flex justify-center">
               <img 
                 src="https://meine-assets.pages.dev/signature.png" 
                 alt={t.hero.title} 
                 width="250"
                 height="60"
-                className="h-10 sm:h-11 md:h-16 lg:h-20 w-auto object-contain opacity-90 transform-gpu signature-image transition-all duration-500"
+                className="h-10 sm:h-11 md:h-16 lg:h-20 w-auto object-contain opacity-90 transform-gpu signature-image transition-all duration-500 cursor-zoom-in hover:scale-105"
                 style={{ forcedColorAdjust: 'none' }}
                 loading="lazy"
                 decoding="async"
+                onClick={() => {
+                  if (typeof (window as any).setFullscreenImage === 'function') {
+                    (window as any).setFullscreenImage("https://meine-assets.pages.dev/signature.png");
+                  }
+                }}
               />
             </div>
           </div>
 
           {/* Werdegang Section */}
-          <div className="mt-40 md:mt-32 w-full">
-            <h2 className="heading-gradient text-[20px] md:text-[26px] lg:text-[32px] font-medium tracking-tight mb-6">
+          <div className="mt-40 md:mt-32 w-full max-w-2xl">
+            <h2 className="heading-gradient text-[20px] md:text-[26px] lg:text-[32px] font-medium tracking-tight mb-6 text-center">
               {t.qualifications.title}
             </h2>
-            <div className="relative flex flex-col gap-4 w-full pl-8 md:pl-12">
+            <div className="relative flex flex-col gap-4 w-full pl-8 md:pl-0">
               {/* Timeline Line */}
               <motion.div 
                 initial={{ height: 0 }}
                 whileInView={{ height: '100%' }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                className="absolute left-[16px] md:left-[24px] -translate-x-1/2 top-2 w-[2px] bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent origin-top" 
+                className="absolute left-[16px] md:left-[-24px] -translate-x-1/2 top-2 w-[2px] bg-gradient-to-b from-blue-500/50 via-blue-400/30 to-transparent origin-top" 
               />
               
               {qualData.map((qual: any, i: number) => {

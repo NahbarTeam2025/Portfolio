@@ -5,9 +5,29 @@ import { trackEvent } from '@/lib/analytics';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
+
+  // Define particles for the background
+  const particles = React.useMemo(() => 
+    Array.from({ length: 25 }).map((_, i) => {
+      const colorType = i % 3;
+      let color = 'rgba(0, 0, 0, 0.1)'; // Black
+      if (colorType === 1) color = 'rgba(59, 130, 246, 0.15)'; // Blue
+      if (colorType === 2) color = 'rgba(107, 114, 128, 0.12)'; // Gray
+
+      return {
+        id: i,
+        size: Math.random() * 5 + 2,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        duration: Math.random() * 20 + 20,
+        delay: Math.random() * -20,
+        color,
+      };
+    }), []);
+
   return (
-    <div id="hero" className="w-full max-w-[1200px] mx-auto relative z-10 flex-grow px-4 sm:px-6 py-0 flex flex-col justify-center">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center w-full">
+    <div id="hero" className="w-full max-w-[1200px] mx-auto relative z-10 flex-grow px-4 sm:px-6 py-0 flex flex-col justify-center overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center w-full relative z-10">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           {/* 01. Minimalist Status Badge */}
           <div 
@@ -95,7 +115,34 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
         <div
           className="relative flex justify-center items-center mt-2 lg:mt-0"
         >
-          {/* Removed decorative blue blur to ensure background video clarity */}
+          {/* Subtle Floating Particles - Positioned around the image to avoid text */}
+          <div className="absolute inset-0 pointer-events-none overflow-visible z-0">
+            {particles.map((p) => (
+              <m.div
+                key={p.id}
+                className="absolute rounded-full"
+                style={{
+                  width: p.size,
+                  height: p.size,
+                  left: `${p.x}%`,
+                  top: `${p.y}%`,
+                  backgroundColor: p.color,
+                  filter: 'blur(1px)',
+                }}
+                animate={{
+                  x: [0, Math.random() * 60 - 30, 0],
+                  y: [0, Math.random() * 60 - 30, 0],
+                  opacity: [0.1, 0.3, 0.1],
+                }}
+                transition={{
+                  duration: p.duration,
+                  repeat: Infinity,
+                  delay: p.delay,
+                  ease: "linear",
+                }}
+              />
+            ))}
+          </div>
           
           <div 
             className="relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group translate-x-0 -translate-y-[10px] lg:translate-x-[10px] lg:translate-y-0"

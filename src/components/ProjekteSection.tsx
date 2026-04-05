@@ -1,10 +1,12 @@
 import React, { useState, startTransition } from 'react';
 import { BentoCard } from './BentoCard';
 import { ProjectDetailsModal } from './ProjectDetailsModal';
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+import { X } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { createPortal } from 'react-dom';
 
-export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigate }: any) => {
+export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) => {
   const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
@@ -23,7 +25,12 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
             <BentoCard 
               project={project}
               index={i}
-              onDetailsClick={(p) => startTransition(() => setSelectedProject(p))}
+              onDetailsClick={(p: any) => startTransition(() => setSelectedProject(p))}
+              onImageClick={(url: string) => {
+                if (typeof (window as any).setFullscreenImage === 'function') {
+                  (window as any).setFullscreenImage(url);
+                }
+              }}
             />
           </div>
         ))}
@@ -64,6 +71,7 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
       <AnimatePresence>
         {selectedProject && (
           <ProjectDetailsModal 
+            key="project-details"
             project={selectedProject}
             onClose={() => setSelectedProject(null)}
           />
@@ -71,4 +79,4 @@ export const ProjekteSection = React.memo(({ setIsInitialEntrance, handleNavigat
       </AnimatePresence>
     </div>
   );
-});
+};

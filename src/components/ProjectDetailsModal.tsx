@@ -1,7 +1,8 @@
-import React, { startTransition } from 'react';
-import { X, Calendar, Tag } from 'lucide-react';
+import React, { useState, startTransition, useRef, useEffect } from 'react';
+import { X, Calendar, Tag, ZoomIn } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { createPortal } from 'react-dom';
 
 interface ProjectDetails {
   subtitle: string;
@@ -29,6 +30,7 @@ export const ProjectDetailsModal = ({
   onClose: () => void 
 }) => {
   const { language } = useLanguage();
+
   if (!project.details) return null;
 
   return (
@@ -99,12 +101,32 @@ export const ProjectDetailsModal = ({
                 </h3>
                 <div className="grid grid-cols-1 gap-6">
                   {project.details.images.map((img, idx) => (
-                    <div key={idx} className="relative group rounded-2xl overflow-hidden border border-black/10 bg-black/5">
+                    <div 
+                      key={idx} 
+                      className="relative group rounded-2xl overflow-hidden border border-black/10 bg-black/5 cursor-zoom-in w-full z-[100] block p-0"
+                      style={{ pointerEvents: 'auto' }}
+                    >
                       <img 
                         src={img} 
                         alt={language === 'de' ? `Projekt Visualisierung ${idx + 1}` : `Project Visualization ${idx + 1}`} 
-                        className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                        className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02] pointer-events-none"
                         referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 pointer-events-none flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/40 backdrop-blur-md p-3 rounded-full shadow-lg border border-white/20">
+                          <ZoomIn className="w-6 h-6 text-white drop-shadow-md" />
+                        </div>
+                      </div>
+                      {/* Invisible click overlay to ensure detection */}
+                      <div 
+                        className="absolute inset-0 z-[110] cursor-zoom-in" 
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          if (typeof (window as any).setFullscreenImage === 'function') {
+                            (window as any).setFullscreenImage(img);
+                          }
+                        }}
                       />
                     </div>
                   ))}

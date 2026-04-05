@@ -174,7 +174,7 @@ export const UTMLinkBuilder: React.FC = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Link2 className="w-4 h-4 text-blue-500" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-blue-500/80 font-mono">Generated Link</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-blue-500/80 font-mono">Generierter Link</span>
               </div>
               <AnimatePresence>
                 {isInvalid && (

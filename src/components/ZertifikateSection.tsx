@@ -1,4 +1,5 @@
 import React, { startTransition, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
 
@@ -11,8 +12,8 @@ export const ZertifikateSection = ({
 
   const certs = t.certificates.items || [];
 
-  const gfnCerts = certs.filter((c: any) => c.issuer === 'GFN GmbH' && c.category !== 'KI');
-  const fawCerts = certs.filter((c: any) => c.issuer === 'FAW');
+  const gfnCerts = certs.filter((c: any) => (c.issuer === 'GFN GmbH / WPI' || c.issuer === 'GFN GmbH') && c.category !== 'KI');
+  const fawCerts = certs.filter((c: any) => c.issuer === 'FAW gGmbH' || c.issuer === 'FAW');
   const kiCerts = certs.filter((c: any) => c.category === 'KI');
 
   const renderCertCard = (cert: any) => {
@@ -24,6 +25,7 @@ export const ZertifikateSection = ({
     return (
       <div 
         key={cert.id} 
+        id={`cert-${cert.id}`}
         className={`relative group transition-all duration-500 ${isExpanded ? 'flex-1 min-h-0 z-50' : 'z-10'}`}
       >
         <div 
@@ -31,10 +33,29 @@ export const ZertifikateSection = ({
         >
           <div className="wow-card-border" />
           <button 
-            onClick={() => {
-              startTransition(() => {
-                setExpandedCert(isExpanded ? null : actualIndex);
-              });
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              
+              if (isExpanded) {
+                flushSync(() => {
+                  setExpandedCert(null);
+                });
+                const newEl = document.getElementById(`cert-${cert.id}`);
+                if (newEl) {
+                  const y = newEl.getBoundingClientRect().top + window.scrollY - 100;
+                  window.scrollTo({ top: y, behavior: 'instant' });
+                }
+              } else {
+                flushSync(() => {
+                  setExpandedCert(actualIndex);
+                });
+                const newEl = document.getElementById(`cert-${cert.id}`);
+                if (newEl) {
+                  const y = newEl.getBoundingClientRect().top + window.scrollY - 100;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+              }
             }}
             className={`w-full text-left p-3 md:p-5 flex justify-between items-center group/btn relative z-10 ${isExpanded ? 'shrink-0' : 'min-h-[70px] md:min-h-[80px]'}`}
           >
@@ -54,11 +75,17 @@ export const ZertifikateSection = ({
           <div 
             className={`transition-all duration-500 ease-in-out relative z-10 ${isExpanded ? 'flex-1 min-h-0 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}
           >
-            <div className="px-5 pb-5 md:px-6 md:pb-6 flex flex-col gap-6 h-full">
+            <div className="px-5 pb-5 md:px-6 md:pb-6 flex flex-col gap-4 h-full">
               <div className="w-full h-[1px] bg-black/5 shrink-0" />
               
-                <div className="flex-1 flex flex-col items-center justify-center gap-4 py-6">
-                  {cert.url ? (
+              <div className="flex flex-col gap-1 text-[13px] md:text-[14px] text-black/60 font-light">
+                <p>{t.certificates.issuerLabel} {cert.issuer}</p>
+                <p>{cert.date}</p>
+                {cert.info && <p>{cert.info}</p>}
+              </div>
+
+              <div className="flex-1 flex flex-col items-center justify-center gap-4 py-4">
+                {cert.url ? (
                     <a 
                       href={cert.url}
                       target="_blank"
@@ -110,7 +137,7 @@ export const ZertifikateSection = ({
         {gfnCerts.length > 0 && (expandedCert === null || gfnCerts.some((c: any) => certs.findIndex((orig: any) => orig.id === c.id) === expandedCert)) && (
           <div className="flex flex-col gap-3 w-full">
             {expandedCert === null && (
-              <h2 className="text-lg md:text-xl font-bold text-black/90 px-1">GFN GmbH</h2>
+              <h2 className="text-lg md:text-xl font-bold text-black/90 px-1">GFN GmbH / WPI</h2>
             )}
             <div className={`grid grid-cols-1 ${expandedCert === null ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-[1400px]' : 'max-w-[800px] mx-auto'} gap-2 md:gap-3 w-full pb-0 md:pb-1`}>
               {gfnCerts.map(renderCertCard)}
