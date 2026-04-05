@@ -67,11 +67,10 @@
       // 2. Initialize GA
       gtag('js', new Date());
       gtag('config', 'G-90T4169WJP', {
-        'send_page_view': false, // We handle this manually in React for SPA
-        'debug_mode': true
+        'send_page_view': false // We handle this manually in React for SPA
       });
       
-      console.log('GA Initialized with default denied consent');
+      console.log('GA Initialized');
 
       // 3. Defer loading of the actual GTM script to improve page speed
       // Load on first interaction or after 3 seconds
@@ -91,7 +90,7 @@
       }
 
       window.addEventListener('load', function() {
-        setTimeout(loadGTM, 8000); // Fallback if no interaction
+        setTimeout(loadGTM, 3000); // Fallback if no interaction
       });
       
       ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function(e) {
@@ -283,24 +282,24 @@
           "description": "Treten Sie mit mir in Kontakt für Projekte oder Anfragen."
         },
         {
-          "@type": "Service",
-          "@id": "https://roberterbach.de/#service-webdesign",
-          "name": "Web Design & Development",
-          "provider": { "@id": "https://roberterbach.de/#person" },
+          "@type": "CreativeWork",
+          "@id": "https://roberterbach.de/#creativework-webdesign",
+          "name": "Web Design & Development Portfolio",
+          "author": { "@id": "https://roberterbach.de/#person" },
           "description": "Erstellung von modernen, responsiven Landingpages und Webprojekten."
         },
         {
-          "@type": "Service",
-          "@id": "https://roberterbach.de/#service-seo",
-          "name": "SEO & Web Analytics",
-          "provider": { "@id": "https://roberterbach.de/#person" },
+          "@type": "CreativeWork",
+          "@id": "https://roberterbach.de/#creativework-seo",
+          "name": "SEO & Web Analytics Expertise",
+          "author": { "@id": "https://roberterbach.de/#person" },
           "description": "Optimierung der Sichtbarkeit und datengestützte Analyse von Webseiten."
         },
         {
-          "@type": "Service",
-          "@id": "https://roberterbach.de/#service-ai",
-          "name": "AI Integration & Prompt Engineering",
-          "provider": { "@id": "https://roberterbach.de/#person" },
+          "@type": "CreativeWork",
+          "@id": "https://roberterbach.de/#creativework-ai",
+          "name": "AI Integration & Prompt Engineering Solutions",
+          "author": { "@id": "https://roberterbach.de/#person" },
           "description": "Entwicklung und Integration von KI-Workflows zur Prozessoptimierung."
         }
       ]
