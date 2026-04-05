@@ -118,7 +118,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               onClick={() => {
                 trackEvent('click', 'project_live', 'projects', { project_title: project.title });
               }}
-              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
+              className="w-full max-w-[220px] py-3.5 rounded-xl bg-gradient-to-r from-green-500/20 via-white to-green-500/20 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-gradient-to-r hover:from-green-600/30 hover:via-white hover:to-green-600/30 hover:border-green-400 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {index === 0 && (
@@ -143,7 +143,7 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
                 trackEvent('click', 'project_details', 'projects', { project_title: project.title });
                 onDetailsClick?.(project);
               }}
-              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
+              className="w-full max-w-[220px] py-3.5 rounded-xl bg-gradient-to-r from-green-500/20 via-white to-green-500/20 border border-green-500/50 !text-green-600 font-bold text-[12px] uppercase tracking-widest hover:bg-gradient-to-r hover:from-green-600/30 hover:via-white hover:to-green-600/30 hover:border-green-400 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
             >
               <span className="relative z-10">{project.buttonText || t.projects.details}</span>
               {project.buttonText?.includes('PDF') ? (

@@ -75,7 +75,7 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
             }
             handleNavigate('contact');
           }}
-          className="w-full rounded-full px-8 py-3 bg-blue-500/15 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/25 hover:border-blue-400 transition-all duration-300 flex items-center justify-center"
+          className="w-full rounded-full px-8 py-3 bg-gradient-to-r from-blue-500/20 via-white to-blue-500/20 border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-gradient-to-r hover:from-blue-600/30 hover:via-white hover:to-blue-600/30 hover:border-blue-400 transition-all duration-300 flex items-center justify-center"
         >
           <span className="relative z-10 mr-2">{t.projects.cta.button}</span>
           <svg className="w-3 h-3 md:w-4 md:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
