@@ -45,8 +45,9 @@ export const ReviewSystem = () => {
     }
   }, [reviews.length]);
 
-  const fetchReviews = async () => {
+  const fetchReviews = async (retries = 3) => {
     setIsLoading(true);
+    setError(null);
     try {
       const { data, error: fetchError } = await supabase
         .from('reviews')
@@ -57,10 +58,19 @@ export const ReviewSystem = () => {
       if (data) setReviews(data);
     } catch (err: any) {
       console.error('Error fetching reviews:', err);
-      if (supabaseAnonKey.startsWith('sb_')) {
+      
+      if (retries > 0) {
+        console.log(`Retrying fetch... (${retries} attempts left)`);
+        setTimeout(() => fetchReviews(retries - 1), 2000);
+        return;
+      }
+
+      if (err.message === 'Failed to fetch') {
+        setError('Netzwerkfehler: Die Verbindung zu Supabase wurde blockiert. Bitte prüfe deinen Ad-Blocker oder deine Internetverbindung.');
+      } else if (supabaseAnonKey.startsWith('sb_')) {
         setError('Ungültiger Key-Typ: Der Key scheint ein Stripe-Key zu sein. Supabase-Keys beginnen meist mit "eyJ".');
       } else {
-        setError('Verbindung zu Supabase fehlgeschlagen. Bitte prüfe deine API-Einstellungen.');
+        setError(`Fehler: ${err.message || 'Verbindung fehlgeschlagen'}`);
       }
     } finally {
       setIsLoading(false);
