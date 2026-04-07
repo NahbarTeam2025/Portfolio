@@ -7,7 +7,7 @@ import React, { useState, useEffect, useCallback, useRef, startTransition, Suspe
 import { createPortal } from 'react-dom';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Menu, X, Moon, Sun } from 'lucide-react';
-import { LazyMotion, domAnimation, m, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform, useScroll } from 'motion/react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform, useScroll } from 'framer-motion';
 
 // Import refactored components
 import { MagneticButton } from '@/components/MagneticButton';
@@ -324,7 +324,6 @@ export default function App() {
   }, []);
 
   return (
-    <LazyMotion features={domAnimation}>
       <div 
         className="relative min-h-screen min-h-[100dvh] w-full font-sans"
         onMouseMove={handleMouseMove}
@@ -369,14 +368,14 @@ export default function App() {
 
       <AnimatePresence>
         {isLoading && (
-          <m.div
+          <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center"
           >
             <div className="relative w-48 h-[2px] bg-black/10 overflow-hidden rounded-full">
-              <m.div
+              <motion.div
                 initial={{ x: "-100%" }}
                 animate={{ x: "100%" }}
                 transition={{ 
@@ -387,15 +386,15 @@ export default function App() {
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400 to-transparent"
               />
             </div>
-            <m.div
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
               className="mt-4 text-black/60 text-[11px] tracking-[0.3em] uppercase font-medium"
             >
               {t.common.loadingExperience}
-            </m.div>
-          </m.div>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -403,7 +402,7 @@ export default function App() {
       
       {/* Scroll Progress Indicator */}
       {currentPage !== 'start' && (
-        <m.div 
+        <motion.div 
           className="fixed top-0 left-0 right-0 h-[1px] bg-blue-500 origin-left z-[100] shadow-[0_0_10px_rgba(59,130,246,0.8)] lg:hidden" 
           style={{ scaleX }} 
         />
@@ -480,7 +479,7 @@ export default function App() {
                       >
                       <span className="relative z-10">{(t.nav as any)[pageId]}</span>
                       {currentPage === pageId && (
-                        <m.div
+                        <motion.div
                           layoutId="nav-pill"
                           className="absolute inset-0 bg-blue-500/10 backdrop-blur-md border border-blue-500/20 rounded-full z-0 shadow-[0_0_10px_rgba(59,130,246,0.1)]"
                           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
@@ -532,7 +531,7 @@ export default function App() {
           {/* Mobile Menu Overlay */}
           <AnimatePresence>
             {isMobileMenuOpen && (
-              <m.div 
+              <motion.div 
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -542,7 +541,7 @@ export default function App() {
                 {/* Navigation Links */}
                 <div className="flex flex-col gap-1">
                   {PAGES.map((pageId, index) => (
-                    <m.a
+                    <motion.a
                       key={pageId}
                       href={PAGE_ROUTES[pageId]}
                       initial={{ opacity: 0, y: -10 }}
@@ -557,11 +556,11 @@ export default function App() {
                       }`}
                     >
                       {(t.nav as any)[pageId]}
-                    </m.a>
+                    </motion.a>
                   ))}
                 </div>
 
-                <m.a 
+                <motion.a 
                   href={PAGE_ROUTES['contact']}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -573,10 +572,10 @@ export default function App() {
                   className="mt-2 flex items-center justify-center w-full lg:hidden rounded-full px-8 py-3.5 bg-blue-500/10 border border-blue-500/50 text-black text-[15px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
                 >
                   <span className="relative z-10">{t.nav.contact}</span>
-                </m.a>
+                </motion.a>
 
                 <div className="flex flex-col items-center gap-4 mt-4">
-                  <m.div
+                  <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.05 + (PAGES.length + 1) * 0.03, duration: 0.3 }}
@@ -595,17 +594,17 @@ export default function App() {
                         {isDarkMode ? t.common.darkModeOff : t.common.darkModeOn}
                       </span>
                     </button>
-                  </m.div>
+                  </motion.div>
 
-                  <m.div
+                  <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.05 + (PAGES.length + 2) * 0.03, duration: 0.3 }}
                   >
                     <LanguageSwitcher />
-                  </m.div>
+                  </motion.div>
                 </div>
-              </m.div>
+              </motion.div>
             )}
           </AnimatePresence>
         </div>
@@ -690,7 +689,7 @@ export default function App() {
       {typeof document !== 'undefined' && createPortal(
         <AnimatePresence>
           {fullscreenImage && (
-            <m.div
+            <motion.div
               key="global-fullscreen-image"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -709,7 +708,7 @@ export default function App() {
               >
                 <X className="w-8 h-8" />
               </button>
-              <m.div
+              <motion.div
                 initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -723,13 +722,12 @@ export default function App() {
                   className="max-w-full max-h-full object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.8)]"
                   referrerPolicy="no-referrer"
                 />
-              </m.div>
-            </m.div>
+              </motion.div>
+            </motion.div>
           )}
         </AnimatePresence>,
         document.body
       )}
     </div>
-    </LazyMotion>
   );
 }
