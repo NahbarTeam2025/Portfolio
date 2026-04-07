@@ -255,6 +255,7 @@ export default function App() {
     const playVideos = () => {
       const videos = document.querySelectorAll('video');
       videos.forEach(v => {
+        v.playbackRate = 0.75;
         v.play().catch(() => {
           // Fallback for browsers that block autoplay
           const playOnInteraction = () => {
@@ -347,7 +348,7 @@ export default function App() {
                 {...({ fetchPriority: "low" } as any)}
                 aria-hidden="true"
                 className="w-full h-full object-cover"
-                style={{ filter: 'brightness(1)', opacity: 0.97 }}
+                style={{ filter: 'brightness(1)', opacity: 0.99 }}
               >
                 {videoSrc && (
                   <>
