@@ -75,10 +75,10 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
             }
             handleNavigate('contact');
           }}
-          className="w-full rounded-full px-8 py-3 bg-[radial-gradient(ellipse_at_center,white_0%,rgba(59,130,246,0.15)_100%)] border border-blue-500/50 text-black text-[13px] md:text-[14px] font-medium tracking-wide shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:bg-[radial-gradient(ellipse_at_center,white_0%,rgba(37,99,235,0.25)_100%)] hover:border-blue-400 transition-all duration-300 flex items-center justify-center"
+          className="w-full rounded-full px-8 py-3.5 bg-[radial-gradient(circle_at_center,white_0%,#dbeafe_100%)] border border-blue-300/60 cta-button-text text-[14px] md:text-[15px] font-semibold tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:bg-[radial-gradient(circle_at_center,white_0%,#bfdbfe_100%)] hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center group/cta"
         >
-          <span className="relative z-10 mr-2">{t.projects.cta.button}</span>
-          <svg className="w-3 h-3 md:w-4 md:h-4 relative z-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span className="relative z-10 mr-3">{t.projects.cta.button}</span>
+          <svg className="w-4 h-4 relative z-10 cta-button-text transition-transform duration-300 group-hover/cta:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
         </button>

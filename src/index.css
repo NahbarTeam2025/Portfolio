@@ -48,6 +48,10 @@
     --card-bg: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.6) 100%);
   }
 
+  .cta-button-text {
+    color: #000000 !important;
+  }
+
   .dark .wow-card {
     background: var(--card-bg) !important;
     border-color: rgba(59, 130, 246, 0.3) !important;

@@ -511,7 +511,7 @@ export default function App() {
                 {/* Contact Button */}
                 <button 
                   onClick={() => handleNavigate('contact')}
-                  className="hidden lg:flex items-center justify-center rounded-full px-6 py-2 bg-blue-500/10 border border-blue-500/50 text-black text-[13px] font-medium tracking-wide shadow-[0_0_10px_rgba(37,99,235,0.1)] hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:bg-blue-600/20 hover:border-blue-400 transition-all duration-300 cursor-pointer focus-ring"
+                  className="hidden lg:flex items-center justify-center rounded-full px-6 py-2 bg-[radial-gradient(circle_at_center,white_0%,#dbeafe_100%)] border border-blue-300/60 cta-button-text text-[13px] font-semibold tracking-tight shadow-[0_0_10px_rgba(59,130,246,0.05)] hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] hover:bg-[radial-gradient(circle_at_center,white_0%,#bfdbfe_100%)] hover:border-blue-400/50 transition-all duration-300 cursor-pointer focus-ring"
                 >
                   {t.nav.contact}
                 </button>
