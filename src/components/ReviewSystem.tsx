@@ -24,10 +24,12 @@ export const ReviewSystem = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log('ReviewSystem: Initializing...');
     fetchReviews();
     checkUser();
 
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log('ReviewSystem: Auth state changed:', event, session?.user?.email);
       setUser(session?.user ?? null);
     });
 
@@ -45,7 +47,7 @@ export const ReviewSystem = () => {
     }
   }, [reviews.length]);
 
-  const fetchReviews = async (retries = 3) => {
+  const fetchReviews = async () => {
     setIsLoading(true);
     setError(null);
     try {
@@ -58,15 +60,9 @@ export const ReviewSystem = () => {
       if (data) setReviews(data);
     } catch (err: any) {
       console.error('Error fetching reviews:', err);
-      
-      if (retries > 0) {
-        console.log(`Retrying fetch... (${retries} attempts left)`);
-        setTimeout(() => fetchReviews(retries - 1), 2000);
-        return;
-      }
 
       if (err.message === 'Failed to fetch') {
-        setError('Netzwerkfehler: Die Verbindung zu Supabase wurde blockiert. Bitte prüfe deinen Ad-Blocker oder deine Internetverbindung.');
+        setError('Netzwerkfehler: Verbindung zu Supabase blockiert. (Ad-Blocker aktiv oder Projekt pausiert?)');
       } else if (supabaseAnonKey.startsWith('sb_')) {
         setError('Ungültiger Key-Typ: Der Key scheint ein Stripe-Key zu sein. Supabase-Keys beginnen meist mit "eyJ".');
       } else {
@@ -78,17 +74,30 @@ export const ReviewSystem = () => {
   };
 
   const checkUser = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    setUser(session?.user ?? null);
+    try {
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError) throw sessionError;
+      console.log('ReviewSystem: Current session:', session?.user?.email);
+      setUser(session?.user ?? null);
+    } catch (err) {
+      console.error('ReviewSystem: Error checking session:', err);
+    }
   };
 
   const handleLogin = async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: 'https://roberterbach.de'
-      }
-    });
+    console.log('ReviewSystem: Starting login...');
+    try {
+      const { error: loginError } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: 'https://roberterbach.de'
+        }
+      });
+      if (loginError) throw loginError;
+    } catch (err: any) {
+      console.error('ReviewSystem: Login error:', err);
+      setError(`Login fehlgeschlagen: ${err.message || 'Unbekannter Fehler'}`);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {

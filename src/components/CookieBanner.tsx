@@ -6,9 +6,6 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Force clear once for the user to see it now
-    localStorage.removeItem('cookie-consent');
-
     const checkConsent = () => {
       console.log('Checking cookie consent...');
       try {
