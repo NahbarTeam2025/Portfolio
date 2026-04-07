@@ -51,15 +51,10 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                 alt={t.hero.title} 
                 width="250"
                 height="60"
-                className="h-10 sm:h-11 md:h-16 lg:h-20 w-auto object-contain opacity-90 transform-gpu signature-image transition-all duration-500 cursor-zoom-in hover:scale-105"
+                className="h-10 sm:h-11 md:h-16 lg:h-20 w-auto object-contain opacity-90 transform-gpu signature-image transition-all duration-500"
                 style={{ forcedColorAdjust: 'none' }}
                 loading="lazy"
                 decoding="async"
-                onClick={() => {
-                  if (typeof (window as any).setFullscreenImage === 'function') {
-                    (window as any).setFullscreenImage("https://meine-assets.pages.dev/signature.png");
-                  }
-                }}
               />
             </div>
           </div>
@@ -178,7 +173,7 @@ export const UberMichSection = React.memo(({ handleNavigate }: { handleNavigate:
                   }
                   handleNavigate('contact');
                 }}
-                className="w-full rounded-full px-8 py-3.5 bg-[radial-gradient(circle_at_center,white_0%,#d1e4ff_100%)] border border-blue-300/60 cta-button-text text-[14px] md:text-[15px] font-semibold tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:bg-[radial-gradient(circle_at_center,white_0%,#b3d4ff_100%)] hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center group/cta"
+                className="w-full rounded-full px-8 py-3.5 bg-[radial-gradient(circle,white,#d1e4ff)] border border-blue-300/60 cta-button-text text-[14px] md:text-[15px] font-semibold tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:bg-[radial-gradient(circle,white,#b3d4ff)] hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center group/cta"
               >
                 <span className="relative z-10 mr-3">{t.about.cta.button}</span>
                 <svg className="w-4 h-4 relative z-10 cta-button-text transition-transform duration-300 group-hover/cta:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

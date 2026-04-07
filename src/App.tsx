@@ -512,7 +512,7 @@ export default function App() {
                 {/* Contact Button */}
                 <button 
                   onClick={() => handleNavigate('contact')}
-                  className="hidden lg:flex items-center justify-center rounded-full px-6 py-2 bg-[radial-gradient(circle_at_center,white_0%,#d1e4ff_100%)] border border-blue-300/60 cta-button-text text-[13px] font-semibold tracking-tight shadow-[0_0_10px_rgba(59,130,246,0.05)] hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] hover:bg-[radial-gradient(circle_at_center,white_0%,#b3d4ff_100%)] hover:border-blue-400/50 transition-all duration-300 cursor-pointer focus-ring"
+                  className="hidden lg:flex items-center justify-center rounded-full px-6 py-2 bg-[radial-gradient(circle,white,#d1e4ff)] border border-blue-300/60 cta-button-text text-[13px] font-semibold tracking-tight shadow-[0_0_10px_rgba(59,130,246,0.05)] hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] hover:bg-[radial-gradient(circle,white,#b3d4ff)] hover:border-blue-400/50 transition-all duration-300 cursor-pointer focus-ring"
                 >
                   {t.nav.contact}
                 </button>
@@ -533,10 +533,10 @@ export default function App() {
           <AnimatePresence>
             {isMobileMenuOpen && (
               <m.div 
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="fixed top-[52px] md:top-[60px] bottom-[40px] left-0 right-0 bg-white/95 backdrop-blur-2xl border-b border-black/10 p-6 flex flex-col gap-4 lg:hidden z-40 overflow-y-auto shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
               >
                 {/* Navigation Links */}
@@ -545,9 +545,9 @@ export default function App() {
                     <m.a
                       key={pageId}
                       href={PAGE_ROUTES[pageId]}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + index * 0.05, duration: 0.4 }}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.05 + index * 0.03, duration: 0.3 }}
                       onClick={(e) => {
                         e.preventDefault();
                         handleNavigate(pageId);
@@ -563,9 +563,9 @@ export default function App() {
 
                 <m.a 
                   href={PAGE_ROUTES['contact']}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + PAGES.length * 0.05, duration: 0.4 }}
+                  transition={{ delay: 0.05 + PAGES.length * 0.03, duration: 0.3 }}
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavigate('contact');
@@ -577,9 +577,9 @@ export default function App() {
 
                 <div className="flex flex-col items-center gap-4 mt-4">
                   <m.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + (PAGES.length + 2) * 0.05, duration: 0.4 }}
+                    transition={{ delay: 0.05 + (PAGES.length + 1) * 0.03, duration: 0.3 }}
                   >
                     <button
                       onClick={() => setIsDarkMode(!isDarkMode)}
@@ -598,9 +598,9 @@ export default function App() {
                   </m.div>
 
                   <m.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + (PAGES.length + 3) * 0.05, duration: 0.4 }}
+                    transition={{ delay: 0.05 + (PAGES.length + 2) * 0.03, duration: 0.3 }}
                   >
                     <LanguageSwitcher />
                   </m.div>
