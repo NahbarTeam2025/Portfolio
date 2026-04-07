@@ -203,7 +203,7 @@ export const ZertifikateSection = ({
             trackEvent('click', 'contact_cta', 'certificates');
             handleNavigate('contact');
           }}
-          className="w-full rounded-full py-3 lg:py-4 bg-[radial-gradient(circle_at_center,white_0%,#dbeafe_100%)] border border-blue-300/60 cta-button-text text-[14px] lg:text-[16px] font-semibold tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:bg-[radial-gradient(circle_at_center,white_0%,#bfdbfe_100%)] hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center group/cta"
+          className="w-full rounded-full py-3 lg:py-4 bg-[radial-gradient(circle_at_center,white_0%,#d1e4ff_100%)] border border-blue-300/60 cta-button-text text-[14px] lg:text-[16px] font-semibold tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:bg-[radial-gradient(circle_at_center,white_0%,#b3d4ff_100%)] hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center group/cta"
         >
           <span className="relative z-10 mr-3">{t.certificates.ctaButton}</span>
           <svg className="w-4 h-4 lg:w-5 h-5 relative z-10 cta-button-text transition-transform duration-300 group-hover/cta:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
