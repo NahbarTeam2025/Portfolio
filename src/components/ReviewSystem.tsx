@@ -51,19 +51,26 @@ export const ReviewSystem = () => {
     setIsLoading(true);
     setError(null);
     try {
+      console.log('ReviewSystem: Attempting to fetch from table "reviews"...');
       const { data, error: fetchError } = await supabase
         .from('reviews')
         .select('*')
         .order('created_at', { ascending: false });
       
-      if (fetchError) throw fetchError;
+      if (fetchError) {
+        console.error('ReviewSystem: Supabase returned an error object:', fetchError);
+        throw fetchError;
+      }
+      
+      console.log('ReviewSystem: Successfully fetched reviews:', data);
       if (data) setReviews(data);
     } catch (err: any) {
-      console.error('Error fetching reviews:', err);
+      console.error('ReviewSystem: EXAKTER FEHLER BEIM FETCH:', JSON.stringify(err, null, 2));
+      console.error('ReviewSystem: Fehler-Details:', err);
 
       if (err.message === 'Failed to fetch') {
         setError('Netzwerkfehler: Verbindung zu Supabase blockiert. (Ad-Blocker aktiv oder Projekt pausiert?)');
-      } else if (supabaseAnonKey.startsWith('sb_')) {
+      } else if (supabaseAnonKey?.startsWith('sb_')) {
         setError('Ungültiger Key-Typ: Der Key scheint ein Stripe-Key zu sein. Supabase-Keys beginnen meist mit "eyJ".');
       } else {
         setError(`Fehler: ${err.message || 'Verbindung fehlgeschlagen'}`);
