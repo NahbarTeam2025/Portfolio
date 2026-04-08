@@ -123,6 +123,9 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    // TEMPORARY: Clear cookie consent once so the user can see the banner again for testing
+    localStorage.removeItem('cookie-consent');
+    
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');

@@ -4,7 +4,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
 
 import { MagneticButton, IconShift } from './MagneticButton';
-import { ReviewSystem } from './ReviewSystem';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
@@ -173,11 +172,6 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             </picture>
           </div>
         </div>
-      </div>
-
-      {/* Review System - Absolute on desktop, relative on mobile */}
-      <div className="relative lg:absolute lg:bottom-10 lg:right-10 z-20 mt-8 lg:mt-0 flex justify-center lg:block animate-in fade-in slide-in-from-bottom-4 duration-700 delay-700 fill-mode-both">
-        <ReviewSystem />
       </div>
     </div>
   );

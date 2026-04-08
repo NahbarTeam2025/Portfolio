@@ -41,6 +41,15 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
         <div className="flex flex-row justify-end items-center gap-4 md:gap-6 text-[11px]">
           <button 
             onClick={() => {
+              trackEvent('click', 'cookie_settings', 'footer');
+              window.dispatchEvent(new Event('open-cookie-banner'));
+            }}
+            className="text-black/70 hover:text-black transition-colors"
+          >
+            Cookie-Einstellungen
+          </button>
+          <button 
+            onClick={() => {
               trackEvent('click', 'impressum', 'footer');
               handleNavigate('impressum');
             }}
