@@ -123,7 +123,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // TEMPORARY: Clear cookie consent once so the user can see the banner again for testing
+    // Temporär wieder hinzugefügt, damit du den Banner zur Kontrolle sehen kannst
     localStorage.removeItem('cookie-consent');
     
     if (isDarkMode) {

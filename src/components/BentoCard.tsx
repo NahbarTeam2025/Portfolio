@@ -118,23 +118,23 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
               onClick={() => {
                 trackEvent('click', 'project_live', 'projects', { project_title: project.title });
               }}
-              className="w-full max-w-[220px] py-3.5 rounded-xl bg-[radial-gradient(circle,white,#d1e4ff)] border border-blue-300/60 cta-button-text font-semibold text-[12px] uppercase tracking-widest shadow-[0_0_15px_rgba(59,130,246,0.08)] hover:shadow-[0_0_25px_rgba(59,130,246,0.15)] hover:bg-[radial-gradient(circle,white,#b3d4ff)] hover:border-blue-400/50 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
+              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 text-black font-semibold text-[12px] uppercase tracking-widest shadow-[0_0_15px_rgba(74,222,128,0.1)] hover:shadow-[0_0_25px_rgba(74,222,128,0.2)] hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {index === 0 && (
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                   </span>
                 )}
                 {project.buttonText || t.projects.live}
               </span>
               {project.buttonText?.includes('PDF') ? (
-                <svg className="w-4 h-4 cta-button-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               ) : (
-                <ArrowRight className="w-4 h-4 cta-button-text" />
+                <ArrowRight className="w-4 h-4 text-black" />
               )}
             </a>
           ) : project.details ? (
@@ -143,15 +143,15 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
                 trackEvent('click', 'project_details', 'projects', { project_title: project.title });
                 onDetailsClick?.(project);
               }}
-              className="w-full max-w-[220px] py-3.5 rounded-xl bg-[radial-gradient(circle,white,#d1e4ff)] border border-blue-300/60 cta-button-text font-semibold text-[12px] uppercase tracking-widest shadow-[0_0_15px_rgba(59,130,246,0.08)] hover:shadow-[0_0_25px_rgba(59,130,246,0.15)] hover:bg-[radial-gradient(circle,white,#b3d4ff)] hover:border-blue-400/50 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
+              className="w-full max-w-[220px] py-3.5 rounded-xl bg-green-500/15 border border-green-500/50 text-black font-semibold text-[12px] uppercase tracking-widest shadow-[0_0_15px_rgba(74,222,128,0.1)] hover:shadow-[0_0_25px_rgba(74,222,128,0.2)] hover:bg-green-500/25 hover:border-green-400 transition-all group/btn2 cursor-pointer flex items-center justify-center gap-2"
             >
               <span className="relative z-10">{project.buttonText || t.projects.details}</span>
               {project.buttonText?.includes('PDF') ? (
-                <svg className="w-4 h-4 cta-button-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               ) : (
-                <ArrowRight className="w-4 h-4 cta-button-text" />
+                <ArrowRight className="w-4 h-4 text-black" />
               )}
             </button>
           ) : (
