@@ -199,24 +199,37 @@ export default function App() {
   useEffect(() => {
     const updateRects = () => {
       const cards = document.getElementsByClassName('wow-card');
+      const parallaxElements = document.getElementsByClassName('parallax-element');
       const newRects = new Map<HTMLElement, DOMRect>();
+      
       for (let i = 0; i < cards.length; i++) {
         const card = cards[i] as HTMLElement;
         newRects.set(card, card.getBoundingClientRect());
       }
+      
+      // Also handle parallax logic here to avoid multiple scroll listeners
+      const windowHeight = window.innerHeight;
+      for (let i = 0; i < parallaxElements.length; i++) {
+        const el = parallaxElements[i] as HTMLElement;
+        const rect = el.getBoundingClientRect();
+        const centerOffset = (rect.top + rect.height / 2) - (windowHeight / 2);
+        const parallaxValue = centerOffset * 0.05;
+        el.style.setProperty('--parallax-y', `${parallaxValue}px`);
+      }
+
       cardRects.current = newRects;
     };
 
     updateRects();
-    window.addEventListener('resize', updateRects);
-    window.addEventListener('scroll', updateRects, true);
+    window.addEventListener('resize', updateRects, { passive: true });
+    window.addEventListener('scroll', updateRects, { passive: true, capture: true });
     
     // Also update after a short delay to catch any layout shifts after initial load
     const timer = setTimeout(updateRects, 1000);
     
     return () => {
       window.removeEventListener('resize', updateRects);
-      window.removeEventListener('scroll', updateRects, true);
+      window.removeEventListener('scroll', updateRects, { capture: true });
       clearTimeout(timer);
     };
   }, [currentPage]); // Re-run when page changes as new cards might appear
@@ -242,10 +255,14 @@ export default function App() {
         
         const x = clientX - rect.left;
         const y = clientY - rect.top;
+        const relX = (x / rect.width) - 0.5;
+        const relY = (y / rect.height) - 0.5;
         
-        // Only update if the values are significantly different (optional, but can help)
+        // Use CSS variables to update values with minimal DOM impact
         hoveredCard.style.setProperty('--mouse-x', `${x}px`);
         hoveredCard.style.setProperty('--mouse-y', `${y}px`);
+        hoveredCard.style.setProperty('--mouse-rel-x', `${relX}`);
+        hoveredCard.style.setProperty('--mouse-rel-y', `${relY}`);
       }
     });
   }, []);

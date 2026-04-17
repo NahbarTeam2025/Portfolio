@@ -1,24 +1,12 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
-/* Safari Backdrop Filter Fixes */
-@supports (-webkit-backdrop-filter: none) {
-  .backdrop-blur-sm { -webkit-backdrop-filter: blur(4px); }
-  .backdrop-blur-md { -webkit-backdrop-filter: blur(12px); }
-  .backdrop-blur-xl { -webkit-backdrop-filter: blur(24px); }
-  .backdrop-blur-2xl { -webkit-backdrop-filter: blur(40px); }
-  .backdrop-blur-\[15px\] { -webkit-backdrop-filter: blur(15px); }
-  .backdrop-blur-\[20px\] { -webkit-backdrop-filter: blur(20px); }
-  
-  .backdrop-blur-\[15px\].saturate-\[180\%\] { -webkit-backdrop-filter: blur(15px) saturate(1.8); }
-  .backdrop-blur-\[20px\].saturate-\[180\%\] { -webkit-backdrop-filter: blur(20px) saturate(1.8); }
-}
-
-@theme {
-}
-
 @layer base {
   :root {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    --mouse-rel-x: 0;
+    --mouse-rel-y: 0;
     --color-bg-base: #ffffff;
     --color-brand-dark: #f0f0f0;
     --color-brand-blue: #3b82f6;
@@ -35,6 +23,10 @@
   }
   
   .dark {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    --mouse-rel-x: 0;
+    --mouse-rel-y: 0;
     --color-bg-base: #0a0a0a;
     --color-brand-dark: #1a1a1a;
     --color-text-primary: #ffffff;

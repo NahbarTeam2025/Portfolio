@@ -1,61 +1,28 @@
 import React from 'react';
-import { motion, useMotionValue, useSpring, useMotionTemplate, useTransform } from 'motion/react';
-import { ArrowRight, ZoomIn } from 'lucide-react';
+import { ZoomIn, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { trackEvent } from '@/lib/analytics';
-import { MagneticButton, IconShift } from './MagneticButton';
 
 export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?: (project: any) => void, onImageClick?: (url: string) => void }> = ({ project, index, onDetailsClick, onImageClick }) => {
-  const { t, language } = useLanguage();
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [4, -4]), { stiffness: 150, damping: 20 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-4, 4]), { stiffness: 150, damping: 20 });
-
-  const spotlightX = useSpring(useMotionValue(0), { stiffness: 300, damping: 30 });
-  const spotlightY = useSpring(useMotionValue(0), { stiffness: 300, damping: 30 });
-
-  function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseXFromCenter = event.clientX - rect.left - width / 2;
-    const mouseYFromCenter = event.clientY - rect.top - height / 2;
-
-    mouseX.set(mouseXFromCenter / width);
-    mouseY.set(mouseYFromCenter / height);
-
-    spotlightX.set(event.clientX - rect.left);
-    spotlightY.set(event.clientY - rect.top);
-  }
-
-  function handleMouseLeave() {
-    mouseX.set(0);
-    mouseY.set(0);
-  }
-
-  const spotlightBackground = useMotionTemplate`
-    radial-gradient(
-      600px circle at ${spotlightX}px ${spotlightY}px,
-      rgba(59, 130, 246, 0.05),
-      transparent 80%
-    )
-  `;
+  const { t } = useLanguage();
 
   // Bento grid classes based on index
   return (
-    <motion.div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+    <div
       className={`relative group parallax-element overflow-hidden flex flex-col h-full min-h-[320px] md:min-h-[380px] lg:min-h-[400px] transition-all duration-500 wow-card shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] text-black dark:text-white`}
+      style={{
+        // Use CSS variables for the tilt effect - reduces JS-to-DOM calls significantly
+        transform: 'translateY(var(--parallax-y, 0px)) perspective(1000px) rotateX(calc(var(--mouse-rel-y, 0) * -4deg)) rotateY(calc(var(--mouse-rel-x, 0) * 4deg))',
+      } as React.CSSProperties}
     >
       <div className="card-top-flare opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       <div className="wow-card-border pointer-events-none" />
       
-      <motion.div
+      <div
         className="pointer-events-none absolute -inset-px z-0 transition duration-300 opacity-0 group-hover:opacity-100"
-        style={{ background: spotlightBackground }}
+        style={{ 
+          background: 'radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(59, 130, 246, 0.05), transparent 80%)'
+        }}
       />
       
       <div className="relative z-10 p-5 md:p-8 flex flex-col h-full items-center text-center">
@@ -163,6 +130,6 @@ export const BentoCard: React.FC<{ project: any, index: number, onDetailsClick?:
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
