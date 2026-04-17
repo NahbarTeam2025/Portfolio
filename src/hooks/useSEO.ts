@@ -10,7 +10,7 @@ interface SEOProps {
 
 const SEO_DATA: Record<string, SEOProps> = {
   '/': {
-    title: 'Robert Erbach',
+    title: 'Robert Erbach – Portfolio',
     description: 'Digitale Lösungen, KI-Workflows & Webdesign von Robert Erbach.',
   },
   '/ueber-mich': {
