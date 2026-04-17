@@ -73,7 +73,6 @@
       console.log('GA Initialized');
 
       // 3. Defer loading of the actual GTM script to improve page speed
-      // Load on first interaction or after 3 seconds
       let gtmLoaded = false;
       function loadGTM() {
         if (gtmLoaded) return;
@@ -82,19 +81,10 @@
         script.src = 'https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP';
         script.async = true;
         document.head.appendChild(script);
-        
-        // Cleanup listeners
-        ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function(e) {
-          window.removeEventListener(e, loadGTM);
-        });
       }
 
       window.addEventListener('load', function() {
-        setTimeout(loadGTM, 3000); // Fallback if no interaction
-      });
-      
-      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function(e) {
-        window.addEventListener(e, loadGTM, { once: true, passive: true });
+        setTimeout(loadGTM, 2000); // Efficient loading after 2s
       });
     </script>
 

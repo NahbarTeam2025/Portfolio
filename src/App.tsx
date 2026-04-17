@@ -7,7 +7,7 @@ import React, { useState, useEffect, useCallback, useRef, startTransition, Suspe
 import { createPortal } from 'react-dom';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Menu, X, Moon, Sun } from 'lucide-react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useTransform, useScroll } from 'framer-motion';
+import { motion, AnimatePresence, useSpring } from 'framer-motion';
 
 // Import refactored components
 import { MagneticButton } from '@/components/MagneticButton';
@@ -62,13 +62,6 @@ export default function App() {
   const navigate = useNavigate();
   const currentPage = ROUTE_TO_PAGE[location.pathname] || 'start';
 
-  // Scroll Progress Indicator
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   useEffect(() => {
     if (!ROUTE_TO_PAGE[location.pathname]) {
@@ -196,8 +189,14 @@ export default function App() {
   const requestRef = useRef<number>(0);
   const cardRects = useRef<Map<HTMLElement, DOMRect>>(new Map());
 
+  const lastUpdate = useRef<number>(0);
+
   useEffect(() => {
     const updateRects = () => {
+      const now = Date.now();
+      if (now - lastUpdate.current < 100) return; // Throttle to 10fps
+      lastUpdate.current = now;
+
       const cards = document.getElementsByClassName('wow-card');
       const parallaxElements = document.getElementsByClassName('parallax-element');
       const newRects = new Map<HTMLElement, DOMRect>();
@@ -234,9 +233,16 @@ export default function App() {
     };
   }, [currentPage]); // Re-run when page changes as new cards might appear
 
+  const lastMousePos = useRef({ x: 0, y: 0 });
+
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const clientX = e.clientX;
     const clientY = e.clientY;
+
+    // Only update if mouse moved significantly or every few frames
+    const dist = Math.hypot(clientX - lastMousePos.current.x, clientY - lastMousePos.current.y);
+    if (dist < 4) return;
+    lastMousePos.current = { x: clientX, y: clientY };
 
     if (requestRef.current) {
       cancelAnimationFrame(requestRef.current);
@@ -258,7 +264,7 @@ export default function App() {
         const relX = (x / rect.width) - 0.5;
         const relY = (y / rect.height) - 0.5;
         
-        // Use CSS variables to update values with minimal DOM impact
+        // Use direct style updates only for the hovered card
         hoveredCard.style.setProperty('--mouse-x', `${x}px`);
         hoveredCard.style.setProperty('--mouse-y', `${y}px`);
         hoveredCard.style.setProperty('--mouse-rel-x', `${relX}`);
@@ -420,13 +426,6 @@ export default function App() {
 
       {/* Content Overlay */}
       
-      {/* Scroll Progress Indicator */}
-      {currentPage !== 'start' && (
-        <motion.div 
-          className="fixed top-0 left-0 right-0 h-[1px] bg-blue-500 origin-left z-[100] shadow-[0_0_10px_rgba(59,130,246,0.8)] lg:hidden" 
-          style={{ scaleX }} 
-        />
-      )}
 
       <div className={`relative z-10 flex flex-col ${currentPage === 'start' ? 'h-screen h-[100dvh] overflow-hidden' : 'min-h-screen min-h-[100dvh] overflow-x-hidden'}`}>
         {/* Navigation Wrapper */}
