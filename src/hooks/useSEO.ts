@@ -10,36 +10,40 @@ interface SEOProps {
 
 const SEO_DATA: Record<string, SEOProps> = {
   '/': {
-    title: 'Robert Erbach – Portfolio',
-    description: 'Ich entwickle KI-Workflows, baue damit funktionierende Webprojekte und gestalte alles so, dass es auch wirklich gut aussieht.',
+    title: 'Robert Erbach',
+    description: 'Digitale Lösungen, KI-Workflows & Webdesign von Robert Erbach.',
   },
   '/ueber-mich': {
-    title: 'Über mich | Robert Erbach – Portfolio',
-    description: 'Erfahren Sie mehr über Robert Erbach: „Halbfertig ist keine Option.“ KI-Workflows, Webprojekte und durchdachtes Design.',
+    title: 'Über mich | Robert Erbach',
+    description: 'Erfahren Sie mehr über Robert Erbach: KI-Workflows, Webprojekte und durchdachtes Design.',
   },
   '/skills': {
-    title: 'Skills & Kompetenzen | Robert Erbach – Portfolio',
+    title: 'Skills & Kompetenzen | Robert Erbach',
     description: 'Fachkenntnisse in KI-Entwicklung, Prompt Engineering, kreativem Design, SEO und Web Analytics.',
   },
   '/projekte': {
-    title: 'Projekte & Referenzen | Robert Erbach – Portfolio',
+    title: 'Projekte & Referenzen | Robert Erbach',
     description: 'Ausgewählte Arbeiten in den Bereichen KI-Integration, Web-Entwicklung und digitale Strategie.',
   },
   '/zertifikate': {
-    title: 'Zertifikate | Robert Erbach – Portfolio',
+    title: 'Zertifikate | Robert Erbach',
     description: 'Zertifikate und Weiterbildungen in den Bereichen Digital Marketing, Web Analytics und KI.',
   },
+  '/tools': {
+    title: 'KI-Tools | Robert Erbach',
+    description: 'Nützliche KI-Tools und Ressourcen für effizientes Arbeiten zusammengestellt von Robert Erbach.',
+  },
   '/kontakt': {
-    title: 'Kontakt | Robert Erbach – Portfolio',
+    title: 'Kontakt | Robert Erbach',
     description: 'Nehmen Sie Kontakt mit Robert Erbach auf für Anfragen zu Websites, Apps und KI-Workflows.',
   },
   '/impressum': {
-    title: 'Impressum | Robert Erbach – Portfolio',
+    title: 'Impressum | Robert Erbach',
     description: 'Impressum und rechtliche Angaben für Robert Erbach.',
     noindex: true
   },
   '/datenschutz': {
-    title: 'Datenschutz | Robert Erbach – Portfolio',
+    title: 'Datenschutz | Robert Erbach',
     description: 'Datenschutzerklärung für die Website von Robert Erbach.',
     noindex: true
   }
