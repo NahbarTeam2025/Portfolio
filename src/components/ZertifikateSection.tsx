@@ -14,7 +14,7 @@ export const ZertifikateSection = ({
 
   const certs = t.certificates.items || [];
 
-  const gfnCerts = certs.filter((c: any) => (c.issuer === 'GFN GmbH / WPI' || c.issuer === 'GFN GmbH') && c.category !== 'KI');
+  const gfnCerts = certs.filter((c: any) => (c.issuer === 'GFN GmbH / WPI' || c.issuer === 'GFN GmbH' || c.issuer === 'GFN/ Webmasters Europe e.V.') && c.category !== 'KI');
   const fawCerts = certs.filter((c: any) => c.issuer === 'FAW');
   const kiCerts = certs.filter((c: any) => c.category === 'KI');
 
