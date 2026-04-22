@@ -35,7 +35,6 @@ export const Footer = React.memo(({ isMobileMenuOpen, handleNavigate }: { isMobi
             loading="lazy"
             decoding="async"
           />
-          <span className="ml-3 text-black/70 text-[10px] md:text-xs font-medium">Falkenberg/Elster</span>
         </button>
         
         <div className="flex flex-row justify-end items-center gap-4 md:gap-6 text-[11px]">
