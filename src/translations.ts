@@ -404,9 +404,9 @@ export const translations = {
     impressum: {
       title: "Impressum",
       close: "Schließen",
-      section1Title: "Angaben gemäß § 5 TMG",
+      section1Title: "Angaben gemäß § 5 DDG",
       section2Title: "Kontakt",
-      section3Title: "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV",
+      section3Title: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
       name: "Robert Erbach",
       address: "Am Stadtpark 43",
       city: "04895 Falkenberg/Elster",
@@ -928,9 +928,9 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
     impressum: {
       title: "Legal Notice",
       close: "Close",
-      section1Title: "Information according to § 5 TMG",
+      section1Title: "Information according to § 5 DDG",
       section2Title: "Contact",
-      section3Title: "Responsible for content according to § 55 Abs. 2 RStV",
+      section3Title: "Responsible for content according to § 18 Abs. 2 MStV",
       name: "Robert Erbach",
       address: "Am Stadtpark 43",
       city: "04895 Falkenberg/Elster",
