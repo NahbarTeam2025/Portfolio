@@ -25,17 +25,17 @@ import { CookieBanner } from '@/components/CookieBanner';
 import { trackEvent, trackPageView } from '@/lib/analytics';
 
 // Lazy load components
-const CommandTerminal = lazy(() => import('@/components/CommandTerminal.tsx'));
-const SkillsSection = lazy(() => import('@/components/SkillsSection.tsx').then(m => ({ default: m.SkillsSection })));
-const ProjekteSection = lazy(() => import('@/components/ProjekteSection.tsx').then(m => ({ default: m.ProjekteSection })));
-const ZertifikateSection = lazy(() => import('@/components/ZertifikateSection.tsx').then(m => ({ default: m.ZertifikateSection })));
-const KontaktSection = lazy(() => import('@/components/KontaktSection.tsx').then(m => ({ default: m.KontaktSection })));
-const UberMichSection = lazy(() => import('@/components/UberMichSection.tsx').then(m => ({ default: m.UberMichSection })));
-const ImpressumPage = lazy(() => import('@/pages/ImpressumPage.tsx').then(m => ({ default: m.ImpressumPage })));
-const DatenschutzPage = lazy(() => import('@/pages/DatenschutzPage.tsx').then(m => ({ default: m.DatenschutzPage })));
-const ImpressumModal = lazy(() => import('@/components/ImpressumModal.tsx').then(m => ({ default: m.ImpressumModal })));
-const DatenschutzModal = lazy(() => import('@/components/DatenschutzModal.tsx').then(m => ({ default: m.DatenschutzModal })));
-const ToolsPage = lazy(() => import('@/pages/ToolsPage.tsx').then(m => ({ default: m.ToolsPage })));
+const CommandTerminal = lazy(() => import('@/components/CommandTerminal'));
+const SkillsSection = lazy(() => import('@/components/SkillsSection').then(m => ({ default: m.SkillsSection })));
+const ProjekteSection = lazy(() => import('@/components/ProjekteSection').then(m => ({ default: m.ProjekteSection })));
+const ZertifikateSection = lazy(() => import('@/components/ZertifikateSection').then(m => ({ default: m.ZertifikateSection })));
+const KontaktSection = lazy(() => import('@/components/KontaktSection').then(m => ({ default: m.KontaktSection })));
+const UberMichSection = lazy(() => import('@/components/UberMichSection').then(m => ({ default: m.UberMichSection })));
+const ImpressumPage = lazy(() => import('@/pages/ImpressumPage').then(m => ({ default: m.ImpressumPage })));
+const DatenschutzPage = lazy(() => import('@/pages/DatenschutzPage').then(m => ({ default: m.DatenschutzPage })));
+const ImpressumModal = lazy(() => import('@/components/ImpressumModal').then(m => ({ default: m.ImpressumModal })));
+const DatenschutzModal = lazy(() => import('@/components/DatenschutzModal').then(m => ({ default: m.DatenschutzModal })));
+const ToolsPage = lazy(() => import('@/pages/ToolsPage').then(m => ({ default: m.ToolsPage })));
 
 const PAGE_ROUTES: Record<string, string> = {
   'start': '/',
