@@ -125,7 +125,9 @@
 
     <!-- Performance Resource Hints -->
     <link rel="preconnect" href="https://meine-assets.pages.dev" />
+    <link rel="preconnect" href="https://3dab3910.meine-assets.pages.dev" />
     <link rel="dns-prefetch" href="https://meine-assets.pages.dev" />
+    <link rel="dns-prefetch" href="https://3dab3910.meine-assets.pages.dev" />
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
     <link rel="dns-prefetch" href="https://fonts.bunny.net" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
@@ -133,12 +135,10 @@
     <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
     
     <!-- Preload Critical Assets -->
-    <link rel="preload" href="https://meine-assets.pages.dev/ich.webp" as="image" fetchpriority="high" />
-    <link rel="preload" href="https://fonts.bunny.net/css?family=outfit:400,500,600,700|space-grotesk:700|jetbrains-mono:500&display=swap" as="style" />
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=outfit:400,500,600,700|space-grotesk:700|jetbrains-mono:500&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.bunny.net/css?family=outfit:400,500,600,700|space-grotesk:700|jetbrains-mono:500&display=swap" />
-    </noscript>
+    <link rel="preload" as="image" href="https://meine-assets.pages.dev/ichklein.webp" imagesrcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" imagesizes="(max-width: 768px) 100vw, 500px" fetchpriority="high">
+    
+    <!-- Core Fonts: Load synchronously to prevent CLS -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
 
     <style>
       /* Critical CSS for LCP and initial paint */
@@ -198,16 +198,6 @@
     <link rel="shortcut icon" href="https://3dab3910.meine-assets.pages.dev/favicon.ico" />
     <link rel="apple-touch-icon" href="https://07f33f72.meine-assets.pages.dev/apple-touch-icon.png" />
     <link rel="manifest" href="https://meine-assets.pages.dev/site.webmanifest" />
-    
-    <!-- Preload Critical Assets -->
-    <link rel="preload" as="image" href="https://meine-assets.pages.dev/ichklein.webp" imagesrcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" imagesizes="(max-width: 768px) 100vw, 500px" fetchpriority="high">
-    
-    <!-- Fonts -->
-    <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-      <link href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" rel="stylesheet">
-    </noscript>
 
     <script type="application/ld+json">
     {
@@ -393,6 +383,10 @@
             <h1 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.04em; color: #000000; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 0.9; margin: 0 0 1rem 0;">Robert Erbach</h1>
             <h2 style="font-family: 'Outfit', sans-serif; color: #3b82f6; font-size: clamp(1rem, 3vw, 1.8rem); font-weight: 600; margin: 0 0 1.5rem 0;">Digitale Lösungen & KI-Workflows</h2>
             <div style="height: 1px; width: 200px; background: rgba(0,0,0,0.1); margin-bottom: 2rem;"></div>
+            
+            <div style="max-width: 220px; width: 100%; margin: 0 auto; aspect-ratio: 1/1;">
+              <img src="https://meine-assets.pages.dev/ichklein.webp" srcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" sizes="(max-width: 768px) 100vw, 500px" alt="Robert Erbach" width="500" height="500" fetchpriority="high" loading="eager" decoding="sync" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 25px 25px rgba(0,0,0,0.15)); border-radius: 20px;" />
+            </div>
           </div>
         </div>
       </div>
