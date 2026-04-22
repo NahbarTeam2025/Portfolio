@@ -28,8 +28,8 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
     }), []);
 
   return (
-    <div id="hero" className="w-full max-w-[1200px] mx-auto relative z-10 flex-grow px-4 sm:px-6 py-0 flex flex-col justify-center overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center w-full relative z-10">
+    <div id="hero" className="w-full relative z-10 flex-grow px-0 flex flex-col justify-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center w-full max-w-[1200px] mx-auto px-4 sm:px-6 relative z-10">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           {/* 01. Minimalist Status Badge */}
           <div 

@@ -629,16 +629,16 @@ export default function App() {
         </div>
 
         {/* Main Content */}
-        <main className={`flex-grow flex flex-col px-6 ${
+        <main className={`flex-grow flex flex-col px-0 ${
           currentPage === 'start' 
-            ? 'pt-[52px] lg:pt-[60px] items-start justify-center text-left max-w-7xl mx-auto w-full' 
+            ? 'pt-0 items-start justify-center text-left w-full' 
             : (currentPage === 'skills' || currentPage === 'projects')
-              ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 max-w-7xl mx-auto w-full lg:min-h-screen'
-              : 'pt-24 md:pt-28 lg:pt-32 items-start justify-start pb-12 max-w-7xl mx-auto w-full'
+              ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 px-4 sm:px-6 max-w-[1200px] mx-auto w-full lg:min-h-screen'
+              : 'pt-24 md:pt-28 lg:pt-32 items-start justify-start pb-12 px-4 sm:px-6 max-w-[1200px] mx-auto w-full'
         } ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
             <div
               key={currentPage}
-              className={`w-full flex flex-col flex-grow ${currentPage === 'start' ? 'items-start justify-center' : 'animate-in fade-in slide-in-from-bottom-4 duration-500'}`}
+              className={`w-full flex flex-col flex-grow items-start justify-center ${currentPage === 'start' ? 'min-h-screen px-0' : ''}`}
             >
                 {currentPage === 'start' ? (
                   <HeroSection handleNavigate={handleNavigate} />

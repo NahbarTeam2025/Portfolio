@@ -105,7 +105,7 @@
         display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background: #ffffff; transition: background 0.3s;
       }
       .skel-cont {
-        max-width: 1200px; width: 100%; padding: 0 1rem; display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 1rem; align-items: center;
+        max-width: 1200px; width: 100%; padding: 0 1rem; display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 1rem; align-items: center; 
       }
       @media (min-width: 640px) {
         .skel-cont { padding: 0 1.5rem; }
@@ -130,7 +130,8 @@
         }
         .skel-img-wrap {
           max-width: 500px;
-          margin-left: 0;
+          margin-left: auto;
+          margin-right: auto;
         }
       }
     </style>
@@ -352,6 +353,11 @@
         if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.getElementById('initial-skeleton').style.background = '#0a0a0a';
           document.getElementById('initial-skeleton').querySelector('h1').style.color = '#ffffff';
+        }
+        
+        // Hide skeleton if not on the start page to prevent flashing on subpages
+        if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+          document.getElementById('initial-skeleton').style.display = 'none';
         }
       </script>
     </div>
