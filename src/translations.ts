@@ -400,6 +400,7 @@ export const translations = {
       rights: 'Alle Rechte vorbehalten.',
       impressum: 'Impressum',
       privacy: 'Datenschutz',
+      cookieSettings: 'Cookie-Einstellungen',
     },
     impressum: {
       title: "Impressum",
@@ -429,26 +430,26 @@ Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren 
 Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.
 
 *Wie erfasse ich Ihre Daten?*
-Ihre Daten werden zum einen dadurch erhoben, dass Sie mir diese mitteilen, z. B. wenn Sie mich per E-Mail kontaktieren. Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch meine IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).
+Ihre Daten werden zum einen dadurch erhoben, dass Sie mir diese mitteilen (z. B. per E-Mail). Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch meine IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).
 
 *Wofür nutze ich Ihre Daten?*
-Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können nach Ihrer Einwilligung zur Analyse Ihres Nutzerverhaltens verwendet werden.
+Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten werden – sofern Sie eingewilligt haben – zur Analyse Ihres Nutzerverhaltens verwendet.
 
 *Welche Rechte haben Sie bezüglich Ihrer Daten?*
-Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.
+Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten. Sie haben außerdem ein Recht auf Berichtigung oder Löschung dieser Daten. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.
 
----
+Zudem haben Sie das Recht, sich bei einer zuständigen Datenschutz-Aufsichtsbehörde zu beschweren.
 
-**2. Hosting**
+**2. Hosting und Content Delivery Network (CDN)**
 
-**Cloudflare**
-Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (nachfolgend „Cloudflare").
+Diese Website wird über den Dienst Cloudflare bereitgestellt. Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA.
 
-Wenn Sie meine Website besuchen, erfasst Cloudflare verschiedene Logfiles inklusive Ihrer IP-Adressen. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie in der Datenschutzerklärung von Cloudflare: https://www.cloudflare.com/privacypolicy/
+Cloudflare verarbeitet Logdaten (z. B. IP-Adresse), um die Sicherheit und Stabilität der Website zu gewährleisten.
 
-Die Verwendung von Cloudflare erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung meiner Website.
+Die Verwendung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer sicheren und effizienten Bereitstellung meiner Website.
 
----
+Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt.
+Details: https://www.cloudflare.com/privacypolicy/
 
 **3. Allgemeine Hinweise und Pflichtinformationen**
 
@@ -456,7 +457,6 @@ Die Verwendung von Cloudflare erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSG
 Ich nehme den Schutz Ihrer persönlichen Daten sehr ernst. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
 
 **Hinweis zur verantwortlichen Stelle**
-Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
 
 Robert Erbach\\
 Am Stadtpark 43\\
@@ -464,49 +464,36 @@ Am Stadtpark 43\\
 Telefon: +49 152 04041124\\
 E-Mail: roberterbach@web.de
 
----
+**Speicherdauer**
+Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei mir, bis der Zweck der Datenverarbeitung entfällt.
 
 **4. Datenerfassung auf dieser Website**
 
-**Bereitstellung von Downloads (Zertifikate & Lebenslauf)**
-Ich biete auf meiner Website Zertifikate sowie meinen Lebenslauf zum Download an. Beim Herunterladen dieser Dateien werden standardmäßig technische Daten (wie Ihre IP-Adresse, Zeitpunkt des Downloads, Dateiname) durch meinen Hoster Cloudflare erfasst. Dies ist technisch notwendig, um den Download zur Verfügung zu stellen (Art. 6 Abs. 1 lit. f DSGVO). Es erfolgt keine darüber hinausgehende Auswertung Ihres Download-Verhaltens zu Marketingzwecken.
+**Downloads (Zertifikate & Lebenslauf)**
+Beim Herunterladen von Dateien werden technische Daten (z. B. IP-Adresse, Zeitpunkt, Dateiname) durch den Hosting-Anbieter verarbeitet. Dies ist erforderlich, um die Inhalte bereitzustellen (Art. 6 Abs. 1 lit. f DSGVO). Eine Auswertung zu Marketingzwecken erfolgt nicht.
 
----
-
-**5. Externe Ressourcen und CDN**
+**5. Externe Ressourcen**
 
 **Bunny Fonts**
-Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten externe Ressourcen. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Webfonts direkt von den Servern des Anbieters (Bunny.net) in Ihren Browsercache. Hierbei wird technisch bedingt Ihre IP-Adresse an diesen Anbieter übertragen. Bunny Fonts ist eine datenschutzfreundliche Alternative zu Google Fonts und wird auf Servern innerhalb der EU bereitgestellt.
+Diese Website nutzt externe Schriftarten von Bunny.net. Beim Laden der Seite wird eine Verbindung zu Servern innerhalb der EU hergestellt. Dabei kann Ihre IP-Adresse verarbeitet werden. Die Nutzung erfolgt im Interesse einer einheitlichen Darstellung der Website (Art. 6 Abs. 1 lit. f DSGVO).
 
-**Content Delivery Network – Cloudflare**
-Ich nutze für die Bereitstellung von Medieninhalten das Content Delivery Network (CDN) von Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA.
+**6. Analyse-Tools**
 
-Zweck der Nutzung ist die Optimierung der Ladezeiten und die stabile Bereitstellung meiner Assets. Durch die Nutzung dieses Dienstes werden Medieninhalte direkt von den Servern von Cloudflare geladen. Dabei verarbeitet Cloudflare technisch bedingt die IP-Adresse Ihres Endgeräts sowie weitere Log-Daten.
-
-Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie unter: https://www.cloudflare.com/privacypolicy/
+**Cloudflare Web Analytics**
+Diese Website nutzt Cloudflare Web Analytics. Es werden keine Cookies gesetzt und keine personenbezogenen Daten gespeichert. Die Analyse erfolgt ausschließlich anonymisiert.
 
 Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.
 
-**Cloudflare Web Analytics**
-Diese Website nutzt Cloudflare Web Analytics, einen datenschutzfreundlichen Analysedienst der Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA.
+**Google Analytics**
+Diese Website nutzt Google Analytics nur nach Ihrer ausdrücklichen Einwilligung über das Cookie-Banner.
 
-Cloudflare Web Analytics setzt keine Cookies und speichert keine personenbezogenen Daten auf Ihrem Endgerät. Es werden ausschließlich aggregierte, nicht personenbezogene Nutzungsdaten erfasst (z. B. Seitenaufrufe, Verweildauer, verwendeter Browser). Eine Identifizierung einzelner Personen ist nicht möglich.
+Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO.
 
-Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Ich habe ein berechtigtes Interesse an einer anonymen Analyse der Websitenutzung zur technischen Verbesserung meines Angebots.
+Google Analytics verwendet Cookies, die eine Analyse der Benutzung der Website ermöglichen. Die erzeugten Informationen werden in der Regel an Server von Google in den USA übertragen und dort gespeichert.
 
-Details: https://www.cloudflare.com/privacypolicy/
+Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt.
 
----
-
-**6. Analyse-Tools (Google Analytics)**
-
-Diese Website nutzt Google Analytics, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google").
-
-Google Analytics wird auf dieser Website ausschließlich nach Ihrer ausdrücklichen Einwilligung aktiviert. Ohne Ihre Zustimmung werden keine Daten an Google übertragen. Die Nutzung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO. Ihre Einwilligung ist jederzeit mit Wirkung für die Zukunft widerrufbar.
-
-Im Fall Ihrer Einwilligung verwendet Google Analytics sog. „Cookies", die eine Analyse der Benutzung der Website ermöglichen. Die erzeugten Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt.
-
-Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie das Browser-Plugin unter folgendem Link herunterladen und installieren: https://tools.google.com/dlpage/gaoptout?hl=de`
+Sie können Ihre Einwilligung jederzeit über das Cookie-Banner widerrufen oder anpassen.`
     },
     common: {
       loading: 'Wird geladen...',
@@ -518,10 +505,19 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       darkModeOff: 'Light Mode aktivieren',
       loadingExperience: 'Erlebnis wird geladen',
       cookieBanner: {
-        text: 'Ich verwende ausschließlich analytische Cookies zur Seiten-Interaktion. Keine personenbezogenen Daten, keine Marketing-Cookies. Details findest du in der',
+        text: 'Ich nutze Cookies, um diese Website sicher bereitzustellen (notwendig) und die Nutzung zu analysieren (Analyse). Analyse-Cookies werden nur mit deiner Zustimmung gesetzt. Du kannst deine Wahl jederzeit anpassen.',
         privacyLink: 'Datenschutzerklärung',
-        accept: 'Akzeptieren',
-        decline: 'Ablehnen'
+        acceptAll: 'Alles akzeptieren',
+        acceptEssential: 'Nur notwendige',
+        settings: 'Einstellungen',
+        saveSettings: 'Auswahl speichern',
+        settingsTitle: 'Cookie-Einstellungen',
+        settingsDesc: 'Hier kannst du entscheiden, welche Cookies du zulassen möchtest.',
+        essentialTitle: 'Notwendig',
+        essentialDesc: 'Diese Cookies sind für die Grundfunktionen der Website erforderlich. Ohne sie kann die Website nicht richtig funktionieren.',
+        analyticsTitle: 'Analyse',
+        analyticsDesc: 'Mit diesen Cookies (Google Analytics 4) erfasse ich – mit Ihrer Einwilligung – Daten zur Nutzung der Website, um Inhalte und Funktionen zu verbessern. Dabei können auch personenbezogene Daten verarbeitet werden. Sie können Ihre Einwilligung jederzeit widerrufen.',
+        alwaysActive: 'Immer aktiv'
       }
     }
   },
@@ -924,6 +920,7 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       rights: 'All rights reserved.',
       impressum: 'Legal Notice',
       privacy: 'Privacy Policy',
+      cookieSettings: 'Cookie Settings',
     },
     impressum: {
       title: "Legal Notice",
@@ -945,42 +942,41 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       content: `**1. Privacy at a glance**
 
 **General Information**
-The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you can be personally identified.
+The following notes provide a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you could be personally identified.
 
 **Data collection on this website**
 
-*Who is responsible for data collection on this website?*
-Data processing on this website is carried out by the website operator. You can find their contact details in the legal notice of this website.
+*Who is responsible for the data collection on this website?*
+The data processing on this website is carried out by the website operator. You can find their contact details in the legal notice of this website.
 
 *How do I collect your data?*
-Your data is collected on the one hand by you communicating it to me, e.g., when you contact me by email. Other data is collected automatically or after your consent when you visit the website by my IT systems. These are mainly technical data (e.g., internet browser, operating system, or time of page view).
+Your data is collected on the one hand by you providing it to me (e.g. by email). Other data is collected automatically or after your consent when you visit the website by my IT systems. This is mainly technical data (e.g. internet browser, operating system, or time of the page request).
 
 *What do I use your data for?*
-Part of the data is collected to ensure error-free provision of the website. Other data can be used to analyze your user behavior after your consent.
+Part of the data is collected to ensure an error-free provision of the website. Other data is used – provided you have consented – to analyze your user behavior.
 
 *What rights do you have regarding your data?*
-You have the right at any time to receive information free of charge about the origin, recipient, and purpose of your stored personal data. You also have a right to request the correction or deletion of this data. If you have given your consent to data processing, you can revoke this consent at any time for the future. You also have the right, under certain circumstances, to request the restriction of the processing of your personal data.
+You have the right at any time to receive free information about the origin, recipient, and purpose of your stored personal data. You also have a right to request the correction or deletion of this data. If you have given your consent to data processing, you can revoke this consent at any time for the future. You also have the right to request the restriction of the processing of your personal data under certain circumstances.
 
----
+In addition, you have the right to lodge a complaint with a competent data protection supervisory authority.
 
-**2. Hosting**
+**2. Hosting and Content Delivery Network (CDN)**
 
-**Cloudflare**
-Provider is Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA (hereinafter “Cloudflare”).
+This website is provided via the Cloudflare service. The provider is Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA.
 
-When you visit my website, Cloudflare collects various log files including your IP addresses. Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found in Cloudflare's privacy policy: https://www.cloudflare.com/privacypolicy/
+Cloudflare processes log data (e.g., IP address) to ensure the security and stability of the website.
 
-The use of Cloudflare is based on Art. 6 Para. 1 lit. f GDPR. I have a legitimate interest in the most reliable presentation of my website.
+The use is based on Art. 6 para. 1 lit. f GDPR. I have a legitimate interest in the secure and efficient provision of my website.
 
----
+The data transfer to the USA is based on the standard contractual clauses of the EU Commission.
+Details: https://www.cloudflare.com/privacypolicy/
 
-**3. General information and mandatory information**
+**3. General notes and mandatory information**
 
 **Data protection**
 I take the protection of your personal data very seriously. I treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.
 
 **Note on the responsible body**
-The responsible body for data processing on this website is:
 
 Robert Erbach\\
 Am Stadtpark 43\\
@@ -988,49 +984,36 @@ Am Stadtpark 43\\
 Phone: +49 152 04041124\\
 Email: roberterbach@web.de
 
----
+**Storage duration**
+Unless a more specific storage duration has been specified in this privacy policy, your personal data will remain with me until the purpose for data processing ceases to apply.
 
 **4. Data collection on this website**
 
-**Provision of downloads (certificates & CV)**
-I offer certificates and my CV for download on my website. When downloading these files, technical data (such as your IP address, time of download, file name) are collected by my host Cloudflare by default. This is technically necessary to provide the download (Art. 6 Para. 1 lit. f GDPR). There is no further evaluation of your download behavior for marketing purposes.
+**Downloads (Certificates & CV)**
+When downloading files, technical data (e.g., IP address, time, file name) is processed by the hosting provider. This is necessary to provide the content (Art. 6 para. 1 lit. f GDPR). An evaluation for marketing purposes does not take place.
 
----
-
-**5. External resources and CDN**
+**5. External Resources**
 
 **Bunny Fonts**
-This site uses external resources for the uniform presentation of fonts. When you call up a page, your browser loads the required web fonts directly from the provider's servers (Bunny.net) into your browser cache. For technical reasons, your IP address is transmitted to this provider. Bunny Fonts is a privacy-friendly alternative to Google Fonts and is provided on servers within the EU.
+This website uses external fonts from Bunny.net. When the page loads, a connection to servers within the EU is established. Your IP address may be processed. The use is in the interest of a uniform presentation of the website (Art. 6 para. 1 lit. f GDPR).
 
-**Content Delivery Network – Cloudflare**
-I use the Content Delivery Network (CDN) from Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA to provide media content.
-
-The purpose of use is to optimize loading times and the stable provision of my assets. By using this service, media content is loaded directly from Cloudflare's servers. In order to deliver this content, Cloudflare processes the IP address of your end device and other log data for technical reasons.
-
-Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found at: https://www.cloudflare.com/privacypolicy/
-
-Legal basis: Art. 6 Para. 1 lit. f GDPR.
+**6. Analytics Tools**
 
 **Cloudflare Web Analytics**
-This website uses Cloudflare Web Analytics, a privacy-friendly analysis service from Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA.
+This website uses Cloudflare Web Analytics. No cookies are set and no personal data is stored. The analysis is carried out exclusively anonymously.
 
-Cloudflare Web Analytics does not set cookies and does not store any personal data on your end device. Only aggregated, non-personal usage data is collected (e.g., page views, duration of stay, browser used). Identification of individual persons is not possible.
+Legal basis: Art. 6 para. 1 lit. f GDPR.
 
-Legal basis: Art. 6 Para. 1 lit. f GDPR. I have a legitimate interest in an anonymous analysis of website usage for the technical improvement of my offer.
+**Google Analytics**
+This website uses Google Analytics only after your express consent via the cookie banner.
 
-Details: https://www.cloudflare.com/privacypolicy/
+Legal basis: Art. 6 para. 1 lit. a GDPR.
 
----
+Google Analytics uses cookies that enable an analysis of the use of the website. The generated information is usually transferred to Google servers in the USA and stored there.
 
-**6. Analytics Tools (Google Analytics)**
+The data transfer to the USA is based on the standard contractual clauses of the EU Commission.
 
-This website uses Google Analytics, a web analytics service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (“Google”).
-
-Google Analytics is only activated on this website after your express consent. Without your consent, no data will be transmitted to Google. The use is based on Art. 6 Para. 1 lit. a GDPR. Your consent can be revoked at any time with effect for the future.
-
-In the event of your consent, Google Analytics uses so-called “cookies”, which enable an analysis of the use of the website. The generated information is usually transmitted to a Google server in the USA and stored there. Data transfer to the USA is based on the standard contractual clauses of the EU Commission.
-
-You can also prevent collection by Google Analytics by downloading and installing the browser plug-in available at the following link: https://tools.google.com/dlpage/gaoptout?hl=en`
+You can revoke or adjust your consent at any time via the cookie banner.`
     },
     common: {
       loading: 'Loading...',
@@ -1042,10 +1025,19 @@ You can also prevent collection by Google Analytics by downloading and installin
       darkModeOff: 'Enable Light Mode',
       loadingExperience: 'Loading Experience',
       cookieBanner: {
-        text: 'I only use analytical cookies for site interaction. No personal data, no marketing cookies. You can find details in the',
+        text: 'I use cookies to securely provide this website (essential) and to analyze its use (analytics). Analytics cookies are only set with your consent. You can adjust your choices at any time.',
         privacyLink: 'Privacy Policy',
-        accept: 'Accept',
-        decline: 'Decline'
+        acceptAll: 'Accept All',
+        acceptEssential: 'Only Essential',
+        settings: 'Settings',
+        saveSettings: 'Save Settings',
+        settingsTitle: 'Cookie Settings',
+        settingsDesc: 'Here you can choose which cookies you want to allow.',
+        essentialTitle: 'Essential',
+        essentialDesc: 'These cookies are required for the basic functions of the website. Without them, the website cannot function properly.',
+        analyticsTitle: 'Analytics',
+        analyticsDesc: 'With these cookies (Google Analytics 4), I collect – with your consent – data on website usage to improve content and features. Personal data may also be processed. You can revoke your consent at any time.',
+        alwaysActive: 'Always active'
       }
     }
   }
