@@ -130,7 +130,7 @@ export const CookieBanner: React.FC<{ handleNavigate: (page: string) => void }> 
   return (
     <div 
       id="consent-banner" 
-      className="fixed bottom-0 left-0 right-0 md:bottom-6 md:left-4 md:right-auto md:w-[600px] z-[2147483647] flex justify-center pointer-events-auto animate-in fade-in slide-in-from-bottom-4 duration-500"
+      className="fixed bottom-0 left-0 right-0 md:bottom-6 md:left-1/2 md:-translate-x-1/2 md:w-[600px] z-[2147483647] flex justify-center pointer-events-auto animate-in fade-in slide-in-from-bottom-4 duration-500"
     >
       <div className="w-full bg-zinc-900/95 backdrop-blur-xl md:rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col ring-1 ring-white/5">
         
