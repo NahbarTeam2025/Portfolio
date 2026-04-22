@@ -42,6 +42,10 @@ export const ImpressumModal = ({ setIsImpressum }: { setIsImpressum: (open: bool
               {t.impressum.city}
             </p>
           </div>
+          <div>
+            <h3 className="text-lg font-medium text-black dark:text-white mb-2">{t.impressum.section4Title}</h3>
+            <p className="whitespace-pre-line">{t.impressum.section4Text}</p>
+          </div>
         </div>
       </div>
     </div>

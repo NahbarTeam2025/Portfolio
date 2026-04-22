@@ -410,8 +410,10 @@ export const translations = {
       name: "Robert Erbach",
       address: "Am Stadtpark 43",
       city: "04895 Falkenberg/Elster",
-      phone: "Telefon: 0152-04041124",
-      email: "E-Mail: roberterbach@web.de"
+      phone: "Telefon: +49 152 04041124",
+      email: "E-Mail: roberterbach@web.de",
+      section4Title: "Hinweis gemäß § 36 VSBG:",
+      section4Text: "Ich bin nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
     },
     privacy: {
       title: "Datenschutzerklärung",
@@ -459,7 +461,7 @@ Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:
 Robert Erbach\\
 Am Stadtpark 43\\
 04895 Falkenberg/Elster\\
-Telefon: 0152-04041124\\
+Telefon: +49 152 04041124\\
 E-Mail: roberterbach@web.de
 
 ---
@@ -932,8 +934,10 @@ Sie können die Erfassung durch Google Analytics außerdem verhindern, indem Sie
       name: "Robert Erbach",
       address: "Am Stadtpark 43",
       city: "04895 Falkenberg/Elster",
-      phone: "Phone: 0152-04041124",
-      email: "Email: roberterbach@web.de"
+      phone: "Phone: +49 152 04041124",
+      email: "Email: roberterbach@web.de",
+      section4Title: "Notice according to § 36 VSBG:",
+      section4Text: "I am not obliged and not willing to participate in a dispute settlement procedure before a consumer arbitration board."
     },
     privacy: {
       title: "Privacy Policy",
@@ -981,7 +985,7 @@ The responsible body for data processing on this website is:
 Robert Erbach\\
 Am Stadtpark 43\\
 04895 Falkenberg/Elster\\
-Phone: 0152-04041124\\
+Phone: +49 152 04041124\\
 Email: roberterbach@web.de
 
 ---
