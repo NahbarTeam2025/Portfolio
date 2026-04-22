@@ -33,7 +33,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           {/* 01. Minimalist Status Badge */}
           <div 
-            className="mb-2 lg:mb-6 animate-in fade-in slide-in-from-left-4 duration-700 fill-mode-both"
+            className="mb-2 lg:mb-6"
           >
             <div className="inline-flex items-center gap-2 lg:gap-3 px-2.5 py-1 lg:px-4 lg:py-1.5 rounded-full bg-black/[0.02] border border-black/10 backdrop-blur-2xl">
               <span className="relative flex h-1.5 w-1.5">
@@ -56,14 +56,14 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             
             {/* Motto - Elegant & Balanced */}
             <h2 
-              className="font-sans text-blue-500 text-[clamp(0.85rem,3vw,1.8rem)] font-semibold tracking-tight leading-tight max-w-[95%] mb-3 lg:mb-6 animate-in fade-in slide-in-from-left-6 duration-700 delay-100 fill-mode-both"
+              className="font-sans text-blue-500 text-[clamp(0.85rem,3vw,1.8rem)] font-semibold tracking-tight leading-tight max-w-[95%] mb-3 lg:mb-6"
             >
               {t.hero.subtitlePart1}
             </h2>
             
             {/* Subtitle Part 2 - Technical Rail */}
             <div 
-              className="flex items-center justify-center lg:justify-start gap-3 lg:gap-6 text-black font-sans text-[7px] md:text-[10px] uppercase tracking-[0.2em] lg:tracking-[0.5em] font-bold mb-4 lg:mb-6 whitespace-nowrap animate-in fade-in slide-in-from-left-4 duration-700 delay-150 fill-mode-both"
+              className="flex items-center justify-center lg:justify-start gap-3 lg:gap-6 text-black font-sans text-[7px] md:text-[10px] uppercase tracking-[0.2em] lg:tracking-[0.5em] font-bold mb-4 lg:mb-6 whitespace-nowrap"
             >
               {t.hero.subtitlePart2}
               <div className="hidden lg:block w-8 lg:w-20 h-px bg-gradient-to-r from-black to-transparent" />
@@ -71,14 +71,14 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
 
             {/* Description - Focused Content */}
             <p 
-              className="text-black/90 font-sans text-[clamp(0.7rem,1.5vw,1rem)] font-medium leading-relaxed max-w-[550px] mb-4 lg:mb-10 animate-in fade-in slide-in-from-left-4 duration-700 delay-200 fill-mode-both"
+              className="text-black/90 font-sans text-[clamp(0.7rem,1.5vw,1rem)] font-medium leading-relaxed max-w-[550px] mb-4 lg:mb-10"
             >
               {t.hero.desc}
             </p>
 
             {/* 03. Feature Rail - Minimalist Grid */}
             <div 
-              className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-8 w-full max-w-[650px] border-y border-black/10 py-3 lg:py-6 mb-5 lg:mb-10 animate-in fade-in slide-in-from-left-4 duration-700 delay-300 fill-mode-both"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-8 w-full max-w-[650px] border-y border-black/10 py-3 lg:py-6 mb-5 lg:mb-10"
             >
               {[t.hero.design, t.hero.structure, t.hero.ki].map((item, idx) => (
                 <div key={item} className="flex items-center justify-center lg:justify-start gap-x-2 group">
@@ -94,7 +94,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
 
           {/* 04. Primary Action - High Contrast CTA */}
           <div 
-            className="relative w-full sm:w-auto flex justify-center lg:justify-start animate-in fade-in slide-in-from-left-4 duration-700 delay-500 fill-mode-both"
+            className="relative w-full sm:w-auto flex justify-center lg:justify-start"
           >
             <button 
               id="btn-hero-projects"
@@ -146,12 +146,12 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
           </div>
           
           <div 
-            className="relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group translate-x-0 -translate-y-[10px] lg:translate-x-[10px] lg:translate-y-0"
+            className="relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group mx-auto lg:mx-0"
             style={{ aspectRatio: '1 / 1' }}
           >
             {/* Soft Blue Veil Overlay - Shaped to the image pixels */}
             <div 
-              className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10 opacity-0 animate-hero-fade-in hero-mask"
+              className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10 opacity-100 hero-mask"
             />
             <picture className="absolute inset-0 w-full h-full z-[5] block">
               <source 
@@ -166,7 +166,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
                 fetchPriority="high"
                 loading="eager"
                 decoding="sync"
-                className="w-full h-full object-contain drop-shadow-2xl animate-hero-fade-in block"
+                className="w-full h-full object-contain drop-shadow-2xl block"
                 referrerPolicy="no-referrer"
               />
             </picture>
