@@ -24,6 +24,8 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 import { CookieBanner } from '@/components/CookieBanner';
 import { trackEvent, trackPageView } from '@/lib/analytics';
 
+import { LoadingScreen } from '@/components/LoadingScreen';
+
 // Lazy load components
 const CommandTerminal = lazy(() => import('@/components/CommandTerminal'));
 const SkillsSection = lazy(() => import('@/components/SkillsSection').then(m => ({ default: m.SkillsSection })));
@@ -392,37 +394,7 @@ export default function App() {
           )}
       </div>
 
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center"
-          >
-            <div className="relative w-48 h-[2px] bg-black/10 overflow-hidden rounded-full">
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: "100%" }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 1.5, 
-                  ease: "easeInOut" 
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400 to-transparent"
-              />
-            </div>
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="mt-4 text-black/60 text-[11px] tracking-[0.3em] uppercase font-medium"
-            >
-              {t.common.loadingExperience}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <LoadingScreen />
 
       {/* Content Overlay */}
       

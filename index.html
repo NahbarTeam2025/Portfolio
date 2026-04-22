@@ -70,7 +70,6 @@
       /* Critical CSS for Above-the-Fold (LCP and initial paint) */
       :root { font-family: 'Outfit', sans-serif; }
       body { margin: 0; padding: 0; background: #ffffff; color: #000000; overflow-x: hidden; }
-      .dark body { background: #0a0a0a; color: #ffffff; }
       #root { min-height: 100vh; display: flex; flex-direction: column; }
       
       @keyframes hero-fade-in {
@@ -350,6 +349,7 @@
             </div>
             <h1 class="skel-h1">Robert Erbach</h1>
             <h2 class="skel-h2">Ich denke weiter, als du fragst.</h2>
+            <div style="font-family: 'Outfit', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5em; font-weight: 700; color: #000000; margin-bottom: 1.5rem;">KI-gestützte Frontends & durchdachte Systeme</div>
             <div style="height: 1px; width: 200px; background: rgba(0,0,0,0.1); margin-bottom: 2rem;"></div>
           </div>
           <div class="skel-img-wrap">
@@ -371,18 +371,6 @@
           </div>
         </div>
       </div>
-      <script>
-        // Check for dark mode to match background of skeleton
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.getElementById('initial-skeleton').style.background = '#0a0a0a';
-          document.getElementById('initial-skeleton').querySelector('h1').style.color = '#ffffff';
-        }
-        
-        // Hide skeleton if not on the start page to prevent flashing on subpages
-        if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
-          document.getElementById('initial-skeleton').style.display = 'none';
-        }
-      </script>
     </div>
 
     <script type="module" defer src="/src/main.tsx"></script>

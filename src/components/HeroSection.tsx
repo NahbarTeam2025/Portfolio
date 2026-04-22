@@ -9,25 +9,6 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
   const { t } = useLanguage();
   const [imageLoaded, setImageLoaded] = React.useState(false);
 
-  // Define particles for the background
-  const particles = React.useMemo(() => 
-    Array.from({ length: 25 }).map((_, i) => {
-      const colorType = i % 3;
-      let color = 'rgba(0, 0, 0, 0.1)'; // Black
-      if (colorType === 1) color = 'rgba(59, 130, 246, 0.15)'; // Blue
-      if (colorType === 2) color = 'rgba(107, 114, 128, 0.12)'; // Gray
-
-      return {
-        id: i,
-        size: Math.random() * 5 + 2,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        duration: Math.random() * 20 + 20,
-        delay: Math.random() * -20,
-        color,
-      };
-    }), []);
-
   return (
     <div id="hero" className="w-full relative z-10 flex-grow px-0 flex flex-col justify-center">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-12 items-center w-full max-w-[1200px] mx-auto px-4 sm:px-6 relative z-10">
@@ -117,44 +98,12 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
         <div
           className="relative flex justify-center items-center mt-2 lg:mt-0"
         >
-          {/* Subtle Floating Particles - Positioned around the image to avoid text */}
-          <div className="absolute inset-0 pointer-events-none overflow-visible z-0">
-            {particles.map((p) => (
-              <motion.div
-                key={p.id}
-                className="absolute rounded-full"
-                style={{
-                  width: p.size,
-                  height: p.size,
-                  left: `${p.x}%`,
-                  top: `${p.y}%`,
-                  backgroundColor: p.color,
-                  filter: 'blur(1px)',
-                }}
-                animate={{
-                  x: [0, Math.random() * 60 - 30, 0],
-                  y: [0, Math.random() * 60 - 30, 0],
-                  opacity: [0.1, 0.3, 0.1],
-                }}
-                transition={{
-                  duration: p.duration,
-                  repeat: Infinity,
-                  delay: p.delay,
-                  ease: "linear",
-                }}
-              />
-            ))}
-          </div>
-          
           <div 
             className="relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group mx-auto lg:mx-0"
             style={{ aspectRatio: '1 / 1' }}
           >
-            {/* Soft Blue Veil Overlay - Shaped to the image pixels - Hidden until image loaded */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: imageLoaded ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
+            {/* Soft Blue Veil Overlay - Shaped to the image pixels - Static to prevent flash */}
+            <div 
               className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10 hero-mask"
             />
             <picture className="absolute inset-0 w-full h-full z-[5] block">
