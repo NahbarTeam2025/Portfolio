@@ -3,103 +3,23 @@
   <head>
     <script>
       // Anti-DarkReader / Force Light Mode Script
-      // This script runs immediately to suppress extensions that try to inject dark mode
       (function() {
         const suppress = () => {
           const html = document.documentElement;
-          // Remove Dark Reader attributes
           if (html.hasAttribute('data-darkreader-scheme') || html.hasAttribute('data-darkreader-proxy-injected')) {
             const attrs = html.getAttributeNames();
             attrs.forEach(name => {
               if (name.includes('darkreader')) html.removeAttribute(name);
             });
           }
-          // Remove Dark Reader injected style tags
           const styles = document.querySelectorAll('style.darkreader, .darkreader--fallback, .darkreader--user-agent');
           styles.forEach(s => s.remove());
         };
-
-        // Monitor for any changes (extensions injecting styles)
         const observer = new MutationObserver(suppress);
-        observer.observe(document.documentElement, { 
-          attributes: true, 
-          childList: true, 
-          subtree: true 
-        });
-        
-        // Initial run
+        observer.observe(document.documentElement, { attributes: true, childList: true, subtree: true });
         suppress();
         window.addEventListener('DOMContentLoaded', suppress);
       })();
-    </script>
-
-    <!-- Google Analytics & Consent Mode v2 -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag; // Expose to global window object for React
-      
-      // 1. Set default consent to DENIED
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
-
-      // Check for existing consent in localStorage
-      try {
-        const consent = localStorage.getItem('cookie-consent');
-        if (consent === 'granted') {
-          console.log('GA: Existing consent found (granted), updating state');
-          gtag('consent', 'update', {
-            'analytics_storage': 'granted',
-            'ad_storage': 'granted',
-            'ad_user_data': 'granted',
-            'ad_personalization': 'granted'
-          });
-        }
-      } catch (e) {
-        console.warn('GA: Could not access localStorage for consent check');
-      }
-
-      // 2. Initialize GA
-      gtag('js', new Date());
-      gtag('config', 'G-90T4169WJP', {
-        'send_page_view': false // We handle this manually in React for SPA
-      });
-      
-      console.log('GA Initialized');
-
-      // 3. Defer loading of the actual GTM script to improve page speed
-      let gtmLoaded = false;
-      function loadGTM() {
-        if (gtmLoaded) return;
-        gtmLoaded = true;
-        
-        // High-level delay using requestIdleCallback if available for extra safety
-        const doLoad = () => {
-          var script = document.createElement('script');
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP';
-          script.async = true;
-          document.head.appendChild(script);
-        };
-        
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(doLoad);
-        } else {
-          doLoad();
-        }
-      }
-
-      window.addEventListener('load', function() {
-        // Load only after transition and main thread is free
-        setTimeout(() => {
-          if (document.readyState === 'complete') loadGTM();
-          else window.addEventListener('load', loadGTM, { once: true });
-        }, 4000); 
-      });
     </script>
 
     <meta charset="UTF-8" />
@@ -137,11 +57,15 @@
     <!-- Preload Critical Assets -->
     <link rel="preload" as="image" href="https://meine-assets.pages.dev/ichklein.webp" imagesrcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" imagesizes="(max-width: 768px) 100vw, 500px" fetchpriority="high">
     
-    <!-- Core Fonts: Load synchronously to prevent CLS -->
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
+    <!-- Asynchronous CSS Loading -->
+    <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
+    </noscript>
 
     <style>
-      /* Critical CSS for LCP and initial paint */
+      /* Critical CSS for Above-the-Fold (LCP and initial paint) */
       :root { font-family: 'Outfit', sans-serif; }
       body { margin: 0; padding: 0; background: #ffffff; color: #000000; overflow-x: hidden; }
       .dark body { background: #0a0a0a; color: #ffffff; }
@@ -400,5 +324,61 @@
     </div>
 
     <script type="module" defer src="/src/main.tsx"></script>
+
+    <!-- Google Analytics & Consent Mode v2 -->
+    <script defer>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag; // Expose to global window object for React
+      
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+
+      try {
+        const consent = localStorage.getItem('cookie-consent');
+        if (consent === 'granted') {
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+          });
+        }
+      } catch (e) {}
+
+      gtag('js', new Date());
+      gtag('config', 'G-90T4169WJP', {
+        'send_page_view': false // We handle this manually in React for SPA
+      });
+      
+      let gtmLoaded = false;
+      function loadGTM() {
+        if (gtmLoaded) return;
+        gtmLoaded = true;
+        const doLoad = () => {
+          var script = document.createElement('script');
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP';
+          script.defer = true;
+          document.body.appendChild(script);
+        };
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(doLoad);
+        } else {
+          doLoad();
+        }
+      }
+
+      window.addEventListener('load', function() {
+        setTimeout(() => {
+          if (document.readyState === 'complete') loadGTM();
+          else window.addEventListener('load', loadGTM, { once: true });
+        }, 1000); 
+      });
+    </script>
   </body>
 </html>
