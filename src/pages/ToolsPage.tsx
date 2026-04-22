@@ -27,7 +27,7 @@ export const ToolsPage: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col w-full h-full h-[100dvh] overflow-hidden pb-2">
+    <div className="flex flex-col w-full min-h-full pb-8">
       {/* Header - Very Compact */}
       <div className="flex flex-col gap-0 mb-2 md:mb-3 shrink-0">
         <div className="flex items-center gap-2">
@@ -85,18 +85,18 @@ export const ToolsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Tool Content - Scrollable if needed but flex-1 to fill space */}
-      <div className="flex-1 relative w-full overflow-hidden min-h-0">
-        <AnimatePresence mode="wait">
+      {/* Tool Content - Positioned container to prevent layout shifts */}
+      <div className="relative w-full min-h-[600px]">
+        <AnimatePresence mode="popLayout">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="w-full h-full overflow-y-auto lg:overflow-hidden glass-scrollbar"
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="w-full"
           >
-            <div className="h-full w-full">
+            <div className="w-full">
               {activeTab === 'security' && <PasswordGuardian />}
               {activeTab === 'accessibility' && <AccessibilityHealer />}
               {activeTab === 'marketing' && <FunnelTycoon />}

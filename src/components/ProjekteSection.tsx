@@ -15,7 +15,7 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
   const projects = t.projects.items;
 
   return (
-    <div className="flex flex-col items-start gap-1.5 md:gap-3 w-full flex-grow animate-in fade-in duration-500 text-black ProjekteSection-container">
+    <div className="flex flex-col items-start gap-1.5 md:gap-3 w-full animate-in fade-in duration-500 text-black ProjekteSection-container">
       <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
         {t.projects.title}
       </h1>
@@ -61,7 +61,7 @@ export const ProjekteSection = ({ setIsInitialEntrance, handleNavigate }: any) =
       )}
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-1 md:pb-2 pt-0 md:pt-1 gap-1 md:gap-1 mt-auto mb-7 md:mb-11 shrink-0">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-2 md:pb-4 pt-10 md:pt-16 gap-1 md:gap-1 mb-7 md:mb-11 shrink-0">
         <p className="text-black/80 text-[12px] md:text-[13px] text-center whitespace-normal md:whitespace-nowrap">
           {t.projects.cta.text}
         </p>

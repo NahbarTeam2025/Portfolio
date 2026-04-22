@@ -427,7 +427,7 @@ export default function App() {
       {/* Content Overlay */}
       
 
-      <div className={`relative z-10 flex flex-col ${currentPage === 'start' ? 'h-screen h-[100dvh] overflow-hidden' : 'min-h-screen min-h-[100dvh] overflow-x-hidden'}`}>
+      <div className={`relative z-10 flex flex-col ${currentPage === 'start' ? 'min-h-screen min-h-[100dvh]' : 'min-h-screen min-h-[100dvh]'}`}>
         {/* Navigation Wrapper */}
         <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-0 pointer-events-auto transition-all duration-300">
           {/* Navbar */}
@@ -631,14 +631,14 @@ export default function App() {
         {/* Main Content */}
         <main className={`flex-grow flex flex-col px-0 ${
           currentPage === 'start' 
-            ? 'pt-0 items-center justify-center text-left w-full' 
+            ? 'items-center justify-center text-left w-full' 
             : (currentPage === 'skills' || currentPage === 'projects')
-              ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 px-4 sm:px-6 max-w-[1200px] mx-auto w-full lg:min-h-screen'
+              ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 px-4 sm:px-6 max-w-[1200px] mx-auto w-full'
               : 'pt-24 md:pt-28 lg:pt-32 items-start justify-start pb-12 px-4 sm:px-6 max-w-[1200px] mx-auto w-full'
         } ${isMobileMenuOpen ? 'hidden lg:flex' : ''}`}>
             <div
               key={currentPage}
-              className={`w-full flex flex-col flex-grow items-start justify-center ${currentPage === 'start' ? 'min-h-screen px-0' : ''}`}
+              className={`w-full flex flex-col flex-grow items-start justify-center ${currentPage === 'start' ? 'px-0' : ''}`}
             >
                 {currentPage === 'start' ? (
                   <HeroSection handleNavigate={handleNavigate} />

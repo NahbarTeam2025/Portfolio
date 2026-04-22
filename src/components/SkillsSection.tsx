@@ -76,7 +76,7 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
       }}
       initial="hidden"
       animate="visible"
-      className="flex flex-col items-start gap-1 md:gap-2 w-full flex-grow"
+      className="flex flex-col items-start gap-1 md:gap-2 w-full"
     >
       <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
         {t.skills.title}
@@ -152,7 +152,7 @@ export const SkillsSection = React.memo(({ handleNavigate }: any) => {
       </m.div>
 
       {/* CTA Button */}
-      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-1 md:pb-2 pt-4 md:pt-5 gap-1 md:gap-1 mt-auto mb-4 md:mb-6 shrink-0">
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-1 md:pb-2 pt-8 md:pt-12 gap-1 md:gap-1 mb-4 md:mb-6 shrink-0">
         <p className="text-black/80 text-[12px] md:text-[13px] text-center whitespace-normal md:whitespace-nowrap">
           {t.skills.cta.text}
         </p>

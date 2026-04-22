@@ -368,7 +368,7 @@ export const translations = {
       ctaText: 'Theoretisch fundiert, praktisch motiviert – bereit für den Einsatz in deinem Team.',
       ctaButton: 'Unverbindlich kennenlernen',
       items: [
-        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN/ Webmasters Europe e.V.', date: '21.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digital_marketing_manager.pdf' },
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN / Webmasters Europe e.V.', date: '21.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digital_marketing_manager.pdf' },
         { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', date: '19.01.2026', info: 'Note: 94% (ausgezeichnet)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
         { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH / WPI', date: '19.02.2026', info: 'Note: 89% (sehr gut)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
         { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH / WPI', date: '12.03.2026', info: 'Note: 93% (ausgezeichnet)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
@@ -888,7 +888,7 @@ Sie können Ihre Einwilligung jederzeit über das Cookie-Banner widerrufen oder 
       ctaText: 'Theoretically sound, practically motivated – ready for use in your team.',
       ctaButton: 'Get to know each other non-bindingly',
       items: [
-        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN/ Webmasters Europe e.V.', date: '21.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digital_marketing_manager.pdf' },
+        { id: 1, title: 'Digital Marketing Manager', issuer: 'GFN / Webmasters Europe e.V.', date: '21.04.2026', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_digital_marketing_manager.pdf' },
         { id: 5, title: 'Social Media Marketing', issuer: 'GFN GmbH / WPI', date: '19.01.2026', info: 'Grade: 94% (excellent)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf' },
         { id: 6, title: 'SEO Manager', issuer: 'GFN GmbH / WPI', date: '19.02.2026', info: 'Grade: 89% (very good)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf' },
         { id: 7, title: 'PPC Manager', issuer: 'GFN GmbH / WPI', date: '12.03.2026', info: 'Grade: 93% (excellent)', url: 'https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf' },
