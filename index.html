@@ -339,38 +339,28 @@
       </nav>
     </noscript>
     <div id="root">
-      <!-- High-performance skeleton/fallback to satisfy LCP/FCP -->
-      <div class="skel-wrap" id="initial-skeleton">
-        <div class="skel-cont">
-          <div class="skel-text">
-            <div class="skel-badge">
-              <span style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></span>
-              <span style="font-size: 9px; font-weight: 700; color: rgba(0,0,0,0.7); letter-spacing: 0.4em; text-transform: uppercase;">Status: Available</span>
+      <!-- High-performance loading fallback to prevent content flicker -->
+      <div id="initial-skeleton" style="position: fixed; inset: 0; z-index: 9999; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease-in-out;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 24px;">
+          <div style="position: relative;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid #eff6ff; border-top: 2px solid #3b82f6; animation: spin 1s linear infinite;"></div>
+            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(59, 130, 246, 0.1); animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></div>
             </div>
-            <h1 class="skel-h1">Robert Erbach</h1>
-            <h2 class="skel-h2">Ich denke weiter, als du fragst.</h2>
-            <div style="font-family: 'Outfit', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5em; font-weight: 700; color: #000000; margin-bottom: 1.5rem;">KI-gestützte Frontends & durchdachte Systeme</div>
-            <div style="height: 1px; width: 200px; background: rgba(0,0,0,0.1); margin-bottom: 2rem;"></div>
           </div>
-          <div class="skel-img-wrap">
-            <!-- Blue Veil Overlay in Skeleton - Hidden until image loads -->
-            <div id="skel-veil" style="position: absolute; inset: 0; background-color: rgba(96, 165, 250, 0.2); mix-blend-mode: color; pointer-events: none; z-index: 10; opacity: 0; transition: opacity 0.3s;" class="hero-mask"></div>
-            <img 
-              src="https://meine-assets.pages.dev/ichklein.webp" 
-              srcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" 
-              sizes="(max-width: 768px) 100vw, 500px" 
-              alt="Robert Erbach" 
-              width="500" 
-              height="500" 
-              fetchpriority="high" 
-              loading="eager" 
-              decoding="sync" 
-              onload="document.getElementById('skel-veil').style.opacity='1'"
-              style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 25px 25px rgba(0,0,0,0.15));" 
-            />
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: #000000; letter-spacing: -0.04em; margin: 0;">Robert Erbach</h2>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(0,0,0,0.4);">Initializing Experience</span>
+            </div>
           </div>
         </div>
       </div>
+      <style>
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(0.9); } }
+      </style>
     </div>
 
     <script type="module" defer src="/src/main.tsx"></script>

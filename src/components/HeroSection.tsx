@@ -8,6 +8,13 @@ import { MagneticButton, IconShift } from './MagneticButton';
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
   const [imageLoaded, setImageLoaded] = React.useState(false);
+  const imgRef = React.useRef<HTMLImageElement>(null);
+
+  React.useEffect(() => {
+    if (imgRef.current?.complete) {
+      setImageLoaded(true);
+    }
+  }, []);
 
   return (
     <div id="hero" className="w-full relative z-10 flex-grow px-0 flex flex-col justify-center">
@@ -99,10 +106,10 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
           className="relative flex justify-center items-center mt-2 lg:mt-0"
         >
           <div 
-            className="relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group mx-auto lg:mx-0"
+            className={`relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group mx-auto lg:mx-0 transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             style={{ aspectRatio: '1 / 1' }}
           >
-            {/* Soft Blue Veil Overlay - Shaped to the image pixels - Static to prevent flash */}
+            {/* Soft Blue Veil Overlay - Shaped to the image pixels */}
             <div 
               className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10 hero-mask"
             />
@@ -112,6 +119,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
                 srcSet="https://meine-assets.pages.dev/ichklein.webp" 
               />
               <img 
+                ref={imgRef}
                 src="https://meine-assets.pages.dev/ich.webp" 
                 alt="Robert Erbach" 
                 width="500"
