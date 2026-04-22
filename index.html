@@ -56,6 +56,8 @@
     
     <!-- Preload Critical Assets -->
     <link rel="preload" as="image" href="https://meine-assets.pages.dev/ichklein.webp" imagesrcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" imagesizes="(max-width: 768px) 100vw, 500px" fetchpriority="high">
+    <link rel="preload" href="https://fonts.bunny.net/css?family=space-grotesk:700|outfit:400,500,600,700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=space-grotesk:700|outfit:400,500,600,700&display=swap">
     
     <!-- Asynchronous CSS Loading -->
     <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
@@ -113,8 +115,12 @@
       .skel-text {
         display: flex; flex-direction: column; align-items: center; text-align: center;
       }
+      .skel-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 9999px; background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.1); margin-bottom: 0.5rem; }
+      .skel-h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.04em; color: #000000; font-size: clamp(1.6rem, 8vw, 5rem); line-height: 0.9; margin: 0 0 0.5rem -0.05em; text-align: inherit; }
+      .skel-h2 { font-family: 'Outfit', sans-serif; color: #3b82f6; font-size: clamp(0.85rem, 3vw, 1.8rem); font-weight: 600; margin: 0 0 0.75rem 0; line-height: 1.2; text-align: inherit; }
+      
       .skel-img-wrap {
-        max-width: 220px; width: 100%; margin: 0 auto; aspect-ratio: 1/1;
+        max-width: 220px; width: 100%; margin: 0 auto; aspect-ratio: 1/1; position: relative;
       }
       @media (min-width: 640px) {
         .skel-img-wrap { max-width: 320px; }
@@ -128,6 +134,9 @@
           align-items: flex-start;
           text-align: left;
         }
+        .skel-badge { margin-bottom: 1.5rem; }
+        .skel-h1 { margin-bottom: 1rem; }
+        .skel-h2 { margin-bottom: 1.5rem; }
         .skel-img-wrap {
           max-width: 500px;
           margin-left: auto;
@@ -335,16 +344,30 @@
       <div class="skel-wrap" id="initial-skeleton">
         <div class="skel-cont">
           <div class="skel-text">
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 9999px; background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
+            <div class="skel-badge">
               <span style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></span>
               <span style="font-size: 9px; font-weight: 700; color: rgba(0,0,0,0.7); letter-spacing: 0.4em; text-transform: uppercase;">Status: Available</span>
             </div>
-            <h1 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.04em; color: #000000; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 0.9; margin: 0 0 1rem 0;">Robert Erbach</h1>
-            <h2 style="font-family: 'Outfit', sans-serif; color: #3b82f6; font-size: clamp(1rem, 3vw, 1.8rem); font-weight: 600; margin: 0 0 1.5rem 0;">Digitale Lösungen & KI-Workflows</h2>
+            <h1 class="skel-h1">Robert Erbach</h1>
+            <h2 class="skel-h2">Digitale Lösungen & KI-Workflows</h2>
             <div style="height: 1px; width: 200px; background: rgba(0,0,0,0.1); margin-bottom: 2rem;"></div>
           </div>
           <div class="skel-img-wrap">
-            <img src="https://meine-assets.pages.dev/ichklein.webp" srcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" sizes="(max-width: 768px) 100vw, 500px" alt="Robert Erbach" width="500" height="500" fetchpriority="high" loading="eager" decoding="sync" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 25px 25px rgba(0,0,0,0.15)); border-radius: 20px;" />
+            <!-- Blue Veil Overlay in Skeleton - Hidden until image loads -->
+            <div id="skel-veil" style="position: absolute; inset: 0; background-color: rgba(96, 165, 250, 0.2); mix-blend-mode: color; pointer-events: none; z-index: 10; opacity: 0; transition: opacity 0.3s;" class="hero-mask"></div>
+            <img 
+              src="https://meine-assets.pages.dev/ichklein.webp" 
+              srcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" 
+              sizes="(max-width: 768px) 100vw, 500px" 
+              alt="Robert Erbach" 
+              width="500" 
+              height="500" 
+              fetchpriority="high" 
+              loading="eager" 
+              decoding="sync" 
+              onload="document.getElementById('skel-veil').style.opacity='1'"
+              style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 25px 25px rgba(0,0,0,0.15));" 
+            />
           </div>
         </div>
       </div>

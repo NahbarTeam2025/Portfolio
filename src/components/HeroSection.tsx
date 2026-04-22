@@ -7,6 +7,7 @@ import { MagneticButton, IconShift } from './MagneticButton';
 
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
+  const [imageLoaded, setImageLoaded] = React.useState(false);
 
   // Define particles for the background
   const particles = React.useMemo(() => 
@@ -149,9 +150,12 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
             className="relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group mx-auto lg:mx-0"
             style={{ aspectRatio: '1 / 1' }}
           >
-            {/* Soft Blue Veil Overlay - Shaped to the image pixels */}
-            <div 
-              className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10 opacity-100 hero-mask"
+            {/* Soft Blue Veil Overlay - Shaped to the image pixels - Hidden until image loaded */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: imageLoaded ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10 hero-mask"
             />
             <picture className="absolute inset-0 w-full h-full z-[5] block">
               <source 
@@ -166,6 +170,7 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
                 fetchPriority="high"
                 loading="eager"
                 decoding="sync"
+                onLoad={() => setImageLoaded(true)}
                 className="w-full h-full object-contain drop-shadow-2xl block"
                 referrerPolicy="no-referrer"
               />

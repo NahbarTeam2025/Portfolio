@@ -631,7 +631,7 @@ export default function App() {
         {/* Main Content */}
         <main className={`flex-grow flex flex-col px-0 ${
           currentPage === 'start' 
-            ? 'pt-0 items-start justify-center text-left w-full' 
+            ? 'pt-0 items-center justify-center text-left w-full' 
             : (currentPage === 'skills' || currentPage === 'projects')
               ? 'pt-20 md:pt-24 lg:pt-28 items-start justify-start pb-4 px-4 sm:px-6 max-w-[1200px] mx-auto w-full lg:min-h-screen'
               : 'pt-24 md:pt-28 lg:pt-32 items-start justify-start pb-12 px-4 sm:px-6 max-w-[1200px] mx-auto w-full'
