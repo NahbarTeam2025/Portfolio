@@ -5,16 +5,34 @@ import { trackEvent } from '@/lib/analytics';
 
 import { MagneticButton, IconShift } from './MagneticButton';
 
+// Global flag to track if the hero image has been loaded at least once during the session
+let globalHeroImageLoaded = false;
+
 export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (page: string) => void }) => {
   const { t } = useLanguage();
-  const [imageLoaded, setImageLoaded] = React.useState(false);
+  const [imageLoaded, setImageLoaded] = React.useState(globalHeroImageLoaded);
+  const [veilVisible, setVeilVisible] = React.useState(false);
   const imgRef = React.useRef<HTMLImageElement>(null);
 
-  React.useEffect(() => {
-    if (imgRef.current?.complete) {
-      setImageLoaded(true);
-    }
+  React.useLayoutEffect(() => {
+    const checkStatus = () => {
+      if (globalHeroImageLoaded || imgRef.current?.complete) {
+        globalHeroImageLoaded = true;
+        setImageLoaded(true);
+        // Small delay to ensure the image pixels are painted before the overlay hits
+        const t = setTimeout(() => setVeilVisible(true), 60);
+        return () => clearTimeout(t);
+      }
+    };
+    
+    checkStatus();
   }, []);
+
+  const onImageLoad = () => {
+    globalHeroImageLoaded = true;
+    setImageLoaded(true);
+    setTimeout(() => setVeilVisible(true), 60);
+  };
 
   return (
     <div id="hero" className="w-full relative z-10 flex-grow px-0 flex flex-col justify-center">
@@ -106,12 +124,12 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
           className="relative flex justify-center items-center mt-2 lg:mt-0"
         >
           <div 
-            className={`relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group mx-auto lg:mx-0 transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            className="relative w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[500px] group mx-auto lg:mx-0"
             style={{ aspectRatio: '1 / 1' }}
           >
-            {/* Soft Blue Veil Overlay - Shaped to the image pixels */}
+            {/* Soft Blue Veil Overlay - Shaped to the image pixels - Only shows after load */}
             <div 
-              className="absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10 hero-mask"
+              className={`absolute inset-0 bg-blue-400/20 mix-blend-color pointer-events-none z-10 hero-mask ${globalHeroImageLoaded ? '' : 'transition-opacity duration-700'} ${veilVisible ? 'opacity-100' : 'opacity-0'}`}
             />
             <picture className="absolute inset-0 w-full h-full z-[5] block">
               <source 
@@ -127,8 +145,8 @@ export const HeroSection = React.memo(({ handleNavigate }: { handleNavigate: (pa
                 fetchPriority="high"
                 loading="eager"
                 decoding="sync"
-                onLoad={() => setImageLoaded(true)}
-                className="w-full h-full object-contain drop-shadow-2xl block"
+                onLoad={onImageLoad}
+                className={`w-full h-full object-contain drop-shadow-2xl block ${globalHeroImageLoaded ? '' : 'animate-in fade-in duration-700'}`}
                 referrerPolicy="no-referrer"
               />
             </picture>

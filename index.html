@@ -23,46 +23,37 @@
     </script>
 
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev data: https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net https://grainy-gradients.vercel.app; media-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com;">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="supported-color-schemes" content="light dark" />
-    <meta name="darkreader-lock" content="true" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
     
-    <!-- Security Meta Tags -->
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+    <!-- Preload LCP Image - PRIORITY #1 -->
+    <link rel="preload" as="image" href="https://meine-assets.pages.dev/ichklein.webp" imagesrcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" imagesizes="(max-width: 768px) 100vw, 500px" fetchpriority="high">
 
+    <!-- Performance Resource Hints -->
+    <link rel="preconnect" href="https://meine-assets.pages.dev" crossorigin />
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
+    <link rel="dns-prefetch" href="https://meine-assets.pages.dev" />
+    <link rel="dns-prefetch" href="https://fonts.bunny.net" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
     <title>Robert Erbach – Portfolio</title>
     <meta name="description" content="Ich denke weiter, als du fragst. KI-gestützte Frontends & durchdachte Systeme von Robert Erbach. Entdecken Sie meine KI-Workflows und Webprojekte." />
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev data: https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net https://grainy-gradients.vercel.app; media-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com;">
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://roberterbach.de/" />
     <meta name="author" content="Robert Erbach">
     <meta name="publisher" content="Robert Erbach">
     <meta name="copyright" content="Robert Erbach">
-
-    <!-- Performance Resource Hints -->
-    <link rel="preconnect" href="https://meine-assets.pages.dev" />
-    <link rel="preconnect" href="https://3dab3910.meine-assets.pages.dev" />
-    <link rel="dns-prefetch" href="https://meine-assets.pages.dev" />
-    <link rel="dns-prefetch" href="https://3dab3910.meine-assets.pages.dev" />
-    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.bunny.net" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
     
-    <!-- Preload Critical Assets -->
-    <link rel="preload" as="image" href="https://meine-assets.pages.dev/ichklein.webp" imagesrcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" imagesizes="(max-width: 768px) 100vw, 500px" fetchpriority="high">
-    <link rel="preload" href="https://fonts.bunny.net/css?family=space-grotesk:700|outfit:400,500,600,700&display=swap" as="style">
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=space-grotesk:700|outfit:400,500,600,700&display=swap">
-    
-    <!-- Asynchronous CSS Loading -->
-    <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
+    <!-- Asynchronous CSS Loading with minimal impact on FCP -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=space-grotesk:700|outfit:400,500,600,700&display=swap" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" media="print" onload="this.media='all'" />
     <noscript>
+      <link rel="stylesheet" href="https://fonts.bunny.net/css?family=space-grotesk:700|outfit:400,500,600,700&display=swap">
       <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
     </noscript>
 
@@ -414,10 +405,12 @@
       }
 
       window.addEventListener('load', function() {
+        // Significantly delay non-critical third-party scripts
+        const delay = window.innerWidth < 768 ? 4000 : 2500;
         setTimeout(() => {
           if (document.readyState === 'complete') loadGTM();
           else window.addEventListener('load', loadGTM, { once: true });
-        }, 1000); 
+        }, delay); 
       });
     </script>
   </body>

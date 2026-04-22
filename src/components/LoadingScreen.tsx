@@ -5,16 +5,15 @@ export const LoadingScreen = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Artificial delay to ensure everything is stable
+    // Ultra-fast transition to maximize PageSpeed scores
     const timer = setTimeout(() => {
-      // Remove the initial skeleton from DOM once React is ready
       const skeleton = document.getElementById('initial-skeleton');
       if (skeleton) {
         skeleton.style.opacity = '0';
-        setTimeout(() => skeleton.remove(), 600);
+        setTimeout(() => skeleton.remove(), 300);
       }
       setIsVisible(false);
-    }, 400);
+    }, 50);
 
     return () => clearTimeout(timer);
   }, []);
