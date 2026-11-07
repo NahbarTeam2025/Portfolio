@@ -284,6 +284,7 @@ h1, h2, h3, h4 {
 .btn-sm {
   padding: 0.5em 1em;
   font-size: 0.82rem;
+  min-height: 44px;
 }
 
 /* ============ NAVIGATION ============ */
@@ -422,7 +423,7 @@ header.nav.scrolled {
     align-items: stretch;
     gap: 2px;
     padding: 14px clamp(16px, 4vw, 32px) 22px;
-    background: rgba(6, 8, 13, 0.985);
+    background: #06080d;
     -webkit-backdrop-filter: blur(24px) saturate(140%);
     backdrop-filter: blur(24px) saturate(140%);
     border-bottom: 1px solid var(--stroke);
@@ -450,8 +451,8 @@ header.nav.scrolled {
 @media (prefers-reduced-transparency: reduce) {
   header.nav, .nav ul, .glass, .hero-visual-card {
     background: #06080d !important;
-    backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
   }
 }
 
@@ -1802,6 +1803,9 @@ footer.f {
   color: var(--ink-dim);
   font-size: 0.86rem;
   text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .f-in a:hover {
