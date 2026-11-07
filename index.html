@@ -2,161 +2,50 @@
 <html lang="de">
   <head>
     <script>
-      // Anti-DarkReader / Force Light Mode Script
-      (function() {
-        const suppress = () => {
-          const html = document.documentElement;
-          if (html.hasAttribute('data-darkreader-scheme') || html.hasAttribute('data-darkreader-proxy-injected')) {
-            const attrs = html.getAttributeNames();
-            attrs.forEach(name => {
-              if (name.includes('darkreader')) html.removeAttribute(name);
-            });
-          }
-          const styles = document.querySelectorAll('style.darkreader, .darkreader--fallback, .darkreader--user-agent');
-          styles.forEach(s => s.remove());
-        };
-        const observer = new MutationObserver(suppress);
-        observer.observe(document.documentElement, { attributes: true, childList: true, subtree: true });
-        suppress();
-        window.addEventListener('DOMContentLoaded', suppress);
-      })();
+      // Suppress Vite HMR WebSocket errors in environments where WebSockets are disabled
+      window.addEventListener('error', function(e) {
+        if (e.message && (e.message.indexOf('WebSocket') !== -1 || e.message.indexOf('createWebSocketModuleRunnerTransport') !== -1)) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(e) {
+        if (e.reason && (String(e.reason).indexOf('WebSocket') !== -1 || String(e.reason).indexOf('createWebSocketModuleRunnerTransport') !== -1)) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      }, true);
     </script>
-
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    
-    <!-- Preload LCP Image - PRIORITY #1 -->
-    <link rel="preload" as="image" href="https://meine-assets.pages.dev/ichklein.webp" imagesrcset="https://meine-assets.pages.dev/ichklein.webp 640w, https://meine-assets.pages.dev/ich.webp 1920w" imagesizes="(max-width: 768px) 100vw, 500px" fetchpriority="high">
-
-    <!-- Performance Resource Hints -->
-    <link rel="preconnect" href="https://meine-assets.pages.dev" crossorigin />
-    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
-    <link rel="dns-prefetch" href="https://meine-assets.pages.dev" />
-    <link rel="dns-prefetch" href="https://fonts.bunny.net" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    
-    <title>Robert Erbach – Portfolio</title>
-    <meta name="description" content="Ich denke weiter, als du fragst. KI-gestützte Frontends & durchdachte Systeme von Robert Erbach. Entdecken Sie meine KI-Workflows und Webprojekte." />
-    
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev fonts.bunny.net static.cloudflareinsights.com; img-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev data: https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net https://grainy-gradients.vercel.app; media-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev; font-src 'self' fonts.bunny.net; connect-src 'self' meine-assets.pages.dev *.meine-assets.pages.dev static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com https://*.g.doubleclick.net; style-src 'self' 'unsafe-inline' fonts.bunny.net; script-src 'self' 'unsafe-inline' static.cloudflareinsights.com https://www.googletagmanager.com https://*.google-analytics.com;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robert Erbach – Portfolio | KI-gestützte Frontends &amp; durchdachte Systeme</title>
+    <meta name="description" content="Ich denke weiter, als du fragst. KI-gestützte Frontends &amp; durchdachte Systeme von Robert Erbach. Entdecken Sie meine KI-Workflows und Webprojekte." />
+    <meta name="author" content="Robert Erbach" />
+    <meta name="publisher" content="Robert Erbach" />
+    <meta name="copyright" content="Robert Erbach" />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#05070e" />
+    <meta name="color-scheme" content="dark light" />
     <link rel="canonical" href="https://roberterbach.de/" />
-    <meta name="author" content="Robert Erbach">
-    <meta name="publisher" content="Robert Erbach">
-    <meta name="copyright" content="Robert Erbach">
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
     
-    <!-- Asynchronous CSS Loading with minimal impact on FCP -->
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=space-grotesk:700|outfit:400,500,600,700&display=swap" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.bunny.net/css?family=space-grotesk:700|outfit:400,500,600,700&display=swap">
-      <link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,500,600|jetbrains-mono:400,500|outfit:300,400,500,600,700|space-grotesk:300,400,500,600,700|audiowide:400|alex-brush:400|mr-dafoe:400&display=swap" />
-    </noscript>
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
 
-    <style>
-      /* Critical CSS for Above-the-Fold (LCP and initial paint) */
-      :root { font-family: 'Outfit', sans-serif; }
-      body { margin: 0; padding: 0; background: #ffffff; color: #000000; overflow-x: hidden; }
-      #root { min-height: 100vh; display: flex; flex-direction: column; }
-      
-      @keyframes hero-fade-in {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .animate-hero-fade-in {
-        animation: hero-fade-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-      }
-      .hero-mask {
-        mask-image: url(https://meine-assets.pages.dev/ich.webp);
-        -webkit-mask-image: url(https://meine-assets.pages.dev/ich.webp);
-        mask-size: contain; -webkit-mask-size: contain;
-        mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;
-        mask-position: center; -webkit-mask-position: center;
-      }
-      @media (max-width: 768px) {
-        .hero-mask {
-          mask-image: url(https://meine-assets.pages.dev/ichklein.webp);
-          -webkit-mask-image: url(https://meine-assets.pages.dev/ichklein.webp);
-        }
-      }
-      
-      /* Placeholder for LCP text to prevent layout shift and show something early */
-      .lcp-text-placeholder {
-        font-family: 'Outfit', sans-serif;
-        font-weight: 700;
-        letter-spacing: -0.04em;
-        line-height: 0.9;
-      }
-
-      /* Skeleton Layout */
-      .skel-wrap {
-        display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background: #ffffff; transition: background 0.3s;
-      }
-      .skel-cont {
-        max-width: 1200px; width: 100%; padding: 0 1rem; display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 1rem; align-items: center; 
-      }
-      @media (min-width: 640px) {
-        .skel-cont { padding: 0 1.5rem; }
-      }
-      .skel-text {
-        display: flex; flex-direction: column; align-items: center; text-align: center;
-      }
-      .skel-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; border-radius: 9999px; background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.1); margin-bottom: 0.5rem; }
-      .skel-h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.04em; color: #000000; font-size: clamp(1.6rem, 8vw, 5rem); line-height: 0.9; margin: 0 0 0.5rem -0.05em; text-align: inherit; }
-      .skel-h2 { font-family: 'Outfit', sans-serif; color: #3b82f6; font-size: clamp(0.85rem, 3vw, 1.8rem); font-weight: 600; margin: 0 0 0.75rem 0; line-height: 1.2; text-align: inherit; }
-      
-      .skel-img-wrap {
-        max-width: 220px; width: 100%; margin: 0 auto; aspect-ratio: 1/1; position: relative;
-      }
-      @media (min-width: 640px) {
-        .skel-img-wrap { max-width: 320px; }
-      }
-      @media (min-width: 1024px) {
-        .skel-cont {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 3rem;
-        }
-        .skel-text {
-          align-items: flex-start;
-          text-align: left;
-        }
-        .skel-badge { margin-bottom: 1.5rem; }
-        .skel-h1 { margin-bottom: 1rem; }
-        .skel-h2 { margin-bottom: 1.5rem; }
-        .skel-img-wrap {
-          max-width: 500px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-    </style>
-    
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://roberterbach.de/" />
     <meta property="og:site_name" content="Robert Erbach" />
-    <meta property="og:title" content="Robert Erbach – Portfolio" />
-    <meta property="og:description" content="Ich denke weiter, als du fragst. KI-gestützte Frontends & durchdachte Systeme von Robert Erbach." />
-    <meta property="og:image" content="https://meine-assets.pages.dev/logo.png" />
     <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content="Robert Erbach – Portfolio" />
+    <meta property="og:description" content="Ich denke weiter, als du fragst. KI-gestützte Frontends &amp; durchdachte Systeme von Robert Erbach." />
+    <meta property="og:image" content="https://meine-assets.pages.dev/logo.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Robert Erbach – Portfolio" />
+    <meta name="twitter:description" content="Ich denke weiter, als du fragst. KI-gestützte Frontends &amp; durchdachte Systeme von Robert Erbach." />
+    <meta name="twitter:image" content="https://meine-assets.pages.dev/logo.png" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://roberterbach.de/" />
-    <meta property="twitter:title" content="Robert Erbach – Portfolio" />
-    <meta property="twitter:description" content="Ich denke weiter, als du fragst. KI-gestützte Frontends & durchdachte Systeme von Robert Erbach." />
-    <meta property="twitter:image" content="https://meine-assets.pages.dev/logo.png" />
-
-    <link rel="icon" type="image/webp" href="https://meine-assets.pages.dev/faviconserp.webp" />
-    <link rel="icon" type="image/png" sizes="96x96" href="https://3dab3910.meine-assets.pages.dev/favicon-96x96.png" />
-    <link rel="shortcut icon" href="https://3dab3910.meine-assets.pages.dev/favicon.ico" />
-    <link rel="apple-touch-icon" href="https://07f33f72.meine-assets.pages.dev/apple-touch-icon.png" />
-    <link rel="manifest" href="https://meine-assets.pages.dev/site.webmanifest" />
-
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -168,54 +57,7 @@
           "name": "Robert Erbach",
           "alternateName": ["roberterbach.de", "Robert Erbach Portfolio"],
           "description": "Ich denke weiter, als du fragst. KI-gestützte Frontends & durchdachte Systeme von Robert Erbach.",
-          "publisher": {
-            "@id": "https://roberterbach.de/#person"
-          },
-          "hasPart": [
-            { "@id": "https://roberterbach.de/ueber-mich/#webpage" },
-            { "@id": "https://roberterbach.de/projekte/#webpage" },
-            { "@id": "https://roberterbach.de/skills/#webpage" },
-            { "@id": "https://roberterbach.de/zertifikate/#webpage" },
-            { "@id": "https://roberterbach.de/tools/#webpage" },
-            { "@id": "https://roberterbach.de/kontakt/#webpage" }
-          ]
-        },
-        {
-          "@type": "SiteNavigationElement",
-          "@id": "https://roberterbach.de/#navigation",
-          "name": "Hauptnavigation",
-          "hasPart": [
-            {
-              "@type": "WebPage",
-              "name": "Über mich",
-              "url": "https://roberterbach.de/ueber-mich"
-            },
-            {
-              "@type": "WebPage",
-              "name": "Projekte",
-              "url": "https://roberterbach.de/projekte"
-            },
-            {
-              "@type": "WebPage",
-              "name": "Skills",
-              "url": "https://roberterbach.de/skills"
-            },
-            {
-              "@type": "WebPage",
-              "name": "Zertifikate",
-              "url": "https://roberterbach.de/zertifikate"
-            },
-            {
-              "@type": "WebPage",
-              "name": "Tools",
-              "url": "https://roberterbach.de/tools"
-            },
-            {
-              "@type": "WebPage",
-              "name": "Kontakt",
-              "url": "https://roberterbach.de/kontakt"
-            }
-          ]
+          "publisher": { "@id": "https://roberterbach.de/#person" }
         },
         {
           "@type": "Person",
@@ -226,9 +68,7 @@
           "image": "https://meine-assets.pages.dev/logo.png",
           "email": "roberterbach@web.de",
           "telephone": "+4915204041124",
-          "sameAs": [
-            "https://www.linkedin.com/in/robert-erbach-a173b2371"
-          ],
+          "sameAs": ["https://www.linkedin.com/in/robert-erbach-a173b2371"],
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Am Stadtpark 43",
@@ -237,181 +77,72 @@
             "addressCountry": "DE"
           },
           "knowsAbout": [
-            "Digital Marketing",
-            "SEO",
-            "Web Analytics",
-            "Web Design",
-            "Prompt Engineering",
-            "Google Analytics 4",
-            "Content Creation",
-            "AI Workflows"
+            "Digital Marketing", "SEO", "Web Analytics", "Web Design",
+            "Prompt Engineering", "Google Analytics 4", "Content Creation", "AI Workflows"
           ]
         },
         {
-          "@type": "WebPage",
-          "@id": "https://roberterbach.de/ueber-mich/#webpage",
-          "url": "https://roberterbach.de/ueber-mich",
-          "name": "Über mich | Robert Erbach",
-          "isPartOf": { "@id": "https://roberterbach.de/#website" },
-          "description": "Erfahren Sie mehr über meinen Werdegang als Digital Marketing Manager und Web Designer."
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://roberterbach.de/projekte/#webpage",
-          "url": "https://roberterbach.de/projekte",
-          "name": "Projekte | Robert Erbach",
-          "isPartOf": { "@id": "https://roberterbach.de/#website" },
-          "description": "Ein Einblick in meine aktuellen Projekte und KI-Workflows."
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://roberterbach.de/skills/#webpage",
-          "url": "https://roberterbach.de/skills",
-          "name": "Skills & Expertise | Robert Erbach",
-          "isPartOf": { "@id": "https://roberterbach.de/#website" },
-          "description": "Meine technischen und kreativen Fähigkeiten in den Bereichen Webdesign, SEO und KI."
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://roberterbach.de/zertifikate/#webpage",
-          "url": "https://roberterbach.de/zertifikate",
-          "name": "Zertifikate | Robert Erbach",
-          "isPartOf": { "@id": "https://roberterbach.de/#website" },
-          "description": "Meine Qualifikationen und Zertifizierungen im digitalen Bereich."
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://roberterbach.de/tools/#webpage",
-          "url": "https://roberterbach.de/tools",
-          "name": "KI-Tools | Robert Erbach",
-          "isPartOf": { "@id": "https://roberterbach.de/#website" },
-          "description": "Nützliche KI-Tools und Ressourcen für effizientes Arbeiten."
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://roberterbach.de/kontakt/#webpage",
-          "url": "https://roberterbach.de/kontakt",
-          "name": "Kontakt | Robert Erbach",
-          "isPartOf": { "@id": "https://roberterbach.de/#website" },
-          "description": "Treten Sie mit mir in Kontakt für Projekte oder Anfragen."
-        },
-        {
-          "@type": "CreativeWork",
-          "@id": "https://roberterbach.de/#creativework-webdesign",
-          "name": "Web Design & Development Portfolio",
-          "author": { "@id": "https://roberterbach.de/#person" },
-          "description": "Erstellung von modernen, responsiven Landingpages und Webprojekten."
-        },
-        {
-          "@type": "CreativeWork",
-          "@id": "https://roberterbach.de/#creativework-seo",
-          "name": "SEO & Web Analytics Expertise",
-          "author": { "@id": "https://roberterbach.de/#person" },
-          "description": "Optimierung der Sichtbarkeit und datengestützte Analyse von Webseiten."
-        },
-        {
-          "@type": "CreativeWork",
-          "@id": "https://roberterbach.de/#creativework-ai",
-          "name": "AI Integration & Prompt Engineering Solutions",
-          "author": { "@id": "https://roberterbach.de/#person" },
-          "description": "Entwicklung und Integration von KI-Workflows zur Prozessoptimierung."
+          "@type": "ItemList",
+          "name": "Ausgewählte Arbeiten",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "item": {
+                "@type": "CreativeWork",
+                "name": "Visibility Lab – SEO-Landingpage mit KI-Workflows",
+                "author": { "@id": "https://roberterbach.de/#person" },
+                "url": "https://visibilitylab.roberterbach.de/",
+                "description": "Konzeption und Umsetzung einer Landingpage für ein SEO-System mit integrierten KI-Workflows."
+            }},
+            { "@type": "ListItem", "position": 2, "item": {
+                "@type": "CreativeWork",
+                "name": "Vier-KI-Workflow",
+                "author": { "@id": "https://roberterbach.de/#person" },
+                "description": "Ein vollständiger, automatisierbarer Workflow, der vier KI-Systeme mit klar definierten Rollen kombiniert."
+            }},
+            { "@type": "ListItem", "position": 3, "item": {
+                "@type": "CreativeWork",
+                "name": "GA4-Tracking-Implementierung (Nuraghi Outdoor Experience)",
+                "author": { "@id": "https://roberterbach.de/#person" },
+                "description": "Konzeption eines umfassenden Tracking-Frameworks am Beispiel E-Commerce – von der Event-Strategie bis zum fertigen Implementierungsdokument."
+            }}
+          ]
         }
       ]
     }
     </script>
-    
-    <!-- Performance Optimizations -->
+    <style>
+      body { background: #05070e; color: #e8edf8; margin: 0; padding: 0; }
+      #pre-initial {
+        position: fixed; inset: 0; z-index: 999; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 18px;
+        background: radial-gradient(30rem 20rem at 50% 30%, rgba(91, 140, 255, 0.14), transparent 60%), #05070e;
+        color: #e8edf8; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      #pre-initial .ring {
+        width: 52px; height: 52px; border-radius: 50%;
+        border: 2px solid rgba(91, 140, 255, 0.25); border-top-color: #5b8cff;
+        animation: spin-pre 1s linear infinite;
+      }
+      #pre-initial .nm { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+      #pre-initial .st {
+        display: flex; align-items: center; gap: 8px; font-family: monospace; font-size: 10px;
+        text-transform: uppercase; letter-spacing: 0.3em; color: #727c93; margin: 0;
+      }
+      #pre-initial .dot {
+        width: 7px; height: 7px; border-radius: 50%; background: #34d399;
+        box-shadow: 0 0 10px rgba(52, 211, 153, 0.9);
+      }
+      @keyframes spin-pre { to { transform: rotate(360deg); } }
+    </style>
   </head>
   <body>
-    <noscript>
-      <nav>
-        <a href="/impressum">Impressum</a>
-        <a href="/datenschutz">Datenschutz</a>
-      </nav>
-    </noscript>
     <div id="root">
-      <!-- High-performance loading fallback to prevent content flicker -->
-      <div id="initial-skeleton" style="position: fixed; inset: 0; z-index: 9999; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease-in-out;">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 24px;">
-          <div style="position: relative;">
-            <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid #eff6ff; border-top: 2px solid #3b82f6; animation: spin 1s linear infinite;"></div>
-            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
-              <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(59, 130, 246, 0.1); animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></div>
-            </div>
-          </div>
-          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: #000000; letter-spacing: -0.04em; margin: 0;">Robert Erbach</h2>
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <span style="width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(0,0,0,0.4);">Initializing Experience</span>
-            </div>
-          </div>
-        </div>
+      <div id="pre-initial" role="status" aria-live="polite" aria-label="Seite wird geladen">
+        <div class="ring" aria-hidden="true"></div>
+        <p class="nm">Robert Erbach</p>
+        <p class="st"><span class="dot" aria-hidden="true"></span>Erlebnis wird geladen · Status: Available</p>
+        <p class="st" style="letter-spacing:.24em">Initializing Experience</p>
       </div>
-      <style>
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(0.9); } }
-      </style>
     </div>
-
-    <script type="module" defer src="/src/main.tsx"></script>
-
-    <!-- Google Analytics & Consent Mode v2 -->
-    <script defer>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag; // Expose to global window object for React
-      
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
-
-      try {
-        const consent = localStorage.getItem('cookie-consent');
-        if (consent === 'granted') {
-          gtag('consent', 'update', {
-            'analytics_storage': 'granted',
-            'ad_storage': 'granted',
-            'ad_user_data': 'granted',
-            'ad_personalization': 'granted'
-          });
-        }
-      } catch (e) {}
-
-      gtag('js', new Date());
-      gtag('config', 'G-90T4169WJP', {
-        'send_page_view': false // We handle this manually in React for SPA
-      });
-      
-      let gtmLoaded = false;
-      function loadGTM() {
-        if (gtmLoaded) return;
-        gtmLoaded = true;
-        const doLoad = () => {
-          var script = document.createElement('script');
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-90T4169WJP';
-          script.defer = true;
-          document.body.appendChild(script);
-        };
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(doLoad);
-        } else {
-          doLoad();
-        }
-      }
-
-      window.addEventListener('load', function() {
-        // Significantly delay non-critical third-party scripts
-        const delay = window.innerWidth < 768 ? 4000 : 2500;
-        setTimeout(() => {
-          if (document.readyState === 'complete') loadGTM();
-          else window.addEventListener('load', loadGTM, { once: true });
-        }, delay); 
-      });
-    </script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

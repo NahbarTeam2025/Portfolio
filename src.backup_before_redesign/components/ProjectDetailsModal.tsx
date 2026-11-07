@@ -1,0 +1,152 @@
+import React, { useState, startTransition, useRef, useEffect } from 'react';
+import { X, Calendar, Tag, ZoomIn } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { createPortal } from 'react-dom';
+
+interface ProjectDetails {
+  subtitle: string;
+  meta: string;
+  images?: string[];
+  sections: {
+    title: string;
+    content: string;
+  }[];
+}
+
+interface Project {
+  title: string;
+  category: string;
+  desc: string;
+  features: string[];
+  details?: ProjectDetails;
+}
+
+export const ProjectDetailsModal = ({ 
+  project, 
+  onClose 
+}: { 
+  project: Project; 
+  onClose: () => void 
+}) => {
+  const { language } = useLanguage();
+
+  if (!project.details) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="absolute inset-0 bg-white/80 backdrop-blur-md project-modal-backdrop" 
+        onClick={() => startTransition(() => onClose())} 
+      />
+      
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        className="relative w-full max-w-3xl max-h-[90dvh] bg-white border border-black/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col project-modal-content"
+        tabIndex={-1}
+      >
+        {/* Header */}
+        <div className="relative shrink-0 p-6 md:p-8 border-b border-black/5 bg-gradient-to-b from-black/[0.02] to-transparent">
+          <div className="flex justify-between items-start gap-4">
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2 text-gray-700 text-[10px] font-bold uppercase tracking-[0.2em]">
+                <Tag size={12} />
+                <span>{project.category}</span>
+              </div>
+              <h2 id="modal-title" className="text-2xl md:text-3xl font-bold text-black leading-tight">
+                {project.title}
+              </h2>
+              <div className="text-black/60 text-sm md:text-base font-medium">
+                {project.details.subtitle}
+              </div>
+              <div className="flex items-center gap-2 text-black/60 text-[11px] md:text-xs mt-1">
+                <Calendar size={12} />
+                <span>{project.details.meta}</span>
+              </div>
+            </div>
+            <button 
+              onClick={() => startTransition(() => onClose())}
+              className="p-2 text-black/60 hover:text-black hover:bg-black/10 rounded-xl transition-all duration-300"
+              aria-label={language === 'de' ? 'Schließen' : 'Close'}
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 md:p-8 overflow-y-auto glass-scrollbar custom-content-scroll">
+          <div className="space-y-8 md:space-y-10">
+            {project.details.sections.map((section, idx) => (
+              <div key={idx} className="space-y-3">
+                <h3 className="text-gray-700 text-[11px] font-bold uppercase tracking-[0.2em] opacity-80">
+                  {section.title}
+                </h3>
+                <div className="text-black/80 text-[14px] md:text-[16px] leading-relaxed whitespace-pre-line">
+                  {section.content}
+                </div>
+              </div>
+            ))}
+
+            {project.details.images && project.details.images.length > 0 && (
+              <div className="space-y-6 pt-4">
+                <h3 className="text-gray-700 text-[11px] font-bold uppercase tracking-[0.2em] opacity-80">
+                  {language === 'de' ? 'Visualisierungen' : 'Visualizations'}
+                </h3>
+                <div className="grid grid-cols-1 gap-6">
+                  {project.details.images.map((img, idx) => (
+                    <div 
+                      key={idx} 
+                      className="relative group rounded-2xl overflow-hidden border border-black/10 bg-black/5 cursor-zoom-in w-full z-[100] block p-0"
+                      style={{ pointerEvents: 'auto' }}
+                    >
+                      <img 
+                        src={img} 
+                        alt={language === 'de' ? `Projekt Visualisierung ${idx + 1}` : `Project Visualization ${idx + 1}`} 
+                        className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02] pointer-events-none"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 pointer-events-none flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/40 backdrop-blur-md p-3 rounded-full shadow-lg border border-white/20">
+                          <ZoomIn className="w-6 h-6 text-white drop-shadow-md" />
+                        </div>
+                      </div>
+                      {/* Invisible click overlay to ensure detection */}
+                      <div 
+                        className="absolute inset-0 z-[110] cursor-zoom-in" 
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          if (typeof (window as any).setFullscreenImage === 'function') {
+                            (window as any).setFullscreenImage(img);
+                          }
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Tags Footer */}
+          <div className="mt-12 pt-8 border-t border-black/5">
+            <div className="flex flex-wrap gap-2">
+              {project.features.map((feature) => (
+                <span key={feature} className="px-3 py-1 rounded-full bg-black/5 border border-black/10 text-black/60 text-[10px] md:text-[11px] font-medium">
+                  {feature}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};

@@ -1,0 +1,179 @@
+import React from 'react';
+import { motion as m } from 'motion/react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { Bot, MessageSquareCode, LayoutTemplate, Palette } from 'lucide-react';
+import { MagneticButton, IconShift } from './MagneticButton';
+
+export const SkillsSection = React.memo(({ handleNavigate }: any) => {
+  const { t } = useLanguage();
+  
+  const highlights = [
+    {
+      icon: <Bot className="w-5 h-5 text-blue-400" />,
+      title: "KI-Workflows",
+      description: "Automatisierte Prozesse mit KI-Tools gebaut und produktiv eingesetzt."
+    },
+    {
+      icon: <MessageSquareCode className="w-5 h-5 text-blue-400" />,
+      title: "Prompt Engineering",
+      description: "Komplexe Mehrstufen-Prompts entwickelt die echte Arbeit abnehmen."
+    },
+    {
+      icon: <LayoutTemplate className="w-5 h-5 text-blue-400" />,
+      title: "Web & Landingpages",
+      description: "Websites und Apps mit KI von der Idee bis zur fertigen Umsetzung."
+    },
+    {
+      icon: <Palette className="w-5 h-5 text-blue-400" />,
+      title: "Design & Gestaltung",
+      description: "Visuelle Konzepte mit Fokus auf Typografie, Layout und Wirkung."
+    }
+  ];
+
+  const skillGroups = [
+    {
+      category: t.skills.categories.digital,
+      skills: [
+        { name: t.skills.items.contentCreation, tooltip: "Tools: ChatGPT, Claude, Canva" },
+        { name: t.skills.items.seo, tooltip: "Tools: SEObility, Google Search Console" },
+        { name: t.skills.items.webLandingpages, tooltip: "Tools: AI Studio, WordPress, Elementor" },
+        { name: t.skills.items.design, tooltip: "Tools: Canva, GIMP, MS Office" },
+        { name: "SEA", tooltip: "Tools: Google Ads" }
+      ]
+    },
+    {
+      category: t.skills.categories.tech,
+      skills: [
+        { name: t.skills.items.webAnalytics, tooltip: "Tools: Google Analytics 4, Google Tag Manager" },
+        { name: t.skills.items.data, tooltip: "Tools: MS Excel, MS Access, Google Sheets" },
+        { name: t.skills.items.promptEngineering, tooltip: "Tools: Claude, Gemini, AI Studio" },
+        { name: t.skills.items.workflows, tooltip: "Tools: n8n, Make.com, Telegram Bot API" }
+      ]
+    },
+    {
+      category: t.skills.categories.working,
+      skills: [
+        { name: t.skills.items.structured },
+        { name: t.skills.items.communication },
+        { name: t.skills.items.problemSolving },
+        { name: t.skills.items.timeManagement }
+      ]
+    },
+    {
+      category: t.skills.categories.languages,
+      skills: [
+        { name: `${t.skills.items.german} C2` },
+        { name: `${t.skills.items.english} B1` }
+      ]
+    }
+  ];
+
+  return (
+    <m.div 
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
+      }}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col items-start gap-1 md:gap-2 w-full"
+    >
+      <h1 className="heading-gradient fluid-h2 font-medium tracking-tight shrink-0">
+        {t.skills.title}
+      </h1>
+      <p className="text-black/60 text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-medium">
+        Selbsteinschätzung nach Weiterbildung & eigenen Projekten.
+      </p>
+      <div className="w-full h-[1px] bg-black/10 shrink-0" />
+      
+      {/* HIGHLIGHT CARDS */}
+      <m.div 
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
+        }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 w-full max-w-[1400px] py-1 md:py-2 mx-auto"
+      >
+        {highlights.map((item, idx) => (
+          <m.div 
+            key={idx} 
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+            className="bg-gray-300/90 dark:bg-gray-700/90 backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-2 border border-black/55 dark:border-white/10 shadow-sm relative overflow-hidden group hover:bg-gray-400/90 dark:hover:bg-gray-600 transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="p-2 bg-black/5 dark:bg-white/5 rounded-xl w-fit border border-black/5 dark:border-white/5 shadow-inner">
+              {item.icon}
+            </div>
+            <h3 className="text-black dark:text-white font-semibold text-[14px] tracking-tight mt-0.5">{item.title}</h3>
+            <p className="text-black/70 dark:text-white/70 text-[12px] leading-relaxed">{item.description}</p>
+          </m.div>
+        ))}
+      </m.div>
+
+      {/* CATEGORY BLOCKS */}
+      <m.div 
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { staggerChildren: 0.05 } }
+        }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-6 gap-y-2 md:gap-y-3 w-full max-w-[1400px] mx-auto"
+      >
+        {skillGroups.map((group) => (
+          <m.div 
+            key={group.category} 
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
+            className="h-full"
+          >
+            <div className="wow-card flex flex-col gap-3 p-4 md:p-4 h-full">
+              <div className="wow-card-border" />
+              <h2 className="text-gray-700 text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em] font-bold opacity-90 relative z-10">
+                {group.category}
+              </h2>
+              <div className="flex flex-wrap gap-1.5 relative z-10">
+                {group.skills.map((skill, skillIndex) => (
+                  <div key={skillIndex} className="relative group/pill">
+                    <span 
+                      className="px-3 py-1 bg-black/5 border border-black/10 rounded-full text-black/80 text-[12px] md:text-[13px] font-medium hover:bg-black/10 hover:border-black/20 transition-colors cursor-help"
+                    >
+                      {skill.name}
+                    </span>
+                    {skill.tooltip && (
+                      <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-gray-900 tooltip-content !text-white text-[11px] md:text-[12px] rounded-lg opacity-0 group-hover/pill:opacity-100 transition-all duration-300 pointer-events-none z-50 whitespace-nowrap shadow-xl translate-y-1 group-hover/pill:translate-y-0 border border-white/10">
+                        <span className="tooltip-text !text-white">{skill.tooltip}</span>
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45 border-r border-b border-white/10"></div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </m.div>
+        ))}
+      </m.div>
+
+      {/* CTA Button */}
+      <div className="w-fit max-w-full mx-auto flex flex-col items-center justify-center pb-1 md:pb-2 pt-8 md:pt-12 gap-1 md:gap-1 mb-4 md:mb-6 shrink-0">
+        <p className="text-black/80 text-[12px] md:text-[13px] text-center whitespace-normal md:whitespace-nowrap">
+          {t.skills.cta.text}
+        </p>
+        <button 
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).gtag) {
+              (window as any).gtag('event', 'cta_contact_click', {
+                'event_category': 'engagement',
+                'event_label': 'Skills Section CTA'
+              });
+            }
+            handleNavigate('contact');
+          }}
+          className="w-full rounded-full px-8 py-3.5 bg-[radial-gradient(circle,white,#d1e4ff)] border border-blue-300/60 cta-button-text text-[14px] md:text-[15px] font-semibold tracking-tight shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] hover:bg-[radial-gradient(circle,white,#b3d4ff)] hover:border-blue-400/50 transition-all duration-300 flex items-center justify-center group/cta"
+        >
+          <span className="relative z-10 mr-3">{t.skills.cta.button}</span>
+          <svg className="w-4 h-4 relative z-10 cta-button-text transition-transform duration-300 group-hover/cta:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+      </div>
+    </m.div>
+  );
+});
