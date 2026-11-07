@@ -169,20 +169,20 @@ export default function App() {
             <div>
               <p className="eyebrow rv">
                 <span className="dot" aria-hidden="true" />
-                Offen für neue Aufgaben · Falkenberg/Elster · remote oder vor Ort nach Absprache · Arbeitszeitmodell nach Absprache
+                Offen für neue Aufgaben · Falkenberg/Elster
               </p>
               <h1 className="rv d1">Robert Erbach</h1>
-              <p className="tag grad rv d2">Büro, Marketing &amp; digitale Prozesse</p>
-              <p className="sub rv d2">Strukturierte Büro- und Verwaltungsarbeit, Content &amp; Social Media, MS Office, Web Analytics und KI-gestützte Arbeitsabläufe – belegt durch Weiterbildungen, Zertifikate und dokumentierte Eigenprojekte.</p>
-              <div className="hero-cta rv d4">
+              <h2 className="tag grad rv d2" style={{ fontSize: 'clamp(1.35rem, 3.2vw, 2.15rem)', fontWeight: 700, margin: '0.35em 0' }}>Büro, Marketing &amp; digitale Prozesse</h2>
+              <p className="sub rv d2" style={{ fontSize: '1.06rem', fontWeight: 400, color: 'var(--ink-dim)', maxWidth: '52ch', lineHeight: 1.6, marginBottom: '1.4em' }}>Weiterbildungen, Zertifikate und dokumentierte Eigenprojekte.</p>
+              <div className="hero-cta rv d4" style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '14px' }}>
                 <a className="btn btn-primary" href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download>
                   Lebenslauf als PDF <span aria-hidden="true">↓</span>
                 </a>
                 <a className="btn btn-ghost" href="#zertifikate">
                   Zertifikate ansehen
                 </a>
-                <a className="btn btn-ghost" href="#arbeitsproben">
-                  Arbeitsproben ansehen
+                <a href="#arbeitsproben" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none', marginLeft: '4px' }}>
+                  Arbeitsproben ansehen <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
@@ -205,21 +205,18 @@ export default function App() {
                 <p>
                   Büroverwaltung und Kommunikation, kaufmännischer Schriftverkehr, MS Word, Excel, Access, Layout mit MS Office, Datenschutz, IT-Sicherheit.
                 </p>
-                <a className="lnk" href="#kompetenzen">Bereich ansehen →</a>
               </div>
               <div className="glass field-card rv d1" id="marketing">
                 <h3>Marketing &amp; Social Media</h3>
                 <p>
                   Social Media Marketing, Content Marketing, SEO/SEA, Web Analytics/GA4, Canva, WordPress/Elementor, E-Commerce-Grundlagen.
                 </p>
-                <a className="lnk" href="#kompetenzen">Bereich ansehen →</a>
               </div>
               <div className="glass field-card rv d2" id="digital">
                 <h3>Digitalisierung &amp; KI</h3>
                 <p>
                   Seit rund zwei Jahren intensive private Beschäftigung mit KI-Tools, Prompt Engineering, Microsoft Copilot, n8n/Make.com und dokumentierten Eigenprojekten als Werkzeug für saubere Abläufe.
                 </p>
-                <a className="lnk" href="#kompetenzen">Bereich ansehen →</a>
               </div>
             </div>
           </div>
@@ -312,10 +309,10 @@ export default function App() {
                     <span className="date">2002 – 2006</span>
                     <span className="t">Schulabschluss</span>
                     <span className="plus" aria-hidden="true">+</span>
-                    <span className="c">Regulärer Schulabschluss</span>
+                    <span className="c">Oberschule Falkenberg/Elster</span>
                   </summary>
                   <div className="exp">
-                    <p>Grundlegende schulische Ausbildung.</p>
+                    <p>Oberschule Falkenberg/Elster · Fachoberschulreife (FOR)</p>
                   </div>
                 </details>
               </div>
@@ -332,7 +329,7 @@ export default function App() {
               <p className="lead">Übersicht der eingesetzten Software, Tools und methodischen Kenntnisse.</p>
             </div>
             <div className="skill-grid">
-              <div className="glass skill-card rv">
+              <div className="glass skill-card rv" id="buero-skills">
                 <h3>Büro &amp; Verwaltung</h3>
                 <div className="skill-item"><div className="n">Textverarbeitung</div><div className="tools">Microsoft Word, Dokumentenvorlagen</div></div>
                 <div className="skill-item"><div className="n">Tabellenkalkulation</div><div className="tools">Microsoft Excel (Grundlagen &amp; Aufbau)</div></div>
@@ -340,7 +337,7 @@ export default function App() {
                 <div className="skill-item"><div className="n">Bürokommunikation</div><div className="tools">Schriftverkehr, Dokumentation, Organisation</div></div>
                 <div className="skill-item"><div className="n">Sicherheit &amp; Recht</div><div className="tools">Datenschutz (BDSG/DSGVO), IT-Sicherheit</div></div>
               </div>
-              <div className="glass skill-card rv d1">
+              <div className="glass skill-card rv d1" id="marketing-skills">
                 <h3>Marketing &amp; Social Media</h3>
                 <div className="skill-item"><div className="n">Design &amp; Layout</div><div className="tools">Canva, GIMP, Adobe Illustrator</div></div>
                 <div className="skill-item"><div className="n">Web &amp; Landingpages</div><div className="tools">WordPress (Elementor), HTML &amp; CSS</div></div>
@@ -348,17 +345,17 @@ export default function App() {
                 <div className="skill-item"><div className="n">SEO / SEA</div><div className="tools">Suchmaschinenoptimierung, Kampagnen</div></div>
                 <div className="skill-item"><div className="n">Content &amp; E-Commerce</div><div className="tools">Social Media, WooCommerce Grundlagen</div></div>
               </div>
-              <div className="glass skill-card rv d2">
+              <div className="glass skill-card rv d2" id="digital-skills">
                 <h3>Digitalisierung &amp; KI</h3>
                 <div className="skill-item"><div className="n">Prompt Engineering</div><div className="tools">Gemini, Claude, Microsoft Copilot</div></div>
-                <div className="skill-item"><div className="n">Automatisierung</div><div className="tools">n8n, Make.com, KI-Führerschein</div></div>
+                <div className="skill-item"><div className="n">Automatisierung</div><div className="tools">n8n, Make.com</div></div>
                 <div className="skill-item"><div className="n">Entwicklung</div><div className="tools">React &amp; TypeScript, moderne Web-Tools</div></div>
                 <div className="skill-item"><div className="n">Organisation</div><div className="tools">Notion, Trello, Google Calendar</div></div>
               </div>
               <div className="glass skill-card rv d3">
                 <h3>Sprachen</h3>
-                <div className="skill-item"><div className="n">Deutsch</div><div className="tools">Muttersprache</div></div>
-                <div className="skill-item"><div className="n">Englisch</div><div className="tools">Gut in Wort und Schrift</div></div>
+                <div className="skill-item"><div className="n">Deutsch</div></div>
+                <div className="skill-item"><div className="n">Englisch</div></div>
               </div>
             </div>
           </div>
@@ -456,8 +453,8 @@ export default function App() {
                     <span className="chip" style={{ borderStyle: 'dashed' }}>
                       Dokumentation
                     </span>
-                    <a className="go" href="https://meine-assets.pages.dev/pdf/robert_erbach_4_ki_workflow.pdf" target="_blank" rel="noopener noreferrer">
-                      PDF ansehen <span aria-hidden="true">↗</span>
+                    <a className="go" href="https://meine-assets.pages.dev/pdf/robert_erbach_4_ki_workflow.pdf" target="_blank" rel="noopener noreferrer" download>
+                      PDF herunterladen <span aria-hidden="true">↗</span>
                     </a>
                   </div>
                 </div>
@@ -557,7 +554,7 @@ export default function App() {
                     <span>Webmasters Europe e.V.</span> · <span>21.04.2026</span> · <span className="badge">WE-ID 011435537</span>
                   </div>
                   <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_digital_marketing_manager.pdf" target="_blank" rel="noopener noreferrer" download>
-                    PDF ansehen ↗
+                    PDF herunterladen ↗
                   </a>
                 </div>
                 <div className="glass cert">
@@ -566,7 +563,7 @@ export default function App() {
                     <span>GFN GmbH / WPI</span> · <span>19.01.2026</span> · <span className="badge">Note: 94%</span>
                   </div>
                   <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf" target="_blank" rel="noopener noreferrer" download>
-                    PDF ansehen ↗
+                    PDF herunterladen ↗
                   </a>
                 </div>
                 <div className="glass cert">
@@ -575,7 +572,7 @@ export default function App() {
                     <span>FAW Akademie</span> · <span>27.09.2024</span> · <span className="badge gray">180 Std.</span>
                   </div>
                   <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_büroverwaltung_und_kommunikation.pdf" target="_blank" rel="noopener noreferrer" download>
-                    PDF ansehen ↗
+                    PDF herunterladen ↗
                   </a>
                 </div>
                 <div className="glass cert">
@@ -584,7 +581,7 @@ export default function App() {
                     <span>FAW Akademie</span> · <span>08.11.2024</span> · <span className="badge gray">90 Std.</span>
                   </div>
                   <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf" target="_blank" rel="noopener noreferrer" download>
-                    PDF ansehen ↗
+                    PDF herunterladen ↗
                   </a>
                 </div>
                 <div className="glass cert">
@@ -593,7 +590,7 @@ export default function App() {
                     <span>FAW Akademie</span> · <span>02.08.2024</span> · <span className="badge gray">45 Std.</span>
                   </div>
                   <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_kaufmännischer_schriftverkehr.pdf" target="_blank" rel="noopener noreferrer" download>
-                    PDF ansehen ↗
+                    PDF herunterladen ↗
                   </a>
                 </div>
                 <div className="glass cert">
@@ -602,50 +599,71 @@ export default function App() {
                     <span>FAW Akademie</span> · <span>29.11.2024</span> · <span className="badge gray">45 Std.</span>
                   </div>
                   <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf" target="_blank" rel="noopener noreferrer" download>
-                    PDF ansehen ↗
+                    PDF herunterladen ↗
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Akkordeon für alle weiteren Nachweise */}
+            {/* Akkordeon für alle weiteren Nachweise inklusive KI-Zertifikate */}
             <details className="glass cert-accordion rv d1" style={{ marginTop: '1.5rem', padding: '1rem 1.4rem', borderRadius: '16px' }}>
               <summary style={{ cursor: 'pointer', fontWeight: 600, color: 'var(--cyan)' }}>
                 Alle Nachweise anzeigen (Marketing, SEO, Office, Schulungen &amp; KI)
               </summary>
               <div style={{ marginTop: '1.2rem' }}>
                 <div className="cert-group">
+                  <h3>KI-Nachweise &amp; Frameworks</h3>
+                  <div className="cert-grid">
+                    <div className="glass cert">
+                      <div className="t">KI-Führerschein</div>
+                      <div className="m"><span>GFN GmbH</span> · <span>03.04.2026</span></div>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ki_führerschein.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
+                    </div>
+                    <div className="glass cert">
+                      <div className="t">Arbeiten mit Copilot</div>
+                      <div className="m"><span>GFN GmbH</span> · <span>05.04.2026</span></div>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_arbeiten_mit_copilot.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
+                    </div>
+                    <div className="glass cert">
+                      <div className="t">AI Fluency: Framework &amp; Foundations</div>
+                      <div className="m"><span>Anthropic</span> · <span className="badge">Certificate of Completion</span></div>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="cert-group" style={{ marginTop: '1.5rem' }}>
                   <h3>Digital Marketing &amp; E-Commerce</h3>
                   <div className="cert-grid">
                     <div className="glass cert">
                       <div className="t">SEO Manager</div>
                       <div className="m"><span>GFN / WPI</span> · <span>19.02.2026</span> · <span className="badge">Note: 89%</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">PPC Manager</div>
                       <div className="m"><span>GFN / WPI</span> · <span>12.03.2026</span> · <span className="badge">Note: 93%</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Webanalyse</div>
                       <div className="m"><span>GFN / WPI</span> · <span>24.03.2026</span> · <span className="badge">Note: 96%</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">E-Commerce-Manager:in/-Assistenz</div>
                       <div className="m"><span>GFN GmbH</span> · <span>19.09.2025</span> · <span className="badge">Projektabschluss 80 %</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Neuromarketing</div>
                       <div className="m"><span>GFN GmbH</span> · <span>28.07.2025</span> · <span className="badge gray">Teilnahmebescheinigung</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">E-/Content Marketing</div>
                       <div className="m"><span>GFN GmbH</span> · <span>14.11.2025</span> · <span className="badge gray">Teilnahmebescheinigung</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                   </div>
                 </div>
@@ -656,22 +674,22 @@ export default function App() {
                     <div className="glass cert">
                       <div className="t">Datenschutzschulung</div>
                       <div className="m"><span>Amadeus Fire Academy</span> · <span>05.04.2026</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutzschulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutzschulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Arbeitsschutzschulung</div>
                       <div className="m"><span>Amadeus Fire Academy</span> · <span>05.04.2026</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_arbeitsschutzschulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_arbeitsschutzschulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">AGG-Schulung</div>
                       <div className="m"><span>Amadeus Fire Academy</span> · <span>05.04.2026</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_agg_schulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_agg_schulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">IT-Sicherheitsschulung</div>
                       <div className="m"><span>Amadeus Fire Academy</span> · <span>05.04.2026</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheitsschulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheitsschulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                   </div>
                 </div>
@@ -682,42 +700,42 @@ export default function App() {
                     <div className="glass cert">
                       <div className="t">MS Word</div>
                       <div className="m"><span>FAW</span> · <span>05.07.2024</span> · <span className="badge gray">90 Std.</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">MS Excel Grundlagen</div>
                       <div className="m"><span>FAW</span> · <span>25.10.2024</span> · <span className="badge gray">90 Std.</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Layout mit MS Office</div>
                       <div className="m"><span>FAW</span> · <span>16.08.2024</span> · <span className="badge gray">90 Std.</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Datenbanken mit MS Access</div>
                       <div className="m"><span>FAW</span> · <span>22.11.2024</span> · <span className="badge gray">90 Std.</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Bildbearbeitung mit GIMP</div>
                       <div className="m"><span>FAW</span> · <span>19.07.2024</span> · <span className="badge gray">90 Std.</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Datenschutz</div>
                       <div className="m"><span>FAW</span> · <span>29.11.2024</span> · <span className="badge gray">45 Std.</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">IT-Sicherheit</div>
                       <div className="m"><span>FAW</span> · <span>06.12.2024</span> · <span className="badge gray">45 Std.</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Digitalisierte Arbeitswelt</div>
                       <div className="m"><span>FAW</span> · <span>10.12.2024</span></div>
-                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf" target="_blank" rel="noopener noreferrer" download>PDF ansehen ↗</a>
+                      <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                   </div>
                 </div>
@@ -785,7 +803,7 @@ export default function App() {
                   </div>
                   <div>
                     <div className="k">Lebenslauf</div>
-                    <div className="v"><a href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download>Lebenslauf als PDF ansehen ↗</a></div>
+                    <div className="v"><a href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download>Lebenslauf als PDF herunterladen ↗</a></div>
                   </div>
                 </div>
               </div>
@@ -858,7 +876,7 @@ export default function App() {
                     <button className="btn btn-primary" type="submit">
                       Nachricht verfassen <span aria-hidden="true">→</span>
                     </button>
-                    <span className="form-hint">Kein Tracking · keine Cookies</span>
+                    <span className="form-hint">Keine Cookies · cookiefreie Reichweitenmessung durch Cloudflare</span>
                   </div>
                   {formResponse && (
                     <p className={`form-msg ${formResponse.isError ? 'err' : ''}`} role="status" aria-live="polite">
@@ -926,10 +944,10 @@ export default function App() {
           <div className="l">
             <a href="#impressum">Impressum</a>
             <a href="#datenschutz">Datenschutz</a>
-            <a href="#top">Nach oben ↑</a>
+            <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Nach oben ↑</a>
           </div>
           <p className="cr" style={{ width: '100%', fontSize: '.74rem' }}>
-            Cookiefreie Reichweitenmessung durch Cloudflare.
+            Keine Cookies · cookiefreie Reichweitenmessung durch Cloudflare.
           </p>
         </div>
       </footer>
