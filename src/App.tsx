@@ -7,13 +7,6 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('start');
   const [lightboxImg, setLightboxImg] = useState<{ src: string; alt: string } | null>(null);
 
-  // Contact Form state
-  const [contactName, setContactName] = useState('');
-  const [contactEmail, setContactEmail] = useState('');
-  const [contactSubject, setContactSubject] = useState('Allgemeine Anfrage');
-  const [contactMessage, setContactMessage] = useState('');
-  const [contactConsent, setContactConsent] = useState(false);
-  const [formResponse, setFormResponse] = useState<{ text: string; isError: boolean } | null>(null);
 
   // Sticky nav scroll listener
   useEffect(() => {
@@ -76,30 +69,7 @@ export default function App() {
     }
   }, []);
 
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const name = contactName.trim();
-    const email = contactEmail.trim();
-    const message = contactMessage.trim();
 
-    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-    if (name.length < 2 || !isValidEmail || message.length < 4 || !contactConsent) {
-      setFormResponse({
-        text: 'Bitte Name, gültige E-Mail, Nachricht und Zustimmung ausfüllen.',
-        isError: true
-      });
-      return;
-    }
-
-    const body = `${message}\n\n—\nVon: ${name} <${email}>`;
-    const subject = contactSubject === 'Allgemeine Anfrage' ? 'Anfrage über roberterbach.de' : contactSubject;
-    window.location.href = `mailto:roberterbach@web.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    setFormResponse({
-      text: 'Dein E-Mail-Programm wurde geöffnet – bitte dort noch auf „Senden“ klicken.',
-      isError: false
-    });
-  };
 
   const openLightbox = useCallback((src: string, alt: string) => {
     setLightboxImg({ src, alt });
@@ -823,84 +793,6 @@ export default function App() {
                   </div>
                 </div>
               </div>
-
-              <div className="glass form-card rv d1">
-                <h3>Nachricht senden</h3>
-                <p className="fdesc">Das Formular öffnet eine vorbereitete Nachricht in Ihrem E-Mail-Programm.</p>
-                <form id="kform" noValidate onSubmit={handleContactSubmit}>
-                  <div className="frow">
-                    <label className="f">
-                      <span className="cap">Name</span>
-                      <input
-                        className="fld"
-                        type="text"
-                        placeholder="z. B. Max Mustermann"
-                        autoComplete="name"
-                        value={contactName}
-                        onChange={(e) => setContactName(e.target.value)}
-                        required
-                      />
-                    </label>
-                    <label className="f">
-                      <span className="cap">E-Mail</span>
-                      <input
-                        className="fld"
-                        type="email"
-                        placeholder="name@beispiel.de"
-                        autoComplete="email"
-                        value={contactEmail}
-                        onChange={(e) => setContactEmail(e.target.value)}
-                        required
-                      />
-                    </label>
-                  </div>
-                  <label className="f">
-                    <span className="cap">Betreff</span>
-                    <select
-                      className="fld"
-                      value={contactSubject}
-                      onChange={(e) => setContactSubject(e.target.value)}
-                    >
-                      <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
-                      <option value="Stellenausschreibung / Jobangebot">Stellenausschreibung / Jobangebot</option>
-                      <option value="Projektanfrage">Projektanfrage</option>
-                    </select>
-                  </label>
-                  <label className="f">
-                    <span className="cap">Nachricht</span>
-                    <textarea
-                      className="fld"
-                      placeholder="Ihre Nachricht..."
-                      value={contactMessage}
-                      onChange={(e) => setContactMessage(e.target.value)}
-                      required
-                    />
-                  </label>
-                  <div className="consent">
-                    <input
-                      type="checkbox"
-                      id="f-consent"
-                      checked={contactConsent}
-                      onChange={(e) => setContactConsent(e.target.checked)}
-                      required
-                    />
-                    <label htmlFor="f-consent">
-                      Ich stimme der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage zu. Hinweise finden Sie in der <a href="#datenschutz">Datenschutzerklärung</a>.
-                    </label>
-                  </div>
-                  <div className="form-actions">
-                    <button className="btn btn-primary" type="submit">
-                      Nachricht verfassen <span aria-hidden="true">→</span>
-                    </button>
-                    <span className="form-hint">Keine eigenen Cookies · cookiefreie Reichweitenmessung durch Cloudflare</span>
-                  </div>
-                  {formResponse && (
-                    <p className={`form-msg ${formResponse.isError ? 'err' : ''}`} role="status" aria-live="polite">
-                      {formResponse.text}
-                    </p>
-                  )}
-                </form>
-              </div>
             </div>
           </div>
         </section>
@@ -956,9 +848,9 @@ export default function App() {
             <p>
               Zur statistischen Auswertung und Optimierung wird Cloudflare Web Analytics genutzt. Dieser Dienst arbeitet ohne eigene Cookies, speichert keine personenbezogenen Daten im Browser und liest keine Endgeräte-Informationen aus (Art. 6 Abs. 1 lit. f DSGVO). Nutzerprofile werden nicht erstellt.
             </p>
-            <h3><span className="sec-num">5.</span> Kontaktformular &amp; E-Mail-Kontakt</h3>
+            <h3><span className="sec-num">5.</span> E-Mail-Kontakt</h3>
             <p>
-              Das Kontaktformular übermittelt keine Daten an einen Server, sondern öffnet eine vorbereitete E-Mail in Ihrem lokalen E-Mail-Programm. Die Verarbeitung der von Ihnen eingegebenen Daten erfolgt ausschließlich zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. f DSGVO).
+              Bei der Kontaktaufnahme per E-Mail werden die übermittelten Angaben ausschließlich zur Bearbeitung der Anfrage verarbeitet (Art. 6 Abs. 1 lit. f DSGVO).
             </p>
             <h3><span className="sec-num">6.</span> Externe Links und Downloads</h3>
             <p>

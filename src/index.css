@@ -158,8 +158,8 @@ h1, h2, h3, h4 {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 10px rgba(52, 211, 153, 0.9);
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(110, 139, 255, 0.6);
   animation: pulse-dot 2.4s ease-in-out infinite;
 }
 
@@ -446,7 +446,7 @@ header.nav.scrolled {
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  header.nav, .nav ul {
+  header.nav, .nav ul, .glass, .hero-visual-card {
     background: #06080d !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -595,12 +595,18 @@ header.nav.scrolled {
   height: auto;
 }
 
-.visual-caption {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 0.75rem;
-  font-family: var(--mono);
-  color: var(--ink-faint);
+.hero-visual svg text.label {
+  fill: var(--ink);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.hero-visual svg text.sub-label {
+  fill: var(--ink-3);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .ring {
@@ -1456,13 +1462,21 @@ header.nav.scrolled {
 /* ============ KONTAKT ============ */
 .contact-grid {
   display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  gap: clamp(20px, 3vw, 34px);
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 0;
 }
 
 @media (max-width: 900px) {
-  .contact-grid { grid-template-columns: 1fr; }
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.contact-grid .c-card {
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
 }
 
 .c-card {
@@ -1529,17 +1543,23 @@ header.nav.scrolled {
 }
 
 .status-pill {
-  display: inline-flex;
-  gap: 0.5em;
-  align-items: center;
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  justify-content: center;
+  text-align: center;
+  color: var(--blue);
+  background: var(--accent-soft);
+  border: 1px solid var(--stroke-hi);
   padding: 0.45em 0.9em;
   border-radius: 999px;
-  border: 1px solid rgba(52, 211, 153, 0.35);
-  background: rgba(52, 211, 153, 0.09);
-  color: var(--green);
   font-size: 0.78rem;
   font-weight: 600;
-  width: max-content;
 }
 
 .form-card {
@@ -2155,11 +2175,14 @@ footer.f {
 @media (max-width: 699px) {
   .hero {
     padding-top: calc(var(--nav-h) + 20px) !important;
-    padding-bottom: 52px !important;
+    padding-bottom: 4px !important;
   }
   .sec {
     padding-top: 68px !important;
     padding-bottom: 68px !important;
+  }
+  #einsatzfelder {
+    padding-top: 56px !important;
   }
   .hero-visual, .hero-photo {
     display: none !important;

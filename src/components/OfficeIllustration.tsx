@@ -1,6 +1,6 @@
 export function OfficeIllustration() {
   return (
-    <div className="hero-visual" role="region" aria-label="Illustration Kompetenzübersicht">
+    <div className="hero-visual" role="region" aria-label="Kompetenz-Netz">
       <div className="illus-glow" aria-hidden="true" />
       <div className="hero-visual-card">
         <svg viewBox="0 0 480 280" role="img" aria-labelledby="heroTitle heroDesc">
@@ -37,7 +37,6 @@ export function OfficeIllustration() {
           <text className="sub-label" x="300" y="258" textAnchor="middle">Workflows · Automatisierung</text>
         </svg>
       </div>
-      <p className="visual-caption">Illustration · Kompetenzübersicht</p>
     </div>
   );
 }
