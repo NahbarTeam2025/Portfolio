@@ -224,14 +224,14 @@ export default function App() {
         <section className="hero" id="start" aria-label="Start">
           <div className="wrap hero-grid">
             <div>
-              <p className="eyebrow rv">
+              <p className="eyebrow">
                 <span className="dot" aria-hidden="true" />
                 Offen für neue Aufgaben · Falkenberg/Elster
               </p>
-              <h1 className="rv d1">Robert Erbach</h1>
-              <h2 className="rv d2" style={{ fontSize: 'clamp(1.35rem, 3.2vw, 2.15rem)', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--ink)', margin: '0.35em 0' }}>Büro, Marketing &amp; digitale Prozesse</h2>
-              <p className="sub rv d2" style={{ fontSize: '1.06rem', fontWeight: 400, color: 'var(--ink-dim)', maxWidth: '52ch', lineHeight: 1.6, marginBottom: '1.4em' }}>Weiterbildungen, Zertifikate und dokumentierte Eigenprojekte.</p>
-              <div className="hero-cta rv d4">
+              <h1>Robert Erbach</h1>
+              <h2>Büro, Marketing &amp; digitale Prozesse</h2>
+              <p className="sub">Weiterbildungen, Zertifikate und dokumentierte Eigenprojekte.</p>
+              <div className="hero-cta">
                 <a className="btn btn-primary" href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download>
                   Lebenslauf als PDF
                 </a>
@@ -243,7 +243,7 @@ export default function App() {
                 </a>
               </div>
             </div>
-            <div className="hero-photo rv d2">
+            <div className="hero-photo">
               <OfficeIllustration />
             </div>
           </div>
@@ -252,24 +252,24 @@ export default function App() {
         {/* ======================= DREI GLEICHWERTIGE EINSATZFELDER ======================= */}
         <section className="sec" id="einsatzfelder" aria-labelledby="h-einsatz">
           <div className="wrap">
-            <div className="sec-head rv">
+            <div className="sec-head">
               <h2 id="h-einsatz">Schwerpunkte &amp; Einsatzfelder</h2>
               <p className="lead">Drei gleichwertige Bereiche für strukturierte Verwaltung, Kommunikation und digitale Prozesse.</p>
             </div>
             <div className="fields-grid">
-              <div className="glass field-card rv" id="buero">
+              <div className="card field-card" id="buero">
                 <h3>Büro &amp; Verwaltung</h3>
                 <p>
                   Büroverwaltung und Kommunikation, kaufmännischer Schriftverkehr, MS Word, Excel, Access, Layout mit MS Office, Datenschutz, IT-Sicherheit.
                 </p>
               </div>
-              <div className="glass field-card rv d1" id="marketing">
+              <div className="card field-card" id="marketing">
                 <h3>Marketing &amp; Social Media</h3>
                 <p>
                   Social Media Marketing, Content Marketing, SEO/SEA, Web Analytics/GA4, Canva, WordPress/Elementor, E-Commerce-Grundlagen.
                 </p>
               </div>
-              <div className="glass field-card rv d2" id="digital">
+              <div className="card field-card" id="digital">
                 <h3>Digitalisierung &amp; KI</h3>
                 <p>
                   Seit rund zwei Jahren intensive private Beschäftigung mit KI-Tools, Prompt Engineering, Microsoft Copilot, n8n/Make.com und dokumentierten Eigenprojekten als Werkzeug für saubere Abläufe.
@@ -282,13 +282,12 @@ export default function App() {
         {/* ======================= PROFIL & AUSBILDUNG ======================= */}
         <section className="sec" id="profil" aria-labelledby="h-profil">
           <div className="wrap">
-            <div className="sec-head rv">
-              <p className="num">01 · Profil &amp; Werdegang</p>
+            <div className="sec-head">
               <h2 id="h-profil">Profil &amp; Aus- und Weiterbildung</h2>
               <p className="lead">Strukturiert, dokumentiert, zielgerichtet.</p>
             </div>
             <div className="about-grid">
-              <div className="glass quote-card rv">
+              <div className="material quote-card">
                 <h3>Profil</h3>
                 <p>
                   Ich arbeite strukturiert, dokumentiere sauber und setze digitale Werkzeuge gezielt ein. Meine Weiterbildungen, Prüfungszeugnisse und Eigenprojekte zeigen, wie ich Büroprozesse, Content, Auswertungen und Automatisierungen angehe. KI nutze ich seit rund zwei Jahren privat intensiv als Werkzeug – nicht als Ersatz für verlässliche Abläufe.
@@ -299,7 +298,7 @@ export default function App() {
                   </a>
                 </div>
               </div>
-              <div className="glass side-card rv d1">
+              <div className="card side-card">
                 <h3>Überblick</h3>
                 <div className="row">
                   <span className="k">Schwerpunkte</span>
@@ -380,13 +379,12 @@ export default function App() {
         {/* ======================= KOMPETENZEN ======================= */}
         <section className="sec" id="kompetenzen" aria-labelledby="h-komp">
           <div className="wrap">
-            <div className="sec-head rv">
-              <p className="num">02 · Kompetenzen</p>
+            <div className="sec-head">
               <h2 id="h-komp">Kompetenzen &amp; Werkzeuge</h2>
               <p className="lead">Übersicht der eingesetzten Software, Tools und methodischen Kenntnisse.</p>
             </div>
             <div className="skill-grid">
-              <div className="glass skill-card rv" id="buero-skills">
+              <div className="card skill-card" id="buero-skills">
                 <h3>Büro &amp; Verwaltung</h3>
                 <div className="skill-item"><div className="n">Textverarbeitung</div><div className="tools">Microsoft Word, Dokumentenvorlagen</div></div>
                 <div className="skill-item"><div className="n">Tabellenkalkulation</div><div className="tools">Microsoft Excel (Grundlagen &amp; Aufbau)</div></div>
@@ -394,7 +392,7 @@ export default function App() {
                 <div className="skill-item"><div className="n">Bürokommunikation</div><div className="tools">Schriftverkehr, Dokumentation, Organisation</div></div>
                 <div className="skill-item"><div className="n">Sicherheit &amp; Recht</div><div className="tools">Datenschutz (BDSG/DSGVO), IT-Sicherheit</div></div>
               </div>
-              <div className="glass skill-card rv d1" id="marketing-skills">
+              <div className="card skill-card" id="marketing-skills">
                 <h3>Marketing &amp; Social Media</h3>
                 <div className="skill-item"><div className="n">Design &amp; Layout</div><div className="tools">Canva, GIMP, Adobe Illustrator</div></div>
                 <div className="skill-item"><div className="n">Web &amp; Landingpages</div><div className="tools">WordPress (Elementor), HTML &amp; CSS</div></div>
@@ -402,14 +400,14 @@ export default function App() {
                 <div className="skill-item"><div className="n">SEO / SEA</div><div className="tools">Suchmaschinenoptimierung, Kampagnen</div></div>
                 <div className="skill-item"><div className="n">Content &amp; E-Commerce</div><div className="tools">Social Media, WooCommerce Grundlagen</div></div>
               </div>
-              <div className="glass skill-card rv d2" id="digital-skills">
+              <div className="card skill-card" id="digital-skills">
                 <h3>Digitalisierung &amp; KI</h3>
                 <div className="skill-item"><div className="n">Prompt Engineering</div><div className="tools">Gemini, Claude, Microsoft Copilot</div></div>
                 <div className="skill-item"><div className="n">Automatisierung</div><div className="tools">n8n, Make.com</div></div>
                 <div className="skill-item"><div className="n">Entwicklung</div><div className="tools">React &amp; TypeScript, moderne Web-Tools</div></div>
                 <div className="skill-item"><div className="n">Organisation</div><div className="tools">Notion, Trello, Google Calendar</div></div>
               </div>
-              <div className="glass skill-card rv d3">
+              <div className="card skill-card">
                 <h3>Sprachen</h3>
                 <div className="skill-item"><div className="n">Deutsch</div></div>
                 <div className="skill-item"><div className="n">Englisch</div></div>
@@ -421,14 +419,13 @@ export default function App() {
         {/* ======================= ARBEITSPROBEN ======================= */}
         <section className="sec" id="arbeitsproben" aria-labelledby="h-arb">
           <div className="wrap">
-            <div className="sec-head rv">
-              <p className="num">03 · Arbeitsproben</p>
+            <div className="sec-head">
               <h2 id="h-arb">Arbeitsproben &amp; dokumentierte Projekte</h2>
               <p className="lead">Drei dokumentierte Kurs- und Eigenprojekte.</p>
             </div>
             <div className="proj-grid">
               {/* Projekt 1 */}
-              <article className="glass proj rv">
+              <article className="card proj">
                 <div
                   className="thumb"
                   tabIndex={0}
@@ -472,7 +469,7 @@ export default function App() {
               </article>
 
               {/* Projekt 2 */}
-              <article className="glass proj rv d1">
+              <article className="card proj">
                 <div
                   className="thumb case-shot workflow-shot"
                   tabIndex={0}
@@ -518,7 +515,7 @@ export default function App() {
               </article>
 
               {/* Projekt 3 */}
-              <article className="glass proj rv d2">
+              <article className="card proj">
                 <div
                   className="thumb"
                   tabIndex={0}
@@ -600,8 +597,7 @@ export default function App() {
         {/* ======================= ZERTIFIKATE ======================= */}
         <section className="sec" id="zertifikate" aria-labelledby="h-zert">
           <div className="wrap">
-            <div className="sec-head rv">
-              <p className="num">04 · Zertifikate</p>
+            <div className="sec-head">
               <h2 id="h-zert">Zertifikate &amp; Nachweise</h2>
               <p className="lead">Nachweise aus Aus- und Weiterbildung – als PDF-Kopien bereitgestellt.</p>
               <p style={{ fontSize: '.85rem', color: 'var(--ink-dim)', marginTop: '.4em' }}>
@@ -610,10 +606,10 @@ export default function App() {
             </div>
 
             {/* Top 6 ausgewogene Nachweise */}
-            <div className="cert-group rv">
+            <div className="cert-group">
               <h3>Ausgewählte Nachweise</h3>
               <div className="cert-grid">
-                <div className="glass cert">
+                <div className="card cert">
                   <div className="t">Diploma in Digital Marketing</div>
                   <div className="m">
                     <span>Webmasters Europe e.V.</span> · <span>21.04.2026</span> · <span className="badge">WE-ID 011435537</span>
@@ -622,7 +618,7 @@ export default function App() {
                     PDF herunterladen ↗
                   </a>
                 </div>
-                <div className="glass cert">
+                <div className="card cert">
                   <div className="t">Social Media Marketing</div>
                   <div className="m">
                     <span>GFN GmbH / WPI</span> · <span>19.01.2026</span> · <span className="badge">Note: 94%</span>
@@ -631,7 +627,7 @@ export default function App() {
                     PDF herunterladen ↗
                   </a>
                 </div>
-                <div className="glass cert">
+                <div className="card cert">
                   <div className="t">Büroverwaltung &amp; Kommunikation</div>
                   <div className="m">
                     <span>FAW Akademie</span> · <span>27.09.2024</span> · <span className="badge gray">180 Std.</span>
@@ -640,7 +636,7 @@ export default function App() {
                     PDF herunterladen ↗
                   </a>
                 </div>
-                <div className="glass cert">
+                <div className="card cert">
                   <div className="t">MS Excel Aufbaukurs</div>
                   <div className="m">
                     <span>FAW Akademie</span> · <span>08.11.2024</span> · <span className="badge gray">90 Std.</span>
@@ -649,7 +645,7 @@ export default function App() {
                     PDF herunterladen ↗
                   </a>
                 </div>
-                <div className="glass cert">
+                <div className="card cert">
                   <div className="t">Kaufmännischer Schriftverkehr</div>
                   <div className="m">
                     <span>FAW Akademie</span> · <span>02.08.2024</span> · <span className="badge gray">45 Std.</span>
@@ -658,7 +654,7 @@ export default function App() {
                     PDF herunterladen ↗
                   </a>
                 </div>
-                <div className="glass cert">
+                <div className="card cert">
                   <div className="t">Datenschutz – BDSG &amp; DSGVO</div>
                   <div className="m">
                     <span>FAW Akademie</span> · <span>29.11.2024</span> · <span className="badge gray">45 Std.</span>
@@ -671,7 +667,7 @@ export default function App() {
             </div>
 
             {/* Akkordeon für alle weiteren Nachweise inklusive KI-Zertifikate */}
-            <details className="glass cert-accordion rv d1" style={{ marginTop: '1.5rem', padding: '1rem 1.4rem', borderRadius: '16px' }}>
+            <details className="card cert-accordion" style={{ marginTop: '1.5rem', padding: '1rem 1.4rem', borderRadius: '16px' }}>
               <summary style={{ cursor: 'pointer', fontWeight: 600, color: 'var(--cyan)' }}>
                 Alle Nachweise anzeigen (Marketing, SEO, Office, Schulungen &amp; KI)
               </summary>
@@ -679,17 +675,17 @@ export default function App() {
                 <div className="cert-group">
                   <h3>KI-Nachweise &amp; Frameworks</h3>
                   <div className="cert-grid">
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">KI-Führerschein</div>
                       <div className="m"><span>GFN GmbH</span> · <span>03.04.2026</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ki_führerschein.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Arbeiten mit Copilot</div>
                       <div className="m"><span>GFN GmbH</span> · <span>05.04.2026</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_arbeiten_mit_copilot.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">AI Fluency: Framework &amp; Foundations</div>
                       <div className="m"><span>Anthropic</span> · <span className="badge">Certificate of Completion</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_anthropic_framework_foundation.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
@@ -700,32 +696,32 @@ export default function App() {
                 <div className="cert-group" style={{ marginTop: '1.5rem' }}>
                   <h3>Digital Marketing &amp; E-Commerce</h3>
                   <div className="cert-grid">
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">SEO Manager</div>
                       <div className="m"><span>GFN GmbH / WPI</span> · <span>19.02.2026</span> · <span className="badge">Note: 89%</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">PPC Manager</div>
                       <div className="m"><span>GFN GmbH / WPI</span> · <span>12.03.2026</span> · <span className="badge">Note: 93%</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Webanalyse</div>
                       <div className="m"><span>GFN GmbH / WPI</span> · <span>24.03.2026</span> · <span className="badge">Note: 96%</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">E-Commerce-Manager:in/-Assistenz</div>
                       <div className="m"><span>GFN GmbH</span> · <span>19.09.2025</span> · <span className="badge">Projektabschluss 80 %</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_e_commerce.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Neuromarketing</div>
                       <div className="m"><span>GFN GmbH</span> · <span>28.07.2025</span> · <span className="badge gray">Teilnahmebescheinigung</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">E- &amp; Content Marketing</div>
                       <div className="m"><span>GFN GmbH</span> · <span>14.11.2025</span> · <span className="badge gray">Teilnahmebescheinigung</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
@@ -736,22 +732,22 @@ export default function App() {
                 <div className="cert-group" style={{ marginTop: '1.5rem' }}>
                   <h3>Schulungen · Amadeus Fire Academy</h3>
                   <div className="cert-grid">
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Datenschutzschulung</div>
                       <div className="m"><span>Amadeus Fire Academy</span> · <span>05.04.2026</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutzschulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Arbeitsschutzschulung</div>
                       <div className="m"><span>Amadeus Fire Academy</span> · <span>05.04.2026</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_arbeitsschutzschulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">AGG-Schulung</div>
                       <div className="m"><span>Amadeus Fire Academy</span> · <span>05.04.2026</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_agg_schulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">IT-Sicherheitsschulung</div>
                       <div className="m"><span>Amadeus Fire Academy</span> · <span>05.04.2026</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheitsschulung.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
@@ -762,42 +758,42 @@ export default function App() {
                 <div className="cert-group" style={{ marginTop: '1.5rem' }}>
                   <h3>Büro &amp; Office (FAW Akademie)</h3>
                   <div className="cert-grid">
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">MS Word</div>
                       <div className="m"><span>FAW Akademie</span> · <span>05.07.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">MS Excel Grundlagen</div>
                       <div className="m"><span>FAW Akademie</span> · <span>25.10.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Layout mit MS Office</div>
                       <div className="m"><span>FAW Akademie</span> · <span>16.08.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Datenbanken mit MS Access</div>
                       <div className="m"><span>FAW Akademie</span> · <span>22.11.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Bildbearbeitung mit GIMP</div>
                       <div className="m"><span>FAW Akademie</span> · <span>19.07.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Datenschutz</div>
                       <div className="m"><span>FAW Akademie</span> · <span>29.11.2024</span> · <span className="badge gray">45 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">IT-Sicherheit</div>
                       <div className="m"><span>FAW Akademie</span> · <span>06.12.2024</span> · <span className="badge gray">45 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
-                    <div className="glass cert">
+                    <div className="card cert">
                       <div className="t">Digitalisierte Arbeitswelt</div>
                       <div className="m"><span>FAW Akademie</span> · <span>10.12.2024</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
@@ -812,15 +808,14 @@ export default function App() {
         {/* ======================= KONTAKT ======================= */}
         <section className="sec" id="kontakt" aria-labelledby="h-kontakt">
           <div className="wrap">
-            <div className="sec-head rv">
-              <p className="num">05 · Kontakt</p>
+            <div className="sec-head">
               <h2 id="h-kontakt">Kontakt</h2>
               <p className="lead">
                 Ob Büro, Verwaltung, Marketing oder digitale Prozesse – ich freue mich auf Ihre Nachricht.
               </p>
             </div>
             <div className="contact-grid">
-              <div className="glass c-card rv">
+              <div className="card c-card">
                 <span className="status-pill">
                   <span className="dot" aria-hidden="true" />
                   Ich melde mich zeitnah.

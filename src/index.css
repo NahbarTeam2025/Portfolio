@@ -3,31 +3,31 @@
 /* ============ RESET & TOKENS ============ */
 :root {
   --bg: #06080d;
-  --surface: #0d1118;
-  --surface-2: #131821;
-  --ink: #f0eee9;
-  --ink-2: #a9afc0;
-  --ink-3: #8a93a6;
-  --stroke: rgba(240, 238, 233, 0.10);
-  --stroke-hi: rgba(240, 238, 233, 0.16);
+  --surface: #0b0e15;
+  --surface-2: #10141d;
+  --stroke: rgba(255, 255, 255, 0.075);
+  --stroke-hi: rgba(255, 255, 255, 0.16);
+  --ink: #f2f4f8;
+  --ink-2: #b9c0cc;
+  --ink-3: #8b94a4;
   --accent: #6e8bff;
   --accent-soft: rgba(110, 139, 255, 0.14);
-  --glass: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
   color-scheme: dark;
 
-  --bg2: #0d1118;
-  --ink-dim: #a9afc0;
-  --ink-faint: #8a93a6;
+  --bg2: #0b0e15;
+  --ink-dim: #b9c0cc;
+  --ink-faint: #8b94a4;
   --blue: #6e8bff;
   --cyan: #6e8bff;
   --violet: #6e8bff;
   --green: #6e8bff;
-  --r-lg: 22px;
+  --r: 20px;
+  --r-lg: 20px;
   --r-md: 16px;
   --r-sm: 10px;
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Segoe UI Variable Text", Arial, sans-serif;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  --nav-h: 64px;
+  --nav-h: 82px;
   --max: 1180px;
 }
 
@@ -41,40 +41,15 @@ body {
   background: var(--bg);
   color: var(--ink);
   line-height: 1.65;
-  font-size: 16px;
+  font-size: 17px;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
 
-/* Background: ambient gradients + subtle SVG noise */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background:
-    radial-gradient(60rem 40rem at 12% -8%, rgba(91, 140, 255, 0.16), transparent 60%),
-    radial-gradient(48rem 36rem at 92% 4%, rgba(139, 92, 246, 0.13), transparent 60%),
-    radial-gradient(56rem 44rem at 78% 92%, rgba(56, 214, 245, 0.09), transparent 62%),
-    radial-gradient(40rem 32rem at 8% 70%, rgba(52, 211, 153, 0.05), transparent 60%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 46%, var(--bg) 100%);
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
-}
-
 ::selection {
-  background: rgba(91, 140, 255, 0.35);
+  background: rgba(110, 139, 255, 0.35);
 }
 
 img {
@@ -130,16 +105,41 @@ button {
 
 /* ============ TYPOGRAPHY ============ */
 h1, h2, h3, h4 {
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.12;
 }
 
+h1 {
+  font-size: clamp(3.6rem, 7.6vw, 6.2rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.0;
+  margin: 0.2em 0 0.12em;
+}
+
+h2 {
+  font-size: clamp(2.6rem, 4.6vw, 3.8rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+h3 {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
 .grad {
-  background: linear-gradient(92deg, #dbe7ff 8%, var(--blue) 38%, var(--violet) 62%, var(--cyan) 92%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--ink);
 }
 
 .eyebrow {
@@ -159,7 +159,7 @@ h1, h2, h3, h4 {
   height: 7px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 10px rgba(110, 139, 255, 0.6);
+  box-shadow: 0 0 10px rgba(110, 139, 255, 0.5);
   animation: pulse-dot 2.4s ease-in-out infinite;
 }
 
@@ -189,24 +189,54 @@ h1, h2, h3, h4 {
 }
 
 .sec-head h2 {
-  font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+  font-size: clamp(2.6rem, 4.6vw, 3.8rem);
   margin: 0.35em 0 0.3em;
 }
 
 .sec-head .lead {
-  color: var(--ink-dim);
+  color: var(--ink-2);
   max-width: 62ch;
-  font-size: clamp(1rem, 1.4vw, 1.13rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
 }
 
-/* ============ GLASS COMPONENTS ============ */
-.glass {
-  background: var(--glass);
+/* ============ CARD & MATERIAL SYSTEM ============ */
+.card {
+  background: var(--surface);
   border: 1px solid var(--stroke);
-  border-radius: var(--r-lg);
-  -webkit-backdrop-filter: blur(18px) saturate(1.35);
-  backdrop-filter: blur(18px) saturate(1.35);
-  box-shadow: 0 18px 50px -18px rgba(2, 6, 20, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border-radius: var(--r);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.material {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--stroke);
+  border-radius: var(--r);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.material::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  pointer-events: none;
+}
+
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: var(--r);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   position: relative;
   overflow: hidden;
 }
@@ -273,7 +303,6 @@ h1, h2, h3, h4 {
   border-color: var(--stroke);
   background: rgba(255, 255, 255, 0.04);
   color: var(--ink);
-  backdrop-filter: blur(10px);
 }
 
 .btn-ghost:hover {
@@ -296,8 +325,8 @@ header.nav {
   z-index: 60;
   transition: background 0.35s, box-shadow 0.35s, border-color 0.35s;
   background: rgba(6, 8, 13, 0.82);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(1.25);
+  backdrop-filter: blur(16px) saturate(1.25);
   border-bottom: 1px solid var(--stroke);
 }
 
@@ -449,7 +478,7 @@ header.nav.scrolled {
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  header.nav, .nav ul, .glass, .hero-visual-card {
+  header.nav, .nav ul, .glass, .material, .card, .hero-visual-card {
     background: #06080d !important;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -2012,26 +2041,11 @@ footer.f {
 }
 
 /* ============ REVEAL-ANIMATIONEN ============ */
-.rv {
-  opacity: 1;
-  transform: none;
+.rv, html.js .rv, html.js .rv.on {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 }
-
-html.js .rv {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-html.js .rv.on {
-  opacity: 1;
-  transform: none;
-}
-
-html.js .rv.d1 { transition-delay: 0.08s; }
-html.js .rv.d2 { transition-delay: 0.16s; }
-html.js .rv.d3 { transition-delay: 0.24s; }
-html.js .rv.d4 { transition-delay: 0.32s; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
