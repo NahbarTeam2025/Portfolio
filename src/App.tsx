@@ -30,23 +30,9 @@ export default function App() {
     };
   }, [isMobileOpen]);
 
-  // IntersectionObserver for active navigation and reveal animations
+  // IntersectionObserver for active navigation
   useEffect(() => {
-    const reveals = document.querySelectorAll('.rv');
     if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('on');
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -6% 0px' }
-      );
-      reveals.forEach((el) => revealObserver.observe(el));
-
       const sections = document.querySelectorAll('section[id], div[id="impressum"], div[id="datenschutz"]');
       const navObserver = new IntersectionObserver(
         (entries) => {
@@ -61,11 +47,8 @@ export default function App() {
       sections.forEach((s) => navObserver.observe(s));
 
       return () => {
-        revealObserver.disconnect();
         navObserver.disconnect();
       };
-    } else {
-      reveals.forEach((el) => el.classList.add('on'));
     }
   }, []);
 
@@ -229,8 +212,8 @@ export default function App() {
                 Offen für neue Aufgaben · Falkenberg/Elster
               </p>
               <h1>Robert Erbach</h1>
-              <h2>Büro, Marketing &amp; digitale Prozesse</h2>
-              <p className="sub">Weiterbildungen, Zertifikate und dokumentierte Eigenprojekte.</p>
+              <p style={{ fontSize: 'clamp(1.5rem, 2.6vw, 2.6rem)', fontWeight: 500, letterSpacing: '-.028em', lineHeight: 1.18, color: 'var(--ink)' }}>Büro, Marketing &amp; digitale Prozesse</p>
+              <p className="sub" style={{ color: 'var(--ink-2)' }}>Weiterbildungen, Zertifikate und dokumentierte Eigenprojekte.</p>
               <div className="hero-cta">
                 <a className="btn btn-primary" href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download>
                   Lebenslauf als PDF
@@ -321,14 +304,14 @@ export default function App() {
 
             {/* Aus- und Weiterbildung */}
             <div className="stationen" style={{ marginTop: '3.5rem' }}>
-              <div className="rv">
+              <div>
                 <h3>Aus- und Weiterbildung</h3>
                 <p className="hint">
                   Nachgewiesene Qualifikationen und strukturierte Weiterbildungen im kaufmännischen und digitalen Bereich.
                 </p>
               </div>
               <div className="tl">
-                <details className="glass rv">
+                <details className="glass">
                   <summary>
                     <span className="date">07/2025 – 04/2026</span>
                     <span className="t">Diploma in Digital Marketing</span>
@@ -344,7 +327,7 @@ export default function App() {
                     </p>
                   </div>
                 </details>
-                <details className="glass rv d1">
+                <details className="glass">
                   <summary>
                     <span className="date">06/2024 – 05/2025</span>
                     <span className="t">Büro &amp; digitale Kompetenzen</span>
@@ -360,7 +343,7 @@ export default function App() {
                     </p>
                   </div>
                 </details>
-                <details className="glass rv d2">
+                <details className="glass">
                   <summary>
                     <span className="date">2002 – 2006</span>
                     <span className="t">Schulabschluss</span>
