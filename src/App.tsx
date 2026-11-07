@@ -174,14 +174,14 @@ export default function App() {
               <h1 className="rv d1">Robert Erbach</h1>
               <h2 className="tag grad rv d2" style={{ fontSize: 'clamp(1.35rem, 3.2vw, 2.15rem)', fontWeight: 700, margin: '0.35em 0' }}>Büro, Marketing &amp; digitale Prozesse</h2>
               <p className="sub rv d2" style={{ fontSize: '1.06rem', fontWeight: 400, color: 'var(--ink-dim)', maxWidth: '52ch', lineHeight: 1.6, marginBottom: '1.4em' }}>Weiterbildungen, Zertifikate und dokumentierte Eigenprojekte.</p>
-              <div className="hero-cta rv d4" style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '14px' }}>
+              <div className="hero-cta rv d4">
                 <a className="btn btn-primary" href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download>
-                  Lebenslauf als PDF <span aria-hidden="true">↓</span>
+                  Lebenslauf als PDF
                 </a>
                 <a className="btn btn-ghost" href="#zertifikate">
                   Zertifikate ansehen
                 </a>
-                <a href="#arbeitsproben" style={{ color: 'var(--blue)', fontWeight: 600, fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none', marginLeft: '4px' }}>
+                <a className="hero-cta-link" href="#arbeitsproben">
                   Arbeitsproben ansehen <span aria-hidden="true">→</span>
                 </a>
               </div>
@@ -238,7 +238,7 @@ export default function App() {
                 </p>
                 <div style={{ marginTop: '1.2em' }}>
                   <a className="btn btn-primary" href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download>
-                    Lebenslauf als PDF herunterladen ↗
+                    Lebenslauf als PDF
                   </a>
                 </div>
               </div>
@@ -275,7 +275,7 @@ export default function App() {
                 <details className="glass rv">
                   <summary>
                     <span className="date">07/2025 – 04/2026</span>
-                    <span className="t">Weiterbildung: Digital Marketing Manager</span>
+                    <span className="t">Weiterbildung: Digital Marketing (Diploma)</span>
                     <span className="plus" aria-hidden="true">+</span>
                     <span className="c">GFN GmbH / WPI</span>
                   </summary>
@@ -803,7 +803,7 @@ export default function App() {
                   </div>
                   <div>
                     <div className="k">Lebenslauf</div>
-                    <div className="v"><a href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download>Lebenslauf als PDF herunterladen ↗</a></div>
+                    <div className="v"><a href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download>Lebenslauf als PDF</a></div>
                   </div>
                 </div>
               </div>
@@ -876,7 +876,7 @@ export default function App() {
                     <button className="btn btn-primary" type="submit">
                       Nachricht verfassen <span aria-hidden="true">→</span>
                     </button>
-                    <span className="form-hint">Keine Cookies · cookiefreie Reichweitenmessung durch Cloudflare</span>
+                    <span className="form-hint">Keine eigenen Cookies · cookiefreie Reichweitenmessung durch Cloudflare</span>
                   </div>
                   {formResponse && (
                     <p className={`form-msg ${formResponse.isError ? 'err' : ''}`} role="status" aria-live="polite">
@@ -914,7 +914,7 @@ export default function App() {
               </p>
               <h3><span className="sec-num">§ 4</span> Haftung für Inhalte</h3>
               <p>
-                Als Diensteanbieter bin ich für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Für externe Links übernehme ich keine Haftung.
+                Für Inhalte verlinkter externer Seiten sind die jeweiligen Anbieter verantwortlich. Bei Bekanntwerden von Rechtsverletzungen entferne ich entsprechende Links.
               </p>
             </section>
 
@@ -922,15 +922,36 @@ export default function App() {
               <h2 id="h-dsg">Datenschutzerklärung</h2>
               <h3><span className="sec-num">1.</span> Datenschutz auf einen Blick</h3>
               <p>
-                Diese Website setzt keine eigenen Tracking- oder Analyse-Cookies. Die cookiefreie Reichweitenmessung erfolgt über Cloudflare Pages.
+                Diese Website setzt keine eigenen Tracking- oder Analyse-Cookies. Die cookiefreie Reichweitenmessung erfolgt über Cloudflare Web Analytics.
               </p>
-              <h3><span className="sec-num">2.</span> Hosting über Cloudflare Pages</h3>
+              <h3><span className="sec-num">2.</span> Verantwortliche Stelle</h3>
               <p>
-                Diese Website wird über Cloudflare Pages gehostet. Anbieter ist Cloudflare, Inc. Logdaten (u. a. IP-Adresse, Zeitpunkt) werden zur Sicherstellung des Betriebs und zur cookiefreien Reichweitenmessung verarbeitet (Art. 6 Abs. 1 lit. f DSGVO).
+                Robert Erbach<br />
+                Am Stadtpark 43<br />
+                04895 Falkenberg/Elster<br />
+                Deutschland<br />
+                E-Mail: roberterbach@web.de<br />
+                Telefon: +49 152 04041124
               </p>
-              <h3><span className="sec-num">3.</span> Kontakt</h3>
+              <h3><span className="sec-num">3.</span> Hosting über Cloudflare Pages</h3>
               <p>
-                Anfragen per E-Mail oder Formular werden ausschließlich zur Bearbeitung Ihres Anliegens verarbeitet.
+                Diese Website wird über Cloudflare Pages gehostet. Anbieter ist Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). Beim Aufruf der Seiten werden technisch notwendige Logdaten (u. a. IP-Adresse, Zeitpunkt des Zugriffs) verarbeitet, um den sicheren Betrieb der Website zu gewährleisten (Art. 6 Abs. 1 lit. f DSGVO). Die Datenübermittlung in die USA ist auf EU-Standardvertragsklauseln bzw. das Data Privacy Framework gestützt.
+              </p>
+              <h3><span className="sec-num">4.</span> Cookiefreie Reichweitenmessung</h3>
+              <p>
+                Zur statistischen Auswertung und Optimierung wird Cloudflare Web Analytics genutzt. Dieser Dienst arbeitet ohne eigene Cookies, speichert keine personenbezogenen Daten im Browser und liest keine Endgeräte-Informationen aus (Art. 6 Abs. 1 lit. f DSGVO). Nutzerprofile werden nicht erstellt.
+              </p>
+              <h3><span className="sec-num">5.</span> Kontaktformular &amp; E-Mail-Kontakt</h3>
+              <p>
+                Das Kontaktformular übermittelt keine Daten an einen Server, sondern öffnet eine vorbereitete E-Mail in Ihrem lokalen E-Mail-Programm. Die Verarbeitung der von Ihnen eingegebenen Daten erfolgt ausschließlich zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. f DSGVO).
+              </p>
+              <h3><span className="sec-num">6.</span> Externe Links und Downloads</h3>
+              <p>
+                Diese Website enthält Verweise auf externe Webseiten und bereitgestellte PDF-Dokumente. Beim Aufrufen externer Links verlassen Sie diese Website; für die Datenverarbeitung auf den Zielseiten sind die jeweiligen Betreiber verantwortlich.
+              </p>
+              <h3><span className="sec-num">7.</span> Ihre Rechte als betroffene Person</h3>
+              <p>
+                Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch gegen die Verarbeitung sowie das Recht auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde.
               </p>
             </section>
           </div>
@@ -947,7 +968,7 @@ export default function App() {
             <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Nach oben ↑</a>
           </div>
           <p className="cr" style={{ width: '100%', fontSize: '.74rem' }}>
-            Keine Cookies · cookiefreie Reichweitenmessung durch Cloudflare.
+            Keine eigenen Cookies · cookiefreie Reichweitenmessung durch Cloudflare.
           </p>
         </div>
       </footer>

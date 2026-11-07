@@ -162,7 +162,11 @@ h1, h2, h3, h4 {
 }
 
 .sec {
-  padding: clamp(72px, 11vh, 140px) 0;
+  padding: clamp(64px, 8vh, 120px) 0;
+}
+
+#einsatzfelder {
+  padding-top: 72px;
 }
 
 .sec-head {
@@ -435,7 +439,7 @@ header.nav.scrolled {
 
 /* ============ HERO ============ */
 .hero {
-  padding: calc(var(--nav-h) + clamp(46px, 9vh, 110px)) 0 clamp(56px, 9vh, 110px);
+  padding: calc(var(--nav-h) + clamp(36px, 5vh, 60px)) 0 56px;
 }
 
 .hero-grid {
@@ -522,13 +526,164 @@ header.nav.scrolled {
 
 .hero-cta {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 0.4em;
 }
 
+.hero-cta-link {
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.hero-cta-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .hero-photo {
   position: relative;
+}
+
+/* ============ HERO VISUAL (KOMPETENZ-NETZ SVG) ============ */
+.hero-visual {
+  position: relative;
+  max-width: 355px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.hero-visual-card {
+  position: relative;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015));
+  backdrop-filter: blur(18px) saturate(1.35);
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  box-shadow: 0 18px 50px -18px rgba(2, 6, 20, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  padding: 12px;
+  overflow: hidden;
+  animation: breathe 8s ease-in-out infinite;
+}
+
+.hero-visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.visual-caption {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  color: var(--ink-faint);
+}
+
+.ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.10);
+  stroke-width: 1;
+}
+
+.line {
+  fill: none;
+  stroke: url(#lineGrad);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 5 9;
+  opacity: 0.72;
+  animation: dash 7s linear infinite;
+}
+
+.line.l2 {
+  animation-delay: -2.3s;
+}
+
+.line.l3 {
+  animation-delay: -4.6s;
+}
+
+.halo, .node {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.halo {
+  animation: halo 4.8s ease-in-out infinite;
+}
+
+.halo.h2 {
+  animation-delay: -1.6s;
+}
+
+.halo.h3 {
+  animation-delay: -3.2s;
+}
+
+.node {
+  animation: nodePulse 4.8s ease-in-out infinite;
+}
+
+.node.n2 {
+  animation-delay: -1.6s;
+}
+
+.node.n3 {
+  animation-delay: -3.2s;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -42;
+  }
+}
+
+@keyframes nodePulse {
+  0%, 100% {
+    opacity: 0.88;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes halo {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 /* ============ HERO ANIMATED ELEMENT (FREE-STANDING PORTFOLIO MATRIX) ============ */
@@ -1495,6 +1650,7 @@ textarea.fld {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(18px, 2.6vw, 28px);
+  align-items: start;
 }
 
 @media (max-width: 900px) {
@@ -1947,3 +2103,42 @@ footer.f {
   text-decoration: none;
   font-weight: 600;
 }
+
+/* ============ MOBILE OVERRIDES (< 700px) ============ */
+@media (max-width: 699px) {
+  .hero {
+    padding-top: calc(var(--nav-h) + 20px) !important;
+    padding-bottom: 52px !important;
+  }
+  .sec {
+    padding-top: 68px !important;
+    padding-bottom: 68px !important;
+  }
+  .hero-visual, .hero-photo {
+    display: none !important;
+  }
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    width: 100%;
+  }
+  .hero-cta .btn {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-height: 44px;
+    justify-content: center;
+  }
+  .hero-cta-link {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 0;
+    padding-left: 0;
+    box-sizing: border-box;
+  }
+}
+
