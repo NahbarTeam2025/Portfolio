@@ -101,7 +101,6 @@ export default function App() {
       if (e.key === 'Escape') {
         if (lightboxImg) {
           setLightboxImg(null);
-          lastTriggerRef.current?.focus();
         } else if (isMobileOpen) {
           setIsMobileOpen(false);
           document.getElementById('burger')?.focus();
@@ -129,17 +128,26 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxImg, isMobileOpen]);
 
+  // Lightbox focus trap, inert management & focus restoration
+  useEffect(() => {
+    if (!lightboxImg) return;
+    const prev = document.activeElement as HTMLElement | null;
+    const main = document.querySelector('main#inhalt') as HTMLElement | null;
+    document.getElementById('lb-x')?.focus();
+    if (main) main.inert = true;
+
+    return () => {
+      if (main) main.inert = false;
+      prev?.focus?.();
+    };
+  }, [lightboxImg]);
+
   const openLightbox = useCallback((src: string, alt: string) => {
-    lastTriggerRef.current = document.activeElement as HTMLElement;
     setLightboxImg({ src, alt });
-    requestAnimationFrame(() => {
-      document.getElementById('lb-x')?.focus();
-    });
   }, []);
 
   const closeLightbox = useCallback(() => {
     setLightboxImg(null);
-    lastTriggerRef.current?.focus();
   }, []);
 
   return (
@@ -211,7 +219,7 @@ export default function App() {
       </header>
 
       {/* ======================= MAIN CONTENT ======================= */}
-      <main id="inhalt" inert={isMobileOpen || Boolean(lightboxImg) ? true : undefined} aria-hidden={isMobileOpen || Boolean(lightboxImg) ? 'true' : 'false'}>
+      <main id="inhalt" inert={isMobileOpen ? true : undefined} aria-hidden={isMobileOpen || Boolean(lightboxImg) ? 'true' : 'false'}>
         {/* ======================= START / HERO ======================= */}
         <section className="hero" id="start" aria-label="Start">
           <div className="wrap hero-grid">
