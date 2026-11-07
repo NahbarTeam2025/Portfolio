@@ -2,6 +2,7 @@
 <html lang="de">
   <head>
     <script>
+      document.documentElement.classList.add('js');
       // Suppress Vite HMR WebSocket errors in environments where WebSockets are disabled
       window.addEventListener('error', function(e) {
         if (e.message && (e.message.indexOf('WebSocket') !== -1 || e.message.indexOf('createWebSocketModuleRunnerTransport') !== -1)) {
@@ -38,12 +39,14 @@
     <meta property="og:locale" content="de_DE" />
     <meta property="og:title" content="Robert Erbach – Büro, Marketing &amp; digitale Prozesse" />
     <meta property="og:description" content="Strukturierte Büro- und Verwaltungsarbeit, Content &amp; Social Media, MS Office, Web Analytics und digitale Prozesse." />
-    <meta property="og:image" content="https://meine-assets.pages.dev/logo.png" />
+    <meta property="og:image" content="https://roberterbach.de/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Robert Erbach – Büro, Marketing &amp; digitale Prozesse" />
     <meta name="twitter:description" content="Strukturierte Büro- und Verwaltungsarbeit, Content &amp; Social Media, MS Office, Web Analytics und digitale Prozesse." />
-    <meta name="twitter:image" content="https://meine-assets.pages.dev/logo.png" />
+    <meta name="twitter:image" content="https://roberterbach.de/og-image.png" />
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -89,6 +92,11 @@
     </style>
   </head>
   <body>
+    <noscript>
+      <div style="background:#131821;color:#f0eee9;padding:12px;text-align:center;border-bottom:1px solid rgba(240,238,233,.16)">
+        Robert Erbach · Falkenberg/Elster · E-Mail: roberterbach@web.de · Telefon: +49 152 04041124
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

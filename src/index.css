@@ -398,13 +398,13 @@ header.nav.scrolled {
   display: block;
   width: 20px;
   height: 2px;
-  background: var(--ink);
   margin: 4px 0;
+  background: var(--ink);
   border-radius: 2px;
-  transition: 0.3s;
+  transition: all 0.3s;
 }
 
-.mobile-open .burger span:nth-child(1) {
+.mobile-open .burger span:first-child {
   transform: translateY(6px) rotate(45deg);
 }
 .mobile-open .burger span:nth-child(2) {
@@ -442,6 +442,8 @@ header.nav.scrolled {
   }
   .burger {
     display: block;
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
@@ -622,15 +624,15 @@ header.nav.scrolled {
   stroke-linecap: round;
   stroke-dasharray: 5 9;
   opacity: 0.72;
-  animation: dash 7s linear infinite;
+  animation: linePulse 5s ease-in-out infinite;
 }
 
 .line.l2 {
-  animation-delay: -2.3s;
+  animation-delay: -1.8s;
 }
 
 .line.l3 {
-  animation-delay: -4.6s;
+  animation-delay: -3.5s;
 }
 
 .halo, .node {
@@ -662,9 +664,12 @@ header.nav.scrolled {
   animation-delay: -3.2s;
 }
 
-@keyframes dash {
-  to {
-    stroke-dashoffset: -42;
+@keyframes linePulse {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.95;
   }
 }
 
@@ -2004,20 +2009,25 @@ footer.f {
 
 /* ============ REVEAL-ANIMATIONEN ============ */
 .rv {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .rv {
   opacity: 0;
   transform: translateY(26px);
   transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.rv.on {
+html.js .rv.on {
   opacity: 1;
   transform: none;
 }
 
-.rv.d1 { transition-delay: 0.08s; }
-.rv.d2 { transition-delay: 0.16s; }
-.rv.d3 { transition-delay: 0.24s; }
-.rv.d4 { transition-delay: 0.32s; }
+html.js .rv.d1 { transition-delay: 0.08s; }
+html.js .rv.d2 { transition-delay: 0.16s; }
+html.js .rv.d3 { transition-delay: 0.24s; }
+html.js .rv.d4 { transition-delay: 0.32s; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -2210,5 +2220,37 @@ footer.f {
     padding-left: 0;
     box-sizing: border-box;
   }
+  .hero-visual *, .hero-visual-card, .hero-visual svg * {
+    animation: none !important;
+  }
+}
+
+/* ============ ACCESSIBILITY & CONTRAST ============ */
+@media (prefers-contrast: more) {
+  :root {
+    --stroke: rgba(240, 238, 233, 0.35);
+    --stroke-hi: rgba(240, 238, 233, 0.60);
+    --ink-dim: #d1d5db;
+    --ink-faint: #9ca3af;
+  }
+  .glass {
+    border-color: rgba(240, 238, 233, 0.4);
+  }
+}
+
+@media (forced-colors: active) {
+  .glass, header.nav, .btn, .chip, .badge {
+    border: 1px solid CanvasText !important;
+  }
+}
+
+/* Ensure >= 44px touch targets */
+.logo, .nav a.nl, .cert a.lnk, .proj .go, .c-row .v a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+summary {
+  min-height: 44px;
 }
 

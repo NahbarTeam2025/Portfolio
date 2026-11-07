@@ -71,8 +71,75 @@ export default function App() {
 
 
 
+  const lastTriggerRef = React.useRef<HTMLElement | null>(null);
+
+  // Deep-link hash scroll handling on mount and hashchange
+  useEffect(() => {
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = decodeURIComponent(hash.replace('#', ''));
+        const target = document.getElementById(id);
+        if (target) {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              target.scrollIntoView({ behavior: 'auto', block: 'start' });
+            });
+          });
+        }
+      }
+    };
+
+    handleHashScroll();
+    window.addEventListener('hashchange', handleHashScroll);
+    return () => window.removeEventListener('hashchange', handleHashScroll);
+  }, []);
+
+  // Global key listener for Escape & focus trapping
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (lightboxImg) {
+          setLightboxImg(null);
+          lastTriggerRef.current?.focus();
+        } else if (isMobileOpen) {
+          setIsMobileOpen(false);
+          document.getElementById('burger')?.focus();
+        }
+      } else if (lightboxImg && e.key === 'Tab') {
+        const lbEl = document.getElementById('lb');
+        if (lbEl) {
+          const focusables = lbEl.querySelectorAll<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          if (focusables.length > 0) {
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxImg, isMobileOpen]);
+
   const openLightbox = useCallback((src: string, alt: string) => {
+    lastTriggerRef.current = document.activeElement as HTMLElement;
     setLightboxImg({ src, alt });
+    requestAnimationFrame(() => {
+      document.getElementById('lb-x')?.focus();
+    });
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxImg(null);
+    lastTriggerRef.current?.focus();
   }, []);
 
   return (
@@ -144,7 +211,7 @@ export default function App() {
       </header>
 
       {/* ======================= MAIN CONTENT ======================= */}
-      <main id="inhalt" inert={isMobileOpen ? true : undefined} aria-hidden={isMobileOpen ? 'true' : 'false'}>
+      <main id="inhalt" inert={isMobileOpen || Boolean(lightboxImg) ? true : undefined} aria-hidden={isMobileOpen || Boolean(lightboxImg) ? 'true' : 'false'}>
         {/* ======================= START / HERO ======================= */}
         <section className="hero" id="start" aria-label="Start">
           <div className="wrap hero-grid">
@@ -257,7 +324,7 @@ export default function App() {
                 <details className="glass rv">
                   <summary>
                     <span className="date">07/2025 – 04/2026</span>
-                    <span className="t">Weiterbildung: Digital Marketing (Diploma)</span>
+                    <span className="t">Diploma in Digital Marketing</span>
                     <span className="plus" aria-hidden="true">+</span>
                     <span className="c">GFN GmbH / WPI</span>
                   </summary>
@@ -499,6 +566,8 @@ export default function App() {
                           src="/assets/images/case-tracking-events.webp"
                           alt="Übersicht der sieben Tracking-Events"
                           loading="lazy"
+                          width="1100"
+                          height="842"
                           onClick={() => openLightbox('/assets/images/case-tracking-events.webp', 'Übersicht der sieben Tracking-Events')}
                         />
                       </div>
@@ -507,6 +576,8 @@ export default function App() {
                           src="/assets/images/case-excel-plan.webp"
                           alt="Ausschnitt des Excel-Implementierungsplans"
                           loading="lazy"
+                          width="1100"
+                          height="841"
                           onClick={() => openLightbox('/assets/images/case-excel-plan.webp', 'Ausschnitt des Excel-Implementierungsplans')}
                         />
                       </div>
@@ -623,17 +694,17 @@ export default function App() {
                   <div className="cert-grid">
                     <div className="glass cert">
                       <div className="t">SEO Manager</div>
-                      <div className="m"><span>GFN / WPI</span> · <span>19.02.2026</span> · <span className="badge">Note: 89%</span></div>
+                      <div className="m"><span>GFN GmbH / WPI</span> · <span>19.02.2026</span> · <span className="badge">Note: 89%</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_seo_manager.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">PPC Manager</div>
-                      <div className="m"><span>GFN / WPI</span> · <span>12.03.2026</span> · <span className="badge">Note: 93%</span></div>
+                      <div className="m"><span>GFN GmbH / WPI</span> · <span>12.03.2026</span> · <span className="badge">Note: 93%</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ppc_manager.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Webanalyse</div>
-                      <div className="m"><span>GFN / WPI</span> · <span>24.03.2026</span> · <span className="badge">Note: 96%</span></div>
+                      <div className="m"><span>GFN GmbH / WPI</span> · <span>24.03.2026</span> · <span className="badge">Note: 96%</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_webanalyse.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
@@ -647,7 +718,7 @@ export default function App() {
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_neuromarketing.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
-                      <div className="t">E-/Content Marketing</div>
+                      <div className="t">E- &amp; Content Marketing</div>
                       <div className="m"><span>GFN GmbH</span> · <span>14.11.2025</span> · <span className="badge gray">Teilnahmebescheinigung</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_e_marketing.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
@@ -685,42 +756,42 @@ export default function App() {
                   <div className="cert-grid">
                     <div className="glass cert">
                       <div className="t">MS Word</div>
-                      <div className="m"><span>FAW</span> · <span>05.07.2024</span> · <span className="badge gray">90 Std.</span></div>
+                      <div className="m"><span>FAW Akademie</span> · <span>05.07.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_word.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">MS Excel Grundlagen</div>
-                      <div className="m"><span>FAW</span> · <span>25.10.2024</span> · <span className="badge gray">90 Std.</span></div>
+                      <div className="m"><span>FAW Akademie</span> · <span>25.10.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_grundlagen.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Layout mit MS Office</div>
-                      <div className="m"><span>FAW</span> · <span>16.08.2024</span> · <span className="badge gray">90 Std.</span></div>
+                      <div className="m"><span>FAW Akademie</span> · <span>16.08.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_layout_mit_ms_office.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Datenbanken mit MS Access</div>
-                      <div className="m"><span>FAW</span> · <span>22.11.2024</span> · <span className="badge gray">90 Std.</span></div>
+                      <div className="m"><span>FAW Akademie</span> · <span>22.11.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenbanken_mit_ms_access.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Bildbearbeitung mit GIMP</div>
-                      <div className="m"><span>FAW</span> · <span>19.07.2024</span> · <span className="badge gray">90 Std.</span></div>
+                      <div className="m"><span>FAW Akademie</span> · <span>19.07.2024</span> · <span className="badge gray">90 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_bildberabeitung_mit_gimp.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Datenschutz</div>
-                      <div className="m"><span>FAW</span> · <span>29.11.2024</span> · <span className="badge gray">45 Std.</span></div>
+                      <div className="m"><span>FAW Akademie</span> · <span>29.11.2024</span> · <span className="badge gray">45 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">IT-Sicherheit</div>
-                      <div className="m"><span>FAW</span> · <span>06.12.2024</span> · <span className="badge gray">45 Std.</span></div>
+                      <div className="m"><span>FAW Akademie</span> · <span>06.12.2024</span> · <span className="badge gray">45 Std.</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_it_sicherheit.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                     <div className="glass cert">
                       <div className="t">Digitalisierte Arbeitswelt</div>
-                      <div className="m"><span>FAW</span> · <span>10.12.2024</span></div>
+                      <div className="m"><span>FAW Akademie</span> · <span>10.12.2024</span></div>
                       <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_digitalisierte_arbeitswelt.pdf" target="_blank" rel="noopener noreferrer" download>PDF herunterladen ↗</a>
                     </div>
                   </div>
@@ -744,7 +815,7 @@ export default function App() {
               <div className="glass c-card rv">
                 <span className="status-pill">
                   <span className="dot" aria-hidden="true" />
-                  Antwort in der Regel innerhalb von 24 Stunden
+                  Ich melde mich zeitnah.
                 </span>
                 <div className="c-row">
                   <div className="ic" aria-hidden="true">
@@ -887,10 +958,10 @@ export default function App() {
         aria-modal="true"
         aria-label="Bildvorschau"
         onClick={(e) => {
-          if (e.target === e.currentTarget) setLightboxImg(null);
+          if (e.target === e.currentTarget) closeLightbox();
         }}
       >
-        <button className="x" id="lb-x" aria-label="Schließen" onClick={() => setLightboxImg(null)}>
+        <button className="x" id="lb-x" aria-label="Schließen" onClick={closeLightbox}>
           ✕
         </button>
         {lightboxImg && (
