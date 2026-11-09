@@ -135,16 +135,20 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxImg, isMobileOpen, closeMobileMenu]);
 
-  // Lightbox focus trap, inert management & focus restoration
+  // Lightbox focus trap, inert management, scroll lock & focus restoration
   useEffect(() => {
     if (!lightboxImg) return;
     const prev = document.activeElement as HTMLElement | null;
     const main = document.querySelector('main#inhalt') as HTMLElement | null;
+    const originalOverflow = document.body.style.overflow;
+    
+    document.body.style.overflow = 'hidden';
     document.getElementById('lb-x')?.focus();
     if (main) main.inert = true;
 
     return () => {
       if (main) main.inert = false;
+      document.body.style.overflow = originalOverflow;
       prev?.focus?.();
     };
   }, [lightboxImg]);
@@ -188,6 +192,7 @@ export default function App() {
                   href="#profil" 
                   onClick={closeMobileMenu}
                   tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                  aria-current={activeSection === 'profil' ? 'location' : undefined}
                 >
                   Profil
                 </a>
@@ -198,6 +203,7 @@ export default function App() {
                   href="#kompetenzen" 
                   onClick={closeMobileMenu}
                   tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                  aria-current={activeSection === 'kompetenzen' ? 'location' : undefined}
                 >
                   Kompetenzen
                 </a>
@@ -208,6 +214,7 @@ export default function App() {
                   href="#arbeitsproben" 
                   onClick={closeMobileMenu}
                   tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                  aria-current={activeSection === 'arbeitsproben' ? 'location' : undefined}
                 >
                   Arbeitsproben
                 </a>
@@ -218,6 +225,7 @@ export default function App() {
                   href="#zertifikate" 
                   onClick={closeMobileMenu}
                   tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                  aria-current={activeSection === 'zertifikate' ? 'location' : undefined}
                 >
                   Zertifikate
                 </a>
@@ -228,6 +236,7 @@ export default function App() {
                   href="#kontakt" 
                   onClick={closeMobileMenu}
                   tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                  aria-current={activeSection === 'kontakt' ? 'location' : undefined}
                 >
                   Kontakt
                 </a>
@@ -474,7 +483,7 @@ export default function App() {
                   className="thumb"
                   tabIndex={0}
                   role="button"
-                  aria-label="Projektansicht vergrößern"
+                  aria-label="Projektansicht vergrößern: Visibility Lab"
                   onClick={() => openLightbox('/assets/images/proj-visibility-lab.webp', 'Visibility Lab – Screenshot')}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -518,7 +527,7 @@ export default function App() {
                   className="thumb case-shot workflow-shot"
                   tabIndex={0}
                   role="button"
-                  aria-label="Projektansicht vergrößern"
+                  aria-label="Projektansicht vergrößern: Vier-KI-Workflow"
                   onClick={() => openLightbox('/assets/images/proj-4ki-workflow.webp', 'Vier-KI-Workflow – Übersicht')}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -551,7 +560,7 @@ export default function App() {
                     <span className="chip" style={{ borderStyle: 'dashed' }}>
                       Dokumentation
                     </span>
-                    <a className="go" href="https://meine-assets.pages.dev/pdf/robert_erbach_4_ki_workflow.pdf" target="_blank" rel="noopener noreferrer" download>
+                    <a className="go" href="https://meine-assets.pages.dev/pdf/robert_erbach_4_ki_workflow.pdf" target="_blank" rel="noopener noreferrer" download aria-label="PDF herunterladen: Vier-KI-Workflow">
                       PDF herunterladen <span aria-hidden="true">↗</span>
                     </a>
                   </div>
@@ -564,7 +573,7 @@ export default function App() {
                   className="thumb"
                   tabIndex={0}
                   role="button"
-                  aria-label="Projektansicht vergrößern"
+                  aria-label="Projektansicht vergrößern: Nuraghi Outdoor Experience"
                   onClick={() => openLightbox('/assets/images/proj-nuraghi-shop.webp', 'Nuraghi Outdoor Experience – Mockup')}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -658,7 +667,7 @@ export default function App() {
                   <div className="m">
                     <span>Webmasters Europe e.V.</span> · <span>21.04.2026</span> · <span className="badge">WE-ID 011435537</span>
                   </div>
-                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_digital_marketing_manager.pdf" target="_blank" rel="noopener noreferrer" download>
+                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_digital_marketing_manager.pdf" target="_blank" rel="noopener noreferrer" download aria-label="PDF herunterladen: Diploma in Digital Marketing">
                     PDF herunterladen ↗
                   </a>
                 </div>
@@ -667,7 +676,7 @@ export default function App() {
                   <div className="m">
                     <span>GFN GmbH / WPI</span> · <span>19.01.2026</span> · <span className="badge">Note: 94%</span>
                   </div>
-                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf" target="_blank" rel="noopener noreferrer" download>
+                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_social_media_manager.pdf" target="_blank" rel="noopener noreferrer" download aria-label="PDF herunterladen: Social Media Marketing">
                     PDF herunterladen ↗
                   </a>
                 </div>
@@ -676,7 +685,7 @@ export default function App() {
                   <div className="m">
                     <span>FAW Akademie</span> · <span>27.09.2024</span> · <span className="badge gray">180 Std.</span>
                   </div>
-                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_büroverwaltung_und_kommunikation.pdf" target="_blank" rel="noopener noreferrer" download>
+                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_büroverwaltung_und_kommunikation.pdf" target="_blank" rel="noopener noreferrer" download aria-label="PDF herunterladen: Büroverwaltung & Kommunikation">
                     PDF herunterladen ↗
                   </a>
                 </div>
@@ -685,7 +694,7 @@ export default function App() {
                   <div className="m">
                     <span>FAW Akademie</span> · <span>08.11.2024</span> · <span className="badge gray">90 Std.</span>
                   </div>
-                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf" target="_blank" rel="noopener noreferrer" download>
+                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_ms_excel_aufbaukurs.pdf" target="_blank" rel="noopener noreferrer" download aria-label="PDF herunterladen: MS Excel Aufbaukurs">
                     PDF herunterladen ↗
                   </a>
                 </div>
@@ -694,7 +703,7 @@ export default function App() {
                   <div className="m">
                     <span>FAW Akademie</span> · <span>02.08.2024</span> · <span className="badge gray">45 Std.</span>
                   </div>
-                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_kaufmännischer_schriftverkehr.pdf" target="_blank" rel="noopener noreferrer" download>
+                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_kaufmännischer_schriftverkehr.pdf" target="_blank" rel="noopener noreferrer" download aria-label="PDF herunterladen: Kaufmännischer Schriftverkehr">
                     PDF herunterladen ↗
                   </a>
                 </div>
@@ -703,7 +712,7 @@ export default function App() {
                   <div className="m">
                     <span>FAW Akademie</span> · <span>29.11.2024</span> · <span className="badge gray">45 Std.</span>
                   </div>
-                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf" target="_blank" rel="noopener noreferrer" download>
+                  <a className="lnk" href="https://meine-assets.pages.dev/pdf/robert_erbach_datenschutz.pdf" target="_blank" rel="noopener noreferrer" download aria-label="PDF herunterladen: Datenschutz – BDSG & DSGVO">
                     PDF herunterladen ↗
                   </a>
                 </div>

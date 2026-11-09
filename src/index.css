@@ -34,6 +34,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -88,7 +89,7 @@ button {
   top: 0;
   z-index: 99;
   background: var(--blue);
-  color: #fff;
+  color: var(--bg);
   padding: 0.6em 1em;
   border-radius: 0 0 10px 0;
 }
@@ -289,8 +290,12 @@ p {
 
 .btn-primary {
   background: linear-gradient(92deg, #7d97ff, #6e8bff);
-  color: #fff;
+  color: var(--bg);
   box-shadow: 0 10px 30px -10px rgba(110, 139, 255, 0.12);
+}
+
+.btn-primary:visited, .btn-primary:hover, .btn-primary:focus-visible {
+  color: var(--bg);
 }
 
 .btn-primary:hover {
