@@ -4,9 +4,34 @@ import { OfficeIllustration } from './components/OfficeIllustration';
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
   const [activeSection, setActiveSection] = useState('start');
   const [lightboxImg, setLightboxImg] = useState<{ src: string; alt: string } | null>(null);
 
+  // Detection for mobile view (matching CSS breakpoint)
+  useEffect(() => {
+    const checkMobile = () => setIsMobileView(window.innerWidth <= 920);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    if (!isMobileOpen) return;
+    // SCHLIESSEN: ZUERST Fokus auf #burger, DANN erst Schließen/Inert
+    document.getElementById('burger')?.focus();
+    setIsMobileOpen(false);
+  }, [isMobileOpen]);
+
+  const openMobileMenu = useCallback(() => {
+    if (isMobileOpen) return;
+    // ÖFFNEN: ZUERST state auf true (entfernt inert), DANN Fokus auf ersten Punkt
+    setIsMobileOpen(true);
+    requestAnimationFrame(() => {
+      const firstLink = document.querySelector('#navlinks a') as HTMLElement;
+      firstLink?.focus();
+    });
+  }, [isMobileOpen]);
 
   // Sticky nav scroll listener
   useEffect(() => {
@@ -20,7 +45,7 @@ export default function App() {
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (isMobileOpen) {
+    if (isMobileOpen && isMobileView) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -28,7 +53,7 @@ export default function App() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isMobileOpen]);
+  }, [isMobileOpen, isMobileView]);
 
   // IntersectionObserver for active navigation
   useEffect(() => {
@@ -85,8 +110,7 @@ export default function App() {
         if (lightboxImg) {
           setLightboxImg(null);
         } else if (isMobileOpen) {
-          setIsMobileOpen(false);
-          document.getElementById('burger')?.focus();
+          closeMobileMenu();
         }
       } else if (lightboxImg && e.key === 'Tab') {
         const lbEl = document.getElementById('lb');
@@ -109,7 +133,7 @@ export default function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [lightboxImg, isMobileOpen]);
+  }, [lightboxImg, isMobileOpen, closeMobileMenu]);
 
   // Lightbox focus trap, inert management & focus restoration
   useEffect(() => {
@@ -142,7 +166,7 @@ export default function App() {
       {/* ======================= NAVIGATION ======================= */}
       <header className={`nav ${isScrolled ? 'scrolled' : ''} ${isMobileOpen ? 'mobile-open' : ''}`} id="top">
         <div className="wrap nav-in">
-          <a className="logo" href="#start" aria-label="Zur Startseite" onClick={() => setIsMobileOpen(false)}>
+          <a className="logo" href="#start" aria-label="Zur Startseite" onClick={closeMobileMenu}>
             <img
               src="/favicon.png"
               alt="Logo Robert Erbach"
@@ -153,34 +177,71 @@ export default function App() {
             <span>Robert Erbach</span>
           </a>
           <nav className="nav" aria-label="Hauptnavigation">
-            <ul id="navlinks">
+            <ul 
+              id="navlinks"
+              inert={isMobileView && !isMobileOpen ? true : undefined}
+              aria-hidden={isMobileView && !isMobileOpen ? 'true' : undefined}
+            >
               <li>
-                <a className={`nl ${activeSection === 'profil' ? 'active' : ''}`} href="#profil" onClick={() => setIsMobileOpen(false)}>
+                <a 
+                  className={`nl ${activeSection === 'profil' ? 'active' : ''}`} 
+                  href="#profil" 
+                  onClick={closeMobileMenu}
+                  tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                >
                   Profil
                 </a>
               </li>
               <li>
-                <a className={`nl ${activeSection === 'kompetenzen' ? 'active' : ''}`} href="#kompetenzen" onClick={() => setIsMobileOpen(false)}>
+                <a 
+                  className={`nl ${activeSection === 'kompetenzen' ? 'active' : ''}`} 
+                  href="#kompetenzen" 
+                  onClick={closeMobileMenu}
+                  tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                >
                   Kompetenzen
                 </a>
               </li>
               <li>
-                <a className={`nl ${activeSection === 'arbeitsproben' ? 'active' : ''}`} href="#arbeitsproben" onClick={() => setIsMobileOpen(false)}>
+                <a 
+                  className={`nl ${activeSection === 'arbeitsproben' ? 'active' : ''}`} 
+                  href="#arbeitsproben" 
+                  onClick={closeMobileMenu}
+                  tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                >
                   Arbeitsproben
                 </a>
               </li>
               <li>
-                <a className={`nl ${activeSection === 'zertifikate' ? 'active' : ''}`} href="#zertifikate" onClick={() => setIsMobileOpen(false)}>
+                <a 
+                  className={`nl ${activeSection === 'zertifikate' ? 'active' : ''}`} 
+                  href="#zertifikate" 
+                  onClick={closeMobileMenu}
+                  tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                >
                   Zertifikate
                 </a>
               </li>
               <li>
-                <a className={`nl ${activeSection === 'kontakt' ? 'active' : ''}`} href="#kontakt" onClick={() => setIsMobileOpen(false)}>
+                <a 
+                  className={`nl ${activeSection === 'kontakt' ? 'active' : ''}`} 
+                  href="#kontakt" 
+                  onClick={closeMobileMenu}
+                  tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                >
                   Kontakt
                 </a>
               </li>
               <li className="nav-cta">
-                <a className="btn btn-primary btn-sm" href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" target="_blank" rel="noopener noreferrer" download onClick={() => setIsMobileOpen(false)}>
+                <a 
+                  className="btn btn-primary btn-sm" 
+                  href="https://meine-assets.pages.dev/pdf/robert_erbach_lebenslauf.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  download 
+                  onClick={closeMobileMenu}
+                  tabIndex={isMobileView && !isMobileOpen ? -1 : undefined}
+                >
                   Lebenslauf als PDF
                 </a>
               </li>
@@ -192,7 +253,7 @@ export default function App() {
             aria-expanded={isMobileOpen}
             aria-controls="navlinks"
             aria-label={isMobileOpen ? 'Menü schließen' : 'Menü öffnen'}
-            onClick={() => setIsMobileOpen((prev) => !prev)}
+            onClick={isMobileOpen ? closeMobileMenu : openMobileMenu}
           >
             <span />
             <span />

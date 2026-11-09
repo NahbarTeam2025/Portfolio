@@ -33,7 +33,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-h) + 18px);
+  scroll-padding-top: var(--nav-h);
 }
 
 body {
@@ -1112,6 +1112,7 @@ header.nav.scrolled {
     grid-column: 2; 
     grid-row: 1 / 4; 
     align-self: center;
+    margin-top: -2px; /* Subtle optical adjustment to prevent jumping relative to title */
   }
 }
 
