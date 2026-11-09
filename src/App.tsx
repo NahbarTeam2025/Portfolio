@@ -140,18 +140,46 @@ export default function App() {
     if (!lightboxImg) return;
     const prev = document.activeElement as HTMLElement | null;
     const main = document.querySelector('main#inhalt') as HTMLElement | null;
-    const originalBodyOverflow = document.body.style.overflow;
-    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const scrollY = window.scrollY;
+    const body = document.body;
+    const html = document.documentElement;
+
+    const originalBodyPos = body.style.position;
+    const originalBodyTop = body.style.top;
+    const originalBodyLeft = body.style.left;
+    const originalBodyRight = body.style.right;
+    const originalBodyWidth = body.style.width;
+    const originalBodyOverflow = body.style.overflow;
+    const originalHtmlOverflow = html.style.overflow;
     
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+    body.style.overflow = 'hidden';
+    html.style.overflow = 'hidden';
+
     document.getElementById('lb-x')?.focus();
     if (main) main.inert = true;
 
     return () => {
       if (main) main.inert = false;
-      document.body.style.overflow = originalBodyOverflow;
-      document.documentElement.style.overflow = originalHtmlOverflow;
+      
+      const restore = (el: HTMLElement, prop: string, val: string) => {
+        if (val) el.style.setProperty(prop, val);
+        else el.style.removeProperty(prop);
+      };
+
+      restore(body, 'position', originalBodyPos);
+      restore(body, 'top', originalBodyTop);
+      restore(body, 'left', originalBodyLeft);
+      restore(body, 'right', originalBodyRight);
+      restore(body, 'width', originalBodyWidth);
+      restore(body, 'overflow', originalBodyOverflow);
+      restore(html, 'overflow', originalHtmlOverflow);
+
+      window.scrollTo({ top: scrollY, behavior: 'instant' });
       prev?.focus?.();
     };
   }, [lightboxImg]);
