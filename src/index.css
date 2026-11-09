@@ -1101,8 +1101,18 @@ header.nav.scrolled {
 }
 
 @media (max-width: 700px) {
-  .tl summary { grid-template-columns: 1fr auto; }
-  .tl .c { grid-column: 1 / -1; }
+  .tl summary { 
+    grid-template-columns: 1fr auto;
+    gap: 4px 20px;
+  }
+  .tl .date { grid-column: 1; }
+  .tl .t { grid-column: 1; }
+  .tl .c { grid-column: 1; }
+  .tl .plus { 
+    grid-column: 2; 
+    grid-row: 1 / 4; 
+    align-self: center;
+  }
 }
 
 /* ============ SKILLS ============ */
